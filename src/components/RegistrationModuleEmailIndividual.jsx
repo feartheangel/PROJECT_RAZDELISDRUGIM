@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import qs from 'qs';
 import { useDispatch, useSelector } from 'react-redux';
 import facebookLogo from '../img/Facebook.png';
 import vkLogo from '../img/vk.png';
@@ -6,17 +8,17 @@ import googleLogo from '../img/Google.png';
 
 const RegistrationModuleEmailIndividual = () => {
   const dispatch = useDispatch();
-  const { contact } = useSelector(({ registration }) => registration);
+  const { sentNumber, sentEmail, password } = useSelector(({ registration }) => registration);
 
   const [name, setName] = React.useState();
   const [surname, setSurname] = React.useState();
   const [birth, setBirth] = React.useState();
-  const [email, setEmail] = React.useState(contact);
-  const [number, setNumber] = React.useState();
+  const [email, setEmail] = React.useState(sentEmail);
+  const [number, setNumber] = React.useState(sentNumber);
   const [promo, setPromo] = React.useState();
 
   const onClickSubmit = () => {
-    alert(name);
+    password ? alert('Все ок!') : alert('Заполните первую форму!');
   };
   return (
     <div className="reg-content">

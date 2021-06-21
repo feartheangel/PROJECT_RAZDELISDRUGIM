@@ -1,4 +1,4 @@
-export const setRegEntries = (contact, password) => ({
+export const setRegEntries = (email, number, password) => ({
   type: 'SET_REG_ENTRIES',
-  payload: { contact: contact, password: password },
+  payload: { email: email, number: number, password: password },
 });

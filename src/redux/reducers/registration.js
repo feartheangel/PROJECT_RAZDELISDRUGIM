@@ -1,16 +1,17 @@
 const initialState = {
-  contact: '',
   password: '',
   name: '',
   surname: '',
   birth: '',
-  number: '',
+  sentEmail: '',
+  sentNumber: '',
   promo: '',
 };
 
 const registration = (state = initialState, action) => {
   if (action.type === 'SET_REG_ENTRIES') {
-    state.contact = action.payload.contact;
+    state.sentEmail = action.payload.email;
+    state.sentNumber = action.payload.number;
     state.password = action.payload.password;
   }
 
