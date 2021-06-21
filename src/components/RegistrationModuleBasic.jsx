@@ -97,7 +97,7 @@ const RegistrationModuleBasic = () => {
     } else if (contactNumberRegExp.test(String(contact).toLowerCase())) {
       number = contact;
     }
-    dispatch(setRegEntries(email, number, password));
+    dispatch(setRegEntries(email, number, password, passwordSubmit));
     setRedirect(<Redirect to="/registration-step-2" />);
   };
 

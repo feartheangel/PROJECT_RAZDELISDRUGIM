@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import qs from 'qs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import facebookLogo from '../img/Facebook.png';
 import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
 
 const RegistrationModuleEmailIndividual = () => {
-  const dispatch = useDispatch();
-  const { sentNumber, sentEmail, password } = useSelector(({ registration }) => registration);
+  const { sentNumber, sentEmail, password, passwordSubmit } = useSelector(
+    ({ registration }) => registration,
+  );
   const inputErrors = [
     'Слишком короткая запись',
     'Поле не может быть пустым',
@@ -35,6 +35,20 @@ const RegistrationModuleEmailIndividual = () => {
   const [emailError, setEmailError] = React.useState();
   const [numberError, setNumberError] = React.useState();
   const [formValid, setFormValid] = React.useState(false);
+
+  const data = {
+    username: number,
+    email: email,
+    password: password,
+    password2: passwordSubmit,
+  };
+
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    data: data,
+    url: 'http://host140620211735.of.by/jwt/register/',
+  };
 
   React.useEffect(() => {
     if (nameError || surnameError || birthError || emailError || numberError) {
@@ -127,7 +141,7 @@ const RegistrationModuleEmailIndividual = () => {
         setNumberError(inputErrors[1]);
       }
     } else {
-      alert('Успешно!');
+      axios(options).then((response) => console.log(response.status));
     }
   };
   return (

@@ -5,6 +5,7 @@ const initialState = {
   birth: '',
   sentEmail: '',
   sentNumber: '',
+  passwordSubmit: '',
   promo: '',
 };
 
@@ -13,6 +14,7 @@ const registration = (state = initialState, action) => {
     state.sentEmail = action.payload.email;
     state.sentNumber = action.payload.number;
     state.password = action.payload.password;
+    state.passwordSubmit = action.payload.passwordSubmit;
   }
 
   return state;
