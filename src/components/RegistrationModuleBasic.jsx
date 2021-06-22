@@ -2,11 +2,12 @@ import React from 'react';
 import facebookLogo from '../img/Facebook.png';
 import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setRegEntries } from '../redux/actions/registration';
 
 const RegistrationModuleBasic = () => {
+  //указываем основные константы для интерфейса
   const contactErrors = ['Это поле не может быть пустым', 'Некорректный телефон/Email'];
   const passwordErrors = [
     'Пароли не совпадают',
@@ -15,10 +16,12 @@ const RegistrationModuleBasic = () => {
   ];
   let number = '';
   let email = '';
+  //регулярные выражения для проверки телефона и почты
   const contactEmailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   const contactNumberRegExp = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
   const dispatch = useDispatch();
 
+  //состояния для контроля, записи, валидации полей и формы
   const [contact, setContact] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [passwordSubmit, setPasswordSubmit] = React.useState('');
@@ -34,6 +37,7 @@ const RegistrationModuleBasic = () => {
   const [formValid, setFormValid] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
 
+  //проврека формы на валидность
   React.useEffect(() => {
     if (contactError || passwordError || passwordSubmitError) {
       setFormValid(false);
@@ -42,6 +46,7 @@ const RegistrationModuleBasic = () => {
     }
   }, [contactError, passwordError, passwordSubmitError]);
 
+  //обработчики полей ввода
   const contactHandler = (e) => {
     setContact(e.target.value);
     if (
@@ -109,9 +114,11 @@ const RegistrationModuleBasic = () => {
             <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
               Регистрация
             </li>
-            <li href="#" className="reg-form-action-type-link">
-              Вход
-            </li>
+            <Link to="/login">
+              <li href="#" className="reg-form-action-type-link">
+                Вход
+              </li>
+            </Link>
           </ul>
           <div className="reg-form-socials">
             <img src={vkLogo} alt="VK" />

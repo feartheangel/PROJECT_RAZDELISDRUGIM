@@ -1,12 +1,8 @@
 const initialState = {
   password: '',
-  name: '',
-  surname: '',
-  birth: '',
   sentEmail: '',
   sentNumber: '',
   passwordSubmit: '',
-  promo: '',
 };
 
 const registration = (state = initialState, action) => {

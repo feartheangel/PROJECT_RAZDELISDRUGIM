@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import qs from 'qs';
+import { useDispatch, useSelector } from 'react-redux';
 import facebookLogo from '../img/Facebook.png';
 import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
@@ -141,7 +142,7 @@ const RegistrationModuleEmailIndividual = () => {
         setNumberError(inputErrors[1]);
       }
     } else {
-      axios(options).then((response) => console.log(response.status));
+      axios(options).then((response) => console.log(response));
     }
   };
   return (
