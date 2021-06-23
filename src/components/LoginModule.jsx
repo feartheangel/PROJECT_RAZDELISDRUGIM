@@ -73,16 +73,13 @@ const LoginModule = () => {
 
   //обработчик клика по кнопке регистрации
   const onClickSubmit = () => {
-    console.log(options);
-    axios(options).then((response) => {
-      console.log(response);
-      if (response.status === 201 || response.status === 200) {
-        alert('Авторизация прошла успешно.');
-        setSuccessLogin(<Redirect to="/" />);
-      } else {
-        alert('Введены неверные данные.');
-      }
-    });
+    axios(options)
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          alert('Авторизация прошла успешно');
+        }
+      })
+      .catch((err) => alert('Ошибка авторизации (данные введены неверно)'));
   };
   return (
     <div className="reg-content">

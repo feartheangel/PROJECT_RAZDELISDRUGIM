@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import qs from 'qs';
+import { Redirect, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import facebookLogo from '../img/Facebook.png';
 import vkLogo from '../img/vk.png';
@@ -36,6 +36,7 @@ const RegistrationModuleEmailIndividual = () => {
   const [emailError, setEmailError] = React.useState();
   const [numberError, setNumberError] = React.useState();
   const [formValid, setFormValid] = React.useState(false);
+  const [successRegister, setSuccessRegister] = React.useState(false);
 
   const data = {
     username: number,
@@ -142,7 +143,14 @@ const RegistrationModuleEmailIndividual = () => {
         setNumberError(inputErrors[1]);
       }
     } else {
-      axios(options).then((response) => console.log(response));
+      axios(options)
+        .then((response) => {
+          if (response.status === 200 || response.status === 201) {
+            alert('Регистрация прошла успешно');
+            setSuccessRegister(<Redirect to="/" />);
+          }
+        })
+        .catch((err) => alert('Ошибка регистрации (такая почта/телефон уже существуют)'));
     }
   };
   return (
@@ -151,7 +159,7 @@ const RegistrationModuleEmailIndividual = () => {
         <div className="reg-form__second">
           <ul className="reg-form-action-type-list">
             <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
-              Регистрация
+              Регистрация{successRegister}
             </li>
             <li href="#" className="reg-form-action-type-link">
               Вход
