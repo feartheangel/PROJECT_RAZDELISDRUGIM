@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import facebookLogo from '../img/Facebook.png';
 import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
 
-const RegistrationModuleEmailIndividual = () => {
+const RegistrationModuleEntity = () => {
   const { sentNumber, sentEmail, password, passwordSubmit } = useSelector(
     ({ registration }) => registration,
   );
@@ -21,20 +21,35 @@ const RegistrationModuleEmailIndividual = () => {
 
   const [name, setName] = React.useState();
   const [surname, setSurname] = React.useState();
-  const [birth, setBirth] = React.useState();
+  const [companyName, setCompanyName] = React.useState();
+  const [unpUnnCompany, setUnpUnnCompany] = React.useState();
+  const [address, setAddress] = React.useState();
+  const [iban, setIban] = React.useState();
+  const [bic, setBic] = React.useState();
   const [email, setEmail] = React.useState(sentEmail);
   const [number, setNumber] = React.useState(sentNumber);
   const [promo, setPromo] = React.useState();
+
   const [nameDirty, setNameDirty] = React.useState();
   const [surnameDirty, setSurnameDirty] = React.useState();
-  const [birthDirty, setBirthDirty] = React.useState();
+  const [companyNameDirty, setCompanyNameDirty] = React.useState();
+  const [unpUnnCompanyDirty, setUnpUnnCompanyDirty] = React.useState();
+  const [addressDirty, setAddressDirty] = React.useState();
+  const [ibanDirty, setIbanDirty] = React.useState();
+  const [bicDirty, setBicDirty] = React.useState();
   const [emailDirty, setEmailDirty] = React.useState();
   const [numberDirty, setNumberDirty] = React.useState();
+
   const [nameError, setNameError] = React.useState(inputErrors[1]);
-  const [surnameError, setSurnameError] = React.useState('Это поле не может быть пустым');
-  const [birthError, setBirthError] = React.useState('Это поле не может быть пустым');
+  const [surnameError, setSurnameError] = React.useState(inputErrors[1]);
+  const [companyNameError, setCompanyNameError] = React.useState(inputErrors[1]);
+  const [unpUnnCompanyError, setUnpUnnCompanyError] = React.useState(inputErrors[1]);
+  const [addressError, setAddressError] = React.useState(inputErrors[1]);
+  const [ibanError, setIbanError] = React.useState(inputErrors[1]);
+  const [bicError, setBicError] = React.useState(inputErrors[1]);
   const [emailError, setEmailError] = React.useState();
   const [numberError, setNumberError] = React.useState();
+
   const [formValid, setFormValid] = React.useState(false);
   const [successRegister, setSuccessRegister] = React.useState(false);
 
@@ -53,14 +68,35 @@ const RegistrationModuleEmailIndividual = () => {
   };
 
   React.useEffect(() => {
-    if (nameError || surnameError || birthError || emailError || numberError) {
+    if (
+      nameError ||
+      surnameError ||
+      companyNameError ||
+      unpUnnCompanyError ||
+      addressError ||
+      ibanError ||
+      bicError ||
+      emailError ||
+      numberError
+    ) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-  }, [nameError, surnameError, birthError, emailError, numberError]);
+  }, [
+    nameError,
+    surnameError,
+    companyNameError,
+    unpUnnCompanyError,
+    addressError,
+    ibanError,
+    bicError,
+    emailError,
+    numberError,
+  ]);
 
   const nameHandler = (e) => {
+    setNameDirty(true);
     setName(e.target.value);
     if (e.target.value.length === 0) {
       setNameError(inputErrors[1]);
@@ -72,6 +108,7 @@ const RegistrationModuleEmailIndividual = () => {
   };
 
   const surnameHandler = (e) => {
+    setSurnameDirty(true);
     setSurname(e.target.value);
     if (e.target.value.length === 0) {
       setSurnameError(inputErrors[1]);
@@ -82,16 +119,58 @@ const RegistrationModuleEmailIndividual = () => {
     }
   };
 
-  const birthHandler = (e) => {
-    setBirth(e.target.value);
+  const companyNameHandler = (e) => {
+    setCompanyNameDirty(true);
+    setCompanyName(e.target.value);
     if (e.target.value.length === 0) {
-      setBirthError(inputErrors[1]);
+      setCompanyNameError(inputErrors[1]);
     } else {
-      setBirthError('');
+      setCompanyNameError('');
+    }
+  };
+
+  const unpUnnCompanyHandler = (e) => {
+    setUnpUnnCompanyDirty(true);
+    setUnpUnnCompany(e.target.value);
+    if (e.target.value.length === 0) {
+      setUnpUnnCompanyError(inputErrors[1]);
+    } else {
+      setUnpUnnCompanyError('');
+    }
+  };
+
+  const addressHandler = (e) => {
+    setAddressDirty(true);
+    setAddress(e.target.value);
+    if (e.target.value.length === 0) {
+      setAddressError(inputErrors[1]);
+    } else {
+      setAddressError('');
+    }
+  };
+
+  const ibanHandler = (e) => {
+    setIbanDirty(true);
+    setIban(e.target.value);
+    if (e.target.value.length === 0) {
+      setIbanError(inputErrors[1]);
+    } else {
+      setIbanError('');
+    }
+  };
+
+  const bicHandler = (e) => {
+    setBicDirty(true);
+    setBic(e.target.value);
+    if (e.target.value.length === 0) {
+      setBicError(inputErrors[1]);
+    } else {
+      setBicError('');
     }
   };
 
   const emailHandler = (e) => {
+    setEmailDirty(true);
     setEmail(e.target.value);
     if (e.target.value.length === 0) {
       setEmailError(inputErrors[1]);
@@ -103,6 +182,7 @@ const RegistrationModuleEmailIndividual = () => {
   };
 
   const numberHandler = (e) => {
+    setNumberDirty(true);
     setNumber(e.target.value);
     if (e.target.value.length === 0) {
       setNumberError(inputErrors[1]);
@@ -110,26 +190,6 @@ const RegistrationModuleEmailIndividual = () => {
       setNumberError(inputErrors[3]);
     } else {
       setNumberError('');
-    }
-  };
-
-  const blurHandler = (e) => {
-    switch (e.target.name) {
-      case 'name':
-        setNameDirty(true);
-        break;
-      case 'surname':
-        setSurnameDirty(true);
-        break;
-      case 'birth':
-        setBirthDirty(true);
-        break;
-      case 'email':
-        setEmailDirty(true);
-        break;
-      case 'number':
-        setNumberDirty(true);
-        break;
     }
   };
 
@@ -150,23 +210,25 @@ const RegistrationModuleEmailIndividual = () => {
             setSuccessRegister(<Redirect to="/" />);
           }
         })
-        .catch((err) => alert('Ошибка регистрации (такая почта/телефон уже существуют)'));
+        .catch(() => alert('Ошибка регистрации (такая почта/телефон уже существуют)'));
     }
   };
   return (
     <div className="reg-content">
       <div className="reg-form-wrapper">
-        <div className="reg-form__second">
+        <div className="reg-form__third">
           <ul className="reg-form-action-type-list">
             <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
               Регистрация{successRegister}
             </li>
-            <li href="#" className="reg-form-action-type-link">
-              Вход
-            </li>
+            <Link to="/login">
+              <li href="#" className="reg-form-action-type-link">
+                Вход
+              </li>
+            </Link>
           </ul>
           <div className="reg-form-text-label-p">
-            <p>Вы регистрируетесь как частное лицо</p>
+            <p>Вы регистрируетесь как компания / ИП</p>
           </div>
           <div className="reg-form-text-label-p">
             <p>Заполните, пожалуйста, регистрационные данные</p>
@@ -186,7 +248,6 @@ const RegistrationModuleEmailIndividual = () => {
                 onChange={(e) => {
                   nameHandler(e);
                 }}
-                onBlur={(e) => blurHandler(e)}
               />
               {nameDirty && nameError && (
                 <label className="reg-form-text-label-l__alert">{nameError}</label>
@@ -202,25 +263,79 @@ const RegistrationModuleEmailIndividual = () => {
                 className="reg-form-contact-input"
                 value={surname}
                 onChange={(e) => surnameHandler(e)}
-                onBlur={(e) => blurHandler(e)}
               />
               {surnameDirty && surnameError && (
                 <label className="reg-form-text-label-l__alert">{surnameError}</label>
               )}
-              <label htmlFor="birth" className="reg-form-text-label-l">
-                Дата рождения
+              <label htmlFor="company_name" className="reg-form-text-label-l">
+                Наименование компании / ИП
               </label>
               <input
-                name="birth"
-                id="birth"
-                type="date"
+                name="company_name"
+                id="company_name"
+                type="text"
                 className="reg-form-contact-input"
-                value={birth}
-                onChange={(e) => birthHandler(e)}
-                onBlur={(e) => blurHandler(e)}
+                value={companyName}
+                onChange={(e) => companyNameHandler(e)}
               />
-              {birthDirty && birthError && (
-                <label className="reg-form-text-label-l__alert">{birthError}</label>
+              {companyNameDirty && companyNameError && (
+                <label className="reg-form-text-label-l__alert">{companyNameError}</label>
+              )}
+              <label htmlFor="company_name" className="reg-form-text-label-l">
+                УНП / УНН
+              </label>
+              <input
+                name="unp_unn"
+                id="company_name"
+                type="text"
+                className="reg-form-contact-input"
+                value={unpUnnCompany}
+                onChange={(e) => unpUnnCompanyHandler(e)}
+              />
+              {unpUnnCompanyDirty && unpUnnCompanyError && (
+                <label className="reg-form-text-label-l__alert">{unpUnnCompanyError}</label>
+              )}
+              <label htmlFor="adress" className="reg-form-text-label-l">
+                Юридический адрес
+              </label>
+              <input
+                name="adress"
+                id="adress"
+                type="text"
+                className="reg-form-contact-input"
+                value={address}
+                onChange={(e) => addressHandler(e)}
+              />
+              {addressDirty && addressError && (
+                <label className="reg-form-text-label-l__alert">{addressError}</label>
+              )}
+              <label htmlFor="iban" className="reg-form-text-label-l">
+                Расчетный счет IBAN
+              </label>
+              <input
+                name="iban"
+                id="iban"
+                type="text"
+                className="reg-form-contact-input"
+                value={iban}
+                onChange={(e) => ibanHandler(e)}
+              />
+              {ibanDirty && ibanError && (
+                <label className="reg-form-text-label-l__alert">{ibanError}</label>
+              )}
+              <label htmlFor="company_name" className="reg-form-text-label-l">
+                БИК
+              </label>
+              <input
+                name="company_name"
+                id="company_name"
+                type="text"
+                className="reg-form-contact-input"
+                value={bic}
+                onChange={(e) => bicHandler(e)}
+              />
+              {bicDirty && bicError && (
+                <label className="reg-form-text-label-l__alert">{bicError}</label>
               )}
               <label htmlFor="email" className="reg-form-text-label-l">
                 Email
@@ -232,7 +347,6 @@ const RegistrationModuleEmailIndividual = () => {
                 className="reg-form-contact-input"
                 value={email}
                 onChange={(e) => emailHandler(e)}
-                onBlur={(e) => blurHandler(e)}
               />
               {emailDirty && emailError && (
                 <label className="reg-form-text-label-l__alert">{emailError}</label>
@@ -247,7 +361,6 @@ const RegistrationModuleEmailIndividual = () => {
                 className="reg-form-contact-input"
                 value={number}
                 onChange={(e) => numberHandler(e)}
-                onBlur={(e) => blurHandler(e)}
               />
               {numberDirty && numberError && (
                 <label className="reg-form-text-label-l__alert">{numberError}</label>
@@ -268,14 +381,14 @@ const RegistrationModuleEmailIndividual = () => {
               <input
                 type="button"
                 value="Зарегистрироваться"
-                className="reg-form-submit-button"
+                className="reg-form-submit-button__third"
                 onClick={onClickSubmit}
                 disabled={!formValid}
               />
             </form>
           </div>
           <div className="reg-form-annotation-wrapper">
-            <div className="reg-form-annotation__second">
+            <div className="reg-form-annotation__third">
               <p>
                 <b>Продолжая, я соглашаюсь с условиями</b> Пользовательского соглашения и{' '}
                 <b>даю согласие на обработку моих персональных данных в соответсвии с</b> Политикой
@@ -286,7 +399,7 @@ const RegistrationModuleEmailIndividual = () => {
           <div className="reg-form-text-label-p">
             <p>или</p>
           </div>
-          <div className="reg-form-socials">
+          <div className="reg-form-socials__third">
             <img src={vkLogo} alt="VK" />
             <img src={facebookLogo} alt="Facebook" />
             <img src={googleLogo} alt="Google" />
@@ -297,4 +410,4 @@ const RegistrationModuleEmailIndividual = () => {
   );
 };
 
-export default RegistrationModuleEmailIndividual;
+export default RegistrationModuleEntity;

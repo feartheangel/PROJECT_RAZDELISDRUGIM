@@ -28,7 +28,7 @@ const LoginModule = () => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     data: data,
-    url: 'http://host140620211735.of.by/jwt/token/',
+    url: 'http://host140620211735.of.by/api/jwt/token/',
   };
 
   //проверка валидности полей
@@ -42,6 +42,7 @@ const LoginModule = () => {
 
   //обработчики полей
   const loginHandler = (e) => {
+    setLoginDirty(true);
     setLogin(e.target.value);
     if (e.target.value.length === 0) {
       setLoginError(inputErrors[0]);
@@ -51,6 +52,7 @@ const LoginModule = () => {
   };
 
   const passwordHandler = (e) => {
+    setPasswordDirty(true);
     setPassword(e.target.value);
     if (e.target.value.length === 0) {
     } else if (e.target.value.length !== 0 && e.target.value.length < 8) {
@@ -60,23 +62,13 @@ const LoginModule = () => {
     }
   };
 
-  const blurHandler = (e) => {
-    switch (e.target.name) {
-      case 'login':
-        setLoginDirty(true);
-        break;
-      case 'password':
-        setPasswordDirty(true);
-        break;
-    }
-  };
-
   //обработчик клика по кнопке регистрации
   const onClickSubmit = () => {
     axios(options)
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
           alert('Авторизация прошла успешно');
+          setSuccessLogin(<Redirect to="/" />);
         }
       })
       .catch((err) => alert('Ошибка авторизации (данные введены неверно)'));
@@ -122,9 +114,6 @@ const LoginModule = () => {
                 onChange={(e) => {
                   loginHandler(e);
                 }}
-                onBlur={(e) => {
-                  blurHandler(e);
-                }}
               />
               {loginDirty && loginError && (
                 <label className="reg-form-text-label-l__alert">{loginError}</label>
@@ -140,9 +129,6 @@ const LoginModule = () => {
                 className="reg-form-contact-input"
                 value={password}
                 onChange={(e) => passwordHandler(e)}
-                onBlur={(e) => {
-                  blurHandler(e);
-                }}
               />
               {passwordDirty && passwordError && (
                 <label className="reg-form-text-label-l__alert">{passwordError}</label>

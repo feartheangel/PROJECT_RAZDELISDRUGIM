@@ -33,7 +33,7 @@ const RegistrationModuleBasic = () => {
   const [contactDirty, setContactDirty] = React.useState();
   const [passwordDirty, setPasswordDirty] = React.useState();
   const [passwordSubmitDirty, setPasswordSubmitDirty] = React.useState();
-  const [contactType, setContactType] = React.useState();
+  const [regType, setRegType] = React.useState();
   const [formValid, setFormValid] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
 
@@ -48,6 +48,7 @@ const RegistrationModuleBasic = () => {
 
   //обработчики полей ввода
   const contactHandler = (e) => {
+    setContactDirty(true);
     setContact(e.target.value);
     if (
       !contactEmailRegExp.test(String(e.target.value).toLowerCase()) &&
@@ -61,6 +62,7 @@ const RegistrationModuleBasic = () => {
   };
 
   const passwordHandler = (e) => {
+    setPasswordDirty(true);
     setPassword(e.target.value);
     if (e.target.value.length === 0) {
       setPasswordError(passwordErrors[1]);
@@ -72,27 +74,12 @@ const RegistrationModuleBasic = () => {
   };
 
   const passwordSubmitHandler = (e) => {
+    setPasswordSubmitDirty(true);
     setPasswordSubmit(e.target.value);
     if (e.target.value !== password) {
       setPasswordSubmitError(passwordErrors[0]);
     } else {
       setPasswordSubmitError('');
-    }
-  };
-
-  const blurHandler = (e) => {
-    switch (e.target.name) {
-      case 'contact':
-        setContactDirty(true);
-        break;
-
-      case 'password':
-        setPasswordDirty(true);
-        break;
-
-      case 'passwordSubmit':
-        setPasswordSubmitDirty(true);
-        break;
     }
   };
 
@@ -103,7 +90,7 @@ const RegistrationModuleBasic = () => {
       number = contact;
     }
     dispatch(setRegEntries(email, number, password, passwordSubmit));
-    setRedirect(<Redirect to="/registration-step-2" />);
+    setRedirect(<Redirect to="/registration-individual" />);
   };
 
   return (
@@ -143,9 +130,6 @@ const RegistrationModuleBasic = () => {
                 onChange={(e) => {
                   contactHandler(e);
                 }}
-                onBlur={(e) => {
-                  blurHandler(e);
-                }}
               />
               {contactDirty && contactError && (
                 <label className="reg-form-text-label-l__alert">{contactError}</label>
@@ -161,14 +145,11 @@ const RegistrationModuleBasic = () => {
                 className="reg-form-contact-input"
                 value={password}
                 onChange={(e) => passwordHandler(e)}
-                onBlur={(e) => {
-                  blurHandler(e);
-                }}
               />
               {passwordDirty && passwordError && (
                 <label className="reg-form-text-label-l__alert">{passwordError}</label>
               )}
-              <label htmlFor="submittion_pass" className="reg-form-text-label-l">
+              <label htmlFor="passwordSubmit" className="reg-form-text-label-l">
                 Подтвердите пароль{redirect}
               </label>
               <input
@@ -181,13 +162,40 @@ const RegistrationModuleBasic = () => {
                 onChange={(e) => {
                   passwordSubmitHandler(e);
                 }}
-                onBlur={(e) => {
-                  blurHandler(e);
-                }}
               />
               {passwordSubmitDirty && passwordSubmitError && (
                 <label className="reg-form-text-label-l__alert">{passwordSubmitError}</label>
               )}
+              <div className="reg-form-reg-type-choice">
+                <div>
+                  <input
+                    type="radio"
+                    className="reg-form-radio-button"
+                    name="type_choice"
+                    id="reg-form-reg-type-choice__individual"
+                    value="individual"
+                  />
+                  <label
+                    htmlFor="reg-form-reg-type-choice__individual"
+                    className="reg-form-text-label-l__radio">
+                    Частное лицо
+                  </label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    name="type_choice"
+                    id="reg-form-reg-type-choice__entity"
+                    value="entity"
+                    className="reg-form-radio-button"
+                  />
+                  <label
+                    htmlFor="reg-form-reg-type-choice__entity"
+                    className="reg-form-text-label-l__radio">
+                    Бизнес
+                  </label>
+                </div>
+              </div>
               <input
                 onClick={onClickSubmit}
                 type="button"
