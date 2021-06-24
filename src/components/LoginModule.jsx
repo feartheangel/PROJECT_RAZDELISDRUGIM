@@ -67,6 +67,7 @@ const LoginModule = () => {
     axios(options)
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
+          console.log(response);
           alert('Авторизация прошла успешно');
           setSuccessLogin(<Redirect to="/" />);
         }

@@ -7,7 +7,7 @@ import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
 
 const RegistrationModuleEntity = () => {
-  const { sentNumber, sentEmail, password, passwordSubmit } = useSelector(
+  const { sentNumber, sentEmail, password, passwordSubmit, regType } = useSelector(
     ({ registration }) => registration,
   );
   const inputErrors = [
@@ -20,15 +20,15 @@ const RegistrationModuleEntity = () => {
   const contactNumberRegExp = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
 
   const [name, setName] = React.useState();
-  const [surname, setSurname] = React.useState();
-  const [companyName, setCompanyName] = React.useState();
-  const [unpUnnCompany, setUnpUnnCompany] = React.useState();
-  const [address, setAddress] = React.useState();
-  const [iban, setIban] = React.useState();
-  const [bic, setBic] = React.useState();
+  const [surname, setSurname] = React.useState('');
+  const [companyName, setCompanyName] = React.useState('');
+  const [unpUnnCompany, setUnpUnnCompany] = React.useState('');
+  const [address, setAddress] = React.useState('');
+  const [iban, setIban] = React.useState('');
+  const [bic, setBic] = React.useState('');
   const [email, setEmail] = React.useState(sentEmail);
   const [number, setNumber] = React.useState(sentNumber);
-  const [promo, setPromo] = React.useState();
+  const [promo, setPromo] = React.useState('');
 
   const [nameDirty, setNameDirty] = React.useState();
   const [surnameDirty, setSurnameDirty] = React.useState();
@@ -53,18 +53,41 @@ const RegistrationModuleEntity = () => {
   const [formValid, setFormValid] = React.useState(false);
   const [successRegister, setSuccessRegister] = React.useState(false);
 
-  const data = {
+  const data_register = {
     username: number,
     email: email,
     password: password,
     password2: passwordSubmit,
   };
 
-  const options = {
+  const data_register_profile = {
+    first_name: name,
+    last_name: surname,
+    company_name: companyName,
+    referral_code: promo,
+    status: regType,
+    email: email,
+    phone: number,
+    unp_inn_company: unpUnnCompany,
+    bank_account: iban,
+    bank_code: bic,
+  };
+
+  const options_register = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    data: data,
-    url: 'http://host140620211735.of.by/jwt/register/',
+    data: data_register,
+    url: 'http://host140620211735.of.by/api/jwt/register/',
+  };
+
+  const options_register_profile = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer `,
+    },
+    data: data_register_profile,
+    url: 'http://host140620211735.of.by/api/jwt/register/',
   };
 
   React.useEffect(() => {
@@ -203,11 +226,42 @@ const RegistrationModuleEntity = () => {
         setNumberError(inputErrors[1]);
       }
     } else {
-      axios(options)
+      axios(options_register)
         .then((response) => {
+          console.log(response);
           if (response.status === 200 || response.status === 201) {
-            alert('Регистрация прошла успешно');
-            setSuccessRegister(<Redirect to="/" />);
+            const token = response.data.token;
+            const id = response.data.id;
+            axios({
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+              data: {
+                first_name: name,
+                last_name: surname,
+                company_name: companyName,
+                referral_code: promo ? promo : 0,
+                status: Number(regType),
+                email: email,
+                phone: number,
+                unp_inn_company: unpUnnCompany,
+                bank_account: iban,
+                bank_code: Number(bic),
+              },
+              url: `http://host140620211735.of.by/api/jwt/profile/update/${id}/`,
+            })
+              .then((response) => {
+                console.log(response);
+                if (response.status === 200 || response.status === 201) {
+                  alert('Регистрация прошла успешно!');
+                  setSuccessRegister(<Redirect to="/login" />);
+                }
+              })
+              .catch(() => {
+                alert('Ошибка регистрации!');
+              });
           }
         })
         .catch(() => alert('Ошибка регистрации (такая почта/телефон уже существуют)'));
@@ -218,9 +272,11 @@ const RegistrationModuleEntity = () => {
       <div className="reg-form-wrapper">
         <div className="reg-form__third">
           <ul className="reg-form-action-type-list">
-            <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
-              Регистрация{successRegister}
-            </li>
+            <Link to="/registration">
+              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
+                Регистрация{successRegister}
+              </li>
+            </Link>
             <Link to="/login">
               <li href="#" className="reg-form-action-type-link">
                 Вход

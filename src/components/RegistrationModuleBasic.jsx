@@ -33,7 +33,7 @@ const RegistrationModuleBasic = () => {
   const [contactDirty, setContactDirty] = React.useState();
   const [passwordDirty, setPasswordDirty] = React.useState();
   const [passwordSubmitDirty, setPasswordSubmitDirty] = React.useState();
-  const [regType, setRegType] = React.useState();
+  const [regType, setRegType] = React.useState('1');
   const [formValid, setFormValid] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
 
@@ -83,14 +83,22 @@ const RegistrationModuleBasic = () => {
     }
   };
 
+  const radioHandler = (e) => {
+    setRegType(e.target.value);
+  };
+
   const onClickSubmit = () => {
     if (contactEmailRegExp.test(String(contact).toLowerCase())) {
       email = contact;
     } else if (contactNumberRegExp.test(String(contact).toLowerCase())) {
       number = contact;
     }
-    dispatch(setRegEntries(email, number, password, passwordSubmit));
-    setRedirect(<Redirect to="/registration-individual" />);
+    dispatch(setRegEntries(email, number, password, passwordSubmit, regType));
+    if (regType === '1') {
+      setRedirect(<Redirect to="/registration-individual" />);
+    } else if (regType === '2') {
+      setRedirect(<Redirect to="/registration-entity" />);
+    }
   };
 
   return (
@@ -166,14 +174,15 @@ const RegistrationModuleBasic = () => {
               {passwordSubmitDirty && passwordSubmitError && (
                 <label className="reg-form-text-label-l__alert">{passwordSubmitError}</label>
               )}
-              <div className="reg-form-reg-type-choice">
+              <div className="reg-form-reg-type-choice" onChange={(e) => radioHandler(e)}>
                 <div>
                   <input
                     type="radio"
                     className="reg-form-radio-button"
                     name="type_choice"
                     id="reg-form-reg-type-choice__individual"
-                    value="individual"
+                    value="1"
+                    defaultChecked
                   />
                   <label
                     htmlFor="reg-form-reg-type-choice__individual"
@@ -186,7 +195,7 @@ const RegistrationModuleBasic = () => {
                     type="radio"
                     name="type_choice"
                     id="reg-form-reg-type-choice__entity"
-                    value="entity"
+                    value="2"
                     className="reg-form-radio-button"
                   />
                   <label

@@ -7,7 +7,7 @@ import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
 
 const RegistrationModuleIndividual = () => {
-  const { sentNumber, sentEmail, password, passwordSubmit } = useSelector(
+  const { sentNumber, sentEmail, password, passwordSubmit, regType } = useSelector(
     ({ registration }) => registration,
   );
   const inputErrors = [
@@ -19,9 +19,9 @@ const RegistrationModuleIndividual = () => {
   const contactEmailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   const contactNumberRegExp = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
 
-  const [name, setName] = React.useState();
-  const [surname, setSurname] = React.useState();
-  const [birth, setBirth] = React.useState();
+  const [name, setName] = React.useState('');
+  const [surname, setSurname] = React.useState('');
+  const [birth, setBirth] = React.useState('');
   const [email, setEmail] = React.useState(sentEmail);
   const [number, setNumber] = React.useState(sentNumber);
   const [promo, setPromo] = React.useState();
@@ -38,17 +38,37 @@ const RegistrationModuleIndividual = () => {
   const [formValid, setFormValid] = React.useState(false);
   const [successRegister, setSuccessRegister] = React.useState(false);
 
-  const data = {
+  const data_register = {
     username: number,
     email: email,
     password: password,
     password2: passwordSubmit,
   };
 
-  const options = {
+  const data_register_profile = {
+    first_name: name,
+    last_name: surname,
+    date_birthday: birth,
+    referral_code: promo,
+    regType: regType,
+    email: email,
+    phone: number,
+  };
+
+  const options_register = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    data: data,
+    data: data_register,
+    url: 'http://host140620211735.of.by/api/jwt/register/',
+  };
+
+  const options_register_profile = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer `,
+    },
+    data: data_register_profile,
     url: 'http://host140620211735.of.by/api/jwt/register/',
   };
 
@@ -128,11 +148,37 @@ const RegistrationModuleIndividual = () => {
         setNumberError(inputErrors[1]);
       }
     } else {
-      axios(options)
+      axios(options_register)
         .then((response) => {
+          console.log(response);
           if (response.status === 200 || response.status === 201) {
-            alert('Регистрация прошла успешно');
-            setSuccessRegister(<Redirect to="/login" />);
+            const acessToken = response.data.token;
+            const id = response.data.id;
+            axios({
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${acessToken}`,
+              },
+              data: {
+                first_name: name,
+                last_name: surname,
+                date_birthday: birth,
+                referral_code: promo,
+                status: regType,
+                email: email,
+                phone: number,
+              },
+              url: `http://host140620211735.of.by/api/jwt/profile/update/${id}/`,
+            })
+              .then((response) => {
+                console.log(response);
+                if (response.status === 200 || response.status === 201) {
+                  alert('Регистрация прошла успешно!');
+                  setSuccessRegister(<Redirect to="/login" />);
+                }
+              })
+              .catch(() => alert('Ошибка регистрации!'));
           }
         })
         .catch(() => alert('Ошибка регистрации (такая почта/телефон уже существуют)'));
@@ -143,9 +189,11 @@ const RegistrationModuleIndividual = () => {
       <div className="reg-form-wrapper">
         <div className="reg-form__second">
           <ul className="reg-form-action-type-list">
-            <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
-              Регистрация{successRegister}
-            </li>
+            <Link to="/registration">
+              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
+                Регистрация{successRegister}
+              </li>
+            </Link>
             <Link to="/login">
               <li href="#" className="reg-form-action-type-link">
                 Вход
