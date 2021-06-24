@@ -341,3 +341,38 @@ body {
   cursor: pointer;
   transform: scale(1.2);
 }
+
+.reg-form-email-verification {
+  display: flex;
+  flex-direction: column;
+  width: 540px;
+  height: 446px;
+  left: 450px;
+  top: 155px;
+  background: #ffffff;
+  border-radius: 30px;
+}
+
+.reg-form-wrapper-email-verification {
+  margin-top: 263px;
+  display: flex;
+  flex-direction: space-between;
+}
+
+.log-form-text-label-p-email__upper {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin-top: 36px;
+  font-weight: 500;
+}
+
+.reg-form-annotation__email {
+  margin-top: 10px;
+  width: 320px;
+  height: 45px;
+  font-size: 14px;
+  color: hsl(0, 0%, 51%);
+  text-align: center;
+  font-size: 12px;
+}

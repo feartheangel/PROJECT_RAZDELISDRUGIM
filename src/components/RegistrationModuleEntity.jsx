@@ -60,33 +60,10 @@ const RegistrationModuleEntity = () => {
     password2: passwordSubmit,
   };
 
-  const data_register_profile = {
-    first_name: name,
-    last_name: surname,
-    company_name: companyName,
-    referral_code: promo,
-    status: regType,
-    email: email,
-    phone: number,
-    unp_inn_company: unpUnnCompany,
-    bank_account: iban,
-    bank_code: bic,
-  };
-
   const options_register = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     data: data_register,
-    url: 'http://host140620211735.of.by/api/jwt/register/',
-  };
-
-  const options_register_profile = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer `,
-    },
-    data: data_register_profile,
     url: 'http://host140620211735.of.by/api/jwt/register/',
   };
 
