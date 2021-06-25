@@ -8,3 +8,10 @@ export const setRegEntries = (email, number, password, passwordSubmit, regType) 
     regType: regType,
   },
 });
+
+export const setLastEmail = (email) => ({
+  type: 'SET_LAST_EMAIL',
+  payload: {
+    email: email,
+  },
+});

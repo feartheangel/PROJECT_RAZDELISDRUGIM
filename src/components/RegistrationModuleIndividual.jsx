@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import facebookLogo from '../img/Facebook.png';
 import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
+import { setLastEmail } from '../redux/actions/registration';
 
 const RegistrationModuleIndividual = () => {
+  const dispatch = useDispatch();
   const { sentNumber, sentEmail, password, passwordSubmit, regType } = useSelector(
     ({ registration }) => registration,
   );
@@ -148,6 +150,7 @@ const RegistrationModuleIndividual = () => {
         setNumberError(inputErrors[1]);
       }
     } else {
+      dispatch(setLastEmail(email));
       axios(options_register)
         .then((response) => {
           console.log(response);
@@ -175,9 +178,25 @@ const RegistrationModuleIndividual = () => {
                 console.log(response);
                 if (response.status === 200 || response.status === 201) {
                   alert('Регистрация прошла успешно!');
-                  setSuccessRegister(<Redirect to="/login" />);
                 }
               })
+              .then(
+                axios({
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  data: {
+                    email: email,
+                  },
+                  url: `http://host140620211735.of.by/api/jwt/email/send/`,
+                }).then((response) => {
+                  console.log(response);
+                  if (response.status === 200 || response.status === 201) {
+                    setSuccessRegister(<Redirect to="/registration-email-verification" />);
+                  }
+                }),
+              )
               .catch(() => alert('Ошибка регистрации!'));
           }
         })

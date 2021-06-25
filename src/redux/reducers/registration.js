@@ -4,6 +4,7 @@ const initialState = {
   sentNumber: '',
   passwordSubmit: '',
   regType: '',
+  email: '',
 };
 
 const registration = (state = initialState, action) => {
@@ -13,6 +14,10 @@ const registration = (state = initialState, action) => {
     state.password = action.payload.password;
     state.passwordSubmit = action.payload.passwordSubmit;
     state.regType = action.payload.regType;
+  }
+
+  if (action.type === 'SET_LAST_EMAIL') {
+    state.email = action.payload.email;
   }
 
   return state;
