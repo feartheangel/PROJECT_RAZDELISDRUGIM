@@ -4,7 +4,8 @@ import vkLogo from '../img/vk.png';
 import googleLogo from '../img/Google.png';
 import { Redirect, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setRegEntries } from '../redux/actions/registration';
+import axios from 'axios';
+import { vkAuth } from '../http/social-auth';
 
 const RegistrationModuleBasic = () => {
   //указываем основные константы для интерфейса
@@ -17,8 +18,9 @@ const RegistrationModuleBasic = () => {
   let number = '';
   let email = '';
   //регулярные выражения для проверки телефона и почты
-  const contactEmailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  const contactNumberRegExp = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+  const contactEmailRegExp =
+    /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
+  const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
   const dispatch = useDispatch();
 
   //состояния для контроля, записи, валидации полей и формы
@@ -30,9 +32,12 @@ const RegistrationModuleBasic = () => {
   const [passwordSubmitError, setPasswordSubmitError] = React.useState(
     'Это поле не может быть пустым',
   );
+  const [showPass, setShowPass] = React.useState(false);
+  const [showSubmitPass, setShowSubmitPass] = React.useState(false);
   const [contactDirty, setContactDirty] = React.useState();
   const [passwordDirty, setPasswordDirty] = React.useState();
   const [passwordSubmitDirty, setPasswordSubmitDirty] = React.useState();
+  const [referral, setReferral] = React.useState('');
   const [regType, setRegType] = React.useState('1');
   const [formValid, setFormValid] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
@@ -44,7 +49,10 @@ const RegistrationModuleBasic = () => {
     } else {
       setFormValid(true);
     }
-  }, [contactError, passwordError, passwordSubmitError]);
+
+    if (window.location.href.split('?auth')[1]) {
+    }
+  }, [contactError, passwordError, passwordSubmitError, window.location.href]);
 
   //обработчики полей ввода
   const contactHandler = (e) => {
@@ -93,12 +101,45 @@ const RegistrationModuleBasic = () => {
     } else if (contactNumberRegExp.test(String(contact).toLowerCase())) {
       number = contact;
     }
-    dispatch(setRegEntries(email, number, password, passwordSubmit, regType));
-    if (regType === '1') {
-      setRedirect(<Redirect to="/registration-individual" />);
-    } else if (regType === '2') {
-      setRedirect(<Redirect to="/registration-entity" />);
-    }
+
+    axios({
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: {
+        username: contact,
+        email: email ? email : 'null',
+        password: password,
+        password2: passwordSubmit,
+      },
+      url: 'http://host140620211735.of.by/api/jwt/register/',
+    })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200 || response.status === 201) {
+          axios({
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${response.data.token}`,
+            },
+            data: {
+              status: regType,
+              referral_code: referral ? referral : '',
+            },
+            url: `http://host140620211735.of.by/api/jwt/profile/update/${response.data.id}/`,
+          })
+            .then((response) => {
+              console.log(response);
+              if (response.status === 200 || response.status === 201) {
+                setRedirect(<Redirect to="/" />);
+              }
+            })
+            .catch(() => alert('Ошибка регистрации'));
+        }
+      })
+      .catch(() =>
+        alert(email ? 'Такой Email уже зарегистрирован' : 'Такой номер уже зарегистрирован'),
+      );
   };
 
   return (
@@ -116,7 +157,7 @@ const RegistrationModuleBasic = () => {
             </Link>
           </ul>
           <div className="reg-form-socials">
-            <img src={vkLogo} alt="VK" />
+            <img onClick={vkAuth} src={vkLogo} alt="VK" />
             <img src={facebookLogo} alt="Facebook" />
             <img src={googleLogo} alt="Google" />
           </div>
@@ -126,7 +167,7 @@ const RegistrationModuleBasic = () => {
           <div className="reg-form-input-area">
             <form>
               <label htmlFor="contact" className="reg-form-text-label-l">
-                Номер телефона или Email
+                Номер телефона или Email <span style={{ color: 'red' }}>*</span>
               </label>
               <input
                 name="contact"
@@ -143,27 +184,29 @@ const RegistrationModuleBasic = () => {
                 <label className="reg-form-text-label-l__alert">{contactError}</label>
               )}
               <label htmlFor="password" className="reg-form-text-label-l">
-                Введите пароль
+                Введите пароль <span style={{ color: 'red' }}>*</span>
               </label>
               <input
                 name="password"
                 id="password"
-                type="password"
+                type={showPass ? 'text' : 'password'}
                 placeholder="..."
                 className="reg-form-contact-input"
                 value={password}
                 onChange={(e) => passwordHandler(e)}
               />
+              <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
               {passwordDirty && passwordError && (
-                <label className="reg-form-text-label-l__alert">{passwordError}</label>
+                <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
               )}
-              <label htmlFor="passwordSubmit" className="reg-form-text-label-l">
-                Подтвердите пароль{redirect}
+              <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
+                Подтвердите пароль <span style={{ color: 'red' }}>*</span>
+                {redirect}
               </label>
               <input
                 name="passwordSubmit"
                 id="passwordSubmit"
-                type="password"
+                type={showSubmitPass ? 'text' : 'password'}
                 placeholder="..."
                 className="reg-form-contact-input"
                 value={passwordSubmit}
@@ -171,9 +214,25 @@ const RegistrationModuleBasic = () => {
                   passwordSubmitHandler(e);
                 }}
               />
+              <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
               {passwordSubmitDirty && passwordSubmitError && (
-                <label className="reg-form-text-label-l__alert">{passwordSubmitError}</label>
+                <label className="reg-form-text-label-l__alert-moved">{passwordSubmitError}</label>
               )}
+              <label htmlFor="referral" className="reg-form-text-label-l__moved">
+                Реферальный код{redirect}
+              </label>
+              <input
+                name="referral"
+                id="referral"
+                type="text"
+                placeholder="..."
+                className="reg-form-contact-input"
+                value={referral}
+                onChange={(e) => {
+                  setReferral(e.target.value);
+                }}
+              />
+
               <div className="reg-form-reg-type-choice" onChange={(e) => radioHandler(e)}>
                 <div>
                   <input

@@ -13,9 +13,6 @@ function App() {
       <div className="content">
         <Route path="/" component={Home} exact />
         <Route path="/registration" component={RegistrationModuleBasic} exact />
-        <Route path="/registration-individual" component={RegistrationModuleIndividual} exact />
-        <Route path="/registration-entity" component={RegistrationModuleEntity} exact />
-        <Route path="/registration-email-verification" component={EmailSubmittionModule} exact />
         <Route path="/login" component={LoginModule} exact />
       </div>
     </div>
