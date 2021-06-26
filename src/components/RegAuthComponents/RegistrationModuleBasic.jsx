@@ -37,7 +37,7 @@ const RegistrationModuleBasic = () => {
   const [showPass, setShowPass] = React.useState(false);
   const [showSubmitPass, setShowSubmitPass] = React.useState(false);
   const [contactDirty, setContactDirty] = React.useState();
-  const [passwordDirty, setPasswordDirty] = React.useState();
+  const [passwordDirty, setPasswordDirty] = React.useState(false);
   const [passwordSubmitDirty, setPasswordSubmitDirty] = React.useState();
   const [referral, setReferral] = React.useState('');
   const [regType, setRegType] = React.useState('1');
@@ -98,13 +98,13 @@ const RegistrationModuleBasic = () => {
     }
     if (e.target.value !== passwordSubmit) {
       setPasswordSubmitError(passwordErrors[0]);
-    }
+    } else setPasswordSubmitError('');
   };
 
   const passwordSubmitHandler = (e) => {
     setPasswordSubmitDirty(true);
     setPasswordSubmit(e.target.value);
-    if (e.target.value !== password) {
+    if (e.target.value !== password && passwordDirty) {
       setPasswordSubmitError(passwordErrors[0]);
     } else {
       setPasswordSubmitError('');

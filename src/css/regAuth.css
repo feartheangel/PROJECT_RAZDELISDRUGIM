@@ -142,12 +142,13 @@ body {
 }
 
 .reg-form-contact-input {
+  z-index: 5;
+  padding: 0 45px 0 5px;
   color: black;
   font-size: 16px;
   letter-spacing: 1px;
   margin-top: 9px;
-  padding: 2px 4px;
-  width: 300px;
+  width: 250px;
   height: 35px;
   border: 1px solid #bdbdbd;
   border-radius: 2px;
@@ -401,7 +402,7 @@ body {
 .password-control {
   flex: none;
   position: relative;
-  z-index: 2;
+  z-index: 7;
   bottom: 32px;
   left: 120px;
   width: 23px;
