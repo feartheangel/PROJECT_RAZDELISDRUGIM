@@ -1,11 +1,6 @@
-import './css/index.css';
 import { Route } from 'react-router-dom';
-import RegistrationModuleBasic from './components/RegistrationModuleBasic';
-import RegistrationModuleIndividual from './components/RegistrationModuleIndividual';
-import RegistrationModuleEntity from './components/RegistrationModuleEntity';
-import LoginModule from './components/LoginModule';
-import Home from './pages/Home';
-import EmailSubmittionModule from './components/EmailSubmittionModule';
+import { Home } from './pages/index';
+import { RegistrationModuleBasic, LoginModule } from './components/RegAuthComponents/index';
 
 function App() {
   return (

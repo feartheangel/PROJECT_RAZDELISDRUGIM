@@ -1,11 +1,12 @@
 import React from 'react';
-import facebookLogo from '../img/Facebook.png';
-import vkLogo from '../img/vk.png';
-import googleLogo from '../img/Google.png';
+import facebookLogo from '../../img/Facebook.png';
+import vkLogo from '../../img/vk.png';
+import googleLogo from '../../img/Google.png';
 import { Redirect, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { vkAuth } from '../http/social-auth';
+import { vkAuth } from '../../http/social-auth';
+import '../../css/regAuth.css';
 
 const RegistrationModuleBasic = () => {
   //указываем основные константы для интерфейса
@@ -17,6 +18,7 @@ const RegistrationModuleBasic = () => {
   ];
   let number = '';
   let email = '';
+  let access_token = '';
   //регулярные выражения для проверки телефона и почты
   const contactEmailRegExp =
     /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
@@ -50,7 +52,22 @@ const RegistrationModuleBasic = () => {
       setFormValid(true);
     }
 
-    if (window.location.href.split('?auth')[1]) {
+    if (window.location.href.split('#access_token=')[1]) {
+      access_token = window.location.href.split('#access_token=')[1].split('&')[0];
+      console.log(access_token);
+      axios({
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          grant_type: 'convert_token',
+          client_id: 'y8uGYvFxuntIEnsU8FajpLukZpYzGwvtcJQCBwVx',
+          backend: 'vk-oauth2',
+          token: access_token,
+        },
+        url: `http://host140620211735.of.by/social/convert-token/`,
+      });
     }
   }, [contactError, passwordError, passwordSubmitError, window.location.href]);
 
@@ -79,6 +96,9 @@ const RegistrationModuleBasic = () => {
     } else {
       setPasswordError('');
     }
+    if (e.target.value !== passwordSubmit) {
+      setPasswordSubmitError(passwordErrors[0]);
+    }
   };
 
   const passwordSubmitHandler = (e) => {
@@ -101,7 +121,7 @@ const RegistrationModuleBasic = () => {
     } else if (contactNumberRegExp.test(String(contact).toLowerCase())) {
       number = contact;
     }
-
+    console.log(contact);
     axios({
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

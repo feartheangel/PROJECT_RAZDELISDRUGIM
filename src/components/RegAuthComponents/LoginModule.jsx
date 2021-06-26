@@ -1,7 +1,7 @@
 import React from 'react';
-import facebookLogo from '../img/Facebook.png';
-import vkLogo from '../img/vk.png';
-import googleLogo from '../img/Google.png';
+import facebookLogo from '../../img/Facebook.png';
+import vkLogo from '../../img/vk.png';
+import googleLogo from '../../img/Google.png';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -77,7 +77,7 @@ const LoginModule = () => {
   return (
     <div className="reg-content">
       <div className="reg-form-wrapper">
-        <div className="reg-form">
+        <div className="log-form">
           <ul className="reg-form-action-type-list">
             <Link tag="li" to="/registration">
               <li href="#" className="reg-form-action-type-link">

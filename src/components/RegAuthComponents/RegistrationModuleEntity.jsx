@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import facebookLogo from '../img/Facebook.png';
-import vkLogo from '../img/vk.png';
-import googleLogo from '../img/Google.png';
-import { setLastEmail } from '../redux/actions/registration';
+import facebookLogo from '../../img/Facebook.png';
+import vkLogo from '../../img/vk.png';
+import googleLogo from '../../img/Google.png';
+import { setLastEmail } from '../../redux/actions/registration';
 
 const RegistrationModuleEntity = () => {
   const dispatch = useDispatch();

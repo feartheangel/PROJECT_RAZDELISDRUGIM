@@ -2,10 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import facebookLogo from '../img/Facebook.png';
-import vkLogo from '../img/vk.png';
-import googleLogo from '../img/Google.png';
-import { setLastEmail } from '../redux/actions/registration';
+import facebookLogo from '../../img/Facebook.png';
+import vkLogo from '../../img/vk.png';
+import googleLogo from '../../img/Google.png';
 
 const RegistrationModuleIndividual = () => {
   const dispatch = useDispatch();
@@ -150,7 +149,6 @@ const RegistrationModuleIndividual = () => {
         setNumberError(inputErrors[1]);
       }
     } else {
-      dispatch(setLastEmail(email));
       axios(options_register)
         .then((response) => {
           console.log(response);

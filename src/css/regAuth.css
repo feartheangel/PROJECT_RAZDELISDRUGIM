@@ -37,11 +37,11 @@ body {
   border-radius: 30px;
 }
 
-.reg-form__second {
+.log-form {
   display: flex;
   flex-direction: column;
   width: 540px;
-  height: 1145px;
+  height: 750px;
   left: 450px;
   top: 155px;
   background: #ffffff;
