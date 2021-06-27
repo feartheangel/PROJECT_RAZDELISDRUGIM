@@ -135,7 +135,7 @@ const LoginModule = () => {
                 <label className="reg-form-text-label-l__alert">{passwordError}</label>
               )}
               <div className="log-form-text-label-l__recover">
-                <Link to="/login">
+                <Link to="/recovery">
                   <label>Забыли пароль?</label>
                 </Link>
               </div>

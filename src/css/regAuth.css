@@ -368,7 +368,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 540px;
-  height: 446px;
+  height: 600px;
   left: 450px;
   top: 155px;
   background: #ffffff;
@@ -376,7 +376,7 @@ body {
 }
 
 .reg-form-wrapper-email-verification {
-  margin-top: 263px;
+  margin-top: 200px;
   display: flex;
   flex-direction: space-between;
 }

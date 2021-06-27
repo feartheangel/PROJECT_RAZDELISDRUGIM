@@ -1,6 +1,11 @@
 import { Route } from 'react-router-dom';
 import { Home } from './pages/index';
-import { RegistrationModuleBasic, LoginModule } from './components/RegAuthComponents/index';
+import {
+  RegistrationModuleBasic,
+  LoginModule,
+  PasswordRecoveryEntry,
+  PasswordRecoverySubmit,
+} from './components/RegAuthComponents/index';
 
 function App() {
   return (
@@ -9,6 +14,8 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/registration" component={RegistrationModuleBasic} exact />
         <Route path="/login" component={LoginModule} exact />
+        <Route path="/recovery" component={PasswordRecoveryEntry} exact />
+        <Route path="/recovery-submit" component={PasswordRecoverySubmit} exact />
       </div>
     </div>
   );
