@@ -20,7 +20,7 @@ const PasswordRecoveryEntry = () => {
     data: {
       email: email,
     },
-    url: 'http://host140620211735.of.by/api/password_reset/',
+    url: 'http://178.172.136.88/api/password_reset/',
   };
 
   //проверка валидности полей

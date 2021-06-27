@@ -28,7 +28,7 @@ const LoginModule = () => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     data: data,
-    url: 'http://host140620211735.of.by/api/jwt/token/',
+    url: 'http://178.172.136.88/api/jwt/token/',
   };
 
   //проверка валидности полей

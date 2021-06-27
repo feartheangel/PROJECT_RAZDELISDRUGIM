@@ -66,7 +66,7 @@ const RegistrationModuleBasic = () => {
           backend: 'vk-oauth2',
           token: access_token,
         },
-        url: `http://host140620211735.of.by/social/convert-token/`,
+        url: `http://178.172.136.88/social/convert-token/`,
       });
     }
   }, [contactError, passwordError, passwordSubmitError, window.location.href]);
@@ -131,7 +131,7 @@ const RegistrationModuleBasic = () => {
         password: password,
         password2: passwordSubmit,
       },
-      url: 'http://host140620211735.of.by/api/jwt/register/',
+      url: 'http://178.172.136.88/api/jwt/register/',
     })
       .then((response) => {
         console.log(response);
@@ -146,7 +146,7 @@ const RegistrationModuleBasic = () => {
               status: regType,
               referral_code: referral ? referral : '',
             },
-            url: `http://host140620211735.of.by/api/jwt/profile/update/${response.data.id}/`,
+            url: `http://178.172.136.88/api/jwt/profile/update/${response.data.id}/`,
           })
             .then((response) => {
               console.log(response);

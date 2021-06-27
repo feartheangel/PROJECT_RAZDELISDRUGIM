@@ -29,7 +29,7 @@ const PasswordRecoverySubmit = () => {
       token: token,
       password: password,
     },
-    url: 'http://host140620211735.of.by/api/password_reset/confirm/',
+    url: 'http://178.172.136.88/api/password_reset/confirm/',
   };
 
   React.useEffect(() => {
