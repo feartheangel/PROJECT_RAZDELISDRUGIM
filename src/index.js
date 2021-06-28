@@ -4,6 +4,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
+import ImageUpLoader from './components/SubjectsComponents/UpLoader/ImageUpLoad'
 
 ReactDOM.render(
   <BrowserRouter>

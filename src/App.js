@@ -5,6 +5,7 @@ import {
   LoginModule,
   PasswordRecoveryEntry,
   PasswordRecoverySubmit,
+  PlaseItems,
 } from './components/RegAuthComponents/index';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" component={LoginModule} exact />
         <Route path="/recovery" component={PasswordRecoveryEntry} exact />
         <Route path="/recovery-submit" component={PasswordRecoverySubmit} exact />
+        <Route path="/place-item" component={PlaseItems} exact />
       </div>
     </div>
   );
