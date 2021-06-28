@@ -3,19 +3,35 @@
     justify-content: center;
     padding-top: 100px;
     padding-bottom: 100px;
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    font-size: 19px;
+    color: rgba(56, 43, 43, 0.8);
 
     background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% );
 }
+
+
 
 .PlaseItem label{
     margin: 20px 0;
     display: block;
     width: 100%;
-
+    font-family: Verdana, Geneva, sans-serif;
 }
 
-#1{
-    margin: 5px 0px;
+.PlaseItem ol {
+    padding-left: 15px;
+}
+
+.PlaseItem ol li span{
+    color: red;
+    font-size: 25px;
+}
+
+.PlaseItem textarea {
+    padding: 10px;
+    margin: 5px 15px;
+    width: 435px;
+    height: 100px;
 }

@@ -1,10 +1,7 @@
 import React, {Component} from "react";
-import {} from './ImageUpLoad.module.css';
+import './ImageUpLoad.css';
 
-const imgPreview =  {
-    maxWidth: '200px',
-        maxHeight: '200px',
-}
+
 
 export  default class ImageUpload extends Component {
 
