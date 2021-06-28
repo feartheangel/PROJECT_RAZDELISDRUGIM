@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {} from 'react-router-dom';
 import classes from './PlaseItem.module.css';
-import ImageUpload from "../../components/SubjectsComponents/UpLoader/ImageUpLoad";
+// import {ImageUpload} from "../../components/SubjectsComponents/UpLoader/ImageUpLoad";
+
 
 
 const allDiv = {
@@ -14,18 +15,45 @@ const allDiv = {
 }
 
 
-const PlaceItem = () =>{
+
+
+
+const PlaceItem = (props) =>{
+
+    //состояния для валидации, хранения данных из полей
+    const [category, setCategory] = useState();
+    const[nameItem, setNameItem] = useState();
+    const[downloadPhoto1, setDownloadPhoto1] = useState();
+    const[downloadPhoto2, setDownloadPhoto2] = useState();
+    const[downloadPhoto3, setDownloadPhoto3] = useState();
+    const[downloadPhoto4, setDownloadPhoto4] = useState();
+    const[downloadPhoto5, setDownloadPhoto5] = useState();
+    const[commentsItem, setCommentsItem] = useState();
+    const[yearCreate, setYearCreate] = useState();
+    const[timeArends, setTimeArends] = useState();
+    const[costArends, setCostArends] = useState();
+    const[valuts, setValuts] = useState();
+    const[typeDelivery, setTypeDelivery] = useState();
+    const[timeReceipt, setTimeReceipt] = useState();
+    const[returnTime, setReturnTime] = useState();
+    const[contract, setContract] = useState();
+
+
+
     return(
         <div className={classes.PlaseItem} >
 
             <div style={allDiv} >
 
-                <form >
+                <form encType ="multipart/form-data" method="post">
                     <ol>
                         <li>
                             <label >
                                 <span>*</span> Выберите категорию: {' '}
-                                <select>
+                                <select value={category}
+                                        onChange={(e)=>setCategory(e.target.value)} >
+
+                                    <option></option>
                                     <option>Недвижимость</option>
                                     <option>Авто и транспорт</option>
                                     <option>Бытовая техника</option>
@@ -41,7 +69,8 @@ const PlaceItem = () =>{
                         <li>
                             <label>
                                 <span>*</span>  Название товара: {' '}
-                                <input type ="text" name="maks" />
+                                <input type ="text" value ={nameItem}
+                                       onChange={(e)=>setNameItem(e.target.value)} />
                             </label>
                         </li>
 
@@ -53,7 +82,54 @@ const PlaceItem = () =>{
                             </label>
 
                             <label>
-                               <ImageUpload />
+                                <input
+                                    type="file"
+                                    multiple
+                                    accept="image/*,image/jpeg"
+                                    value={downloadPhoto1}
+                                    onChange={(e)=>setDownloadPhoto1(e.target.value)}
+                                />
+                            </label>
+
+                            <label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    accept="image/*,image/jpeg"
+                                    value={downloadPhoto2}
+                                    onChange={(e)=>setDownloadPhoto2(e.target.value)}
+                                />
+                            </label>
+
+                            <label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    accept="image/*,image/jpeg"
+                                    value={downloadPhoto3}
+                                    onChange={(e)=>setDownloadPhoto3(e.target.value)}
+                                />
+                            </label>
+
+                            <label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    accept="image/*,image/jpeg"
+                                    value={downloadPhoto4}
+                                    onChange={(e)=>setDownloadPhoto4(e.target.value)}
+                                />
+                            </label>
+
+                            <label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    accept="image/*,image/jpeg"
+                                    value={downloadPhoto5}
+                                    onChange={(e)=>setDownloadPhoto5(e.target.value)}
+                                />
+
                             </label>
                         </li>
 
@@ -65,19 +141,26 @@ const PlaceItem = () =>{
                         </li>
 
 
-                         <textarea  />
+                         <textarea value={commentsItem}
+                                   onChange={(e)=>setCommentsItem(e.target.value)}  />
 
                          <li>
                             <label>
                                      Год выпуска: {' '}
-                                    <input type ="number" />
+                                    <input type ="number"
+                                           value={yearCreate}
+                                           onChange={(e)=>setYearCreate(e.target.value)} />
                             </label>
                          </li>
 
                         <li>
                             <label >
                                 <span>*</span>  Срок аренды: {' '}
-                                <select>
+                                <select
+                                    value={timeArends}
+                                    onChange={(e)=>setTimeArends(e.target.value)}
+                                >
+                                    <option></option>
                                     <option>Час</option>
                                     <option>Сутки</option>
                                     <option>Неделя</option>
@@ -92,7 +175,12 @@ const PlaceItem = () =>{
                             <label>
                                 <span>*</span>  Стоимость аренды: {' '}
                                 <input type ="number"  />
-                                <select>
+                                <select
+                                    value={costArends}
+                                    onChange={(e)=>setCostArends(e.target.value)}
+                                >
+
+                                    <option></option>
                                     <option>Час</option>
                                     <option>Сутки</option>
                                     <option>Неделя</option>
@@ -106,7 +194,12 @@ const PlaceItem = () =>{
                         <li>
                             <label >
                                 <span>*</span>  Вид валюты: {' '}
-                                <select>
+                                <select
+                                    value={valuts}
+                                    onChange={(e)=>setValuts(e.target.value)}
+
+                                >
+                                    <option></option>
                                     <option>$</option>
                                     <option>€</option>
                                     <option>рубли</option>
@@ -118,7 +211,12 @@ const PlaceItem = () =>{
                         <li>
                             <label>
                                  Вид доставки: {' '}
-                                <select>
+                                <select
+                                    value={typeDelivery}
+                                    onChange={(e)=>setTypeDelivery(e.target.value)}
+
+                                >
+                                    <option></option>
                                     <option>Самовывоз</option>
                                     <option>Привезу и заберу сам</option>
                                     <option>Отправлю почтой/курьером</option>
@@ -129,7 +227,12 @@ const PlaceItem = () =>{
                         <li style={{marginLeft:'7px'}}>
                             <label >
                                 Время получения(не ранее): {' '}
-                                <select value="12ч">
+                                <select
+                                    value={timeReceipt}
+                                    onChange={(e)=>setTimeReceipt(e.target.value)}
+
+                                >
+                                    <option></option>
                                     <option>1ч</option>
                                     <option>2ч</option>
                                     <option>3ч</option>
@@ -161,7 +264,12 @@ const PlaceItem = () =>{
                         <li style={{marginLeft:'7px'}}>
                             <label >
                                 Время возврата(не позднее): {' '}
-                                <select value="12ч">
+                                <select
+                                    value={returnTime}
+                                    onChange={(e)=>setReturnTime(e.target.value)}
+
+                                >
+                                    <option></option>
                                     <option>1ч</option>
                                     <option>2ч</option>
                                     <option>3ч</option>
@@ -193,7 +301,12 @@ const PlaceItem = () =>{
                         <li style={{marginLeft:'7px'}}>
                             <label >
                                 Договор/Расписка: {' '}
-                                <select>
+                                <select
+                                    value={contract}
+                                    onChange={(e)=>setContract(e.target.value)}
+                                >
+
+                                    <option></option>
                                     <option>Да</option>
                                     <option>Нет</option>
                                 </select>
