@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {} from 'react-router-dom';
 import classes from './PlaseItem.module.css';
 // import {ImageUpload} from "../../components/SubjectsComponents/UpLoader/ImageUpLoad";
 
@@ -18,7 +17,7 @@ const allDiv = {
 
 
 
-const PlaceItem = (props) =>{
+const PlaceItem = () =>{
 
     //состояния для валидации, хранения данных из полей
     const [category, setCategory] = useState();
@@ -38,6 +37,8 @@ const PlaceItem = (props) =>{
     const[returnTime, setReturnTime] = useState();
     const[contract, setContract] = useState();
 
+    console.log(category)
+
 
 
     return(
@@ -53,7 +54,7 @@ const PlaceItem = (props) =>{
                                 <select value={category}
                                         onChange={(e)=>setCategory(e.target.value)} >
 
-                                    <option></option>
+                                    <option />
                                     <option>Недвижимость</option>
                                     <option>Авто и транспорт</option>
                                     <option>Бытовая техника</option>
@@ -160,7 +161,7 @@ const PlaceItem = (props) =>{
                                     value={timeArends}
                                     onChange={(e)=>setTimeArends(e.target.value)}
                                 >
-                                    <option></option>
+                                    <option />
                                     <option>Час</option>
                                     <option>Сутки</option>
                                     <option>Неделя</option>
@@ -180,7 +181,7 @@ const PlaceItem = (props) =>{
                                     onChange={(e)=>setCostArends(e.target.value)}
                                 >
 
-                                    <option></option>
+                                    <option />
                                     <option>Час</option>
                                     <option>Сутки</option>
                                     <option>Неделя</option>
@@ -199,7 +200,7 @@ const PlaceItem = (props) =>{
                                     onChange={(e)=>setValuts(e.target.value)}
 
                                 >
-                                    <option></option>
+                                    <option />
                                     <option>$</option>
                                     <option>€</option>
                                     <option>рубли</option>
@@ -216,7 +217,7 @@ const PlaceItem = (props) =>{
                                     onChange={(e)=>setTypeDelivery(e.target.value)}
 
                                 >
-                                    <option></option>
+                                    <option />
                                     <option>Самовывоз</option>
                                     <option>Привезу и заберу сам</option>
                                     <option>Отправлю почтой/курьером</option>
@@ -232,7 +233,7 @@ const PlaceItem = (props) =>{
                                     onChange={(e)=>setTimeReceipt(e.target.value)}
 
                                 >
-                                    <option></option>
+                                    <option />
                                     <option>1ч</option>
                                     <option>2ч</option>
                                     <option>3ч</option>
@@ -269,7 +270,7 @@ const PlaceItem = (props) =>{
                                     onChange={(e)=>setReturnTime(e.target.value)}
 
                                 >
-                                    <option></option>
+                                    <option />
                                     <option>1ч</option>
                                     <option>2ч</option>
                                     <option>3ч</option>
@@ -306,7 +307,7 @@ const PlaceItem = (props) =>{
                                     onChange={(e)=>setContract(e.target.value)}
                                 >
 
-                                    <option></option>
+                                    <option />
                                     <option>Да</option>
                                     <option>Нет</option>
                                 </select>
