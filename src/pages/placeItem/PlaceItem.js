@@ -1,17 +1,6 @@
 import React, {useState} from 'react';
-import classes from './PlaseItem.module.css';
-// import {ImageUpload} from "../../components/SubjectsComponents/UpLoader/ImageUpLoad";
+import  './PlaseItem.css';
 
-
-
-const allDiv = {
-    display: 'block',
-    width: '700px',
-    height: '100%',
-    background: 'linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127))',
-    borderRadius: '10px',
-    padding: '30px 20px',
-}
 
 
 
@@ -19,8 +8,63 @@ const allDiv = {
 
 const PlaceItem = () =>{
 
+
+    const chekYourCost=()=>{
+        setYourCost(!yourCost)
+    }
+
+    // ПУНКТ 16 СТРАХОВКА
+    const insuranceHandler=()=>{
+       setInsurance(!insurance)
+    }
+    //ПУНКТ 9 БЕСПЛАТНО
+    const giveFreeHandler=()=>{
+        setGiveFree(!giveFree)
+    }
+    const pladgeHandler =()=>{
+        setPladge(!pladge)
+    }
+
+    const readySellHandler =()=>{
+        setReadySell(!readySell)
+    }
+
+    const franchiseHandler =()=>{
+        setFranchise(!franchise)
+    }
+
+
+    const serviceFeeHandler =()=>{
+        setServiceFee(!serviceFee)
+    }
+
+    const serviceHandler =(e)=>{
+        setOptionState(e.target.value)
+
+    }
+
+    //ВИД ДОСТАВКИ - ОПЦИИ
+    const typeDeliveryHandler =(e)=>{
+        setTypeDelivery(e.target.value)
+    }
+    //ВИД УСЛУГИ - ОПЦИИ
+    const typeServiceHandler = (e)=>{
+        setTypeService((e.target.value))
+    }
+    //КТО ДОСТАВЛЯЕТ - ОПЦИИ
+    const WhoDeliveryHandler = (e)=>{
+        setWhoDelivery((e.target.value))
+    }
+
+
+
+
+
+
+
+
     //состояния для валидации, хранения данных из полей
-    const [category, setCategory] = useState();
+    const[category, setCategory] = useState();
     const[nameItem, setNameItem] = useState();
     const[downloadPhoto1, setDownloadPhoto1] = useState();
     const[downloadPhoto2, setDownloadPhoto2] = useState();
@@ -29,30 +73,62 @@ const PlaceItem = () =>{
     const[downloadPhoto5, setDownloadPhoto5] = useState();
     const[commentsItem, setCommentsItem] = useState();
     const[yearCreate, setYearCreate] = useState();
+    const[mileAge, setMileAge] = useState();
+    const[cost, setCost] = useState();
+    const[costValuts, setCostValuts] = useState();
+
     const[timeArends, setTimeArends] = useState();
     const[costArends, setCostArends] = useState();
+    const[howDay, setHowDay] = useState();
+    const[giveFree, setGiveFree] = useState();
+    const[readySell, setReadySell] = useState();
+
+
+    const[yourCost, setYourCost]= useState();
+    const[yourSum, setYourSum]= useState();
     const[valuts, setValuts] = useState();
+
+    // ВИД ДОСТАВКИ - ТИП СЕРВИСА - КТО ДОСТАВЛЯЕТ
     const[typeDelivery, setTypeDelivery] = useState();
+    const[typeService, setTypeService] = useState();
+    const[whoDelivery, setWhoDelivery] = useState();
+
     const[timeReceipt, setTimeReceipt] = useState();
     const[returnTime, setReturnTime] = useState();
     const[contract, setContract] = useState();
+    const[insurance,setInsurance] = useState();
+    const[franchise, setFranchise] = useState();
 
-    console.log(category)
+    const[pladge, setPladge] = useState();
+    const[serviceFee, setServiceFee] = useState();
+
+    const[optionState, setOptionState] = useState();
+
+
+
+
+
+    console.log(readySell)
+
+
 
 
 
     return(
-        <div className={classes.PlaseItem} >
+        <div className= "PlaseItem" >
 
-            <div style={allDiv} >
+            <div className="conteiner">
 
                 <form encType ="multipart/form-data" method="post">
                     <ol>
+                        <h2> РАЗМЕСТИ СВОЮ ВЕЩЬ </h2>
+
+                        {/*  КАТЕГОРИЯ  */}
+                        <div>
                         <li>
-                            <label >
                                 <span>*</span> Выберите категорию: {' '}
-                                <select value={category}
-                                        onChange={(e)=>setCategory(e.target.value)} >
+                                    <select value={category}
+                                    onChange={(e)=>setCategory(e.target.value)} >
 
                                     <option />
                                     <option>Недвижимость</option>
@@ -63,99 +139,237 @@ const PlaceItem = () =>{
                                     <option>Электроника</option>
                                     <option>Женский гардероб</option>
                                 </select>
-                            </label>
                         </li>
+                        </div>
 
 
+
+                        {/*  НАЗВАНИЕ ТОВАРА  */}
+                        <div className="div111">
                         <li>
-                            <label>
                                 <span>*</span>  Название товара: {' '}
-                                <input type ="text" value ={nameItem}
+                                <input type ="text"
+                                       value ={nameItem}
                                        onChange={(e)=>setNameItem(e.target.value)} />
-                            </label>
                         </li>
+                        </div>
 
 
 
-                        <li>
-                            <label>
-                                <span>*</span>  Загрузите фото: {' '}
-                            </label>
+                        {/*  ЗАГРУЗКА ФОТО  */}
+                        <div>
+                            <li>
+                                    <span>*</span>  Загрузите фото: {' '}
 
-                            <label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    accept="image/*,image/jpeg"
-                                    value={downloadPhoto1}
-                                    onChange={(e)=>setDownloadPhoto1(e.target.value)}
-                                />
-                            </label>
+                                    <div>
+                                        <input
+                                            type="file"
+                                            multiple
+                                            accept="image/*,image/jpeg"
+                                            value={downloadPhoto1}
+                                            onChange={(e)=>setDownloadPhoto1(e.target.value)}
+                                        />
+                                    </div>
 
-                            <label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    accept="image/*,image/jpeg"
-                                    value={downloadPhoto2}
-                                    onChange={(e)=>setDownloadPhoto2(e.target.value)}
-                                />
-                            </label>
-
-                            <label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    accept="image/*,image/jpeg"
-                                    value={downloadPhoto3}
-                                    onChange={(e)=>setDownloadPhoto3(e.target.value)}
-                                />
-                            </label>
-
-                            <label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    accept="image/*,image/jpeg"
-                                    value={downloadPhoto4}
-                                    onChange={(e)=>setDownloadPhoto4(e.target.value)}
-                                />
-                            </label>
-
-                            <label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    accept="image/*,image/jpeg"
-                                    value={downloadPhoto5}
-                                    onChange={(e)=>setDownloadPhoto5(e.target.value)}
-                                />
-
-                            </label>
-                        </li>
+                                    <div>
+                                        <input
+                                            type="file"
+                                            multiple
+                                            accept="image/*,image/jpeg"
+                                            value={downloadPhoto2}
+                                            onChange={(e)=>setDownloadPhoto2(e.target.value)}
+                                        />
+                                    </div>
 
 
-                        <li>
-                            <label>
-                                 Описание товара: {' '}
-                            </label>
-                        </li>
+                                    <div>
+                                        <input
+                                            type="file"
+                                            multiple
+                                            accept="image/*,image/jpeg"
+                                            value={downloadPhoto3}
+                                            onChange={(e)=>setDownloadPhoto3(e.target.value)}
+                                        />
+                                    </div>
 
 
-                         <textarea value={commentsItem}
-                                   onChange={(e)=>setCommentsItem(e.target.value)}  />
+                                    <div>
+                                        <input
+                                            type="file"
+                                            multiple
+                                            accept="image/*,image/jpeg"
+                                            value={downloadPhoto4}
+                                            onChange={(e)=>setDownloadPhoto4(e.target.value)}
+                                        />
+                                    </div>
+
+
+                                    <div>
+                                        <input
+                                            type="file"
+                                            multiple
+                                            accept="image/*,image/jpeg"
+                                            value={downloadPhoto5}
+                                            onChange={(e)=>setDownloadPhoto5(e.target.value)}
+                                        />
+                                    </div>
+
+                            </li>
+                        </div>
+
+
+
+                        {/*  ОПИСАНИЕ ТОВАРА  */}
+                        <div>
+                            <li>
+                                     Описание товара: {' '}
+                            </li>
+
+
+                             <textarea value={commentsItem}
+                                       onChange={(e)=>setCommentsItem(e.target.value)}  />
+                        </div>
+
+
+                        {/*  ГОД ВЫПУСКА  */}
 
                          <li>
-                            <label>
+                            <div>
                                      Год выпуска: {' '}
                                     <input type ="number"
                                            value={yearCreate}
                                            onChange={(e)=>setYearCreate(e.target.value)} />
-                            </label>
+                            </div>
                          </li>
 
+
+                        {/*  ПРОБЕГ  */}
                         <li>
-                            <label >
+                            <div>
+                                Пробег: {' '}
+                                <input type ="number"
+                                       value={mileAge}
+                                       onChange={(e)=>setMileAge(e.target.value)} />
+                            </div>
+                        </li>
+
+
+                        {/*  ПРОБЕГ  */}
+                        <li>
+                            <div>
+                                Стоимость(если оценивается): {' '}
+                                <input type ="number"
+                                       value={cost}
+                                       onChange={(e)=>setCost(e.target.value)}
+                                />
+
+                                {/*<select*/}
+                                {/*    value={costValuts}*/}
+                                {/*    onChange={(e)=>setCostValuts(e.target.value)}*/}
+
+                                {/*>*/}
+                                {/*    <option />*/}
+                                {/*    <option>$</option>*/}
+                                {/*    <option>€</option>*/}
+                                {/*    <option>рубли</option>*/}
+                                {/*    <option>Гривни</option>*/}
+                                {/*</select>*/}
+                            </div>
+                        </li>
+
+
+
+
+                        {/*  СТОИМОСТЬ АРЕНДЫ  */}
+                        <li>
+                            <div>
+                                <span>*</span>  Стоимость аренды: {' '}
+                                <input
+                                    type ="number"
+                                    value={costArends}
+                                    disabled={giveFree||yourCost}
+                                    onChange={(e)=>setCostArends(e.target.value)}
+                                />
+
+                                <select
+                                    value={howDay}
+                                    disabled={giveFree||yourCost}
+                                    onChange={(e)=>setHowDay(e.target.value)}
+                                >
+                                    <option />
+                                    <option>Час</option>
+                                    <option>Сутки</option>
+                                    <option>Неделя</option>
+                                    <option>Месяц</option>
+                                    <option>6 месяцев</option>
+                                    <option>1 Год</option>
+                                </select>
+                            </div>
+
+
+                            {/*  БЕСПЛАТНО  */}
+                            <div>
+                                Бесплатно {' '}
+                                <input
+                                    type="checkbox"
+                                    disabled={yourCost}
+                                    value={giveFree}
+                                    onChange={giveFreeHandler}
+
+                                /> {' '}
+                            </div>
+
+
+                            {/*  ПРЕДЛОЖИТЬ ЦЕНУ  */}
+                            <div>
+                                Предложить цену {' '}
+                                <input
+                                    type="checkbox"
+                                    value={yourCost}
+                                    disabled={giveFree}
+                                    onChange={chekYourCost}
+
+                                /> {' '}
+                                {
+                                    yourCost&&<div>
+                                        Укажите сумму:{' '}
+                                        <input
+                                        type ="number"
+                                        value={yourSum}
+                                        onChange={(e)=>setYourSum(e.target.value)}
+                                    />
+
+                                    <select
+                                    >
+                                    <option />
+                                    <option>Час</option>
+                                    <option>Сутки</option>
+                                    <option>Неделя</option>
+                                    <option>Месяц</option>
+                                    <option>6 месяцев</option>
+                                    <option>1 Год</option>
+                                    </select>
+                                    </div>
+                                }
+                            </div>
+
+
+                            {/*  Готов продать  */}
+                            <div>
+                                Готов продать {' '}
+                                <input style={{display:'inline-block'}}
+                                    type="checkbox"
+                                    value={readySell}
+                                    onChange={readySellHandler}
+
+                                /> {' '}
+                            </div>
+                        </li>
+
+
+                        {/*  СРОК АРЕНДЫ  */}
+                        <li>
+                            <div >
                                 <span>*</span>  Срок аренды: {' '}
                                 <select
                                     value={timeArends}
@@ -169,36 +383,18 @@ const PlaceItem = () =>{
                                     <option>6 месяцев</option>
                                     <option>1 Год</option>
                                 </select>
-                            </label>
+                            </div>
                         </li>
 
-                        <li>
-                            <label>
-                                <span>*</span>  Стоимость аренды: {' '}
-                                <input type ="number"  />
-                                <select
-                                    value={costArends}
-                                    onChange={(e)=>setCostArends(e.target.value)}
-                                >
 
-                                    <option />
-                                    <option>Час</option>
-                                    <option>Сутки</option>
-                                    <option>Неделя</option>
-                                    <option>Месяц</option>
-                                    <option>6 месяцев</option>
-                                    <option>1 Год</option>
-                                </select>
-                            </label>
-                        </li>
 
-                        <li>
-                            <label >
-                                <span>*</span>  Вид валюты: {' '}
+                        {/*  ВИД ВАЛЮТЫ  */}
+                        <li style={{marginLeft:'7px'}}>
+                            <div >
+                                <span>*</span> Вид валюты: {' '}
                                 <select
                                     value={valuts}
                                     onChange={(e)=>setValuts(e.target.value)}
-
                                 >
                                     <option />
                                     <option>$</option>
@@ -206,28 +402,15 @@ const PlaceItem = () =>{
                                     <option>рубли</option>
                                     <option>Гривни</option>
                                 </select>
-                            </label>
+                            </div>
                         </li>
 
-                        <li>
-                            <label>
-                                 Вид доставки: {' '}
-                                <select
-                                    value={typeDelivery}
-                                    onChange={(e)=>setTypeDelivery(e.target.value)}
 
-                                >
-                                    <option />
-                                    <option>Самовывоз</option>
-                                    <option>Привезу и заберу сам</option>
-                                    <option>Отправлю почтой/курьером</option>
-                                </select>
-                            </label>
-                        </li>
 
+                        {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
                         <li style={{marginLeft:'7px'}}>
-                            <label >
-                                Время получения(не ранее): {' '}
+                            <div >
+                                <span>*</span> Время получения(не ранее): {' '}
                                 <select
                                     value={timeReceipt}
                                     onChange={(e)=>setTimeReceipt(e.target.value)}
@@ -259,12 +442,14 @@ const PlaceItem = () =>{
                                     <option>23ч</option>
                                     <option>24ч</option>
                                 </select>
-                            </label>
+                            </div>
                         </li>
 
+
+                        {/*  ВРЕМЯ ВОЗВРАТА  */}
                         <li style={{marginLeft:'7px'}}>
-                            <label >
-                                Время возврата(не позднее): {' '}
+                            <div >
+                                <span>*</span> Время возврата(не позднее): {' '}
                                 <select
                                     value={returnTime}
                                     onChange={(e)=>setReturnTime(e.target.value)}
@@ -296,11 +481,104 @@ const PlaceItem = () =>{
                                     <option>23ч</option>
                                     <option>24ч</option>
                                 </select>
-                            </label>
+                            </div>
                         </li>
 
+
+                        {/*  ВРЕМЯ ПОДГОТОВКИ ТОВАРА  */}
                         <li style={{marginLeft:'7px'}}>
-                            <label >
+                            <div >
+                                  Укажите время подготовки товара: {' '}
+                                <input type = "number"/>
+
+                                <select
+                                >
+                                    <option />
+                                    <option>Часы</option>
+                                    <option>Сутки</option>
+                                </select>
+                            </div>
+                        </li>
+
+
+                        {/*  ВИД ДОСТАВКИ  */}
+                        <li style={{marginLeft:'7px'}}>
+                            <div>
+                                 Вид доставки: {' '}
+                                <select
+                                    onChange={(e)=>typeDeliveryHandler(e)}
+                                >
+                                    <option />
+                                    <option value="Самовывоз">Самовывоз</option>
+                                    <option value="Привезу и заберу сам">Привезу и заберу сам</option>
+                                    <option value="Отправлю"> Отправлю </option>
+                                </select>
+
+                                {typeDelivery ==="Самовывоз"&&
+                                <p style={{marginTop:'20px'}}>
+                                    Город:{'  '}
+                                    <input type="text"/>
+                                    {'  '} Улица:{'  '}
+                                    <input type="text"/>
+                                </p>
+                                }
+
+
+                                {typeDelivery ==="Привезу и заберу сам"&&
+                                <p style={{marginTop:'20px'}}>
+                                    Выберите услугу: {'  '}
+                                    <select onChange={(e)=>typeServiceHandler(e)}>
+                                        <option/>
+
+                                        <option value="Указать стоимость">Указать стоимость</option>
+                                        <option value="Бесплатно">Бесплатно</option>
+                                    </select>
+                                    {typeService ==="Указать стоимость"&&
+                                    <p style={{marginTop:'20px'}}>
+                                        Укажите стоимость:{'  '}
+                                        <input type="text"/>
+
+                                    </p>
+                                    }
+                                </p>
+                                }
+
+
+                                {typeDelivery ==="Отправлю"&&
+                                <p style={{marginTop:'20px'}}>
+                                    Выберите способ отправки: {'  '}
+                                    <select onChange={(e)=>WhoDeliveryHandler(e)}>
+                                        <option/>
+                                        <option value="Такси">Такси</option>
+                                        <option value="Курьер">Курьер</option>
+                                        <option value="Почта">Почта</option>
+                                    </select>
+
+                                    {(whoDelivery ==="Такси" || whoDelivery ==="Курьер" || whoDelivery ==="Почта")
+                                    &&
+                                    <p style={{marginTop:'20px'}}>
+                                        За счёт Владельца:{'  '}
+                                        <input type="checkbox"/>
+                                    </p>
+                                    }
+
+                                    {(whoDelivery ==="Такси" || whoDelivery ==="Курьер" || whoDelivery ==="Почта")
+                                    &&
+                                    <p style={{marginTop:'20px'}}>
+                                        За счёт Рентера:{'  '}
+                                        <input type="checkbox"/>
+                                    </p>
+                                    }
+
+                                </p>
+                                }
+                            </div>
+                        </li>
+
+
+                        {/*  ДОГОВОР/РАСПИСКА  */}
+                        <li style={{marginLeft:'7px'}}>
+                            <div>
                                 Договор/Расписка: {' '}
                                 <select
                                     value={contract}
@@ -311,53 +589,119 @@ const PlaceItem = () =>{
                                     <option>Да</option>
                                     <option>Нет</option>
                                 </select>
-                            </label>
+                            </div>
                         </li>
 
-                        <label>
+
+
+                        {/*  СТРАХОВАНИЕ  */}
+                        <li style={{marginLeft:'7px'}}>
+                            <div>
                             Страхование {' '}
-                            <input type="checkbox" name="a" value="1417"/> {' '}
-                        </label>
 
-                        <label>
-                            Залог {' '}
-                            <input type="checkbox" name="a" value="1417"/> {' '}
-                        </label>
+                            <input
+                                type="checkbox"
+                                value={insurance}
+                                onChange={insuranceHandler}
+                            /> {' '}
+                            </div>
+
+                            {insurance&& <p style={{marginTop:'20px'}}>
+                                    {' '}Введите сумму:{' '}
+                                    <input
+                                        type ="number" />
+
+                                    <br/>
+                                    Наличие франшизы:{' '}
+                                    <input style={{marginTop:'20px'}}
+                                        type="checkbox"
+                                        value={franchise}
+                                        onChange={franchiseHandler}
+                                    /> {' '}
+
+                                    {franchise&&<label>
+                                        Укажите сумму франшизы:
+                                        <input type="number"/>
+
+                                    </label>}
+                                </p>
+
+                            }
+                        </li>
 
 
 
-                        <label>
-                            Сервисный сбор {' '}
-                            <input type="checkbox" name="a" value="1417"/> {' '}
-                        </label>
+                        {/*  ЗАЛОГ  */}
+                        <li style={{marginLeft:'7px'}}>
+                            <div>
+                                Залог {' '}
+                                <input
+                                    type="checkbox"
+                                    value={pladge}
+                                    onChange={pladgeHandler}
+
+                                /> {' '}
+
+                                {pladge&&<p style={{marginTop:'10px'}}>
+                                        {' '}Введите сумму:{' '}
+                                        <input
+                                            type ="number"
+                                        />
+                                    </p>
+                                }
+                            </div>
+                        </li>
 
 
-                        <label>
-                            Отдам бесплатно {' '}
-                            <input type="checkbox" name="a" value="1417"/> {' '}
-                        </label>
+                        {/*  СЕРВИСНЫЙ СБОР  */}
+                        <li style={{marginLeft:'7px'}}>
+                            <div>
+                                Сервисный сбор {' '}
+                                <input
+                                    type="checkbox"
+                                    value={serviceFee}
+                                    onChange={serviceFeeHandler}
+
+                                /> {' '}
+
+                                {serviceFee&&<p style={{marginTop:'10px'}}>
+
+                                        <select
+                                            onChange={(e)=>serviceHandler(e)}
+                                        >
+                                            <option />
+                                            <option value="Всегда">Всегда</option>
+                                            <option value="Возврат вещи">Возврат вещи</option>
+                                        </select>
+
+                                        {' '} Сумма:{' '}
+                                        <input
+                                            type ="number"
+                                        />
+                                    </p>
+                                }
+                            </div>
+                        </li>
 
 
-                        <label>
-                            Готов продать {' '}
-                            <input type="checkbox" name="a" value="1417"/> {' '}
-                        </label>
+                        {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
 
-                        <label style={{margin:'30px auto'}}>
+                        <div style={{margin:'30px auto'}}>
                             <input type="submit" name="a" value="Отправить" style={{width:'40%', height:'30px',
                                 float:'left', marginRight:'50px', marginLeft: '20px',}}
                             /> {' '}
                             <input type="reset" name="a" value="Очистить" style={{width:'40%', float:'left',
                                 height:'30px',}}
                             /> {' '}
-                        </label>
+                        </div>
+
 
                     </ol>
                 </form>
 
 
-            </div>
 
+            </div>
         </div>
     )
 }
