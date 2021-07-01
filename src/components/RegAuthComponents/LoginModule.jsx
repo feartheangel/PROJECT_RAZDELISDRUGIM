@@ -75,6 +75,7 @@ const LoginModule = () => {
       .catch((err) => alert('Ошибка авторизации (данные введены неверно)'));
   };
   return (
+    <div className="reg-auth-wrapper">
     <div className="reg-content">
       <div className="reg-form-wrapper">
         <div className="log-form">
@@ -150,6 +151,7 @@ const LoginModule = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

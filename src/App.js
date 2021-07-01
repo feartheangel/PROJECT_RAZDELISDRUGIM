@@ -7,6 +7,7 @@ import {
   PasswordRecoverySubmit,
   PlaseItems,
 } from './components/RegAuthComponents/index';
+import './css/main-page.css';
 
 function App() {
   return (

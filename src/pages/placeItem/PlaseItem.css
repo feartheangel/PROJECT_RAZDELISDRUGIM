@@ -1,59 +1,53 @@
-.PlaseItem{
-    display: flex;
-    justify-content: center;
-    /*padding-top: 100px;*/
-    /*padding-bottom: 100px;*/
-    height: 100%;
-    width: 100%;
-    font-size: 19px;
-    color: rgba(56, 43, 43, 0.8);
+.PlaseItem {
+  display: flex;
+  justify-content: center;
+  /*padding-top: 100px;*/
+  /*padding-bottom: 100px;*/
+  height: 100%;
+  width: 100%;
+  font-size: 19px;
+  color: rgba(56, 43, 43, 0.8);
 
-    background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% );
+  background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100%);
 }
 
-
-.PlaseItem .conteiner{
-    display: block;
-    width: 900px;
-    height: 100%;
-    background: linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127));
-    padding: 30px 20px;
-    font-family: Verdana, Geneva, sans-serif;
+.PlaseItem .conteiner {
+  display: block;
+  width: 900px;
+  height: 100%;
+  background: linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127));
+  padding: 30px 20px;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
-.conteiner h2{
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    text-align: center;
-    border: 2px #000 solid ;
-    width: 400px;
-    color: rgba(56, 43, 43, 0.8);
+.conteiner h2 {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px #000 solid;
+  width: 400px;
+  color: rgba(56, 43, 43, 0.8);
 }
-
 
 .conteiner div {
-    margin: 20px 0;
-    display: block;
-    font-family: Verdana, Geneva, sans-serif;
+  margin: 20px 0;
+  display: block;
+  font-family: Verdana, Geneva, sans-serif;
 }
-
-
-
-
 
 .PlaseItem ol {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
-.PlaseItem ol li span{
-    color: red;
-    font-size: 25px;
+.PlaseItem ol li span {
+  color: red;
+  font-size: 25px;
 }
 
 .PlaseItem textarea {
-    padding: 10px;
-    margin: 5px 15px;
-    width: 435px;
-    height: 100px;
+  padding: 10px;
+  margin: 5px 15px;
+  width: 435px;
+  height: 100px;
 }

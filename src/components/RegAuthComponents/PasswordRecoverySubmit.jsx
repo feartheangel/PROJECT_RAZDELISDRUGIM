@@ -88,6 +88,7 @@ const PasswordRecoverySubmit = () => {
       .catch((err) => alert('Ошибка сброса пароля!'));
   };
   return (
+    <div className="reg-auth-wrapper">
     <div className="reg-content">
       <div className="reg-form-wrapper-email-verification">
         <div className="reg-form-email-verification">
@@ -154,6 +155,7 @@ const PasswordRecoverySubmit = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

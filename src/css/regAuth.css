@@ -4,14 +4,15 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.reg-auth-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #e5e5e5;
+}
+
 .reg-form-action-type-list a {
   text-decoration: none;
   color: inherit;
-}
-
-body {
-  background-color: #e5e5e5;
-  min-width: 600px;
 }
 
 .reg-content {

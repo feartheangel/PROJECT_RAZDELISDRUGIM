@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import classes from './PlaseItem.module.css';
 //<<<<<<< HEAD
 import ImageUpload from '../../components/SubjectsComponents/UpLoader/ImageUpLoad';
 //=======
