@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
+import Requests from '../../http/axios-requests';
 
 const PasswordRecoverySubmit = () => {
   const passwordErrors = [
@@ -21,16 +21,6 @@ const PasswordRecoverySubmit = () => {
   const [showSubmitPass, setShowSubmitPass] = React.useState(false);
   const [formValid, setFormValid] = React.useState();
   const [redirect, setRedirect] = React.useState('');
-
-  const options = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    data: {
-      token: token,
-      password: password,
-    },
-    url: 'http://178.172.136.88/api/password_reset/confirm/',
-  };
 
   React.useEffect(() => {
     if (window.location.href.split('token=')[1]) {
@@ -76,8 +66,7 @@ const PasswordRecoverySubmit = () => {
 
   //обработчик клика по кнопке регистрации
   const onClickSubmit = () => {
-    console.log(options);
-    axios(options)
+    Requests.passwordRecoverySubmit(token, password)
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
           console.log(response);
@@ -89,73 +78,75 @@ const PasswordRecoverySubmit = () => {
   };
   return (
     <div className="reg-auth-wrapper">
-    <div className="reg-content">
-      <div className="reg-form-wrapper-email-verification">
-        <div className="reg-form-email-verification">
-          <ul className="reg-form-action-type-list">
-            <Link tag="li" to="/registration">
-              <li href="#" className="reg-form-action-type-link">
-                Регистрация{redirect}
+      <div className="reg-content">
+        <div className="reg-form-wrapper-email-verification">
+          <div className="reg-form-email-verification">
+            <ul className="reg-form-action-type-list">
+              <Link tag="li" to="/registration">
+                <li href="#" className="reg-form-action-type-link">
+                  Регистрация{redirect}
+                </li>
+              </Link>
+              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
+                Вход
               </li>
-            </Link>
-            <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
-              Вход
-            </li>
-          </ul>
-          <div className="log-form-text-label-p-email__upper">
-            <p>Придумайте новый пароль</p>
-          </div>
-          <div className="reg-form-annotation-wrapper"></div>
-          <div className="reg-form-input-area">
-            <form>
-              <label htmlFor="password" className="log-form-text-label-l">
-                Введите новый пароль
-              </label>
-              <input
-                name="password"
-                id="passsword"
-                type={showPass ? 'text' : 'password'}
-                placeholder="..."
-                className="reg-form-contact-input"
-                value={password}
-                onChange={(e) => {
-                  passwordHandler(e);
-                }}
-              />
-              <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
-              {passwordDirty && passwordError && (
-                <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
-              )}
-              <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
-                Подтвердите новый пароль
-              </label>
-              <input
-                name="passwordSubmit"
-                id="passwordSubmit"
-                type={showSubmitPass ? 'text' : 'password'}
-                placeholder="..."
-                className="reg-form-contact-input"
-                value={passwordSubmit}
-                onChange={(e) => {
-                  passwordSubmitHandler(e);
-                }}
-              />
-              <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
-              {passwordSubmitDirty && passwordSubmitError && (
-                <label className="reg-form-text-label-l__alert-moved">{passwordSubmitError}</label>
-              )}
-              <input
-                onClick={onClickSubmit}
-                type="button"
-                value="Продолжить"
-                className="reg-form-submit-button"
-                disabled={!formValid}
-              />
-            </form>
+            </ul>
+            <div className="log-form-text-label-p-email__upper">
+              <p>Придумайте новый пароль</p>
+            </div>
+            <div className="reg-form-annotation-wrapper"></div>
+            <div className="reg-form-input-area">
+              <form>
+                <label htmlFor="password" className="log-form-text-label-l">
+                  Введите новый пароль
+                </label>
+                <input
+                  name="password"
+                  id="passsword"
+                  type={showPass ? 'text' : 'password'}
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={password}
+                  onChange={(e) => {
+                    passwordHandler(e);
+                  }}
+                />
+                <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
+                {passwordDirty && passwordError && (
+                  <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
+                )}
+                <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
+                  Подтвердите новый пароль
+                </label>
+                <input
+                  name="passwordSubmit"
+                  id="passwordSubmit"
+                  type={showSubmitPass ? 'text' : 'password'}
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={passwordSubmit}
+                  onChange={(e) => {
+                    passwordSubmitHandler(e);
+                  }}
+                />
+                <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
+                {passwordSubmitDirty && passwordSubmitError && (
+                  <label className="reg-form-text-label-l__alert-moved">
+                    {passwordSubmitError}
+                  </label>
+                )}
+                <input
+                  onClick={onClickSubmit}
+                  type="button"
+                  value="Продолжить"
+                  className="reg-form-submit-button"
+                  disabled={!formValid}
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

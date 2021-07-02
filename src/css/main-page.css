@@ -122,6 +122,10 @@ li {
   background: transparent;
 }
 
+.login-button:hover {
+  cursor: pointer;
+}
+
 .add-subject {
   width: 218px;
   height: 45px;
@@ -132,6 +136,10 @@ li {
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
   border: 1px solid transparent;
+}
+
+.add-subject:hover {
+  cursor: pointer;
 }
 
 .header-lower-table {

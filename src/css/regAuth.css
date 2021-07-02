@@ -5,9 +5,20 @@
 }
 
 .reg-auth-wrapper {
-  width: 100%;
-  height: 100%;
-  background-color: #e5e5e5;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(9, 29, 32, 0.4);
+  opacity: 0%;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.reg-auth-wrapper-active {
+  opacity: 100%;
+  pointer-events: all;
 }
 
 .reg-form-action-type-list a {
@@ -22,20 +33,18 @@
 }
 
 .reg-form-wrapper {
-  margin-top: 30px;
   display: flex;
-  flex-direction: space-between;
+  align-items: flex-start;
 }
 
 .reg-form {
   display: flex;
   flex-direction: column;
   width: 540px;
-  height: 950px;
-  left: 450px;
-  top: 155px;
+  height: 793px;
   background: #ffffff;
   border-radius: 30px;
+  transform: scale(0.9);
 }
 
 .log-form {
@@ -47,6 +56,8 @@
   top: 155px;
   background: #ffffff;
   border-radius: 30px;
+  margin-top: 30px;
+  transform: scale(0.9);
 }
 
 .reg-form-action-type-list {
@@ -168,7 +179,7 @@
   border: 1px solid #828282;
   box-sizing: border-box;
   background: transparent;
-  margin-top: 55px;
+  margin-top: 20px;
   font-size: 20px;
 }
 
@@ -183,7 +194,7 @@
 }
 
 .reg-form-annotation {
-  margin-top: 55px;
+  margin-top: 20px;
   width: 299px;
   height: 42px;
   font-size: 12px;
@@ -374,6 +385,8 @@
   top: 155px;
   background: #ffffff;
   border-radius: 30px;
+  margin-top: 30px;
+  transform: scale(0.9);
 }
 
 .reg-form-wrapper-email-verification {
