@@ -8,7 +8,7 @@ const BaseModal = ({ modalActive, setModalActive }) => {
 
   return (
     <div
-      className={modalActive ? 'reg-auth-wrapper reg-auth-wrapper-active' : 'reg-auth-wrapper'}
+      className={modalActive ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}
       onClick={() => setModalActive(false)}>
       <div className="reg-content">
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">

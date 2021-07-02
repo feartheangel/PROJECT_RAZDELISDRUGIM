@@ -11,13 +11,13 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(9, 29, 32, 0.4);
-  opacity: 0%;
+  opacity: 0;
   transition: 0.2s;
   pointer-events: none;
 }
 
-.reg-auth-wrapper-active {
-  opacity: 100%;
+.reg-auth-wrapper.active {
+  opacity: 100;
   pointer-events: all;
 }
 
