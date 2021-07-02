@@ -57,54 +57,58 @@ const EmailSubmittionModule = () => {
       .catch(() => alert('Введен неверный код.'));
   };
   return (
-    <div className="reg-content">
-      <div className="reg-form-wrapper-email-verification">
-        <div className="reg-form-email-verification">
-          <ul className="reg-form-action-type-list">
-            <Link tag="li" to="/registration">
-              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
-                Регистрация{redirect}
+    <div className="reg-auth-wrapper">
+      <div className="reg-content">
+        <div className="reg-form-wrapper-email-verification">
+          <div className="reg-form-email-verification">
+            <ul className="reg-form-action-type-list">
+              <Link tag="li" to="/registration">
+                <li
+                  href="#"
+                  className="reg-form-action-type-link reg-form-action-type-link__active">
+                  Регистрация{redirect}
+                </li>
+              </Link>
+              <li href="#" className="reg-form-action-type-link">
+                Вход
               </li>
-            </Link>
-            <li href="#" className="reg-form-action-type-link">
-              Вход
-            </li>
-          </ul>
-          <div className="log-form-text-label-p-email__upper">
-            <p>Подтвердите почту</p>
-          </div>
-          <div className="reg-form-annotation-wrapper">
-            <div className="reg-form-annotation__email">
-              <p>(На указанный Email было отправлено письмо с кодом подтверждения)</p>
+            </ul>
+            <div className="log-form-text-label-p-email__upper">
+              <p>Подтвердите почту</p>
             </div>
-          </div>
-          <div className="reg-form-input-area">
-            <form>
-              <label htmlFor="login" className="log-form-text-label-l">
-                Код из письма
-              </label>
-              <input
-                name="code"
-                id="code"
-                type="text"
-                placeholder="..."
-                className="reg-form-contact-input"
-                value={code}
-                onChange={(e) => {
-                  codeHandler(e);
-                }}
-              />
-              {codeDirty && codeError && (
-                <label className="reg-form-text-label-l__alert">{codeError}</label>
-              )}
-              <input
-                onClick={onClickSubmit}
-                type="button"
-                value="Продолжить"
-                className="reg-form-submit-button"
-                disabled={!formValid}
-              />
-            </form>
+            <div className="reg-form-annotation-wrapper">
+              <div className="reg-form-annotation__email">
+                <p>(На указанный Email было отправлено письмо с кодом подтверждения)</p>
+              </div>
+            </div>
+            <div className="reg-form-input-area">
+              <form>
+                <label htmlFor="login" className="log-form-text-label-l">
+                  Код из письма
+                </label>
+                <input
+                  name="code"
+                  id="code"
+                  type="text"
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={code}
+                  onChange={(e) => {
+                    codeHandler(e);
+                  }}
+                />
+                {codeDirty && codeError && (
+                  <label className="reg-form-text-label-l__alert">{codeError}</label>
+                )}
+                <input
+                  onClick={onClickSubmit}
+                  type="button"
+                  value="Продолжить"
+                  className="reg-form-submit-button"
+                  disabled={!formValid}
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>

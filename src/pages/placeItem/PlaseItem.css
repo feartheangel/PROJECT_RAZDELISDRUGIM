@@ -1,5 +1,5 @@
 
-                            /*ГЛАВНАЯ СТРАНИЦА*/
+/*ГЛАВНАЯ СТРАНИЦА*/
 .PlaseItem{
     display: flex;
     justify-content: center;
@@ -13,13 +13,13 @@
     background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% );
 }
 
-                            /*КОНТЕЙНЕР С КОНТЕНТОМ*/
+/*КОНТЕЙНЕР С КОНТЕНТОМ*/
 .conteiner{
     display: block;
     width: 900px;
     height: 100%;
     background: linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127));
-    padding: 30px 20px;
+    padding: 30px 10px;
     font-family: Verdana, Geneva, sans-serif;
     border-radius: 30px;
 }
@@ -44,7 +44,7 @@
 }
 
 .conteiner ol {
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 
@@ -74,7 +74,7 @@
     font-size:20px;
 }
 
-                            /* ALL INPUTS*/
+/* ALL INPUTS*/
 
 /* ДЛЯ ЧИСЛОВЫХ ВВОДОВ*/
 .input-number{
@@ -87,6 +87,7 @@
 .input-text{
     height: 20px;
     font-size: 18px;
+    /*width: 200px;*/
 }
 
 /* ДЛЯ ЧЕКБОКСОВ */
@@ -106,7 +107,7 @@
 
 
 
-                            /* ALL SELECT*/
+/* ALL SELECT*/
 
 /* ДЛЯ РАЗДЕЛОВ И ПЕРЕЧИСЛЕНИЙ*/
 .option-razdel {
@@ -128,7 +129,7 @@
 }
 
 
-                            /* SPAN */
+/* SPAN */
 
 .span-zvezda{
     color: red;
@@ -141,3 +142,7 @@
     color: rgba(243, 2, 2, 0.62);
 }
 
+
+
+
+/*>>>>>>> c1e5f603489f2723f82055383cba07427b1b9267*/

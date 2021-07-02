@@ -163,142 +163,146 @@ const RegistrationModuleBasic = () => {
   };
 
   return (
-    <div className="reg-content">
-      <div className="reg-form-wrapper">
-        <div className="reg-form">
-          <ul className="reg-form-action-type-list">
-            <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
-              Регистрация
-            </li>
-            <Link to="/login">
-              <li href="#" className="reg-form-action-type-link">
-                Вход
+    <div className="reg-auth-wrapper">
+      <div className="reg-content">
+        <div className="reg-form-wrapper">
+          <div className="reg-form">
+            <ul className="reg-form-action-type-list">
+              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
+                Регистрация
               </li>
-            </Link>
-          </ul>
-          <div className="reg-form-socials">
-            <img onClick={vkAuth} src={vkLogo} alt="VK" />
-            <img src={facebookLogo} alt="Facebook" />
-            <img src={googleLogo} alt="Google" />
-          </div>
-          <div className="reg-form-text-label-p">
-            <p>или</p>
-          </div>
-          <div className="reg-form-input-area">
-            <form>
-              <label htmlFor="contact" className="reg-form-text-label-l">
-                Номер телефона или Email <span style={{ color: 'red' }}>*</span>
-              </label>
-              <input
-                name="contact"
-                id="contact"
-                type="text"
-                placeholder="..."
-                className="reg-form-contact-input"
-                value={contact}
-                onChange={(e) => {
-                  contactHandler(e);
-                }}
-              />
-              {contactDirty && contactError && (
-                <label className="reg-form-text-label-l__alert">{contactError}</label>
-              )}
-              <label htmlFor="password" className="reg-form-text-label-l">
-                Введите пароль <span style={{ color: 'red' }}>*</span>
-              </label>
-              <input
-                name="password"
-                id="password"
-                type={showPass ? 'text' : 'password'}
-                placeholder="..."
-                className="reg-form-contact-input"
-                value={password}
-                onChange={(e) => passwordHandler(e)}
-              />
-              <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
-              {passwordDirty && passwordError && (
-                <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
-              )}
-              <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
-                Подтвердите пароль <span style={{ color: 'red' }}>*</span>
-                {redirect}
-              </label>
-              <input
-                name="passwordSubmit"
-                id="passwordSubmit"
-                type={showSubmitPass ? 'text' : 'password'}
-                placeholder="..."
-                className="reg-form-contact-input"
-                value={passwordSubmit}
-                onChange={(e) => {
-                  passwordSubmitHandler(e);
-                }}
-              />
-              <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
-              {passwordSubmitDirty && passwordSubmitError && (
-                <label className="reg-form-text-label-l__alert-moved">{passwordSubmitError}</label>
-              )}
-              <label htmlFor="referral" className="reg-form-text-label-l__moved">
-                Реферальный код{redirect}
-              </label>
-              <input
-                name="referral"
-                id="referral"
-                type="text"
-                placeholder="..."
-                className="reg-form-contact-input"
-                value={referral}
-                onChange={(e) => {
-                  setReferral(e.target.value);
-                }}
-              />
+              <Link to="/login">
+                <li href="#" className="reg-form-action-type-link">
+                  Вход
+                </li>
+              </Link>
+            </ul>
+            <div className="reg-form-socials">
+              <img onClick={vkAuth} src={vkLogo} alt="VK" />
+              <img src={facebookLogo} alt="Facebook" />
+              <img src={googleLogo} alt="Google" />
+            </div>
+            <div className="reg-form-text-label-p">
+              <p>или</p>
+            </div>
+            <div className="reg-form-input-area">
+              <form>
+                <label htmlFor="contact" className="reg-form-text-label-l">
+                  Номер телефона или Email <span style={{ color: 'red' }}>*</span>
+                </label>
+                <input
+                  name="contact"
+                  id="contact"
+                  type="text"
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={contact}
+                  onChange={(e) => {
+                    contactHandler(e);
+                  }}
+                />
+                {contactDirty && contactError && (
+                  <label className="reg-form-text-label-l__alert">{contactError}</label>
+                )}
+                <label htmlFor="password" className="reg-form-text-label-l">
+                  Введите пароль <span style={{ color: 'red' }}>*</span>
+                </label>
+                <input
+                  name="password"
+                  id="password"
+                  type={showPass ? 'text' : 'password'}
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={password}
+                  onChange={(e) => passwordHandler(e)}
+                />
+                <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
+                {passwordDirty && passwordError && (
+                  <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
+                )}
+                <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
+                  Подтвердите пароль <span style={{ color: 'red' }}>*</span>
+                  {redirect}
+                </label>
+                <input
+                  name="passwordSubmit"
+                  id="passwordSubmit"
+                  type={showSubmitPass ? 'text' : 'password'}
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={passwordSubmit}
+                  onChange={(e) => {
+                    passwordSubmitHandler(e);
+                  }}
+                />
+                <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
+                {passwordSubmitDirty && passwordSubmitError && (
+                  <label className="reg-form-text-label-l__alert-moved">
+                    {passwordSubmitError}
+                  </label>
+                )}
+                <label htmlFor="referral" className="reg-form-text-label-l__moved">
+                  Реферальный код{redirect}
+                </label>
+                <input
+                  name="referral"
+                  id="referral"
+                  type="text"
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={referral}
+                  onChange={(e) => {
+                    setReferral(e.target.value);
+                  }}
+                />
 
-              <div className="reg-form-reg-type-choice" onChange={(e) => radioHandler(e)}>
-                <div>
-                  <input
-                    type="radio"
-                    className="reg-form-radio-button"
-                    name="type_choice"
-                    id="reg-form-reg-type-choice__individual"
-                    value="1"
-                    defaultChecked
-                  />
-                  <label
-                    htmlFor="reg-form-reg-type-choice__individual"
-                    className="reg-form-text-label-l__radio">
-                    Частное лицо
-                  </label>
+                <div className="reg-form-reg-type-choice" onChange={(e) => radioHandler(e)}>
+                  <div>
+                    <input
+                      type="radio"
+                      className="reg-form-radio-button"
+                      name="type_choice"
+                      id="reg-form-reg-type-choice__individual"
+                      value="1"
+                      defaultChecked
+                    />
+                    <label
+                      htmlFor="reg-form-reg-type-choice__individual"
+                      className="reg-form-text-label-l__radio">
+                      Частное лицо
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="type_choice"
+                      id="reg-form-reg-type-choice__entity"
+                      value="2"
+                      className="reg-form-radio-button"
+                    />
+                    <label
+                      htmlFor="reg-form-reg-type-choice__entity"
+                      className="reg-form-text-label-l__radio">
+                      Бизнес
+                    </label>
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="radio"
-                    name="type_choice"
-                    id="reg-form-reg-type-choice__entity"
-                    value="2"
-                    className="reg-form-radio-button"
-                  />
-                  <label
-                    htmlFor="reg-form-reg-type-choice__entity"
-                    className="reg-form-text-label-l__radio">
-                    Бизнес
-                  </label>
-                </div>
+                <input
+                  onClick={onClickSubmit}
+                  type="button"
+                  value="Зарегистрироваться"
+                  className="reg-form-submit-button"
+                  disabled={!formValid}
+                />
+              </form>
+            </div>
+            <div className="reg-form-annotation-wrapper">
+              <div className="reg-form-annotation">
+                <p>
+                  Нажимая «Зарегистрироваться», даю согласие на обработку персональных данных и
+                  принимаю условия пользовательского соглашения
+                </p>
               </div>
-              <input
-                onClick={onClickSubmit}
-                type="button"
-                value="Зарегистрироваться"
-                className="reg-form-submit-button"
-                disabled={!formValid}
-              />
-            </form>
-          </div>
-          <div className="reg-form-annotation-wrapper">
-            <div className="reg-form-annotation">
-              <p>
-                Нажимая «Зарегистрироваться», даю согласие на обработку персональных данных и
-                принимаю условия пользовательского соглашения
-              </p>
             </div>
           </div>
         </div>
