@@ -1,5 +1,7 @@
 import React from 'react';
 import '../css/main-page.css';
+import { Link } from 'react-router-dom';
+import BaseModal from '../components/RegAuthComponents/BaseModal';
 
 //импорт всех картинок
 import abil1 from '../img/MainPage/abil1.png';
@@ -23,7 +25,6 @@ import jacket from '../img/MainPage/jacket.png';
 import Logo from '../img/MainPage/Logo.png';
 import Logo2 from '../img/MainPage/Logo2.png';
 import Macbook from '../img/MainPage/Macbook.png';
-import Map1 from '../img/MainPage/Map1.png';
 import mark from '../img/MainPage/Mark.png';
 import ApplePay from '../img/MainPage/Method=ApplePay.png';
 import Mastercard from '../img/MainPage/Method=Mastercard.png';
@@ -31,7 +32,6 @@ import Visa from '../img/MainPage/Method=Visa.png';
 import Webmoney from '../img/MainPage/Method=Webmoney.png';
 import Yandex from '../img/MainPage/Method=Yandex.png';
 import moneyTime from '../img/MainPage/money-time.png';
-import News from '../img/MainPage/News.png';
 import partner1 from '../img/MainPage/partner1.png';
 import partner2 from '../img/MainPage/partner2.png';
 import partner3 from '../img/MainPage/partner3.png';
@@ -44,6 +44,19 @@ import Union from '../img/MainPage/Union.png';
 import VK from '../img/MainPage/VK.png';
 
 const Home = () => {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [modalActive, setModalActive] = React.useState(false);
+
+  React.useEffect(() => {
+    if (localStorage.getItem('key')) {
+      setIsLoggedIn(true);
+    } else setIsLoggedIn(false);
+  }, [localStorage.getItem('key')]);
+
+  const logout = () => {
+    localStorage.removeItem('key');
+    setIsLoggedIn(false);
+  };
   return (
     <div class="content">
       <header className="header">
@@ -65,8 +78,26 @@ const Home = () => {
             </div>
           </div>
           <div className="header-right-content">
-            <input type="button" value="Предложить вещь" className="header-button add-subject" />
-            <input type="button" value="Войти" className=" header-button login-button" />
+            <Link to="/place-item">
+              <input type="button" value="Предложить вещь" className="header-button add-subject" />
+            </Link>
+            {!isLoggedIn && (
+              <input
+                onClick={() => setModalActive(true)}
+                type="button"
+                value="Войти"
+                className=" header-button login-button"
+              />
+            )}
+
+            {isLoggedIn && (
+              <input
+                onClick={logout}
+                type="button"
+                value="Выйти"
+                className=" header-button login-button"
+              />
+            )}
           </div>
         </div>
         <div className="header-lower-table">
@@ -190,7 +221,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <img src="Arrow_right.png" alt="" className="recent-arrow-right" />
+            <img src={ArrowRight} alt="" className="recent-arrow-right" />
           </div>
         </div>
       </section>
@@ -703,6 +734,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <BaseModal modalActive={modalActive} setModalActive={setModalActive} />
     </div>
   );
 };
