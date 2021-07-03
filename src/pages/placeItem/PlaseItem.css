@@ -3,25 +3,33 @@
 .PlaseItem{
     display: flex;
     justify-content: center;
-    /*padding-top: 100px;*/
-    /*padding-bottom: 100px;*/
-    height: 100%;
-    width: 100%;
     font-size: 22px;
     color: rgba(56, 43, 43, 0.8);
 
-    background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% );
+}
+
+html {
+    background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% ) no-repeat center center fixed;
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
 }
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
 .conteiner{
-    display: block;
     width: 900px;
-    height: 100%;
-    background: linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127));
+    position: relative;
+    background: linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127)) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     padding: 30px 10px;
     font-family: Verdana, Geneva, sans-serif;
-    border-radius: 30px;
+
 }
 
 .conteiner h2{

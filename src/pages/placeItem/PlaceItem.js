@@ -904,9 +904,6 @@ const PlaceItem = () =>{
 
                     </ol>
                 </form>
-
-
-
             </div>
         </div>
     )
