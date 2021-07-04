@@ -1,68 +1,33 @@
 /*ГЛАВНАЯ СТРАНИЦА*/
-<<<<<<< HEAD
-.PlaseItem{
-    display: flex;
-    justify-content: center;
-    font-size: 22px;
-    color: rgba(56, 43, 43, 0.8);
 
+.PlaseItem {
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  color: rgba(56, 43, 43, 0.8);
 }
 
 html {
-    background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% ) no-repeat center center fixed;
+    /*background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% ) no-repeat center center fixed;*/
     min-height: 100%;
     min-width: 1024px;
     width: 100%;
     height: auto;
     top: 0;
     left: 0;
-}
-
-/*КОНТЕЙНЕР С КОНТЕНТОМ*/
-.conteiner{
-    width: 900px;
-    position: relative;
-    background: linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127)) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    padding: 30px 10px;
-    font-family: Verdana, Geneva, sans-serif;
+  background: url("fon-otpravki5.jpg") repeat center center fixed;
 
 }
 
-.conteiner h2{
-    display: flex;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 40px;
-    text-align: center;
-    width: 500px;
-    border-radius: 20px;
-    color: indianred;
-=======
-.PlaseItem {
-  display: flex;
-  justify-content: center;
-  /*padding-top: 100px;*/
-  /*padding-bottom: 100px;*/
-  height: 100%;
-  width: 100%;
-  font-size: 22px;
-  color: rgba(56, 43, 43, 0.8);
-
-  background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100%);
-}
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
 .conteiner {
   display: block;
   width: 900px;
   height: 100%;
-  background: linear-gradient(to right, rgb(246, 239, 210), rgb(150 141 127));
+  background: linear-gradient(to right, rgba(255, 255, 255, .94), rgb(150 141 127));
   padding: 30px 10px;
+  margin: 20px 0;
   font-family: Verdana, Geneva, sans-serif;
   border-radius: 30px;
 }
@@ -77,7 +42,6 @@ html {
   width: 500px;
   border-radius: 20px;
   color: indianred;
->>>>>>> 29bb6f856c31518c66a6fc2cbd22832be08e2b2f
 }
 
 .conteiner div {
@@ -94,7 +58,10 @@ html {
   padding: 10px;
   margin: 5px 15px;
   width: 435px;
-  height: 70px;
+  height: auto;
+  min-height: 70px;
+  font-size: 17px;
+  outline: none;
 }
 
 /* ДЛЯ СТРОКИ ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ */
@@ -126,9 +93,10 @@ html {
 
 /* ДЛЯ ТЕКСТОВЫХ ВВОДОВ*/
 .input-text {
-  height: 20px;
+  height: 22px;
   font-size: 18px;
-  /*width: 200px;*/
+  width: 200px;
+  padding-left: 5px;
 }
 
 /* ДЛЯ ЧЕКБОКСОВ */
@@ -177,5 +145,8 @@ html {
   margin: 0 5px;
   color: rgba(243, 2, 2, 0.62);
 }
+
+
+
 
 /*>>>>>>> c1e5f603489f2723f82055383cba07427b1b9267*/
