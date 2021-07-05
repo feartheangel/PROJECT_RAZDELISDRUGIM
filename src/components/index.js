@@ -5,3 +5,4 @@ export { default as EmailSubmittionModule } from './RegAuthComponents/EmailSubmi
 export { default as PasswordRecoveryEntry } from './RegAuthComponents/PasswordRecoveryEntry';
 export { default as Header } from './PagesArchitecture/Header';
 export { default as Footer } from './PagesArchitecture/Footer';
+export { default as ProfilePopUp } from './MainPage/ProfilePopUp';

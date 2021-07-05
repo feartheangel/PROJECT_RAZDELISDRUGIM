@@ -6,9 +6,15 @@ import Burger from '../../img/MainPage/Burger.png';
 import Logo from '../../img/MainPage/Logo.png';
 import mark from '../../img/MainPage/Mark.png';
 import { logoutAction } from '../../redux/actions/userData';
+import { ProfilePopUp } from '../index';
+import Favorites from '../../img/MainPage/Favorites.png';
+import Notifications from '../../img/MainPage/Notifications.png';
+import UserAvatar from '../../img/MainPage/UserAvatar.png';
+import MenuStroke from '../../img/MainPage/MenuStroke.png';
 
 const Header = ({ setModalActive }) => {
   const [redirect, setRedirect] = React.useState();
+  const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
 
   const dispatch = useDispatch();
 
@@ -64,12 +70,21 @@ const Header = ({ setModalActive }) => {
           )}
 
           {isLoggedIn && (
-            <input
-              onClick={logout}
-              type="button"
-              value="Выйти"
-              className=" header-button login-button"
-            />
+            <div className="header-right-content-logged-div-wrapper">
+              <div className="header-right-content-logged-div">
+                <img className="header-right-content-logged-img" src={Favorites} />
+                <img className="header-right-content-logged-img" src={Notifications} />
+                <div
+                  onClick={() => setProfilePopUpActive(!profilePopUpActive)}
+                  className="user-avatar-group">
+                  <img className="header-right-content-logged-img" src={UserAvatar} />
+                  <img className="header-right-content-logged-img" src={MenuStroke} />
+                </div>
+              </div>
+              {profilePopUpActive && (
+                <ProfilePopUp profilePopUpActive={profilePopUpActive} logout={logout} />
+              )}
+            </div>
           )}
         </div>
       </div>

@@ -107,6 +107,18 @@ class Requests {
       return response;
     });
   }
+
+  static sendGoogleCode(code) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `http://178.172.136.88/api/jwt/access-token-vk/${code}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 export default Requests;

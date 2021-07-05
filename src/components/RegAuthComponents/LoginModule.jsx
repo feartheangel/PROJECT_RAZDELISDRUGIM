@@ -31,6 +31,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       setFormValid(true);
     }
 
+    //проверка на строку авторизации через ВК
     if (window.location.href.split('?code=')[1]) {
       code = window.location.href.split('?code=')[1];
       console.log(code);
@@ -38,7 +39,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
         console.log(response);
         Requests.convertToken(response.data.access_token).then((response) => {
           if (response.status === 200 || response.status === 201) {
-            localStorage.setItem('key', response.data.access_token);
+            localStorage.setItem('key', response.data.access);
             dispatch(loginAction());
             setModalActive(false);
             setSuccessLogin(<Redirect to="/" />);

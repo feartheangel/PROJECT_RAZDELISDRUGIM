@@ -54,6 +54,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       setFormValid(true);
     }
 
+    //проверка на строку авторизации через ВК
     if (window.location.href.split('?code=')[1]) {
       code = window.location.href.split('?code=')[1];
       console.log(code);
@@ -61,13 +62,19 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
         console.log(response);
         Requests.convertToken(response.data.access_token).then((response) => {
           if (response.status === 200 || response.status === 201) {
-            localStorage.setItem('key', response.data.access_token);
+            localStorage.setItem('key', response.data.access);
             dispatch(loginAction());
             setModalActive(false);
             setRedirect(<Redirect to="/" />);
           }
         });
       });
+    }
+
+    //проверка на строку авторизации Google
+    if (window.location.href.split('&code')[1]) {
+      code = window.location.href.split('&code')[1].split('&')[0];
+      console.log(code);
     }
   }, [contactError, passwordError, passwordSubmitError, window.location.href]);
 
