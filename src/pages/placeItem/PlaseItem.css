@@ -12,7 +12,8 @@
   height: auto;
   top: 0;
   left: 0;
-  background: url('fon-otpravki5.jpg') repeat center center fixed;
+  /*background: url('fon-otpravki5.jpg') repeat center center fixed;*/
+background: rgba(76, 201, 240, 0.05);
 }
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
@@ -20,7 +21,9 @@
   display: block;
   width: 900px;
   height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.94), rgb(150 141 127));
+  /*background: linear-gradient(to right, rgba(255, 255, 255, 0.94), rgb(150 141 127));*/
+  background: #ffffff;
+  box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);
   padding: 30px 10px;
   margin: 20px 0;
   font-family: Verdana, Geneva, sans-serif;
@@ -36,7 +39,7 @@
   text-align: center;
   width: 500px;
   border-radius: 20px;
-  color: indianred;
+  color: rgba(56, 43, 43, 0.6);
 }
 
 .conteiner div {
@@ -50,9 +53,9 @@
 }
 
 .conteiner textarea {
+  resize: none;
   padding: 10px;
-  margin: 5px 15px;
-  width: 435px;
+  width: 470px;
   height: auto;
   min-height: 70px;
   font-size: 17px;
