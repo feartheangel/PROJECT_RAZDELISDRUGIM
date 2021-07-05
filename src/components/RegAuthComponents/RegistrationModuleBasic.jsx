@@ -7,7 +7,7 @@ import { vkAuth } from '../../http/social-auth';
 import Requests from '../../http/axios-requests';
 import '../../css/regAuth.css';
 
-const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
+const RegistrationModuleBasic = ({ setActiveForm, setModalActive, setIsLoggedIn }) => {
   //указываем основные константы для интерфейса
   const contactErrors = ['Это поле не может быть пустым', 'Некорректный телефон/Email'];
   const passwordErrors = [
@@ -58,6 +58,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
         Requests.convertToken(response.data.access_token).then((response) => {
           if (response.status === 200 || response.status === 201) {
             localStorage.setItem('key', response.data.access_token);
+            setIsLoggedIn(true);
             setModalActive(false);
           }
         });

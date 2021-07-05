@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
-import { Home } from './pages/index';
-import { PasswordRecoverySubmit, PlaseItems } from './components/RegAuthComponents/index';
+import { Home, PlaceItem } from './pages/index';
+import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <div className="content">
         <Route path="/" component={Home} exact />
         <Route path="/recovery-submit" component={PasswordRecoverySubmit} exact />
-        <Route path="/place-item" component={PlaseItems} exact />
+        <Route path="/place-item" component={PlaceItem} exact />
       </div>
     </div>
   );

@@ -331,15 +331,15 @@ li {
   height: 594px;
   padding: 0px 165px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   background: url(../img/MainPage/Map1.png) no-repeat center center;
 }
 
 .map-search {
   display: flex;
-  margin-left: 65px;
-  margin-top: 26px;
+  margin-right: 300px;
+  margin-top: 30px;
 }
 
 .map-input {

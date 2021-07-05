@@ -5,27 +5,22 @@
   justify-content: center;
   font-size: 22px;
   color: rgba(56, 43, 43, 0.8);
+  /*background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% ) no-repeat center center fixed;*/
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  background: url('fon-otpravki5.jpg') repeat center center fixed;
 }
-
-html {
-    /*background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% ) no-repeat center center fixed;*/
-    min-height: 100%;
-    min-width: 1024px;
-    width: 100%;
-    height: auto;
-    top: 0;
-    left: 0;
-  background: url("fon-otpravki5.jpg") repeat center center fixed;
-
-}
-
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
 .conteiner {
   display: block;
   width: 900px;
   height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, .94), rgb(150 141 127));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.94), rgb(150 141 127));
   padding: 30px 10px;
   margin: 20px 0;
   font-family: Verdana, Geneva, sans-serif;
@@ -145,8 +140,5 @@ html {
   margin: 0 5px;
   color: rgba(243, 2, 2, 0.62);
 }
-
-
-
 
 /*>>>>>>> c1e5f603489f2723f82055383cba07427b1b9267*/

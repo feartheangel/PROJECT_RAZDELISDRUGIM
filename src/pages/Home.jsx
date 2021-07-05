@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/main-page.css';
 import { Link } from 'react-router-dom';
+import { Header, Footer } from '../components/index';
 import BaseModal from '../components/RegAuthComponents/BaseModal';
 
 //импорт всех картинок
@@ -11,7 +12,6 @@ import abil4 from '../img/MainPage/abil4.png';
 import abil5 from '../img/MainPage/abil5.png';
 import ArrowLeft from '../img/MainPage/Arrow_left.png';
 import ArrowRight from '../img/MainPage/Arrow_right.png';
-import Burger from '../img/MainPage/Burger.png';
 import car from '../img/MainPage/car.png';
 import cardFire from '../img/MainPage/card-fire.png';
 import cardMoney from '../img/MainPage/card-money.png';
@@ -19,13 +19,10 @@ import cardVerify from '../img/MainPage/card-verify.png';
 import Free from '../img/MainPage/Free.png';
 import Facebook from '../img/MainPage/Facebook.png';
 import Instagram from '../img/MainPage/Instagram.png';
-import LanguagePlanet from '../img/MainPage/Language-planet.png';
 import like from '../img/MainPage/like.png';
 import jacket from '../img/MainPage/jacket.png';
-import Logo from '../img/MainPage/Logo.png';
 import Logo2 from '../img/MainPage/Logo2.png';
 import Macbook from '../img/MainPage/Macbook.png';
-import mark from '../img/MainPage/Mark.png';
 import ApplePay from '../img/MainPage/Method=ApplePay.png';
 import Mastercard from '../img/MainPage/Method=Mastercard.png';
 import Visa from '../img/MainPage/Method=Visa.png';
@@ -53,65 +50,13 @@ const Home = () => {
     } else setIsLoggedIn(false);
   }, [localStorage.getItem('key')]);
 
-  const logout = () => {
-    localStorage.removeItem('key');
-    setIsLoggedIn(false);
-  };
   return (
     <div class="content">
-      <header className="header">
-        <div className="news-alert-block-wrapper">
-          <div className="news-alert-block">
-            <p className="news-alert-p">Теперь вы можете искать вещь в аренду на карте!</p>
-          </div>
-        </div>
-        <div className="header__inner">
-          <div className="header-left-content">
-            <img src={Logo} alt="Global Sharing Platform" className="logo" />
-            <div className="location-selector">
-              <img src={mark} alt="" className="location-img" />
-              <p className="location-p">Минск</p>
-            </div>
-            <div className="laguage-selector-wrapper">
-              <img src={LanguagePlanet} alt="" className="language-planet-img" />
-              <p className="language-selector">RU</p>
-            </div>
-          </div>
-          <div className="header-right-content">
-            <Link to="/place-item">
-              <input type="button" value="Предложить вещь" className="header-button add-subject" />
-            </Link>
-            {!isLoggedIn && (
-              <input
-                onClick={() => setModalActive(true)}
-                type="button"
-                value="Войти"
-                className=" header-button login-button"
-              />
-            )}
-
-            {isLoggedIn && (
-              <input
-                onClick={logout}
-                type="button"
-                value="Выйти"
-                className=" header-button login-button"
-              />
-            )}
-          </div>
-        </div>
-        <div className="header-lower-table">
-          <div className="header-lower-table-left">
-            <img src={Burger} alt="" className="burger-button" />
-          </div>
-          <div className="header-lower-table-right">
-            <div className="search-wrapper">
-              <input type="text" value="Хочу взять в аренду..." className="search-input" />
-              <input type="button" className="search-button" />
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header
+        setIsLoggedIn={setIsLoggedIn}
+        setModalActive={setModalActive}
+        isLoggedIn={isLoggedIn}
+      />
       <section className="recent-wrapper">
         <div className="recent-content">
           <p className="recent-p">Недавно добавленные</p>
@@ -734,7 +679,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <BaseModal modalActive={modalActive} setModalActive={setModalActive} />
+      <BaseModal
+        setIsLoggedIn={setIsLoggedIn}
+        modalActive={modalActive}
+        setModalActive={setModalActive}
+      />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { vkAuth } from '../../http/social-auth';
 import Requests from '../../http/axios-requests';
 
-const LoginModule = ({ setModalActive, setActiveForm }) => {
+const LoginModule = ({ setModalActive, setActiveForm, setLoggedIn, setIsLoggedIn }) => {
   let code = '';
   const inputErrors = ['Поле не может быть пустым', 'Минимум 8 символов'];
 
@@ -36,6 +36,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
         Requests.convertToken(response.data.access_token).then((response) => {
           if (response.status === 200 || response.status === 201) {
             localStorage.setItem('key', response.data.access_token);
+            setIsLoggedIn(true);
             setModalActive(false);
           }
         });

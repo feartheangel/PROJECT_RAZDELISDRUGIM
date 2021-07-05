@@ -3,7 +3,7 @@ import LoginModule from './LoginModule';
 import RegistrationModuleBasic from './RegistrationModuleBasic';
 import PasswordRecoveryEntry from './PasswordRecoveryEntry';
 
-const BaseModal = ({ modalActive, setModalActive }) => {
+const BaseModal = ({ modalActive, setModalActive, setIsLoggedIn }) => {
   const [activeForm, setActiveForm] = React.useState('login');
 
   return (
@@ -13,7 +13,11 @@ const BaseModal = ({ modalActive, setModalActive }) => {
       <div className="reg-content">
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
           {activeForm === 'login' ? (
-            <LoginModule setModalActive={setModalActive} setActiveForm={setActiveForm} />
+            <LoginModule
+              setIsLoggedIn={setIsLoggedIn}
+              setModalActive={setModalActive}
+              setActiveForm={setActiveForm}
+            />
           ) : (
             ''
           )}
@@ -21,6 +25,7 @@ const BaseModal = ({ modalActive, setModalActive }) => {
             <RegistrationModuleBasic
               setModalActive={setModalActive}
               setActiveForm={setActiveForm}
+              setIsLoggedIn={setIsLoggedIn}
             />
           ) : (
             ''
