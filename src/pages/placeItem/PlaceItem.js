@@ -225,8 +225,8 @@ const PlaceItem = () => {
   const chapters = {};
   isLoaded &&
     items.map((item, index) => {
-      if (!chapters.hasOwnProperty(item.chapter_id)) {
-        chapters[item.chapter_id] = item.chapter_id;
+      if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
+        chapters[item.chapter_id.name_chapter] = item.chapter_id.id;
       }
     });
 
@@ -234,7 +234,7 @@ const PlaceItem = () => {
   const categories = {};
   isLoaded &&
     items.map((item, index) => {
-      if (item.chapter_id === razdel) {
+      if (item.chapter_id.name_chapter === razdel) {
         categories[item.name_category] = {
           [item.name_category]: [item.id],
         };
