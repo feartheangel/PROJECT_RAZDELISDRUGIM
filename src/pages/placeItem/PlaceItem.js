@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Header, Footer } from '../../components/index';
 import { useSelector, useDispatch } from 'react-redux';
-import { setItems } from '../../redux/actions/items';
+import { setItems, setItemsLoaded, setItemsLoading } from '../../redux/actions/items';
 import Requests from '../../http/axios-requests';
 import './PlaseItem.css';
 // import Logo from "../../img/MainPage/Logo.png";
@@ -21,8 +21,10 @@ const PlaceItem = () => {
 
   //получение категорий из БД
   React.useEffect(() => {
+    dispatch(setItemsLoading());
     Requests.fetchItems().then((response) => {
       dispatch(setItems(response.data));
+      dispatch(setItemsLoaded());
     });
   }, []);
 
@@ -217,10 +219,11 @@ const PlaceItem = () => {
   const [readySell, setReadySell] = useState();
 
   const { items } = useSelector(({ items }) => items);
+  const { isLoaded } = useSelector(({ items }) => items);
 
   //выделяем разделы
   const chapters = {};
-  items &&
+  isLoaded &&
     items.map((item, index) => {
       if (!chapters.hasOwnProperty(item.chapter_id)) {
         chapters[item.chapter_id] = item.chapter_id;
@@ -229,7 +232,7 @@ const PlaceItem = () => {
 
   //выделяем категории
   const categories = {};
-  items &&
+  isLoaded &&
     items.map((item, index) => {
       if (item.chapter_id === razdel) {
         categories[item.name_category] = {
@@ -253,7 +256,7 @@ const PlaceItem = () => {
                   <span className="span-zvezda">*</span> Выберите раздел:{' '}
                   <select onChange={(e) => setRazdel(e.target.value)} className="option-razdel">
                     <option />
-                    {items &&
+                    {isLoaded &&
                       [].concat.apply(Object.keys(chapters)).map((chapter, index) => (
                         <option key={index} value={chapter}>
                           {chapter}
@@ -272,7 +275,7 @@ const PlaceItem = () => {
                     value={viborCategory}
                     onChange={(e) => setViborCategory(e.target.value)}>
                     <option />
-                    {items &&
+                    {isLoaded &&
                       [].concat.apply(Object.keys(categories)).map((category, index) => (
                         <option key={index} value={category}>
                           {category}
