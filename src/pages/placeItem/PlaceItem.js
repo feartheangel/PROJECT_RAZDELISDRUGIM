@@ -10,11 +10,7 @@ import './PlaseItem.css';
 // import {Link} from "react-router-dom";
 // import Burger from "../../img/MainPage/Burger.png";
 
-// {
-//     document.getElementById('check').onkeydown=function (e){
-//         return !(/^[А-Яа-яA-Za-z]$/.test(e.key));
-//     }
-// }
+
 
 const PlaceItem = () => {
   const dispatch = useDispatch();
@@ -75,10 +71,15 @@ const PlaceItem = () => {
     setPochta(!pochta);
   };
 
-  // ПУНКТ САМОВЫВОЗ ОТПРАВКА - ВЛАДЕЛЕЦ - РЕНТЕР
+  // ПУНКТ САМОВЫВОЗ ОТПРАВКА - ВЛАДЕЛЕЦ
   const vladelecHandler = () => {
     setVladelec(!vladelec);
   };
+  //ПУНКТ САМОВЫВОЗ ОТПРАВКА - РЕНТЕР
+  const renterHandler = () => {
+    setRenter(!renter);
+  };
+
   // ПУНКТ  ДОГОВОР
   const contractHandler = () => {
     setContract(!contract);
@@ -195,6 +196,7 @@ const PlaceItem = () => {
   const [pochta, setPochta] = useState();
 
   const [vladelec, setVladelec] = useState();
+  const [renter, setRenter] = useState();
 
   //ДОГОВОР - СТРАХОВКА - ФРАНШИЗА
   const [contract, setContract] = useState();
@@ -217,6 +219,9 @@ const PlaceItem = () => {
 
   //ГОТОВ ПРОДАТЬ
   const [readySell, setReadySell] = useState();
+
+
+  // console.log ( vladelec )
 
   const { items } = useSelector(({ items }) => items);
   const { isLoaded } = useSelector(({ items }) => items);
@@ -300,10 +305,10 @@ const PlaceItem = () => {
               </div>
 
               {/*  Я ПРЕДЛАГАЮ  */}
-              <div className="div111">
+              <div>
                 <li>
                   <span className="span-zvezda">*</span> Я предлагаю (описание):{' '}
-                  <p>
+                  <div>
                     <textarea
                       type="text"
                       title="Опишите кратко наименование того, что предлагаете..."
@@ -312,7 +317,7 @@ const PlaceItem = () => {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     />
-                  </p>
+                  </div>
                 </li>
               </div>
 
@@ -398,7 +403,7 @@ const PlaceItem = () => {
                   <select className="option-razdel" onChange={(e) => setTimeArends(e.target.value)}>
                     <option />
                     <option>Час</option>
-                    <option>Сутки</option>
+                    <option selected>Сутки</option>
                     <option>Неделя</option>
                     <option>Месяц</option>
                   </select>
@@ -485,12 +490,12 @@ const PlaceItem = () => {
                   <li>
                     <div>
                       Назначение:{'  '}
-                      <input
-                        type="text"
-                        className="input-text"
+                      <div>
+                      <textarea
                         value={naznacheniye}
                         onChange={(e) => setNaznacheniye(e.target.value)}
                       />
+                      </div>
                     </div>
                   </li>
 
@@ -591,7 +596,7 @@ const PlaceItem = () => {
                   {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
                   <li>
                     <div>
-                      Время получения(не ранее):{' '}
+                      Время получения (не ранее):{' '}
                       <select
                         className="select-clock"
                         onChange={(e) => setTimeReceipt(e.target.value)}>
@@ -627,7 +632,7 @@ const PlaceItem = () => {
                   {/*  ВРЕМЯ ВОЗВРАТА  */}
                   <li>
                     <div>
-                      Время возврата(не позднее):{' '}
+                      Время возврата (не позднее):{' '}
                       <select
                         className="select-clock"
                         onChange={(e) => setReturnTime(e.target.value)}>
@@ -686,7 +691,7 @@ const PlaceItem = () => {
                           type="checkbox"
                           className="input-checkbox"
                           value={pickUp}
-                          onChange={(e) => pickupHandler(e.target.value)}></input>
+                          onChange={(e) => pickupHandler(e.target.value)} />
                       </div>
                     </div>
 
@@ -697,7 +702,7 @@ const PlaceItem = () => {
                         type="checkbox"
                         className="input-checkbox"
                         value={takeAway}
-                        onChange={(e) => takeAwayHandler(e.target.value)}></input>
+                        onChange={(e) => takeAwayHandler(e.target.value)} />
                     </div>
 
                     {takeAway && (
@@ -734,60 +739,73 @@ const PlaceItem = () => {
 
                     {/*  ОТПРАВЛЮ  */}
 
-                    <div>
+                    <span style={{marginRight:'45px'}}>
                       Отправлю{' '}
                       <input
                         type="checkbox"
                         className="input-checkbox"
                         value={yourSend}
-                        onChange={(e) => yourSendHandler(e.target.value)}></input>
-                    </div>
+                        onChange={(e) => yourSendHandler(e.target.value)} />
+                    </span>
 
                     {yourSend && (
-                      <div>
-                        <div>
-                          Такси{' '}
+                      <span >
+                        <span style={{margin:' 0 20px'}}>
+                          такси{' '}
                           <input
                             className="input-checkbox"
                             type="checkbox"
                             value={taxi}
                             onChange={(e) => taxiHandler(e.target.value)}
                           />
-                        </div>
+                        </span>
 
-                        <div>
-                          Курьер{' '}
+                        <span style={{margin:' 0 20px'}}>
+                          курьер{' '}
                           <input
                             className="input-checkbox"
                             type="checkbox"
                             value={courier}
                             onChange={(e) => courierHandler(e.target.value)}
                           />
-                        </div>
+                        </span>
 
-                        <div>
-                          Почта{' '}
+                        <span style={{margin:' 0 20px'}}>
+                          почта{' '}
                           <input
                             className="input-checkbox"
                             type="checkbox"
                             value={pochta}
                             onChange={(e) => pochtaHandler(e.target.value)}
                           />
-                        </div>
+                        </span>
 
-                        {(taxi || courier || pochta) && (
-                          <div>
-                            За счёт Владельца{'  '}
-                            <input
-                              type="radio"
-                              className="input-checkbox"
-                              value={vladelec}
-                              name="radio"
-                              onChange={(e) => vladelecHandler(e.target.value)}
-                            />
-                          </div>
-                        )}
-                      </div>
+                        {(taxi || courier || pochta) &&
+                            <div>
+                              <span style={{marginRight:'20px'}}>
+                                За счёт Владельца{'  '}
+                                <input
+                                  type="radio"
+                                  className="input-checkbox"
+                                  value={vladelec}
+                                  name="radio"
+                                  onChange={(e) => vladelecHandler(e.target.value)}
+                                />
+                              </span>
+
+                              <span>
+                                За счёт Рентера{'  '}
+                                <input
+                                type="radio"
+                                className="input-checkbox"
+                                value={renter}
+                                name="radio"
+                                onChange={(e) => renterHandler(e.target.value)}
+                                />
+                              </span>
+                            </div>
+                        }
+                      </span>
                     )}
                   </li>
 
@@ -796,12 +814,12 @@ const PlaceItem = () => {
                   {/*  ДОГОВОР/РАСПИСКА  */}
                   <li>
                     <div>
-                      Договор/Расписка:{' '}
+                      Договор/Расписка (обязательно):{' '}
                       <input
                         type="checkbox"
                         className="input-checkbox"
                         value={contract}
-                        onChange={(e) => contractHandler(e.target.value)}></input>
+                        onChange={(e) => contractHandler(e.target.value)} />
                     </div>
                   </li>
 
@@ -992,5 +1010,3 @@ const PlaceItem = () => {
 
 export default PlaceItem;
 
-// >>>>>>> cfdfc54e3d075bb2fa81276bb3d8580b63dcd5bc
-// >>>>>>> c1e5f603489f2723f82055383cba07427b1b9267
