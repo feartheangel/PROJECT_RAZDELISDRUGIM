@@ -220,9 +220,9 @@ const PlaceItem = () => {
   //ГОТОВ ПРОДАТЬ
   const [readySell, setReadySell] = useState();
 
-<<<<<<< HEAD
+
   // console.log ( vladelec )
-=======
+
   const { items } = useSelector(({ items }) => items);
   const { isLoaded } = useSelector(({ items }) => items);
 
@@ -245,7 +245,6 @@ const PlaceItem = () => {
         };
       }
     });
->>>>>>> 3739a849b8440db0810d31e9108311f22f5fea26
 
   return (
     <div className="place-item-wrapper">
@@ -1011,5 +1010,3 @@ const PlaceItem = () => {
 
 export default PlaceItem;
 
-// >>>>>>> cfdfc54e3d075bb2fa81276bb3d8580b63dcd5bc
-// >>>>>>> c1e5f603489f2723f82055383cba07427b1b9267
