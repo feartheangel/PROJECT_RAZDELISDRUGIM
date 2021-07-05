@@ -5,9 +5,13 @@ import googleLogo from '../../img/Google.png';
 import { Redirect, Link } from 'react-router-dom';
 import { vkAuth } from '../../http/social-auth';
 import Requests from '../../http/axios-requests';
+import { loginAction } from '../../redux/actions/userData';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../css/regAuth.css';
 
-const RegistrationModuleBasic = ({ setActiveForm, setModalActive, setIsLoggedIn }) => {
+const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
+  const dispatch = useDispatch();
+
   //указываем основные константы для интерфейса
   const contactErrors = ['Это поле не может быть пустым', 'Некорректный телефон/Email'];
   const passwordErrors = [
@@ -58,8 +62,9 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive, setIsLoggedIn 
         Requests.convertToken(response.data.access_token).then((response) => {
           if (response.status === 200 || response.status === 201) {
             localStorage.setItem('key', response.data.access_token);
-            setIsLoggedIn(true);
+            dispatch(loginAction());
             setModalActive(false);
+            setRedirect(<Redirect to="/" />);
           }
         });
       });

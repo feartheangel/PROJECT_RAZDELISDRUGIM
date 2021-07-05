@@ -1,15 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LanguagePlanet from '../../img/MainPage/Language-planet.png';
 import Burger from '../../img/MainPage/Burger.png';
 import Logo from '../../img/MainPage/Logo.png';
 import mark from '../../img/MainPage/Mark.png';
+import { logoutAction } from '../../redux/actions/userData';
 
-const Header = ({ isLoggedIn, setModalActive, setIsLoggedIn }) => {
+const Header = ({ setModalActive }) => {
+  const [redirect, setRedirect] = React.useState();
+
+  const dispatch = useDispatch();
+
+  const { isLoggedIn } = useSelector(({ userData }) => userData);
+
   const logout = () => {
     localStorage.removeItem('key');
-    setIsLoggedIn(false);
+    dispatch(logoutAction());
+    setRedirect(<Redirect to="/" />);
+  };
+
+  const addSubjectHandler = () => {
+    if (isLoggedIn) setRedirect(<Redirect to="/place-item" />);
+    else alert('Сначала авторизуйтесь!');
   };
 
   return (
@@ -21,7 +34,9 @@ const Header = ({ isLoggedIn, setModalActive, setIsLoggedIn }) => {
       </div>
       <div className="header__inner">
         <div className="header-left-content">
-          <img src={Logo} alt="Global Sharing Platform" className="logo" />
+          <Link to="/">
+            <img src={Logo} alt="Global Sharing Platform" className="logo" />
+          </Link>
           <div className="location-selector">
             <img src={mark} alt="" className="location-img" />
             <p className="location-p">Минск</p>
@@ -32,9 +47,13 @@ const Header = ({ isLoggedIn, setModalActive, setIsLoggedIn }) => {
           </div>
         </div>
         <div className="header-right-content">
-          <Link to="/place-item">
-            <input type="button" value="Предложить вещь" className="header-button add-subject" />
-          </Link>
+          <input
+            onClick={addSubjectHandler}
+            type="button"
+            value="Предложить вещь"
+            className="header-button add-subject"
+          />
+          {redirect}
           {!isLoggedIn && (
             <input
               onClick={() => setModalActive(true)}

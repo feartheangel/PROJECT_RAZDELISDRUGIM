@@ -5,8 +5,11 @@ import googleLogo from '../../img/Google.png';
 import { Link, Redirect } from 'react-router-dom';
 import { vkAuth } from '../../http/social-auth';
 import Requests from '../../http/axios-requests';
+import { useDispatch } from 'react-redux';
+import { loginAction } from '../../redux/actions/userData';
 
-const LoginModule = ({ setModalActive, setActiveForm, setLoggedIn, setIsLoggedIn }) => {
+const LoginModule = ({ setModalActive, setActiveForm }) => {
+  const dispatch = useDispatch();
   let code = '';
   const inputErrors = ['Поле не может быть пустым', 'Минимум 8 символов'];
 
@@ -36,8 +39,9 @@ const LoginModule = ({ setModalActive, setActiveForm, setLoggedIn, setIsLoggedIn
         Requests.convertToken(response.data.access_token).then((response) => {
           if (response.status === 200 || response.status === 201) {
             localStorage.setItem('key', response.data.access_token);
-            setIsLoggedIn(true);
+            dispatch(loginAction());
             setModalActive(false);
+            setSuccessLogin(<Redirect to="/" />);
           }
         });
       });
@@ -72,7 +76,9 @@ const LoginModule = ({ setModalActive, setActiveForm, setLoggedIn, setIsLoggedIn
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
           console.log(response);
+          dispatch(loginAction());
           alert('Авторизация прошла успешно');
+          localStorage.setItem('key', response.data.access);
           setModalActive(false);
         }
       })
@@ -85,7 +91,7 @@ const LoginModule = ({ setModalActive, setActiveForm, setLoggedIn, setIsLoggedIn
           onClick={() => setActiveForm('register')}
           href="#"
           className="reg-form-action-type-link">
-          Регистрация
+          Регистрация{successLogin}
         </li>
         <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
           Вход
