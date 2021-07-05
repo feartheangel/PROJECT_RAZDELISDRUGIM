@@ -119,6 +119,18 @@ class Requests {
       return response;
     });
   }
+
+  static fetchItems() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `http://178.172.136.88/api/items/category/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 export default Requests;

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Header, Footer } from '../../components/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { setItems } from '../../redux/actions/items';
+import Requests from '../../http/axios-requests';
 import './PlaseItem.css';
 // import Logo from "../../img/MainPage/Logo.png";
 // import mark from "../../img/MainPage/Mark.png";
@@ -14,6 +17,15 @@ import './PlaseItem.css';
 // }
 
 const PlaceItem = () => {
+  const dispatch = useDispatch();
+
+  //получение категорий из БД
+  React.useEffect(() => {
+    Requests.fetchItems().then((response) => {
+      dispatch(setItems(response.data));
+    });
+  }, []);
+
   // СОСТОЯНИЯ ЧЕКБОКСОВ
 
   //ПУНКТ  БЕСПЛАТНО
@@ -204,6 +216,28 @@ const PlaceItem = () => {
   //ГОТОВ ПРОДАТЬ
   const [readySell, setReadySell] = useState();
 
+  const { items } = useSelector(({ items }) => items);
+
+  //выделяем разделы
+  const chapters = {};
+  items &&
+    items.map((item, index) => {
+      if (!chapters.hasOwnProperty(item.chapter_id)) {
+        chapters[item.chapter_id] = item.chapter_id;
+      }
+    });
+
+  //выделяем категории
+  const categories = {};
+  items &&
+    items.map((item, index) => {
+      if (item.chapter_id === razdel) {
+        categories[item.name_category] = {
+          [item.name_category]: [item.id],
+        };
+      }
+    });
+
   return (
     <div className="place-item-wrapper">
       <Header />
@@ -219,26 +253,12 @@ const PlaceItem = () => {
                   <span className="span-zvezda">*</span> Выберите раздел:{' '}
                   <select onChange={(e) => setRazdel(e.target.value)} className="option-razdel">
                     <option />
-                    <option>Недвижимость</option>
-                    <option>Авто и транспорт</option>
-                    <option>Бытовая техника</option>
-                    <option>Компьютерная техника</option>
-                    <option>Телефоны и планшеты</option>
-                    <option>Электроника</option>
-                    <option>Женский гардероб</option>
-                    <option>Мужской гардероб</option>
-                    <option>Красота и здоровье</option>
-                    <option>Всё для детей и мам</option>
-                    <option>Мебель</option>
-                    <option>Всё для дома</option>
-                    <option>Ремонт и стройка</option>
-                    <option>Сад и огород</option>
-                    <option>Хобби, спорт и туризм</option>
-                    <option>Свадьба и праздники</option>
-                    <option>Животные</option>
-                    <option>Готовый бизнес и оборудование</option>
-                    <option>Книги</option>
-                    <option>Услуги</option>
+                    {items &&
+                      [].concat.apply(Object.keys(chapters)).map((chapter, index) => (
+                        <option key={index} value={chapter}>
+                          {chapter}
+                        </option>
+                      ))}
                   </select>
                 </li>
               </div>
@@ -247,46 +267,18 @@ const PlaceItem = () => {
               <div>
                 <li>
                   <span className="span-zvezda">*</span> Выберите категорию:{' '}
-                  {razdel === 'Недвижимость' && (
-                    <select
-                      className="option-razdel"
-                      value={viborCategory}
-                      onChange={(e) => setViborCategory(e.target.value)}>
-                      <option />
-                      <option>Комнаты</option>
-                      <option>Квартиры</option>
-                      <option>Дома, коттеджи</option>
-                      <option>Земельные участки</option>
-                      <option>Коммерческая недвижимость</option>
-                      <option>Офисы</option>
-                      <option>Склады</option>
-                      <option>Торговые павильоны</option>
-                      <option>Промышленные помещения</option>
-                      <option>Гаражи, стоянки</option>
-                      <option>Услуги</option>
-                    </select>
-                  )}
-                  {razdel === 'Авто и транспорт' && (
-                    <select
-                      className="option-razdel"
-                      value={viborCategory}
-                      onChange={(e) => setViborCategory(e.target.value)}>
-                      <option />
-                      <option>Легковые авто</option>
-                      <option>Внедорожники</option>
-                      <option>Фургоны</option>
-                      <option>Пикапы</option>
-                      <option>Грузовики</option>
-                      <option>Автобус</option>
-                      <option>Мотоцикл</option>
-                      <option>Скутер/мопед</option>
-                      <option>Квадроцикл</option>
-                      <option>Снегоход</option>
-                      <option>Авто-аксессуары</option>
-                      <option>Мото-аксессуары</option>
-                      <option>Прочие аксессуары</option>
-                    </select>
-                  )}
+                  <select
+                    className="option-razdel"
+                    value={viborCategory}
+                    onChange={(e) => setViborCategory(e.target.value)}>
+                    <option />
+                    {items &&
+                      [].concat.apply(Object.keys(categories)).map((category, index) => (
+                        <option key={index} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                  </select>
                 </li>
               </div>
 
