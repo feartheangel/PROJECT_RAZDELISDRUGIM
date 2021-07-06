@@ -5,15 +5,13 @@
   justify-content: center;
   font-size: 22px;
   color: rgba(56, 43, 43, 0.8);
-  /*background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100% ) no-repeat center center fixed;*/
   min-height: 100%;
   min-width: 1024px;
   width: 100%;
   height: auto;
   top: 0;
   left: 0;
-  /*background: url('fon-otpravki5.jpg') repeat center center fixed;*/
-background: rgba(76, 201, 240, 0.05);
+  background: rgba(76, 201, 240, 0.05);
 }
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
@@ -24,7 +22,7 @@ background: rgba(76, 201, 240, 0.05);
   /*background: linear-gradient(to right, rgba(255, 255, 255, 0.94), rgb(150 141 127));*/
   background: #ffffff;
   box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);
-  padding: 30px 10px;
+  padding: 30px 10px 10px;
   margin: 20px 0;
   font-family: Verdana, Geneva, sans-serif;
   border-radius: 30px;
@@ -69,15 +67,35 @@ background: rgba(76, 201, 240, 0.05);
 
 #dop_parametr:hover {
   color: black;
+
 }
 
-/*КНОПКА ОТПРАВКИ / ОЧИСТКИ */
+/*КНОПКА ОТПРАВКИ */
 .button_loading {
-  width: 40%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  width: 250px;
   height: 30px;
-  float: left;
-  margin: 20px 30px;
+  margin-top: 20px;
+  font-style: inherit;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Verdana, Geneva, sans-serif;
   font-size: 20px;
+  color: rgba(56, 43, 43, 0.8);
+}
+
+.button_loading:hover{
+  background: #f01f30;
+  font-weight: bold;
+}
+
+.conteiner .button_load{
+  display: flex;
+  justify-content: center;
+
 }
 
 /* ALL INPUTS*/

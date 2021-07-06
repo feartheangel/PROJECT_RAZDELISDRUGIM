@@ -814,7 +814,7 @@ const PlaceItem = () => {
                   {/*  ДОГОВОР/РАСПИСКА  */}
                   <li>
                     <div>
-                      Договор/Расписка (обязательно):{' '}
+                      "Договор/расписка обязательны":{' '}
                       <input
                         type="checkbox"
                         className="input-checkbox"
@@ -995,9 +995,8 @@ const PlaceItem = () => {
 
               {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
 
-              <div>
+              <div className="button_load" >
                 <input type="submit" name="a" value="ОТПРАВИТЬ" className="button_loading" />{' '}
-                <input type="reset" name="a" value="ОЧИСТИТЬ" className="button_loading" />{' '}
               </div>
             </ol>
           </form>

@@ -1,0 +1,177 @@
+p, input, button {
+    font-family: 'Roboto', sans-serif ;
+}
+
+/* ГЛАВНАЯ СТРАНИЦА*/
+.privateProfile{
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    min-width: 1440px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    background: grey;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif ;
+
+
+}
+
+/*КОНТЕЙНЕР С КОНТЕНТОМ*/
+.privateProfile_container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 1108px;
+    background: #fff;
+    font-family: 'Roboto', sans-serif ;
+
+    padding: 53px 0 23px;
+}
+
+
+/*КОНТЕЙНЕР С ШАПКОЙ */
+
+.conteiner_shapka .shapka_h1{
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif ;
+    font-size: 22px;
+}
+
+.conteiner_shapka {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 996px;
+    height: 309px;
+    margin: 53px 56px;
+    font-family: 'Roboto', sans-serif ;
+
+
+}
+
+/*КОНТЕЙНЕР С ШАПКОЙ ( ВЕРХНЯЯ ЧАСТЬ ) */
+.conteiner_shapka_up{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif ;
+
+}
+
+.conteiner_shapka_up div{
+    justify-content: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif ;
+}
+
+
+.shapka_up_image{
+
+}
+
+.shapka_up_image img{
+    position: static;
+    width: 69px;
+    height: 69px;
+    left: 38px;
+    top: 68px;
+
+    background: #C4C4C4;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 5px 0;
+}
+
+.shapka_up_confirmation{
+
+}
+
+
+/*КОНТЕЙНЕР С ШАПКОЙ ( КНОПКИ ) */
+
+.conteiner_shapka_down{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.conteiner_shapka_down button{
+    margin: 10px 10px;
+    font-size: 26px;
+}
+
+
+/* КОНТЕЙНЕР С НАСТРОЙКОЙ */
+.container_nastroika{
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0;
+}
+
+/*Настройка левой строны*/
+.nastroika_left{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+}
+
+.nastroika_left button{
+    width: 150px;
+    margin: 10px 10px;
+    font-size: 16px;
+}
+
+/*Настройка центральной строны*/
+.nastroika_center{
+    width: 40%;
+}
+
+.nastroika_center input{
+    width: 300px;
+    height: 30px;
+}
+
+
+/*Настройка правой строны*/
+.nastroika_right{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.nastroika_right textarea{
+    width: 350px;
+    height: 80px;
+    outline: none;
+    resize: none;
+}
+
+/* КНОПКА ОТПРАВКИ*/
+
+.privateProfile_container .button_download{
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    justify-content: center;
+    text-align: center;
+}
+
+.button_download button{
+    width: 300px;
+    height: 30px;
+    font-size: 18px;
+}
+
