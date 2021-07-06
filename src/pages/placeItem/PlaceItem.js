@@ -132,6 +132,11 @@ const PlaceItem = () => {
       String(sostav),
       Boolean(giveFree),
       Boolean(yourCost),
+      String(yourColor),
+      Boolean(franchise),
+      Number(franchiseSumma),
+      String(artikul),
+      String(inventoryNumber),
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
@@ -139,34 +144,6 @@ const PlaceItem = () => {
         }
       })
       .catch(() => alert('Ошибка!'));
-    console.log({
-      Категория: Number(viborCategory),
-      Имя: String(nameItem),
-      Описание: String(description),
-      Время_аренды: String(timeArends),
-      Стоимость_аренды: Number(costArends),
-      Ключевые_слова: String(yourKeyWord),
-      Год_выпуска: Number(yearCreate),
-      Пробег: String(mileAge),
-      Стоимость: Number(cost),
-      Время_получения: String(timeReceipt),
-      Время_возврата: String(returnTime),
-      Время_подготовки: Number(podgotovkaTime),
-      Сервисный_сбор: Boolean(serviceSbor),
-      Тип_сервисного_сбора: String(optionServiceSbor),
-      Стоимость_сервисного_сбора: Number(summaServiceSbor),
-      Залог: Boolean(pladge),
-      Сумма_залога: Number(pledgePrice),
-      Страховка: Boolean(insurance),
-      Время_страховки: String(insuranceTime),
-      Стоимость_страховки: Number(insuranceSumma),
-      Готов_продать: Boolean(readySell),
-      Контракт: Boolean(contract),
-      Назначение: String(naznacheniye),
-      Комплектация: String(sostav),
-      Отдам_бесплатно: Boolean(giveFree),
-      Предложить_цену: Boolean(yourCost),
-    });
   };
 
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
@@ -457,7 +434,6 @@ const PlaceItem = () => {
                   <input
                     className="input-number"
                     type="number"
-                    min="0"
                     max="9999"
                     step="any"
                     placeholder="0.00"
@@ -618,7 +594,6 @@ const PlaceItem = () => {
                       Год выпуска:{' '}
                       <input
                         type="number"
-                        min="0"
                         max="999999999"
                         className="input-number"
                         value={yearCreate}
@@ -646,7 +621,6 @@ const PlaceItem = () => {
                       Стоимость вещи (если оценивается):{' '}
                       <input
                         type="number"
-                        min="0"
                         max="9999"
                         step="any"
                         placeholder="0.00"
@@ -742,7 +716,6 @@ const PlaceItem = () => {
                       Укажите время подготовки товара:{' '}
                       <input
                         type="number"
-                        min="0"
                         max="999"
                         className="input-number"
                         value={podgotovkaTime}
@@ -794,7 +767,6 @@ const PlaceItem = () => {
                             в сумме:{' '}
                             <input
                               type="number"
-                              min="0"
                               max="9999"
                               step="any"
                               placeholder="0.00"
@@ -919,8 +891,8 @@ const PlaceItem = () => {
                               className="option-razdel"
                               onChange={(e) => setInsuranceTime(e.target.value)}>
                               <option />
-                              <option value="DAY">За весь период</option>
-                              <option value="PERIOD">За сутки</option>
+                              <option value="PERIOD">За весь период</option>
+                              <option value="DAY">За сутки</option>
                             </select>{' '}
                           </span>
 
@@ -930,7 +902,6 @@ const PlaceItem = () => {
                               в сумме:{' '}
                               <input
                                 type="number"
-                                min="0"
                                 max="9999"
                                 step="any"
                                 placeholder="0.00"
@@ -961,7 +932,6 @@ const PlaceItem = () => {
                                 в сумме:{' '}
                                 <input
                                   type="number"
-                                  min="0"
                                   max="9999"
                                   step="any"
                                   placeholder="0.00"
@@ -997,7 +967,6 @@ const PlaceItem = () => {
                           <input
                             className="input-number"
                             type="number"
-                            min="0"
                             max="9999"
                             step="any"
                             placeholder="0.00"
@@ -1042,7 +1011,6 @@ const PlaceItem = () => {
                               <input
                                 type="number"
                                 className="input-number"
-                                min="0"
                                 max="9999"
                                 step="any"
                                 placeholder="0.00"
