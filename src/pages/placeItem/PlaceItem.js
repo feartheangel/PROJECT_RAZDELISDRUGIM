@@ -10,19 +10,8 @@ import './PlaseItem.css';
 // import {Link} from "react-router-dom";
 // import Burger from "../../img/MainPage/Burger.png";
 
-
-
 const PlaceItem = () => {
   const dispatch = useDispatch();
-
-  //получение категорий из БД
-  React.useEffect(() => {
-    dispatch(setItemsLoading());
-    Requests.fetchItems().then((response) => {
-      dispatch(setItems(response.data));
-      dispatch(setItemsLoaded());
-    });
-  }, []);
 
   // СОСТОЯНИЯ ЧЕКБОКСОВ
 
@@ -109,19 +98,92 @@ const PlaceItem = () => {
     setReadySell(!readySell);
   };
 
+  //обработчик суммы залога
+  const pledgePriceHandler = (e) => {
+    setPledgePrice(e.target.value);
+  };
+
+  //обработчик отправки формы
+  const sendHandler = () => {
+    Requests.createItem(
+      Number(viborCategory),
+      String(nameItem),
+      String(description),
+      String(timeArends),
+      Number(costArends),
+      String(yourKeyWord),
+      Number(yearCreate),
+      String(mileAge),
+      Number(cost),
+      String(timeReceipt),
+      String(returnTime),
+      Number(podgotovkaTime),
+      Boolean(serviceSbor),
+      String(optionServiceSbor),
+      Number(summaServiceSbor),
+      Boolean(pladge),
+      Number(pledgePrice),
+      Boolean(insurance),
+      String(insuranceTime),
+      Number(insuranceSumma),
+      Boolean(readySell),
+      Boolean(contract),
+      String(naznacheniye),
+      String(sostav),
+      Boolean(giveFree),
+      Boolean(yourCost),
+    )
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          alert('Успешно добавлено в базу!');
+        }
+      })
+      .catch(() => alert('Ошибка!'));
+    console.log({
+      Категория: Number(viborCategory),
+      Имя: String(nameItem),
+      Описание: String(description),
+      Время_аренды: String(timeArends),
+      Стоимость_аренды: Number(costArends),
+      Ключевые_слова: String(yourKeyWord),
+      Год_выпуска: Number(yearCreate),
+      Пробег: String(mileAge),
+      Стоимость: Number(cost),
+      Время_получения: String(timeReceipt),
+      Время_возврата: String(returnTime),
+      Время_подготовки: Number(podgotovkaTime),
+      Сервисный_сбор: Boolean(serviceSbor),
+      Тип_сервисного_сбора: String(optionServiceSbor),
+      Стоимость_сервисного_сбора: Number(summaServiceSbor),
+      Залог: Boolean(pladge),
+      Сумма_залога: Number(pledgePrice),
+      Страховка: Boolean(insurance),
+      Время_страховки: String(insuranceTime),
+      Стоимость_страховки: Number(insuranceSumma),
+      Готов_продать: Boolean(readySell),
+      Контракт: Boolean(contract),
+      Назначение: String(naznacheniye),
+      Комплектация: String(sostav),
+      Отдам_бесплатно: Boolean(giveFree),
+      Предложить_цену: Boolean(yourCost),
+    });
+  };
+
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
+  //хранение типа доставки
+  const [deliveryType, setDeliveryType] = useState('');
 
   //РАЗДЕЛ - опции
-  const [razdel, setRazdel] = useState();
+  const [razdel, setRazdel] = useState('');
 
   // КАТЕГОРИИ - опции
-  const [viborCategory, setViborCategory] = useState();
+  const [viborCategory, setViborCategory] = useState('');
 
   //НАИМЕНОВАНИЕ ВЕЩИ
-  const [nameItem, setNameItem] = useState();
+  const [nameItem, setNameItem] = useState('');
 
   // Я ПРЕДЛАГАЮ(ОПИСАНИЕ)
-  const [description, setDescription] = useState();
+  const [description, setDescription] = useState('');
 
   //ЗАГРУЗКА ФОТО
   const [downloadPhoto1, setDownloadPhoto1] = useState();
@@ -131,14 +193,14 @@ const PlaceItem = () => {
   const [downloadPhoto5, setDownloadPhoto5] = useState();
 
   //СТОИМОСТЬ АРЕНДЫ / ВРЕМЯ АРЕНДЫ
-  const [costArends, setCostArends] = useState();
-  const [timeArends, setTimeArends] = useState();
+  const [costArends, setCostArends] = useState('');
+  const [timeArends, setTimeArends] = useState('DAY');
 
   //БЕСПЛАТНО
   const [giveFree, setGiveFree] = useState();
 
   //ПРЕДЛОЖИТЬ ЦЕНУ
-  const [yourCost, setYourCost] = useState();
+  const [yourCost, setYourCost] = useState('');
 
   // ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ - ОТКРЫТЬ/ЗАКРЫТЬ
   const [showFunctions, setShowFunctions] = useState();
@@ -146,47 +208,47 @@ const PlaceItem = () => {
   // {/*--------------------------------- ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ ---------------------------------------*/}
 
   //КЛЮЧЕВЫЕ СЛОВА
-  const [yourKeyWord, setYourKeyWord] = useState();
+  const [yourKeyWord, setYourKeyWord] = useState('');
 
   //СОСТАВ-КОМЛЕКТНОСТЬ
-  const [sostav, setSostav] = useState();
+  const [sostav, setSostav] = useState('');
 
   //НАЗНАЧЕНИЕ
-  const [naznacheniye, setNaznacheniye] = useState();
+  const [naznacheniye, setNaznacheniye] = useState('');
 
   //АРТИКУЛ
-  const [artikul, setArtikul] = useState();
+  const [artikul, setArtikul] = useState('');
 
   //ИНВЕНТАРНЫЙ НОМЕР
-  const [inventoryNumber, setInventoryNumber] = useState();
+  const [inventoryNumber, setInventoryNumber] = useState('');
 
   //ЦВЕТ
-  const [yourColor, setYourColor] = useState();
+  const [yourColor, setYourColor] = useState('');
 
   //ГОД ВЫПУСКА
-  const [yearCreate, setYearCreate] = useState();
+  const [yearCreate, setYearCreate] = useState('');
 
   //ПРОБЕГ
-  const [mileAge, setMileAge] = useState();
+  const [mileAge, setMileAge] = useState('');
 
   //СТОИМОСТЬ ЕСЛИ ОЦЕНИВАЕТСЯ
-  const [cost, setCost] = useState();
+  const [cost, setCost] = useState('');
 
   //ВРЕМЯ ПОЛУЧЕНИЯ И ВОЗВРАТА
-  const [timeReceipt, setTimeReceipt] = useState();
-  const [returnTime, setReturnTime] = useState();
+  const [timeReceipt, setTimeReceipt] = useState('12ч');
+  const [returnTime, setReturnTime] = useState('12ч');
 
   //ВРЕМЯ ПОДГОТОВКИ ТОВАРА
-  const [podgotovkaTime, setPodgotovkaTime] = useState();
+  const [podgotovkaTime, setPodgotovkaTime] = useState(' ');
 
   // ВИД ДОСТАВКИ - САМОВЫВОЗ
-  const [pickUp, setPickUp] = useState();
+  const [pickUp, setPickUp] = useState('');
 
   // ВИД ДОСТАВКИ - ЗАБЕРУ ПРИВЕЗУ САМ ( ОПЦИИ - выбор и стомость )
-  const [takeAway, setTakeAway] = useState();
+  const [takeAway, setTakeAway] = useState('');
 
-  const [typeService, setTypeService] = useState();
-  const [indicateCost, setIndicateCost] = useState();
+  const [typeService, setTypeService] = useState('');
+  const [indicateCost, setIndicateCost] = useState('');
 
   //ОТПРАВЛЮ
   const [yourSend, setYourSend] = useState();
@@ -202,26 +264,34 @@ const PlaceItem = () => {
   const [contract, setContract] = useState();
 
   const [insurance, setInsurance] = useState();
-  const [insuranceTime, setInsuranceTime] = useState();
-  const [insuranceSumma, setInsuranceSumma] = useState();
+  const [insuranceTime, setInsuranceTime] = useState('');
+  const [insuranceSumma, setInsuranceSumma] = useState('');
 
   //ФРАНШИЗА - СУММА
   const [franchise, setFranchise] = useState();
-  const [franchiseSumma, setFranchiseSumma] = useState();
+  const [franchiseSumma, setFranchiseSumma] = useState('');
 
   //ПРЕДУСМОТРЕН ЗАЛОГ
   const [pladge, setPladge] = useState();
+  const [pledgePrice, setPledgePrice] = useState('');
 
   // СЕРВИСНЫЙ СБОР - ЧЕКБОКС/ОПЦИИ/СУММА
-  const [serviceSbor, setServiceSbor] = useState();
-  const [optionServiceSbor, setOptionServiceSbor] = useState();
-  const [summaServiceSbor, setSummaServiceSbor] = useState();
+  const [serviceSbor, setServiceSbor] = useState('');
+  const [optionServiceSbor, setOptionServiceSbor] = useState('');
+  const [summaServiceSbor, setSummaServiceSbor] = useState('');
 
   //ГОТОВ ПРОДАТЬ
   const [readySell, setReadySell] = useState();
-
-
   // console.log ( vladelec )
+
+  //получение категорий из БД
+  React.useEffect(() => {
+    dispatch(setItemsLoading());
+    Requests.fetchItems().then((response) => {
+      dispatch(setItems(response.data));
+      dispatch(setItemsLoaded());
+    });
+  }, []);
 
   const { items } = useSelector(({ items }) => items);
   const { isLoaded } = useSelector(({ items }) => items);
@@ -239,10 +309,8 @@ const PlaceItem = () => {
   const categories = {};
   isLoaded &&
     items.map((item, index) => {
-      if (item.chapter_id.name_chapter === razdel) {
-        categories[item.name_category] = {
-          [item.name_category]: [item.id],
-        };
+      if (item.chapter_id.id === Number(razdel)) {
+        categories[item.name_category] = [item.id];
       }
     });
 
@@ -251,7 +319,7 @@ const PlaceItem = () => {
       <Header />
       <div className="PlaseItem">
         <div className="conteiner">
-          <form encType="multipart/form-data" method="post">
+          <form>
             <ol>
               <h2> РАЗМЕСТИ СВОЮ ВЕЩЬ </h2>
 
@@ -262,9 +330,9 @@ const PlaceItem = () => {
                   <select onChange={(e) => setRazdel(e.target.value)} className="option-razdel">
                     <option />
                     {isLoaded &&
-                      [].concat.apply(Object.keys(chapters)).map((chapter, index) => (
-                        <option key={index} value={chapter}>
-                          {chapter}
+                      [].concat.apply(Object.entries(chapters)).map((chapter, index) => (
+                        <option key={index} value={chapter[1]}>
+                          {chapter[0]}
                         </option>
                       ))}
                   </select>
@@ -281,9 +349,9 @@ const PlaceItem = () => {
                     onChange={(e) => setViborCategory(e.target.value)}>
                     <option />
                     {isLoaded &&
-                      [].concat.apply(Object.keys(categories)).map((category, index) => (
-                        <option key={index} value={category}>
-                          {category}
+                      [].concat.apply(Object.entries(categories)).map((category, index) => (
+                        <option key={index} value={category[1]}>
+                          {category[0]}
                         </option>
                       ))}
                   </select>
@@ -402,10 +470,12 @@ const PlaceItem = () => {
                   </span>
                   <select className="option-razdel" onChange={(e) => setTimeArends(e.target.value)}>
                     <option />
-                    <option>Час</option>
-                    <option selected>Сутки</option>
-                    <option>Неделя</option>
-                    <option>Месяц</option>
+                    <option value="HOUR">Час</option>
+                    <option value="DAY" selected>
+                      Сутки
+                    </option>
+                    <option value="WEEK">Неделя</option>
+                    <option value="MONTH">Месяц</option>
                   </select>
                 </div>
 
@@ -491,10 +561,10 @@ const PlaceItem = () => {
                     <div>
                       Назначение:{'  '}
                       <div>
-                      <textarea
-                        value={naznacheniye}
-                        onChange={(e) => setNaznacheniye(e.target.value)}
-                      />
+                        <textarea
+                          value={naznacheniye}
+                          onChange={(e) => setNaznacheniye(e.target.value)}
+                        />
                       </div>
                     </div>
                   </li>
@@ -562,11 +632,8 @@ const PlaceItem = () => {
                     <div>
                       Пробег:{' '}
                       <input
-                        type="number"
-                        min="0"
-                        max="999999999"
-                        step="0.1"
-                        className="input-number"
+                        type="text"
+                        className="input-text"
                         value={mileAge}
                         onChange={(e) => setMileAge(e.target.value)}
                       />
@@ -601,30 +668,32 @@ const PlaceItem = () => {
                         className="select-clock"
                         onChange={(e) => setTimeReceipt(e.target.value)}>
                         <option />
-                        <option>1ч</option>
-                        <option>2ч</option>
-                        <option>3ч</option>
-                        <option>4ч</option>
-                        <option>5ч</option>
-                        <option>6ч</option>
-                        <option>7ч</option>
-                        <option>8ч</option>
-                        <option>9ч</option>
-                        <option>10ч</option>
-                        <option>11ч</option>
-                        <option selected>12ч</option>
-                        <option>13ч</option>
-                        <option>14ч</option>
-                        <option>15ч</option>
-                        <option>16ч</option>
-                        <option>17ч</option>
-                        <option>18ч</option>
-                        <option>19ч</option>
-                        <option>20ч</option>
-                        <option>21ч</option>
-                        <option>22ч</option>
-                        <option>23ч</option>
-                        <option>24ч</option>
+                        <option value="1ч">1ч</option>
+                        <option value="2ч">2ч</option>
+                        <option value="3ч">3ч</option>
+                        <option value="4ч">4ч</option>
+                        <option value="5ч">5ч</option>
+                        <option value="6ч">6ч</option>
+                        <option value="7ч">7ч</option>
+                        <option value="8ч">8ч</option>
+                        <option value="9ч">9ч</option>
+                        <option value="10ч">10ч</option>
+                        <option value="11ч">11ч</option>
+                        <option value="12ч" selected>
+                          12ч
+                        </option>
+                        <option value="13ч">13ч</option>
+                        <option value="14ч">14ч</option>
+                        <option value="15ч">15ч</option>
+                        <option value="16ч">16ч</option>
+                        <option value="17ч">17ч</option>
+                        <option value="18ч">18ч</option>
+                        <option value="19ч">19ч</option>
+                        <option value="20ч">20ч</option>
+                        <option value="21ч">21ч</option>
+                        <option value="22ч">22ч</option>
+                        <option value="23ч">23ч</option>
+                        <option value="24ч">24ч</option>
                       </select>
                     </div>
                   </li>
@@ -637,30 +706,32 @@ const PlaceItem = () => {
                         className="select-clock"
                         onChange={(e) => setReturnTime(e.target.value)}>
                         <option />
-                        <option>1ч</option>
-                        <option>2ч</option>
-                        <option>3ч</option>
-                        <option>4ч</option>
-                        <option>5ч</option>
-                        <option>6ч</option>
-                        <option>7ч</option>
-                        <option>8ч</option>
-                        <option>9ч</option>
-                        <option>10ч</option>
-                        <option>11ч</option>
-                        <option selected>12ч</option>
-                        <option>13ч</option>
-                        <option>14ч</option>
-                        <option>15ч</option>
-                        <option>16ч</option>
-                        <option>17ч</option>
-                        <option>18ч</option>
-                        <option>19ч</option>
-                        <option>20ч</option>
-                        <option>21ч</option>
-                        <option>22ч</option>
-                        <option>23ч</option>
-                        <option>24ч</option>
+                        <option value="1ч">1ч</option>
+                        <option value="2ч">2ч</option>
+                        <option value="3ч">3ч</option>
+                        <option value="4ч">4ч</option>
+                        <option value="5ч">5ч</option>
+                        <option value="6ч">6ч</option>
+                        <option value="7ч">7ч</option>
+                        <option value="8ч">8ч</option>
+                        <option value="9ч">9ч</option>
+                        <option value="10ч">10ч</option>
+                        <option value="11ч">11ч</option>
+                        <option value="12ч" selected>
+                          12ч
+                        </option>
+                        <option value="13ч">13ч</option>
+                        <option value="14ч">14ч</option>
+                        <option value="15ч">15ч</option>
+                        <option value="16ч">16ч</option>
+                        <option value="17ч">17ч</option>
+                        <option value="18ч">18ч</option>
+                        <option value="19ч">19ч</option>
+                        <option value="20ч">20ч</option>
+                        <option value="21ч">21ч</option>
+                        <option value="22ч">22ч</option>
+                        <option value="23ч">23ч</option>
+                        <option value="24ч">24ч</option>
                       </select>
                     </div>
                   </li>
@@ -691,7 +762,8 @@ const PlaceItem = () => {
                           type="checkbox"
                           className="input-checkbox"
                           value={pickUp}
-                          onChange={(e) => pickupHandler(e.target.value)} />
+                          onChange={(e) => pickupHandler(e.target.value)}
+                        />
                       </div>
                     </div>
 
@@ -702,7 +774,8 @@ const PlaceItem = () => {
                         type="checkbox"
                         className="input-checkbox"
                         value={takeAway}
-                        onChange={(e) => takeAwayHandler(e.target.value)} />
+                        onChange={(e) => takeAwayHandler(e.target.value)}
+                      />
                     </div>
 
                     {takeAway && (
@@ -739,18 +812,19 @@ const PlaceItem = () => {
 
                     {/*  ОТПРАВЛЮ  */}
 
-                    <span style={{marginRight:'45px'}}>
+                    <span style={{ marginRight: '45px' }}>
                       Отправлю{' '}
                       <input
                         type="checkbox"
                         className="input-checkbox"
                         value={yourSend}
-                        onChange={(e) => yourSendHandler(e.target.value)} />
+                        onChange={(e) => yourSendHandler(e.target.value)}
+                      />
                     </span>
 
                     {yourSend && (
-                      <span >
-                        <span style={{margin:' 0 20px'}}>
+                      <span>
+                        <span style={{ margin: ' 0 20px' }}>
                           такси{' '}
                           <input
                             className="input-checkbox"
@@ -760,7 +834,7 @@ const PlaceItem = () => {
                           />
                         </span>
 
-                        <span style={{margin:' 0 20px'}}>
+                        <span style={{ margin: ' 0 20px' }}>
                           курьер{' '}
                           <input
                             className="input-checkbox"
@@ -770,7 +844,7 @@ const PlaceItem = () => {
                           />
                         </span>
 
-                        <span style={{margin:' 0 20px'}}>
+                        <span style={{ margin: ' 0 20px' }}>
                           почта{' '}
                           <input
                             className="input-checkbox"
@@ -780,31 +854,31 @@ const PlaceItem = () => {
                           />
                         </span>
 
-                        {(taxi || courier || pochta) &&
-                            <div>
-                              <span style={{marginRight:'20px'}}>
-                                За счёт Владельца{'  '}
-                                <input
-                                  type="radio"
-                                  className="input-checkbox"
-                                  value={vladelec}
-                                  name="radio"
-                                  onChange={(e) => vladelecHandler(e.target.value)}
-                                />
-                              </span>
+                        {(taxi || courier || pochta) && (
+                          <div>
+                            <span style={{ marginRight: '20px' }}>
+                              За счёт Владельца{'  '}
+                              <input
+                                type="radio"
+                                className="input-checkbox"
+                                value={vladelec}
+                                name="radio"
+                                onChange={(e) => vladelecHandler(e.target.value)}
+                              />
+                            </span>
 
-                              <span>
-                                За счёт Рентера{'  '}
-                                <input
+                            <span>
+                              За счёт Рентера{'  '}
+                              <input
                                 type="radio"
                                 className="input-checkbox"
                                 value={renter}
                                 name="radio"
                                 onChange={(e) => renterHandler(e.target.value)}
-                                />
-                              </span>
-                            </div>
-                        }
+                              />
+                            </span>
+                          </div>
+                        )}
                       </span>
                     )}
                   </li>
@@ -818,8 +892,9 @@ const PlaceItem = () => {
                       <input
                         type="checkbox"
                         className="input-checkbox"
-                        value={contract}
-                        onChange={(e) => contractHandler(e.target.value)} />
+                        checked={contract}
+                        onChange={(e) => contractHandler(e.target.value)}
+                      />
                     </div>
                   </li>
 
@@ -832,7 +907,7 @@ const PlaceItem = () => {
                         <input
                           type="checkbox"
                           className="input-checkbox"
-                          value={insurance}
+                          checked={insurance}
                           onChange={insuranceHandler}
                         />{' '}
                       </span>
@@ -844,12 +919,12 @@ const PlaceItem = () => {
                               className="option-razdel"
                               onChange={(e) => setInsuranceTime(e.target.value)}>
                               <option />
-                              <option>За весь период</option>
-                              <option>За сутки</option>
+                              <option value="DAY">За весь период</option>
+                              <option value="PERIOD">За сутки</option>
                             </select>{' '}
                           </span>
 
-                          {(insuranceTime === 'За весь период' || insuranceTime === 'За сутки') && (
+                          {(insuranceTime === 'DAY' || insuranceTime === 'PERIOD') && (
                             <span>
                               {' '}
                               в сумме:{' '}
@@ -912,7 +987,7 @@ const PlaceItem = () => {
                       <input
                         type="checkbox"
                         className="input-checkbox"
-                        value={pladge}
+                        checked={pladge}
                         onChange={pladgeHandler}
                       />{' '}
                       {pladge && (
@@ -926,6 +1001,8 @@ const PlaceItem = () => {
                             max="9999"
                             step="any"
                             placeholder="0.00"
+                            value={pledgePrice}
+                            onChange={(e) => pledgePriceHandler(e)}
                           />
                           <span className="span-valuts">
                             <b>BYN</b>
@@ -951,12 +1028,14 @@ const PlaceItem = () => {
                             onChange={(e) => setOptionServiceSbor(e.target.value)}
                             className="option-razdel ">
                             <option />
-                            <option>Всегда</option>
-                            <option>Возврат вещи</option>
+                            <option value="DRYCLEANING">Химчистка</option>
+                            <option value="CLEANING">Уборка</option>
+                            <option value="WASHINGUP">Мытьё</option>
                           </select>
 
-                          {(optionServiceSbor === 'Всегда' ||
-                            optionServiceSbor === 'Возврат вещи') && (
+                          {(optionServiceSbor === 'DRYCLEANING' ||
+                            optionServiceSbor === 'CLEANING' ||
+                            optionServiceSbor === 'WASHINGUP') && (
                             <span>
                               {' '}
                               Сумма:{' '}
@@ -985,7 +1064,7 @@ const PlaceItem = () => {
                       <input
                         className="input-checkbox"
                         type="checkbox"
-                        value={readySell}
+                        checked={readySell}
                         onChange={readySellHandler}
                       />{' '}
                     </div>
@@ -996,7 +1075,13 @@ const PlaceItem = () => {
               {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
 
               <div>
-                <input type="submit" name="a" value="ОТПРАВИТЬ" className="button_loading" />{' '}
+                <input
+                  onClick={sendHandler}
+                  type="button"
+                  name="a"
+                  value="ОТПРАВИТЬ"
+                  className="button_loading"
+                />{' '}
                 <input type="reset" name="a" value="ОЧИСТИТЬ" className="button_loading" />{' '}
               </div>
             </ol>
@@ -1009,4 +1094,3 @@ const PlaceItem = () => {
 };
 
 export default PlaceItem;
-

@@ -5,7 +5,7 @@ import LanguagePlanet from '../../img/MainPage/Language-planet.png';
 import Burger from '../../img/MainPage/Burger.png';
 import Logo from '../../img/MainPage/Logo.png';
 import mark from '../../img/MainPage/Mark.png';
-import { logoutAction } from '../../redux/actions/userData';
+import { logoutAction, loginAction } from '../../redux/actions/userData';
 import { ProfilePopUp } from '../index';
 import Favorites from '../../img/MainPage/Favorites.png';
 import Notifications from '../../img/MainPage/Notifications.png';
@@ -13,6 +13,12 @@ import UserAvatar from '../../img/MainPage/UserAvatar.png';
 import MenuStroke from '../../img/MainPage/MenuStroke.png';
 
 const Header = ({ setModalActive }) => {
+  React.useEffect(() => {
+    if (localStorage.getItem('key')) {
+      dispatch(loginAction());
+    } else dispatch(logoutAction());
+  }, [localStorage.getItem('key')]);
+
   const [redirect, setRedirect] = React.useState();
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
 
