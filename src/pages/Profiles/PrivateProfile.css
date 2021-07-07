@@ -15,7 +15,7 @@ p, input, button {
     background: grey;
     font-size: 20px;
     font-family: 'Roboto', sans-serif ;
-
+    background: rgba(76, 201, 240, 0.05);
 
 }
 
@@ -27,9 +27,12 @@ p, input, button {
     width: 1108px;
     background: #fff;
     font-family: 'Roboto', sans-serif ;
-
+    color: #000000;
+    box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);
     padding: 53px 0 23px;
 }
+
+
 
 
 /*КОНТЕЙНЕР С ШАПКОЙ */
@@ -69,6 +72,7 @@ p, input, button {
     justify-content: center;
     text-align: center;
     font-family: 'Roboto', sans-serif ;
+    margin: 0 22px;
 }
 
 
@@ -106,17 +110,24 @@ p, input, button {
     margin: 20px 0;
 }
 
-.conteiner_shapka_down button{
-    margin: 10px 10px;
-    font-size: 26px;
+.conteiner_shapka_down span{
+    margin: 0 15px;
+    font-size: 28px;
+}
+
+.conteiner_shapka_down span:hover{
+    cursor: pointer;
+    color: #2F80ED;
 }
 
 
-/* КОНТЕЙНЕР С НАСТРОЙКОЙ */
+                                /* КОНТЕЙНЕР С НАСТРОЙКОЙ */
 .container_nastroika{
     display: flex;
     flex-direction: row;
     margin: 30px 0;
+    color: #333333;
+
 }
 
 /*Настройка левой строны*/
@@ -125,22 +136,35 @@ p, input, button {
     flex-direction: column;
     width: 20%;
     height: 100%;
+    font-size: 22px;
+    color: #BDBDBD;
 }
 
-.nastroika_left button{
-    width: 150px;
-    margin: 10px 10px;
-    font-size: 16px;
+.nastroika_left span{
+    display: flex;
+    text-align: left;
+    width: 145px;
+    margin: 48px 10px;
+    font-size: 22px;
+    color: #BDBDBD;
 }
+
+.nastroika_left span:hover{
+    color: #56CCF2;
+    cursor: pointer;
+}
+
 
 /*Настройка центральной строны*/
 .nastroika_center{
     width: 40%;
+    font-size: 20px;
 }
 
 .nastroika_center input{
     width: 300px;
     height: 30px;
+
 }
 
 
@@ -149,6 +173,7 @@ p, input, button {
     display: flex;
     flex-direction: column;
     width: 40%;
+    font-size: 20px;
 }
 
 .nastroika_right textarea{
