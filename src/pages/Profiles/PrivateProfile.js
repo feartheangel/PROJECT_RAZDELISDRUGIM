@@ -18,41 +18,53 @@ const privateProfile = () =>{
                     <div className="conteiner_shapka_up">
 
                         <div className="shapka_up_image">
-                            <p style={{fontSize:'28px'}}> Вася</p>
+                            <p style={{fontSize:'28px', margin:'5px 0'}}> Вася</p>
                             <img  width="69" height="69" />
-                            <p> Изменить фото</p>
-                            <p> ЧАСТНОЕ ЛИЦО </p>
+                            <p  style={{fontSize:'12px', margin:'5px 0'}}> Изменить фото</p>
+                            <p style={{fontSize:'20px', margin:'5px 0'}}> ЧАСТНОЕ ЛИЦО </p>
                         </div>
 
                         <div className="shapka_up_confirmation">
-                            <p>Телефон подтверждён ^</p>
-                            <p>Почта подтверждёна ^</p>
+                            <div>
+                                <span style={{fontSize:'14px', margin:'0 22px', color:'#6FCF97'}}>Телефон подтверждён </span>
+                                <input type="checkbox" checked="checked"/>
+                            </div>
+
+                            <div  style={{fontSize:'14px', margin:'22px 0 '}}>
+                                <span style={{fontSize:'14px', margin:'0 28px', color:'#6FCF97'}}>Почта подтверждена </span>
+                                <input type="checkbox" checked="checked"/>
+                            </div>
+                        </div>
+
+                        <div  >
+                            <p  style={{fontSize:'14px', margin:'0 22px '}}> На сайте </p>
+                            <p  style={{fontSize:'16px', margin:'22px 0 ', color: '#828282'}}> 3 месяца </p>
                         </div>
 
                         <div >
-                            <p> На сайте </p>
-                            <p> 3 месяца </p>
+                            <p style={{ margin:'0 22px '}}>  *  *  *  *  * </p>
+                            <p  style={{fontSize:'16px', margin:'16px 0 ',  color: '#828282'}}> 3 отзыва </p>
                         </div>
 
                         <div >
-                            <p>  * * * * * </p>
-                            <p> 3 отзыва </p>
+                            <p  style={{fontSize:'14px', margin:'0 22px '}}>  Я сдаю  </p>
+                            <p  style={{fontSize:'14px', margin:'22px 0 '}}>  Я беру  </p>
                         </div>
 
                         <div >
-                            <p>  Я сдаю 3 </p>
-                            <p>  Я беру 5 </p>
+                            <p  style={{fontSize:'16px'}}>  3 </p>
+                            <p  style={{fontSize:'16px', margin:'22px 0 '}}>  5 </p>
                         </div>
 
                     </div>
 
                     <div className="conteiner_shapka_down">
-                        <button> Я сдаю</button>
-                        <button> Я беру</button>
-                        <button> Избранное</button>
-                        <button> Мои сообщения</button>
-                        <button> Кошелек</button>
-                        <button> Настройки</button>
+                        <span> Я сдаю</span>
+                        <span> Я беру</span>
+                        <span> Избранное</span>
+                        <span> Мои сообщения</span>
+                        <span> Кошелек</span>
+                        <span > Настройки</span>
 
                     </div>
                 </div>
@@ -62,9 +74,9 @@ const privateProfile = () =>{
                 <div className="container_nastroika">
 
                     <div className="nastroika_left">
-                        <button> Общее </button>
-                        <button> Мои адреса </button>
-                        <button> Уведомления </button>
+                        <span  > Общее </span>
+                        <span  > Мои адреса </span>
+                        <span > Уведомления </span>
                     </div>
 
                     <div className="nastroika_center">
