@@ -39,7 +39,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
         console.log(response);
         Requests.convertToken(response.data.access_token).then((response) => {
           if (response.status === 200 || response.status === 201) {
-            localStorage.setItem('key', response.data.access);
+            localStorage.setItem('key', response.data.access_token);
             dispatch(loginAction());
             setModalActive(false);
             setSuccessLogin(<Redirect to="/" />);

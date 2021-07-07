@@ -13,6 +13,65 @@ import './PlaseItem.css';
 const PlaceItem = () => {
   const dispatch = useDispatch();
 
+  //обрабочтик цены аренды
+  const setCostArendsHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setCostArends(e.target.value);
+    }
+  };
+
+  //обработчик года выпуска
+  const setYearCreateHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setYearCreate(e.target.value);
+    }
+  };
+
+  //обработчик цены продажи
+  const setCostHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setCost(e.target.value);
+    }
+  };
+  //обработчик времени подготовки
+  const setPodgotovkaTimeHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setPodgotovkaTime(e.target.value);
+    }
+  };
+  //обработчик суммы за доставку
+  const setIndicateCostHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setIndicateCost(e.target.value);
+    }
+  };
+  //обработчик суммы страховки
+  const setInsuranceSummaHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setInsuranceSumma(e.target.value);
+    }
+  };
+  //обработчик суммы за франшизу
+  const setFranchiseSummaHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setFranchiseSumma(e.target.value);
+    }
+  };
+  //обработчик суммы сервисного сбора
+  const setSummaServiceSborHandler = (e) => {
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setSummaServiceSbor(e.target.value);
+    }
+  };
+
   // СОСТОЯНИЯ ЧЕКБОКСОВ
 
   //ПУНКТ  БЕСПЛАТНО
@@ -60,13 +119,9 @@ const PlaceItem = () => {
     setPochta(!pochta);
   };
 
-  // ПУНКТ САМОВЫВОЗ ОТПРАВКА - ВЛАДЕЛЕЦ
-  const vladelecHandler = () => {
-    setVladelec(!vladelec);
-  };
-  //ПУНКТ САМОВЫВОЗ ОТПРАВКА - РЕНТЕР
-  const renterHandler = () => {
-    setRenter(!renter);
+  // отправка за счет
+  const radioHandler = (e) => {
+    setRadio(e.target.value);
   };
 
   // ПУНКТ  ДОГОВОР
@@ -100,7 +155,10 @@ const PlaceItem = () => {
 
   //обработчик суммы залога
   const pledgePriceHandler = (e) => {
-    setPledgePrice(e.target.value);
+    console.log(e.target.value);
+    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+      setPledgePrice(e.target.value);
+    }
   };
 
   //обработчик отправки формы
@@ -118,6 +176,12 @@ const PlaceItem = () => {
       String(timeReceipt),
       String(returnTime),
       Number(podgotovkaTime),
+      String(deliveryType),
+      Boolean(typeService === 'free' ? true : false),
+      Number(indicateCost),
+      Boolean(yourSend),
+      String(willSendWays),
+      String(radio),
       Boolean(serviceSbor),
       String(optionServiceSbor),
       Number(summaServiceSbor),
@@ -142,13 +206,16 @@ const PlaceItem = () => {
         if (response.status === 200 || response.status === 201) {
           alert('Успешно добавлено в базу!');
         }
+        console.log(response);
       })
-      .catch(() => alert('Ошибка!'));
+      .catch((response) => {
+        console.log(response.code);
+      });
   };
 
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
   //хранение типа доставки
-  const [deliveryType, setDeliveryType] = useState('');
+  const [deliveryType, setDeliveryType] = useState('NONE');
 
   //РАЗДЕЛ - опции
   const [razdel, setRazdel] = useState('');
@@ -225,17 +292,19 @@ const PlaceItem = () => {
   const [takeAway, setTakeAway] = useState('');
 
   const [typeService, setTypeService] = useState('');
-  const [indicateCost, setIndicateCost] = useState('');
+  const [indicateCost, setIndicateCost] = useState(false);
 
   //ОТПРАВЛЮ
-  const [yourSend, setYourSend] = useState();
+  const [yourSend, setYourSend] = useState(false);
 
   const [taxi, setTaxi] = useState();
   const [courier, setCourier] = useState();
   const [pochta, setPochta] = useState();
 
-  const [vladelec, setVladelec] = useState();
-  const [renter, setRenter] = useState();
+  const [radio, setRadio] = useState('NONE');
+
+  //методы доставки отправкой
+  const [willSendWays, setWillSendWays] = React.useState('NONE');
 
   //ДОГОВОР - СТРАХОВКА - ФРАНШИЗА
   const [contract, setContract] = useState();
@@ -269,6 +338,96 @@ const PlaceItem = () => {
       dispatch(setItemsLoaded());
     });
   }, []);
+
+  //очистка полей при отмене выбора
+  React.useEffect(() => {
+    if (giveFree === true || yourCost === true) setCostArends(false);
+    if (takeAway === false) {
+      setTypeService(false);
+      setIndicateCost(false);
+    }
+    if (yourSend === false) {
+      setTaxi(false);
+      setCourier(false);
+      setPochta(false);
+      setRadio('NONE');
+    }
+
+    if (insurance === false) {
+      setInsuranceTime('NONE');
+      setInsuranceSumma(null);
+      setFranchise(false);
+      setFranchiseSumma(null);
+    }
+
+    if (pladge === false) setPledgePrice(false);
+
+    if (franchise === false) setFranchiseSumma(false);
+
+    if (serviceSbor === false) {
+      setOptionServiceSbor('NONE');
+      setSummaServiceSbor(null);
+    }
+
+    if (typeService === 'free') setIndicateCost(false);
+  }, [
+    giveFree,
+    yourCost,
+    takeAway,
+    yourSend,
+    insurance,
+    franchise,
+    pladge,
+    serviceSbor,
+    typeService,
+  ]);
+
+  //определение способов доставки
+  React.useEffect(() => {
+    if (pickUp) {
+      if (pickUp && takeAway && yourSend) {
+        setDeliveryType('1, 2, 3');
+      } else if (pickUp && takeAway) {
+        setDeliveryType('1, 2');
+      } else if (pickUp && yourSend) {
+        setDeliveryType('1, 3');
+      } else if (pickUp) {
+        setDeliveryType('1');
+      }
+    } else if (takeAway) {
+      if (takeAway && yourSend) {
+        setDeliveryType('2, 3');
+      } else if (takeAway) {
+        setDeliveryType('2');
+      }
+    } else if (yourSend) {
+      setDeliveryType('3');
+    } else setDeliveryType('NONE');
+  }, [pickUp, takeAway, yourSend]);
+
+  //определение способов доставки отправкой
+  React.useEffect(() => {
+    if (taxi) {
+      if (taxi && courier && pochta) {
+        setWillSendWays('1, 2, 3');
+      } else if (taxi && courier) {
+        setWillSendWays('1, 2');
+      } else if (taxi && pochta) {
+        setWillSendWays('1, 3');
+      } else if (taxi) {
+        setWillSendWays('1');
+      }
+    } else if (courier) {
+      if (courier && pochta) {
+        setWillSendWays('2, 3');
+      } else if (courier) {
+        setWillSendWays('2');
+      }
+    } else if (pochta) {
+      setWillSendWays('3');
+    } else setWillSendWays('NONE');
+    console.log(willSendWays);
+  }, [taxi, courier, pochta]);
 
   const { items } = useSelector(({ items }) => items);
   const { isLoaded } = useSelector(({ items }) => items);
@@ -373,56 +532,11 @@ const PlaceItem = () => {
                     <input
                       className="input_photo"
                       type="file"
-                      multiple
                       accept="image/*,image/jpeg"
                       value={downloadPhoto1}
                       onChange={(e) => setDownloadPhoto1(e.target.value)}
                     />
                   </div>
-                  {downloadPhoto1 && (
-                    <div>
-                      <input
-                        type="file"
-                        multiple
-                        accept="image/*,image/jpeg"
-                        value={downloadPhoto2}
-                        onChange={(e) => setDownloadPhoto2(e.target.value)}
-                      />
-                    </div>
-                  )}
-                  {downloadPhoto2 && (
-                    <div>
-                      <input
-                        type="file"
-                        multiple
-                        accept="image/*,image/jpeg"
-                        value={downloadPhoto3}
-                        onChange={(e) => setDownloadPhoto3(e.target.value)}
-                      />
-                    </div>
-                  )}
-                  {downloadPhoto3 && (
-                    <div>
-                      <input
-                        type="file"
-                        multiple
-                        accept="image/*,image/jpeg"
-                        value={downloadPhoto4}
-                        onChange={(e) => setDownloadPhoto4(e.target.value)}
-                      />
-                    </div>
-                  )}
-                  {downloadPhoto4 && (
-                    <div>
-                      <input
-                        type="file"
-                        multiple
-                        accept="image/*,image/jpeg"
-                        value={downloadPhoto5}
-                        onChange={(e) => setDownloadPhoto5(e.target.value)}
-                      />
-                    </div>
-                  )}
                 </li>
               </div>
 
@@ -438,7 +552,7 @@ const PlaceItem = () => {
                     placeholder="0.00"
                     value={costArends}
                     disabled={giveFree || yourCost}
-                    onChange={(e) => setCostArends(e.target.value)}
+                    onChange={(e) => setCostArendsHandler(e)}
                   />
                   <span className="span-valuts">
                     <b>BYN</b>
@@ -596,7 +710,7 @@ const PlaceItem = () => {
                         max="999999999"
                         className="input-number"
                         value={yearCreate}
-                        onChange={(e) => setYearCreate(e.target.value)}
+                        onChange={(e) => setYearCreateHandler(e)}
                       />
                     </div>
                   </li>
@@ -625,7 +739,7 @@ const PlaceItem = () => {
                         placeholder="0.00"
                         className="input-number"
                         value={cost}
-                        onChange={(e) => setCost(e.target.value)}
+                        onChange={(e) => setCostHandler(e)}
                       />
                       <span className="span-valuts">
                         <b>BYN</b>
@@ -718,7 +832,7 @@ const PlaceItem = () => {
                         max="999"
                         className="input-number"
                         value={podgotovkaTime}
-                        onChange={(e) => setPodgotovkaTime(e.target.value)}
+                        onChange={(e) => setPodgotovkaTimeHandler(e)}
                       />
                     </div>
                   </li>
@@ -757,10 +871,10 @@ const PlaceItem = () => {
                           className="option-razdel"
                           onChange={(e) => setTypeService(e.target.value)}>
                           <option />
-                          <option>Указать стоимость</option>
-                          <option>Бесплатно</option>
+                          <option value="paid">Указать стоимость</option>
+                          <option value="free">Бесплатно</option>
                         </select>
-                        {typeService === 'Указать стоимость' && (
+                        {typeService === 'paid' && (
                           <span>
                             {' '}
                             в сумме:{' '}
@@ -771,7 +885,7 @@ const PlaceItem = () => {
                               placeholder="0.00"
                               className="input-number"
                               value={indicateCost}
-                              onChange={(e) => setIndicateCost(e.target.value)}
+                              onChange={(e) => setIndicateCostHandler(e)}
                             />
                             <span className="span-valuts">
                               <b>BYN</b>
@@ -788,7 +902,7 @@ const PlaceItem = () => {
                       <input
                         type="checkbox"
                         className="input-checkbox"
-                        value={yourSend}
+                        checked={yourSend}
                         onChange={(e) => yourSendHandler(e.target.value)}
                       />
                     </span>
@@ -826,15 +940,14 @@ const PlaceItem = () => {
                         </span>
 
                         {(taxi || courier || pochta) && (
-                          <div>
+                          <div onChange={(e) => radioHandler(e)}>
                             <span style={{ marginRight: '20px' }}>
                               За счёт Владельца{'  '}
                               <input
                                 type="radio"
                                 className="input-checkbox"
-                                value={vladelec}
-                                name="radio"
-                                onChange={(e) => vladelecHandler(e.target.value)}
+                                value="OWNER"
+                                name="radio_choice"
                               />
                             </span>
 
@@ -843,9 +956,8 @@ const PlaceItem = () => {
                               <input
                                 type="radio"
                                 className="input-checkbox"
-                                value={renter}
-                                name="radio"
-                                onChange={(e) => renterHandler(e.target.value)}
+                                value="RENTER"
+                                name="radio_choice"
                               />
                             </span>
                           </div>
@@ -906,7 +1018,7 @@ const PlaceItem = () => {
                                 placeholder="0.00"
                                 className="input-number"
                                 value={insuranceSumma}
-                                onChange={(e) => setInsuranceSumma(e.target.value)}
+                                onChange={(e) => setInsuranceSummaHandler(e)}
                               />
                               <span className="span-valuts">
                                 <b>BYN</b>
@@ -936,7 +1048,7 @@ const PlaceItem = () => {
                                   placeholder="0.00"
                                   className="input-number"
                                   value={franchiseSumma}
-                                  onChange={(e) => setFranchiseSumma(e.target.value)}
+                                  onChange={(e) => setFranchiseSummaHandler(e)}
                                 />
                                 <span className="span-valuts">
                                   <b>BYN</b>
@@ -1014,7 +1126,7 @@ const PlaceItem = () => {
                                 step="any"
                                 placeholder="0.00"
                                 value={summaServiceSbor}
-                                onChange={(e) => setSummaServiceSbor(e.target.value)}
+                                onChange={(e) => setSummaServiceSborHandler(e)}
                               />
                               <span className="span-valuts">
                                 <b>BYN</b>
@@ -1041,7 +1153,7 @@ const PlaceItem = () => {
 
               {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
 
-              <div className="button_load" >
+              <div className="button_load">
                 <input
                   onClick={sendHandler}
                   type="button"
@@ -1050,7 +1162,6 @@ const PlaceItem = () => {
                   className="button_loading"
                 />{' '}
               </div>
-
             </ol>
           </form>
         </div>

@@ -144,6 +144,12 @@ class Requests {
     receive_time,
     return_time,
     prepare_time,
+    delivery,
+    delivery_free,
+    self_delivery_price,
+    will_send,
+    will_send_choice,
+    send_payer,
     servicefee,
     servicefee_choice,
     servicefee_price,
@@ -164,6 +170,9 @@ class Requests {
     article,
     inventory_number,
   ) {
+    console.log(insurance);
+    console.log(insurance_choice);
+    console.log(insurance);
     return axios({
       method: 'POST',
       headers: {
@@ -183,6 +192,16 @@ class Requests {
         receive_time: receive_time ? receive_time : ' ',
         return_time: return_time ? return_time : ' ',
         prepare_time: prepare_time ? prepare_time : null,
+        delivery: delivery ? delivery : 'NONE',
+        delivery_free: delivery_free ? delivery_free : false,
+        self_delivery_price: delivery_free
+          ? null
+          : self_delivery_price
+          ? self_delivery_price
+          : null,
+        will_send: will_send,
+        will_send_choice: will_send_choice ? will_send_choice : 'NONE',
+        send_payer: send_payer ? send_payer : 'NONE',
         servicefee: servicefee ? servicefee : false,
         servicefee_choice: servicefee_choice ? servicefee_choice : 'NONE',
         servicefee_price: servicefee_price ? servicefee_price : null,
@@ -193,7 +212,7 @@ class Requests {
         insurance_price: insurance_price ? insurance_price : null,
         sell: sell ? sell : false,
         contract: contract ? contract : false,
-        appointment: appointment ? structure : ' ',
+        appointment: appointment ? appointment : ' ',
         structure: structure ? structure : ' ',
         free_rent: free_rent ? free_rent : false,
         offer_price_rent: offer_price_rent ? offer_price_rent : false,
