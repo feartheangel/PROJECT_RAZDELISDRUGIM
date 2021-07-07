@@ -355,7 +355,6 @@ const PlaceItem = () => {
                   <span className="span-zvezda">*</span> Я предлагаю (описание):{' '}
                   <div>
                     <textarea
-                      type="text"
                       title="Опишите кратко наименование того, что предлагаете..."
                       minLength="0"
                       maxLength="1000"
@@ -1043,8 +1042,6 @@ const PlaceItem = () => {
               {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
 
               <div className="button_load" >
-                <input type="submit" name="a" value="ОТПРАВИТЬ" className="button_loading" />{' '}
-              <div>
                 <input
                   onClick={sendHandler}
                   type="button"
@@ -1052,8 +1049,8 @@ const PlaceItem = () => {
                   value="ОТПРАВИТЬ"
                   className="button_loading"
                 />{' '}
-                <input type="reset" name="a" value="ОЧИСТИТЬ" className="button_loading" />{' '}
               </div>
+
             </ol>
           </form>
         </div>
