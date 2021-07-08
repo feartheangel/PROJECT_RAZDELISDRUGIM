@@ -67,7 +67,6 @@
 
 #dop_parametr:hover {
   color: black;
-
 }
 
 /*КНОПКА ОТПРАВКИ */
@@ -87,15 +86,14 @@
   color: rgba(56, 43, 43, 0.8);
 }
 
-.button_loading:hover{
+.button_loading:hover {
   background: #f01f30;
   font-weight: bold;
 }
 
-.conteiner .button_load{
+.conteiner .button_load {
   display: flex;
   justify-content: center;
-
 }
 
 /* ALL INPUTS*/
@@ -126,7 +124,89 @@
 }
 
 /*ДЛЯ ФОТО*/
+.input-photo .add-item-photo-field {
+  display: flex !important;
+  padding: 5px;
+}
+
+.add-item-photos {
+  display: flex !important;
+}
+
+.add-item-photo-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.add-item-photo {
+  width: 130px;
+  height: 90px;
+  margin: 5px 5px 0 0;
+}
+
+.add-item-photo-wrapper:hover .add-item-photo-remove {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.add-item-photo-wrapper:hover .add-photo-info {
+  bottom: 4px;
+  transition: bottom 0.2s;
+}
+
+.add-photo-info {
+  position: absolute;
+  right: 0;
+  bottom: -30px;
+  left: 0;
+  height: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 5px;
+  transition: bottom 0.2s;
+  margin: 0 !important;
+}
+
+.add-item-photo-remove {
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0 5px 0 0 !important;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.upload-file__label {
+  padding: 10px;
+  position: absolute;
+  left: 429px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  border: 2px solid #4cc9f0;
+  box-sizing: border-box;
+  filter: drop-shadow(6px 6px 30px rgba(99, 212, 248, 0.24));
+  border-radius: 5px;
+  background: #4cc9f0;
+  cursor: pointer;
+}
+
 .input_photo {
+  opacity: 0;
+  z-index: -1;
 }
 
 /* ALL SELECT*/

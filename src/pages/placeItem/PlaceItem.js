@@ -9,9 +9,44 @@ import './PlaseItem.css';
 // import LanguagePlanet from "../../img/MainPage/Language-planet.png";
 // import {Link} from "react-router-dom";
 // import Burger from "../../img/MainPage/Burger.png";
+let files = [];
+let resultList = [];
 
 const PlaceItem = () => {
+  //конвертация байтов в размер
+  function bytesToSize(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return '0 Byte';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+  }
+
   const dispatch = useDispatch();
+
+  //обработчик фото
+  const photoHandler = (e) => {
+    resultList = [];
+    setDownloadPhoto([]);
+    files = Array.from(e.target.files);
+    files.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        resultList.push(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
+    setTimeout(() => {
+      if (resultList.length > 3) {
+        files = [];
+        resultList = [];
+        setDownloadPhoto([]);
+        alert('Разрешено загружить до 3 изображений');
+      } else {
+        setDownloadPhoto(resultList);
+      }
+    }, 300);
+  };
 
   //обрабочтик цены аренды
   const setCostArendsHandler = (e) => {
@@ -163,6 +198,13 @@ const PlaceItem = () => {
 
   //обработчик отправки формы
   const sendHandler = () => {
+    const formData = new FormData();
+    files[0] && formData.append('image_1', files[0]);
+    files[1] && formData.append('image_2', files[1]);
+    files[2] && formData.append('image_3', files[2]);
+    files[3] && formData.append('image_4', files[3]);
+    files[4] && formData.append('image_5', files[4]);
+
     Requests.createItem(
       Number(viborCategory),
       String(nameItem),
@@ -201,6 +243,7 @@ const PlaceItem = () => {
       Number(franchiseSumma),
       String(artikul),
       String(inventoryNumber),
+      formData,
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
@@ -209,7 +252,7 @@ const PlaceItem = () => {
         console.log(response);
       })
       .catch((response) => {
-        console.log(response.code);
+        alert('Ошибка!');
       });
   };
 
@@ -223,6 +266,9 @@ const PlaceItem = () => {
   // КАТЕГОРИИ - опции
   const [viborCategory, setViborCategory] = useState('');
 
+  //открытие блока с первью картинок
+  const [photoField, setPhotoField] = React.useState(false);
+
   //НАИМЕНОВАНИЕ ВЕЩИ
   const [nameItem, setNameItem] = useState('');
 
@@ -230,12 +276,7 @@ const PlaceItem = () => {
   const [description, setDescription] = useState('');
 
   //ЗАГРУЗКА ФОТО
-  const [downloadPhoto1, setDownloadPhoto1] = useState();
-  const [downloadPhoto2, setDownloadPhoto2] = useState();
-  const [downloadPhoto3, setDownloadPhoto3] = useState();
-  const [downloadPhoto4, setDownloadPhoto4] = useState();
-  const [downloadPhoto5, setDownloadPhoto5] = useState();
-
+  const [downloadPhoto, setDownloadPhoto] = useState();
   //СТОИМОСТЬ АРЕНДЫ / ВРЕМЯ АРЕНДЫ
   const [costArends, setCostArends] = useState('');
   const [timeArends, setTimeArends] = useState('DAY');
@@ -530,12 +571,30 @@ const PlaceItem = () => {
                   <span className="span-zvezda">*</span> Загрузите фото:{' '}
                   <div>
                     <input
+                      id="photo_input"
                       className="input_photo"
                       type="file"
+                      multiple
                       accept="image/*,image/jpeg"
-                      value={downloadPhoto1}
-                      onChange={(e) => setDownloadPhoto1(e.target.value)}
+                      onChange={(e) => photoHandler(e)}
                     />
+                    <label class="upload-file__label" htmlFor="photo_input">
+                      Выбрать файлы
+                    </label>
+                    <div className="add-item-photo-field">
+                      <div className="add-item-photos">
+                        {downloadPhoto &&
+                          downloadPhoto.map((photo, index) => (
+                            <div className="add-item-photo-wrapper">
+                              <div className="add-item-photo-remove">&times;</div>
+                              <img className="add-item-photo" key={index} src={photo} />
+                              <div className="add-photo-info">
+                                <span>{bytesToSize(files[index].size)}</span>
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
                   </div>
                 </li>
               </div>

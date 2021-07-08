@@ -1,5 +1,4 @@
 /* ГЛАВНАЯ СТРАНИЦА*/
-<<<<<<< HEAD
 .privateProfile {
   display: flex;
   justify-content: center;
@@ -12,6 +11,7 @@
   background: grey;
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
+  background: rgba(76, 201, 240, 0.05);
 }
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
@@ -22,44 +22,13 @@
   width: 1108px;
   background: #fff;
   font-family: 'Roboto', sans-serif;
-
+  color: #000000;
+  box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);
   padding: 53px 0 23px;
+  margin: 20px 0;
+  border-radius: 30px;
 }
 
-=======
-.privateProfile{
-    display: flex;
-    justify-content: center;
-    min-height: 100%;
-    min-width: 1440px;
-    width: 100%;
-    height: auto;
-    top: 0;
-    left: 0;
-    background: grey;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif ;
-    background: rgba(76, 201, 240, 0.05);
-
-}
-
-/*КОНТЕЙНЕР С КОНТЕНТОМ*/
-.privateProfile_container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 1108px;
-    background: #fff;
-    font-family: 'Roboto', sans-serif ;
-    color: #000000;
-    box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);
-    padding: 53px 0 23px;
-}
-
-
-
-
->>>>>>> 739634f34a7c162cf418f6aa091644ad436262c5
 /*КОНТЕЙНЕР С ШАПКОЙ */
 
 .conteiner_shapka .shapka_h1 {
@@ -90,18 +59,11 @@
   font-family: 'Roboto', sans-serif;
 }
 
-<<<<<<< HEAD
 .conteiner_shapka_up div {
   justify-content: center;
   text-align: center;
   font-family: 'Roboto', sans-serif;
-=======
-.conteiner_shapka_up div{
-    justify-content: center;
-    text-align: center;
-    font-family: 'Roboto', sans-serif ;
-    margin: 0 22px;
->>>>>>> 739634f34a7c162cf418f6aa091644ad436262c5
+  margin: 0 22px;
 }
 
 .shapka_up_image {
@@ -135,10 +97,14 @@
   margin: 20px 0;
 }
 
-<<<<<<< HEAD
-.conteiner_shapka_down button {
-  margin: 10px 10px;
-  font-size: 26px;
+.conteiner_shapka_down span {
+  margin: 0 15px;
+  font-size: 28px;
+}
+
+.conteiner_shapka_down span:hover {
+  cursor: pointer;
+  color: #2f80ed;
 }
 
 /* КОНТЕЙНЕР С НАСТРОЙКОЙ */
@@ -146,6 +112,7 @@
   display: flex;
   flex-direction: row;
   margin: 30px 0;
+  color: #333333;
 }
 
 /*Настройка левой строны*/
@@ -154,94 +121,41 @@
   flex-direction: column;
   width: 20%;
   height: 100%;
+  font-size: 22px;
+  color: #bdbdbd;
 }
 
-.nastroika_left button {
-  width: 150px;
-  margin: 10px 10px;
-  font-size: 16px;
-=======
-.conteiner_shapka_down span{
-    margin: 0 15px;
-    font-size: 28px;
+.nastroika_left span {
+  display: flex;
+  text-align: left;
+  width: 145px;
+  margin: 48px 10px;
+  font-size: 22px;
+  color: #bdbdbd;
 }
 
-.conteiner_shapka_down span:hover{
-    cursor: pointer;
-    color: #2F80ED;
+.nastroika_left span:hover {
+  color: #56ccf2;
+  cursor: pointer;
 }
-
-
-                                /* КОНТЕЙНЕР С НАСТРОЙКОЙ */
-.container_nastroika{
-    display: flex;
-    flex-direction: row;
-    margin: 30px 0;
-    color: #333333;
-
-}
-
-/*Настройка левой строны*/
-.nastroika_left{
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    height: 100%;
-    font-size: 22px;
-    color: #BDBDBD;
-}
-
-.nastroika_left span{
-    display: flex;
-    text-align: left;
-    width: 145px;
-    margin: 48px 10px;
-    font-size: 22px;
-    color: #BDBDBD;
-}
-
-.nastroika_left span:hover{
-    color: #56CCF2;
-    cursor: pointer;
->>>>>>> 739634f34a7c162cf418f6aa091644ad436262c5
-}
-
 
 /*Настройка центральной строны*/
-<<<<<<< HEAD
 .nastroika_center {
   width: 40%;
+  font-size: 20px;
 }
 
 .nastroika_center input {
   width: 300px;
   height: 30px;
-=======
-.nastroika_center{
-    width: 40%;
-    font-size: 20px;
-}
-
-.nastroika_center input{
-    width: 300px;
-    height: 30px;
-
->>>>>>> 739634f34a7c162cf418f6aa091644ad436262c5
 }
 
 /*Настройка правой строны*/
-<<<<<<< HEAD
 .nastroika_right {
   display: flex;
   flex-direction: column;
   width: 40%;
-=======
-.nastroika_right{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    font-size: 20px;
->>>>>>> 739634f34a7c162cf418f6aa091644ad436262c5
+  font-size: 20px;
 }
 
 .nastroika_right textarea {

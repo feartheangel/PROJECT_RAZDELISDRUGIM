@@ -142,13 +142,17 @@ li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 175px;
   z-index: 5;
   background-color: white;
   filter: drop-shadow(3px 3px 22px rgba(99, 212, 248, 0.24));
   border-radius: 5px;
   border: 1px solid #4cc9f0;
   box-sizing: border-box;
+}
+
+.dropdown-profile-menu-content a {
+  width: 175px;
+  text-decoration: none;
 }
 
 .dropdown-profile-menu-p {

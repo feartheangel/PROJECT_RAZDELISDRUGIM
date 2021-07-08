@@ -169,10 +169,8 @@ class Requests {
     franchise_price,
     article,
     inventory_number,
+    formData,
   ) {
-    console.log(insurance);
-    console.log(insurance_choice);
-    console.log(insurance);
     return axios({
       method: 'POST',
       headers: {
@@ -220,11 +218,22 @@ class Requests {
         franchise: franchise ? franchise : false,
         franchise_price: franchise_price ? franchise_price : null,
         article: article ? article : ' ',
-        inventory_number: inventory_number ? inventory_number : ' ',
       },
       url: 'http://178.172.136.88/api/items/create/',
     }).then((response) => {
-      return response;
+      if (response.status === 200 || response.status === 201) {
+        return axios({
+          method: 'POST',
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${localStorage.getItem('key')}`,
+          },
+          data: formData,
+          url: `http://178.172.136.88/api/items/update/${response.data.id}/`,
+        }).then((response) => {
+          return response;
+        });
+      }
     });
   }
 }
