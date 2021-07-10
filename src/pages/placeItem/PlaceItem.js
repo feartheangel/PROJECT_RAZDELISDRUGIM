@@ -219,7 +219,7 @@ const PlaceItem = () => {
       String(returnTime),
       Number(podgotovkaTime),
       String(deliveryType),
-      Boolean(typeService === 'free' ? true : false),
+      Boolean(typeService),
       Number(indicateCost),
       Boolean(yourSend),
       String(willSendWays),
@@ -282,10 +282,10 @@ const PlaceItem = () => {
   const [timeArends, setTimeArends] = useState('DAY');
 
   //БЕСПЛАТНО
-  const [giveFree, setGiveFree] = useState();
+  const [giveFree, setGiveFree] = useState(false);
 
   //ПРЕДЛОЖИТЬ ЦЕНУ
-  const [yourCost, setYourCost] = useState('');
+  const [yourCost, setYourCost] = useState(false);
 
   // ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ - ОТКРЫТЬ/ЗАКРЫТЬ
   const [showFunctions, setShowFunctions] = useState();
@@ -327,12 +327,12 @@ const PlaceItem = () => {
   const [podgotovkaTime, setPodgotovkaTime] = useState(' ');
 
   // ВИД ДОСТАВКИ - САМОВЫВОЗ
-  const [pickUp, setPickUp] = useState('');
+  const [pickUp, setPickUp] = useState(true);
 
   // ВИД ДОСТАВКИ - ЗАБЕРУ ПРИВЕЗУ САМ ( ОПЦИИ - выбор и стомость )
   const [takeAway, setTakeAway] = useState('');
 
-  const [typeService, setTypeService] = useState('');
+  const [typeService, setTypeService] = useState(false);
   const [indicateCost, setIndicateCost] = useState(false);
 
   //ОТПРАВЛЮ
@@ -382,7 +382,10 @@ const PlaceItem = () => {
 
   //очистка полей при отмене выбора
   React.useEffect(() => {
-    if (giveFree === true || yourCost === true) setCostArends(false);
+    if (giveFree === true || yourCost === true) {
+      setCostArends(false);
+      setTimeArends('NONE');
+    }
     if (takeAway === false) {
       setTypeService(false);
       setIndicateCost(false);
@@ -410,7 +413,7 @@ const PlaceItem = () => {
       setSummaServiceSbor(null);
     }
 
-    if (typeService === 'free') setIndicateCost(false);
+    if (typeService) setIndicateCost(false);
   }, [
     giveFree,
     yourCost,
@@ -497,114 +500,112 @@ const PlaceItem = () => {
       <div className="PlaseItem">
         <div className="conteiner">
           <form>
-            <ol>
-              <h2> РАЗМЕСТИ СВОЮ ВЕЩЬ </h2>
+            <p className="conteiner-main-p">Подать объявление</p>
 
-              {/*  РАЗДЕЛ  */}
+            {/*  НАИМЕНОВАНИЕ  */}
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Название вещи <span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                type="text"
+                className="add-item-input-text"
+                value={nameItem}
+                onChange={(e) => setNameItem(e.target.value)}
+              />
+            </div>
+
+            {/*  РАЗДЕЛ  */}
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Выберите раздел <span className="add-item-span-zvezda">*</span>
+              </label>
+              <select onChange={(e) => setRazdel(e.target.value)} className="add-item-select-input">
+                <option />
+                {isLoaded &&
+                  [].concat.apply(Object.entries(chapters)).map((chapter, index) => (
+                    <option key={index} value={chapter[1]}>
+                      {chapter[0]}
+                    </option>
+                  ))}
+              </select>
+            </div>
+
+            {/*  КАТЕГОРИЯ  */}
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Выберите категорию <span className="add-item-span-zvezda">*</span>
+              </label>
+              <select
+                className="add-item-select-input"
+                value={viborCategory}
+                onChange={(e) => setViborCategory(e.target.value)}>
+                <option />
+                {isLoaded &&
+                  [].concat.apply(Object.entries(categories)).map((category, index) => (
+                    <option key={index} value={category[1]}>
+                      {category[0]}
+                    </option>
+                  ))}
+              </select>
+            </div>
+
+            {/*  Я ПРЕДЛАГАЮ  */}
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">Описание вещи</label>
               <div>
-                <li>
-                  <span className="span-zvezda">*</span> Выберите раздел:{' '}
-                  <select onChange={(e) => setRazdel(e.target.value)} className="option-razdel">
-                    <option />
-                    {isLoaded &&
-                      [].concat.apply(Object.entries(chapters)).map((chapter, index) => (
-                        <option key={index} value={chapter[1]}>
-                          {chapter[0]}
-                        </option>
+                <textarea
+                  className="add-item-textarea"
+                  title="Опишите кратко наименование того, что предлагаете..."
+                  minLength="0"
+                  maxLength="1000"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/*  ЗАГРУЗКА ФОТО  */}
+            <div>
+              <div>
+                <input
+                  id="photo_input"
+                  className="input_photo"
+                  type="file"
+                  multiple
+                  accept="image/*,image/jpeg"
+                  onChange={(e) => photoHandler(e)}
+                />
+                <label class="upload-file__label" htmlFor="photo_input">
+                  Добавить фото
+                </label>
+                <div className="add-item-photo-field">
+                  <div className="add-item-photos">
+                    {downloadPhoto &&
+                      downloadPhoto.map((photo, index) => (
+                        <div className="add-item-photo-wrapper">
+                          <div className="add-item-photo-remove">&times;</div>
+                          <img className="add-item-photo" key={index} src={photo} />
+                          <div className="add-photo-info">
+                            <span>{bytesToSize(files[index].size)}</span>
+                          </div>
+                        </div>
                       ))}
-                  </select>
-                </li>
-              </div>
-
-              {/*  КАТЕГОРИЯ  */}
-              <div>
-                <li>
-                  <span className="span-zvezda">*</span> Выберите категорию:{' '}
-                  <select
-                    className="option-razdel"
-                    value={viborCategory}
-                    onChange={(e) => setViborCategory(e.target.value)}>
-                    <option />
-                    {isLoaded &&
-                      [].concat.apply(Object.entries(categories)).map((category, index) => (
-                        <option key={index} value={category[1]}>
-                          {category[0]}
-                        </option>
-                      ))}
-                  </select>
-                </li>
-              </div>
-
-              {/*  НАИМЕНОВАНИЕ  */}
-
-              <div>
-                <li>
-                  <span className="span-zvezda">*</span> Укажите наименование:{'  '}
-                  <input
-                    type="text"
-                    className="input-text"
-                    value={nameItem}
-                    onChange={(e) => setNameItem(e.target.value)}
-                  />
-                </li>
-              </div>
-
-              {/*  Я ПРЕДЛАГАЮ  */}
-              <div>
-                <li>
-                  <span className="span-zvezda">*</span> Я предлагаю (описание):{' '}
-                  <div>
-                    <textarea
-                      title="Опишите кратко наименование того, что предлагаете..."
-                      minLength="0"
-                      maxLength="1000"
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                    />
                   </div>
-                </li>
+                </div>
               </div>
+            </div>
 
-              {/*  ЗАГРУЗКА ФОТО  */}
-              <div>
-                <li>
-                  <span className="span-zvezda">*</span> Загрузите фото:{' '}
-                  <div>
-                    <input
-                      id="photo_input"
-                      className="input_photo"
-                      type="file"
-                      multiple
-                      accept="image/*,image/jpeg"
-                      onChange={(e) => photoHandler(e)}
-                    />
-                    <label class="upload-file__label" htmlFor="photo_input">
-                      Выбрать файлы
-                    </label>
-                    <div className="add-item-photo-field">
-                      <div className="add-item-photos">
-                        {downloadPhoto &&
-                          downloadPhoto.map((photo, index) => (
-                            <div className="add-item-photo-wrapper">
-                              <div className="add-item-photo-remove">&times;</div>
-                              <img className="add-item-photo" key={index} src={photo} />
-                              <div className="add-photo-info">
-                                <span>{bytesToSize(files[index].size)}</span>
-                              </div>
-                            </div>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </div>
+            {/*  СТОИМОСТЬ АРЕНДЫ  */}
 
-              {/*  СТОИМОСТЬ АРЕНДЫ  */}
-              <li>
+            <div className="item-add-cost-choice-wrapper">
+              <div className="add-item-input-wrapper">
+                <label className="add-item-input-label">
+                  Стоимость вещи в аренду <span className="add-item-span-zvezda">*</span>
+                </label>
                 <div>
-                  <span className="span-zvezda">*</span> Стоимость аренды:{' '}
                   <input
-                    className="input-number"
+                    className="add-item-input-number"
                     type="number"
                     max="9999"
                     step="any"
@@ -613,615 +614,550 @@ const PlaceItem = () => {
                     disabled={giveFree || yourCost}
                     onChange={(e) => setCostArendsHandler(e)}
                   />
-                  <span className="span-valuts">
-                    <b>BYN</b>
-                  </span>
-                  <select className="option-razdel" onChange={(e) => setTimeArends(e.target.value)}>
-                    <option />
-                    <option value="HOUR">Час</option>
-                    <option value="DAY" selected>
-                      Сутки
-                    </option>
-                    <option value="WEEK">Неделя</option>
-                    <option value="MONTH">Месяц</option>
-                  </select>
                 </div>
-
-                {/*  БЕСПЛАТНО  */}
-                <div style={{ marginLeft: '17px' }}>
-                  Бесплатно{' '}
-                  <input
-                    className="input-checkbox"
-                    type="checkbox"
-                    value={giveFree}
-                    disabled={yourCost}
-                    onChange={(e) => giveFreeHandler(e.target.value)}
-                  />{' '}
-                </div>
-
-                {/*  ПРЕДЛОЖИТЬ ЦЕНУ  */}
-                <div style={{ marginLeft: '17px' }}>
-                  Предложить цену{' '}
-                  <input
-                    className="input-checkbox"
-                    type="checkbox"
-                    value={yourCost}
-                    disabled={giveFree}
-                    onChange={(e) => yourCostHandler(e.target.value)}
-                  />{' '}
-                </div>
-              </li>
-
-              <hr style={{ marginBottom: '10px' }} />
-
-              {/*  КНОПКА ДОП. ПАРАМЕТРЫ  */}
-
-              <div id="dop_parametr">
-                <p>
-                  {' '}
-                  Дополнительные параметры{'  '}
-                  <input
-                    id="dop_parametr"
-                    className="input-checkbox"
-                    type="checkbox"
-                    value={showFunctions}
-                    onClick={showFunctionsHandler}
-                  />
-                </p>
               </div>
+              <div className="add-item-input-wrapper">
+                <label className="add-item-input-label">
+                  Срок <span className="add-item-span-zvezda">*</span>
+                </label>
+                <select
+                  className="add-item-select-input__time"
+                  onChange={(e) => setTimeArends(e.target.value)}
+                  disabled={giveFree || yourCost}>
+                  <option />
+                  <option value="HOUR">Час</option>
+                  <option value="DAY" selected>
+                    Сутки
+                  </option>
+                  <option value="WEEK">Неделя</option>
+                  <option value="MONTH">Месяц</option>
+                </select>
+              </div>
+              <span className="add-item-cost-or">или</span>
+              <label class="checkbox-btn">
+                <input
+                  onChange={() => setYourCost(!yourCost)}
+                  type="checkbox"
+                  checked={yourCost}
+                  disabled={giveFree}
+                />
+                <span>Предлагать цену</span>
+              </label>
+              <span className="add-item-cost-or">или</span>
+              <label class="checkbox-btn">
+                <input
+                  onChange={() => setGiveFree(!giveFree)}
+                  type="checkbox"
+                  checked={giveFree}
+                  disabled={yourCost}
+                />
+                <span>Бесплатно</span>
+              </label>
+            </div>
+            <div className="add-item-ready-sell-wrapper">
+              <input
+                className="add-item-input-checkbox__2"
+                type="checkbox"
+                id="add-item-input-checkbox__2"
+                checked={readySell}
+                onChange={readySellHandler}
+              />
+              <label htmlFor="add-item-input-checkbox__2">Готов продать</label>
+            </div>
 
-              {/*--------------------------------- ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ ---------------------------------------*/}
+            {/*  КНОПКА ДОП. ПАРАМЕТРЫ  */}
 
-              {showFunctions && (
-                <div>
-                  {/*  КЛЮЧЕВЫЕ СЛОВА  */}
+            <div id="dop_parametr_wrapper">
+              <input
+                id="dop_parametr"
+                className="add-item-input-checkbox__3"
+                type="checkbox"
+                value={showFunctions}
+                onClick={showFunctionsHandler}
+              />
+              <label htmlFor="dop_parametr">Дополнительные параметры</label>
+            </div>
 
-                  <li>
-                    <div>
-                      Ключевые слова:{'  '}
-                      <input
-                        title="Укажите через запятую ключевые слова..."
-                        type="text"
-                        className="input-text"
-                        value={yourKeyWord}
-                        onChange={(e) => setYourKeyWord(e.target.value)}
-                      />
-                    </div>
-                  </li>
+            {/*--------------------------------- ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ ---------------------------------------*/}
 
-                  {/*  СОСТАВ/КОМПЛЕКТНОСТЬ  */}
+            {showFunctions && (
+              <div className="secondary-parameters">
+                {/*  КЛЮЧЕВЫЕ СЛОВА  */}
 
-                  <li>
-                    <div>
-                      Состав/Комплектность:{'  '}
-                      <input
-                        type="text"
-                        className="input-text"
-                        value={sostav}
-                        onChange={(e) => setSostav(e.target.value)}
-                      />
-                    </div>
-                  </li>
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Ключевые слова</label>
+                  <input
+                    title="Укажите через запятую ключевые слова..."
+                    type="text"
+                    className="add-item-input-text"
+                    value={yourKeyWord}
+                    onChange={(e) => setYourKeyWord(e.target.value)}
+                  />
+                </div>
 
-                  {/*  НАЗНАЧЕНИЕ  */}
+                {/*  СОСТАВ/КОМПЛЕКТНОСТЬ  */}
 
-                  <li>
-                    <div>
-                      Назначение:{'  '}
-                      <div>
-                        <textarea
-                          value={naznacheniye}
-                          onChange={(e) => setNaznacheniye(e.target.value)}
-                        />
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Состав/комплектность</label>
+                  <input
+                    type="text"
+                    className="add-item-input-text"
+                    value={sostav}
+                    onChange={(e) => setSostav(e.target.value)}
+                  />
+                </div>
+
+                {/*  НАЗНАЧЕНИЕ  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Назначение</label>
+                  <div>
+                    <textarea
+                      className="add-item-textarea"
+                      value={naznacheniye}
+                      onChange={(e) => setNaznacheniye(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                {/*  АРТИКУЛ  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Артикул</label>
+                  <input
+                    type="text"
+                    className="add-item-input-text"
+                    value={artikul}
+                    onChange={(e) => setArtikul(e.target.value)}
+                  />
+                </div>
+
+                {/*  ИНВЕНТАРНЫЙ НОМЕР  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Инвентарный номер</label>
+                  <input
+                    type="text"
+                    className="add-item-input-text"
+                    value={inventoryNumber}
+                    onChange={(e) => setInventoryNumber(e.target.value)}
+                  />
+                </div>
+
+                {/*  Цвет  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Цвет</label>
+                  <input
+                    type="text"
+                    className="add-item-input-text"
+                    value={yourColor}
+                    onChange={(e) => setYourColor(e.target.value)}
+                  />
+                </div>
+
+                {/*  ГОД ВЫПУСКА  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Год выпуска</label>
+                  <input
+                    type="number"
+                    max="999999999"
+                    className="add-item-input-text"
+                    value={yearCreate}
+                    onChange={(e) => setYearCreateHandler(e)}
+                  />
+                </div>
+
+                {/*  ПРОБЕГ  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Пробег</label>
+                  <input
+                    type="text"
+                    className="add-item-input-text"
+                    value={mileAge}
+                    onChange={(e) => setMileAge(e.target.value)}
+                  />
+                </div>
+
+                {/*  СТОИМОСТЬ ЕСЛИ ОЦЕНИВАЕТСЯ  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Стоимость вещи (если оценивается)</label>
+                  <input
+                    type="number"
+                    max="9999"
+                    step="any"
+                    placeholder="0.00"
+                    className="add-item-input-text"
+                    value={cost}
+                    onChange={(e) => setCostHandler(e)}
+                  />
+                </div>
+
+                {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
+                <div className="add-item-time-block-wrapper">
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">Время получения (не позднее)</label>
+                    <select
+                      className="add-item-select-clock"
+                      onChange={(e) => setTimeReceipt(e.target.value)}>
+                      <option />
+                      <option value="1ч">1ч</option>
+                      <option value="2ч">2ч</option>
+                      <option value="3ч">3ч</option>
+                      <option value="4ч">4ч</option>
+                      <option value="5ч">5ч</option>
+                      <option value="6ч">6ч</option>
+                      <option value="7ч">7ч</option>
+                      <option value="8ч">8ч</option>
+                      <option value="9ч">9ч</option>
+                      <option value="10ч">10ч</option>
+                      <option value="11ч">11ч</option>
+                      <option value="12ч" selected>
+                        12ч
+                      </option>
+                      <option value="13ч">13ч</option>
+                      <option value="14ч">14ч</option>
+                      <option value="15ч">15ч</option>
+                      <option value="16ч">16ч</option>
+                      <option value="17ч">17ч</option>
+                      <option value="18ч">18ч</option>
+                      <option value="19ч">19ч</option>
+                      <option value="20ч">20ч</option>
+                      <option value="21ч">21ч</option>
+                      <option value="22ч">22ч</option>
+                      <option value="23ч">23ч</option>
+                      <option value="24ч">24ч</option>
+                    </select>
+                  </div>
+
+                  {/*  ВРЕМЯ ВОЗВРАТА  */}
+
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">Время возврата (не позднее)</label>
+                    <select
+                      className="add-item-select-clock"
+                      onChange={(e) => setReturnTime(e.target.value)}>
+                      <option />
+                      <option value="1ч">1ч</option>
+                      <option value="2ч">2ч</option>
+                      <option value="3ч">3ч</option>
+                      <option value="4ч">4ч</option>
+                      <option value="5ч">5ч</option>
+                      <option value="6ч">6ч</option>
+                      <option value="7ч">7ч</option>
+                      <option value="8ч">8ч</option>
+                      <option value="9ч">9ч</option>
+                      <option value="10ч">10ч</option>
+                      <option value="11ч">11ч</option>
+                      <option value="12ч" selected>
+                        12ч
+                      </option>
+                      <option value="13ч">13ч</option>
+                      <option value="14ч">14ч</option>
+                      <option value="15ч">15ч</option>
+                      <option value="16ч">16ч</option>
+                      <option value="17ч">17ч</option>
+                      <option value="18ч">18ч</option>
+                      <option value="19ч">19ч</option>
+                      <option value="20ч">20ч</option>
+                      <option value="21ч">21ч</option>
+                      <option value="22ч">22ч</option>
+                      <option value="23ч">23ч</option>
+                      <option value="24ч">24ч</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/*  ВРЕМЯ ПОДГОТОВКИ ТОВАРА  */}
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Время подготовки вещи</label>
+                  <input
+                    type="number"
+                    max="999"
+                    className="add-item-input-text"
+                    value={podgotovkaTime}
+                    onChange={(e) => setPodgotovkaTimeHandler(e)}
+                  />
+                </div>
+
+                {/*  ВИД ДОСТАВКИ - САМОВЫВОЗ - ПРИВЕЗУ/ЗАБЕРУ - ОТПРАВКА */}
+                <label className="add-item-input-label">Вид доставки</label>
+                <div className="checkbox-btn secondary">
+                  <input type="checkbox" className="input-checkbox" checked={pickUp} />
+                  <span onClick={(e) => pickupHandler(e.target.value)}>Самовывоз</span>
+                </div>
+
+                {/*  ПРИВЕЗУ/ЗАБЕРУ САМ  */}
+                <div className="add-item-delivery-type-wrapper">
+                  <div className="checkbox-btn secondary">
+                    <input type="checkbox" className="input-checkbox" checked={takeAway} />
+                    <span onClick={(e) => takeAwayHandler(e.target.value)}>
+                      Привезу и заберу сам
+                    </span>
+                  </div>
+
+                  {takeAway && (
+                    <div className="take-away-secondary-wrapper">
+                      <div className="checkbox-btn secondary">
+                        <input type="checkbox" className="input-checkbox" checked={typeService} />
+                        <span onClick={() => setTypeService(!typeService)}>Бесплатно</span>
                       </div>
-                    </div>
-                  </li>
-
-                  {/*  АРТИКУЛ  */}
-
-                  <li>
-                    <div>
-                      Артикул:{'  '}
+                      <span className="add-item-cost-or__secondary">или</span>
+                      <span className="add-item-input-label__lower">Указать стоимость</span>
                       <input
-                        type="text"
-                        className="input-text"
-                        value={artikul}
-                        onChange={(e) => setArtikul(e.target.value)}
-                      />
-                    </div>
-                  </li>
-
-                  {/*  ИНВЕНТАРНЫЙ НОМЕР  */}
-
-                  <li>
-                    <div>
-                      Инвентарный номер:{'  '}
-                      <input
-                        type="text"
-                        className="input-text"
-                        value={inventoryNumber}
-                        onChange={(e) => setInventoryNumber(e.target.value)}
-                      />
-                    </div>
-                  </li>
-
-                  {/*  Цвет  */}
-
-                  <li>
-                    <div>
-                      Цвет:{'  '}
-                      <input
-                        type="text"
-                        className="input-text"
-                        value={yourColor}
-                        onChange={(e) => setYourColor(e.target.value)}
-                      />
-                    </div>
-                  </li>
-
-                  {/*  ГОД ВЫПУСКА  */}
-
-                  <li>
-                    <div>
-                      Год выпуска:{' '}
-                      <input
-                        type="number"
-                        max="999999999"
-                        className="input-number"
-                        value={yearCreate}
-                        onChange={(e) => setYearCreateHandler(e)}
-                      />
-                    </div>
-                  </li>
-
-                  {/*  ПРОБЕГ  */}
-                  <li>
-                    <div>
-                      Пробег:{' '}
-                      <input
-                        type="text"
-                        className="input-text"
-                        value={mileAge}
-                        onChange={(e) => setMileAge(e.target.value)}
-                      />
-                    </div>
-                  </li>
-
-                  {/*  СТОИМОСТЬ ЕСЛИ ОЦЕНИВАЕТСЯ  */}
-                  <li>
-                    <div>
-                      Стоимость вещи (если оценивается):{' '}
-                      <input
+                        disabled={typeService}
                         type="number"
                         max="9999"
                         step="any"
                         placeholder="0.00"
-                        className="input-number"
-                        value={cost}
-                        onChange={(e) => setCostHandler(e)}
+                        className="add-item-input-number__secondary"
+                        value={indicateCost}
+                        onChange={(e) => setIndicateCostHandler(e)}
                       />
-                      <span className="span-valuts">
-                        <b>BYN</b>
-                      </span>
+                      <span className="span-valuts">BYN</span>
                     </div>
-                  </li>
+                  )}
+                </div>
 
-                  {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
-                  <li>
-                    <div>
-                      Время получения (не ранее):{' '}
-                      <select
-                        className="select-clock"
-                        onChange={(e) => setTimeReceipt(e.target.value)}>
-                        <option />
-                        <option value="1ч">1ч</option>
-                        <option value="2ч">2ч</option>
-                        <option value="3ч">3ч</option>
-                        <option value="4ч">4ч</option>
-                        <option value="5ч">5ч</option>
-                        <option value="6ч">6ч</option>
-                        <option value="7ч">7ч</option>
-                        <option value="8ч">8ч</option>
-                        <option value="9ч">9ч</option>
-                        <option value="10ч">10ч</option>
-                        <option value="11ч">11ч</option>
-                        <option value="12ч" selected>
-                          12ч
-                        </option>
-                        <option value="13ч">13ч</option>
-                        <option value="14ч">14ч</option>
-                        <option value="15ч">15ч</option>
-                        <option value="16ч">16ч</option>
-                        <option value="17ч">17ч</option>
-                        <option value="18ч">18ч</option>
-                        <option value="19ч">19ч</option>
-                        <option value="20ч">20ч</option>
-                        <option value="21ч">21ч</option>
-                        <option value="22ч">22ч</option>
-                        <option value="23ч">23ч</option>
-                        <option value="24ч">24ч</option>
-                      </select>
-                    </div>
-                  </li>
-
-                  {/*  ВРЕМЯ ВОЗВРАТА  */}
-                  <li>
-                    <div>
-                      Время возврата (не позднее):{' '}
-                      <select
-                        className="select-clock"
-                        onChange={(e) => setReturnTime(e.target.value)}>
-                        <option />
-                        <option value="1ч">1ч</option>
-                        <option value="2ч">2ч</option>
-                        <option value="3ч">3ч</option>
-                        <option value="4ч">4ч</option>
-                        <option value="5ч">5ч</option>
-                        <option value="6ч">6ч</option>
-                        <option value="7ч">7ч</option>
-                        <option value="8ч">8ч</option>
-                        <option value="9ч">9ч</option>
-                        <option value="10ч">10ч</option>
-                        <option value="11ч">11ч</option>
-                        <option value="12ч" selected>
-                          12ч
-                        </option>
-                        <option value="13ч">13ч</option>
-                        <option value="14ч">14ч</option>
-                        <option value="15ч">15ч</option>
-                        <option value="16ч">16ч</option>
-                        <option value="17ч">17ч</option>
-                        <option value="18ч">18ч</option>
-                        <option value="19ч">19ч</option>
-                        <option value="20ч">20ч</option>
-                        <option value="21ч">21ч</option>
-                        <option value="22ч">22ч</option>
-                        <option value="23ч">23ч</option>
-                        <option value="24ч">24ч</option>
-                      </select>
-                    </div>
-                  </li>
-
-                  {/*  ВРЕМЯ ПОДГОТОВКИ ТОВАРА  */}
-                  <li>
-                    <div>
-                      Укажите время подготовки товара:{' '}
-                      <input
-                        type="number"
-                        max="999"
-                        className="input-number"
-                        value={podgotovkaTime}
-                        onChange={(e) => setPodgotovkaTimeHandler(e)}
-                      />
-                    </div>
-                  </li>
-
-                  {/*  ВИД ДОСТАВКИ - САМОВЫВОЗ - ПРИВЕЗУ/ЗАБЕРУ - ОТПРАВКА */}
-                  <li>
-                    {/*  САМОВЫВОЗ  */}
-                    <div>
-                      Вид доставки:{' '}
-                      <div>
-                        Самовывоз{' '}
-                        <input
-                          type="checkbox"
-                          className="input-checkbox"
-                          value={pickUp}
-                          onChange={(e) => pickupHandler(e.target.value)}
-                        />
+                {/*  ОТПРАВЛЮ  */}
+                <span className="take-away-secondary-wrapper">
+                  <div className="take-away-secondary-wrapper-column">
+                    <div className="take-away-secondary-wrapper">
+                      <div className="checkbox-btn secondary">
+                        <input type="checkbox" className="input-checkbox" checked={yourSend} />
+                        <span onClick={(e) => yourSendHandler(e.target.value)}>Отправлю</span>
                       </div>
-                    </div>
 
-                    {/*  ПРИВЕЗУ/ЗАБЕРУ САМ  */}
-                    <div>
-                      Привезу и заберу сам{' '}
-                      <input
-                        type="checkbox"
-                        className="input-checkbox"
-                        value={takeAway}
-                        onChange={(e) => takeAwayHandler(e.target.value)}
-                      />
-                    </div>
-
-                    {takeAway && (
-                      <div>
-                        Выберите услугу: {'  '}
-                        <select
-                          className="option-razdel"
-                          onChange={(e) => setTypeService(e.target.value)}>
-                          <option />
-                          <option value="paid">Указать стоимость</option>
-                          <option value="free">Бесплатно</option>
-                        </select>
-                        {typeService === 'paid' && (
-                          <span>
-                            {' '}
-                            в сумме:{' '}
-                            <input
-                              type="number"
-                              max="9999"
-                              step="any"
-                              placeholder="0.00"
-                              className="input-number"
-                              value={indicateCost}
-                              onChange={(e) => setIndicateCostHandler(e)}
-                            />
-                            <span className="span-valuts">
-                              <b>BYN</b>
-                            </span>
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {/*  ОТПРАВЛЮ  */}
-
-                    <span style={{ marginRight: '45px' }}>
-                      Отправлю{' '}
-                      <input
-                        type="checkbox"
-                        className="input-checkbox"
-                        checked={yourSend}
-                        onChange={(e) => yourSendHandler(e.target.value)}
-                      />
-                    </span>
-
-                    {yourSend && (
-                      <span>
-                        <span style={{ margin: ' 0 20px' }}>
-                          такси{' '}
-                          <input
-                            className="input-checkbox"
-                            type="checkbox"
-                            value={taxi}
-                            onChange={(e) => taxiHandler(e.target.value)}
-                          />
-                        </span>
-
-                        <span style={{ margin: ' 0 20px' }}>
-                          курьер{' '}
-                          <input
-                            className="input-checkbox"
-                            type="checkbox"
-                            value={courier}
-                            onChange={(e) => courierHandler(e.target.value)}
-                          />
-                        </span>
-
-                        <span style={{ margin: ' 0 20px' }}>
-                          почта{' '}
-                          <input
-                            className="input-checkbox"
-                            type="checkbox"
-                            value={pochta}
-                            onChange={(e) => pochtaHandler(e.target.value)}
-                          />
-                        </span>
-
-                        {(taxi || courier || pochta) && (
-                          <div onChange={(e) => radioHandler(e)}>
-                            <span style={{ marginRight: '20px' }}>
-                              За счёт Владельца{'  '}
-                              <input
-                                type="radio"
-                                className="input-checkbox"
-                                value="OWNER"
-                                name="radio_choice"
-                              />
-                            </span>
-
-                            <span>
-                              За счёт Рентера{'  '}
-                              <input
-                                type="radio"
-                                className="input-checkbox"
-                                value="RENTER"
-                                name="radio_choice"
-                              />
-                            </span>
+                      {yourSend && (
+                        <span className="take-away-secondary-wrapper">
+                          <div className="checkbox-btn secondary">
+                            <input type="checkbox" className="input-checkbox" checked={taxi} />
+                            <span onClick={(e) => taxiHandler(e.target.value)}>Такси</span>
                           </div>
-                        )}
-                      </span>
-                    )}
-                  </li>
 
-                  <hr />
+                          <div className="checkbox-btn secondary">
+                            <input type="checkbox" className="input-checkbox" checked={courier} />
+                            <span onClick={(e) => courierHandler(e.target.value)}>Курьер</span>
+                          </div>
 
-                  {/*  ДОГОВОР/РАСПИСКА  */}
-                  <li>
-                    <div>
-                      "Договор/расписка обязательны":{' '}
-                      <input
-                        type="checkbox"
-                        className="input-checkbox"
-                        checked={contract}
-                        onChange={(e) => contractHandler(e.target.value)}
-                      />
+                          <div className="checkbox-btn secondary">
+                            <input type="checkbox" className="input-checkbox" checked={pochta} />
+                            <span onClick={(e) => pochtaHandler(e.target.value)}>Почта</span>
+                          </div>
+                        </span>
+                      )}
                     </div>
-                  </li>
+
+                    {(taxi || courier || pochta) && (
+                      <div className="add-item-radio-wrapper" onChange={(e) => radioHandler(e)}>
+                        <span class="form_radio_btn">
+                          <input id="radio-1" type="radio" name="radio_choice" value="OWNER" />
+                          <label for="radio-1">За счёт Владельца</label>
+                        </span>
+
+                        <span class="form_radio_btn">
+                          <input id="radio-2" type="radio" name="radio_choice" value="RENTER" />
+                          <label for="radio-2">За счёт Рентера</label>
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </span>
+
+                {/*  ДОГОВОР/РАСПИСКА  */}
+                <div className="add-item-gurantee-wrapper">
+                  <label className="add-item-input-label">Гарантии</label>
+                  <div className="checkbox-btn secondary">
+                    <input type="checkbox" className="input-checkbox" checked={contract} />
+                    <span onClick={(e) => contractHandler(e.target.value)}>
+                      Договор/расписка обязательны
+                    </span>
+                  </div>
 
                   {/*  СТРАХОВАНИЕ  */}
-                  <li>
-                    <div>
-                      <span>
-                        {' '}
-                        Страхование{' '}
-                        <input
-                          type="checkbox"
-                          className="input-checkbox"
-                          checked={insurance}
-                          onChange={insuranceHandler}
-                        />{' '}
-                      </span>
-
-                      {insurance && (
-                        <span>
-                          <span style={{ marginTop: '20px' }}>
-                            <select
-                              className="option-razdel"
+                  <div className="take-away-secondary-wrapper">
+                    <div className="take-away-secondary-wrapper-column">
+                      <div className="take-away-secondary-wrapper">
+                        <div className="checkbox-btn secondary">
+                          <input type="checkbox" className="input-checkbox" checked={insurance} />
+                          <span onClick={insuranceHandler}>Страхование</span>
+                        </div>
+                        {insurance && (
+                          <div className="take-away-secondary-wrapper">
+                            <div
+                              className="add-item-radio-wrapper"
                               onChange={(e) => setInsuranceTime(e.target.value)}>
-                              <option />
-                              <option value="PERIOD">За весь период</option>
-                              <option value="DAY">За сутки</option>
-                            </select>{' '}
-                          </span>
-
-                          {(insuranceTime === 'DAY' || insuranceTime === 'PERIOD') && (
-                            <span>
-                              {' '}
-                              в сумме:{' '}
-                              <input
-                                type="number"
-                                max="9999"
-                                step="any"
-                                placeholder="0.00"
-                                className="input-number"
-                                value={insuranceSumma}
-                                onChange={(e) => setInsuranceSummaHandler(e)}
-                              />
-                              <span className="span-valuts">
-                                <b>BYN</b>
+                              <span class="form_radio_btn">
+                                <input
+                                  id="radio-3"
+                                  type="radio"
+                                  name="radio_choice_ins"
+                                  value="PERIOD"
+                                />
+                                <label for="radio-3">За весь период</label>
                               </span>
-                            </span>
-                          )}
 
-                          <div>
-                            <span>
-                              Франшиза{' '}
-                              <input
-                                type="checkbox"
-                                className="input-checkbox"
-                                value={franchise}
-                                onChange={franchiseHandler}
-                              />{' '}
-                            </span>
-
-                            {franchise && (
+                              <span class="form_radio_btn">
+                                <input
+                                  id="radio-4"
+                                  type="radio"
+                                  name="radio_choice_ins"
+                                  value="DAY"
+                                />
+                                <label for="radio-4">За сутки</label>
+                              </span>
+                            </div>
+                            {(insuranceTime === 'PERIOD' || insuranceTime === 'DAY') && (
                               <span>
-                                {' '}
-                                в сумме:{' '}
+                                <label className="add-item-input-label__lower">В сумме</label>
                                 <input
                                   type="number"
                                   max="9999"
                                   step="any"
                                   placeholder="0.00"
-                                  className="input-number"
-                                  value={franchiseSumma}
-                                  onChange={(e) => setFranchiseSummaHandler(e)}
+                                  className="add-item-input-number__secondary"
+                                  value={insuranceSumma}
+                                  onChange={(e) => setInsuranceSummaHandler(e)}
                                 />
-                                <span className="span-valuts">
-                                  <b>BYN</b>
-                                </span>
+                                <span className="span-valuts">BYN</span>
                               </span>
                             )}
                           </div>
+                        )}
+                      </div>
+                      {insurance && (
+                        <span className="take-away-secondary-wrapper">
+                          <div className="checkbox-btn secondary">
+                            <input type="checkbox" className="input-checkbox" checked={franchise} />
+                            <span onClick={franchiseHandler}>Франшиза</span>
+                          </div>
+                          {franchise && (
+                            <span>
+                              <label className="add-item-input-label__lower">В сумме</label>
+                              <input
+                                type="number"
+                                max="9999"
+                                step="any"
+                                placeholder="0.00"
+                                className="add-item-input-number__secondary"
+                                value={franchiseSumma}
+                                onChange={(e) => setFranchiseSummaHandler(e)}
+                              />
+                              <span className="span-valuts">BYN</span>
+                            </span>
+                          )}
                         </span>
                       )}
                     </div>
-                  </li>
+                  </div>
 
                   {/*  ЗАЛОГ  */}
-                  <li>
-                    <div>
-                      Предусмотрен залог{' '}
-                      <input
-                        type="checkbox"
-                        className="input-checkbox"
-                        checked={pladge}
-                        onChange={pladgeHandler}
-                      />{' '}
-                      {pladge && (
-                        <span>
-                          {' '}
-                          в сумме:{' '}
-                          <input
-                            className="input-number"
-                            type="number"
-                            max="9999"
-                            step="any"
-                            placeholder="0.00"
-                            value={pledgePrice}
-                            onChange={(e) => pledgePriceHandler(e)}
-                          />
-                          <span className="span-valuts">
-                            <b>BYN</b>
-                          </span>
-                        </span>
-                      )}
+
+                  <div className="take-away-secondary-wrapper">
+                    <div className="checkbox-btn secondary">
+                      <input type="checkbox" className="input-checkbox" checked={pladge} />
+                      <span onClick={pladgeHandler}>Залог</span>
                     </div>
-                  </li>
+                    {pladge && (
+                      <span>
+                        <label className="add-item-input-label__lower">В сумме</label>
+                        <input
+                          className="add-item-input-number__secondary"
+                          type="number"
+                          max="9999"
+                          step="any"
+                          placeholder="0.00"
+                          value={pledgePrice}
+                          onChange={(e) => pledgePriceHandler(e)}
+                        />
+                        <span className="span-valuts">BYN</span>
+                      </span>
+                    )}
+                  </div>
 
                   {/*  СЕРВИСНЫЙ СБОР  */}
-                  <li>
-                    <div>
-                      Сервисный сбор{' '}
-                      <input
-                        type="checkbox"
-                        className="input-checkbox"
-                        value={serviceSbor}
-                        onChange={serviceSborHandler}
-                      />{' '}
-                      {serviceSbor && (
-                        <span>
-                          <select
-                            onChange={(e) => setOptionServiceSbor(e.target.value)}
-                            className="option-razdel ">
-                            <option />
-                            <option value="DRYCLEANING">Химчистка</option>
-                            <option value="CLEANING">Уборка</option>
-                            <option value="WASHINGUP">Мытьё</option>
-                          </select>
 
+                  <div className="take-away-secondary-wrapper">
+                    <div className="checkbox-btn secondary">
+                      <input type="checkbox" className="input-checkbox" checked={serviceSbor} />
+                      <span onClick={serviceSborHandler}>Сервисный сбор</span>
+                    </div>
+                    {serviceSbor && (
+                      <span>
+                        <div className="take-away-secondary-wrapper">
+                          <div
+                            className="add-item-radio-wrapper"
+                            onChange={(e) => setOptionServiceSbor(e.target.value)}>
+                            <span class="form_radio_btn">
+                              <input
+                                id="radio-5"
+                                type="radio"
+                                name="radio_choice_serv"
+                                value="DRYCLEANING"
+                              />
+                              <label for="radio-5">Химчистка</label>
+                            </span>
+
+                            <span class="form_radio_btn">
+                              <input
+                                id="radio-6"
+                                type="radio"
+                                name="radio_choice_serv"
+                                value="CLEANING"
+                              />
+                              <label for="radio-6">Уборка</label>
+                            </span>
+
+                            <span class="form_radio_btn">
+                              <input
+                                id="radio-7"
+                                type="radio"
+                                name="radio_choice_serv"
+                                value="WASHINGUP"
+                              />
+                              <label for="radio-7">Мытьё</label>
+                            </span>
+                          </div>
                           {(optionServiceSbor === 'DRYCLEANING' ||
                             optionServiceSbor === 'CLEANING' ||
                             optionServiceSbor === 'WASHINGUP') && (
                             <span>
-                              {' '}
-                              Сумма:{' '}
+                              <label className="add-item-input-label__lower">В сумме</label>
                               <input
                                 type="number"
-                                className="input-number"
+                                className="add-item-input-number__secondary"
                                 max="9999"
                                 step="any"
                                 placeholder="0.00"
                                 value={summaServiceSbor}
                                 onChange={(e) => setSummaServiceSborHandler(e)}
                               />
-                              <span className="span-valuts">
-                                <b>BYN</b>
-                              </span>
+                              <span className="span-valuts">BYN</span>
                             </span>
                           )}
-                        </span>
-                      )}
-                    </div>
-
-                    {/*  Готов продать  */}
-                    <div>
-                      Готов продать{' '}
-                      <input
-                        className="input-checkbox"
-                        type="checkbox"
-                        checked={readySell}
-                        onChange={readySellHandler}
-                      />{' '}
-                    </div>
-                  </li>
+                        </div>
+                      </span>
+                    )}
+                  </div>
                 </div>
-              )}
-
-              {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
-
-              <div className="button_load">
-                <input
-                  onClick={sendHandler}
-                  type="button"
-                  name="a"
-                  value="ОТПРАВИТЬ"
-                  className="button_loading"
-                />{' '}
               </div>
-            </ol>
+            )}
+
+            {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
+
+            <div className="button_load">
+              <input
+                onClick={sendHandler}
+                type="button"
+                name="a"
+                value="ОТПРАВИТЬ"
+                className="button_loading"
+              />{' '}
+            </div>
           </form>
         </div>
       </div>
