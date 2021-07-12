@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 class Requests {
   constructor() {}
@@ -170,6 +171,7 @@ class Requests {
     article,
     inventory_number,
     formData,
+    coords,
   ) {
     return axios({
       method: 'POST',
@@ -218,6 +220,8 @@ class Requests {
         franchise: franchise ? franchise : false,
         franchise_price: franchise_price ? franchise_price : null,
         article: article ? article : ' ',
+        inventory_number: inventory_number ? inventory_number : '',
+        items_coordinates: coords,
       },
       url: 'http://178.172.136.88/api/items/create/',
     }).then((response) => {
@@ -234,6 +238,74 @@ class Requests {
           return response;
         });
       }
+    });
+  }
+
+  static getCords(area, locality, street, house, room) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://geocode-maps.yandex.ru/1.x/?apikey=28e5fc84-32d6-402e-a231-cefeaccfcf85&format=json&geocode=Беларусь, ${area} область, ${locality}, ${street}, д. ${
+        house ? house : room
+      }`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static createAdress(
+    area,
+    region,
+    index,
+    city,
+    street,
+    house,
+    corpus,
+    apartment,
+    space_room,
+    office,
+    building,
+    coordinates,
+  ) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        area: area ? area : '',
+        region: region ? region : '',
+        index: index ? index : null,
+        city: city ? city : '',
+        street: street ? street : '',
+        house: house ? house : null,
+        corpus: corpus ? corpus : '',
+        apartment: apartment ? apartment : null,
+        space_room: space_room ? space_room : '',
+        office: office ? office : '',
+        building: building ? building : '',
+        coordinates: `${Number(coordinates[0])} ${Number(coordinates[1])}`,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/create/address/`,
+    }).then((response) => {
+      console.log(response);
+      return response;
+    });
+  }
+
+  static fetchAdresses() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/address/`,
+    }).then((response) => {
+      return response;
     });
   }
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header, Footer } from '../../components/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { setItems, setItemsLoaded, setItemsLoading } from '../../redux/actions/items';
+import { setAdresses } from '../../redux/actions/userData';
 import Requests from '../../http/axios-requests';
 import './PlaseItem.css';
 // import Logo from "../../img/MainPage/Logo.png";
@@ -195,6 +196,44 @@ const PlaceItem = () => {
       setPledgePrice(e.target.value);
     }
   };
+  //обработчик сохранения нового адреса
+  const saveNewAddress = () => {
+    Requests.getCords(String(area), String(locality), String(street), String(house), String(room))
+      .then((response) => {
+        if (response.status === 200) {
+          Requests.createAdress(
+            area,
+            district,
+            index,
+            locality,
+            street,
+            house,
+            body,
+            flat,
+            room,
+            office,
+            building,
+            response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
+              ' ',
+            ),
+          )
+            .then((response) => {
+              Requests.fetchAdresses()
+                .then((response) => {
+                  dispatch(setAdresses(response.data));
+                  setShowAddressAddTable(false);
+                  dispatch(setItemsLoaded());
+                })
+                .catch((e) => alert('Ошибка получения категорий/адресов'));
+              alert('Адрес успешно добавлен в профиль! Теперь Вы можете выбрать его в списке.');
+            })
+            .catch((e) =>
+              alert('Не удалось подтвердить адрес, проверьте правильность ввода данных в поля.'),
+            );
+        }
+      })
+      .catch((e) => alert('Ошибка сохранения адреса!'));
+  };
 
   //обработчик отправки формы
   const sendHandler = () => {
@@ -244,6 +283,7 @@ const PlaceItem = () => {
       String(artikul),
       String(inventoryNumber),
       formData,
+      coords,
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
@@ -369,14 +409,37 @@ const PlaceItem = () => {
 
   //ГОТОВ ПРОДАТЬ
   const [readySell, setReadySell] = useState();
-  // console.log ( vladelec )
+
+  //обработка адресов
+  const [showAddressAddTable, setShowAddressAddTable] = React.useState(false);
+
+  const [area, setArea] = React.useState();
+  const [locality, setLocality] = React.useState();
+  const [district, setDistrict] = React.useState();
+  const [street, setStreet] = React.useState();
+  const [index, setIndex] = React.useState();
+  const [house, setHouse] = React.useState();
+  const [body, setBody] = React.useState();
+  const [flat, setFlat] = React.useState();
+  const [room, setRoom] = React.useState();
+  const [office, setOffice] = React.useState();
+  const [building, setBuilding] = React.useState();
+
+  const [coords, setCoords] = React.useState();
 
   //получение категорий из БД
   React.useEffect(() => {
     dispatch(setItemsLoading());
     Requests.fetchItems().then((response) => {
-      dispatch(setItems(response.data));
-      dispatch(setItemsLoaded());
+      if (response.status === 200 || response.status === 201) {
+        dispatch(setItems(response.data));
+        Requests.fetchAdresses()
+          .then((response) => {
+            dispatch(setAdresses(response.data));
+            dispatch(setItemsLoaded());
+          })
+          .catch((e) => alert('Ошибка получения категорий/адресов'));
+      }
     });
   }, []);
 
@@ -473,8 +536,8 @@ const PlaceItem = () => {
     console.log(willSendWays);
   }, [taxi, courier, pochta]);
 
-  const { items } = useSelector(({ items }) => items);
-  const { isLoaded } = useSelector(({ items }) => items);
+  const { items, isLoaded } = useSelector(({ items }) => items);
+  const { addresses } = useSelector(({ userData }) => userData);
 
   //выделяем разделы
   const chapters = {};
@@ -494,6 +557,16 @@ const PlaceItem = () => {
       }
     });
 
+  //выделяем адреса
+  const addressesFormatted = [];
+  isLoaded &&
+    addresses.map((item, index) => {
+      addressesFormatted.push([
+        `${item.city}, ${item.street}, ${item.house ? item.house : item.apartment}`,
+        item.coordinates,
+      ]);
+    });
+
   return (
     <div className="place-item-wrapper">
       <Header />
@@ -508,6 +581,7 @@ const PlaceItem = () => {
                 Название вещи <span className="add-item-span-zvezda">*</span>
               </label>
               <input
+                placeholder="Например: ноутбук"
                 type="text"
                 className="add-item-input-text"
                 value={nameItem}
@@ -521,7 +595,7 @@ const PlaceItem = () => {
                 Выберите раздел <span className="add-item-span-zvezda">*</span>
               </label>
               <select onChange={(e) => setRazdel(e.target.value)} className="add-item-select-input">
-                <option />
+                <option>Не выбрано</option>
                 {isLoaded &&
                   [].concat.apply(Object.entries(chapters)).map((chapter, index) => (
                     <option key={index} value={chapter[1]}>
@@ -540,7 +614,7 @@ const PlaceItem = () => {
                 className="add-item-select-input"
                 value={viborCategory}
                 onChange={(e) => setViborCategory(e.target.value)}>
-                <option />
+                <option>Не выбрано</option>
                 {isLoaded &&
                   [].concat.apply(Object.entries(categories)).map((category, index) => (
                     <option key={index} value={category[1]}>
@@ -555,6 +629,7 @@ const PlaceItem = () => {
               <label className="add-item-input-label">Описание вещи</label>
               <div>
                 <textarea
+                  placeholder="Например: процессор Intel core i5, видеокарта GeForce GTX 1050ti"
                   className="add-item-textarea"
                   title="Опишите кратко наименование того, что предлагаете..."
                   minLength="0"
@@ -665,6 +740,185 @@ const PlaceItem = () => {
               <label htmlFor="add-item-input-checkbox__2">Готов продать</label>
             </div>
 
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Адрес вещи <span className="add-item-span-zvezda">*</span>
+              </label>
+              <select className="add-item-select-input" onChange={(e) => setCoords(e.target.value)}>
+                <option>Не выбран</option>
+                {isLoaded &&
+                  addressesFormatted.map((item, index) => (
+                    <option key={index} value={item[1]}>
+                      {item[0]}
+                    </option>
+                  ))}
+              </select>
+            </div>
+
+            {addresses.length < 2 && (
+              <div style={{ marginBottom: '20px' }} id="dop_parametr_wrapper">
+                <input id="dop_parametr" className="add-item-input-checkbox__3" type="checkbox" />
+                <label
+                  onClick={() => setShowAddressAddTable(!showAddressAddTable)}
+                  htmlFor="dop_parametr">
+                  + Добавить другой адрес
+                </label>
+              </div>
+            )}
+            {showAddressAddTable && (
+              <div className="take-away-secondary-wrapper-column">
+                <div className="take-away-secondary-wrapper">
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">
+                      Область <span className="add-item-span-zvezda">*</span>
+                    </label>
+                    <input
+                      placeholder="Например: Минская"
+                      type="text"
+                      className="add-item-input-text__address"
+                      value={area}
+                      onChange={(e) => setArea(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">
+                      Населенный пункт <span className="add-item-span-zvezda">*</span>
+                    </label>
+                    <input
+                      placeholder="Например: Минск"
+                      type="text"
+                      className="add-item-input-text__address"
+                      value={locality}
+                      onChange={(e) => setLocality(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">Район</label>
+                    <input
+                      placeholder="Например: Советский"
+                      type="text"
+                      className="add-item-input-text__address"
+                      value={district}
+                      onChange={(e) => setDistrict(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="take-away-secondary-wrapper">
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">
+                      Улица/Проспект/Переулок <span className="add-item-span-zvezda">*</span>
+                    </label>
+                    <input
+                      placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
+                      type="text"
+                      className="add-item-input-text__address__street"
+                      value={street}
+                      onChange={(e) => setStreet(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">
+                      Индекс<span className="add-item-span-zvezda">*</span>
+                    </label>
+                    <input
+                      placeholder="Например: 225417"
+                      type="text"
+                      className="add-item-input-text__address"
+                      value={index}
+                      onChange={(e) => setIndex(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="take-away-secondary-wrapper">
+                  <div className="take-away-secondary-wrapper">
+                    <div className="add-item-input-wrapper">
+                      <label className="add-item-input-label">
+                        Дом <span className="add-item-span-zvezda">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={house}
+                        onChange={(e) => setHouse(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="take-away-secondary-wrapper">
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">Корпус</label>
+                        <input
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={body}
+                          onChange={(e) => setBody(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">Квартира</label>
+                        <input
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={flat}
+                          onChange={(e) => setFlat(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <span style={{ marginRight: '30px' }} className="add-item-cost-or__secondary">
+                      или
+                    </span>
+                    <div className="take-away-secondary-wrapper">
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">
+                          Помещение <span className="add-item-span-zvezda">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={room}
+                          onChange={(e) => setRoom(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="take-away-secondary-wrapper">
+                        <div className="add-item-input-wrapper">
+                          <label className="add-item-input-label">Офис</label>
+                          <input
+                            type="text"
+                            className="add-item-input-text__address__house"
+                            value={office}
+                            onChange={(e) => setOffice(e.target.value)}
+                          />
+                        </div>
+
+                        <div className="add-item-input-wrapper">
+                          <label className="add-item-input-label">Строение</label>
+                          <input
+                            type="text"
+                            className="add-item-input-text__address__house"
+                            value={building}
+                            onChange={(e) => setBuilding(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  id="save_address"
+                  className="add-item-save-new-address-button"
+                  type="button"
+                  value="Сохранить адрес"
+                  onClick={saveNewAddress}
+                />
+              </div>
+            )}
+
             {/*  КНОПКА ДОП. ПАРАМЕТРЫ  */}
 
             <div id="dop_parametr_wrapper">
@@ -673,9 +927,10 @@ const PlaceItem = () => {
                 className="add-item-input-checkbox__3"
                 type="checkbox"
                 value={showFunctions}
-                onClick={showFunctionsHandler}
               />
-              <label htmlFor="dop_parametr">Дополнительные параметры</label>
+              <label onClick={showFunctionsHandler} htmlFor="dop_parametr">
+                Дополнительные параметры
+              </label>
             </div>
 
             {/*--------------------------------- ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ ---------------------------------------*/}
@@ -687,6 +942,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Ключевые слова</label>
                   <input
+                    placeholder="Например: компьютер, ноутбук, техника"
                     title="Укажите через запятую ключевые слова..."
                     type="text"
                     className="add-item-input-text"
@@ -700,6 +956,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Состав/комплектность</label>
                   <input
+                    placeholder="Например: ноутбук, мышь, подставка"
                     type="text"
                     className="add-item-input-text"
                     value={sostav}
@@ -713,6 +970,7 @@ const PlaceItem = () => {
                   <label className="add-item-input-label">Назначение</label>
                   <div>
                     <textarea
+                      placeholder="Например: для работы с графическим дизайном"
                       className="add-item-textarea"
                       value={naznacheniye}
                       onChange={(e) => setNaznacheniye(e.target.value)}
@@ -725,6 +983,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Артикул</label>
                   <input
+                    placeholder="Например: RK-260"
                     type="text"
                     className="add-item-input-text"
                     value={artikul}
@@ -737,6 +996,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Инвентарный номер</label>
                   <input
+                    placeholder="Например: 154A"
                     type="text"
                     className="add-item-input-text"
                     value={inventoryNumber}
@@ -749,6 +1009,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Цвет</label>
                   <input
+                    placeholder="Например: серебристый"
                     type="text"
                     className="add-item-input-text"
                     value={yourColor}
@@ -761,6 +1022,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Год выпуска</label>
                   <input
+                    placeholder="Например: 2015"
                     type="number"
                     max="999999999"
                     className="add-item-input-text"
@@ -774,6 +1036,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Пробег</label>
                   <input
+                    placeholder="Например: 1 год"
                     type="text"
                     className="add-item-input-text"
                     value={mileAge}
@@ -876,6 +1139,7 @@ const PlaceItem = () => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">Время подготовки вещи</label>
                   <input
+                    placeholder="Например: 3 (зависит от срока аренды)"
                     type="number"
                     max="999"
                     className="add-item-input-text"
