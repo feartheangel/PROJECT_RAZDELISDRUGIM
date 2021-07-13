@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Header, Footer } from '../../components/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { setItems, setItemsLoaded, setItemsLoading } from '../../redux/actions/items';
-import { setAdresses } from '../../redux/actions/userData';
+import { setAdresses, setQueryStarted, setQueryDone } from '../../redux/actions/userData';
+import { Redirect } from 'react-router-dom';
 import Requests from '../../http/axios-requests';
 import './PlaseItem.css';
 // import Logo from "../../img/MainPage/Logo.png";
@@ -196,9 +197,41 @@ const PlaceItem = () => {
       setPledgePrice(e.target.value);
     }
   };
+
+  //обработчик времени аренды
+  const timeArendsHandler = (e) => {
+    setTimeArends(e.target.value);
+    setPrepareType(e.target.value);
+  };
+
   //обработчик сохранения нового адреса
   const saveNewAddress = () => {
-    Requests.getCords(String(area), String(locality), String(street), String(house), String(room))
+    if (!area) {
+      alert('Не указана область!');
+      return;
+    } else if (!locality) {
+      alert('Не указан населенный пункт!');
+      return;
+    } else if (!street) {
+      alert('Не указана улица!');
+      return;
+    } else if (!index) {
+      alert('Не указан индекс!');
+      return;
+    } else if (!house && !room) {
+      alert('Не указан номер дома либо помещения!');
+      return;
+    }
+
+    dispatch(setQueryStarted());
+    Requests.getCords(
+      String(area),
+      String(locality),
+      String(street),
+      String(house),
+      String(room),
+      String(index),
+    )
       .then((response) => {
         if (response.status === 200) {
           Requests.createAdress(
@@ -213,19 +246,41 @@ const PlaceItem = () => {
             room,
             office,
             building,
-            response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
-              ' ',
-            ),
+            response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+              .split(' ')
+              .reverse(),
           )
             .then((response) => {
               Requests.fetchAdresses()
                 .then((response) => {
                   dispatch(setAdresses(response.data));
                   setShowAddressAddTable(false);
-                  dispatch(setItemsLoaded());
+                  setArea('');
+                  setDistrict('');
+                  setIndex('');
+                  setLocality('');
+                  setStreet('');
+                  setHouse('');
+                  setBody('');
+                  setFlat('');
+                  setRoom('');
+                  setOffice('');
+                  setBuilding('');
+                  dispatch(setQueryDone());
+                  setAddressAdded(true);
+                  setCoords([
+                    response.data[response.data.length - 1].coordinates,
+                    `${response.data[response.data.length - 1].city}, ${
+                      response.data[response.data.length - 1].street
+                    }, ${
+                      response.data[response.data.length - 1].house
+                        ? response.data[response.data.length - 1].house
+                        : response.data[response.data.length - 1].space_room
+                    }`,
+                  ]);
                 })
                 .catch((e) => alert('Ошибка получения категорий/адресов'));
-              alert('Адрес успешно добавлен в профиль! Теперь Вы можете выбрать его в списке.');
+              alert('Адрес успешно добавлен в профиль!');
             })
             .catch((e) =>
               alert('Не удалось подтвердить адрес, проверьте правильность ввода данных в поля.'),
@@ -235,8 +290,25 @@ const PlaceItem = () => {
       .catch((e) => alert('Ошибка сохранения адреса!'));
   };
 
+  const [redirect, setRedirect] = React.useState(false);
+
   //обработчик отправки формы
   const sendHandler = () => {
+    if (!nameItem) {
+      alert('Не указано название вещи!');
+      return;
+    } else if (!viborCategory) {
+      alert('Не указана категория!');
+      return;
+    } else if (!costArends && !giveFree && !yourCost) {
+      alert('Не указана цена аренды!');
+      return;
+    } else if (!coords) {
+      alert('Не указан адрес!');
+      return;
+    }
+
+    dispatch(setQueryStarted());
     const formData = new FormData();
     files[0] && formData.append('image_1', files[0]);
     files[1] && formData.append('image_2', files[1]);
@@ -283,11 +355,15 @@ const PlaceItem = () => {
       String(artikul),
       String(inventoryNumber),
       formData,
-      coords,
+      coords[0],
+      String(prepareType),
+      String(coords[1]),
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
           alert('Успешно добавлено в базу!');
+          setRedirect(<Redirect to="/" />);
+          dispatch(setQueryDone());
         }
         console.log(response);
       })
@@ -365,6 +441,7 @@ const PlaceItem = () => {
 
   //ВРЕМЯ ПОДГОТОВКИ ТОВАРА
   const [podgotovkaTime, setPodgotovkaTime] = useState(' ');
+  const [prepareType, setPrepareType] = React.useState('DAY');
 
   // ВИД ДОСТАВКИ - САМОВЫВОЗ
   const [pickUp, setPickUp] = useState(true);
@@ -426,6 +503,8 @@ const PlaceItem = () => {
   const [building, setBuilding] = React.useState();
 
   const [coords, setCoords] = React.useState();
+
+  const [addressAdded, setAddressAdded] = React.useState(false);
 
   //получение категорий из БД
   React.useEffect(() => {
@@ -537,7 +616,7 @@ const PlaceItem = () => {
   }, [taxi, courier, pochta]);
 
   const { items, isLoaded } = useSelector(({ items }) => items);
-  const { addresses } = useSelector(({ userData }) => userData);
+  const { addresses, requestActive } = useSelector(({ userData }) => userData);
 
   //выделяем разделы
   const chapters = {};
@@ -580,6 +659,7 @@ const PlaceItem = () => {
               <label className="add-item-input-label">
                 Название вещи <span className="add-item-span-zvezda">*</span>
               </label>
+              {redirect}
               <input
                 placeholder="Например: ноутбук"
                 type="text"
@@ -674,12 +754,13 @@ const PlaceItem = () => {
             {/*  СТОИМОСТЬ АРЕНДЫ  */}
 
             <div className="item-add-cost-choice-wrapper">
-              <div className="add-item-input-wrapper">
+              <div style={{ marginRight: '5px' }} className="add-item-input-wrapper">
                 <label className="add-item-input-label">
                   Стоимость вещи в аренду <span className="add-item-span-zvezda">*</span>
                 </label>
                 <div>
                   <input
+                    style={{ width: '240px', marginRight: '5px' }}
                     className="add-item-input-number"
                     type="number"
                     max="9999"
@@ -691,13 +772,23 @@ const PlaceItem = () => {
                   />
                 </div>
               </div>
+              <span
+                style={{
+                  marginRight: '30px',
+                  fontSize: '16px',
+                  alignSelf: 'flex-end',
+                  marginBottom: '15px',
+                }}
+                className="span-valuts">
+                BYN
+              </span>
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
                   Срок <span className="add-item-span-zvezda">*</span>
                 </label>
                 <select
                   className="add-item-select-input__time"
-                  onChange={(e) => setTimeArends(e.target.value)}
+                  onChange={(e) => timeArendsHandler(e)}
                   disabled={giveFree || yourCost}>
                   <option />
                   <option value="HOUR">Час</option>
@@ -744,11 +835,16 @@ const PlaceItem = () => {
               <label className="add-item-input-label">
                 Адрес вещи <span className="add-item-span-zvezda">*</span>
               </label>
-              <select className="add-item-select-input" onChange={(e) => setCoords(e.target.value)}>
+              <select
+                className="add-item-select-input"
+                onChange={(e) => setCoords(e.target.value.split(',,'))}>
                 <option>Не выбран</option>
                 {isLoaded &&
                   addressesFormatted.map((item, index) => (
-                    <option key={index} value={item[1]}>
+                    <option
+                      selected={addressAdded && index + 1 === addressesFormatted.length}
+                      value={`${item[1]},,${item[0]}`}
+                      key={index}>
                       {item[0]}
                     </option>
                   ))}
@@ -841,6 +937,7 @@ const PlaceItem = () => {
                         Дом <span className="add-item-span-zvezda">*</span>
                       </label>
                       <input
+                        disabled={room || office || building}
                         type="text"
                         className="add-item-input-text__address__house"
                         value={house}
@@ -852,6 +949,7 @@ const PlaceItem = () => {
                       <div className="add-item-input-wrapper">
                         <label className="add-item-input-label">Корпус</label>
                         <input
+                          disabled={room || office || building}
                           type="text"
                           className="add-item-input-text__address__house"
                           value={body}
@@ -862,6 +960,7 @@ const PlaceItem = () => {
                       <div className="add-item-input-wrapper">
                         <label className="add-item-input-label">Квартира</label>
                         <input
+                          disabled={room || office || building}
                           type="text"
                           className="add-item-input-text__address__house"
                           value={flat}
@@ -878,6 +977,7 @@ const PlaceItem = () => {
                           Помещение <span className="add-item-span-zvezda">*</span>
                         </label>
                         <input
+                          disabled={house || body || flat}
                           type="text"
                           className="add-item-input-text__address__house"
                           value={room}
@@ -889,6 +989,7 @@ const PlaceItem = () => {
                         <div className="add-item-input-wrapper">
                           <label className="add-item-input-label">Офис</label>
                           <input
+                            disabled={house || body || flat}
                             type="text"
                             className="add-item-input-text__address__house"
                             value={office}
@@ -899,6 +1000,7 @@ const PlaceItem = () => {
                         <div className="add-item-input-wrapper">
                           <label className="add-item-input-label">Строение</label>
                           <input
+                            disabled={house || body || flat}
                             type="text"
                             className="add-item-input-text__address__house"
                             value={building}
@@ -910,10 +1012,15 @@ const PlaceItem = () => {
                   </div>
                 </div>
                 <input
+                  disabled={requestActive}
                   id="save_address"
-                  className="add-item-save-new-address-button"
+                  className={
+                    requestActive
+                      ? 'add-item-save-new-address-button disabled'
+                      : 'add-item-save-new-address-button'
+                  }
                   type="button"
-                  value="Сохранить адрес"
+                  value={requestActive ? 'ОТПРАВКА...' : 'Сохранить адрес'}
                   onClick={saveNewAddress}
                 />
               </div>
@@ -1135,17 +1242,41 @@ const PlaceItem = () => {
                 </div>
 
                 {/*  ВРЕМЯ ПОДГОТОВКИ ТОВАРА  */}
-
-                <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Время подготовки вещи</label>
-                  <input
-                    placeholder="Например: 3 (зависит от срока аренды)"
-                    type="number"
-                    max="999"
-                    className="add-item-input-text"
-                    value={podgotovkaTime}
-                    onChange={(e) => setPodgotovkaTimeHandler(e)}
-                  />
+                <div className="take-away-secondary-wrapper">
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">Время подготовки вещи</label>
+                    <input
+                      placeholder="Например: 2"
+                      type="number"
+                      max="999"
+                      className="add-item-input-text"
+                      value={podgotovkaTime}
+                      onChange={(e) => setPodgotovkaTimeHandler(e)}
+                    />
+                  </div>
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">В чем считаем?</label>
+                    <select
+                      className="add-item-select-input__time"
+                      onChange={(e) => setPrepareType(e.target.value)}
+                      disabled={giveFree || yourCost}>
+                      <option value="NONE" selected={prepareType === 'NONE'}>
+                        Не выбрано
+                      </option>
+                      <option value="HOUR" selected={prepareType === 'HOUR'}>
+                        Час(-ов)
+                      </option>
+                      <option value="DAY" selected={prepareType === 'DAY'}>
+                        Сутки(-ок)
+                      </option>
+                      <option value="WEEK" selected={prepareType === 'WEEK'}>
+                        Неделя(-ль)
+                      </option>
+                      <option value="MONTH" selected={prepareType === 'MONTH'}>
+                        Месяц(-ев)
+                      </option>
+                    </select>
+                  </div>
                 </div>
 
                 {/*  ВИД ДОСТАВКИ - САМОВЫВОЗ - ПРИВЕЗУ/ЗАБЕРУ - ОТПРАВКА */}
@@ -1415,11 +1546,12 @@ const PlaceItem = () => {
 
             <div className="button_load">
               <input
+                disabled={requestActive}
                 onClick={sendHandler}
                 type="button"
                 name="a"
-                value="ОТПРАВИТЬ"
-                className="button_loading"
+                value={requestActive ? 'ОТПРАВКА...' : 'ОТПРАВИТЬ'}
+                className={requestActive ? 'button_loading disabled' : 'button_loading'}
               />{' '}
             </div>
           </form>

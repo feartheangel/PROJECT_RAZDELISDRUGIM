@@ -3,6 +3,7 @@
   font-family: 'Raleway', 'sans-serif';
   color: #091d20;
 }
+
 .PlaseItem {
   min-width: 1024px;
   display: flex;
@@ -11,6 +12,15 @@
   width: 100%;
   height: auto;
   background: rgba(76, 201, 240, 0.05);
+}
+
+input {
+  outline: none;
+}
+
+select {
+  outline: none;
+  cursor: pointer;
 }
 
 /*Стилизация чекбоксов*/
@@ -243,6 +253,25 @@
   cursor: pointer;
 }
 
+.button_loading.disabled {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 228px;
+  height: 45px;
+  margin-top: 20px;
+  background: #565858;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #091d20;
+  border: 1px solid transparent;
+  cursor: pointer;
+  opacity: 0.6;
+}
 .conteiner .button_load {
   display: flex;
   justify-content: center;
@@ -335,6 +364,7 @@
   border: 1.31722px solid rgba(9, 29, 32, 0.4);
   box-sizing: border-box;
   border-radius: 6.5861px;
+  transition: 0.2s;
 }
 
 .add-item-input-wrapper {
@@ -621,4 +651,25 @@
   box-sizing: border-box;
   border: 1px solid transparent;
   margin-bottom: 20px;
+}
+
+.add-item-save-new-address-button.disabled {
+  padding: 10px;
+  width: 209px;
+  height: 45px;
+  background: #565858;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.add-item-input-text__address__house:disabled {
+  opacity: 0.4;
 }

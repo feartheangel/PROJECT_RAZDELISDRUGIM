@@ -1,5 +1,6 @@
 const initialState = {
   isLoggedIn: false,
+  requestActive: false,
   currentUserId: '',
   addresses: [],
 };
@@ -25,6 +26,20 @@ const userData = (state = initialState, action) => {
         ...state,
         addresses: action.payload,
       };
+
+    case 'SET_REQUEST_START':
+      return {
+        ...state,
+        requestActive: action.payload,
+      };
+      break;
+
+    case 'SET_REQUEST_END':
+      return {
+        ...state,
+        requestActive: action.payload,
+      };
+      break;
   }
   return state;
 };

@@ -172,6 +172,8 @@ class Requests {
     inventory_number,
     formData,
     coords,
+    prepare_time_choice,
+    items_address,
   ) {
     return axios({
       method: 'POST',
@@ -222,6 +224,8 @@ class Requests {
         article: article ? article : ' ',
         inventory_number: inventory_number ? inventory_number : '',
         items_coordinates: coords,
+        prepare_time_choice: prepare_time_choice ? prepare_time_choice : 'NONE',
+        items_address: items_address,
       },
       url: 'http://178.172.136.88/api/items/create/',
     }).then((response) => {
@@ -241,7 +245,7 @@ class Requests {
     });
   }
 
-  static getCords(area, locality, street, house, room) {
+  static getCords(area, locality, street, house, room, index) {
     return axios({
       method: 'GET',
       headers: {
@@ -249,7 +253,7 @@ class Requests {
       },
       url: `https://geocode-maps.yandex.ru/1.x/?apikey=28e5fc84-32d6-402e-a231-cefeaccfcf85&format=json&geocode=Беларусь, ${area} область, ${locality}, ${street}, д. ${
         house ? house : room
-      }`,
+      }, индекс ${index}`,
     }).then((response) => {
       return response;
     });
