@@ -1,202 +1,76 @@
-/*p, input, button {*/
-/*    font-family: 'Roboto', sans-serif ;*/
-/*}*/
+/* глобально для всех спанов звезд*/
+.Red_star{
+  color: red;
+  font-size: 20px;
+}
 
 /* ГЛАВНАЯ СТРАНИЦА*/
-.privateProfile{
-    display: flex;
-    justify-content: center;
-    min-height: 100%;
-    min-width: 1440px;
-    width: 100%;
-    height: auto;
-    top: 0;
-    left: 0;
-    background: grey;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif ;
-    background: rgba(76, 201, 240, 0.05);
-
+.privateProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-width: 1409px;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  background: rgba(76, 201, 240, 0.04);
 }
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
-.privateProfile_container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 1108px;
-    background: #fff;
-    font-family: 'Roboto', sans-serif ;
-    color: #000000;
-    box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);
-    padding: 53px 0 23px;
+.privateProfile_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: inherit;
+  color: #091D20;
+  /*box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);*/
+  border-radius: 30px;
+  padding: 0 160px;
 }
-
-
-
 
 /*КОНТЕЙНЕР С ШАПКОЙ */
 
-.conteiner_shapka .shapka_h1{
-    display: flex;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif ;
-    font-size: 22px;
-}
-
 .conteiner_shapka {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    width: 996px;
-    height: 309px;
-    margin: 53px 56px;
-    font-family: 'Roboto', sans-serif ;
-
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: 20px 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
 
-/*КОНТЕЙНЕР С ШАПКОЙ ( ВЕРХНЯЯ ЧАСТЬ ) */
-.conteiner_shapka_up{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto', sans-serif ;
-
+.conteiner_shapka span{
+  font-weight: 500;
+  font-size: 24px;
+  color: #4CC9F0;
+  margin-left: 5px;
 }
 
-.conteiner_shapka_up div{
-    justify-content: center;
-    text-align: center;
-    font-family: 'Roboto', sans-serif ;
-    margin: 0 22px;
+.conteiner_shapka p {
+  font-size: 24px;
+  transition: 0.2s;
 }
 
-
-.shapka_up_image{
-
-}
-
-.shapka_up_image img{
-    position: static;
-    width: 69px;
-    height: 69px;
-    left: 38px;
-    top: 68px;
-
-    background: #C4C4C4;
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    margin: 5px 0;
-}
-
-.shapka_up_confirmation{
-
+.conteiner_shapka p:hover {
+  cursor: pointer;
+  color: #4CC9F0;
 }
 
 
-/*КОНТЕЙНЕР С ШАПКОЙ ( КНОПКИ ) */
-
-.conteiner_shapka_down{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+.conteiner_shapka_myProfile{
+  cursor: pointer;
+  color: #4CC9F0;
+  transition: .2s;
 }
-
-.conteiner_shapka_down span{
-    margin: 0 15px;
-    font-size: 28px;
-}
-
-.conteiner_shapka_down span:hover{
-    cursor: pointer;
-    color: #2F80ED;
-}
-
-
-                                /* КОНТЕЙНЕР С НАСТРОЙКОЙ */
-.container_nastroika{
-    display: flex;
-    flex-direction: row;
-    margin: 30px 0;
-    color: #333333;
-
-}
-
-/*Настройка левой строны*/
-.nastroika_left{
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    height: 100%;
-    font-size: 22px;
-    color: #BDBDBD;
-}
-
-.nastroika_left span{
-    display: flex;
-    text-align: left;
-    width: 145px;
-    margin: 48px 10px;
-    font-size: 22px;
-    color: #BDBDBD;
-}
-
-.nastroika_left span:hover{
-    color: #56CCF2;
-    cursor: pointer;
-}
-
-
-/*Настройка центральной строны*/
-.nastroika_center{
-    width: 40%;
-    font-size: 20px;
-}
-
-.nastroika_center input{
-    width: 300px;
-    height: 30px;
-
-}
-
-
-/*Настройка правой строны*/
-.nastroika_right{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    font-size: 20px;
-}
-
-.nastroika_right textarea{
-    width: 350px;
-    height: 80px;
-    outline: none;
-    resize: none;
-}
-
-/* КНОПКА ОТПРАВКИ*/
-
-.privateProfile_container .button_download{
-    display: flex;
-    width: 100%;
-    height: auto;
-    margin-bottom: 30px;
-    justify-content: center;
-    text-align: center;
-}
-
-.button_download button{
-    width: 300px;
-    height: 30px;
-    font-size: 18px;
+.conteiner_shapka_myProfile:hover{
+  cursor: pointer;
+  color: #4CC9F0;
 }
 

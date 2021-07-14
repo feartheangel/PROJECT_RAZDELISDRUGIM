@@ -1,0 +1,99 @@
+/*РАЗМЕР КОНТЕЙНЕРА */
+.container_myAddresses_content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/*ЛЕВАЯ СТОРОНА КОНТЕНТА - 1 АДРЕС*/
+.myAddresses_content_addresses_left{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+}
+.myAddresses_content_addresses_left li:not(:last-child){
+    margin-bottom: 20px;
+}
+.myAddresses_content_addresses_left input{
+    width: 400px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid rgba(9, 29, 32, 0.4);
+    box-sizing: border-box;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+
+/* адрес с вектором*/
+.addresses_left_address1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.addresses_left_address1_text{
+    font-weight: 500;
+    color: #4CC9F0;
+    margin-right: 7px;
+
+}
+
+/*ДОМ / КОРПУС / КВАРТИРА*/
+.addresses_left_address1_house{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.addresses_left_address1_house input{
+    width: 120px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid rgba(9, 29, 32, 0.4);
+    box-sizing: border-box;
+    border-radius: 7px;
+    margin-top: 5px;
+}
+.addresses_left_address1_house img{
+
+    width: 15px;
+    height: 15px;
+}
+.addresses_left_address1_house div:not(:last-child){
+    margin-right: 20px;
+}
+
+/*ФРАЗА ДОБАВИТЬ ЕЩЕ АДРЕС*/
+.address1_house_add_addresses{
+    color: #4CC9F0;
+    font-weight: 500;
+    margin: 0 5px;
+}
+.addresses_left_address1_house img,.address1_house_add_addresses:hover{
+    cursor: pointer;
+    font-weight: 650;
+}
+
+
+/*КНОПКА СОХРАНИТЬ*/
+.button_download,
+.button_download:active,
+.button_download:focus
+{
+    width: 228px;
+    height: 45px;
+    background: #4CC9F0;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.button_download:hover{
+    font-weight: bold;
+}
