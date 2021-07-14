@@ -26,9 +26,9 @@
   justify-content: center;
   width: inherit;
   color: #091D20;
-  /*box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);*/
   border-radius: 30px;
   padding: 0 160px;
+  /*box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);*/
 }
 
 /*КОНТЕЙНЕР С ШАПКОЙ */

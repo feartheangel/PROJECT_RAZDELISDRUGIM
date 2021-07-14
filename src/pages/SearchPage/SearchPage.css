@@ -1,0 +1,221 @@
+/* ГЛАВНАЯ СТРАНИЦА ПОИСКА*/
+.SearchPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    min-width: 1409px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    font-size: 18px;
+    background: rgba(76, 201, 240, 0.04);
+}
+/*КОНТЕЙНЕР С КОНТЕНТОМ*/
+.SearchPage_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    color: #091D20;
+    border-radius: 30px;
+    padding: 0 160px;
+}
+.SearchPage_container ul li{
+    list-style-type: none;
+}
+
+                                    /*ШАПКА КОНТЕЙНЕРА */
+.SearchPage_container_shapka{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+.SearchPage_container_shapka div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    color: #4CC9F0;
+}
+.SearchPage_container_shapka div:not(:last-child){
+    margin-right: 16px;
+}
+
+.SearchPage_container_shapka div p {
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    color: #4CC9F0;
+}
+.SearchPage_container_shapka div img{
+    margin-left: 7px;
+}
+
+.SearchPage_container_shapka_hover:hover{
+    cursor:pointer;
+    color: #12a3c9;
+}
+
+.container_shapka_result{
+    margin-left: 50px;
+}
+
+                                    /*КОНТЕЙНЕР С ОБЩИМ КОНТЕНТОМ  */
+.SearchPage_container_content{
+    display: flex;
+    flex-direction: row;
+}
+/* ДЛЯ ВСЕХ ЧЕКБОКСОВ СЛЕВА*/
+.input_left_checkbox{
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(9, 29, 32, 0.4);
+    margin-right: 7px;
+}
+
+                                /*ЛЕВАЯ СТОРОНА КОНТЕНТА - КАТЕГОРИИ И ТД*/
+.SearchPage_container_content_left{
+    width: 286px;
+}
+.SearchPage_container_content_left select{
+    outline: none;
+}
+.SearchPage_container_content_left ul{
+    display: flex;
+    flex-direction: column;
+    width: 286px;
+}
+.SearchPage_container_content_left ul li {
+    display: flex;
+    flex-direction: row;
+}
+.SearchPage_container_content_left ul li:not(:last-child):not(:first-child){
+    margin-bottom: 20px;
+}
+
+/* ДЛЯ ВСЕХ ЛИ В ВВИДЕ СЕЛЕКТА*/
+.content_left_optional_li{
+    font-weight: 500;
+}
+.content_left_optional_li img{
+    margin-left: 10px;
+}
+.content_left_optional_li img:hover{
+    cursor: pointer;
+}
+
+/* СЛОВО ЦЕНА */
+.content_left_cost{
+    margin-bottom: 10px;
+}
+/*Цена от и до*/
+.content_left_priceRange{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-top: 5px;
+}
+
+.content_left_priceRange label{
+    font-size: 14px;
+    margin: 0 10px;
+}
+.content_left_priceRange input{
+    width: 110px;
+    height: 35px;
+    border: 1px solid rgba(9, 29, 32, 0.4);
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+
+
+                                    /*ПРАВАЯ СТОРОНА КОНТЕНТА - КАРТОЧКИ */
+.SearchPage_container_content_right{
+    width: 100%;
+}
+
+/*ШАПКА ПРАВОЙ СТОРОНЫ*/
+.content_right_shapka{
+    display: flex;
+    flex-direction: row;
+}
+.shapka_top{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 22px;
+}
+
+.content_right_shapka p{
+    margin-right: 40px;
+    font-size: 16px;
+}
+.content_right_shapka_watchMap{
+    color: #4CC9F0;
+}
+.content_right_shapka_watchMap:hover{
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/*КОНТЕЙНЕР КОНТЕНТА ПОД ШАПКОЙ*/
+.content_right_all_content{
+    display: flex;
+    flex-direction: column;
+}
+
+/* ГЛОБАЛЬНЫЕ НАСТРОЙКИ БЛОКОВ для КАРТОЧЕК*/
+.all_content_blocks{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    width: 100%;
+    height: 426px;
+    margin-bottom: 60px;
+}
+
+/* КАРТОЧКА ТОВАРА ГЛОБАЛЬНАЯ НАСТРОЙКА*/
+.content_blocks_card{
+    width: 33.33333%;
+    height: 390px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
+    border-radius: 5px;
+    padding: 20px;
+    color: rgba(9, 29, 32, 0.8);
+}
+.content_blocks_card:not(:last-child){
+    margin-right: 30px;
+}
+/* ДЛЯ карты*/
+.content_blocks_map_img{
+    margin-bottom: 60px;
+}
+/*ДЛЯ переключения страниц*/
+.content_blocks_number_page{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.content_blocks_number_page div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 327px;
+}
+.content_blocks_number_page img{
+    width: 6px;
+    height: 10px;
+}
+.content_blocks_number_page p:hover{
+    cursor: pointer;
+    color: #4CC9F0;
+}

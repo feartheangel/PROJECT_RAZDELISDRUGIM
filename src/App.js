@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import {Home, MyData, PlaceItem, PrivateProfile, MyGlobalData, MyAddresses} from './pages/index';
+import {Home, MyData, PlaceItem, PrivateProfile, MyGlobalData, MyAddresses, SearchPage} from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
 
@@ -15,6 +15,7 @@ function App() {
         <Route path="/private-profile/my-global-data" component={MyGlobalData} exact />
         <Route path="/private-profile/my-global-data/my-data" component={MyData} exact />
         <Route path="/private-profile/my-global-data/my-addresses" component={MyAddresses} exact />
+        <Route path="/search-page" component={SearchPage} exact />
       </div>
     </div>
   );
