@@ -18,7 +18,12 @@ button {
   overflow-x: hidden;
 }
 
-li {
+.Main_page li {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.footer li {
   list-style-type: none;
   margin-bottom: 20px;
 }
