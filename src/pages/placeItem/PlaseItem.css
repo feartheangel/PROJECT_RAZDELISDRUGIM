@@ -367,6 +367,18 @@ select {
   transition: 0.2s;
 }
 
+.add-item-input-text__address__house__profile {
+  font-size: 18px;
+  width: 120px;
+  height: 45px;
+  padding: 15px;
+  background: #ffffff;
+  border: 1.31722px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 6.5861px;
+  transition: 0.2s;
+}
+
 .add-item-input-wrapper {
   display: flex;
   flex-direction: column;

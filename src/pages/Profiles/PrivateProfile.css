@@ -1,5 +1,5 @@
 /* глобально для всех спанов звезд*/
-.Red_star{
+.Red_star {
   color: red;
   font-size: 20px;
 }
@@ -24,8 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: inherit;
-  color: #091D20;
+  color: #091d20;
   /*box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);*/
   border-radius: 30px;
   padding: 0 160px;
@@ -46,10 +45,10 @@
   font-weight: 500;
 }
 
-.conteiner_shapka span{
+.conteiner_shapka span {
   font-weight: 500;
   font-size: 24px;
-  color: #4CC9F0;
+  color: #4cc9f0;
   margin-left: 5px;
 }
 
@@ -60,17 +59,15 @@
 
 .conteiner_shapka p:hover {
   cursor: pointer;
-  color: #4CC9F0;
+  color: #4cc9f0;
 }
 
-
-.conteiner_shapka_myProfile{
+.conteiner_shapka_myProfile {
   cursor: pointer;
-  color: #4CC9F0;
-  transition: .2s;
+  color: #4cc9f0;
+  transition: 0.2s;
 }
-.conteiner_shapka_myProfile:hover{
+.conteiner_shapka_myProfile:hover {
   cursor: pointer;
-  color: #4CC9F0;
+  color: #4cc9f0;
 }
-

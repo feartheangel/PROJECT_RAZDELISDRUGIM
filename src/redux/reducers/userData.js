@@ -3,6 +3,7 @@ const initialState = {
   requestActive: false,
   currentUserId: '',
   addresses: [],
+  userData: {},
 };
 
 const userData = (state = initialState, action) => {
@@ -38,6 +39,13 @@ const userData = (state = initialState, action) => {
       return {
         ...state,
         requestActive: action.payload,
+      };
+      break;
+
+    case 'SET_USER_DATA':
+      return {
+        ...state,
+        userData: action.payload,
       };
       break;
   }

@@ -312,6 +312,80 @@ class Requests {
       return response;
     });
   }
+
+  static fetchUserProfile() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: 'http://178.172.136.88/api/jwt/profile/',
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateProfileMain(
+    name,
+    surname,
+    companyName,
+    unpUnn,
+    address,
+    iban,
+    bank,
+    bic,
+    email,
+    number,
+    gender,
+    birth,
+    about,
+    legal_address,
+  ) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        first_name: name ? name : '',
+        last_name: surname ? surname : '',
+        company_name: companyName ? companyName : '',
+        unp_inn_company: unpUnn ? unpUnn : '',
+        legal_address: address ? address : '',
+        bank_account: iban ? iban : '',
+        name_bank: bank ? bank : '',
+        bank_code: bic ? bic : '',
+        email: email ? email : '',
+        phone: number ? number : '',
+        sex: gender ? gender : null,
+        date_birthday: birth === 'YYYY-MM-DD' ? '0000-00-00' : birth,
+        about: about ? about : '',
+        legal_address: legal_address ? legal_address : '',
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+  static updatePassword(old_password, new_password1, new_password2) {
+    return axios({
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        old_password: old_password,
+        new_password1: new_password1,
+        new_password2: new_password2,
+      },
+      url: `http://178.172.136.88/api/jwt/update-password/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 export default Requests;

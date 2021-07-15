@@ -1,260 +1,333 @@
-
-                                    /* БЛОК 1*/
-.content_block1{
-    display: flex;
-    flex-direction: row;
-
+/* БЛОК 1*/
+.content_block1 {
+  display: flex;
+  flex-direction: row;
 }
 /*Левая часть блока*/
-.content_block1_left{
-    margin-right: 10px;
-    align-items: flex-start;
+.content_block1_left {
+  margin-right: 10px;
+  align-items: flex-start;
 }
 
-.block1_left_name{
-    font-size: 22px;
-    font-weight: 500;
+.block1_left_name {
+  font-size: 22px;
+  font-weight: 500;
 }
-.block1_left_privateFace{
-    font-size: 18px;
-    margin-top: 10px;
+.block1_left_privateFace {
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 /*Правая часть блока*/
-.content_block1_right{
-    align-items: flex-end;
+.content_block1_right {
+  align-items: flex-end;
 }
 
-.block1_right_watchProfile{
-    font-size: 18px;
-    margin: 5px 0;
-    color: #4CC9F0;
+.block1_right_watchProfile {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #4cc9f0;
 }
-.block1_right_watchProfile:hover{
-    color: #4CC9F0;
-    cursor: pointer;
+.block1_right_watchProfile:hover {
+  color: #4cc9f0;
+  cursor: pointer;
 }
 
+/*БЛОК 2*/
+.content_block2 {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 20px 30px 30px 30px;
+  height: auto;
 
-                            /*БЛОК 2*/
-.content_block2{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 30px;
-    height: auto;
-
-    border-bottom: 1px solid rgba(76, 201, 240, 0.77);
+  border-bottom: 1px solid rgba(76, 201, 240, 0.77);
 }
 
 /*ФОТО*/
 .content_block2_image img {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 /*ОТЗЫВЫ и ОЦЕНКИ*/
 
-.block2_reviews_stars img{
-    margin: 0 5px;
-    color:  #F5D32C;
+.block2_reviews_stars img {
+  margin: 0 5px;
+  color: #f5d32c;
 }
-.block2_reviews_text{
-    margin: 10px 5px 0;
-    font-size: 18px;
-    color: #4CC9F0;
+.block2_reviews_text {
+  margin: 10px 5px 0;
+  font-size: 18px;
+  color: #4cc9f0;
 }
-.block2_reviews_text:hover{
-    color: #4CC9F0;
-    cursor: pointer;
+.block2_reviews_text:hover {
+  color: #4cc9f0;
+  cursor: pointer;
 }
 
 /*ТЕЛЕФОН И ПОЧТА*/
 
-.content_block2_telephone{
-    display: flex;
-    flex-direction: row;
+.content_block2_telephone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.block2_telephone_text{
-    margin-right: 8px;
-    font-size: 18px;
+.block2_telephone_text {
+  margin-right: 8px;
+  font-size: 18px;
 }
 
-.content_block2_mail{
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
+.content_block2_mail {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
 }
-.block2_mail_text{
-    font-size: 18px;
-    margin-right: 21px;
+.block2_mail_text {
+  font-size: 18px;
+  margin-right: 21px;
 }
 
 /*НА САЙТЕ - ВРЕМЯ ОТВЕТА*/
-.content_block2_online{
-    font-size: 18px;
+.content_block2_online {
+  font-size: 18px;
+  margin-right: 40px;
 }
 
-.content_block2_online_website{
-    display: flex;
-    flex-direction: row;
+.content_block2_online_website {
+  display: flex;
+  flex-direction: row;
 }
-.online_website_text{
-    margin-right: 40px;
+.online_website_text {
+  margin-right: 40px;
 }
-.online_website_text2{
-    color: #4CC9F0;
+.online_website_text2 {
+  color: #4cc9f0;
 }
 
-
-.content_block2_online_time{
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
+.content_block2_online_time {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
 }
-.online_time_text{
-    margin-right: 23px;
+.online_time_text {
+  margin-right: 23px;
 }
-.online_time_text2{
-    color: #4CC9F0;
+.online_time_text2 {
+  color: #4cc9f0;
 }
 
 /*Я СДАЮ - Я БЕРУ*/
 
-.content_block2_rent_take{
-    font-size: 18px;
+.content_block2_rent_take {
+  font-size: 18px;
 }
-.rent_take_content1{
-    display: flex;
-    flex-direction: row;
+.rent_take_content1 {
+  display: flex;
+  flex-direction: row;
 }
-.rent_take_content1_rent{
-    margin: 0 10px 10px 0;
+.rent_take_content1_rent {
+  margin: 0 10px 10px 0;
 }
-.rent_take_content1_number{
-    color: #4CC9F0;
-}
-
-
-.rent_take_content2{
-    display: flex;
-    flex-direction: row;
-}
-.rent_take_content2_take{
-    margin-right: 12px;
-}
-.rent_take_content2_number{
-    color: #4CC9F0;
+.rent_take_content1_number {
+  color: #4cc9f0;
 }
 
+.rent_take_content2 {
+  display: flex;
+  flex-direction: row;
+}
+.rent_take_content2_take {
+  margin-right: 12px;
+}
+.rent_take_content2_number {
+  color: #4cc9f0;
+}
 
-                                    /*КОНТЕНТ ПОД ПРОФИЛЕМ*/
-.content_setting{
-    display: flex;
-    flex-direction: row;
+/*КОНТЕНТ ПОД ПРОФИЛЕМ*/
+.content_setting {
+  display: flex;
+  flex-direction: row;
 }
 
 /*ЛЕВАЯ СТОРОНА КОНТЕНТА*/
-.content_setting_left{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
+.content_setting_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
 }
-.content_setting_left input{
-    width: 400px;
-    height: 45px;
-    background: #FFFFFF;
-    border: 1px solid rgba(9, 29, 32, 0.4);
-    box-sizing: border-box;
-    border-radius: 7px;
-    font-size: 18px;
-}
-
-.content_setting_left select,option{
-    font-size: 18px;
-    background: #FFFFFF;
-    border: 1px solid rgba(9, 29, 32, 0.4);
-    box-sizing: border-box;
-    border-radius: 7px;
-
+.content_setting_left input {
+  width: 400px;
+  height: 45px;
+  background: #ffffff;
+  border: 1px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-size: 18px;
 }
 
-.content_setting_left p{
-    margin-bottom: 5px;
+.content_setting_left select,
+option {
+  font-size: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 7px;
 }
 
-
-/*ПОЛ*/
-.setting_left_gender{
-    width: 400px;
-    height: 45px;
-    box-sizing: border-box;
-    border-radius: 7px;
+.content_setting_left p {
+  margin-bottom: 5px;
 }
-
-/*ДАТА РОЖДЕНИЯ*/
-.setting_left_dateBirth_optional{
-    display: flex;
-    flex-direction: row;
-}
-
-.setting_left_dateBirth_optional .optional_number{
-    width: 120px;
-    height: 45px;
-    margin-right: 20px;
-}
-.setting_left_dateBirth_optional .optional_select{
-    width: 120px;
-    height: 45px;
-    border-radius: 7px;
-    margin-right: 20px;
-}
-.setting_left_dateBirth_optional .optional_number_year{
-    width: 120px;
-    height: 45px;
-    border-radius: 7px;
-}
-
 
 /*О себе*/
-.content_setting_left_AboutMe{
-    width: 396px;
-    height: 134px;
-    resize: none;
-    background: #FFFFFF;
-    border: 1px solid rgba(9, 29, 32, 0.4);
-    box-sizing: border-box;
-    border-radius: 7px;
-    font-size: 18px;
+.content_setting_left_AboutMe {
+  width: 396px;
+  height: 134px;
+  resize: none;
+  background: #ffffff;
+  border: 1px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-size: 18px;
 }
 
 /*КНОПКА СОХРАНИТЬ*/
 .button_download,
 .button_download:active,
-.button_download:focus
-{
-    width: 228px;
-    height: 45px;
-    background: #4CC9F0;
-    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+.button_download:focus {
+  width: 228px;
+  height: 45px;
+  background: #4cc9f0;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
-.button_download:hover{
-    font-weight: bold;
+.button_download:hover {
+  font-weight: bold;
 }
 
+/*ПРАВАЯ СТОРОНА - СОЦ СЕТИ*/
+.content_setting_right img {
+  height: 40px;
+  width: 40px;
+  margin: 20px 10px 0 0;
+}
 
+.mydata-settings-main-content {
+  display: flex;
+}
 
-                            /*ПРАВАЯ СТОРОНА - СОЦ СЕТИ*/
-.content_setting_right img{
-    height: 40px;
-    width: 40px;
-    margin: 20px 2px;
+.setting_left_input {
+  width: 400px;
+  height: 45px;
+  padding: 5px 40px 5px 15px;
+  background: #ffffff;
+  border: 1.31722px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 6.5861px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #091d20;
+}
+
+.setting_left_input__password {
+  width: 400px;
+  height: 45px;
+  padding: 5px 40px 5px 15px;
+  background: #ffffff;
+  border: 1.31722px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 6.5861px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #091d20;
+  padding: 10px 56px 10px 10px !important;
+}
+
+.setting_left_input_wrapper {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.settings-profile-form {
+  margin-right: 80px;
+}
+
+.my-data-settings-header-wrapper {
+  display: flex;
+  align-items: center;
+}
+.content_block2_reviews {
+  margin-right: 40px;
+}
+
+.content_block2_connection {
+  margin-right: 40px;
+}
+
+.my-data-submitted-img {
+  width: 10px;
+  height: 9px;
+}
+
+.my-data-lower-p {
+  align-self: flex-end;
+  margin-top: 5px;
+  font-size: 20px;
+  line-height: 23px;
+  color: #4cc9f0;
+  cursor: pointer;
+}
+
+.my-data-lower-p__password {
+  align-self: flex-start;
+  margin-top: 5px;
+  font-size: 20px;
+  line-height: 23px;
+  color: #4cc9f0;
+  cursor: pointer;
+}
+
+.setting_left_input__textarea {
+  width: 396px;
+  height: 134px;
+  background: #ffffff;
+  border: 1.31722px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 6.5861px;
+  resize: none;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  /* #091D20 */
+
+  color: rgba(9, 29, 32, 0.4);
+}
+
+.setting_left_input_wrapper__row {
+  display: flex;
+}
+
+.setting_left_input__short {
+  width: 190px;
+  height: 45px;
+  padding: 5px 15px 5px 15px;
+  background: #ffffff;
+  border: 1.31722px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 6.5861px;
 }

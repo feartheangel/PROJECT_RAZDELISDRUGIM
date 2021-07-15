@@ -424,6 +424,18 @@
   background: url(/src/img/showPaaswordIcon.png) 0 0 no-repeat;
 }
 
+.password-control__profile {
+  flex: none;
+  position: absolute;
+  z-index: 7;
+  bottom: 15px;
+  left: 350px;
+  width: 23px;
+  height: 20px;
+  background: url(/src/img/showPaaswordIcon.png) 0 0 no-repeat;
+  cursor: pointer;
+}
+
 .password-control:hover {
   cursor: pointer;
 }

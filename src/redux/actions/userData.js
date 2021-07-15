@@ -22,3 +22,8 @@ export const setQueryDone = () => ({
   type: 'SET_REQUEST_END',
   payload: false,
 });
+
+export const setUserData = (object) => ({
+  type: 'SET_USER_DATA',
+  payload: object,
+});

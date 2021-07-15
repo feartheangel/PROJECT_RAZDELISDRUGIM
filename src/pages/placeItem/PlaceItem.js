@@ -282,12 +282,16 @@ const PlaceItem = () => {
                 .catch((e) => alert('Ошибка получения категорий/адресов'));
               alert('Адрес успешно добавлен в профиль!');
             })
-            .catch((e) =>
-              alert('Не удалось подтвердить адрес, проверьте правильность ввода данных в поля.'),
-            );
+            .catch((e) => {
+              alert('Не удалось подтвердить адрес, проверьте правильность ввода данных в поля.');
+              dispatch(setQueryDone());
+            });
         }
       })
-      .catch((e) => alert('Ошибка сохранения адреса!'));
+      .catch((e) => {
+        dispatch(setQueryDone());
+        alert('Ошибка сохранения адреса!');
+      });
   };
 
   const [redirect, setRedirect] = React.useState(false);
@@ -305,6 +309,9 @@ const PlaceItem = () => {
       return;
     } else if (!coords) {
       alert('Не указан адрес!');
+      return;
+    } else if (!files[0]) {
+      alert('Загрузка одной картинки обязательна!');
       return;
     }
 
@@ -368,6 +375,7 @@ const PlaceItem = () => {
         console.log(response);
       })
       .catch((response) => {
+        dispatch(setQueryDone());
         alert('Ошибка!');
       });
   };

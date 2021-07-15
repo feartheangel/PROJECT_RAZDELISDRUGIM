@@ -1,78 +1,76 @@
-
 /* КОНТЕЙНЕР ПРОФИЛЯ */
 .container_profile {
-    display: flex;
-    flex-direction: row;
-    color: #091D20;
+  display: flex;
+  flex-direction: row;
+  color: #091d20;
 }
 
 /*Настройка левой строны*/
 .container_profile_optional {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 20px;
-    height: 100%;
-    font-size: 20px;
-    font-weight: 500;
-    color: #091D20;
-    padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 20px;
+  height: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  color: #091d20;
+  padding-top: 10px;
 }
 
 .container_profile_optional p {
-    display: flex;
-    text-align: left;
-    margin: 40px 0;
-    transition: .2s;
+  display: flex;
+  text-align: left;
+  margin: 20px 0;
+  transition: 0.2s;
 }
 
 .container_profile_optional p:hover {
-    color: #56ccf2;
-    cursor: pointer;
+  color: #56ccf2;
+  cursor: pointer;
 }
 
 /*  КОНТЕЙНЕР С ФОНОМ ДЛЯ КОНТЕНТА СПРАВА */
-.container_profile_content{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
-    border-radius: 30px;
-    background: #ffffff;
-    margin: 20px 0;
-    padding: 30px;
+.container_profile_content {
+  width: 936px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 30px;
+  background: #ffffff;
+  margin: 20px 0;
+  padding: 30px;
 }
 
-.container_profile_content input,select,option,textarea{
-    padding: 10px;
+.container_profile_content input,
+select,
+option,
+textarea {
+  padding: 10px;
 }
 
-
-                            /*КНОПКИ ПЕРЕКЛЮЧЕНИЯ В ЛЕВОЙ СЕКЦИИ*/
+/*КНОПКИ ПЕРЕКЛЮЧЕНИЯ В ЛЕВОЙ СЕКЦИИ*/
 
 /*МОИ ДАННЫЕ - КНОПКА */
-.container_profile_optional_myData{
-    cursor: pointer;
-    color: #56ccf2;
-    transition: .2s;
-    margin-top: 30px;
+.container_profile_optional_myData {
+  cursor: pointer;
+  color: #56ccf2;
+  transition: 0.2s;
+  margin-top: 30px;
 }
-.container_profile_optional_myData:hover{
-    cursor: pointer;
-    color: #56ccf2;
+.container_profile_optional_myData:hover {
+  cursor: pointer;
+  color: #56ccf2;
 }
 
 /*МОИ АДРЕСА - КНОПКА */
-.container_profile_optional_myAddresses{
-    cursor: pointer;
-    color: #56ccf2;
-    transition: .2s;
-    margin-top: 30px;
+.container_profile_optional_myAddresses {
+  cursor: pointer;
+  color: #56ccf2;
+  transition: 0.2s;
+  margin-top: 30px;
 }
-.container_profile_optional_myAddresses:hover{
-    cursor: pointer;
-    color: #56ccf2;
+.container_profile_optional_myAddresses:hover {
+  cursor: pointer;
+  color: #56ccf2;
 }
-
-
