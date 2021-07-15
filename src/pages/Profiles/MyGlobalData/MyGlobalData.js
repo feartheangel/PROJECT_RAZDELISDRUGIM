@@ -34,8 +34,8 @@ const MyGlobalData = () => {
       {/* ПРАВАЯ ЧАСТЬ */}
 
       <div className="container_profile_content">
-        {activeForm === 'myData' && status === 1 && <MyDataBusiness />}
-        {activeForm === 'myData' && status === 2 && <MyDataIndividual />}
+        {activeForm === 'myData' && status === 2 && <MyDataBusiness />}
+        {activeForm === 'myData' && status === 1 && <MyDataIndividual />}
         {activeForm === 'myAddresses' && <MyAddresses />}
       </div>
     </div>

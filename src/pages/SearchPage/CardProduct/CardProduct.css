@@ -1,0 +1,39 @@
+/* КОНТЕНТ В САМОЙ КАРТОЧКЕ */
+.blocks_card_content{
+}
+.blocks_card_social_img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px 0 10px;
+}
+.blocks_card_text{
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+.blocks_card_time{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+.blocks_card_time_cost{
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+}
+
+
+.blocks_card_name{
+    height: 42px;
+    margin-bottom: 10px;
+}
+.blocks_card_freeTime{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -4,3 +4,4 @@ export { default as PrivateProfile } from './Profiles/PrivateProfile';
 export { default as MyGlobalData } from './Profiles/MyGlobalData/MyGlobalData';
 export { default as MyDataIndividual } from './Profiles/MyGlobalData/MyData/MyDataIndividual';
 export { default as MyAddresses } from './Profiles/MyGlobalData/MyAddresses/MyAddresses';
+export { default as SearchPage } from './SearchPage/SearchPage';
