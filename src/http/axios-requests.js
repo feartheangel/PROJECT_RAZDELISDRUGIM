@@ -386,6 +386,149 @@ class Requests {
       return response;
     });
   }
+
+  static updateAddress(
+    area,
+    region,
+    index,
+    city,
+    street,
+    house,
+    corpus,
+    apartment,
+    space_room,
+    office,
+    building,
+    coordinates,
+    id,
+  ) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        area: area ? area : '',
+        region: region ? region : '',
+        index: index ? index : null,
+        city: city ? city : '',
+        street: street ? street : '',
+        house: house ? house : null,
+        corpus: corpus ? corpus : '',
+        apartment: apartment ? apartment : null,
+        space_room: space_room ? space_room : '',
+        office: office ? office : '',
+        building: building ? building : '',
+        coordinates: `${Number(coordinates[0])} ${Number(coordinates[1])}`,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/address/update/${id}/`,
+    }).then((response) => {
+      console.log(response);
+      return response;
+    });
+  }
+
+  static sendVerifyNumberCode() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `http://178.172.136.88/api/jwt/sms/send/`,
+    }).then((response) => {
+      console.log(response);
+      return response;
+    });
+  }
+
+  static checkVerifyNumberCode(code) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        code: code,
+      },
+      url: `http://178.172.136.88/api/jwt/sms/check/`,
+    }).then((response) => {
+      console.log(response);
+      return response;
+    });
+  }
+
+  static sendVerifyEmailCode() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `http://178.172.136.88/api/jwt/email/send/`,
+    }).then((response) => {
+      console.log(response);
+      return response;
+    });
+  }
+
+  static checkVerifyEmailCode(code) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        code: code,
+      },
+      url: `http://178.172.136.88/api/jwt/email/check/`,
+    }).then((response) => {
+      console.log(response);
+      return response;
+    });
+  }
+
+  static removeAddress(id) {
+    return axios({
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/address/delete/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static fetchSubjects() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `http://178.172.136.88/api/items/profile-items/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static deleteSubject(id) {
+    return axios({
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `http://178.172.136.88/api/items/delete/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 export default Requests;

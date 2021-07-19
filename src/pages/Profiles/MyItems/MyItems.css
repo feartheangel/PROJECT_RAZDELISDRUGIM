@@ -1,0 +1,20 @@
+.item-card-profile-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item-card-profile-button {
+  width: 44%;
+  border: 1px solid transparent;
+  margin: 2% 2% 2% 2%;
+  height: 25px;
+  background: #4cc9f0;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #091d20;
+  cursor: pointer;
+}

@@ -319,8 +319,23 @@ button {
   display: flex;
   flex-direction: column;
   margin-right: 30px;
+  margin-bottom: 30px;
   width: 220px;
   height: 426px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.recent-block__profile {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  width: 220px;
+  height: 340px;
   padding: 20px;
   background: #ffffff;
   box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);

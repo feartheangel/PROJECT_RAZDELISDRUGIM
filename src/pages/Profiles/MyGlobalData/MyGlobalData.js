@@ -5,7 +5,7 @@ import MyAddresses from './MyAddresses/MyAddresses';
 import MyDataBusiness from './MyData/MyDataBusiness';
 import { useSelector } from 'react-redux';
 
-const MyGlobalData = () => {
+const MyGlobalData = ({ setModalActiveNumber, setModalActiveEmail }) => {
   const [activeForm, setActiveForm] = useState('myData');
 
   const { status } = useSelector(({ userData }) => userData.userData);
@@ -34,8 +34,18 @@ const MyGlobalData = () => {
       {/* ПРАВАЯ ЧАСТЬ */}
 
       <div className="container_profile_content">
-        {activeForm === 'myData' && status === 2 && <MyDataBusiness />}
-        {activeForm === 'myData' && status === 1 && <MyDataIndividual />}
+        {activeForm === 'myData' && status === 2 && (
+          <MyDataBusiness
+            setModalActiveEmail={setModalActiveEmail}
+            setModalActiveNumber={setModalActiveNumber}
+          />
+        )}
+        {activeForm === 'myData' && status === 1 && (
+          <MyDataIndividual
+            setModalActiveEmail={setModalActiveEmail}
+            setModalActiveNumber={setModalActiveNumber}
+          />
+        )}
         {activeForm === 'myAddresses' && <MyAddresses />}
       </div>
     </div>

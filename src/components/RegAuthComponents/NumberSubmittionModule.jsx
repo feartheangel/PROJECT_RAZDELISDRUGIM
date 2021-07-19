@@ -6,7 +6,7 @@ import Requests from '../../http/axios-requests';
 import { reloadData } from '../../redux/actions/userData';
 import Shape from '../../img/Shape.png';
 
-const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
+const NumberSubmittionModule = ({ modalActiveNumber, setModalActiveNumber }) => {
   const dispatch = useDispatch();
   const { reload } = useSelector(({ userData }) => userData);
 
@@ -21,10 +21,10 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
 
   //проверка активации окна
   React.useEffect(() => {
-    if (modalActiveEmail) {
+    if (modalActiveNumber) {
       setTimerStart(true);
     }
-  }, [modalActiveEmail]);
+  }, [modalActiveNumber]);
 
   //таймер на повторную отправку
   React.useEffect(() => {
@@ -57,11 +57,11 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
 
   //обработчик клика по кнопке регистрации
   const onClickSubmit = () => {
-    Requests.checkVerifyEmailCode(code)
+    Requests.checkVerifyNumberCode(code)
       .then((response) => {
         dispatch(reloadData(!reload));
-        alert('Почта успешно подтверждена!');
-        setModalActiveEmail(false);
+        alert('Телефон успешно подтвержден!');
+        setModalActiveNumber(false);
       })
       .catch((e) => {
         alert('Введен неверный код! Попробуйте еще раз.');
@@ -70,17 +70,18 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
 
   //повторная отправка
   const resendHandler = () => {
-    Requests.sendVerifyEmailCode();
+    Requests.sendVerifyNumberCode();
     setTimer(120);
   };
-
   return (
-    <div className={modalActiveEmail ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}>
+    <div
+      className={modalActiveNumber ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}
+      onClick={() => setModalActiveNumber(false)}>
       <div className="reg-content">
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
           <div style={{ height: '400px' }} className="reg-form-email-verification">
             <img
-              onClick={() => setModalActiveEmail(false)}
+              onClick={() => setModalActiveNumber(false)}
               style={{
                 marginTop: '25px',
                 marginLeft: '485px',
@@ -91,17 +92,17 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
               src={Shape}
             />
             <div className="log-form-text-label-p-email__upper">
-              <p>Подтвердите почту</p>
+              <p>Подтвердите номер телефона</p>
             </div>
             <div className="reg-form-annotation-wrapper">
               <div className="reg-form-annotation__email">
-                <p>(На указанный адрес почты было отправлено письмо с кодом подтверждения)</p>
+                <p>(На указанный номер телефона было отправлено SMS с кодом подтверждения)</p>
               </div>
             </div>
             <div className="reg-form-input-area">
               <form>
                 <label htmlFor="login" className="log-form-text-label-l">
-                  Код из письма
+                  Код из SMS
                 </label>
                 <input
                   name="code"
@@ -149,4 +150,4 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
   );
 };
 
-export default EmailSubmittionModule;
+export default NumberSubmittionModule;

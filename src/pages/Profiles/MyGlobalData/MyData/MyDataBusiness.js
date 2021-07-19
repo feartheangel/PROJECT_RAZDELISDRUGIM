@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './MyData.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { reloadData } from '../../../../redux/actions/userData';
 import Requests from '../../../../http/axios-requests';
 import Ellipse5 from '../../../../img/ProfilePage/Ellipse 5.png';
 import Star1 from '../../../../img/ProfilePage/Star 1.png';
@@ -16,8 +17,46 @@ import Vk from '../../../../img/ProfilePage/vk.png';
 import Instagram from '../../../../img/ProfilePage/instagram.png';
 import Ok from '../../../../img/ProfilePage/ok.png';
 
-const MyDataBusiness = () => {
+const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
+  const dispatch = useDispatch();
   const { userData } = useSelector(({ userData }) => userData);
+  const { reload } = useSelector(({ userData }) => userData);
+
+  const contactEmailRegExp =
+    /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
+  const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
+
+  const numberVerifyHandler = () => {
+    if (!userData.phone) {
+      alert('Сначала сохраните номер телефона в профиле!');
+      return;
+    } else if (userData.phone !== number) {
+      alert('Сначала сохраните новый номер телефона в профиле!');
+      return;
+    } else if (sendCountNumber > 0) {
+      setModalActiveNumber(true);
+      return;
+    }
+    setModalActiveNumber(true);
+    Requests.sendVerifyNumberCode();
+    setSendCountNumber(sendCountNumber + 1);
+  };
+
+  const emailVerifyHandler = () => {
+    if (!userData.email) {
+      alert('Сначала сохраните адрес почты в профиле!');
+      return;
+    } else if (userData.email !== email) {
+      alert('Сначала сохраните новый адрес почты в профиле!');
+      return;
+    } else if (sendCountEmail > 0) {
+      setModalActiveEmail(true);
+      return;
+    }
+    setModalActiveEmail(true);
+    Requests.sendVerifyEmailCode();
+    setSendCountEmail(sendCountEmail + 1);
+  };
 
   const profileSaveHandler = () => {
     if (!name) {
@@ -50,6 +89,12 @@ const MyDataBusiness = () => {
     } else if (!number) {
       alert('Не указан номер телефона!');
       return;
+    } else if (!contactEmailRegExp.test(email)) {
+      alert('Указан некорректный адрес электронной почты!');
+      return;
+    } else if (!contactNumberRegExp.test(number)) {
+      alert('Указан некорректный номер телефона!');
+      return;
     }
     Requests.updateProfileMain(
       name,
@@ -67,7 +112,10 @@ const MyDataBusiness = () => {
       about,
       address,
     )
-      .then((response) => alert('Обновлено'))
+      .then((response) => {
+        alert('Обновлено');
+        dispatch(reloadData(!reload));
+      })
       .catch((e) => alert('Ошибка!'));
   };
 
@@ -110,6 +158,9 @@ const MyDataBusiness = () => {
   const [showNewPass1, setShowNewPass1] = React.useState(false);
   const [showNewPass2, setShowNewPass2] = React.useState(false);
 
+  const [sendCountEmail, setSendCountEmail] = React.useState(0);
+  const [sendCountNumber, setSendCountNumber] = React.useState(0);
+
   return (
     <div>
       {/* ШАПКА С ПРОФИЛЕМ*/}
@@ -134,7 +185,11 @@ const MyDataBusiness = () => {
       <div className="my-data-settings-header-wrapper">
         <div className="content_block2">
           <div className="content_block2_image">
-            <img style={{ marginRight: '30px' }} src={Ellipse5} alt="" />
+            <img
+              style={{ marginRight: '30px', borderRadius: '50%' }}
+              src={`http://razdelisdrugim.by${userData.image_profile}`}
+              alt=""
+            />
           </div>
 
           {/*ОТЗЫВЫ ОЦЕНКИ*/}
@@ -306,7 +361,19 @@ const MyDataBusiness = () => {
               className="setting_left_input"
               type="text"
             />
-            <p className="my-data-lower-p"> Подтвердить </p>
+            {!userData.email_verify ? (
+              <p onClick={emailVerifyHandler} className="my-data-lower-p">
+                {' '}
+                Подтвердить{' '}
+              </p>
+            ) : (
+              <p
+                style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
+                className="my-data-lower-p">
+                {' '}
+                Подтверждено{' '}
+              </p>
+            )}
           </div>
 
           <div className="setting_left_input_wrapper">
@@ -319,7 +386,19 @@ const MyDataBusiness = () => {
               className="setting_left_input"
               type="text"
             />
-            <p className="my-data-lower-p"> Подтвердить </p>
+            {!userData.phone_verify ? (
+              <p onClick={numberVerifyHandler} className="my-data-lower-p">
+                {' '}
+                Подтвердить{' '}
+              </p>
+            ) : (
+              <p
+                style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
+                className="my-data-lower-p">
+                {' '}
+                Подтверждено{' '}
+              </p>
+            )}
           </div>
 
           <div className="setting_left_input_wrapper">

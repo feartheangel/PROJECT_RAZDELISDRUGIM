@@ -4,6 +4,8 @@ const initialState = {
   currentUserId: '',
   addresses: [],
   userData: {},
+  subjects: [],
+  reload: false,
 };
 
 const userData = (state = initialState, action) => {
@@ -46,6 +48,20 @@ const userData = (state = initialState, action) => {
       return {
         ...state,
         userData: action.payload,
+      };
+      break;
+
+    case 'SET_USER_SUBJECTS':
+      return {
+        ...state,
+        subjects: action.payload,
+      };
+      break;
+
+    case 'RELOAD':
+      return {
+        ...state,
+        reload: action.payload,
       };
       break;
   }

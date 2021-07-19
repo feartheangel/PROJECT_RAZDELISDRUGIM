@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { Header, Footer } from '../../components/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { setItems, setItemsLoaded, setItemsLoading } from '../../redux/actions/items';
-import { setAdresses, setQueryStarted, setQueryDone } from '../../redux/actions/userData';
+import {
+  setAdresses,
+  setQueryStarted,
+  setQueryDone,
+  reloadData,
+} from '../../redux/actions/userData';
 import { Redirect } from 'react-router-dom';
 import Requests from '../../http/axios-requests';
 import './PlaseItem.css';
@@ -43,7 +48,7 @@ const PlaceItem = () => {
         files = [];
         resultList = [];
         setDownloadPhoto([]);
-        alert('Разрешено загружить до 3 изображений');
+        alert('Разрешено загружать до 3 изображений');
       } else {
         setDownloadPhoto(resultList);
       }
@@ -298,7 +303,10 @@ const PlaceItem = () => {
 
   //обработчик отправки формы
   const sendHandler = () => {
-    if (!nameItem) {
+    if (!userData.phone_verify || !userData.email_verify) {
+      alert('У вас не подтвержден телефон либо почта. Это можно сделать в профиле!');
+      return;
+    } else if (!nameItem) {
       alert('Не указано название вещи!');
       return;
     } else if (!viborCategory) {
@@ -371,6 +379,7 @@ const PlaceItem = () => {
           alert('Успешно добавлено в базу!');
           setRedirect(<Redirect to="/" />);
           dispatch(setQueryDone());
+          dispatch(reloadData(!reload));
         }
         console.log(response);
       })
@@ -514,20 +523,12 @@ const PlaceItem = () => {
 
   const [addressAdded, setAddressAdded] = React.useState(false);
 
-  //получение категорий из БД
+  //проврека на верификацию почты и телефона
   React.useEffect(() => {
-    dispatch(setItemsLoading());
-    Requests.fetchItems().then((response) => {
-      if (response.status === 200 || response.status === 201) {
-        dispatch(setItems(response.data));
-        Requests.fetchAdresses()
-          .then((response) => {
-            dispatch(setAdresses(response.data));
-            dispatch(setItemsLoaded());
-          })
-          .catch((e) => alert('Ошибка получения категорий/адресов'));
-      }
-    });
+    if (!userData.email_verify || !userData.phone_verify) {
+      alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
+      setRedirect(<Redirect to="/private-profile" />);
+    }
   }, []);
 
   //очистка полей при отмене выбора
@@ -624,7 +625,7 @@ const PlaceItem = () => {
   }, [taxi, courier, pochta]);
 
   const { items, isLoaded } = useSelector(({ items }) => items);
-  const { addresses, requestActive } = useSelector(({ userData }) => userData);
+  const { addresses, requestActive, userData, reload } = useSelector(({ userData }) => userData);
 
   //выделяем разделы
   const chapters = {};

@@ -27,3 +27,13 @@ export const setUserData = (object) => ({
   type: 'SET_USER_DATA',
   payload: object,
 });
+
+export const setUserSubjects = (array) => ({
+  type: 'SET_USER_SUBJECTS',
+  payload: array,
+});
+
+export const reloadData = (arg) => ({
+  type: 'RELOAD',
+  payload: arg,
+});

@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/main-page.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Header, Footer } from '../components/index';
+import { Header, Footer, ItemCard } from '../components/index';
 import BaseModal from '../components/RegAuthComponents/BaseModal';
 
 //импорт всех картинок
@@ -13,22 +13,16 @@ import abil4 from '../img/MainPage/abil4.png';
 import abil5 from '../img/MainPage/abil5.png';
 import ArrowLeft from '../img/MainPage/Arrow_left.png';
 import ArrowRight from '../img/MainPage/Arrow_right.png';
-import car from '../img/MainPage/car.png';
-import cardFire from '../img/MainPage/card-fire.png';
-import cardMoney from '../img/MainPage/card-money.png';
-import cardVerify from '../img/MainPage/card-verify.png';
 import Free from '../img/MainPage/Free.png';
 import like from '../img/MainPage/like.png';
 import jacket from '../img/MainPage/jacket.png';
 import Macbook from '../img/MainPage/Macbook.png';
-import moneyTime from '../img/MainPage/money-time.png';
 import partner1 from '../img/MainPage/partner1.png';
 import partner2 from '../img/MainPage/partner2.png';
 import partner3 from '../img/MainPage/partner3.png';
 import Press from '../img/MainPage/Press.png';
 import Review from '../img/MainPage/Review.png';
 import Sofa from '../img/MainPage/Sofa.png';
-import time from '../img/MainPage/time.png';
 import Union from '../img/MainPage/Union.png';
 import { loginAction, logoutAction } from '../redux/actions/userData';
 
@@ -51,110 +45,10 @@ const Home = () => {
             <p className="recent-p">Недавно добавленные</p>
             <div className="recent-blocks-wrapper">
               <img src={ArrowLeft} alt="" className="recent-arrow-left" />
-              <div className="recent-block-wrapper">
-                <div className="recent-block">
-                  <img src={Macbook} alt="" className="block-image" />
-                  <div className="recent-marks">
-                    <img src={car} alt="" className="card-mark" />
-                    <img src={cardFire} alt="" className="card-mark" />
-                    <img src={Union} alt="" className="card-mark" />
-                    <img src={moneyTime} alt="" className="card-mark" />
-                    <img src={cardMoney} alt="" className="card-mark" />
-                    <img src={cardVerify} alt="" className="card-mark" />
-                  </div>
-                  <p className="recent-block-title-p">Apple MacBook Air</p>
-                  <div className="recent-time-cost-wrapper">
-                    <p className="recent-cost-p">5 BYN</p>
-                    <p className="recent-time-p">1 час</p>
-                  </div>
-                  <p className="recent-user-name-p">Андрей</p>
-                  <div className="recent-lower-table">
-                    <div className="recent-status">
-                      <img src={time} alt="" className="status-img" />
-                      <p className="status-p">Скоро освободится</p>
-                    </div>
-                    <img src={like} alt="" className="recent-lower-like" />
-                  </div>
-                </div>
-              </div>
-              <div className="recent-block-wrapper">
-                <div className="recent-block">
-                  <img src={Macbook} alt="" className="block-image" />
-                  <div className="recent-marks">
-                    <img src={car} alt="" className="card-mark" />
-                    <img src={cardFire} alt="" className="card-mark" />
-                    <img src={Union} alt="" className="card-mark" />
-                    <img src={moneyTime} alt="" className="card-mark" />
-                    <img src={cardMoney} alt="" className="card-mark" />
-                    <img src={cardVerify} alt="" className="card-mark" />
-                  </div>
-                  <p className="recent-block-title-p">Apple MacBook Air</p>
-                  <div className="recent-time-cost-wrapper">
-                    <p className="recent-cost-p">5 BYN</p>
-                    <p className="recent-time-p">1 час</p>
-                  </div>
-                  <p className="recent-user-name-p">Андрей</p>
-                  <div className="recent-lower-table">
-                    <div className="recent-status">
-                      <img src={time} alt="" className="status-img" />
-                      <p className="status-p">Скоро освободится</p>
-                    </div>
-                    <img src={like} alt="" className="recent-lower-like" />
-                  </div>
-                </div>
-              </div>
-              <div className="recent-block-wrapper">
-                <div className="recent-block">
-                  <img src={Macbook} alt="" className="block-image" />
-                  <div className="recent-marks">
-                    <img src={car} alt="" className="card-mark" />
-                    <img src={cardFire} alt="" className="card-mark" />
-                    <img src={Union} alt="" className="card-mark" />
-                    <img src={moneyTime} alt="" className="card-mark" />
-                    <img src={cardMoney} alt="" className="card-mark" />
-                    <img src={cardVerify} alt="" className="card-mark" />
-                  </div>
-                  <p className="recent-block-title-p">Apple MacBook Air</p>
-                  <div className="recent-time-cost-wrapper">
-                    <p className="recent-cost-p">5 BYN</p>
-                    <p className="recent-time-p">1 час</p>
-                  </div>
-                  <p className="recent-user-name-p">Андрей</p>
-                  <div className="recent-lower-table">
-                    <div className="recent-status">
-                      <img src={time} alt="" className="status-img" />
-                      <p className="status-p">Скоро освободится</p>
-                    </div>
-                    <img src={like} alt="" className="recent-lower-like" />
-                  </div>
-                </div>
-              </div>
-              <div className="recent-block-wrapper">
-                <div className="recent-block">
-                  <img src={Macbook} alt="" className="block-image" />
-                  <div className="recent-marks">
-                    <img src={car} alt="" className="card-mark" />
-                    <img src={cardFire} alt="" className="card-mark" />
-                    <img src={Union} alt="" className="card-mark" />
-                    <img src={moneyTime} alt="" className="card-mark" />
-                    <img src={cardMoney} alt="" className="card-mark" />
-                    <img src={cardVerify} alt="" className="card-mark" />
-                  </div>
-                  <p className="recent-block-title-p">Apple MacBook Air</p>
-                  <div className="recent-time-cost-wrapper">
-                    <p className="recent-cost-p">5 BYN</p>
-                    <p className="recent-time-p">1 час</p>
-                  </div>
-                  <p className="recent-user-name-p">Андрей</p>
-                  <div className="recent-lower-table">
-                    <div className="recent-status">
-                      <img src={time} alt="" className="status-img" />
-                      <p className="status-p">Скоро освободится</p>
-                    </div>
-                    <img src={like} alt="" className="recent-lower-like" />
-                  </div>
-                </div>
-              </div>
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
               <img src={ArrowRight} alt="" className="recent-arrow-right" />
             </div>
           </div>
@@ -169,110 +63,10 @@ const Home = () => {
           <p className="popular-p">Часто арендуемые</p>
           <div className="recent-blocks-wrapper">
             <img src={ArrowLeft} alt="" className="recent-arrow-left" />
-            <div className="recent-block-wrapper">
-              <div className="recent-block">
-                <img src={Sofa} alt="" className="block-image" />
-                <div className="recent-marks">
-                  <img src={car} alt="" className="card-mark" />
-                  <img src={cardFire} alt="" className="card-mark" />
-                  <img src={Union} alt="" className="card-mark" />
-                  <img src={moneyTime} alt="" className="card-mark" />
-                  <img src={cardMoney} alt="" className="card-mark" />
-                  <img src={cardVerify} alt="" className="card-mark" />
-                </div>
-                <p className="recent-block-title-p">Комод</p>
-                <div className="recent-time-cost-wrapper">
-                  <p className="recent-cost-p">5 BYN</p>
-                  <p className="recent-time-p">1 час</p>
-                </div>
-                <p className="recent-user-name-p">Сергей</p>
-                <div className="recent-lower-table">
-                  <div className="recent-status">
-                    <img src={Free} alt="" className="status-img" />
-                    <p className="status-p">Свободно</p>
-                  </div>
-                  <img src={like} alt="" className="recent-lower-like" />
-                </div>
-              </div>
-            </div>
-            <div className="recent-block-wrapper">
-              <div className="recent-block">
-                <img src={Sofa} alt="" className="block-image" />
-                <div className="recent-marks">
-                  <img src={car} alt="" className="card-mark" />
-                  <img src={cardFire} alt="" className="card-mark" />
-                  <img src={Union} alt="" className="card-mark" />
-                  <img src={moneyTime} alt="" className="card-mark" />
-                  <img src={cardMoney} alt="" className="card-mark" />
-                  <img src={cardVerify} alt="" className="card-mark" />
-                </div>
-                <p className="recent-block-title-p">Комод</p>
-                <div className="recent-time-cost-wrapper">
-                  <p className="recent-cost-p">5 BYN</p>
-                  <p className="recent-time-p">1 час</p>
-                </div>
-                <p className="recent-user-name-p">Сергей</p>
-                <div className="recent-lower-table">
-                  <div className="recent-status">
-                    <img src={Free} alt="" className="status-img" />
-                    <p className="status-p">Свободно</p>
-                  </div>
-                  <img src={like} alt="" className="recent-lower-like" />
-                </div>
-              </div>
-            </div>
-            <div className="recent-block-wrapper">
-              <div className="recent-block">
-                <img src={Sofa} alt="" className="block-image" />
-                <div className="recent-marks">
-                  <img src={car} alt="" className="card-mark" />
-                  <img src={cardFire} alt="" className="card-mark" />
-                  <img src={Union} alt="" className="card-mark" />
-                  <img src={moneyTime} alt="" className="card-mark" />
-                  <img src={cardMoney} alt="" className="card-mark" />
-                  <img src={cardVerify} alt="" className="card-mark" />
-                </div>
-                <p className="recent-block-title-p">Комод</p>
-                <div className="recent-time-cost-wrapper">
-                  <p className="recent-cost-p">5 BYN</p>
-                  <p className="recent-time-p">1 час</p>
-                </div>
-                <p className="recent-user-name-p">Сергей</p>
-                <div className="recent-lower-table">
-                  <div className="recent-status">
-                    <img src={Free} alt="" className="status-img" />
-                    <p className="status-p">Свободно</p>
-                  </div>
-                  <img src={like} alt="" className="recent-lower-like" />
-                </div>
-              </div>
-            </div>
-            <div className="recent-block-wrapper">
-              <div className="recent-block">
-                <img src={Sofa} alt="" className="block-image" />
-                <div className="recent-marks">
-                  <img src={car} alt="" className="card-mark" />
-                  <img src={cardFire} alt="" className="card-mark" />
-                  <img src={Union} alt="" className="card-mark" />
-                  <img src={moneyTime} alt="" className="card-mark" />
-                  <img src={cardMoney} alt="" className="card-mark" />
-                  <img src={cardVerify} alt="" className="card-mark" />
-                </div>
-                <p className="recent-block-title-p">Комод</p>
-                <div className="recent-time-cost-wrapper">
-                  <p className="recent-cost-p">5 BYN</p>
-                  <p className="recent-time-p">1 час</p>
-                </div>
-                <p className="recent-user-name-p">Сергей</p>
-                <div className="recent-lower-table">
-                  <div className="recent-status">
-                    <img src={Free} alt="" className="status-img" />
-                    <p className="status-p">Свободно</p>
-                  </div>
-                  <img src={like} alt="" className="recent-lower-like" />
-                </div>
-              </div>
-            </div>
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
             <img src={ArrowRight} alt="" className="recent-arrow-right" />
           </div>
           <input type="button" value="Смотреть каталог" className="popular-button" />

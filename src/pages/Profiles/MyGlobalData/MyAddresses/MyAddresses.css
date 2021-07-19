@@ -1,7 +1,7 @@
 /*РАЗМЕР КОНТЕЙНЕРА */
 .container_myAddresses_content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   height: auto;
   font-size: 20px;
@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .addresses_left_address1_text {
@@ -59,7 +60,7 @@
 .address1_house_add_addresses {
   color: #4cc9f0;
   font-weight: 500;
-  margin: 0 5px;
+  margin-top: 20px;
 }
 .addresses_left_address1_house img,
 .address1_house_add_addresses:hover {
