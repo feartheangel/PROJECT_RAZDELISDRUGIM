@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Requests from '../../../../http/axios-requests';
 import { setAdresses, setQueryStarted, setQueryDone } from '../../../../redux/actions/userData';
 
-const MyAddresses = () => {
+const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
   const dispatch = useDispatch();
 
   const { addresses, requestActive } = useSelector(({ userData }) => userData);
@@ -122,6 +122,8 @@ const MyAddresses = () => {
     <div className="container_myAddresses_content">
       {addresses.map((address, index) => (
         <AddressFields
+          setModalActiveSubmit={setModalActiveSubmit}
+          setDeleteId={setDeleteId}
           addressNumber={index + 1}
           sentCountry={'Беларусь'}
           sentArea={address.area}

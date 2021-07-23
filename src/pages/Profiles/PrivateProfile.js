@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import './PrivateProfile.css';
 import { Header, Footer } from '../../components/index';
 import MyData from './MyGlobalData/MyGlobalData';
+import { Link } from 'react-router-dom';
 import MyItems from './MyItems/MyItems';
 import Requests from '../../http/axios-requests';
 import { setItems, setItemsLoaded, setItemsLoading } from '../../redux/actions/items';
 import { setAdresses, setQueryStarted, setQueryDone } from '../../redux/actions/userData';
 import { useSelector, useDispatch } from 'react-redux';
-import { NumberSubmittionModule, EmailSubmittionModule } from '../../components/index';
+import {
+  NumberSubmittionModule,
+  EmailSubmittionModule,
+  AddressDeleteSubmit,
+} from '../../components/index';
 
 const PrivateProfile = () => {
   const dispatch = useDispatch();
@@ -19,17 +24,23 @@ const PrivateProfile = () => {
   const [modalActiveEmail, setModalActiveEmail] = React.useState(false);
   const [modalActiveNumber, setModalActiveNumber] = React.useState(false);
 
+  const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
+  const [deleteId, setDeleteId] = React.useState();
+
   return (
     <div>
       <Header />
       <div className="privateProfile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p
-              onClick={() => setActiveForm('myItems')}
-              className={activeForm === 'myItems' && 'conteiner_shapka_myProfile'}>
-              Я сдаю <span> {subjects.length} </span>
-            </p>
+            <Link
+              style={{ textDecoration: 'none' }}
+              className="conteiner_shapka_myProfile"
+              to="/i-rent-out">
+              <p>
+                Я сдаю <span> {subjects.length} </span>
+              </p>
+            </Link>
             <p>
               Я беру <span> 1 </span>
             </p>
@@ -49,12 +60,12 @@ const PrivateProfile = () => {
 
           {activeForm === 'myProfile' && (
             <MyData
+              setModalActiveSubmit={setModalActiveSubmit}
+              setDeleteId={setDeleteId}
               setModalActiveEmail={setModalActiveEmail}
               setModalActiveNumber={setModalActiveNumber}
             />
           )}
-
-          {activeForm === 'myItems' && <MyItems />}
         </div>
       </div>
       <NumberSubmittionModule
@@ -66,6 +77,11 @@ const PrivateProfile = () => {
         setModalActiveEmail={setModalActiveEmail}
       />
       <Footer />
+      <AddressDeleteSubmit
+        deleteId={deleteId}
+        setModalActiveSubmit={setModalActiveSubmit}
+        modalActiveSubmit={modalActiveSubmit}
+      />
     </div>
   );
 };

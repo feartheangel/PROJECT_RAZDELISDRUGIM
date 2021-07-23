@@ -186,7 +186,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
         <div className="content_block2">
           <div className="content_block2_image">
             <img
-              style={{ marginRight: '30px', borderRadius: '50%' }}
+              style={{ marginRight: '30px', borderRadius: '100%' }}
               src={`http://razdelisdrugim.by${userData.image_profile}`}
               alt=""
             />

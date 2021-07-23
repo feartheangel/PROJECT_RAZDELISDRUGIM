@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProfilePopUp = ({ logout, profilePopUpActive }) => {
+const ProfilePopUp = ({ logout, profilePopUpActive, setProfilePopUpActive }) => {
   return (
     <div
       className={
@@ -11,7 +11,9 @@ const ProfilePopUp = ({ logout, profilePopUpActive }) => {
       }>
       <div className="dropdown-profile-menu-content">
         <Link to="/private-profile">
-          <p className="dropdown-profile-menu-p">Профиль</p>
+          <p onClick={() => setProfilePopUpActive(false)} className="dropdown-profile-menu-p">
+            Профиль
+          </p>
         </Link>
         <p onClick={logout} className="dropdown-profile-menu-p logout">
           Выйти

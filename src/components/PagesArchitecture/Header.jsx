@@ -24,9 +24,10 @@ const Header = ({ setModalActive }) => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn } = useSelector(({ userData }) => userData);
+  const { isLoggedIn, userData } = useSelector(({ userData }) => userData);
 
   const logout = () => {
+    setProfilePopUpActive(false);
     localStorage.removeItem('key');
     dispatch(logoutAction());
     setRedirect(<Redirect to="/" />);
@@ -83,12 +84,20 @@ const Header = ({ setModalActive }) => {
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group">
-                  <img className="header-right-content-logged-img" src={UserAvatar} />
+                  <img
+                    style={{ width: '30px', height: '30px', borderRadius: '100%' }}
+                    className="header-right-content-logged-img"
+                    src={`http://razdelisdrugim.by${userData.image_profile}`}
+                  />
                   <img className="header-right-content-logged-img" src={MenuStroke} />
                 </div>
               </div>
               {profilePopUpActive && (
-                <ProfilePopUp profilePopUpActive={profilePopUpActive} logout={logout} />
+                <ProfilePopUp
+                  setProfilePopUpActive={setProfilePopUpActive}
+                  profilePopUpActive={profilePopUpActive}
+                  logout={logout}
+                />
               )}
             </div>
           )}

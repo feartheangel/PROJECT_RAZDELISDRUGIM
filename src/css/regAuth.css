@@ -167,6 +167,25 @@
   transition: 0.2s;
 }
 
+.reg-form-contact-input__delete {
+  width: 214px;
+  height: 38px;
+  background: #4cc9f0;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  border: none;
+  box-sizing: border-box;
+  padding: 0px 0 0 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 19px;
+  text-align: center;
+  color: #123940;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .reg-form-contact-input:focus {
   border: 1px solid #bdbdbd;
   outline: none;

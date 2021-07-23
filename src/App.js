@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import { Home, PlaceItem, PrivateProfile, SearchPage } from './pages/index';
+import { Home, PlaceItem, PrivateProfile, SearchPage, EditItem, MyItems } from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
 import React from 'react';
@@ -51,7 +51,9 @@ function App() {
         <Route path="/recovery-submit" component={PasswordRecoverySubmit} exact />
         <Route path="/place-item" component={PlaceItem} exact />
         <Route path="/private-profile" component={PrivateProfile} exact />
+        <Route path="/i-rent-out" component={MyItems} exact />
         <Route path="/search-page" component={SearchPage} exact />
+        <Route path="/edit-item" component={EditItem} exact />
       </div>
     </div>
   );
