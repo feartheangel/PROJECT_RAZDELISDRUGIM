@@ -1,12 +1,53 @@
 /* КОНТЕНТ В САМОЙ КАРТОЧКЕ */
 .blocks_card_content{
+    height: 426px;
+}
+
+.blocks_card_content_inner {
+    padding: 20px 20px 24px 20px;
+    background: #FFFFFF;
+
+    box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
+    border-radius: 5px;
+}
+
+
+.blocks_card_content_photo{
+    display: flex;
+    justify-content: center;
 }
 .blocks_card_social_img {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     margin: 15px 0 10px;
 }
+.img_socialCar{
+    width: 20px;
+    height: 13px;
+}
+.img_socialGold{
+    width: 18px;
+    height: 16px;
+}
+.img_socialPaper{
+    width: 15px;
+    height: 17px;
+}
+.img_socialVector{
+    width: 16px;
+    height: 18px;
+}
+.img_socialFire{
+    width: 14px;
+    height: 18px;
+}
+.img_socialDollar{
+    width: 18px;
+    height: 18px;
+}
+
 .blocks_card_text{
     font-weight: 500;
     font-size: 22px;
@@ -34,6 +75,17 @@
 .blocks_card_freeTime{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
 }
+.img_clock_block{
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+}
+.img_love_block{
+    width: 20px;
+    height: 17px;
+    margin-left: 16px;
+}
+
+
