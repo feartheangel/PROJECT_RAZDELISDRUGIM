@@ -2,35 +2,236 @@ import React from 'react';
 import Requests from '../../http/axios-requests';
 import { reloadData } from '../../redux/actions/userData';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import car from '../../img/MainPage/car.png';
+import cardFire from '../../img/MainPage/card-fire.png';
+import cardMoney from '../../img/MainPage/card-money.png';
+import cardVerify from '../../img/MainPage/card-verify.png';
+import Union from '../../img/MainPage/Union.png';
+import moneyTime from '../../img/MainPage/money-time.png';
+import carDisabled from '../../img/MainPage/car-disabled.png';
+import cardFireDisabled from '../../img/MainPage/card-fire-disabled.png';
+import cardMoneyDisabled from '../../img/MainPage/card-money-disabled.png';
+import cardVerifyDisabled from '../../img/MainPage/card-verify-disabled.png';
+import UnionDisabled from '../../img/MainPage/Union-disabled.png';
+import moneyTimeDisabled from '../../img/MainPage/money-time-disabled.png';
+import yourCost from '../../img/MainPage/yourCost.png';
+import freePrice from '../../img/MainPage/freePrice.png';
+import copy from '../../img/MainPage/copy.png';
+import Delete from '../../img/MainPage/delete.png';
+import hide from '../../img/MainPage/hide.png';
 
-const ItemCardProfile = ({ title, image, id }) => {
+const ItemCardProfile = ({
+  setDeleteId,
+  setModalActiveSubmit,
+  key,
+  title,
+  category_id,
+  description,
+  image_1,
+  image_2,
+  image_3,
+  image_4,
+  image_5,
+  rent,
+  price_rent,
+  key_words,
+  year_release,
+  mileage,
+  price_item,
+  receive_time,
+  return_time,
+  prepare_time,
+  delivery,
+  delivery_free,
+  self_delivery_price,
+  will_send,
+  will_send_choice,
+  send_payer,
+  servicefee,
+  servicefee_choice,
+  servicefee_price,
+  pledge,
+  pledge_price,
+  insurance,
+  insurance_choice,
+  insurance_price,
+  sell,
+  contract,
+  appointment,
+  structure,
+  free_rent,
+  offer_price_rent,
+  color,
+  franchise,
+  franchise_price,
+  article,
+  inventory_number,
+  coords,
+  prepare_time_choice,
+  is_hidden,
+  items_address,
+  id,
+}) => {
   const dispatch = useDispatch();
   const { reload } = useSelector(({ userData }) => userData);
 
   const removeSubjectHandler = () => {
-    Requests.deleteSubject(id)
+    setDeleteId(id);
+    setModalActiveSubmit(true);
+  };
+
+  const copyHandler = () => {
+    Requests.copySubject(id)
       .then(() => {
-        alert('Вещь успешно удалена!');
+        alert('Копия успешно создана!');
         dispatch(reloadData(!reload));
       })
-      .catch(() => alert('Ошибка удаления вещи.'));
+      .catch((e) => alert('Ошибка копирования!'));
+  };
+
+  const hideHandler = () => {
+    Requests.hideSubject(id)
+      .then(() => {
+        alert('Вещь успешно скрыта!');
+        dispatch(reloadData(!reload));
+      })
+      .catch((e) => alert('Ошибка скрытия вещи!'));
+  };
+
+  const showHandler = () => {
+    Requests.showSubject(id)
+      .then(() => {
+        alert('Вещь успешно показана!');
+        dispatch(reloadData(!reload));
+      })
+      .catch((e) => alert('Ошибка отмены скрытия вещи!'));
   };
 
   return (
     <div className="recent-block-wrapper">
       <div className="recent-block__profile">
-        <img src={`http://razdelisdrugim.by${image}`} alt="" className="block-image" />
+        <img src={`http://razdelisdrugim.by${image_1}`} alt="" className="block-image" />
+        <div className="recent-marks">
+          {delivery.includes('2') || delivery.includes('3') ? (
+            <img src={car} alt="" title="Доставка включена" className="card-mark" />
+          ) : (
+            <img src={carDisabled} title="Доставка выключена" alt="" className="card-mark" />
+          )}
+          {pledge ? (
+            <img src={moneyTime} alt="" title="Залог включен" className="card-mark" />
+          ) : (
+            <img src={moneyTimeDisabled} title="Залог выключен" alt="" className="card-mark" />
+          )}
+          {contract ? (
+            <img src={Union} title="Договор обязателен" alt="" className="card-mark" />
+          ) : (
+            <img src={UnionDisabled} title="Договор необязателен" alt="" className="card-mark" />
+          )}
+          {insurance ? (
+            <img src={cardVerify} title="Страховка включена" alt="" className="card-mark" />
+          ) : (
+            <img
+              src={cardVerifyDisabled}
+              title="Страховка необязательна"
+              alt=""
+              className="card-mark"
+            />
+          )}
+          <img src={cardFireDisabled} title="Акций нет" alt="" className="card-mark" />
+          {servicefee ? (
+            <img src={cardMoney} title="Сервисный сбор включен" alt="" className="card-mark" />
+          ) : (
+            <img
+              src={cardMoneyDisabled}
+              title="Сервисный сбор выключен"
+              alt=""
+              className="card-mark"
+            />
+          )}
+        </div>
         <p className="recent-block-title-p">{title}</p>
+        {!offer_price_rent && !free_rent && (
+          <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
+            <p className="recent-cost-p">{price_rent} BYN</p>
+            <p className="recent-time-p">
+              {rent === 'HOUR'
+                ? 'Час'
+                : rent === 'DAY'
+                ? 'Сутки'
+                : rent === 'WEEK'
+                ? 'Неделя'
+                : rent === 'MONTH'
+                ? 'Месяц'
+                : ''}
+            </p>
+          </div>
+        )}
+        {offer_price_rent && (
+          <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
+            <img style={{ width: '20px', height: '20px' }} src={yourCost} />
+            <p style={{ fontSize: '16px', marginLeft: '5px' }} className="recent-time-p">
+              Предложить свою цену
+            </p>
+          </div>
+        )}
+        {free_rent && (
+          <div
+            style={{ justifyContent: 'flex-start', marginTop: '10px' }}
+            className="recent-time-cost-wrapper">
+            <img src={freePrice} />
+            <p style={{ marginLeft: '5px' }} className="recent-time-p">
+              Бесплатно
+            </p>
+          </div>
+        )}
         <div style={{ marginTop: '20px' }} className={'item-card-profile-buttons'}>
-          <input value="Изменить" type="button" className="item-card-profile-button" />
-          <input
-            onClick={removeSubjectHandler}
-            value="Удалить"
-            type="button"
-            className="item-card-profile-button"
-          />
-          <input value="Скрыть" type="button" className="item-card-profile-button" />
-          <input value="Копировать" type="button" className="item-card-profile-button" />
+          <a className="item-card-profile-button__edit" href={`/edit-item?id=${id}`}>
+            <p>Редактировать</p>
+          </a>
+          <div className={'item-card-profile-button-wrapper'}>
+            <img src={copy} className={'item-card-profile-button-image'} />
+            <p
+              onClick={copyHandler}
+              value="Копировать"
+              type="button"
+              className="item-card-profile-button__optional">
+              Копировать
+            </p>
+          </div>
+          {is_hidden ? (
+            <div className={'item-card-profile-button-wrapper'}>
+              <img src={hide} className={'item-card-profile-button-image'} />
+              <p
+                onClick={showHandler}
+                value="Показать"
+                type="button"
+                className="item-card-profile-button__optional">
+                Показать
+              </p>
+            </div>
+          ) : (
+            <div className={'item-card-profile-button-wrapper'}>
+              <img src={hide} className={'item-card-profile-button-image'} />
+              <p
+                onClick={hideHandler}
+                value="Скрыть"
+                type="button"
+                className="item-card-profile-button__optional">
+                Скрыть
+              </p>
+            </div>
+          )}
+          <div className={'item-card-profile-button-wrapper'}>
+            <img src={Delete} className={'item-card-profile-button-image'} />
+            <p
+              onClick={removeSubjectHandler}
+              value="Удалить"
+              type="button"
+              className="item-card-profile-button__optional">
+              Удалить
+            </p>
+          </div>
         </div>
       </div>
     </div>

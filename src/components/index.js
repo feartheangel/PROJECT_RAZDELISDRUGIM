@@ -10,3 +10,5 @@ export { default as ProfilePopUp } from './MainPage/ProfilePopUp';
 export { default as AddressFields } from './Profile/AddressFields';
 export { default as ItemCard } from './PagesArchitecture/ItemCard';
 export { default as ItemCardProfile } from './PagesArchitecture/ItemCardProfile';
+export { default as ItemDeleteSubmit } from './RegAuthComponents/ItemDeleteSubmit';
+export { default as AddressDeleteSubmit } from './RegAuthComponents/AddressDeleteSubmit';

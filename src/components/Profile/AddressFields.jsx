@@ -12,6 +12,8 @@ import Vector3 from '../../img/ProfilePage/Vector3.png';
 import Requests from '../../http/axios-requests';
 
 const AddressFields = ({
+  setModalActiveSubmit,
+  setDeleteId,
   addressNumber,
   sentCountry,
   sentArea,
@@ -33,12 +35,8 @@ const AddressFields = ({
   const { reload } = useSelector(({ userData }) => userData);
 
   const addressRemoveHandler = () => {
-    Requests.removeAddress(sentId)
-      .then(() => {
-        alert('Адрес удален!');
-        dispatch(reloadData(!reload));
-      })
-      .catch((e) => alert('Ошибка удаления адреса!'));
+    setDeleteId(sentId);
+    setModalActiveSubmit(true);
   };
 
   const updateAddressHandler = () => {
@@ -130,17 +128,17 @@ const AddressFields = ({
         <p
           onClick={() => setShowAddressFields(!showAddressFields)}
           className="addresses_left_address1_text">
-          {' '}
-          Адрес {addressNumber}
+          {`${sentLocality}, ${sentStreet_}, ${sentHouse ? sentHouse : sentSpaceRoom}`}
         </p>
         <img onClick={() => setShowAddressFields(!showAddressFields)} src={Vector1} />
-        <p
-          onClick={addressRemoveHandler}
-          className="addresses_left_address1_text"
-          style={{ color: 'red', marginLeft: '30px', fontSize: '16px' }}>
-          {' '}
-          Удалить адрес
-        </p>
+        <div style={{ width: '200px' }}>
+          <p
+            onClick={addressRemoveHandler}
+            className="addresses_left_address1_text"
+            style={{ color: 'red', marginLeft: '30px', fontSize: '16px' }}>
+            Удалить адрес
+          </p>
+        </div>
       </div>
 
       {showAddressFields && (

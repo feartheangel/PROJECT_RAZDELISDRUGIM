@@ -1,20 +1,43 @@
 .item-card-profile-buttons {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.item-card-profile-button {
-  width: 44%;
-  border: 1px solid transparent;
-  margin: 2% 2% 2% 2%;
-  height: 25px;
+.item-card-profile-button__edit {
+  width: 214px;
+  height: 38px;
   background: #4cc9f0;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px 0 0 0;
+  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: #091d20;
+  text-align: center;
+  color: #123940;
+  text-decoration: none;
+}
+
+.item-card-profile-button__optional {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: rgba(9, 29, 32, 0.4);
+  margin-left: 6px;
+}
+
+.item-card-profile-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
   cursor: pointer;
+}
+
+.item-card-profile-button-image {
+  width: 18px;
+  height: 18px;
 }

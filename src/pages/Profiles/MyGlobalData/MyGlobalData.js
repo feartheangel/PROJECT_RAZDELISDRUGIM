@@ -5,7 +5,12 @@ import MyAddresses from './MyAddresses/MyAddresses';
 import MyDataBusiness from './MyData/MyDataBusiness';
 import { useSelector } from 'react-redux';
 
-const MyGlobalData = ({ setModalActiveNumber, setModalActiveEmail }) => {
+const MyGlobalData = ({
+  setModalActiveNumber,
+  setModalActiveEmail,
+  setModalActiveSubmit,
+  setDeleteId,
+}) => {
   const [activeForm, setActiveForm] = useState('myData');
 
   const { status } = useSelector(({ userData }) => userData.userData);
@@ -46,7 +51,9 @@ const MyGlobalData = ({ setModalActiveNumber, setModalActiveEmail }) => {
             setModalActiveNumber={setModalActiveNumber}
           />
         )}
-        {activeForm === 'myAddresses' && <MyAddresses />}
+        {activeForm === 'myAddresses' && (
+          <MyAddresses setModalActiveSubmit={setModalActiveSubmit} setDeleteId={setDeleteId} />
+        )}
       </div>
     </div>
   );

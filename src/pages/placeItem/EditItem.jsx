@@ -20,7 +20,7 @@ let files = [];
 let resultList = [];
 let parsedFiles = [];
 
-const PlaceItem = () => {
+const EditItem = () => {
   //конвертация байтов в размер
   function bytesToSize(bytes) {
     var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -116,16 +116,6 @@ const PlaceItem = () => {
   };
 
   // СОСТОЯНИЯ ЧЕКБОКСОВ
-
-  //ПУНКТ  БЕСПЛАТНО
-  const giveFreeHandler = () => {
-    setGiveFree(!giveFree);
-  };
-
-  // ПУНКТ  ПРЕДЛОЖИТЬ ЦЕНУ
-  const yourCostHandler = () => {
-    setYourCost(!yourCost);
-  };
 
   // КНОПКА ДОПОЛНТИЛЬНЫЕ ПАРАМЕТРЫ
   const showFunctionsHandler = () => {
@@ -304,6 +294,13 @@ const PlaceItem = () => {
 
   //обработчик отправки формы
   const sendHandler = () => {
+    const formData = new FormData();
+    files[0] && formData.append('image_1', files[0]);
+    files[1] && formData.append('image_2', files[1]);
+    files[2] && formData.append('image_3', files[2]);
+    files[3] && formData.append('image_4', files[3]);
+    files[4] && formData.append('image_5', files[4]);
+
     if (!userData.phone_verify || !userData.email_verify) {
       alert('У вас не подтвержден телефон либо почта. Это можно сделать в профиле!');
       return;
@@ -316,13 +313,13 @@ const PlaceItem = () => {
     } else if (!costArends && !giveFree && !yourCost) {
       alert('Не указана цена аренды!');
       return;
-    } else if (!coords) {
+    } else if (coords === 'NONE') {
       alert('Не указан адрес!');
       return;
     } else if (!files[0]) {
       alert('Загрузка одной картинки обязательна!');
       return;
-    } else if (insurance && !insuranceTime) {
+    } else if (insurance && insuranceTime === 'NONE') {
       alert('Не указан период страховки!');
       return;
     } else if (insurance && !insuranceSumma) {
@@ -346,14 +343,8 @@ const PlaceItem = () => {
     }
 
     dispatch(setQueryStarted());
-    const formData = new FormData();
-    files[0] && formData.append('image_1', files[0]);
-    files[1] && formData.append('image_2', files[1]);
-    files[2] && formData.append('image_3', files[2]);
-    files[3] && formData.append('image_4', files[3]);
-    files[4] && formData.append('image_5', files[4]);
 
-    Requests.createItem(
+    Requests.updateItem(
       Number(viborCategory),
       String(nameItem),
       String(description),
@@ -392,14 +383,17 @@ const PlaceItem = () => {
       String(artikul),
       String(inventoryNumber),
       formData,
-      coords[0],
+      coords[0].includes(')')
+        ? coords[0].split('(')[1].split(')')[0].split(' ').reverse().join(' ')
+        : coords[0],
       String(prepareType),
       String(coords[1]),
+      currentSubject[0].id,
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
-          alert('Успешно добавлено в базу!');
-          setRedirect(<Redirect to="/" />);
+          alert('Успешно обновлено!');
+          setRedirect(<Redirect to="/i-rent-out" />);
           dispatch(setQueryDone());
           dispatch(reloadData(!reload));
         }
@@ -410,6 +404,149 @@ const PlaceItem = () => {
         alert('Ошибка!');
       });
   };
+
+  const { items, isLoaded } = useSelector(({ items }) => items);
+  const { addresses, requestActive, userData, reload, subjects } = useSelector(
+    ({ userData }) => userData,
+  );
+
+  const [currentSubject, setCurrentSubject] = React.useState();
+
+  React.useEffect(() => {
+    setCurrentSubject(
+      subjects.filter((subject) => subject.id === Number(window.location.href.split('?id=')[1])),
+    );
+
+    currentSubject &&
+      setTimeout(() => {
+        setNameItem(currentSubject[0] && currentSubject[0].name_item);
+        setRazdel(currentSubject[0] && currentSubject[0].category_id.chapter_id.id);
+        setViborCategory(currentSubject[0] && currentSubject[0].category_id.id);
+        setDescription(currentSubject[0] && currentSubject[0].description);
+        setCostArends(currentSubject[0] && currentSubject[0].price_rent);
+        setTimeArends(currentSubject[0] && currentSubject[0].rent);
+        setGiveFree(currentSubject[0] && currentSubject[0].free_rent);
+        setYourCost(currentSubject[0] && currentSubject[0].offer_price_rent);
+        setReadySell(currentSubject[0] && currentSubject[0].sell);
+        setYourKeyWord(currentSubject[0] && currentSubject[0].key_words);
+        setSostav(currentSubject[0] && currentSubject[0].structure);
+        setNaznacheniye(currentSubject[0] && currentSubject[0].appointment);
+        setArtikul(currentSubject[0] && currentSubject[0].article);
+        setInventoryNumber(currentSubject[0] && currentSubject[0].inventory_number);
+        setYourColor(currentSubject[0] && currentSubject[0].color);
+        setYearCreate(currentSubject[0] && currentSubject[0].year_release);
+        setMileAge(currentSubject[0] && currentSubject[0].mileage);
+        setCost(currentSubject[0] && currentSubject[0].price_item);
+        setTimeReceipt(currentSubject[0] && currentSubject[0].receive_time);
+        setReturnTime(currentSubject[0] && currentSubject[0].return_time);
+        setPodgotovkaTime(currentSubject[0] && currentSubject[0].prepare_time);
+        setPrepareType(currentSubject[0] && currentSubject[0].prepare_time_choice);
+        setDeliveryType(currentSubject[0] && currentSubject[0].delivery);
+        setPickUp(currentSubject[0] && currentSubject[0].delivery.split('').includes('1'));
+        setTakeAway(currentSubject[0] && currentSubject[0].delivery.split('').includes('2'));
+        setYourSend(currentSubject[0] && currentSubject[0].delivery.split('').includes('3'));
+        setTypeService(currentSubject[0] && currentSubject[0].delivery_free);
+        setIndicateCost(currentSubject[0] && currentSubject[0].self_delivery_price);
+        setWillSendWays(currentSubject[0] && currentSubject[0].will_send_choice);
+        setTaxi(currentSubject[0] && currentSubject[0].will_send_choice.split('').includes('1'));
+        setCourier(currentSubject[0] && currentSubject[0].will_send_choice.split('').includes('2'));
+        setPochta(currentSubject[0] && currentSubject[0].will_send_choice.split('').includes('3'));
+        setRadio(currentSubject[0] && currentSubject[0].send_payer);
+        setContract(currentSubject[0] && currentSubject[0].contract);
+        setInsurance(currentSubject[0] && currentSubject[0].insurance);
+        setInsuranceTime(currentSubject[0] && currentSubject[0].insurance_choice);
+        setInsuranceSumma(currentSubject[0] && currentSubject[0].insurance_price);
+        setFranchise(currentSubject[0] && currentSubject[0].franchise);
+        setFranchiseSumma(currentSubject[0] && currentSubject[0].franchise_price);
+        setPladge(currentSubject[0] && currentSubject[0].pledge);
+        setPledgePrice(currentSubject[0] && currentSubject[0].pledge_price);
+        setServiceSbor(currentSubject[0] && currentSubject[0].servicefee);
+        setOptionServiceSbor(currentSubject[0] && currentSubject[0].servicefee_choice);
+        setSummaServiceSbor(currentSubject[0] && currentSubject[0].servicefee_price);
+        setCoords(
+          currentSubject[0] && [
+            currentSubject[0].items_coordinates,
+            currentSubject[0].items_address,
+          ],
+        );
+        currentSubject[0] &&
+          currentSubject[0].image_1 &&
+          fetch(`http://razdelisdrugim.by${currentSubject[0].image_1}`)
+            .then((response) => {
+              console.log(response);
+              return response.blob();
+            })
+            .then((blobFile) => new File([blobFile], 'image_1.png', { type: 'image/png' }))
+            .then((file) => {
+              files.push(file);
+              resultList.push(URL.createObjectURL(file));
+              setLoadedPhotos(resultList);
+              forceUpdate();
+            });
+
+        currentSubject[0] &&
+          currentSubject[0].image_2 &&
+          fetch(`http://razdelisdrugim.by${currentSubject[0].image_2}`)
+            .then((response) => {
+              console.log(response);
+              return response.blob();
+            })
+            .then((blobFile) => new File([blobFile], 'image_2.png', { type: 'image/png' }))
+            .then((file) => {
+              files.push(file);
+              resultList.push(URL.createObjectURL(file));
+              setLoadedPhotos(resultList);
+              forceUpdate();
+            });
+
+        currentSubject[0] &&
+          currentSubject[0].image_3 &&
+          fetch(`http://razdelisdrugim.by${currentSubject[0].image_3}`)
+            .then((response) => {
+              console.log(response);
+              return response.blob();
+            })
+            .then((blobFile) => new File([blobFile], 'image_3.png', { type: 'image/png' }))
+            .then((file) => {
+              files.push(file);
+              resultList.push(URL.createObjectURL(file));
+              setLoadedPhotos(resultList);
+              forceUpdate();
+            });
+
+        currentSubject[0] &&
+          currentSubject[0].image_4 &&
+          fetch(`http://razdelisdrugim.by${currentSubject[0].image_4}`)
+            .then((response) => {
+              console.log(response);
+              return response.blob();
+            })
+            .then((blobFile) => new File([blobFile], 'image_4.png', { type: 'image/png' }))
+            .then((file) => {
+              files.push(file);
+              resultList.push(URL.createObjectURL(file));
+              setLoadedPhotos(resultList);
+              forceUpdate();
+            });
+
+        currentSubject[0] &&
+          currentSubject[0].image_5 &&
+          fetch(`http://razdelisdrugim.by${currentSubject[0].image_5}`)
+            .then((response) => {
+              console.log(response);
+              return response.blob();
+            })
+            .then((blobFile) => new File([blobFile], 'image_5.png', { type: 'image/png' }))
+            .then((file) => {
+              files.push(file);
+              resultList.push(URL.createObjectURL(file));
+              setLoadedPhotos(resultList);
+              forceUpdate();
+            });
+
+        forceUpdate();
+      }, 0);
+  }, [window.location, subjects]);
 
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
   //хранение типа доставки
@@ -425,7 +562,7 @@ const PlaceItem = () => {
   const [photoField, setPhotoField] = React.useState(false);
 
   //НАИМЕНОВАНИЕ ВЕЩИ
-  const [nameItem, setNameItem] = useState('');
+  const [nameItem, setNameItem] = useState();
 
   // Я ПРЕДЛАГАЮ(ОПИСАНИЕ)
   const [description, setDescription] = useState('');
@@ -498,7 +635,7 @@ const PlaceItem = () => {
   const [courier, setCourier] = useState();
   const [pochta, setPochta] = useState();
 
-  const [radio, setRadio] = useState('OWNER');
+  const [radio, setRadio] = useState();
 
   //методы доставки отправкой
   const [willSendWays, setWillSendWays] = React.useState('NONE');
@@ -507,8 +644,8 @@ const PlaceItem = () => {
   const [contract, setContract] = useState();
 
   const [insurance, setInsurance] = useState();
-  const [insuranceTime, setInsuranceTime] = useState('');
-  const [insuranceSumma, setInsuranceSumma] = useState('');
+  const [insuranceTime, setInsuranceTime] = useState();
+  const [insuranceSumma, setInsuranceSumma] = useState();
 
   //ФРАНШИЗА - СУММА
   const [franchise, setFranchise] = useState();
@@ -541,18 +678,18 @@ const PlaceItem = () => {
   const [office, setOffice] = React.useState();
   const [building, setBuilding] = React.useState();
 
-  const [coords, setCoords] = React.useState();
+  const [coords, setCoords] = React.useState([[], []]);
 
   const [addressAdded, setAddressAdded] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   //проврека на верификацию почты и телефона
-  React.useEffect(() => {
-    if (userData && (!userData.email_verify || !userData.phone_verify)) {
+  /*   React.useEffect(() => {
+    if ((!userData.email_verify && userData) || (!userData.phone_verify && userData)) {
       alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
       setRedirect(<Redirect to="/private-profile" />);
     }
-  }, []);
+  }, []);  */
 
   //очистка полей при отмене выбора
   React.useEffect(() => {
@@ -563,11 +700,6 @@ const PlaceItem = () => {
     if (takeAway === false) {
       setTypeService(false);
       setIndicateCost(false);
-    }
-    if (yourSend === false) {
-      setTaxi(false);
-      setCourier(false);
-      setPochta(false);
     }
 
     if (insurance === false) {
@@ -646,9 +778,6 @@ const PlaceItem = () => {
     console.log(willSendWays);
   }, [taxi, courier, pochta]);
 
-  const { items, isLoaded } = useSelector(({ items }) => items);
-  const { addresses, requestActive, userData, reload } = useSelector(({ userData }) => userData);
-
   //выделяем разделы
   const chapters = {};
   isLoaded &&
@@ -683,7 +812,7 @@ const PlaceItem = () => {
       <div className="PlaseItem">
         <div className="conteiner">
           <form>
-            <p className="conteiner-main-p">Подать объявление</p>
+            <p className="conteiner-main-p">Редактировать объявление</p>
 
             {/*  НАИМЕНОВАНИЕ  */}
             <div className="add-item-input-wrapper">
@@ -705,7 +834,10 @@ const PlaceItem = () => {
               <label className="add-item-input-label">
                 Выберите раздел <span className="add-item-span-zvezda">*</span>
               </label>
-              <select onChange={(e) => setRazdel(e.target.value)} className="add-item-select-input">
+              <select
+                value={razdel}
+                onChange={(e) => setRazdel(e.target.value)}
+                className="add-item-select-input">
                 <option>Не выбрано</option>
                 {isLoaded &&
                   [].concat.apply(Object.entries(chapters)).map((chapter, index) => (
@@ -827,12 +959,18 @@ const PlaceItem = () => {
                   onChange={(e) => timeArendsHandler(e)}
                   disabled={giveFree || yourCost}>
                   <option />
-                  <option value="HOUR">Час</option>
-                  <option value="DAY" selected>
+                  <option value="HOUR" selected={timeArends === 'HOUR'}>
+                    Час
+                  </option>
+                  <option value="DAY" selected={timeArends === 'DAY'}>
                     Сутки
                   </option>
-                  <option value="WEEK">Неделя</option>
-                  <option value="MONTH">Месяц</option>
+                  <option value="WEEK" selected={timeArends === 'WEEK'}>
+                    Неделя
+                  </option>
+                  <option value="MONTH" selected={timeArends === 'MONTH'}>
+                    Месяц
+                  </option>
                 </select>
               </div>
               <span className="add-item-cost-or">или</span>
@@ -848,7 +986,9 @@ const PlaceItem = () => {
               <span className="add-item-cost-or">или</span>
               <label class="checkbox-btn">
                 <input
-                  onChange={() => setGiveFree(!giveFree)}
+                  onClick={() => {
+                    console.log(giveFree);
+                  }}
                   type="checkbox"
                   checked={giveFree}
                   disabled={yourCost}
@@ -873,12 +1013,18 @@ const PlaceItem = () => {
               </label>
               <select
                 className="add-item-select-input"
-                onChange={(e) => setCoords(e.target.value.split(',,'))}>
-                <option>Не выбран</option>
+                onChange={(e) =>
+                  setCoords(e.target.value === 'NONE' ? 'NONE' : e.target.value.split(',,'))
+                }>
+                <option value="NONE">Не выбран</option>
                 {isLoaded &&
+                  coords &&
                   addressesFormatted.map((item, index) => (
                     <option
-                      selected={addressAdded && index + 1 === addressesFormatted.length}
+                      selected={
+                        (addressAdded && index + 1 === addressesFormatted.length) ||
+                        item[0] === coords[1]
+                      }
                       value={`${item[1]},,${item[0]}`}
                       key={index}>
                       {item[0]}
@@ -1294,8 +1440,7 @@ const PlaceItem = () => {
                     <label className="add-item-input-label">В чем считаем?</label>
                     <select
                       className="add-item-select-input__time"
-                      onChange={(e) => setPrepareType(e.target.value)}
-                      disabled={giveFree || yourCost}>
+                      onChange={(e) => setPrepareType(e.target.value)}>
                       <option value="NONE" selected={prepareType === 'NONE'}>
                         Не выбрано
                       </option>
@@ -1387,7 +1532,7 @@ const PlaceItem = () => {
                       <div className="add-item-radio-wrapper" onChange={(e) => radioHandler(e)}>
                         <span class="form_radio_btn">
                           <input
-                            defaultChecked
+                            defaultChecked={radio === 'OWNER'}
                             id="radio-1"
                             type="radio"
                             name="radio_choice"
@@ -1397,7 +1542,13 @@ const PlaceItem = () => {
                         </span>
 
                         <span class="form_radio_btn">
-                          <input id="radio-2" type="radio" name="radio_choice" value="RENTER" />
+                          <input
+                            defaultChecked={radio === 'RENTER'}
+                            id="radio-2"
+                            type="radio"
+                            name="radio_choice"
+                            value="RENTER"
+                          />
                           <label for="radio-2">За счёт Рентера</label>
                         </span>
                       </div>
@@ -1430,6 +1581,7 @@ const PlaceItem = () => {
                               onChange={(e) => setInsuranceTime(e.target.value)}>
                               <span class="form_radio_btn">
                                 <input
+                                  checked={insuranceTime === 'PERIOD'}
                                   id="radio-3"
                                   type="radio"
                                   name="radio_choice_ins"
@@ -1440,6 +1592,7 @@ const PlaceItem = () => {
 
                               <span class="form_radio_btn">
                                 <input
+                                  checked={insuranceTime === 'DAY'}
                                   id="radio-4"
                                   type="radio"
                                   name="radio_choice_ins"
@@ -1531,6 +1684,7 @@ const PlaceItem = () => {
                             onChange={(e) => setOptionServiceSbor(e.target.value)}>
                             <span class="form_radio_btn">
                               <input
+                                checked={optionServiceSbor === 'DRYCLEANING'}
                                 id="radio-5"
                                 type="radio"
                                 name="radio_choice_serv"
@@ -1541,6 +1695,7 @@ const PlaceItem = () => {
 
                             <span class="form_radio_btn">
                               <input
+                                checked={optionServiceSbor === 'CLEANING'}
                                 id="radio-6"
                                 type="radio"
                                 name="radio_choice_serv"
@@ -1551,6 +1706,7 @@ const PlaceItem = () => {
 
                             <span class="form_radio_btn">
                               <input
+                                checked={optionServiceSbor === 'WASHINGUP'}
                                 id="radio-7"
                                 type="radio"
                                 name="radio_choice_serv"
@@ -1604,4 +1760,4 @@ const PlaceItem = () => {
   );
 };
 
-export default PlaceItem;
+export default EditItem;
