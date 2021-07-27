@@ -558,9 +558,6 @@ const EditItem = () => {
   // КАТЕГОРИИ - опции
   const [viborCategory, setViborCategory] = useState('');
 
-  //открытие блока с первью картинок
-  const [photoField, setPhotoField] = React.useState(false);
-
   //НАИМЕНОВАНИЕ ВЕЩИ
   const [nameItem, setNameItem] = useState();
 
@@ -695,11 +692,16 @@ const EditItem = () => {
   React.useEffect(() => {
     if (giveFree === true || yourCost === true) {
       setCostArends(false);
-      setTimeArends('NONE');
     }
     if (takeAway === false) {
       setTypeService(false);
       setIndicateCost(false);
+    }
+
+    if (yourSend === false) {
+      setTaxi(false);
+      setCourier(false);
+      setPochta(false);
     }
 
     if (insurance === false) {
@@ -956,9 +958,7 @@ const EditItem = () => {
                 </label>
                 <select
                   className="add-item-select-input__time"
-                  onChange={(e) => timeArendsHandler(e)}
-                  disabled={giveFree || yourCost}>
-                  <option />
+                  onChange={(e) => timeArendsHandler(e)}>
                   <option value="HOUR" selected={timeArends === 'HOUR'}>
                     Час
                   </option>
@@ -987,7 +987,7 @@ const EditItem = () => {
               <label class="checkbox-btn">
                 <input
                   onClick={() => {
-                    console.log(giveFree);
+                    setGiveFree(!giveFree);
                   }}
                   type="checkbox"
                   checked={giveFree}

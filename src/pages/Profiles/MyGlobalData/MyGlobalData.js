@@ -31,9 +31,9 @@ const MyGlobalData = ({
           {' '}
           Мои адреса{' '}
         </p>
-        <p> Мои документы </p>
-        <p> Кошелёк </p>
-        <p> Уведомления </p>
+        <p style={{ opacity: '0.4', pointerEvents: 'none' }}> Мои документы </p>
+        <p style={{ opacity: '0.4', pointerEvents: 'none' }}> Кошелёк </p>
+        <p style={{ opacity: '0.4', pointerEvents: 'none' }}> Уведомления </p>
       </div>
 
       {/* ПРАВАЯ ЧАСТЬ */}

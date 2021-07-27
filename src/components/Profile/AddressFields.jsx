@@ -120,7 +120,7 @@ const AddressFields = ({
   const [office, setOffice] = React.useState(sentOffice);
   const [building, setBuilding] = React.useState(sentBuilding);
 
-  const [showAddressFields, setShowAddressFields] = React.useState(addressNumber === 1);
+  const [showAddressFields, setShowAddressFields] = React.useState(false);
 
   return (
     <div style={{ marginTop: '20px' }} className="myAddresses_content_addresses_left">

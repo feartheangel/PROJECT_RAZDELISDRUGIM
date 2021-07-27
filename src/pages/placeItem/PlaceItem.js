@@ -558,7 +558,6 @@ const PlaceItem = () => {
   React.useEffect(() => {
     if (giveFree === true || yourCost === true) {
       setCostArends(false);
-      setTimeArends('NONE');
     }
     if (takeAway === false) {
       setTypeService(false);
@@ -824,9 +823,7 @@ const PlaceItem = () => {
                 </label>
                 <select
                   className="add-item-select-input__time"
-                  onChange={(e) => timeArendsHandler(e)}
-                  disabled={giveFree || yourCost}>
-                  <option />
+                  onChange={(e) => timeArendsHandler(e)}>
                   <option value="HOUR">Час</option>
                   <option value="DAY" selected>
                     Сутки

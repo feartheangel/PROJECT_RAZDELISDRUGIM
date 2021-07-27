@@ -41,13 +41,15 @@ const PrivateProfile = () => {
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p>
-              Я беру <span> 1 </span>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+              Я беру <span> - </span>
             </p>
-            <p>
-              Мои сообщения <span> 2 </span>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+              Мои сообщения <span> - </span>
             </p>
-            <p className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
+            <p
+              style={{ opacity: '0.4', pointerEvents: 'none' }}
+              className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
               Избранное
             </p>
             <p

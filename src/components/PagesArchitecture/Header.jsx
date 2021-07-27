@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Requests from '../../http/axios-requests';
 import LanguagePlanet from '../../img/MainPage/Language-planet.png';
 import Burger from '../../img/MainPage/Burger.png';
 import Logo from '../../img/MainPage/Logo.png';
 import mark from '../../img/MainPage/Mark.png';
 import { logoutAction, loginAction } from '../../redux/actions/userData';
+import { setSearchWords, setSearchItems } from '../../redux/actions/search';
 import { ProfilePopUp } from '../index';
 import Favorites from '../../img/MainPage/Favorites.png';
 import Notifications from '../../img/MainPage/Notifications.png';
@@ -21,6 +23,7 @@ const Header = ({ setModalActive }) => {
 
   const [redirect, setRedirect] = React.useState();
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
+  const [search, setSearch] = React.useState();
 
   const dispatch = useDispatch();
 
@@ -38,12 +41,20 @@ const Header = ({ setModalActive }) => {
     else alert('Сначала авторизуйтесь!');
   };
 
+  const searchRedirect = () => {
+    dispatch(setSearchWords(search));
+    Requests.search(search).then((res) => {
+      dispatch(setSearchItems(res.data));
+    });
+    setRedirect(<Redirect to={`/search`} />);
+  };
+
   return (
     <header className="header">
-      <div className="news-alert-block-wrapper">
-        <div className="news-alert-block">
-          <p className="news-alert-p">Теперь вы можете искать вещь в аренду на карте!</p>
-        </div>
+      <div className="news-alert-block">
+        <p style={{ color: 'white', width: '100%' }} className="news-alert-p">
+          Теперь вы можете искать вещь в аренду на карте!
+        </p>
       </div>
       <div className="header__inner">
         <div className="header-left-content">
@@ -105,12 +116,23 @@ const Header = ({ setModalActive }) => {
       </div>
       <div className="header-lower-table">
         <div className="header-lower-table-left">
-          <img src={Burger} alt="" className="burger-button" />
+          <img style={{ marginRight: '355px' }} src={Burger} alt="" className="burger-button" />
         </div>
         <div className="header-lower-table-right">
           <div className="search-wrapper">
-            <input type="text" value="Хочу взять в аренду..." className="search-input" />
-            <input type="button" className="search-button" />
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              type="text"
+              placeholder="Хочу взять в аренду..."
+              className="search-input"
+            />
+            <input
+              style={{ cursor: 'pointer' }}
+              onClick={searchRedirect}
+              type="button"
+              className="search-button"
+            />
           </div>
         </div>
       </div>

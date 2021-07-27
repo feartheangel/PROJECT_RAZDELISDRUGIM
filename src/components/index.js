@@ -12,3 +12,4 @@ export { default as ItemCard } from './PagesArchitecture/ItemCard';
 export { default as ItemCardProfile } from './PagesArchitecture/ItemCardProfile';
 export { default as ItemDeleteSubmit } from './RegAuthComponents/ItemDeleteSubmit';
 export { default as AddressDeleteSubmit } from './RegAuthComponents/AddressDeleteSubmit';
+export { default as SocialContactEnter } from './Profile/SocialContactEnter';

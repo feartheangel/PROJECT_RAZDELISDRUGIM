@@ -40,7 +40,8 @@
   flex-direction: row;
   margin: 20px 30px 30px 30px;
   height: auto;
-
+  padding-bottom: 45px;
+  padding-top: 10px;
   border-bottom: 1px solid rgba(76, 201, 240, 0.77);
 }
 
@@ -279,8 +280,8 @@ option {
 }
 
 .my-data-submitted-img {
-  width: 10px;
-  height: 9px;
+  width: 15px;
+  height: 14px;
 }
 
 .my-data-lower-p {
@@ -330,4 +331,107 @@ option {
   border: 1.31722px solid rgba(9, 29, 32, 0.4);
   box-sizing: border-box;
   border-radius: 6.5861px;
+}
+
+.social-contact-enter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: center;
+  width: 197px;
+  height: 180px;
+  padding: 10px;
+  background: #ffffff;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #091d20;
+}
+
+.social-contact-enter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-contact-enter-p p {
+  width: 180px;
+  height: 38px;
+  margin-bottom: 5px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #091d20;
+}
+
+.social-contact-enter-form input {
+  margin-bottom: 10px;
+}
+
+.social-contact-enter-text-input {
+  width: 177px;
+  height: 38px;
+  padding: 15px;
+  background: #ffffff;
+  border: 1.31722px solid #4cc9f0;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 28.9789px rgba(99, 212, 248, 0.24);
+  border-radius: 6.5861px;
+}
+
+.social-contact-enter-button-input {
+  width: 177px;
+  height: 38px;
+  padding: 15px;
+  background: #4cc9f0;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #091d20;
+  cursor: pointer;
+}
+
+.content_setting_right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.setting_right_socialNetworks_img {
+  cursor: pointer;
+}
+
+.setting_right_socialNetworks_img.active {
+  border: solid 5px #4cc9f0;
+  border-radius: 100%;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+.profile-photo-wrapper {
+  position: relative;
+}
+
+.profile-photo-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: #091d20;
+  opacity: 0.6;
+  color: white;
+  bottom: 5px;
+  font-size: 14px;
+  cursor: pointer;
 }

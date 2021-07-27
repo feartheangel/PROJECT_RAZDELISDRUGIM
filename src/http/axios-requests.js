@@ -701,6 +701,162 @@ class Requests {
       return response;
     });
   }
+
+  static updateTG(telegram_account) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        telegram_account: telegram_account,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateViber(viber_account) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        viber_account: viber_account,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateWhatsapp(whatsapp_account) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        whatsapp_account: whatsapp_account,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateGoogle(google_account) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        google_account: google_account,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateFacebook(link_facebook) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        link_facebook: link_facebook,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateVK(vk_account) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        vk_account: vk_account,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateInstagram(link_instagram) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        link_instagram: link_instagram,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateOK(ok_account) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        ok_account: ok_account,
+      },
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateProfileImage(formData) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: formData,
+      url: `http://178.172.136.88/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static search(search_words) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `http://178.172.136.88/api/items/search/?search_words=${search_words}
+      `,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 export default Requests;

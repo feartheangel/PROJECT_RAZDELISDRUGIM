@@ -20,13 +20,15 @@ const MyItems = () => {
             <p className="conteiner_shapka_myProfile">
               Я сдаю <span> {subjects.length} </span>
             </p>
-            <p>
-              Я беру <span> 1 </span>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+              Я беру <span> - </span>
             </p>
-            <p>
-              Мои сообщения <span> 2 </span>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+              Мои сообщения <span> - </span>
             </p>
-            <p className="favorites">Избранное</p>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }} className="favorites">
+              Избранное
+            </p>
             <Link style={{ textDecoration: 'none' }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>

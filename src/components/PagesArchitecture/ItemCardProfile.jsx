@@ -114,43 +114,40 @@ const ItemCardProfile = ({
         <img src={`http://razdelisdrugim.by${image_1}`} alt="" className="block-image" />
         <div className="recent-marks">
           {delivery.includes('2') || delivery.includes('3') ? (
-            <img src={car} alt="" title="Доставка включена" className="card-mark" />
+            <img src={car} alt="" title="Доставка возможна" className="card-mark" />
           ) : (
-            <img src={carDisabled} title="Доставка выключена" alt="" className="card-mark" />
+            <img src={carDisabled} title="Доставка не предусмотрена" alt="" className="card-mark" />
           )}
           {pledge ? (
-            <img src={moneyTime} alt="" title="Залог включен" className="card-mark" />
+            <img src={moneyTime} alt="" title="Предусмотрен залог" className="card-mark" />
           ) : (
-            <img src={moneyTimeDisabled} title="Залог выключен" alt="" className="card-mark" />
+            <img src={moneyTimeDisabled} title="Залога нет" alt="" className="card-mark" />
           )}
           {contract ? (
-            <img src={Union} title="Договор обязателен" alt="" className="card-mark" />
+            <img src={Union} title="Составляется договор" alt="" className="card-mark" />
           ) : (
-            <img src={UnionDisabled} title="Договор необязателен" alt="" className="card-mark" />
+            <img src={UnionDisabled} title="Без лишних бумаг" alt="" className="card-mark" />
           )}
           {insurance ? (
-            <img src={cardVerify} title="Страховка включена" alt="" className="card-mark" />
+            <img src={cardVerify} title="Предусмотрена страховка" alt="" className="card-mark" />
           ) : (
-            <img
-              src={cardVerifyDisabled}
-              title="Страховка необязательна"
-              alt=""
-              className="card-mark"
-            />
+            <img src={cardVerifyDisabled} title="Без страховки" alt="" className="card-mark" />
           )}
-          <img src={cardFireDisabled} title="Акций нет" alt="" className="card-mark" />
+          <img src={cardFireDisabled} title="Акций не предусмотрено" alt="" className="card-mark" />
           {servicefee ? (
-            <img src={cardMoney} title="Сервисный сбор включен" alt="" className="card-mark" />
+            <img src={cardMoney} title="Предусмотрен сервисный сбор" alt="" className="card-mark" />
           ) : (
             <img
               src={cardMoneyDisabled}
-              title="Сервисный сбор выключен"
+              title="Сервисного сбора нет"
               alt=""
               className="card-mark"
             />
           )}
         </div>
-        <p className="recent-block-title-p">{title}</p>
+        <div style={{ maxWidth: '214px', maxHeight: '60px', overflow: 'hidden' }}>
+          <p className="recent-block-title-p">{title}</p>
+        </div>
         {!offer_price_rent && !free_rent && (
           <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
             <p className="recent-cost-p">{price_rent} BYN</p>

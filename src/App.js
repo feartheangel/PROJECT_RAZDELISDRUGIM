@@ -1,9 +1,13 @@
 import { Route } from 'react-router-dom';
-<<<<<<< HEAD
-import { Home, PlaceItem, PrivateProfile, SearchPage, CardThings } from './pages/index';
-=======
-import { Home, PlaceItem, PrivateProfile, SearchPage, EditItem, MyItems } from './pages/index';
->>>>>>> 336d4fe84e9958acbd9dc577673fba26bff074af
+import {
+  Home,
+  PlaceItem,
+  PrivateProfile,
+  SearchPage,
+  CardThings,
+  EditItem,
+  MyItems,
+} from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
 import React from 'react';
@@ -56,12 +60,9 @@ function App() {
         <Route path="/place-item" component={PlaceItem} exact />
         <Route path="/private-profile" component={PrivateProfile} exact />
         <Route path="/i-rent-out" component={MyItems} exact />
-        <Route path="/search-page" component={SearchPage} exact />
-<<<<<<< HEAD
+        <Route path="/search" component={SearchPage} exact />
         <Route path="/card-things" component={CardThings} exact />
-=======
         <Route path="/edit-item" component={EditItem} exact />
->>>>>>> 336d4fe84e9958acbd9dc577673fba26bff074af
       </div>
     </div>
   );

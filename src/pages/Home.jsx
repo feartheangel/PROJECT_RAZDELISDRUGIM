@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Header, Footer, ItemCard } from '../components/index';
 import BaseModal from '../components/RegAuthComponents/BaseModal';
+import Requests from '../http/axios-requests';
 
 //импорт всех картинок
 import abil1 from '../img/MainPage/abil1.png';
@@ -13,27 +14,29 @@ import abil4 from '../img/MainPage/abil4.png';
 import abil5 from '../img/MainPage/abil5.png';
 import ArrowLeft from '../img/MainPage/Arrow_left.png';
 import ArrowRight from '../img/MainPage/Arrow_right.png';
-import Free from '../img/MainPage/Free.png';
-import like from '../img/MainPage/like.png';
 import jacket from '../img/MainPage/jacket.png';
-import Macbook from '../img/MainPage/Macbook.png';
 import partner1 from '../img/MainPage/partner1.png';
 import partner2 from '../img/MainPage/partner2.png';
 import partner3 from '../img/MainPage/partner3.png';
 import Press from '../img/MainPage/Press.png';
 import Review from '../img/MainPage/Review.png';
-import Sofa from '../img/MainPage/Sofa.png';
-import Union from '../img/MainPage/Union.png';
 import { loginAction, logoutAction } from '../redux/actions/userData';
+import { setSearchWords, setSearchItems } from '../redux/actions/search';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { searchItems } = useSelector(({ search }) => search);
+
   const [modalActive, setModalActive] = React.useState(false);
 
   React.useEffect(() => {
     if (localStorage.getItem('key')) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
+
+    Requests.search('Велосипед').then((res) => {
+      dispatch(setSearchItems(res.data));
+    });
   }, [localStorage.getItem('key')]);
 
   return (
@@ -45,10 +48,11 @@ const Home = () => {
             <p className="recent-p">Недавно добавленные</p>
             <div className="recent-blocks-wrapper">
               <img src={ArrowLeft} alt="" className="recent-arrow-left" />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
+              <div className="recent-blocks-slider-container">
+                {searchItems.map((item, index) => (
+                  <ItemCard key={index} item={item} />
+                ))}
+              </div>
               <img src={ArrowRight} alt="" className="recent-arrow-right" />
             </div>
           </div>
@@ -63,10 +67,11 @@ const Home = () => {
           <p className="popular-p">Часто арендуемые</p>
           <div className="recent-blocks-wrapper">
             <img src={ArrowLeft} alt="" className="recent-arrow-left" />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
+            <div className="recent-blocks-slider-container">
+              {searchItems.map((item, index) => (
+                <ItemCard key={index} item={item} />
+              ))}
+            </div>
             <img src={ArrowRight} alt="" className="recent-arrow-right" />
           </div>
           <input type="button" value="Смотреть каталог" className="popular-button" />
