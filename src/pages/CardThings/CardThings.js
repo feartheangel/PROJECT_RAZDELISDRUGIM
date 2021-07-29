@@ -273,7 +273,7 @@ const CardThings =()=>{
                                         </div>
                                         <p className="block_up_delivery-p1">— самовывоз</p>
                                         <p className="block_up_delivery-p2">— привезет и заберет сам: за 20 BYN</p>
-                                        <p className="block_up_delivery-p3">— отправит такси, курьером, почтой:<br/> за счет Владельца</p>
+                                        <p className="block_up_delivery-p3">— отправит такси, курьером, почтой: за счет Владельца</p>
                                     </div>
 
                                     {/* Свободно*/}
