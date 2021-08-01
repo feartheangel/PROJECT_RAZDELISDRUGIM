@@ -24,10 +24,26 @@ const Header = ({ setModalActive }) => {
   const [redirect, setRedirect] = React.useState();
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
   const [search, setSearch] = React.useState();
+  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const dispatch = useDispatch();
 
   const { isLoggedIn, userData } = useSelector(({ userData }) => userData);
+  const {
+    searchItems,
+    words,
+    category,
+    min_price,
+    max_price,
+    userCoordinates,
+    free,
+    status,
+    delivery,
+    insurance,
+    contract,
+    pledge,
+    distance,
+  } = useSelector(({ search }) => search);
 
   const logout = () => {
     setProfilePopUpActive(false);
@@ -42,8 +58,24 @@ const Header = ({ setModalActive }) => {
   };
 
   const searchRedirect = () => {
-    dispatch(setSearchWords(search));
-    Requests.search(search).then((res) => {
+    if (words === [] && window.location.href === 'http://localhost:3000/') {
+      setRedirect(<Redirect to={`/search`} />);
+      return;
+    }
+    Requests.search(
+      words,
+      category,
+      min_price,
+      max_price,
+      free,
+      status,
+      delivery,
+      insurance,
+      contract,
+      pledge,
+      userCoordinates,
+      distance,
+    ).then((res) => {
       dispatch(setSearchItems(res.data));
     });
     setRedirect(<Redirect to={`/search`} />);
@@ -98,7 +130,7 @@ const Header = ({ setModalActive }) => {
                   <img
                     style={{ width: '30px', height: '30px', borderRadius: '100%' }}
                     className="header-right-content-logged-img"
-                    src={`http://razdelisdrugim.by${userData.image_profile}`}
+                    src={`https://razdelisdrugim.by${userData.image_profile}`}
                   />
                   <img className="header-right-content-logged-img" src={MenuStroke} />
                 </div>
@@ -121,8 +153,8 @@ const Header = ({ setModalActive }) => {
         <div className="header-lower-table-right">
           <div className="search-wrapper">
             <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={words}
+              onChange={(e) => dispatch(setSearchWords(e.target.value))}
               type="text"
               placeholder="Хочу взять в аренду..."
               className="search-input"

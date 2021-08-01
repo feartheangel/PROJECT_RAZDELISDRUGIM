@@ -111,7 +111,7 @@ const ItemCardProfile = ({
   return (
     <div className="recent-block-wrapper">
       <div className="recent-block__profile">
-        <img src={`http://razdelisdrugim.by${image_1}`} alt="" className="block-image" />
+        <img src={`https://razdelisdrugim.by${image_1}`} alt="" className="block-image" />
         <div className="recent-marks">
           {delivery.includes('2') || delivery.includes('3') ? (
             <img src={car} alt="" title="Доставка возможна" className="card-mark" />
@@ -145,20 +145,20 @@ const ItemCardProfile = ({
             />
           )}
         </div>
-        <div style={{ maxWidth: '214px', maxHeight: '60px', overflow: 'hidden' }}>
+        <div style={{ width: '214px', height: '60px' }}>
           <p className="recent-block-title-p">{title}</p>
         </div>
         {!offer_price_rent && !free_rent && (
           <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
             <p className="recent-cost-p">{price_rent} BYN</p>
             <p className="recent-time-p">
-              {rent === 'HOUR'
+              {rent === 'Час'
                 ? 'Час'
-                : rent === 'DAY'
+                : rent === 'День'
                 ? 'Сутки'
-                : rent === 'WEEK'
+                : rent === 'Неделя'
                 ? 'Неделя'
-                : rent === 'MONTH'
+                : rent === 'Месяц'
                 ? 'Месяц'
                 : ''}
             </p>

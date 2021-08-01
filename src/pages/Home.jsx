@@ -34,7 +34,7 @@ const Home = () => {
       dispatch(loginAction());
     } else dispatch(logoutAction());
 
-    Requests.search('Велосипед').then((res) => {
+    Requests.search().then((res) => {
       dispatch(setSearchItems(res.data));
     });
   }, [localStorage.getItem('key')]);

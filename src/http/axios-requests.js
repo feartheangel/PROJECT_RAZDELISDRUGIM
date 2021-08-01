@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
+const rootAddress = 'https://razdelisdrugim.by/';
+
 class Requests {
   constructor() {}
 
@@ -14,7 +16,7 @@ class Requests {
         password: password,
         password2: passwordSubmit,
       },
-      url: 'http://178.172.136.88/api/jwt/register/',
+      url: 'https://razdelisdrugim.by/api/jwt/register/',
     }).then((response) => {
       return response;
     });
@@ -31,7 +33,7 @@ class Requests {
         status: status,
         referral_code: referral ? referral : '',
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/${id}/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/${id}/`,
     }).then((response) => {
       return response;
     });
@@ -45,7 +47,7 @@ class Requests {
         username: username,
         password: password,
       },
-      url: 'http://178.172.136.88/api/jwt/token/',
+      url: 'https://razdelisdrugim.by/api/jwt/token/',
     }).then((response) => {
       return response;
     });
@@ -58,7 +60,7 @@ class Requests {
       data: {
         email: email,
       },
-      url: 'http://178.172.136.88/api/password_reset/',
+      url: 'https://razdelisdrugim.by/api/password_reset/',
     }).then((response) => {
       return response;
     });
@@ -72,7 +74,7 @@ class Requests {
         token: token,
         password: password,
       },
-      url: 'http://178.172.136.88/api/password_reset/confirm/',
+      url: 'https://razdelisdrugim.by/api/password_reset/confirm/',
     }).then((response) => {
       return response;
     });
@@ -90,7 +92,7 @@ class Requests {
         backend: 'vk-oauth2',
         token: access_token,
       },
-      url: `http://178.172.136.88/social/convert-token/`,
+      url: `https://razdelisdrugim.by/social/convert-token/`,
     }).then((response) => {
       return response;
     });
@@ -102,7 +104,7 @@ class Requests {
       headers: {
         'Content-Type': 'application/json',
       },
-      url: `http://178.172.136.88/api/jwt/access-token-vk/${code}/`,
+      url: `https://razdelisdrugim.by/api/jwt/access-token-vk/${code}/`,
     }).then((response) => {
       return response;
     });
@@ -114,7 +116,7 @@ class Requests {
       headers: {
         'Content-Type': 'application/json',
       },
-      url: `http://178.172.136.88/api/jwt/access-token-vk/${code}/`,
+      url: `https://razdelisdrugim.by/api/jwt/access-token-vk/${code}/`,
     }).then((response) => {
       return response;
     });
@@ -126,7 +128,7 @@ class Requests {
       headers: {
         'Content-Type': 'application/json',
       },
-      url: `http://178.172.136.88/api/items/category/`,
+      url: `https://razdelisdrugim.by/api/items/category/`,
     }).then((response) => {
       return response;
     });
@@ -227,7 +229,7 @@ class Requests {
         prepare_time_choice: prepare_time_choice ? prepare_time_choice : 'NONE',
         items_address: items_address,
       },
-      url: 'http://178.172.136.88/api/items/create/',
+      url: 'https://razdelisdrugim.by/api/items/create/',
     }).then((response) => {
       if (response.status === 200 || response.status === 201) {
         return axios({
@@ -237,7 +239,7 @@ class Requests {
             Authorization: `Bearer ${localStorage.getItem('key')}`,
           },
           data: formData,
-          url: `http://178.172.136.88/api/items/update/${response.data.id}/`,
+          url: `https://razdelisdrugim.by/api/items/update/${response.data.id}/`,
         }).then((response) => {
           return response;
         });
@@ -293,7 +295,7 @@ class Requests {
         building: building ? building : '',
         coordinates: `${Number(coordinates[0])} ${Number(coordinates[1])}`,
       },
-      url: `http://178.172.136.88/api/jwt/profile/create/address/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/create/address/`,
     }).then((response) => {
       console.log(response);
       return response;
@@ -307,7 +309,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/jwt/profile/address/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/address/`,
     }).then((response) => {
       return response;
     });
@@ -320,7 +322,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: 'http://178.172.136.88/api/jwt/profile/',
+      url: 'https://razdelisdrugim.by/api/jwt/profile/',
     }).then((response) => {
       return response;
     });
@@ -364,7 +366,7 @@ class Requests {
         about: about ? about : '',
         legal_address: legal_address ? legal_address : '',
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -381,7 +383,7 @@ class Requests {
         new_password1: new_password1,
         new_password2: new_password2,
       },
-      url: `http://178.172.136.88/api/jwt/update-password/`,
+      url: `https://razdelisdrugim.by/api/jwt/update-password/`,
     }).then((response) => {
       return response;
     });
@@ -422,7 +424,7 @@ class Requests {
         building: building ? building : '',
         coordinates: `${Number(coordinates[0])} ${Number(coordinates[1])}`,
       },
-      url: `http://178.172.136.88/api/jwt/profile/address/update/${id}/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/address/update/${id}/`,
     }).then((response) => {
       console.log(response);
       return response;
@@ -436,7 +438,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/jwt/sms/send/`,
+      url: `https://razdelisdrugim.by/api/jwt/sms/send/`,
     }).then((response) => {
       console.log(response);
       return response;
@@ -453,7 +455,7 @@ class Requests {
       data: {
         code: code,
       },
-      url: `http://178.172.136.88/api/jwt/sms/check/`,
+      url: `https://razdelisdrugim.by/api/jwt/sms/check/`,
     }).then((response) => {
       console.log(response);
       return response;
@@ -467,7 +469,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/jwt/email/send/`,
+      url: `https://razdelisdrugim.by/api/jwt/email/send/`,
     }).then((response) => {
       console.log(response);
       return response;
@@ -484,7 +486,7 @@ class Requests {
       data: {
         code: code,
       },
-      url: `http://178.172.136.88/api/jwt/email/check/`,
+      url: `https://razdelisdrugim.by/api/jwt/email/check/`,
     }).then((response) => {
       console.log(response);
       return response;
@@ -498,7 +500,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/jwt/profile/address/delete/${id}/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/address/delete/${id}/`,
     }).then((response) => {
       return response;
     });
@@ -511,7 +513,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/items/profile-items/`,
+      url: `https://razdelisdrugim.by/api/items/profile-items/`,
     }).then((response) => {
       return response;
     });
@@ -524,7 +526,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/items/delete/${id}/`,
+      url: `https://razdelisdrugim.by/api/items/delete/${id}/`,
     }).then((response) => {
       return response;
     });
@@ -537,7 +539,7 @@ class Requests {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/items/copy/${id}/`,
+      url: `https://razdelisdrugim.by/api/items/copy/${id}/`,
     }).then((response) => {
       return response;
     });
@@ -553,7 +555,7 @@ class Requests {
       data: {
         is_hidden: true,
       },
-      url: `http://178.172.136.88/api/items/update/${id}/`,
+      url: `https://razdelisdrugim.by/api/items/update/${id}/`,
     }).then((response) => {
       return response;
     });
@@ -569,7 +571,7 @@ class Requests {
       data: {
         is_hidden: false,
       },
-      url: `http://178.172.136.88/api/items/update/${id}/`,
+      url: `https://razdelisdrugim.by/api/items/update/${id}/`,
     }).then((response) => {
       return response;
     });
@@ -671,7 +673,7 @@ class Requests {
         prepare_time_choice: prepare_time_choice ? prepare_time_choice : 'NONE',
         items_address: items_address,
       },
-      url: `http://178.172.136.88/api/items/update/${id}/`,
+      url: `https://razdelisdrugim.by/api/items/update/${id}/`,
     }).then((response) => {
       if (response.status === 200 || response.status === 201) {
         return axios({
@@ -681,7 +683,7 @@ class Requests {
             Authorization: `Bearer ${localStorage.getItem('key')}`,
           },
           data: formData,
-          url: `http://178.172.136.88/api/items/update/${id}/`,
+          url: `https://razdelisdrugim.by/api/items/update/${id}/`,
         }).then((response) => {
           return response;
         });
@@ -712,7 +714,7 @@ class Requests {
       data: {
         telegram_account: telegram_account,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -728,7 +730,7 @@ class Requests {
       data: {
         viber_account: viber_account,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -744,7 +746,7 @@ class Requests {
       data: {
         whatsapp_account: whatsapp_account,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -760,7 +762,7 @@ class Requests {
       data: {
         google_account: google_account,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -776,7 +778,7 @@ class Requests {
       data: {
         link_facebook: link_facebook,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -792,7 +794,7 @@ class Requests {
       data: {
         vk_account: vk_account,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -808,7 +810,7 @@ class Requests {
       data: {
         link_instagram: link_instagram,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -824,7 +826,7 @@ class Requests {
       data: {
         ok_account: ok_account,
       },
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
@@ -838,21 +840,69 @@ class Requests {
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
       data: formData,
-      url: `http://178.172.136.88/api/jwt/profile/update/`,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
       return response;
     });
   }
 
-  static search(search_words) {
+  static search(
+    search_words,
+    category,
+    min_price,
+    max_price,
+    free_rent,
+    status,
+    will_send,
+    insurance,
+    contract,
+    pledge,
+    coordinates,
+    distance,
+  ) {
     return axios({
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/items/search/?${
+        search_words ? `search_words=${search_words}&` : ''
+      }${category ? `category_name=${category}&` : ''}${
+        min_price ? `min_price=${min_price}&` : ''
+      }${max_price ? `max_price=${max_price}&` : ''}${free_rent ? `free_rent=1&` : ''}${
+        status ? `status=${status}&` : ''
+      }${will_send ? `delivery=1&` : ''}${insurance ? `insurance=1&` : ''}${
+        contract ? `contract=1&` : ''
+      }${pledge ? `pledge=1&` : ''}${coordinates ? `coordinates=${coordinates}&` : ''}${
+        distance ? `distance=${distance}&` : ''
+      }
+      `,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateProfileImage(formData) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
-      url: `http://178.172.136.88/api/items/search/?search_words=${search_words}
-      `,
+      data: formData,
+      url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getSingleItem(id) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/items/${id}/`,
     }).then((response) => {
       return response;
     });

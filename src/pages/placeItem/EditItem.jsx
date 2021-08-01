@@ -471,7 +471,7 @@ const EditItem = () => {
         );
         currentSubject[0] &&
           currentSubject[0].image_1 &&
-          fetch(`http://razdelisdrugim.by${currentSubject[0].image_1}`)
+          fetch(`https://razdelisdrugim.by${currentSubject[0].image_1}`)
             .then((response) => {
               console.log(response);
               return response.blob();
@@ -486,7 +486,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_2 &&
-          fetch(`http://razdelisdrugim.by${currentSubject[0].image_2}`)
+          fetch(`https://razdelisdrugim.by${currentSubject[0].image_2}`)
             .then((response) => {
               console.log(response);
               return response.blob();
@@ -501,7 +501,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_3 &&
-          fetch(`http://razdelisdrugim.by${currentSubject[0].image_3}`)
+          fetch(`https://razdelisdrugim.by${currentSubject[0].image_3}`)
             .then((response) => {
               console.log(response);
               return response.blob();
@@ -516,7 +516,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_4 &&
-          fetch(`http://razdelisdrugim.by${currentSubject[0].image_4}`)
+          fetch(`https://razdelisdrugim.by${currentSubject[0].image_4}`)
             .then((response) => {
               console.log(response);
               return response.blob();
@@ -531,7 +531,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_5 &&
-          fetch(`http://razdelisdrugim.by${currentSubject[0].image_5}`)
+          fetch(`https://razdelisdrugim.by${currentSubject[0].image_5}`)
             .then((response) => {
               console.log(response);
               return response.blob();

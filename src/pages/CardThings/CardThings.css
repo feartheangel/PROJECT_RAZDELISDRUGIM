@@ -1,552 +1,536 @@
 /* ОБЩИЙ ФАЙЛ*/
-.CardThings{
-    display: flex;
-    flex-direction: column;
+.CardThings {
+  display: flex;
+  flex-direction: column;
 }
-.CardThings_Wrapper{
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    height: auto;
-    width: auto;
-    padding: 0 165px;
+.CardThings_Wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  padding: 0 165px;
 }
 
 /* КОНТЕЙНЕР С КОНТЕНТОМ*/
-.CardThings_Wrapper_container{
-    display: flex;
-    flex-direction: column;
-    color: #091D20;
+.CardThings_Wrapper_container {
+  display: flex;
+  flex-direction: column;
+  color: #091d20;
 }
 
-
-                                    /* ШАПКА КОНТЕНТА */
-.card_shapka{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    margin: 20px 0;
+/* ШАПКА КОНТЕНТА */
+.card_shapka {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
 }
 .card_shapka div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-    color: #4CC9F0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  color: #4cc9f0;
 }
 
 .card_shapka div p {
-    align-items: center;
-    text-align: center;
-    font-size: 14px;
-    color: #4CC9F0;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  color: #4cc9f0;
 }
-.card_shapka div img{
-    margin-left: 7px;
-    margin-right: 16px;
-}
-
-.card_shapka_hover:hover{
-    cursor:pointer;
-    color: #12a3c9;
+.card_shapka div img {
+  margin-left: 7px;
+  margin-right: 16px;
 }
 
-                                  /* ОСНОВНАЯ ЧАСТЬ КОНТЕНТА */
-
-                                  /* КОНТЕНТ КАРТОЧКИ */
-.card_content{
-    display: flex;
-    flex-direction: row;
-    background: #FFFFFF;
-    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
-    border-radius: 30px;
-    margin: 20px 0;
+.card_shapka_hover:hover {
+  cursor: pointer;
+  color: #12a3c9;
 }
 
+/* ОСНОВНАЯ ЧАСТЬ КОНТЕНТА */
 
+/* КОНТЕНТ КАРТОЧКИ */
+.card_content {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 30px;
+  margin: 20px 0;
+  padding-bottom: 30px;
+}
 
-                                    /* ЛЕВАЯ СТОРОНА */
-.card_content_left{
-    display: flex;
-    flex-direction: column;
-    padding: 30px 0 30px 30px;
-    width: 531px;
+/* ЛЕВАЯ СТОРОНА */
+.card_content_left {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0 30px 30px;
+  width: 531px;
 }
 
 /*БЛОК ФОТО*/
-.left_block_photo{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
+.left_block_photo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
-.left_block_photo_small{
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
+.left_block_photo_small {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
 }
-.left_block_photo_small img{
-    width: 80px;
-    height: 72px;
-    margin-bottom: 10px;
+.left_block_photo_small img {
+  width: 80px;
+  height: 72px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
-.left_block_photo_big{
-    width: 440px;
-    height: 400px;
+.left_block_photo_big {
+  width: 440px;
+  height: 400px;
 }
-.left_block_photo_big img{
-    width: 440px;
-    height: 400px;
-    filter: drop-shadow(3px 3px 52px rgba(76, 201, 240, 0.14));
-    border-radius: 5px;
+.left_block_photo_big img {
+  width: 440px;
+  height: 400px;
+  filter: drop-shadow(3px 3px 52px rgba(76, 201, 240, 0.14));
+  border-radius: 5px;
 }
 
 /*БЛОК ПОДЕЛИТСЯ*/
-.left_block_toShare{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 30px;
+.left_block_toShare {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
 }
-.left_block_toShare img{
-    width: 13px;
-    height: 15px;
-    margin-right: 7px;
+.left_block_toShare img {
+  width: 13px;
+  height: 15px;
+  margin-right: 7px;
 }
-.left_block_toShare p{
-    font-size: 16px;
-    font-weight: 500;
-    color: #4CC9F0;
+.left_block_toShare p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4cc9f0;
 }
 
 /*БЛОК УСЛОВИЯ*/
-.left_block_conditions{
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
-    color: rgba(9, 29, 32, 0.8);
+.left_block_conditions {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  color: rgba(9, 29, 32, 0.8);
 }
-.left_block_conditions-p{
-    font-size: 18px;
-    font-weight: 500;
-    color: #123940;
-    margin-bottom: 20px;
+.left_block_conditions-p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #123940;
+  margin-bottom: 20px;
 }
 
 /*УСЛОВИЯ - Договор*/
-.conditions_contract{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 20px;
+.conditions_contract {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
 }
-.conditions_contract p{
-    margin: 0 12px;
+.conditions_contract p {
+  margin: 0 12px;
 }
-.img_union{
-    width: 15px;
-    height: 17px;
+.img_union {
+  width: 15px;
+  height: 17px;
 }
-.img_vector2{
-    width: 12px;
-    height: 12px;
+.img_vector2 {
+  width: 12px;
+  height: 12px;
 }
 
 /*УСЛОВИЯ - Залог*/
-.conditions_pledge{
-    margin-bottom: 20px;
+.conditions_pledge {
+  margin-bottom: 20px;
 }
-.conditions_row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
+.conditions_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.conditions_pledge_row-p{
-    margin: 0 11px;
+.conditions_pledge_row-p {
+  margin: 0 11px;
 }
-.img_combinedShare{
-    width: 18px;
-    height: 15px;
+.img_combinedShare {
+  width: 18px;
+  height: 15px;
 }
-.conditions_pledge-p{
-    font-size: 16px;
+.conditions_pledge-p {
+  font-size: 16px;
 }
 
 /*УСЛОВИЯ - Сервисный сбор*/
-.conditions_service{
-    margin-bottom: 20px;
+.conditions_service {
+  margin-bottom: 20px;
 }
-.img_service{
-    width: 18px;
-    height: 18px;
+.img_service {
+  width: 18px;
+  height: 18px;
 }
-.conditions_service_row-p{
-    margin: 0 11px;
+.conditions_service_row-p {
+  margin: 0 11px;
 }
-.conditions_service-p{
-    font-size: 16px;
+.conditions_service-p {
+  font-size: 16px;
 }
 
 /*УСЛОВИЯ - Страхование*/
-.conditions_insurance{
-    margin-bottom: 20px;
+.conditions_insurance {
+  margin-bottom: 20px;
 }
-.img_vector3{
-    width: 16px;
-    height: 18px;
+.img_vector3 {
+  width: 16px;
+  height: 18px;
 }
-.conditions_insurance_row-p{
-    margin: 0 11px;
+.conditions_insurance_row-p {
+  margin: 0 11px;
 }
-.conditions_insurance-p{
-    font-size: 16px;
-    margin-bottom: 10px;
+.conditions_insurance-p {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 /*УСЛОВИЯ - Время подготовки вещи*/
-.conditions_timeItem{
-    margin-bottom: 20px;
+.conditions_timeItem {
+  margin-bottom: 20px;
 }
-.img_clock{
-    width: 18px;
-    height: 18px;
+.img_clock {
+  width: 18px;
+  height: 18px;
 }
-.conditions_timeItem_row-p{
-    margin: 0 11px;
+.conditions_timeItem_row-p {
+  margin: 0 11px;
 }
-.conditions_timeItem-p{
-    font-size: 16px;
-}
-
-/*УСЛОВИЯ - Время получения и возврата*/
-.conditions_return{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 30px;
-}
-.conditions_return_block1{
-    display: flex;
-    flex-direction: column;
-    margin-right: 31px;
-}
-.conditions_return_block2{
-    display: flex;
-    flex-direction: column;
-}
-.conditions_return_row-p{
-    margin-right: 6px;
+.conditions_timeItem-p {
+  font-size: 16px;
 }
 
 /*УСЛОВИЯ - Время получения и возврата*/
-.conditions_readySell{
-    margin-bottom: 30px;
+.conditions_return {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
 }
-.conditions_readySell_row-p{
-    margin-left: 10px;
+.conditions_return_block1 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 31px;
 }
-.img_sell1{
-    width: 18px;
-    height: 18px;
+.conditions_return_block2 {
+  display: flex;
+  flex-direction: column;
+}
+.conditions_return_row-p {
+  margin-right: 6px;
 }
 
-                                /* ДОПОЛНИТЕЛЬНАЯ ИНФАОРМАЦИЯ*/
-.left_block_information{
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
-    color: #091D20;
+/*УСЛОВИЯ - Время получения и возврата*/
+.conditions_readySell {
+  margin-bottom: 30px;
 }
-.information-p{
-    font-weight: 500;
-    color: #000000;
-    margin-bottom: 20px;
+.conditions_readySell_row-p {
+  margin-left: 10px;
+}
+.img_sell1 {
+  width: 18px;
+  height: 18px;
+}
+
+/* ДОПОЛНИТЕЛЬНАЯ ИНФАОРМАЦИЯ*/
+.left_block_information {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  color: #091d20;
+}
+.information-p {
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 20px;
 }
 /*описание*/
-.information_description-p1{
-    margin-bottom: 10px;
+.information_description-p1 {
+  margin-bottom: 10px;
 }
-.information_description-p2{
-    margin-bottom: 20px;
-}
-
-.information_list{
-    display: flex;
-    flex-direction: column;
-
-}
-.information_list div:not(:last-child){
-    margin-bottom: 10px;
-}
-.list_span{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.information_description-p2 {
+  margin-bottom: 20px;
 }
 
-
-
-
-                                    /* ПРАВАЯ СТОРОНА */
-.card_content_right{
-    display: flex;
-    flex-direction: column;
-
-    padding-top: 30px;
-    padding-left: 80px;
-    padding-right: 30px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #091D20;
+.information_list {
+  display: flex;
+  flex-direction: column;
 }
-.right_block_up{
-    display: flex;
-    flex-direction: column;
+.information_list div:not(:last-child) {
+  margin-bottom: 10px;
+}
+.list_span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ПРАВАЯ СТОРОНА */
+.card_content_right {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 30px;
+  padding-left: 80px;
+  padding-right: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #091d20;
+}
+.right_block_up {
+  display: flex;
+  flex-direction: column;
 }
 /*Верх - название ноута*/
-.block_up_notebook{
-    font-size: 22px;
-    font-weight: 500;
-    color: #000000;
-    margin-bottom: 20px;
+.block_up_notebook {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 20px;
 }
 
 /*Верх - твоя цена*/
-.block_up_yourCost{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
-    align-items: center;
+.block_up_yourCost {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  align-items: center;
 }
-.block_up_yourCost-p1{
-    margin-right: 23px;
-    margin-left: 5px;
+.block_up_yourCost-p1 {
+  margin-right: 23px;
+  margin-left: 5px;
 }
-.block_up_yourCost-p2{
-    margin-left: 8px;
+.block_up_yourCost-p2 {
+  margin-left: 8px;
 }
-.yourCost_handShake{
-    width: 18px;
-    height: 18px;
+.yourCost_handShake {
+  width: 18px;
+  height: 18px;
 }
-.yourCost_fire{
-    width: 14px;
-    height: 18px;
+.yourCost_fire {
+  width: 14px;
+  height: 18px;
 }
 
 /*Верх - адресс*/
-.block_up_address{
-    margin-bottom: 20px;
+.block_up_address {
+  margin-bottom: 20px;
 }
-.block_up_address-p{
-    font-size: 16px;
+.block_up_address-p {
+  font-size: 16px;
 }
-.block_up_address_row-p{
-    margin-left: 7px;
+.block_up_address_row-p {
+  margin-left: 7px;
 }
-.img_address{
-    width: 15px;
-    height: 15px;
+.img_address {
+  width: 15px;
+  height: 15px;
 }
 
 /*Верх - Доставка*/
-.block_up_delivery{
-    margin-bottom: 20px;
+.block_up_delivery {
+  margin-bottom: 20px;
 }
-.block_up_delivery_row-p{
-    margin-left: 5px;
-    margin-right: 6px;
+.block_up_delivery_row-p {
+  margin-left: 5px;
+  margin-right: 6px;
 }
-.img_car{
-    width: 18px;
-    height: 18px;
+.img_car {
+  width: 18px;
+  height: 18px;
 }
-.block_up_delivery-p1{
-    margin-bottom: 10px;
-    font-size: 16px;
+.block_up_delivery-p1 {
+  margin-bottom: 10px;
+  font-size: 16px;
 }
-.block_up_delivery-p2{
-    margin-bottom: 10px;
-    font-size: 16px;
+.block_up_delivery-p2 {
+  margin-bottom: 10px;
+  font-size: 16px;
 }
-.block_up_delivery-p3{
-    font-size: 16px;
+.block_up_delivery-p3 {
+  font-size: 16px;
 }
 
 /*Верх - Свободно*/
-.block_up_free{
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+.block_up_free {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
-.img_clock2{
-    width: 18px;
-    height: 18px;
+.img_clock2 {
+  width: 18px;
+  height: 18px;
 }
-.block_up_free-p{
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 6px;
+.block_up_free-p {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 6px;
 }
 
 /*Верх - связь с владельцем*/
-.block_up_contactOwner{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 80px;
+.block_up_contactOwner {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 80px;
 }
-.contactOwner_btn{
-    width: 264px;
-    height: 45px;
-    background: #4CC9F0;
-    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
-    border-color: #4CC9F0;
-    border-radius: 5px;
-    margin-right: 10px;
+.contactOwner_btn {
+  width: 264px;
+  height: 45px;
+  background: #4cc9f0;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-color: #4cc9f0;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
-
-                                    /*     НИЖНИЙ БЛОК ПРАВОЙ СТОРОНЫ               */
-.right_block_down{
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
+/*     НИЖНИЙ БЛОК ПРАВОЙ СТОРОНЫ               */
+.right_block_down {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
 }
 /*владелец*/
-.block_down_owner{
-    font-weight: 500;
-    margin-bottom: 20px;
+.block_down_owner {
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 /*владелец - аватарка*/
-.block_down_owner_photo{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
+.block_down_owner_photo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
 }
-.block_down_owner_photo-p{
-    margin-left: 20px;
+.block_down_owner_photo-p {
+  margin-left: 20px;
 }
-.block_down_owner_photo-p2{
-    margin-top: 10px;
-    color: #4CC9F0;
+.block_down_owner_photo-p2 {
+  margin-top: 10px;
+  color: #4cc9f0;
 }
 /*звездочки и отзывы*/
-.block_down_star{
-    margin-bottom: 20px;
+.block_down_star {
+  margin-bottom: 20px;
 }
-.img_star:not(:last-child){
-    width: 22px;
-    height: 22px;
-    margin-right: 5px;
+.img_star:not(:last-child) {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
 }
-.block_down_star-p{
-    color: #4CC9F0;
+.block_down_star-p {
+  color: #4cc9f0;
 }
 
 /*телефон и почта*/
-.block_down_telephone{
-    margin-bottom: 20px;
+.block_down_telephone {
+  margin-bottom: 20px;
 }
-.telephone_row1{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
+.telephone_row1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.telephone_row2{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.telephone_row2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.block_down_telephone-p1{
-    color: rgba(9, 29, 32, 0.4);
-    margin-right: 6px;
+.block_down_telephone-p1 {
+  color: rgba(9, 29, 32, 0.4);
+  margin-right: 6px;
 }
-.block_down_telephone-p2{
-    color: #123940;
-    margin-right: 6px;
+.block_down_telephone-p2 {
+  color: #123940;
+  margin-right: 6px;
 }
-.img_vector{
-    width: 11px;
-    height: 10px;
+.img_vector {
+  width: 11px;
+  height: 10px;
 }
 
 /* НА САЙТЕ и ВРЕМЯ ОТВЕТА*/
-.block_down_online{
-    margin-bottom: 20px;
+.block_down_online {
+  margin-bottom: 20px;
 }
-.block_down_online-p1_1{
-    margin-left: 40px;
-    color: #4CC9F0;
+.block_down_online-p1_1 {
+  margin-left: 40px;
+  color: #4cc9f0;
 }
-.block_down_online-p2_2{
-    margin-left: 23px;
-    color: #4CC9F0;
+.block_down_online-p2_2 {
+  margin-left: 23px;
+  color: #4cc9f0;
 }
 
 /* Социальные сети */
-.img_social:not(:last-child){
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+.img_social:not(:last-child) {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 
+/* ДРУГИЕ ОБЬЯВЛЕНИЯ  */
 
-
-
-
-                                  /* ДРУГИЕ ОБЬЯВЛЕНИЯ  */
-
-.container_content_ads{
-    display: flex;
-    flex-direction: column;
-    /*justify-content: space-between;*/
+.container_content_ads {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between;*/
 }
 /*ТЕКСТ*/
-.container_content_ads-p{
-    font-size: 24px;
-    font-weight: 500;
-    padding-left: 20px;
+.container_content_ads-p {
+  font-size: 24px;
+  font-weight: 500;
+  padding-left: 20px;
 }
 /*КОНТЕЙНЕР С КАРТОЧКАМИ*/
-.content_ads_card{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    height: 426px;
-    margin-top: 20px;
-    margin-bottom: 70px;
+.content_ads_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  height: 426px;
+  margin-top: 50px;
+  margin-bottom: 70px;
 }
 
 .ads_card_img_right {
-    width: 14px;
-    height: 24px;
-    margin-left: 13px;
+  width: 14px;
+  height: 24px;
+  margin-left: 13px;
 }
 .ads_card_img_left {
-    width: 14px;
-    height: 24px;
-    margin-right: 13px;
+  width: 14px;
+  height: 24px;
+  margin-right: 13px;
 }
 
-.ads_card_all{
-    background: #FFFFFF;
-    box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
-    border-radius: 5px;
-    color: rgba(9, 29, 32, 0.8);
+.ads_card_all {
+  background: #ffffff;
+  box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
+  border-radius: 5px;
+  color: rgba(9, 29, 32, 0.8);
 }
 
-.ads_card_all:not(:last-child){
-    margin-right: 30px;
+.ads_card_all:not(:last-child) {
+  margin-right: 30px;
 }
-
-
-
-
-
-

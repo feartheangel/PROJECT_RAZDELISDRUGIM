@@ -76,6 +76,8 @@
   height: 18px;
   border: 1px solid rgba(9, 29, 32, 0.4);
   margin-right: 7px;
+  box-sizing: border-box;
+  padding: 2px 2px 2px 20px;
 }
 
 /*ЛЕВАЯ СТОРОНА КОНТЕНТА - КАТЕГОРИИ И ТД*/
@@ -101,6 +103,29 @@
 /* ДЛЯ ВСЕХ ЛИ В ВВИДЕ СЕЛЕКТА*/
 .content_left_optional_li {
   font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #091d20;
+  cursor: pointer;
+}
+
+.content_left_optional_li__sub {
+  font-weight: 500;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #091d20;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.content_left_optional_li__sub.active {
+  font-weight: 500;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #4cc9f0;
+  margin-top: 10px;
+  cursor: pointer;
 }
 .content_left_optional_li img {
   margin-left: 10px;
@@ -131,6 +156,7 @@
   border: 1px solid rgba(9, 29, 32, 0.4);
   box-sizing: border-box;
   border-radius: 5px;
+  padding: 0 0 0 10px;
 }
 
 /*ПРАВАЯ СТОРОНА КОНТЕНТА - КАРТОЧКИ */
@@ -175,7 +201,6 @@
   align-items: flex-start;
   padding: 0;
   min-width: 890px;
-  height: 426px;
   margin-bottom: 60px;
 }
 
@@ -215,5 +240,13 @@
 }
 .content_blocks_number_page p:hover {
   cursor: pointer;
+  color: #4cc9f0;
+}
+
+.distance_p {
+  cursor: pointer;
+}
+
+.distance_p.active {
   color: #4cc9f0;
 }

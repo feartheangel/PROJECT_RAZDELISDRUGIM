@@ -22,6 +22,8 @@ import {
   setUserSubjects,
 } from './redux/actions/userData';
 
+import { setUserCoords } from './redux/actions/search';
+
 function App() {
   const { isLoggedIn, reload } = useSelector(({ userData }) => userData);
   const dispatch = useDispatch();
@@ -46,6 +48,13 @@ function App() {
                   dispatch(setUserSubjects(response.data));
                 });
               })
+              .then(() => {
+                navigator.geolocation.getCurrentPosition((pos) => {
+                  dispatch(setUserCoords(`${pos.coords.latitude} ${pos.coords.longitude}`));
+                }),
+                  () => alert('Ошибка получения местоположения!'),
+                  { maximumAge: 10000, enableHighAccuracy: true, timeout: 10000 };
+              })
               .catch();
           }
         }),
@@ -61,7 +70,7 @@ function App() {
         <Route path="/private-profile" component={PrivateProfile} exact />
         <Route path="/i-rent-out" component={MyItems} exact />
         <Route path="/search" component={SearchPage} exact />
-        <Route path="/card-things" component={CardThings} exact />
+        <Route path="/item-card" component={CardThings} exact />
         <Route path="/edit-item" component={EditItem} exact />
       </div>
     </div>

@@ -233,7 +233,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   cursor: 'pointer',
                 }}
                 className="profile-photo"
-                src={`http://razdelisdrugim.by${userData.image_profile}`}
+                src={`https://razdelisdrugim.by${userData.image_profile}`}
                 alt=""
               />
               <div className="profile-photo-overlay">Изменить</div>
