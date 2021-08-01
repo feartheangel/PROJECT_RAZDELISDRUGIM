@@ -1,0 +1,167 @@
+/* ОБЩИЙ ФАЙЛ*/
+.PublicProfile{   
+    display: flex;
+    flex-direction: column;
+}
+.PublicProfile_Wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    padding: 0 165px;
+}
+/* КОНТЕЙНЕР С КОНТЕНТОМ*/
+.PublicProfile_Wrapper_container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+    margin: 20px 0;
+    color: #091D20;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 30px;
+    background: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+}
+                                /* { ВЕРХНЯЯ ЧАСТЬ КОНТЕЙНЕРА } */
+.container_up{
+    margin-bottom: 20px;
+    width: 100%;
+}
+/* ДО АВАТАРКИ */
+.container_up_header{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+.header_up{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+.header_up-p1{
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 500;
+}
+.header_down{
+    margin-bottom: 10px;
+    color: #F5D32C;
+}
+/* КОНТЕНТ С АВАТАРКОЙ*/
+.up_content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.up_global_margin:not(:last-child){
+    margin-right: 63px;
+    align-items: center;
+}
+.up_global_alight{
+    display: flex;
+    flex-direction: row;
+}
+
+/* { ПОСЛЕ  АВАТАРКИ РАЗДЕЛ } */
+.container_up_footer{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+.footer_btn1{
+    width: 228px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 5px;
+    background: #EECC36;
+    margin-right: 30px;
+    border-color: #EECC36;
+}
+.footer_btn2{
+    width: 228px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 5px;
+    background: #4CC9F0;
+    border-color: #4CC9F0;
+}
+
+
+                                    /* { НИЖНЯЯ ЧАСТЬ КОНТЕЙНЕРА} */
+.container_down{
+    display: flex;
+    flex-direction: column;
+    
+}                                   
+.container_down_header{
+    display: flex;
+    flex-direction: row;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.down_header_text1{
+    display: flex;
+    flex-direction: row;
+    margin-right: 40px;
+}
+.down_header_text1-p2{
+    margin-left: 5px;
+    color: #EECC36;
+}
+.down_header_p2{
+    margin-left: 40px;
+}
+
+/* НАВОДКА НА СЛОВА */
+.down_header_text1-p1:hover,:active{
+    cursor: pointer;
+    color: #4CC9F0;
+}
+.down_header_text1-p1_active{
+    color: #4CC9F0;
+}
+.down_header_p1:hover,:active{
+    cursor: pointer;
+    color: #4CC9F0;
+}
+.down_header_p1_active{
+    color:#4CC9F0;
+}
+.down_header_p2:hover,:active{
+    cursor: pointer;
+    color: #4CC9F0;
+}
+.down_header_p2_active{
+    margin-left: 40px;
+    color:#4CC9F0;
+}
+
+/* БЛОК ДЛЯ ПОДКЛЮЧАЕМЫХ КОМПОНЕНТОВ */
+.down_content{
+    margin-bottom: 30px;
+}
+.down_content_cards{
+    display: flex;
+    flex-direction: row;
+}
+.cards_margin{
+    margin-right: 60px;
+    width: 25%;
+}
+
+
+
+
+
+
+
+
+
