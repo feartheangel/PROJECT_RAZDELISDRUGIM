@@ -155,7 +155,19 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
         <div
           style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
           className="social-contact-enter-p">
-          <p>Контакт, по которому вас смогут найти</p>
+          <p>{`${
+            activeSocial === 'tg'
+              ? 'Ваш ник-нейм в Telegram без "@"'
+              : activeSocial === 'google' ||
+                activeSocial === 'fb' ||
+                activeSocial === 'vk' ||
+                activeSocial === 'inst' ||
+                activeSocial === 'ok'
+              ? 'Полная ссылка на ваш профиль'
+              : activeSocial === 'viber' || activeSocial === 'wa'
+              ? 'Ваш номер телефона без "+"'
+              : ''
+          }`}</p>
         </div>
         <input
           value={contact}

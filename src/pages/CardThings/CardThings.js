@@ -157,7 +157,7 @@ const CardThings = () => {
                 {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
                 <div className="left_block_conditions">
-                  <p className="left_block_conditions-p">Условия</p>
+                  <p className="left_block_conditions-p">Условия получения</p>
 
                   {/* ДОГОВОР*/}
                   {itemData && itemData.contract && (
@@ -279,7 +279,9 @@ const CardThings = () => {
                     )}
                   {itemData && itemData.description && (
                     <div className="information_description">
-                      <p className="information_description-p1">Описание</p>
+                      <p style={{ fontWeight: '600' }} className="information_description-p1">
+                        Описание
+                      </p>
                       <p className="information_description-p2">
                         {itemData && itemData.description}
                       </p>
@@ -365,14 +367,25 @@ const CardThings = () => {
                     )}
                     {itemData && !itemData.offer_price_rent && !itemData.free_rent && (
                       <div style={{ display: 'flex' }}>
-                        <p style={{ marginRight: '70px' }} className="block_up_yourCost-p1">
+                        <p style={{ marginRight: '10px' }} className="block_up_yourCost-p1">
                           <span style={{ fontWeight: '500' }}>
                             {itemData && itemData.price_rent}
                           </span>{' '}
                           BYN
                         </p>
+                        <p style={{ marginRight: '10px' }} className="block_up_yourCost-p1">
+                          в
+                        </p>
                         <p style={{ fontWeight: '500' }} className="block_up_yourCost-p1">
-                          {itemData && itemData.rent}
+                          {itemData && itemData.rent === 'Час'
+                            ? 'час'
+                            : itemData && itemData.rent === 'День'
+                            ? 'день'
+                            : itemData && itemData.rent === 'Неделя'
+                            ? 'неделю'
+                            : itemData && itemData.rent === 'Месяц'
+                            ? 'месяц'
+                            : ''}
                         </p>
                       </div>
                     )}
@@ -402,12 +415,12 @@ const CardThings = () => {
                         — привезет и заберет сам:{' '}
                         {itemData && itemData.delivery_free
                           ? 'бесплатно'
-                          : itemData && itemData.self_delivery_price}
+                          : `${itemData && itemData.self_delivery_price} BYN`}
                       </p>
                     )}
                     {itemData && itemData.delivery.includes('Доставка курьером') && (
                       <p className="block_up_delivery-p3">
-                        — отправит{' '}
+                        — отправит:{' '}
                         {`${
                           itemData && itemData.will_send_choice.includes('Такси')
                             ? `${
@@ -455,7 +468,11 @@ const CardThings = () => {
 
                   {/*Аватарка владельца и тд*/}
                   <div className="block_down_owner_photo">
-                    <img src={AvatarOwner} alt="" />
+                    <img
+                      style={{ borderRadius: '100%', width: '70px', height: '70px' }}
+                      src={`https://razdelisdrugim.by${itemData && itemData.profile.image_profile}`}
+                      alt=""
+                    />
                     <div className="block_down_owner_photo-p">
                       <p className="block_down_owner_photo-p1">
                         {itemData && itemData.profile.company_name
@@ -463,7 +480,7 @@ const CardThings = () => {
                           : itemData && itemData.profile.first_name}
                       </p>
                       <p className="block_down_owner_photo-p2">
-                        {itemData && itemData.profile.company_name ? 'Компания' : 'Физическое лицо'}
+                        {itemData && itemData.profile.company_name ? 'Компания' : 'Частное лицо'}
                       </p>
                     </div>
                   </div>
@@ -477,7 +494,7 @@ const CardThings = () => {
                       <img src={Star2} className="img_star" alt="" />
                       <img src={Star2} className="img_star" alt="" />
                     </div>
-                    <p className="block_down_star-p">0 отзывов</p>
+                    <p className="block_down_star-p">Отзывов пока нет</p>
                   </div>
 
                   {/*телефон и почта*/}
@@ -517,11 +534,6 @@ const CardThings = () => {
                           new Date(),
                         )}
                       </p>
-                    </div>
-
-                    <div className="telephone_row2">
-                      <p className="block_down_online-p2">Время ответа</p>
-                      <p className="block_down_online-p2_2">-</p>
                     </div>
                   </div>
 

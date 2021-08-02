@@ -24,7 +24,8 @@ const ItemCard = ({ item }) => {
         <div style={{ cursor: 'pointer' }} className="recent-block">
           <img src={`https://razdelisdrugim.by${item.image_1}`} alt="" className="block-image" />
           <div className="recent-marks">
-            {item.delivery.includes('2') || item.delivery.includes('3') ? (
+            {item.delivery.includes('Привезу и заберу сам') ||
+            item.delivery.includes('Доствка курьером') ? (
               <img src={car} alt="" title="Доставка возможна" className="card-mark" />
             ) : (
               <img

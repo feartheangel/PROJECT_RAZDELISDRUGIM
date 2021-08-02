@@ -113,7 +113,7 @@ const ItemCardProfile = ({
       <div className="recent-block__profile">
         <img src={`https://razdelisdrugim.by${image_1}`} alt="" className="block-image" />
         <div className="recent-marks">
-          {delivery.includes('2') || delivery.includes('3') ? (
+          {delivery.includes('Привезу и заберу сам') || delivery.includes('Доставка курьером') ? (
             <img src={car} alt="" title="Доставка возможна" className="card-mark" />
           ) : (
             <img src={carDisabled} title="Доставка не предусмотрена" alt="" className="card-mark" />

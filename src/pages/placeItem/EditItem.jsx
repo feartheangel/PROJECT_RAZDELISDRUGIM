@@ -424,7 +424,17 @@ const EditItem = () => {
         setViborCategory(currentSubject[0] && currentSubject[0].category_id.id);
         setDescription(currentSubject[0] && currentSubject[0].description);
         setCostArends(currentSubject[0] && currentSubject[0].price_rent);
-        setTimeArends(currentSubject[0] && currentSubject[0].rent);
+        setTimeArends(
+          currentSubject[0] && currentSubject[0].rent === 'Час'
+            ? 'HOUR'
+            : currentSubject[0] && currentSubject[0].rent === 'День'
+            ? 'DAY'
+            : currentSubject[0] && currentSubject[0].rent === 'Неделя'
+            ? 'WEEK'
+            : currentSubject[0] && currentSubject[0].rent === 'Месяц'
+            ? 'MONTH'
+            : '',
+        );
         setGiveFree(currentSubject[0] && currentSubject[0].free_rent);
         setYourCost(currentSubject[0] && currentSubject[0].offer_price_rent);
         setReadySell(currentSubject[0] && currentSubject[0].sell);
@@ -440,28 +450,67 @@ const EditItem = () => {
         setTimeReceipt(currentSubject[0] && currentSubject[0].receive_time);
         setReturnTime(currentSubject[0] && currentSubject[0].return_time);
         setPodgotovkaTime(currentSubject[0] && currentSubject[0].prepare_time);
-        setPrepareType(currentSubject[0] && currentSubject[0].prepare_time_choice);
+        setPrepareType(
+          currentSubject[0] && currentSubject[0].prepare_time_choice === 'Час'
+            ? 'HOUR'
+            : currentSubject[0] && currentSubject[0].prepare_time_choice === 'День'
+            ? 'DAY'
+            : currentSubject[0] && currentSubject[0].prepare_time_choice === 'Неделя'
+            ? 'WEEK'
+            : currentSubject[0] && currentSubject[0].prepare_time_choice === 'Месяц'
+            ? 'MONTH'
+            : 'NONE',
+        );
         setDeliveryType(currentSubject[0] && currentSubject[0].delivery);
-        setPickUp(currentSubject[0] && currentSubject[0].delivery.split('').includes('1'));
-        setTakeAway(currentSubject[0] && currentSubject[0].delivery.split('').includes('2'));
-        setYourSend(currentSubject[0] && currentSubject[0].delivery.split('').includes('3'));
+        setPickUp(currentSubject[0] && currentSubject[0].delivery.split(',').includes('Самовывоз'));
+        setTakeAway(
+          currentSubject[0] &&
+            currentSubject[0].delivery.split(',').includes(' Привезу и заберу сам'),
+        );
+        setYourSend(
+          currentSubject[0] && currentSubject[0].delivery.split(',').includes(' Доставка курьером'),
+        );
         setTypeService(currentSubject[0] && currentSubject[0].delivery_free);
         setIndicateCost(currentSubject[0] && currentSubject[0].self_delivery_price);
-        setWillSendWays(currentSubject[0] && currentSubject[0].will_send_choice);
-        setTaxi(currentSubject[0] && currentSubject[0].will_send_choice.split('').includes('1'));
-        setCourier(currentSubject[0] && currentSubject[0].will_send_choice.split('').includes('2'));
-        setPochta(currentSubject[0] && currentSubject[0].will_send_choice.split('').includes('3'));
+        setWillSendWays(
+          currentSubject[0] && currentSubject[0].will_send_choice
+            ? currentSubject[0] && currentSubject[0].will_send_choice
+            : 'NONE',
+        );
+        setTaxi(
+          currentSubject[0] && currentSubject[0].will_send_choice.split(',').includes('Такси'),
+        );
+        setCourier(
+          currentSubject[0] && currentSubject[0].will_send_choice.split(',').includes(' Курьер'),
+        );
+        setPochta(
+          currentSubject[0] && currentSubject[0].will_send_choice.split(',').includes(' Почта'),
+        );
         setRadio(currentSubject[0] && currentSubject[0].send_payer);
         setContract(currentSubject[0] && currentSubject[0].contract);
         setInsurance(currentSubject[0] && currentSubject[0].insurance);
-        setInsuranceTime(currentSubject[0] && currentSubject[0].insurance_choice);
+        setInsuranceTime(
+          currentSubject[0] && currentSubject[0].insurance_choice === 'За период'
+            ? 'PERIOD'
+            : currentSubject[0] && currentSubject[0].insurance_choice === 'За сутки'
+            ? 'DAY'
+            : 'NONE',
+        );
         setInsuranceSumma(currentSubject[0] && currentSubject[0].insurance_price);
         setFranchise(currentSubject[0] && currentSubject[0].franchise);
         setFranchiseSumma(currentSubject[0] && currentSubject[0].franchise_price);
         setPladge(currentSubject[0] && currentSubject[0].pledge);
         setPledgePrice(currentSubject[0] && currentSubject[0].pledge_price);
         setServiceSbor(currentSubject[0] && currentSubject[0].servicefee);
-        setOptionServiceSbor(currentSubject[0] && currentSubject[0].servicefee_choice);
+        setOptionServiceSbor(
+          currentSubject[0] && currentSubject[0].servicefee_choice === 'Химчистка'
+            ? 'DRYCLEANING'
+            : currentSubject[0] && currentSubject[0].servicefee_choice === 'Уборка'
+            ? 'CLEANING'
+            : currentSubject[0] && currentSubject[0].servicefee_choice === 'Мытье'
+            ? 'WASHINGUP'
+            : 'NONE',
+        );
         setSummaServiceSbor(currentSubject[0] && currentSubject[0].servicefee_price);
         setCoords(
           currentSubject[0] && [
@@ -778,7 +827,7 @@ const EditItem = () => {
       setWillSendWays('3');
     } else setWillSendWays('NONE');
     console.log(willSendWays);
-  }, [taxi, courier, pochta]);
+  }, [taxi, courier, pochta, willSendWays]);
 
   //выделяем разделы
   const chapters = {};
