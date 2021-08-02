@@ -8,3 +8,4 @@ export { default as MyAddresses } from './Profiles/MyGlobalData/MyAddresses/MyAd
 export { default as SearchPage } from './SearchPage/SearchPage';
 export { default as CardThings } from './CardThings/CardThings';
 export { default as MyItems } from './Profiles/MyItems/MyItems';
+export { default as PublicProfile } from './Profiles/PublicProfile.jsx';

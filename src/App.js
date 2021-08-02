@@ -7,6 +7,7 @@ import {
   CardThings,
   EditItem,
   MyItems,
+  PublicProfile,
 } from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
@@ -72,6 +73,7 @@ function App() {
         <Route path="/search" component={SearchPage} exact />
         <Route path="/item-card" component={CardThings} exact />
         <Route path="/edit-item" component={EditItem} exact />
+        <Route path="/public-profile" component={PublicProfile} exact />
       </div>
     </div>
   );

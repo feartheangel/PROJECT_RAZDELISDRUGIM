@@ -457,6 +457,7 @@
   flex-direction: row;
   align-items: center;
 }
+<<<<<<< HEAD
 .block_down_telephone-p1 {
   color: rgba(9, 29, 32, 0.4);
   margin-right: 6px;
@@ -464,6 +465,15 @@
 .block_down_telephone-p2 {
   color: #123940;
   margin-right: 6px;
+=======
+.block_down_telephone-p1{
+    color: rgba(9, 29, 32, 0.4);
+    margin-right: 8px;
+}
+.block_down_telephone-p2{
+    color: #123940;
+    margin-right: 47px;
+>>>>>>> dc9ba0ea097f63184d90a09a203c8f47ebb0a9b9
 }
 .img_vector {
   width: 11px;
