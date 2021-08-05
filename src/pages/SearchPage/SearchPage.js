@@ -613,7 +613,7 @@ const SearchPage = () => {
                         </Map>
                       </YMaps>
                     </div>
-                  )}
+                  )} 
                   {searchItems.map((item, index) => {
                     if (index > 2) {
                       return <ItemCard key={index} item={item} />;

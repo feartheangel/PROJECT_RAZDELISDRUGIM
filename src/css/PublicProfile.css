@@ -121,21 +121,21 @@
 }
 
 /* НАВОДКА НА СЛОВА */
-.down_header_text1-p1:hover,:active{
+.down_header_text1-p1:hover{
     cursor: pointer;
     color: #4CC9F0;
 }
 .down_header_text1-p1_active{
     color: #4CC9F0;
 }
-.down_header_p1:hover,:active{
+.down_header_p1:hover{
     cursor: pointer;
     color: #4CC9F0;
 }
 .down_header_p1_active{
     color:#4CC9F0;
 }
-.down_header_p2:hover,:active{
+.down_header_p2:hover{
     cursor: pointer;
     color: #4CC9F0;
 }
