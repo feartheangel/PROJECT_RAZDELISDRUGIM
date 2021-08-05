@@ -2,7 +2,7 @@ import React from 'react';
 import Requests from '../../http/axios-requests';
 import { reloadData } from '../../redux/actions/userData';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import car from '../../img/MainPage/car.png';
 import cardFire from '../../img/MainPage/card-fire.png';
 import cardMoney from '../../img/MainPage/card-money.png';
@@ -75,6 +75,7 @@ const ItemCardProfile = ({
 }) => {
   const dispatch = useDispatch();
   const { reload } = useSelector(({ userData }) => userData);
+  const [redirect, setRedirect] = React.useState();
 
   const removeSubjectHandler = () => {
     setDeleteId(id);
@@ -111,7 +112,13 @@ const ItemCardProfile = ({
   return (
     <div className="recent-block-wrapper">
       <div className="recent-block__profile">
-        <img src={`https://razdelisdrugim.by${image_1}`} alt="" className="block-image" />
+        <img
+          style={{ cursor: 'pointer' }}
+          onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
+          src={`https://razdelisdrugim.by${image_1}`}
+          alt=""
+          className="block-image"
+        />
         <div className="recent-marks">
           {delivery.includes('Привезу и заберу сам') || delivery.includes('Доставка курьером') ? (
             <img src={car} alt="" title="Доставка возможна" className="card-mark" />
@@ -146,7 +153,12 @@ const ItemCardProfile = ({
           )}
         </div>
         <div style={{ width: '214px', height: '60px' }}>
-          <p className="recent-block-title-p">{title}</p>
+          <p
+            style={{ cursor: 'pointer' }}
+            onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
+            className="recent-block-title-p">
+            {title}
+          </p>
         </div>
         {!offer_price_rent && !free_rent && (
           <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
@@ -164,6 +176,7 @@ const ItemCardProfile = ({
             </p>
           </div>
         )}
+        {redirect}
         {offer_price_rent && (
           <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
             <img style={{ width: '20px', height: '20px' }} src={yourCost} />

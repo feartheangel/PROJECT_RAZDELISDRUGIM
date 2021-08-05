@@ -74,7 +74,6 @@ const PlaceItem = () => {
 
   //обработчик цены продажи
   const setCostHandler = (e) => {
-    console.log(e.target.value);
     if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
       setCost(e.target.value);
     }
@@ -184,6 +183,7 @@ const PlaceItem = () => {
   // ПУНКТ  ПРЕДУСМОТРЕН ЗАЛОГ
   const pladgeHandler = () => {
     setPladge(!pladge);
+    cost ? setPledgePrice(cost) : '';
   };
 
   // СЕРВИСНЫЙ СБОР
@@ -198,7 +198,6 @@ const PlaceItem = () => {
 
   //обработчик суммы залога
   const pledgePriceHandler = (e) => {
-    console.log(e.target.value);
     if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
       setPledgePrice(e.target.value);
     }
@@ -546,13 +545,13 @@ const PlaceItem = () => {
   const [addressAdded, setAddressAdded] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
-  //проврека на верификацию почты и телефона
+  /*   //проврека на верификацию почты и телефона
   React.useEffect(() => {
-    if (userData && (!userData.email_verify || !userData.phone_verify)) {
+    if (!requestActive && (!userData.email_verify || !userData.phone_verify)) {
       alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
       setRedirect(<Redirect to="/private-profile" />);
     }
-  }, []);
+  }, [requestActive]); */
 
   //очистка полей при отмене выбора
   React.useEffect(() => {

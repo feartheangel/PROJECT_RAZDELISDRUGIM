@@ -224,6 +224,7 @@ button {
 }
 
 .header-lower-table {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -1113,4 +1114,19 @@ button {
   width: 850px;
   overflow-x: hidden;
   padding: 20px;
+}
+
+.burger_dropdown_menu {
+  position: absolute;
+  width: 290px;
+  height: 590px;
+  overflow: auto;
+  overflow-x: hidden;
+  background-color: white;
+  left: 160px;
+  top: 95px;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 10;
 }

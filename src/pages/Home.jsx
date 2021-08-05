@@ -1,9 +1,7 @@
 import React from 'react';
 import '../css/main-page.css';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Header, Footer, ItemCard } from '../components/index';
-import BaseModal from '../components/RegAuthComponents/BaseModal';
 import Requests from '../http/axios-requests';
 
 //импорт всех картинок
@@ -21,37 +19,33 @@ import partner3 from '../img/MainPage/partner3.png';
 import Press from '../img/MainPage/Press.png';
 import Review from '../img/MainPage/Review.png';
 import { loginAction, logoutAction } from '../redux/actions/userData';
-import { setSearchWords, setSearchItems } from '../redux/actions/search';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { searchItems } = useSelector(({ search }) => search);
-
-  const [modalActive, setModalActive] = React.useState(false);
+  const [recentItems, setRecentItems] = React.useState([]);
 
   React.useEffect(() => {
     if (localStorage.getItem('key')) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
 
-    Requests.search().then((res) => {
-      dispatch(setSearchItems(res.data));
+    Requests.getRecentItems().then((res) => {
+      setRecentItems(res.data.reverse());
     });
   }, [localStorage.getItem('key')]);
 
   return (
     <div className="Main_page">
       <div class="content">
-        <Header setModalActive={setModalActive} />
+        <Header />
         <section className="recent-wrapper">
           <div className="recent-content">
             <p className="recent-p">Недавно добавленные</p>
             <div className="recent-blocks-wrapper">
               <img src={ArrowLeft} alt="" className="recent-arrow-left" />
               <div className="recent-blocks-slider-container">
-                {searchItems.map((item, index) => (
-                  <ItemCard key={index} item={item} />
-                ))}
+                {recentItems &&
+                  recentItems.map((item, index) => <ItemCard key={index} item={item} />)}
               </div>
               <img src={ArrowRight} alt="" className="recent-arrow-right" />
             </div>
@@ -68,9 +62,8 @@ const Home = () => {
           <div className="recent-blocks-wrapper">
             <img src={ArrowLeft} alt="" className="recent-arrow-left" />
             <div className="recent-blocks-slider-container">
-              {searchItems.map((item, index) => (
-                <ItemCard key={index} item={item} />
-              ))}
+              {recentItems &&
+                recentItems.map((item, index) => <ItemCard key={index} item={item} />)}
             </div>
             <img src={ArrowRight} alt="" className="recent-arrow-right" />
           </div>
@@ -378,7 +371,6 @@ const Home = () => {
           </div>
         </section>
         <Footer />
-        <BaseModal modalActive={modalActive} setModalActive={setModalActive} />
       </div>
     </div>
   );

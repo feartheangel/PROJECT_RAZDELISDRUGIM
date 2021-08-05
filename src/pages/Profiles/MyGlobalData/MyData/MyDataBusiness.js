@@ -55,8 +55,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
   const photoHandler = (e) => {
     const formData = new FormData();
+    delete formData.image_profile;
     formData.append('image_profile', e.target.files[0]);
-    Requests.updateProfileImage(formData).then(() => {
+    Requests.updateProfileImageReq(formData).then(() => {
       alert('Картинка успешно обновлена!');
       dispatch(reloadData(!reload));
     });
@@ -225,7 +226,12 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
         </div>
 
         <div className="content_block1_right">
-          <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
+          <a
+            style={{ textDecoration: 'none' }}
+            target="_blank"
+            href={`/public-profile?id=${userData && userData.id}`}>
+            <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
+          </a>
         </div>
       </div>
 

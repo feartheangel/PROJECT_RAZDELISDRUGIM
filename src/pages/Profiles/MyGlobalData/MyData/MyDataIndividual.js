@@ -208,7 +208,12 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
         {redirect}
 
         <div className="content_block1_right">
-          <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
+          <a
+            style={{ textDecoration: 'none' }}
+            target="_blank"
+            href={`/public-profile?id=${userData && userData.id}`}>
+            <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
+          </a>
         </div>
       </div>
 

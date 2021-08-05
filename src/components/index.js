@@ -4,6 +4,7 @@ export { default as PasswordRecoverySubmit } from './RegAuthComponents/PasswordR
 export { default as NumberSubmittionModule } from './RegAuthComponents/NumberSubmittionModule';
 export { default as EmailSubmittionModule } from './RegAuthComponents/EmailSubmittionModule';
 export { default as PasswordRecoveryEntry } from './RegAuthComponents/PasswordRecoveryEntry';
+export { default as BaseModal } from './RegAuthComponents/BaseModal';
 export { default as Header } from './PagesArchitecture/Header';
 export { default as Footer } from './PagesArchitecture/Footer';
 export { default as ProfilePopUp } from './MainPage/ProfilePopUp';

@@ -3,6 +3,7 @@ const initialState = {
   words: '',
   searchItems: [],
   category: '',
+  category_id: '',
   min_price: '',
   max_price: '',
   free: false,
@@ -11,7 +12,7 @@ const initialState = {
   insurance: false,
   contract: false,
   pledge: false,
-  distance: '',
+  distance: false,
 };
 
 const search = (state = initialState, action) => {
@@ -104,6 +105,13 @@ const search = (state = initialState, action) => {
       return {
         ...state,
         distance: action.payload,
+      };
+      break;
+
+    case 'SET_CATEGORY_ID':
+      return {
+        ...state,
+        category_id: action.payload,
       };
       break;
   }

@@ -62,3 +62,8 @@ export const setDistance = (dist) => ({
   type: 'SET_DISTANCE',
   payload: dist,
 });
+
+export const setCategoryId = (id) => ({
+  type: 'SET_CATEGORY_ID',
+  payload: id,
+});

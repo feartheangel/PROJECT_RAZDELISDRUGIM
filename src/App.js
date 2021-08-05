@@ -51,7 +51,7 @@ function App() {
               })
               .then(() => {
                 navigator.geolocation.getCurrentPosition((pos) => {
-                  dispatch(setUserCoords(`${pos.coords.latitude} ${pos.coords.longitude}`));
+                  dispatch(setUserCoords(`${pos.coords.longitude} ${pos.coords.latitude}`));
                 }),
                   () => alert('Ошибка получения местоположения!'),
                   { maximumAge: 10000, enableHighAccuracy: true, timeout: 10000 };

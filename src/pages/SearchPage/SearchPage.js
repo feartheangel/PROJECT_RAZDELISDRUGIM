@@ -20,6 +20,7 @@ import {
   setContract,
   setPledge,
   setDistance,
+  setCategoryId,
 } from '../../redux/actions/search';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import CardProduct from './CardProduct/CardProduct';
@@ -48,7 +49,7 @@ const SearchPage = () => {
 
   //параметры карты
   const mapData = {
-    center: userCoordinates ? userCoordinates.split(' ') : [53.54, 27.33],
+    center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.54, 27.33],
     zoom: 8,
   };
 
@@ -65,24 +66,7 @@ const SearchPage = () => {
         return item.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse();
       }),
     );
-    console.log(marks);
   }, [searchItems]);
-
-  const keyDownHandler = (e) => {
-    if (e.keyCode === 13) {
-      searchHandler(words, category);
-    }
-  };
-
-  const openChapterHandler = (id) => {
-    if (!(openedCategories === id)) {
-      setOpenedCategories(id);
-      forceUpdate();
-    } else if (openedCategories === id) {
-      setOpenedCategories(false);
-      forceUpdate();
-    }
-  };
 
   const searchHandler = (
     words,
@@ -114,24 +98,6 @@ const SearchPage = () => {
     ).then((res) => {
       dispatch(setSearchItems(res.data));
     });
-  };
-
-  const categorySetHandler = (category, category_id) => {
-    setActiveCategory(category_id);
-    dispatch(setSearchCategory(category));
-    searchHandler(
-      words,
-      category,
-      min_price,
-      max_price,
-      free,
-      status,
-      delivery,
-      insurance,
-      contract,
-      pledge,
-      userCoordinates,
-    );
   };
 
   const minPriceHandler = (e) => {
@@ -329,26 +295,29 @@ const SearchPage = () => {
     }
   };
 
-  //выделяем разделы
-  const chapters = {};
-  isLoaded &&
-    items.map((item, index) => {
-      if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
-        chapters[item.chapter_id.name_chapter] = item.chapter_id.id;
-      }
+  const categoryResetHandler = () => {
+    dispatch(setSearchCategory(false));
+    dispatch(setCategoryId(false));
+    Requests.search(
+      words,
+      false,
+      min_price,
+      max_price,
+      free,
+      status,
+      delivery,
+      insurance,
+      contract,
+      pledge,
+      userCoordinates,
+      distance,
+    ).then((res) => {
+      dispatch(setSearchItems(res.data));
     });
-
-  //выделяем категории
-  const categories = {};
-  isLoaded &&
-    items.map((item, index) => {
-      if (!categories[item.name_category]) {
-        categories[item.name_category] = [[item.id, item.chapter_id.id]];
-      }
-    });
+  };
 
   return (
-    <div onKeyDown={(e) => keyDownHandler(e)}>
+    <div>
       <Header />
       <div className="SearchPage">
         <div className="SearchPage_container">
@@ -376,7 +345,7 @@ const SearchPage = () => {
                 <p>
                   В категории: {category}
                   <span
-                    onClick={() => categorySetHandler(false, false)}
+                    onClick={categoryResetHandler}
                     style={{
                       color: 'red',
                       fontSize: '14px',
@@ -533,41 +502,6 @@ const SearchPage = () => {
                     Скоро освободится
                   </label>
                 </li>
-
-                {isLoaded &&
-                  [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-                    return (
-                      <li
-                        style={{ display: 'flex', flexDirection: 'column' }}
-                        className="content_left_optional_li">
-                        <p onClick={() => openChapterHandler(chapter[1])}>
-                          {chapter[0]}
-                          <span>
-                            <img src={vector2} alt="" />
-                          </span>
-                        </p>
-                        {isLoaded &&
-                          [].concat.apply(Object.entries(categories)).map((category, index) => {
-                            if (
-                              category[1][0][1] === chapter[1] &&
-                              openedCategories === category[1][0][1]
-                            ) {
-                              return (
-                                <p
-                                  onClick={() => categorySetHandler(category[0], category[1][0][0])}
-                                  className={
-                                    activeCategory === category[1][0][0]
-                                      ? 'content_left_optional_li__sub active'
-                                      : 'content_left_optional_li__sub'
-                                  }>
-                                  {category[0]}
-                                </p>
-                              );
-                            }
-                          })}
-                      </li>
-                    );
-                  })}
               </ul>
             </div>
 
@@ -578,21 +512,28 @@ const SearchPage = () => {
               <div className="content_right_shapka">
                 <div className="shapka_top">
                   <p
+                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
                     className={distance === '200' ? 'distance_p active' : 'distance_p'}
                     onClick={() => distanceHandler('200')}>
                     До 200 м
                   </p>
                   <p
+                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
                     className={distance === '1000' ? 'distance_p active' : 'distance_p'}
                     onClick={() => distanceHandler('1000')}>
                     До 1 км
                   </p>
                   <p
+                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
                     className={distance === '5000' ? 'distance_p active' : 'distance_p'}
                     onClick={() => distanceHandler('5000')}>
                     До 5 км
                   </p>
-                  <p className="content_right_shapka_watchMap">Показать на карте</p>
+                  <p
+                    onClick={() => distanceHandler(false)}
+                    className={distance === false ? 'distance_p active' : 'distance_p'}>
+                    Показать все
+                  </p>
                 </div>
               </div>
 
@@ -606,7 +547,7 @@ const SearchPage = () => {
                   })}
 
                   {searchItems && (
-                    <div style={{ marginBottom: '30px' }} classname="map">
+                    <div style={{ marginBottom: '30px' }}>
                       <YMaps>
                         <Map width={850} height={500} defaultState={mapData}>
                           {marks && marks.map((mark) => <Placemark geometry={mark} />)}

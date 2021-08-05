@@ -9,21 +9,42 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
 
   const saveSocialHandler = () => {
     if (activeSocial === 'tg') {
-      Requests.updateTG(contact).then(() => {
+      Requests.updateTG(
+        contact.includes('@')
+          ? contact
+              .split('')
+              .splice(contact.indexOf('@') + 1, contact.length - 1)
+              .join('')
+          : contact,
+      ).then(() => {
         alert('Telegram аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'viber') {
-      Requests.updateViber(contact).then(() => {
+      Requests.updateViber(
+        contact.includes('+')
+          ? contact
+              .split('')
+              .splice(contact.indexOf('+') + 1, contact.length - 1)
+              .join('')
+          : contact,
+      ).then(() => {
         alert('Viber аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'wa') {
-      Requests.updateWhatsapp(contact).then(() => {
+      Requests.updateWhatsapp(
+        contact.includes('+')
+          ? contact
+              .split('')
+              .splice(contact.indexOf('+') + 1, contact.length - 1)
+              .join('')
+          : contact,
+      ).then(() => {
         alert('WhatsApp аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
