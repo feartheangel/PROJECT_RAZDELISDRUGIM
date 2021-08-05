@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './CardThings.css';
+import { Redirect, Link } from 'react-router-dom';
 import { Header, Footer, ItemCard } from '../../components/index';
-import { useSelector } from 'react-redux';
+import { setSearchCategory, setCategoryId } from '../../redux/actions/search';
+import { useSelector, useDispatch } from 'react-redux';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import CardProduct from '../SearchPage/CardProduct/CardProduct';
 import Vector1 from '../../img/SearchPage/Vector1.png';
@@ -54,9 +56,9 @@ const CardThings = () => {
     x1.setHours(12, 0, 0);
 
     return Math.round((x1 - x0) / msPerDay) > 365
-      ? `${Math.round((x1 - x0) / msPerDay) / 365} год(лет)`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 365)} год(лет)`
       : Math.round((x1 - x0) / msPerDay) > 30
-      ? `${Math.round((x1 - x0) / msPerDay) / 30} мес.`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 30)} мес.`
       : `${Math.round((x1 - x0) / msPerDay)} д.`;
   }
 
@@ -67,6 +69,11 @@ const CardThings = () => {
     }
 
     setContactVisible(!contactVisible);
+  };
+
+  const categoryRedirect = (name_category, id_category) => {
+    dispatch(setSearchCategory(name_category));
+    dispatch(setCategoryId(id_category));
   };
 
   React.useEffect(() => {
@@ -84,14 +91,17 @@ const CardThings = () => {
   const [simillarSubjects, setSimillarSubjects] = React.useState();
   const [selectedImage, setSelectedImage] = React.useState();
   const [contactVisible, setContactVisible] = React.useState();
+  const [shareVisible, setShareVisible] = React.useState();
+  const [redirect, setRedirect] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
+  const dispatch = useDispatch();
   const { searchItems } = useSelector(({ search }) => search);
   const { isLoggedIn } = useSelector(({ userData }) => userData);
 
   const mapData = {
     center: itemData && itemData.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse(),
-    zoom: 8,
+    zoom: 12,
   };
 
   return (
@@ -103,15 +113,32 @@ const CardThings = () => {
           <div className="container_content_card">
             {/* ШАПКА КАРТОЧКИ*/}
             <div className="card_shapka">
-              <div>
-                <p className="card_shapka_hover"> Главная </p>
-                <img src={Vector1} alt="" />
-              </div>
+              <Link style={{ textDecoration: 'none' }} to="/">
+                <div>
+                  <p className="card_shapka_hover"> Главная </p>
+                  <img src={Vector1} alt="" />
+                </div>
+              </Link>
 
               <div>
                 <p className="card_shapka_hover"> Каталог </p>
                 <img src={Vector1} alt="" />
               </div>
+              <Link style={{ textDecoration: 'none' }} to="/search">
+                <div>
+                  <p
+                    onClick={() =>
+                      categoryRedirect(
+                        itemData && itemData.category_id.name_category,
+                        itemData && itemData.category_id.id,
+                      )
+                    }
+                    className="card_shapka_hover">
+                    {itemData && itemData.category_id.name_category}{' '}
+                  </p>
+                  <img src={Vector1} alt="" />
+                </div>
+              </Link>
 
               <div>
                 <p className="card_shapka_hover"> {itemData && itemData.name_item} </p>
@@ -199,26 +226,34 @@ const CardThings = () => {
                   </div>
                 </div>
 
-                <div className="left_block_toShare">
+                <div
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setShareVisible(!shareVisible)}
+                  className="left_block_toShare">
                   <img src={Share} alt="" />
                   <p> Поделиться</p>
                 </div>
 
-                <div className={'item_share_link'}>
-                  <input type="text" value={window.location.href} />
-                  <img
-                    onClick={window.navigator.clipboard.writeText(`${window.location.href}`)}
-                    style={{ cursor: 'pointer' }}
-                    src={copy}
-                    className={'item-card-profile-button-image'}
-                  />
-                  <label
-                    onClick={window.navigator.clipboard.writeText(`${window.location.href}`)}
-                    style={{ cursor: 'pointer' }}
-                    className="item-card-profile-button__optional">
-                    Копировать
-                  </label>
-                </div>
+                {shareVisible && (
+                  <div className={'item_share_link'}>
+                    <input type="text" value={window.location.href} />
+                    <img
+                      onClick={window.navigator.clipboard.writeText(`${window.location.href}`)}
+                      style={{ cursor: 'pointer' }}
+                      src={copy}
+                      className={'item-card-profile-button-image'}
+                    />
+                    <label
+                      onClick={() => {
+                        window.navigator.clipboard.writeText(`${window.location.href}`);
+                        setShareVisible(false);
+                      }}
+                      style={{ cursor: 'pointer' }}
+                      className="item-card-profile-button__optional">
+                      Копировать
+                    </label>
+                  </div>
+                )}
 
                 {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
@@ -528,7 +563,7 @@ const CardThings = () => {
                   </div>
 
                   {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
-                  <div style={{ height: '185px' }}>
+                  <div style={{ height: '185px', width: '310px' }}>
                     <div className="block_up_contactOwner">
                       <input
                         onClick={showContactHandler}
@@ -559,7 +594,7 @@ const CardThings = () => {
                 </div>
 
                 {/* НИЗ ПРАВОЙ СТОРОНЫ*/}
-                <div className="right_block_down">
+                <div style={{ width: '365px' }} className="right_block_down">
                   <div className="block_down_owner">
                     <p>Владелец</p>
                   </div>
@@ -775,7 +810,7 @@ const CardThings = () => {
                   )}
                 </div>
               </div>
-              <div style={{ marginTop: '460px' }}>
+              <div style={{ marginTop: '505px' }}>
                 <YMaps>
                   <Map width={300} height={200} defaultState={mapData}>
                     <Placemark geometry={itemData && mapData.center} />

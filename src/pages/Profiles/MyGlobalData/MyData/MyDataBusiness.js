@@ -39,9 +39,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
     x1.setHours(12, 0, 0);
 
     return Math.round((x1 - x0) / msPerDay) > 365
-      ? `${Math.round((x1 - x0) / msPerDay) / 365} год(лет)`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 365)} год(лет)`
       : Math.round((x1 - x0) / msPerDay) > 30
-      ? `${Math.round((x1 - x0) / msPerDay) / 30} мес.`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 30)} мес.`
       : `${Math.round((x1 - x0) / msPerDay)} д.`;
   }
 

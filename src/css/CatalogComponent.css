@@ -1,0 +1,63 @@
+.CatalogComponent{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+/* ШАПКА КОМПОНЕНТА С ФОТО */
+.CatalogComponent_shapka{
+    margin-bottom: 20px;
+}
+.CatalogComponent_shapka_p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    color: #000000;
+}
+.CatalogComponent_shapka_img{
+    width: 700px;
+    height: 200px;
+}
+
+/* ЦЕНТРАЛЬНЫЙ СПИСОК */
+.CatalogComponent_list{
+    display: flex;
+    flex-direction: row;
+    color: #000000;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 40px;
+}
+.CatalogComponent_list_left{
+    margin-right: 105px;
+}
+.CatalogComponent_list_left p:not(:last-child){
+    margin-bottom: 10px;
+}
+.CatalogComponent_list_right p:not(:last-child){
+    margin-bottom: 10px;
+}
+
+
+/* ТЕКСТ С ИНФОЙ СНИЗУ */
+.CatalogComponent_informations{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(9, 29, 32, 0.77);
+    width: 700px;
+}
+
+.CatalogComponent_informations p:not(:last-child){
+    margin-bottom: 10px;
+}
+
+
+
+
+
+

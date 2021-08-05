@@ -28,6 +28,7 @@ import map from '../../img/SearchPage/map.png';
 
 const SearchPage = () => {
   const { items, isLoaded } = useSelector(({ items }) => items);
+  const { userData, subjects, isLoggedIn } = useSelector(({ userData }) => userData);
   const {
     searchItems,
     words,
@@ -50,7 +51,7 @@ const SearchPage = () => {
   //параметры карты
   const mapData = {
     center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.54, 27.33],
-    zoom: 8,
+    zoom: 12,
   };
 
   //координаты меток карты
@@ -68,18 +69,71 @@ const SearchPage = () => {
     );
   }, [searchItems]);
 
+  React.useEffect(() => {
+    if (
+      !words &&
+      !category &&
+      !min_price &&
+      !max_price &&
+      !free &&
+      !status &&
+      !delivery &&
+      !insurance &&
+      !contract &&
+      !pledge &&
+      !distance
+    ) {
+      Requests.search().then((res) => {
+        dispatch(setSearchItems(res.data));
+      });
+    } else {
+      Requests.search(
+        words,
+        category,
+        min_price,
+        max_price,
+        free,
+        status,
+        delivery,
+        insurance,
+        contract,
+        pledge,
+        userCoordinates,
+        distance,
+      ).then((res) => {
+        dispatch(setSearchItems(res.data));
+      });
+    }
+  }, []);
+
+  const addSubjectHandler = () => {
+    if (isLoggedIn && subjects.length < 5) {
+      window.location.href = '/place-item';
+      return;
+    } else if (isLoggedIn && subjects.length >= 5) {
+      alert('Лимит вещей достигнут (5)');
+      return;
+    } else if (!isLoggedIn) {
+      alert('Сначала авторизуйтесь!');
+      return;
+    } else if (!userData.email_verify || !userData.phone_verify) {
+      alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
+      return;
+    }
+  };
+
   const searchHandler = (
     words,
     category,
     min_price,
     max_price,
-    free_rent,
+    free,
     status,
     delivery,
     insurance,
     contract,
     pledge,
-    coordinates,
+    userCoordinates,
     distance,
   ) => {
     Requests.search(
@@ -87,13 +141,13 @@ const SearchPage = () => {
       category,
       min_price,
       max_price,
-      free_rent,
+      free,
       status,
       delivery,
       insurance,
       contract,
       pledge,
-      coordinates,
+      userCoordinates,
       distance,
     ).then((res) => {
       dispatch(setSearchItems(res.data));
@@ -117,6 +171,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -137,6 +192,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -154,6 +210,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -172,6 +229,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
+        distance,
       );
     } else {
       dispatch(setStatus(e.target.value));
@@ -187,6 +245,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
+        distance,
       );
     }
   };
@@ -205,6 +264,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -222,6 +282,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -239,6 +300,7 @@ const SearchPage = () => {
       !contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -256,6 +318,7 @@ const SearchPage = () => {
       contract,
       !pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -539,28 +602,44 @@ const SearchPage = () => {
 
               {/* КОНТЕНТ ПОД ШАПКОЙ */}
               <div className="content_right_all_content">
-                <div className="all_content_blocks">
-                  {searchItems.map((item, index) => {
-                    if (index <= 2) {
-                      return <ItemCard key={index} item={item} />;
-                    }
-                  })}
+                {searchItems.length > 0 && (
+                  <div className="all_content_blocks">
+                    {searchItems.map((item, index) => {
+                      if (index <= 2) {
+                        return <ItemCard key={index} item={item} />;
+                      }
+                    })}
 
-                  {searchItems && (
-                    <div style={{ marginBottom: '30px' }}>
-                      <YMaps>
-                        <Map width={850} height={500} defaultState={mapData}>
-                          {marks && marks.map((mark) => <Placemark geometry={mark} />)}
-                        </Map>
-                      </YMaps>
+                    {searchItems && (
+                      <div style={{ marginBottom: '30px' }}>
+                        <YMaps>
+                          <Map width={850} height={500} defaultState={mapData}>
+                            {marks && marks.map((mark) => <Placemark geometry={mark} />)}
+                          </Map>
+                        </YMaps>
+                      </div>
+                    )}
+                    {searchItems.map((item, index) => {
+                      if (index > 2) {
+                        return <ItemCard key={index} item={item} />;
+                      }
+                    })}
+                  </div>
+                )}
+                {searchItems.length === 0 && (
+                  <div className="all_content_blocks">
+                    <div className="search_not_found">
+                      <p>Не найдено вещей по заданным параметам.</p>
+                      <p style={{ marginBottom: '20px' }}>Вы можете предложить свою вещь:</p>
+                      <input
+                        onClick={addSubjectHandler}
+                        type="button"
+                        value="Предложить вещь"
+                        className="header-button add-subject"
+                      />
                     </div>
-                  )}
-                  {searchItems.map((item, index) => {
-                    if (index > 2) {
-                      return <ItemCard key={index} item={item} />;
-                    }
-                  })}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

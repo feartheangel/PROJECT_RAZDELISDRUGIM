@@ -52,7 +52,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, userData } = useSelector(({ userData }) => userData);
+  const { isLoggedIn, userData, subjects } = useSelector(({ userData }) => userData);
   const { items, isLoaded } = useSelector(({ items }) => items);
   const {
     searchItems,
@@ -79,8 +79,11 @@ const Header = () => {
   };
 
   const addSubjectHandler = () => {
-    if (isLoggedIn) {
+    if (isLoggedIn && subjects.length < 5) {
       window.location.href = '/place-item';
+      return;
+    } else if (isLoggedIn && subjects.length >= 5) {
+      alert('Лимит вещей достигнут (5)');
       return;
     } else if (!isLoggedIn) {
       alert('Сначала авторизуйтесь!');
@@ -117,6 +120,7 @@ const Header = () => {
   };
 
   const categorySetHandler = (category_curr, category_id) => {
+    setBurgerActive(false);
     dispatch(setCategoryId(category_id));
     dispatch(setSearchCategory(category_curr));
     Requests.search(

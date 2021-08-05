@@ -39,9 +39,9 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
     x1.setHours(12, 0, 0);
 
     return Math.round((x1 - x0) / msPerDay) > 365
-      ? `${Math.round((x1 - x0) / msPerDay) / 365} год(лет)`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 365)} год(лет)`
       : Math.round((x1 - x0) / msPerDay) > 30
-      ? `${Math.round((x1 - x0) / msPerDay) / 30} мес.`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 30)} мес.`
       : `${Math.round((x1 - x0) / msPerDay)} д.`;
   }
 
@@ -55,8 +55,9 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
   const photoHandler = (e) => {
     const formData = new FormData();
+    delete formData.image_profile;
     formData.append('image_profile', e.target.files[0]);
-    Requests.updateProfileImage(formData).then(() => {
+    Requests.updateProfileImageReq(formData).then(() => {
       alert('Картинка успешно обновлена!');
       dispatch(reloadData(!reload));
     });

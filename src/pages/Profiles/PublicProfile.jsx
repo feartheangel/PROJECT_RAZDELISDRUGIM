@@ -33,9 +33,9 @@ const PublicProfile = () => {
     x1.setHours(12, 0, 0);
 
     return Math.round((x1 - x0) / msPerDay) > 365
-      ? `${Math.round((x1 - x0) / msPerDay) / 365} год(лет)`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 365)} год(лет)`
       : Math.round((x1 - x0) / msPerDay) > 30
-      ? `${Math.round((x1 - x0) / msPerDay) / 30} мес.`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 30)} мес.`
       : `${Math.round((x1 - x0) / msPerDay)} д.`;
   }
 
@@ -329,7 +329,7 @@ const PublicProfile = () => {
                     onClick={() => setActiveForm2('arends')}>
                     Сдает
                   </p>
-                  <p className="down_header_text1-p2">3</p>
+                  <p className="down_header_text1-p2">{profileItems && profileItems.length}</p>
                 </div>
                 <p
                   className={
