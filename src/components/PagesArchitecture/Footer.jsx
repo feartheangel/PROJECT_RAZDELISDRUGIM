@@ -11,7 +11,21 @@ import Yandex from '../../img/MainPage/Method=Yandex.png';
 import Planet from '../../img/MainPage/Planet.png';
 import VK from '../../img/MainPage/VK.png';
 
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
+  const { items, isLoaded } = useSelector(({ items }) => items);
+
+  //выделяем разделы
+  const chapters = {};
+  isLoaded &&
+    items.map((item, index) => {
+      if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
+        chapters[item.chapter_id.name_chapter] = item.chapter_id.id;
+      }
+    });
+
   return (
     <section className="footer-wrapper">
       <section className="footer">
@@ -49,27 +63,33 @@ const Footer = () => {
           <div className="footer-third-col">
             <ul className="footer-third-ul">
               <li className="footer-third-li main-footer-li">Категории</li>
-              <li className="footer-third-li">Недвижимость</li>
-              <li className="footer-third-li">Авто и транспорт</li>
-              <li className="footer-third-li">Электроника</li>
-              <li className="footer-third-li">Техника</li>
-              <li className="footer-third-li">Гардероб</li>
-              <li className="footer-third-li">Детские товары</li>
-              <li className="footer-third-li">Мебель</li>
-              <li className="footer-third-li">Услуги</li>
+              {isLoaded &&
+                [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
+                  if (index <= 8) {
+                    return (
+                      <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
+                        {chapter[0]}
+                      </li>
+                    );
+                  }
+                })}
             </ul>
           </div>
           <div className="footer-fourth-col">
             <ul className="footer-fourth-ul">
-              <li className="footer-fourth-li">Медицинские товары</li>
-              <li className="footer-fourth-li">Животные</li>
-              <li className="footer-fourth-li">Свадьбы и праздники</li>
-              <li className="footer-fourth-li">Хобби и развлечения</li>
-              <li className="footer-fourth-li">Спорт и туризм</li>
-              <li className="footer-fourth-li">Сади и огород</li>
-              <li className="footer-fourth-li">Оргтехника</li>
-              <li className="footer-fourth-li">Ремонт и стройка</li>
-              <input type="button" value="Смотреть каталог" className="footer-categories-button" />
+              {isLoaded &&
+                [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
+                  if (index > 8) {
+                    return (
+                      <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
+                        {chapter[0]}
+                      </li>
+                    );
+                  }
+                })}
+              <Link style={{ textDecoration: 'none' }} to="/catalog">
+                <input type="button" value="Смотреть каталог" className="popular-button" />
+              </Link>
             </ul>
           </div>
           <div className="footer-fifth-col">

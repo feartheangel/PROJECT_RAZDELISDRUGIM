@@ -61,6 +61,9 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
       .then((response) => {
         dispatch(reloadData(!reload));
         alert('Почта успешно подтверждена!');
+        setCode('');
+        setTimer(false);
+        setTimerStart(false);
         setModalActiveEmail(false);
       })
       .catch((e) => {

@@ -62,6 +62,9 @@ const NumberSubmittionModule = ({ modalActiveNumber, setModalActiveNumber }) => 
         dispatch(reloadData(!reload));
         alert('Телефон успешно подтвержден!');
         setModalActiveNumber(false);
+        setCode('');
+        setTimer(false);
+        setTimerStart(false);
       })
       .catch((e) => {
         alert('Введен неверный код! Попробуйте еще раз.');

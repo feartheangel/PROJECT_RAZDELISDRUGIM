@@ -41,7 +41,6 @@ const Header = () => {
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
   const [burgerActive, setBurgerActive] = React.useState(false);
   const [openedCategories, setOpenedCategories] = React.useState([]);
-  const [search, setSearch] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const keyDownHandler = React.useCallback((event) => {
@@ -119,13 +118,13 @@ const Header = () => {
     setRedirect(<Redirect to={`/search`} />);
   };
 
-  const categorySetHandler = (category_curr, category_id) => {
+  const categorySetHandler = (category_id, category_name) => {
     setBurgerActive(false);
     dispatch(setCategoryId(category_id));
-    dispatch(setSearchCategory(category_curr));
+    dispatch(setSearchCategory(category_name));
     Requests.search(
       words,
-      category_curr,
+      category_id,
       min_price,
       max_price,
       free,
@@ -269,7 +268,7 @@ const Header = () => {
                             ) {
                               return (
                                 <p
-                                  onClick={() => categorySetHandler(category[0], category[1][0][0])}
+                                  onClick={() => categorySetHandler(category[1][0][0], category[0])}
                                   className={
                                     category_id === category[1][0][0]
                                       ? 'content_left_optional_li__sub active'

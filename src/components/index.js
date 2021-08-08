@@ -14,3 +14,15 @@ export { default as ItemCardProfile } from './PagesArchitecture/ItemCardProfile'
 export { default as ItemDeleteSubmit } from './RegAuthComponents/ItemDeleteSubmit';
 export { default as AddressDeleteSubmit } from './RegAuthComponents/AddressDeleteSubmit';
 export { default as SocialContactEnter } from './Profile/SocialContactEnter';
+export { default as FirstBlockNavigation } from './MainPage/FirstBlockNavigation';
+export { default as RecentItemsSlider } from './MainPage/RecentItemsSlider';
+export { default as MapBlock } from './MainPage/Map';
+export { default as RandomItemsSlider } from './MainPage/RandomItemsSlider';
+export { default as AbilitiesBlock } from './MainPage/AbilitiesBlock';
+export { default as ReviewsBlock } from './MainPage/ReviewsBlock';
+export { default as AboutBlock } from './MainPage/AboutBlock';
+export { default as News } from './MainPage/News';
+export { default as Categories } from './MainPage/Categories';
+export { default as Partners } from './MainPage/Partners';
+export { default as Adverts } from './MainPage/Adverts';
+export { default as MediaAbout } from './MainPage/MediaAboutBlock';

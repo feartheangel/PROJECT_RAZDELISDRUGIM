@@ -32,33 +32,33 @@ function App() {
 
   React.useEffect(() => {
     dispatch(setItemsLoading());
-    Requests.fetchUserProfile()
+    Requests.fetchItems()
       .then((response) => {
-        dispatch(setUserData(response.data));
+        dispatch(setItems(response.data));
+        dispatch(setItemsLoaded());
       })
       .then(
-        Requests.fetchItems().then((response) => {
-          if (response.status === 200 || response.status === 201) {
-            dispatch(setItems(response.data));
-            Requests.fetchAdresses()
-              .then((response) => {
-                dispatch(setAdresses(response.data));
-                dispatch(setItemsLoaded());
-              })
-              .then(() => {
-                Requests.fetchSubjects().then((response) => {
-                  dispatch(setUserSubjects(response.data));
-                });
-              })
-              .then(() => {
-                navigator.geolocation.getCurrentPosition((pos) => {
-                  dispatch(setUserCoords(`${pos.coords.longitude} ${pos.coords.latitude}`));
-                }),
-                  () => alert('Ошибка получения местоположения!'),
-                  { maximumAge: 10000, enableHighAccuracy: true, timeout: 10000 };
-              })
-              .catch();
-          }
+        Requests.fetchUserProfile().then((response) => {
+          dispatch(setUserData(response.data));
+          dispatch(setItemsLoading());
+          Requests.fetchAdresses()
+            .then((response) => {
+              dispatch(setAdresses(response.data));
+              dispatch(setItemsLoaded());
+            })
+            .then(() => {
+              Requests.fetchSubjects().then((response) => {
+                dispatch(setUserSubjects(response.data));
+              });
+            })
+            .then(() => {
+              navigator.geolocation.getCurrentPosition((pos) => {
+                dispatch(setUserCoords(`${pos.coords.longitude} ${pos.coords.latitude}`));
+              }),
+                () => alert('Ошибка получения местоположения!'),
+                { maximumAge: 10000, enableHighAccuracy: true, timeout: 10000 };
+            })
+            .catch();
         }),
       );
   }, [isLoggedIn, reload]);

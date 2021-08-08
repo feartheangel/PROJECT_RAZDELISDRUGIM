@@ -70,6 +70,10 @@ const SearchPage = () => {
   }, [searchItems]);
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  React.useEffect(() => {
     if (
       !words &&
       !category &&
@@ -629,8 +633,11 @@ const SearchPage = () => {
                 {searchItems.length === 0 && (
                   <div className="all_content_blocks">
                     <div className="search_not_found">
-                      <p>Не найдено вещей по заданным параметам.</p>
-                      <p style={{ marginBottom: '20px' }}>Вы можете предложить свою вещь:</p>
+                      <p>Сегодня ничего не найдено по заданным параметрам.</p>
+                      <p style={{ marginBottom: '20px' }}>
+                        Вы можете предложить свою вещь, услугу или иное имущество, либо зайти
+                        завтра...
+                      </p>
                       <input
                         onClick={addSubjectHandler}
                         type="button"

@@ -3,6 +3,11 @@ import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 const rootAddress = 'https://razdelisdrugim.by/';
 
+//регулярные выражения для проверки телефона и почты
+const contactEmailRegExp =
+  /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
+const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
+
 class Requests {
   constructor() {}
 
@@ -22,7 +27,7 @@ class Requests {
     });
   }
 
-  static updateProfile(status, referral, id, token) {
+  static updateProfile(status, referral, id, token, login) {
     return axios({
       method: 'POST',
       headers: {
@@ -32,6 +37,8 @@ class Requests {
       data: {
         status: status,
         referral_code: referral ? referral : '',
+        phone: contactNumberRegExp.test(login) ? login : '',
+        email: contactEmailRegExp.test(login) ? login : '',
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/${id}/`,
     }).then((response) => {
@@ -951,6 +958,18 @@ class Requests {
         'Content-Type': 'application/json',
       },
       url: `https://razdelisdrugim.by/api/items/recent/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getRandomItems() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/items/random/`,
     }).then((response) => {
       return response;
     });

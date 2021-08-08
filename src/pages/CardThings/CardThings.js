@@ -87,6 +87,10 @@ const CardThings = () => {
     });
   }, [window.location.href]);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [itemData, setItemData] = React.useState();
   const [simillarSubjects, setSimillarSubjects] = React.useState();
   const [selectedImage, setSelectedImage] = React.useState();
@@ -338,7 +342,7 @@ const CardThings = () => {
                         <img src={Vector2} className="img_vector2" alt="" />
                       </div>
                       <p className="conditions_timeItem-p">
-                        — не позднее {itemData && itemData.receive_time}
+                        — не ранее {itemData && itemData.receive_time}
                       </p>
                     </div>
 
@@ -600,10 +604,9 @@ const CardThings = () => {
                   </div>
 
                   {/*Аватарка владельца и тд*/}
-                  <a
-                    target="_blank"
-                    style={{ textDecoration: 'none' }}
-                    href={`/public-profile?id=${itemData && itemData.profile.id}`}>
+                  <Link
+                    to={`/public-profile?id=${itemData && itemData.profile.id}`}
+                    style={{ textDecoration: 'none' }}>
                     <div className="block_down_owner_photo">
                       <img
                         style={{ borderRadius: '100%', width: '70px', height: '70px' }}
@@ -623,7 +626,7 @@ const CardThings = () => {
                         </p>
                       </div>
                     </div>
-                  </a>
+                  </Link>
 
                   {/*Звездочки и отзывы*/}
                   <div className="block_down_star">
@@ -713,9 +716,9 @@ const CardThings = () => {
                               itemData && itemData.profile.whatsapp_account
                             }&text=Здравствуйте, ${
                               itemData && itemData.profile.first_name
-                            }. Пишу вам потому, что вы делитесь своей вещью '${
+                            }. Пишу вам потому, что вы делитесь этим: '${
                               itemData && itemData.name_item
-                            }' на платформе Razdelisdrugim.`}
+                            }' на платформе #разделисдругим.`}
                             target="_blank">
                             <img
                               style={{ cursor: 'pointer' }}

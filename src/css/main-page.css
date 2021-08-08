@@ -318,7 +318,7 @@ button {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .recent-block {
@@ -352,11 +352,13 @@ button {
 }
 
 .recent-arrow-right {
-  margin-left: 10px;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .recent-arrow-left {
   margin-right: 40px;
+  cursor: pointer;
 }
 
 .recent-block-title-p {
@@ -435,12 +437,10 @@ button {
 }
 
 .map {
-  height: 594px;
   padding: 0px 165px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: url(../img/MainPage/Map1.png) no-repeat center center;
 }
 
 .map-search {
@@ -497,6 +497,7 @@ button {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
+  cursor: pointer;
 }
 
 .about-button-give {
@@ -512,6 +513,7 @@ button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 40px;
 }
 
 .abilities-content {
@@ -821,6 +823,7 @@ button {
   justify-content: center;
   align-items: center;
   padding: 0 165px;
+  margin-bottom: 40px;
 }
 
 .main-sections-first {
@@ -1033,6 +1036,7 @@ button {
 .footer-payment {
   margin-right: 2px;
   margin-left: 2px;
+  display: none;
 }
 
 .footer-socials {
@@ -1111,7 +1115,7 @@ button {
 
 .recent-blocks-slider-container {
   display: flex;
-  width: 850px;
+  width: 1140px;
   overflow-x: hidden;
   padding: 20px;
 }
@@ -1162,4 +1166,9 @@ button {
 
 .main_page_fris_block_left {
   margin-right: 253px;
+}
+
+.home_slider_track {
+  display: flex;
+  transition: 0.2s;
 }
