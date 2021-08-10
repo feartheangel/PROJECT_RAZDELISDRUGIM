@@ -1172,3 +1172,11 @@ button {
   display: flex;
   transition: 0.2s;
 }
+
+.itemcard_favorite_img {
+  width: 25px;
+  height: 25px;
+  align-self: flex-end;
+  cursor: pointer;
+  margin-top: 20px;
+}

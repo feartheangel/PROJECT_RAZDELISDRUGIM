@@ -20,6 +20,7 @@ const Footer = () => {
   //выделяем разделы
   const chapters = {};
   isLoaded &&
+    items.length > 2 &&
     items.map((item, index) => {
       if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
         chapters[item.chapter_id.name_chapter] = item.chapter_id.id;

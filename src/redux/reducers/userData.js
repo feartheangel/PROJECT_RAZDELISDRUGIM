@@ -5,6 +5,7 @@ const initialState = {
   addresses: [],
   userData: {},
   subjects: [],
+  favorites: [],
   reload: false,
 };
 
@@ -62,6 +63,13 @@ const userData = (state = initialState, action) => {
       return {
         ...state,
         reload: action.payload,
+      };
+      break;
+
+    case 'SET_FAVORITES':
+      return {
+        ...state,
+        favorites: action.payload,
       };
       break;
   }

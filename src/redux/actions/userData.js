@@ -37,3 +37,8 @@ export const reloadData = (arg) => ({
   type: 'RELOAD',
   payload: arg,
 });
+
+export const setFavorites = (arr) => ({
+  type: 'SET_FAVORITES',
+  payload: arr,
+});

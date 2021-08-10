@@ -21,7 +21,7 @@ const RecentItemsSlider = () => {
 
   React.useEffect(() => {
     Requests.getRecentItems().then((res) => {
-      setRecentItems(res.data.reverse());
+      setRecentItems(res.data);
     });
   }, []);
 

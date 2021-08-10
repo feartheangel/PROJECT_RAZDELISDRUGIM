@@ -16,8 +16,40 @@ import UnionDisabled from '../../img/MainPage/Union-disabled.png';
 import moneyTimeDisabled from '../../img/MainPage/money-time-disabled.png';
 import yourCost from '../../img/MainPage/yourCost.png';
 import freePrice from '../../img/MainPage/freePrice.png';
+import Favorites from '../../img/MainPage/Favorites.png';
+import FavoritesDisabled from '../../img/MainPage/FavoritesDisabled.png';
 
 const ItemCard = ({ item }) => {
+  const dispatch = useDispatch();
+  const { reload, favorites } = useSelector(({ userData }) => userData);
+  const [isFavorite, setIsFavorite] = React.useState(false);
+
+  const addFavoriteHandler = (e) => {
+    e.preventDefault();
+    Requests.addFavoriteItem(item.id).then(() => {
+      alert('Добавлено в "Избранное"!');
+      setIsFavorite(true);
+    });
+  };
+
+  const deleteFavoriteHandler = (e) => {
+    e.preventDefault();
+    Requests.deleteFavoriteItem(item.id).then(() => {
+      alert('Удалено из "Избранное"!');
+      setIsFavorite(false);
+    });
+  };
+
+  React.useEffect(() => {
+    favorites &&
+      favorites.forEach((elem) => {
+        if (elem.item.id === item.id) {
+          setIsFavorite(true);
+        }
+        return;
+      });
+  }, [favorites]);
+
   return (
     <div className="recent-block-wrapper">
       <a style={{ textDecoration: 'none' }} href={`/item-card?id=${item.id}`} target="_blank">
@@ -119,6 +151,21 @@ const ItemCard = ({ item }) => {
             className="recent-block-title-p">
             {item.profile.company_name ? item.profile.company_name : item.profile.first_name}
           </p>
+          {favorites && !isFavorite && (
+            <img
+              onClick={(e) => addFavoriteHandler(e)}
+              className="itemcard_favorite_img"
+              src={FavoritesDisabled}
+            />
+          )}
+
+          {favorites && isFavorite && (
+            <img
+              onClick={(e) => deleteFavoriteHandler(e)}
+              className="itemcard_favorite_img"
+              src={Favorites}
+            />
+          )}
         </div>
       </a>
     </div>
