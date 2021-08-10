@@ -13,7 +13,8 @@ button {
 }
 
 .content {
-  min-width: 1345px;
+  min-width: 100%;
+  width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
@@ -55,6 +56,10 @@ button {
   height: 31px;
   font-size: 14px;
   background-color: black;
+}
+.news-alert-p{
+  color: white;
+  width: '100%'; 
 }
 
 .header__inner {
@@ -1114,3 +1119,480 @@ button {
   overflow-x: hidden;
   padding: 20px;
 }
+.burger-button{
+  margin-right: 355px;
+}
+.burger-catalog{
+  display: none;
+}
+.recent-block-up{
+  width: 214px;
+  height: 60px;
+  overflow: hidden;
+}
+.recent-block-title-p{
+  font-size: 18px;
+  line-height: 21px;
+  color: rgba(9, 29, 32, 0.8);
+  margin-top: 20px;
+}
+.recent-time-p{
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+
+
+
+
+
+
+/* МЕДИА ЗАПРОСЫ  */
+
+@media (max-width:479px){
+
+  /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 478px;
+  min-width: 478px;
+  height: 100%;
+  overflow-x: hidden;
+}
+/* БЛОК HEADER */
+.header{
+  display: flex;
+  max-width: 479px;
+  min-width: 479px;
+  height: auto;
+}
+.news-alert-block{
+  height: 37px;
+  font-size: 14px;
+}
+/* шапка хедера */
+.header__inner{
+  padding: 0;
+  max-width: 479px;
+  height: auto;
+  flex-wrap: wrap;
+  margin: 10px 15px 0;
+}
+.header-left-content{
+  margin-bottom: 15px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+.location-selector{
+  margin-left: 85px;
+  margin-right: 110px;
+}
+.language-selector{
+  margin: 0;
+
+}
+.logo{
+  margin: 0;
+  width: 121px;
+  height: 41px;
+}
+/* кнопки входа и тд */
+.header-right-content{
+  width: 100%;
+  justify-content: space-between;
+  margin: 0;
+}
+.add-subject{
+ width: 144px;
+ height: 40px; 
+ font-size: 14px;
+ font-weight: 500;
+}
+.login-button{
+  width: 90px;
+  height: 40px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+/* строка поиска и бургер */
+.header-lower-table{
+  display: flex;
+  justify-content: start;
+  padding: 0;
+  max-width: 479px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+}
+.header-lower-table-left{
+  width: auto;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.burger-button{
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.burger-catalog{
+  display: flex;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #123940;
+}
+.header-lower-table-right{
+  width: 100%;
+}
+.search-wrapper{
+  margin-right: 15px;
+  width: 340px;
+}
+.search-input{
+  width: 260px;
+  margin: 0;
+  padding: 0 0 0 30px;
+}
+/* НЕДАВНО ДОБАВЛЕННЫЕ И КАРТОЧКИ */
+.recent-p{
+  margin: 15px 15px 0 15px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+/* карточки(внутренние элементы)  */
+.recent-block{
+  padding: 10px;
+  width: 185px;
+  height: auto;
+  margin: 0 0 10px 0;
+}
+.recent-marks{
+  margin-top: 10px;
+}
+.card-mark:not(:last-child){
+  margin-right: 15px;
+}
+.block-image{
+  width: 180px;
+  height: 205px;
+}
+.recent-block-title-p{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 16px;
+  color: #000000;
+  margin-top: 7px;
+}
+.recent-time-cost-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+.recent-time-p{
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+.recent-cost-p{
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+.recent-block-up{
+  width: auto;
+  height: auto;
+
+}
+
+
+
+/* карточки(сами дивы для размещения )  */
+.recent-blocks-slider-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: auto;
+  padding: 15px;
+}
+.recent-content{
+  padding: 0;
+}
+.recent-blocks-wrapper{
+  margin:0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  padding: 0;
+}
+.recent-arrow-right{
+  display: none;
+}
+.recent-arrow-left{
+  display: none;
+}
+
+/* СЕКЦИЯ С КАРТОЙ  */
+.map{
+  padding: 0;
+  height: 350px;
+  max-width: 479px;
+}
+.map-input{
+  width: 330px;
+  padding-left: 10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+}
+.map-search{
+  margin: 10px 15px 0 15px;
+  height: 45px;
+}
+.map-button{
+  width: 120px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #091D20;
+  padding-left: 10px;
+  background: url(../img/MainPage/Search.png) no-repeat 10px center;
+  background-size: 9%;
+  background-color: #4cc9f0;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+/* ЧАСТО АРЕНДУЕМЫЕ */
+.popular-p{
+  margin: 15px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+.popular-button{
+  margin: 15px 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  width: 215px;
+  height: 50px;
+}
+
+/* ВОЗМОЖНОСТИ С ПЛАТФОРМОЙ ТЕКСТ */
+.abilities-mail-title{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin:0 15px 0 15px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 28px;
+}
+
+/* ИНФО КАРТОЧКИ С ТЕКСТОМ  */
+.abilities-content{
+  padding: 0;
+  max-width: 478px;
+}
+.abilities-cards{
+  margin: 0;
+  max-width: 478px;
+  color: #123940;
+}
+.abilities-card{
+  margin: 15px 15px 10px 15px;
+  width: 100%;
+  height: auto;
+  padding: 10px 10px 40px 10px;
+}
+.main-abilities-card-title{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #123940;
+  margin: 0;
+}
+.abilities-card-img{
+  width: 56px;
+  height: 56px;
+  margin: 10px 0;
+}
+.abilities-card-p{
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 0 0;
+  width: auto;
+  height: auto;
+}
+
+/* КНОПКИ ПОД КАРТОЧКАМИ ОПИСАНИЙ  */
+.abilities-buttons{
+  max-width: 478px;
+  margin: 10px 15px 20px 15px;
+}
+.abilities-button-find-subject{
+  width: 205px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #091D20;
+}
+.abilities-button-give-subject{
+  width: 205px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #091D20;
+}
+
+/* ОТЗЫВЫ О НАС ТЕКСТ */
+.reviews-main-title{
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #091D20;
+  margin: 0 0 10px 0;
+}
+.reviews-blocks{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 20px 0;
+}
+/* отзывы о нас ( карточки отзывов) */
+.reviews-block{
+  width: 190px;
+  height: 265px;
+  padding: 10px;
+  margin: 10px;
+}
+.review-img{
+  width: 50px;
+  height: 50px;
+}
+.review-name{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #123940;
+}
+.review-date{
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: rgba(9, 29, 32, 0.4)
+}
+.review-text{
+  width: auto;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #123940;
+}
+
+/* КНОПКИ ПОД ОТЗЫВАМИ  */
+.reviews-buttons{
+  max-width: 478px;
+  margin: 10px 15px 20px 15px;
+}
+.reviews-button-write-dev{
+  width: 205px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #091D20;
+}
+.reviews-button-write-review{
+  width: 205px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #091D20;
+}
+/* О нашем сервисе */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

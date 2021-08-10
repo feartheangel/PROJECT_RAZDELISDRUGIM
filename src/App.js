@@ -50,13 +50,13 @@ function App() {
                   dispatch(setUserSubjects(response.data));
                 });
               })
-              .then(() => {
-                navigator.geolocation.getCurrentPosition((pos) => {
-                  dispatch(setUserCoords(`${pos.coords.latitude} ${pos.coords.longitude}`));
-                }),
-                  () => alert('Ошибка получения местоположения!'),
-                  { maximumAge: 10000, enableHighAccuracy: true, timeout: 10000 };
-              })
+              // .then(() => {
+              //   navigator.geolocation.getCurrentPosition((pos) => {
+              //     dispatch(setUserCoords(`${pos.coords.latitude} ${pos.coords.longitude}`));
+              //   }),
+              //     () => alert('Ошибка получения местоположения!'),
+              //     { maximumAge: 10000, enableHighAccuracy: true, timeout: 10000 };
+              // })
               .catch();
           }
         }),

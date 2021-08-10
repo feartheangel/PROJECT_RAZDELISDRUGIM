@@ -84,7 +84,7 @@ const Header = ({ setModalActive }) => {
   return (
     <header className="header">
       <div className="news-alert-block">
-        <p style={{ color: 'white', width: '100%' }} className="news-alert-p">
+        <p className="news-alert-p">
           Теперь вы можете искать вещь в аренду на карте!
         </p>
       </div>
@@ -148,7 +148,8 @@ const Header = ({ setModalActive }) => {
       </div>
       <div className="header-lower-table">
         <div className="header-lower-table-left">
-          <img style={{ marginRight: '355px' }} src={Burger} alt="" className="burger-button" />
+          <img src={Burger} alt="" className="burger-button" />
+          <p className="burger-catalog">Каталог</p>
         </div>
         <div className="header-lower-table-right">
           <div className="search-wrapper">
