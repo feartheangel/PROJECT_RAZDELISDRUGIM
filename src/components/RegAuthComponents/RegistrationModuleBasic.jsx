@@ -132,7 +132,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200 || response.status === 201) {
-          Requests.updateProfile(regType, referral, response.data.id, response.data.token)
+          Requests.updateProfile(regType, referral, response.data.id, response.data.token, contact)
             .then((response) => {
               console.log(response);
               if (response.status === 200 || response.status === 201) {

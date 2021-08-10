@@ -3,6 +3,11 @@ import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 const rootAddress = 'https://razdelisdrugim.by/';
 
+//регулярные выражения для проверки телефона и почты
+const contactEmailRegExp =
+  /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
+const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
+
 class Requests {
   constructor() {}
 
@@ -22,7 +27,7 @@ class Requests {
     });
   }
 
-  static updateProfile(status, referral, id, token) {
+  static updateProfile(status, referral, id, token, login) {
     return axios({
       method: 'POST',
       headers: {
@@ -32,6 +37,8 @@ class Requests {
       data: {
         status: status,
         referral_code: referral ? referral : '',
+        phone: contactNumberRegExp.test(login) ? login : '',
+        email: contactEmailRegExp.test(login) ? login : '',
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/${id}/`,
     }).then((response) => {
@@ -186,15 +193,15 @@ class Requests {
       data: {
         category_id: category_id,
         name_item: name_item,
-        description: description ? description : ' ',
+        description: description ? description : '',
         rent: rent,
         price_rent: price_rent,
-        key_words: key_words ? key_words : ' ',
+        key_words: key_words ? key_words : '',
         year_release: year_release ? year_release : null,
-        mileage: mileage ? mileage : ' ',
+        mileage: mileage ? mileage : '',
         price_item: price_item ? price_item : null,
-        receive_time: receive_time ? receive_time : ' ',
-        return_time: return_time ? return_time : ' ',
+        receive_time: receive_time ? receive_time : '',
+        return_time: return_time ? return_time : '',
         prepare_time: prepare_time ? prepare_time : null,
         delivery: delivery ? delivery : 'NONE',
         delivery_free: delivery_free ? delivery_free : false,
@@ -216,14 +223,14 @@ class Requests {
         insurance_price: insurance_price ? insurance_price : null,
         sell: sell ? sell : false,
         contract: contract ? contract : false,
-        appointment: appointment ? appointment : ' ',
+        appointment: appointment ? appointment : '',
         structure: structure ? structure : ' ',
         free_rent: free_rent ? free_rent : false,
         offer_price_rent: offer_price_rent ? offer_price_rent : false,
-        color: color ? color : ' ',
+        color: color ? color : '',
         franchise: franchise ? franchise : false,
         franchise_price: franchise_price ? franchise_price : null,
-        article: article ? article : ' ',
+        article: article ? article : '',
         inventory_number: inventory_number ? inventory_number : '',
         items_coordinates: coords,
         prepare_time_choice: prepare_time_choice ? prepare_time_choice : 'NONE',
@@ -660,14 +667,14 @@ class Requests {
         insurance_price: insurance_price ? insurance_price : null,
         sell: sell ? sell : false,
         contract: contract ? contract : false,
-        appointment: appointment ? appointment : ' ',
-        structure: structure ? structure : ' ',
+        appointment: appointment ? appointment : '',
+        structure: structure ? structure : '',
         free_rent: free_rent ? free_rent : false,
         offer_price_rent: offer_price_rent ? offer_price_rent : false,
-        color: color ? color : ' ',
+        color: color ? color : '',
         franchise: franchise ? franchise : false,
         franchise_price: franchise_price ? franchise_price : null,
-        article: article ? article : ' ',
+        article: article ? article : '',
         inventory_number: inventory_number ? inventory_number : '',
         items_coordinates: coords,
         prepare_time_choice: prepare_time_choice ? prepare_time_choice : 'NONE',
@@ -832,7 +839,7 @@ class Requests {
     });
   }
 
-  static updateProfileImage(formData) {
+  static updateProfileImageReq(formData) {
     return axios({
       method: 'POST',
       headers: {
@@ -903,6 +910,66 @@ class Requests {
         'Content-Type': 'application/json',
       },
       url: `https://razdelisdrugim.by/api/items/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getPublicProfile(id) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/jwt/profile/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getPublicProfileItems(id) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/items/profile-items/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getPublicProfileAddresses(id) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/jwt/profile/address/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getRecentItems() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/items/recent/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getRandomItems() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/items/random/`,
     }).then((response) => {
       return response;
     });

@@ -34,10 +34,10 @@ const PrivateProfile = () => {
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <Link
-              style={{ textDecoration: 'none' }}
+              style={subjects.length === 0 ? { display: 'none' } : { textDecoration: 'none' }}
               className="conteiner_shapka_myProfile"
               to="/i-rent-out">
-              <p>
+              <p style={subjects.length === 0 ? { opacity: '0.4', pointerEvents: 'none' } : {}}>
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>

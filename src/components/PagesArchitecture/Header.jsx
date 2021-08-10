@@ -6,29 +6,53 @@ import LanguagePlanet from '../../img/MainPage/Language-planet.png';
 import Burger from '../../img/MainPage/Burger.png';
 import Logo from '../../img/MainPage/Logo.png';
 import mark from '../../img/MainPage/Mark.png';
+import vector2 from '../../img/SearchPage/Vector2.png';
 import { logoutAction, loginAction } from '../../redux/actions/userData';
-import { setSearchWords, setSearchItems } from '../../redux/actions/search';
-import { ProfilePopUp } from '../index';
+import {
+  setSearchWords,
+  setSearchItems,
+  setSearchCategory,
+  setCategoryId,
+} from '../../redux/actions/search';
+import { ProfilePopUp, BaseModal } from '../index';
 import Favorites from '../../img/MainPage/Favorites.png';
 import Notifications from '../../img/MainPage/Notifications.png';
 import UserAvatar from '../../img/MainPage/UserAvatar.png';
 import MenuStroke from '../../img/MainPage/MenuStroke.png';
 
-const Header = ({ setModalActive }) => {
+const Header = () => {
+  const searchButton = React.useRef(null);
+
+  const [modalActive, setModalActive] = React.useState(false);
+
   React.useEffect(() => {
     if (localStorage.getItem('key')) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
+
+    document.addEventListener('keydown', keyDownHandler, false);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler, false);
+    };
   }, [localStorage.getItem('key')]);
 
   const [redirect, setRedirect] = React.useState();
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
-  const [search, setSearch] = React.useState();
+  const [burgerActive, setBurgerActive] = React.useState(false);
+  const [openedCategories, setOpenedCategories] = React.useState([]);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
+
+  const keyDownHandler = React.useCallback((event) => {
+    if (event.keyCode === 13) {
+      searchButton.current.click();
+    }
+  });
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, userData } = useSelector(({ userData }) => userData);
+  const { isLoggedIn, userData, subjects } = useSelector(({ userData }) => userData);
+  const { items, isLoaded } = useSelector(({ items }) => items);
   const {
     searchItems,
     words,
@@ -43,6 +67,7 @@ const Header = ({ setModalActive }) => {
     contract,
     pledge,
     distance,
+    category_id,
   } = useSelector(({ search }) => search);
 
   const logout = () => {
@@ -53,8 +78,20 @@ const Header = ({ setModalActive }) => {
   };
 
   const addSubjectHandler = () => {
-    if (isLoggedIn) setRedirect(<Redirect to="/place-item" />);
-    else alert('Сначала авторизуйтесь!');
+    if (isLoggedIn && subjects.length < 5) {
+      window.location.href = '/place-item';
+      return;
+    } else if (isLoggedIn && subjects.length >= 5) {
+      alert('Лимит вещей достигнут (5)');
+      return;
+    } else if (!isLoggedIn) {
+      alert('Сначала авторизуйтесь!');
+      return;
+    } else if (!userData.email_verify || !userData.phone_verify) {
+      alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
+      setRedirect(<Redirect to="/private-profile" />);
+      return;
+    }
   };
 
   const searchRedirect = () => {
@@ -81,8 +118,59 @@ const Header = ({ setModalActive }) => {
     setRedirect(<Redirect to={`/search`} />);
   };
 
+  const categorySetHandler = (category_id, category_name) => {
+    setBurgerActive(false);
+    dispatch(setCategoryId(category_id));
+    dispatch(setSearchCategory(category_name));
+    Requests.search(
+      words,
+      category_id,
+      min_price,
+      max_price,
+      free,
+      status,
+      delivery,
+      insurance,
+      contract,
+      pledge,
+      userCoordinates,
+      distance,
+    ).then((res) => {
+      dispatch(setSearchItems(res.data));
+    });
+    setRedirect(<Redirect to={`/search`} />);
+  };
+
+  const openChapterHandler = (id) => {
+    if (!(openedCategories === id)) {
+      setOpenedCategories(id);
+      forceUpdate();
+    } else if (openedCategories === id) {
+      setOpenedCategories(false);
+      forceUpdate();
+    }
+  };
+
+  //выделяем разделы
+  const chapters = {};
+  isLoaded &&
+    items.map((item, index) => {
+      if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
+        chapters[item.chapter_id.name_chapter] = item.chapter_id.id;
+      }
+    });
+
+  //выделяем категории
+  const categories = {};
+  isLoaded &&
+    items.map((item, index) => {
+      if (!categories[item.name_category]) {
+        categories[item.name_category] = [[item.id, item.chapter_id.id]];
+      }
+    });
+
   return (
-    <header className="header">
+    <header className="header" onKeyDown={(e) => keyDownHandler(e)}>
       <div className="news-alert-block">
         <p className="news-alert-p">
           Теперь вы можете искать вещь в аренду на карте!
@@ -150,7 +238,56 @@ const Header = ({ setModalActive }) => {
         <div className="header-lower-table-left">
           <img src={Burger} alt="" className="burger-button" />
           <p className="burger-catalog">Каталог</p>
+          <img
+            onClick={() => setBurgerActive(!burgerActive)}
+            style={{ marginRight: '355px', cursor: 'pointer' }}
+            src={Burger}
+            alt=""
+            className="burger-button"
+          />
         </div>
+        {burgerActive && (
+          <div className={'burger_dropdown_menu'}>
+            <div className="SearchPage_container_content_left">
+              <ul>
+                {isLoaded &&
+                  [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
+                    return (
+                      <li
+                        style={{ display: 'flex', flexDirection: 'column' }}
+                        className="content_left_optional_li">
+                        <p onClick={() => openChapterHandler(chapter[1])}>
+                          {chapter[0]}
+                          <span>
+                            <img src={vector2} alt="" />
+                          </span>
+                        </p>
+                        {isLoaded &&
+                          [].concat.apply(Object.entries(categories)).map((category, index) => {
+                            if (
+                              category[1][0][1] === chapter[1] &&
+                              openedCategories === category[1][0][1]
+                            ) {
+                              return (
+                                <p
+                                  onClick={() => categorySetHandler(category[1][0][0], category[0])}
+                                  className={
+                                    category_id === category[1][0][0]
+                                      ? 'content_left_optional_li__sub active'
+                                      : 'content_left_optional_li__sub'
+                                  }>
+                                  {category[0]}
+                                </p>
+                              );
+                            }
+                          })}
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          </div>
+        )}
         <div className="header-lower-table-right">
           <div className="search-wrapper">
             <input
@@ -165,10 +302,12 @@ const Header = ({ setModalActive }) => {
               onClick={searchRedirect}
               type="button"
               className="search-button"
+              ref={searchButton}
             />
           </div>
         </div>
       </div>
+      <BaseModal modalActive={modalActive} setModalActive={setModalActive} />
     </header>
   );
 };

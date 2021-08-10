@@ -20,6 +20,7 @@ import {
   setContract,
   setPledge,
   setDistance,
+  setCategoryId,
 } from '../../redux/actions/search';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import CardProduct from './CardProduct/CardProduct';
@@ -27,6 +28,7 @@ import map from '../../img/SearchPage/map.png';
 
 const SearchPage = () => {
   const { items, isLoaded } = useSelector(({ items }) => items);
+  const { userData, subjects, isLoggedIn } = useSelector(({ userData }) => userData);
   const {
     searchItems,
     words,
@@ -48,8 +50,8 @@ const SearchPage = () => {
 
   //параметры карты
   const mapData = {
-    center: userCoordinates ? userCoordinates.split(' ') : [53.54, 27.33],
-    zoom: 8,
+    center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.54, 27.33],
+    zoom: 12,
   };
 
   //координаты меток карты
@@ -65,22 +67,62 @@ const SearchPage = () => {
         return item.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse();
       }),
     );
-    console.log(marks);
   }, [searchItems]);
 
-  const keyDownHandler = (e) => {
-    if (e.keyCode === 13) {
-      searchHandler(words, category);
-    }
-  };
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  const openChapterHandler = (id) => {
-    if (!(openedCategories === id)) {
-      setOpenedCategories(id);
-      forceUpdate();
-    } else if (openedCategories === id) {
-      setOpenedCategories(false);
-      forceUpdate();
+  React.useEffect(() => {
+    if (
+      !words &&
+      !category &&
+      !min_price &&
+      !max_price &&
+      !free &&
+      !status &&
+      !delivery &&
+      !insurance &&
+      !contract &&
+      !pledge &&
+      !distance
+    ) {
+      Requests.search().then((res) => {
+        dispatch(setSearchItems(res.data));
+      });
+    } else {
+      Requests.search(
+        words,
+        category,
+        min_price,
+        max_price,
+        free,
+        status,
+        delivery,
+        insurance,
+        contract,
+        pledge,
+        userCoordinates,
+        distance,
+      ).then((res) => {
+        dispatch(setSearchItems(res.data));
+      });
+    }
+  }, []);
+
+  const addSubjectHandler = () => {
+    if (isLoggedIn && subjects.length < 5) {
+      window.location.href = '/place-item';
+      return;
+    } else if (isLoggedIn && subjects.length >= 5) {
+      alert('Лимит вещей достигнут (5)');
+      return;
+    } else if (!isLoggedIn) {
+      alert('Сначала авторизуйтесь!');
+      return;
+    } else if (!userData.email_verify || !userData.phone_verify) {
+      alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
+      return;
     }
   };
 
@@ -89,37 +131,16 @@ const SearchPage = () => {
     category,
     min_price,
     max_price,
-    free_rent,
+    free,
     status,
     delivery,
     insurance,
     contract,
     pledge,
-    coordinates,
+    userCoordinates,
     distance,
   ) => {
     Requests.search(
-      words,
-      category,
-      min_price,
-      max_price,
-      free_rent,
-      status,
-      delivery,
-      insurance,
-      contract,
-      pledge,
-      coordinates,
-      distance,
-    ).then((res) => {
-      dispatch(setSearchItems(res.data));
-    });
-  };
-
-  const categorySetHandler = (category, category_id) => {
-    setActiveCategory(category_id);
-    dispatch(setSearchCategory(category));
-    searchHandler(
       words,
       category,
       min_price,
@@ -131,7 +152,10 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-    );
+      distance,
+    ).then((res) => {
+      dispatch(setSearchItems(res.data));
+    });
   };
 
   const minPriceHandler = (e) => {
@@ -151,6 +175,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -171,6 +196,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -188,6 +214,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -206,6 +233,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
+        distance,
       );
     } else {
       dispatch(setStatus(e.target.value));
@@ -221,6 +249,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
+        distance,
       );
     }
   };
@@ -239,6 +268,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -256,6 +286,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -273,6 +304,7 @@ const SearchPage = () => {
       !contract,
       pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -290,6 +322,7 @@ const SearchPage = () => {
       contract,
       !pledge,
       userCoordinates,
+      distance,
     );
   };
 
@@ -329,26 +362,29 @@ const SearchPage = () => {
     }
   };
 
-  //выделяем разделы
-  const chapters = {};
-  isLoaded &&
-    items.map((item, index) => {
-      if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
-        chapters[item.chapter_id.name_chapter] = item.chapter_id.id;
-      }
+  const categoryResetHandler = () => {
+    dispatch(setSearchCategory(false));
+    dispatch(setCategoryId(false));
+    Requests.search(
+      words,
+      false,
+      min_price,
+      max_price,
+      free,
+      status,
+      delivery,
+      insurance,
+      contract,
+      pledge,
+      userCoordinates,
+      distance,
+    ).then((res) => {
+      dispatch(setSearchItems(res.data));
     });
-
-  //выделяем категории
-  const categories = {};
-  isLoaded &&
-    items.map((item, index) => {
-      if (!categories[item.name_category]) {
-        categories[item.name_category] = [[item.id, item.chapter_id.id]];
-      }
-    });
+  };
 
   return (
-    <div onKeyDown={(e) => keyDownHandler(e)}>
+    <div>
       <Header />
       <div className="SearchPage">
         <div className="SearchPage_container">
@@ -376,7 +412,7 @@ const SearchPage = () => {
                 <p>
                   В категории: {category}
                   <span
-                    onClick={() => categorySetHandler(false, false)}
+                    onClick={categoryResetHandler}
                     style={{
                       color: 'red',
                       fontSize: '14px',
@@ -533,41 +569,6 @@ const SearchPage = () => {
                     Скоро освободится
                   </label>
                 </li>
-
-                {isLoaded &&
-                  [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-                    return (
-                      <li
-                        style={{ display: 'flex', flexDirection: 'column' }}
-                        className="content_left_optional_li">
-                        <p onClick={() => openChapterHandler(chapter[1])}>
-                          {chapter[0]}
-                          <span>
-                            <img src={vector2} alt="" />
-                          </span>
-                        </p>
-                        {isLoaded &&
-                          [].concat.apply(Object.entries(categories)).map((category, index) => {
-                            if (
-                              category[1][0][1] === chapter[1] &&
-                              openedCategories === category[1][0][1]
-                            ) {
-                              return (
-                                <p
-                                  onClick={() => categorySetHandler(category[0], category[1][0][0])}
-                                  className={
-                                    activeCategory === category[1][0][0]
-                                      ? 'content_left_optional_li__sub active'
-                                      : 'content_left_optional_li__sub'
-                                  }>
-                                  {category[0]}
-                                </p>
-                              );
-                            }
-                          })}
-                      </li>
-                    );
-                  })}
               </ul>
             </div>
 
@@ -578,48 +579,74 @@ const SearchPage = () => {
               <div className="content_right_shapka">
                 <div className="shapka_top">
                   <p
+                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
                     className={distance === '200' ? 'distance_p active' : 'distance_p'}
                     onClick={() => distanceHandler('200')}>
                     До 200 м
                   </p>
                   <p
+                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
                     className={distance === '1000' ? 'distance_p active' : 'distance_p'}
                     onClick={() => distanceHandler('1000')}>
                     До 1 км
                   </p>
                   <p
+                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
                     className={distance === '5000' ? 'distance_p active' : 'distance_p'}
                     onClick={() => distanceHandler('5000')}>
                     До 5 км
                   </p>
-                  <p className="content_right_shapka_watchMap">Показать на карте</p>
+                  <p
+                    onClick={() => distanceHandler(false)}
+                    className={distance === false ? 'distance_p active' : 'distance_p'}>
+                    Показать все
+                  </p>
                 </div>
               </div>
 
               {/* КОНТЕНТ ПОД ШАПКОЙ */}
               <div className="content_right_all_content">
-                <div className="all_content_blocks">
-                  {searchItems.map((item, index) => {
-                    if (index <= 2) {
-                      return <ItemCard key={index} item={item} />;
-                    }
-                  })}
+                {searchItems.length > 0 && (
+                  <div className="all_content_blocks">
+                    {searchItems.map((item, index) => {
+                      if (index <= 2) {
+                        return <ItemCard key={index} item={item} />;
+                      }
+                    })}
 
-                  {searchItems && (
-                    <div style={{ marginBottom: '30px' }} classname="map">
-                      <YMaps>
-                        <Map width={850} height={500} defaultState={mapData}>
-                          {marks && marks.map((mark) => <Placemark geometry={mark} />)}
-                        </Map>
-                      </YMaps>
+                    {searchItems && (
+                      <div style={{ marginBottom: '30px' }}>
+                        <YMaps>
+                          <Map width={850} height={500} defaultState={mapData}>
+                            {marks && marks.map((mark) => <Placemark geometry={mark} />)}
+                          </Map>
+                        </YMaps>
+                      </div>
+                    )}
+                    {searchItems.map((item, index) => {
+                      if (index > 2) {
+                        return <ItemCard key={index} item={item} />;
+                      }
+                    })}
+                  </div>
+                )}
+                {searchItems.length === 0 && (
+                  <div className="all_content_blocks">
+                    <div className="search_not_found">
+                      <p>Сегодня ничего не найдено по заданным параметрам.</p>
+                      <p style={{ marginBottom: '20px' }}>
+                        Вы можете предложить свою вещь, услугу или иное имущество, либо зайти
+                        завтра...
+                      </p>
+                      <input
+                        onClick={addSubjectHandler}
+                        type="button"
+                        value="Предложить вещь"
+                        className="header-button add-subject"
+                      />
                     </div>
-                  )} 
-                  {searchItems.map((item, index) => {
-                    if (index > 2) {
-                      return <ItemCard key={index} item={item} />;
-                    }
-                  })}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

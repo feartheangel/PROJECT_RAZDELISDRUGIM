@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './CardThings.css';
+import { Redirect, Link } from 'react-router-dom';
 import { Header, Footer, ItemCard } from '../../components/index';
-import { useSelector } from 'react-redux';
+import { setSearchCategory, setCategoryId } from '../../redux/actions/search';
+import { useSelector, useDispatch } from 'react-redux';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import CardProduct from '../SearchPage/CardProduct/CardProduct';
 import Vector1 from '../../img/SearchPage/Vector1.png';
 import Vector2 from '../../img/CardThings/LeftContent/Vector2.png';
@@ -36,6 +39,10 @@ import Instagram from '../../img/CardThings/RightContent/Component 39.png';
 import Vk from '../../img/CardThings/RightContent/Component 42.png';
 import freePrice from '../../img/MainPage/freePrice.png';
 import Requests from '../../http/axios-requests';
+import Google from '../../img/ProfilePage/google.png';
+import Facebook from '../../img/ProfilePage/facebook2.png';
+import Ok from '../../img/ProfilePage/ok.png';
+import copy from '../../img/MainPage/copy.png';
 
 const CardThings = () => {
   //расчет времени на платформе
@@ -49,15 +56,30 @@ const CardThings = () => {
     x1.setHours(12, 0, 0);
 
     return Math.round((x1 - x0) / msPerDay) > 365
-      ? `${Math.round((x1 - x0) / msPerDay) / 365} год(лет)`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 365)} год(лет)`
       : Math.round((x1 - x0) / msPerDay) > 30
-      ? `${Math.round((x1 - x0) / msPerDay) / 30} мес.`
+      ? `${Math.floor(Math.round((x1 - x0) / msPerDay) / 30)} мес.`
       : `${Math.round((x1 - x0) / msPerDay)} д.`;
   }
+
+  const showContactHandler = () => {
+    if (!isLoggedIn) {
+      alert('Доступно только авторизованным пользователям!');
+      return;
+    }
+
+    setContactVisible(!contactVisible);
+  };
+
+  const categoryRedirect = (name_category, id_category) => {
+    dispatch(setSearchCategory(name_category));
+    dispatch(setCategoryId(id_category));
+  };
 
   React.useEffect(() => {
     Requests.getSingleItem(window.location.href.split('?id=')[1]).then((response) => {
       setItemData(response.data);
+      setSelectedImage(response.data.image_1);
     });
 
     Requests.search().then((response) => {
@@ -65,11 +87,26 @@ const CardThings = () => {
     });
   }, [window.location.href]);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [itemData, setItemData] = React.useState();
   const [simillarSubjects, setSimillarSubjects] = React.useState();
+  const [selectedImage, setSelectedImage] = React.useState();
+  const [contactVisible, setContactVisible] = React.useState();
+  const [shareVisible, setShareVisible] = React.useState();
+  const [redirect, setRedirect] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
+  const dispatch = useDispatch();
   const { searchItems } = useSelector(({ search }) => search);
+  const { isLoggedIn } = useSelector(({ userData }) => userData);
+
+  const mapData = {
+    center: itemData && itemData.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse(),
+    zoom: 12,
+  };
 
   return (
     <div className="CardThings">
@@ -80,24 +117,35 @@ const CardThings = () => {
           <div className="container_content_card">
             {/* ШАПКА КАРТОЧКИ*/}
             <div className="card_shapka">
-              <div>
-                <p className="card_shapka_hover"> Главная </p>
-                <img src={Vector1} alt="" />
-              </div>
+              <Link style={{ textDecoration: 'none' }} to="/">
+                <div>
+                  <p className="card_shapka_hover"> Главная </p>
+                  <img src={Vector1} alt="" />
+                </div>
+              </Link>
 
               <div>
                 <p className="card_shapka_hover"> Каталог </p>
                 <img src={Vector1} alt="" />
               </div>
+              <Link style={{ textDecoration: 'none' }} to="/search">
+                <div>
+                  <p
+                    onClick={() =>
+                      categoryRedirect(
+                        itemData && itemData.category_id.name_category,
+                        itemData && itemData.category_id.id,
+                      )
+                    }
+                    className="card_shapka_hover">
+                    {itemData && itemData.category_id.name_category}{' '}
+                  </p>
+                  <img src={Vector1} alt="" />
+                </div>
+              </Link>
 
               <div>
-                <p className="card_shapka_hover"> Компьютерная техника </p>
-                <img src={Vector1} alt="" />
-              </div>
-
-              <div>
-                <p className="card_shapka_hover"> Ноутбуки</p>
-                <img src={Vector1} alt="" />
+                <p className="card_shapka_hover"> {itemData && itemData.name_item} </p>
               </div>
             </div>
 
@@ -109,30 +157,60 @@ const CardThings = () => {
                   <div className="left_block_photo_small">
                     {itemData && itemData.image_1 && (
                       <img
+                        className={
+                          selectedImage === itemData.image_1
+                            ? 'card_thing_image active'
+                            : 'card_thing_image'
+                        }
+                        onClick={() => setSelectedImage(itemData && itemData.image_1)}
                         src={itemData && `https://razdelisdrugim.by${itemData.image_1}`}
                         alt=""
                       />
                     )}
                     {itemData && itemData.image_2 && (
                       <img
+                        className={
+                          selectedImage === itemData.image_2
+                            ? 'card_thing_image active'
+                            : 'card_thing_image'
+                        }
+                        onClick={() => setSelectedImage(itemData && itemData.image_2)}
                         src={itemData && `https://razdelisdrugim.by${itemData.image_2}`}
                         alt=""
                       />
                     )}
                     {itemData && itemData.image_3 && (
                       <img
+                        className={
+                          selectedImage === itemData.image_3
+                            ? 'card_thing_image active'
+                            : 'card_thing_image'
+                        }
+                        onClick={() => setSelectedImage(itemData && itemData.image_3)}
                         src={itemData && `https://razdelisdrugim.by${itemData.image_3}`}
                         alt=""
                       />
                     )}
                     {itemData && itemData.image_4 && (
                       <img
+                        className={
+                          selectedImage === itemData.image_4
+                            ? 'card_thing_image active'
+                            : 'card_thing_image'
+                        }
+                        onClick={() => setSelectedImage(itemData && itemData.image_4)}
                         src={itemData && `https://razdelisdrugim.by${itemData.image_4}`}
                         alt=""
                       />
                     )}
                     {itemData && itemData.image_5 && (
                       <img
+                        className={
+                          selectedImage === itemData.image_5
+                            ? 'card_thing_image active'
+                            : 'card_thing_image'
+                        }
+                        onClick={() => setSelectedImage(itemData && itemData.image_5)}
                         src={itemData && `https://razdelisdrugim.by${itemData.image_5}`}
                         alt=""
                       />
@@ -142,17 +220,44 @@ const CardThings = () => {
                   <div className="left_block_photo_big">
                     {itemData && itemData.image_1 && (
                       <img
-                        src={itemData && `https://razdelisdrugim.by${itemData.image_1}`}
+                        onClick={() => setSelectedImage(itemData && itemData.image_1)}
+                        src={
+                          itemData && `https://razdelisdrugim.by${selectedImage && selectedImage}`
+                        }
                         alt=""
                       />
                     )}
                   </div>
                 </div>
 
-                <div className="left_block_toShare">
+                <div
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setShareVisible(!shareVisible)}
+                  className="left_block_toShare">
                   <img src={Share} alt="" />
                   <p> Поделиться</p>
                 </div>
+
+                {shareVisible && (
+                  <div className={'item_share_link'}>
+                    <input type="text" value={window.location.href} />
+                    <img
+                      onClick={window.navigator.clipboard.writeText(`${window.location.href}`)}
+                      style={{ cursor: 'pointer' }}
+                      src={copy}
+                      className={'item-card-profile-button-image'}
+                    />
+                    <label
+                      onClick={() => {
+                        window.navigator.clipboard.writeText(`${window.location.href}`);
+                        setShareVisible(false);
+                      }}
+                      style={{ cursor: 'pointer' }}
+                      className="item-card-profile-button__optional">
+                      Копировать
+                    </label>
+                  </div>
+                )}
 
                 {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
@@ -237,7 +342,7 @@ const CardThings = () => {
                         <img src={Vector2} className="img_vector2" alt="" />
                       </div>
                       <p className="conditions_timeItem-p">
-                        — не позднее {itemData && itemData.receive_time}
+                        — не ранее {itemData && itemData.receive_time}
                       </p>
                     </div>
 
@@ -259,6 +364,11 @@ const CardThings = () => {
                         <img src={Sell1} className="img_sell1" alt="" />
                         <p className="conditions_readySell_row-p">Готов продать</p>
                       </div>
+                      {itemData && itemData.price_item && (
+                        <p className="conditions_timeItem-p">
+                          — за {itemData && itemData.price_item} BYN
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>
@@ -397,7 +507,10 @@ const CardThings = () => {
                       <img src={Address} className="img_address" alt="" />
                       <p className="block_up_address_row-p">Адрес местонахождения:</p>
                     </div>
-                    <p className="block_up_address-p">{itemData && itemData.items_address}</p>
+                    <p className="block_up_address-p">
+                      {itemData && itemData.items_address.split(',')[0]},{' '}
+                      {itemData && itemData.items_address.split(',')[1]}
+                    </p>
                   </div>
 
                   {/* Доставка */}
@@ -454,36 +567,66 @@ const CardThings = () => {
                   </div>
 
                   {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
-                  <div className="block_up_contactOwner">
-                    <button className="contactOwner_btn"> Связаться с владельцем </button>
-                    <img src={Love} alt="" className="img_contactOwner" />
+                  <div style={{ height: '185px', width: '310px' }}>
+                    <div className="block_up_contactOwner">
+                      <input
+                        onClick={showContactHandler}
+                        type="button"
+                        value="Связаться с владельцем"
+                        style={{ cursor: 'pointer' }}
+                        className="contactOwner_btn"
+                      />
+
+                      <img src={Love} alt="" className="img_contactOwner" />
+                    </div>
+                    {contactVisible && (
+                      <div style={{ marginBottom: '70px' }} className={'item_share_link'}>
+                        <label
+                          onClick={window.navigator.clipboard.writeText(`${window.location.href}`)}
+                          style={{ cursor: 'pointer', marginRight: '30px' }}
+                          className="item-card-profile-button__optional">
+                          Мобильный номер:
+                        </label>
+                        <input
+                          style={{ width: '200px' }}
+                          type="text"
+                          value={itemData && itemData.profile.phone}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 {/* НИЗ ПРАВОЙ СТОРОНЫ*/}
-                <div className="right_block_down">
+                <div style={{ width: '365px' }} className="right_block_down">
                   <div className="block_down_owner">
                     <p>Владелец</p>
                   </div>
 
                   {/*Аватарка владельца и тд*/}
-                  <div className="block_down_owner_photo">
-                    <img
-                      style={{ borderRadius: '100%', width: '70px', height: '70px' }}
-                      src={`https://razdelisdrugim.by${itemData && itemData.profile.image_profile}`}
-                      alt=""
-                    />
-                    <div className="block_down_owner_photo-p">
-                      <p className="block_down_owner_photo-p1">
-                        {itemData && itemData.profile.company_name
-                          ? itemData && itemData.profile.company_name
-                          : itemData && itemData.profile.first_name}
-                      </p>
-                      <p className="block_down_owner_photo-p2">
-                        {itemData && itemData.profile.company_name ? 'Компания' : 'Частное лицо'}
-                      </p>
+                  <Link
+                    to={`/public-profile?id=${itemData && itemData.profile.id}`}
+                    style={{ textDecoration: 'none' }}>
+                    <div className="block_down_owner_photo">
+                      <img
+                        style={{ borderRadius: '100%', width: '70px', height: '70px' }}
+                        src={`https://razdelisdrugim.by${
+                          itemData && itemData.profile.image_profile
+                        }`}
+                        alt=""
+                      />
+                      <div className="block_down_owner_photo-p">
+                        <p className="block_down_owner_photo-p1">
+                          {itemData && itemData.profile.company_name
+                            ? itemData && itemData.profile.company_name
+                            : itemData && itemData.profile.first_name}
+                        </p>
+                        <p className="block_down_owner_photo-p2">
+                          {itemData && itemData.profile.company_name ? 'Компания' : 'Частное лицо'}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
 
                   {/*Звездочки и отзывы*/}
                   <div className="block_down_star">
@@ -538,16 +681,144 @@ const CardThings = () => {
                   </div>
 
                   {/*СОЦ СЕТИ*/}
-                  <div className="block_down_social">
-                    <div className="telephone_row2">
-                      <img src={Telegram} className="img_social" alt="" />
-                      <img src={Viber} className="img_social" alt="" />
-                      <img src={Whatsapp} className="img_social" alt="" />
-                      <img src={Instagram} className="img_social" alt="" />
-                      <img src={Vk} className="img_social" alt="" />
+                  {isLoggedIn && (
+                    <div className="block_down_social">
+                      <div className="telephone_row2">
+                        {itemData && itemData.profile.telegram_account && (
+                          <a
+                            href={`https://t.me/${itemData && itemData.profile.telegram_account}`}
+                            target="_blank">
+                            <img
+                              style={{ cursor: 'pointer' }}
+                              src={Telegram}
+                              className="img_social"
+                              alt=""
+                            />
+                          </a>
+                        )}
+                        {itemData && itemData.profile.viber_account && (
+                          <a
+                            target="_blank"
+                            href={`viber://chat?number=+${
+                              itemData && itemData.profile.viber_account
+                            }`}>
+                            <img
+                              style={{ cursor: 'pointer' }}
+                              src={Viber}
+                              className="img_social"
+                              alt=""
+                            />
+                          </a>
+                        )}
+                        {itemData && itemData.profile.whatsapp_account && (
+                          <a
+                            href={`https://api.whatsapp.com/send/?phone=${
+                              itemData && itemData.profile.whatsapp_account
+                            }&text=Здравствуйте, ${
+                              itemData && itemData.profile.first_name
+                            }. Пишу вам потому, что вы делитесь этим: '${
+                              itemData && itemData.name_item
+                            }' на платформе #разделисдругим.`}
+                            target="_blank">
+                            <img
+                              style={{ cursor: 'pointer' }}
+                              src={Whatsapp}
+                              className="img_social"
+                              alt=""
+                            />
+                          </a>
+                        )}
+                        {itemData && itemData.profile.google_account && (
+                          <a
+                            href={`${
+                              itemData && itemData.profile.google_account.includes('https')
+                                ? itemData.profile.google_account
+                                : `https://${itemData && itemData.profile.google_account}`
+                            }`}
+                            target="_blank">
+                            <img
+                              style={{ cursor: 'pointer' }}
+                              src={Google}
+                              className="img_social"
+                              alt=""
+                            />
+                          </a>
+                        )}
+                        {itemData && itemData.profile.link_facebook && (
+                          <a
+                            href={`${
+                              itemData && itemData.profile.link_facebook.includes('https')
+                                ? itemData.profile.link_facebook
+                                : `https://${itemData && itemData.profile.link_facebook}`
+                            }`}
+                            target="_blank">
+                            <img
+                              style={{ cursor: 'pointer' }}
+                              src={Facebook}
+                              className="img_social"
+                              alt=""
+                            />
+                          </a>
+                        )}
+                        {itemData && itemData.profile.link_instagram && (
+                          <a
+                            href={`${
+                              itemData && itemData.profile.link_instagram.includes('https')
+                                ? itemData.profile.link_instagram
+                                : `https://${itemData && itemData.profile.link_instagram}`
+                            }`}
+                            target="_blank">
+                            <img
+                              style={{ cursor: 'pointer' }}
+                              src={Instagram}
+                              className="img_social"
+                              alt=""
+                            />
+                          </a>
+                        )}
+                        {itemData && itemData.profile.vk_account && (
+                          <a
+                            href={`${
+                              itemData && itemData.profile.vk_account.includes('https')
+                                ? itemData.profile.vk_account
+                                : `https://${itemData && itemData.profile.vk_account}`
+                            }`}
+                            target="_blank">
+                            <img
+                              style={{ cursor: 'pointer' }}
+                              src={Vk}
+                              className="img_social"
+                              alt=""
+                            />{' '}
+                          </a>
+                        )}
+                        {itemData && itemData.profile.ok_account && (
+                          <a
+                            href={`${
+                              itemData && itemData.profile.ok_account.includes('https')
+                                ? itemData.profile.ok_account
+                                : `https://${itemData && itemData.profile.ok_account}`
+                            }`}
+                            target="_blank">
+                            <img
+                              style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+                              src={Ok}
+                              className="img_social"
+                              alt=""
+                            />
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
+              </div>
+              <div style={{ marginTop: '505px' }}>
+                <YMaps>
+                  <Map width={300} height={200} defaultState={mapData}>
+                    <Placemark geometry={itemData && mapData.center} />
+                  </Map>
+                </YMaps>
               </div>
             </div>
           </div>

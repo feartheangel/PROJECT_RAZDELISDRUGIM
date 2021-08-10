@@ -96,7 +96,7 @@
   display: flex;
   flex-direction: row;
 }
-.SearchPage_container_content_left ul li:not(:last-child):not(:first-child) {
+.SearchPage_container_content_left ul li:not(:last-child) {
   margin-bottom: 20px;
 }
 
@@ -249,4 +249,13 @@
 
 .distance_p.active {
   color: #4cc9f0;
+}
+
+.search_not_found {
+  width: 90%;
+  height: 465px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

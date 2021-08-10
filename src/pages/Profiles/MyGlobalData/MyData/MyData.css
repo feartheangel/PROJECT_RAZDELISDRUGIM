@@ -429,9 +429,14 @@ option {
   height: 80px;
   border-radius: 100%;
   background-color: #091d20;
-  opacity: 0.6;
+  opacity: 0;
   color: white;
   bottom: 5px;
   font-size: 14px;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.profile-photo-overlay:hover {
+  opacity: 0.6;
 }
