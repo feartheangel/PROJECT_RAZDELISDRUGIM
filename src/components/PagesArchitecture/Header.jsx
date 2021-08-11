@@ -236,16 +236,14 @@ const Header = () => {
       </div>
       <div className="header-lower-table">
         <div className="header-lower-table-left">
-          <img src={Burger} alt="" className="burger-button" />
-          <p className="burger-catalog">Каталог</p>
           <img
             onClick={() => setBurgerActive(!burgerActive)}
-            style={{ marginRight: '355px', cursor: 'pointer' }}
             src={Burger}
             alt=""
             className="burger-button"
           />
         </div>
+
         {burgerActive && (
           <div className={'burger_dropdown_menu'}>
             <div className="SearchPage_container_content_left">

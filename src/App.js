@@ -52,11 +52,11 @@ function App() {
                 dispatch(setUserSubjects(response.data));
               });
             })
-            .then(() => {
-              Requests.fetchFavorites().then((response) => {
-                dispatch(setFavorites(response.data));
-              });
-            })
+            // .then(() => {
+            //   Requests.fetchFavorites().then((response) => {
+            //     dispatch(setFavorites(response.data));
+            //   });
+            // })
 
             .catch();
         }),

@@ -83,8 +83,7 @@ const AbilitiesBlock = () => {
             <input
               type="button"
               value="Найти вещь"
-              className="header-button add-subject"
-              style={{ backgroundColor: '#FFE66D', marginRight: '20px' }}
+              className="header-button add-subject2"
             />
           </Link>
           <input

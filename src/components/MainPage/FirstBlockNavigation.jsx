@@ -30,13 +30,13 @@ const FirstBlockNavigation = () => {
           <p className="main_page_fris_block_left_second_p">
             Платформа, где делятся вещами друг с другом в аренду
           </p>
+          <img src={FirstImage} className="FirstImage2"/>
           <div className="main_page_first_block_left_bottons">
             <Link style={{ textDecoration: 'none' }} to="/search">
               <input
                 type="button"
                 value="Найти вещь"
-                className="header-button add-subject"
-                style={{ backgroundColor: '#FFE66D', marginRight: '20px' }}
+                className="header-button add-subject2"
               />
             </Link>
             <input
@@ -47,7 +47,7 @@ const FirstBlockNavigation = () => {
             />
           </div>
         </div>
-        <img src={FirstImage} />
+        <img src={FirstImage} className="FirstImage1"/>
       </div>
     </section>
   );
