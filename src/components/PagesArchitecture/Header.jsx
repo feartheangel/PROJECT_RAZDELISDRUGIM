@@ -15,7 +15,7 @@ import {
   setCategoryId,
 } from '../../redux/actions/search';
 import { ProfilePopUp, BaseModal } from '../index';
-import Favorites from '../../img/MainPage/Favorites.png';
+import Favorites from '../../img/MainPage/FavoritesDisabled.png';
 import Notifications from '../../img/MainPage/Notifications.png';
 import UserAvatar from '../../img/MainPage/UserAvatar.png';
 import MenuStroke from '../../img/MainPage/MenuStroke.png';
@@ -154,6 +154,7 @@ const Header = () => {
   //выделяем разделы
   const chapters = {};
   isLoaded &&
+    items.length > 2 &&
     items.map((item, index) => {
       if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
         chapters[item.chapter_id.name_chapter] = item.chapter_id.id;
@@ -163,6 +164,7 @@ const Header = () => {
   //выделяем категории
   const categories = {};
   isLoaded &&
+    items.length > 2 &&
     items.map((item, index) => {
       if (!categories[item.name_category]) {
         categories[item.name_category] = [[item.id, item.chapter_id.id]];
@@ -189,8 +191,27 @@ const Header = () => {
             <img src={LanguagePlanet} alt="" className="language-planet-img" />
             <p className="language-selector">RU</p>
           </div>
+          {!isLoggedIn && (
+            <input
+              onClick={() => setModalActive(true)}
+              type="button"
+              value="Войти"
+              className=" header-button login-button"
+              id="login-button2"
+            />
+          )}
         </div>
         <div className="header-right-content">
+        <div className="header-lower-table-left" id="header-lower-table-left2">
+          <img
+            onClick={() => setBurgerActive(!burgerActive)}
+            src={Burger}
+            alt=""
+            className="burger-button"
+            id="header-lower-table-left2"
+          />
+          <p className="header-lower-table-p" >Каталог</p>
+        </div>
           <input
             onClick={addSubjectHandler}
             type="button"
@@ -204,6 +225,7 @@ const Header = () => {
               type="button"
               value="Войти"
               className=" header-button login-button"
+              id="login-button1"
             />
           )}
 
@@ -241,6 +263,7 @@ const Header = () => {
             src={Burger}
             alt=""
             className="burger-button"
+            id="header-lower-table-left1"
           />
         </div>
 

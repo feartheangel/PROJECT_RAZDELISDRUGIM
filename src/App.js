@@ -9,6 +9,7 @@ import {
   MyItems,
   PublicProfile,
   Catalog,
+  MyFavorites,
 } from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
@@ -57,11 +58,27 @@ function App() {
             //     dispatch(setFavorites(response.data));
             //   });
             // })
+            .then(() => {
+              Requests.fetchFavorites().then((response) => {
+                dispatch(setFavorites(response.data));
+              });
+            })
 
             .catch();
         }),
       );
   }, [isLoggedIn, reload]);
+
+  React.useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        dispatch(setUserCoords(`${pos.coords.longitude} ${pos.coords.latitude}`));
+        console.log(pos.coords.accuracy);
+      },
+      () => alert('Ошибка получения местоположения!'),
+      { maximumAge: 0, enableHighAccuracy: true },
+    );
+  }, []);
 
   return (
     <div className="wrapper">
@@ -76,6 +93,7 @@ function App() {
         <Route path="/edit-item" component={EditItem} exact />
         <Route path="/public-profile" component={PublicProfile} exact />
         <Route path="/catalog" component={Catalog} exact />
+        <Route path="/favorites" component={MyFavorites} exact />
       </div>
     </div>
   );

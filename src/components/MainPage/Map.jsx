@@ -8,7 +8,7 @@ const MapBlock = () => {
 
   //параметры карты
   const mapData = {
-    center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.54, 27.33],
+    center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.91, 27.55],
     zoom: 12,
   };
 

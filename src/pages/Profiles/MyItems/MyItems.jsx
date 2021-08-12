@@ -26,9 +26,16 @@ const MyItems = () => {
             <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
               Мои сообщения <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} className="favorites">
-              Избранное
-            </p>
+            <Link
+              style={
+                subjects.length === 0
+                  ? { pointerEvents: 'none', textDecoration: 'none' }
+                  : { textDecoration: 'none' }
+              }
+              className="conteiner_shapka_myProfile"
+              to="/favorites">
+              <p>Избранное</p>
+            </Link>
             <Link style={{ textDecoration: 'none' }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>

@@ -10,6 +10,7 @@ import Webmoney from '../../img/MainPage/Method=Webmoney.png';
 import Yandex from '../../img/MainPage/Method=Yandex.png';
 import Planet from '../../img/MainPage/Planet.png';
 import VK from '../../img/MainPage/VK.png';
+import mark from '../../img/MainPage/Mark.png';
 
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -20,6 +21,7 @@ const Footer = () => {
   //выделяем разделы
   const chapters = {};
   isLoaded &&
+    items.length > 2 &&
     items.map((item, index) => {
       if (!chapters.hasOwnProperty(item.chapter_id.name_chapter)) {
         chapters[item.chapter_id.name_chapter] = item.chapter_id.id;
@@ -88,11 +90,14 @@ const Footer = () => {
                   }
                 })}
               <Link style={{ textDecoration: 'none' }} to="/catalog">
-                <input type="button" value="Смотреть каталог" className="popular-button" />
+                <input type="button" value="Смотреть каталог" className="popular-button" id="popular-button1" />
               </Link>
             </ul>
           </div>
           <div className="footer-fifth-col">
+            <Link style={{ textDecoration: 'none' }} to="/catalog">
+                  <input type="button" value="Смотреть каталог" className="popular-button" id="popular-button2" />
+            </Link>
             <div className="footer-socials">
               <img src={Instagram} alt="" className="footer-social" />
               <img src={Facebook} alt="" className="footer-social" />
@@ -109,7 +114,7 @@ const Footer = () => {
           </div>
         </div>
       </section>
-      <div className="footer-lower-part">
+      <div className="footer-lower-part" id="footer-lower1">
         <div className="footer-img-logo-wrapper">
           <img src={Logo2} alt="" className="footer-img-logo" />
         </div>
@@ -121,6 +126,28 @@ const Footer = () => {
           <img src={Planet} alt="" className="footer-planet-img" />
           <p className="footer-localization-p">RU</p>
         </div>
+      </div>
+
+
+      <div className="footer-lower-part" id="footer-lower2" >
+        <div className="footer-lower-labels">
+          <p className="footer-lower-label">Пользовательское соглашение</p>
+          <p className="footer-lower-label">Соглашение о конфиденциальности</p>
+        </div>
+        <div className="footer-img-logo-wrapper_gl">
+          <div className="footer-img-logo-wrapper">
+            <img src={Logo2} alt="" className="footer-img-logo" />
+          </div>
+          <div className="location-selector" id="location-selector2">
+              <img src={mark} alt="" className="location-img" />
+              <p className="location-p">Минск</p>
+          </div>
+          <div className="footer-localization-wrapper">
+            <img src={Planet} alt="" className="footer-planet-img" />
+            <p className="footer-localization-p">RU</p>
+          </div>
+        </div>
+
       </div>
     </section>
   );

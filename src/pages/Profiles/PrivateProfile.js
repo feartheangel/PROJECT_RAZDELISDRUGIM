@@ -34,7 +34,11 @@ const PrivateProfile = () => {
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <Link
-              style={subjects.length === 0 ? { display: 'none' } : { textDecoration: 'none' }}
+              style={
+                subjects.length === 0
+                  ? { pointerEvents: 'none', textDecoration: 'none' }
+                  : { textDecoration: 'none' }
+              }
               className="conteiner_shapka_myProfile"
               to="/i-rent-out">
               <p style={subjects.length === 0 ? { opacity: '0.4', pointerEvents: 'none' } : {}}>
@@ -47,11 +51,18 @@ const PrivateProfile = () => {
             <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
               Мои сообщения <span> - </span>
             </p>
-            <p
-              style={{ opacity: '0.4', pointerEvents: 'none' }}
-              className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
-              Избранное
-            </p>
+            <Link
+              style={
+                subjects.length === 0
+                  ? { pointerEvents: 'none', textDecoration: 'none' }
+                  : { textDecoration: 'none' }
+              }
+              className="conteiner_shapka_myProfile"
+              to="/favorites">
+              <p className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
+                Избранное
+              </p>
+            </Link>
             <p
               className={activeForm === 'myProfile' && 'conteiner_shapka_myProfile'}
               onClick={() => setActiveForm('myProfile')}>

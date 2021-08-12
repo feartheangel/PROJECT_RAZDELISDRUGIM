@@ -974,6 +974,60 @@ class Requests {
       return response;
     });
   }
+
+  static fetchFavorites(id) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `https://razdelisdrugim.by/api/items/favorite/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static addFavoriteItem(id) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        item: id,
+      },
+      url: `https://razdelisdrugim.by/api/items/favorite/create/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static deleteFavoriteItem(id) {
+    return axios({
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      url: `https://razdelisdrugim.by/api/items/favorite/delete/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static fetchNews() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/additional_entities/news/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 export default Requests;
