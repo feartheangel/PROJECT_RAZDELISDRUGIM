@@ -102,7 +102,7 @@ const ItemCard = ({ item }) => {
               />
             )}
           </div>
-          <div style={{ width: '214px', height: '60px', overflow: 'hidden' }}>
+          <div className="recent-block-up">
             <p className="recent-block-title-p">{item.name_item}</p>
           </div>
           {!item.offer_price_rent && !item.free_rent && (
@@ -124,7 +124,7 @@ const ItemCard = ({ item }) => {
           {item.offer_price_rent && (
             <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
               <img style={{ width: '20px', height: '20px' }} src={yourCost} />
-              <p style={{ fontSize: '16px', marginLeft: '5px' }} className="recent-time-p">
+              <p className="recent-time-p">
                 Предложить свою цену
               </p>
             </div>
@@ -134,18 +134,12 @@ const ItemCard = ({ item }) => {
               style={{ justifyContent: 'flex-start', marginTop: '10px' }}
               className="recent-time-cost-wrapper">
               <img src={freePrice} />
-              <p style={{ marginLeft: '5px' }} className="recent-time-p">
+              <p className="recent-time-p">
                 Бесплатно
               </p>
             </div>
           )}
           <p
-            style={{
-              fontSize: '18px',
-              lineHeight: '21px',
-              color: 'rgba(9, 29, 32, 0.8)',
-              marginTop: '20px',
-            }}
             className="recent-block-title-p">
             {item.profile.company_name ? item.profile.company_name : item.profile.first_name}
           </p>

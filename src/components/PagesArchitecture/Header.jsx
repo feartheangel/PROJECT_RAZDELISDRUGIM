@@ -168,7 +168,7 @@ const Header = () => {
   return (
     <header className="header" onKeyDown={(e) => keyDownHandler(e)}>
       <div className="news-alert-block">
-        <p style={{ color: 'white', width: '100%' }} className="news-alert-p">
+        <p className="news-alert-p">
           Теперь вы можете искать вещь в аренду на карте!
         </p>
       </div>
@@ -185,8 +185,27 @@ const Header = () => {
             <img src={LanguagePlanet} alt="" className="language-planet-img" />
             <p className="language-selector">RU</p>
           </div>
+          {!isLoggedIn && (
+            <input
+              onClick={() => setModalActive(true)}
+              type="button"
+              value="Войти"
+              className=" header-button login-button"
+              id="login-button2"
+            />
+          )}
         </div>
         <div className="header-right-content">
+        <div className="header-lower-table-left" id="header-lower-table-left2">
+          <img
+            onClick={() => setBurgerActive(!burgerActive)}
+            src={Burger}
+            alt=""
+            className="burger-button"
+            id="header-lower-table-left2"
+          />
+          <p className="header-lower-table-p" >Каталог</p>
+        </div>
           <input
             onClick={addSubjectHandler}
             type="button"
@@ -200,6 +219,7 @@ const Header = () => {
               type="button"
               value="Войти"
               className=" header-button login-button"
+              id="login-button1"
             />
           )}
 
@@ -236,12 +256,13 @@ const Header = () => {
         <div className="header-lower-table-left">
           <img
             onClick={() => setBurgerActive(!burgerActive)}
-            style={{ marginRight: '355px', cursor: 'pointer' }}
             src={Burger}
             alt=""
             className="burger-button"
+            id="header-lower-table-left1"
           />
         </div>
+
         {burgerActive && (
           <div className={'burger_dropdown_menu'}>
             <div className="SearchPage_container_content_left">
