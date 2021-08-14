@@ -180,12 +180,6 @@ const PlaceItem = () => {
     setFranchise(!franchise);
   };
 
-  // ПУНКТ  ПРЕДУСМОТРЕН ЗАЛОГ
-  const pladgeHandler = () => {
-    setPladge(!pladge);
-    cost ? setPledgePrice(cost) : '';
-  };
-
   // СЕРВИСНЫЙ СБОР
   const serviceSborHandler = () => {
     setServiceSbor(!serviceSbor);
@@ -1493,7 +1487,7 @@ const PlaceItem = () => {
                   <div className="take-away-secondary-wrapper">
                     <div className="checkbox-btn secondary">
                       <input type="checkbox" className="input-checkbox" checked={pladge} />
-                      <span onClick={pladgeHandler}>Залог</span>
+                      <span>Залог</span>
                     </div>
                     {pladge && (
                       <span>

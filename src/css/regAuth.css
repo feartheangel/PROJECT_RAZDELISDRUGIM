@@ -441,7 +441,7 @@
   left: 120px;
   width: 23px;
   height: 20px;
-  background: url(/src/img/showPaaswordIcon.png) 0 0 no-repeat;
+  background: url(../img/showPaaswordIcon.png) 0 0 no-repeat;
 }
 
 .password-control__profile {
@@ -452,7 +452,7 @@
   left: 350px;
   width: 23px;
   height: 20px;
-  background: url(/src/img/showPaaswordIcon.png) 0 0 no-repeat;
+  background: url(../img/showPaaswordIcon.png) 0 0 no-repeat;
   cursor: pointer;
 }
 

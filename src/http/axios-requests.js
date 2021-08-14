@@ -380,7 +380,7 @@ class Requests {
   }
   static updatePassword(old_password, new_password1, new_password2) {
     return axios({
-      method: 'PATCH',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('key')}`,

@@ -27,7 +27,6 @@ const ItemCard = ({ item }) => {
   const addFavoriteHandler = (e) => {
     e.preventDefault();
     Requests.addFavoriteItem(item.id).then(() => {
-      alert('Добавлено в "Избранное"!');
       setIsFavorite(true);
     });
   };
@@ -35,7 +34,6 @@ const ItemCard = ({ item }) => {
   const deleteFavoriteHandler = (e) => {
     e.preventDefault();
     Requests.deleteFavoriteItem(item.id).then(() => {
-      alert('Удалено из "Избранное"!');
       setIsFavorite(false);
     });
   };

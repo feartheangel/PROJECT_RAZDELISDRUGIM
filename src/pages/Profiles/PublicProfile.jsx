@@ -336,12 +336,19 @@ const PublicProfile = () => {
                   <p className="down_header_text1-p2">{profileItems && profileItems.length}</p>
                 </div>
                 <p
+                  style={
+                    profileData && profileData.about
+                      ? {}
+                      : { opacity: '0.4', pointerEvents: 'none' }
+                  }
                   className={
                     activeForm2 === 'about_me'
                       ? 'down_header_text1-p1_active'
                       : 'down_header_text1-p1'
                   }
-                  onClick={() => setActiveForm2('about_me')}>
+                  onClick={() => {
+                    profileData && profileData.about && setActiveForm2('about_me');
+                  }}>
                   О себе
                 </p>
                 <p

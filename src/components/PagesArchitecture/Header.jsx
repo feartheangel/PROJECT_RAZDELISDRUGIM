@@ -29,12 +29,6 @@ const Header = () => {
     if (localStorage.getItem('key')) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
-
-    document.addEventListener('keydown', keyDownHandler, false);
-
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler, false);
-    };
   }, [localStorage.getItem('key')]);
 
   const [redirect, setRedirect] = React.useState();
@@ -44,7 +38,7 @@ const Header = () => {
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const keyDownHandler = React.useCallback((event) => {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && window.location.href.includes('search')) {
       searchButton.current.click();
     }
   });
@@ -212,7 +206,9 @@ const Header = () => {
           {isLoggedIn && (
             <div className="header-right-content-logged-div-wrapper">
               <div className="header-right-content-logged-div">
-                <img className="header-right-content-logged-img" src={Favorites} />
+                <Link to="/favorites">
+                  <img className="header-right-content-logged-img" src={Favorites} />
+                </Link>
                 <img className="header-right-content-logged-img" src={Notifications} />
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}

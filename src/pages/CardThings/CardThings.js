@@ -560,6 +560,14 @@ const CardThings = () => {
                     )}
                   </div>
 
+                  <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+                    <YMaps>
+                      <Map width={300} height={200} defaultState={mapData}>
+                        <Placemark geometry={itemData && mapData.center} />
+                      </Map>
+                    </YMaps>
+                  </div>
+
                   {/* Свободно*/}
                   <div style={{ display: 'none' }} className="block_up_free">
                     <img src={Clock2} alt="" className="img_clock2" />
@@ -812,13 +820,6 @@ const CardThings = () => {
                     </div>
                   )}
                 </div>
-              </div>
-              <div style={{ marginTop: '505px' }}>
-                <YMaps>
-                  <Map width={300} height={200} defaultState={mapData}>
-                    <Placemark geometry={itemData && mapData.center} />
-                  </Map>
-                </YMaps>
               </div>
             </div>
           </div>

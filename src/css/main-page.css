@@ -772,9 +772,14 @@ button {
 
 .news-reviews-blocks {
   display: flex;
-  justify-content: center;
   align-items: center;
   margin-top: 20px;
+  width: 1240px;
+  overflow-x: hidden;
+}
+
+.news_slider_track {
+  display: flex;
 }
 
 .news-reviews-block {
@@ -829,9 +834,10 @@ button {
 .main-sections-first {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 50px;
   font-size: 20px;
+  flex-wrap: wrap;
 }
 
 .main-sections-second {
@@ -853,6 +859,29 @@ button {
 .main-li {
   font-weight: 600;
   font-size: 24px;
+  cursor: pointer;
+}
+
+.main-sections-first-ul {
+  margin-bottom: 50px;
+  width: 600px;
+}
+
+.main-sections-third-ul {
+  margin-bottom: 50px;
+  width: 600px;
+}
+
+.main-sections-second-ul {
+  width: 315px;
+}
+
+.main-sections-fourth-ul {
+  width: 315px;
+}
+
+.categories_wrapper {
+  display: flex;
 }
 
 .main-sections-button {
@@ -1179,4 +1208,22 @@ button {
   align-self: flex-end;
   cursor: pointer;
   margin-top: 20px;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.footer-first-li {
+  cursor: pointer;
+}
+
+.footer-second-li {
+  cursor: pointer;
+}
+
+@media (min-width: 2160px) {
+  .main-sections-second-ul {
+    margin-right: 150px;
+  }
 }

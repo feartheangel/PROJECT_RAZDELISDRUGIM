@@ -368,6 +368,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               E-mail <span className="Red_star"> * </span>{' '}
             </label>
             <input
+              disabled={contactEmailRegExp.test(userData && userData.username)}
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               className="setting_left_input"
@@ -393,6 +394,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               Номер телефона <span className="Red_star"> * </span>{' '}
             </label>
             <input
+              disabled={contactNumberRegExp.test(userData && userData.username)}
               onChange={(e) => setNumber(e.target.value)}
               value={number}
               className="setting_left_input"

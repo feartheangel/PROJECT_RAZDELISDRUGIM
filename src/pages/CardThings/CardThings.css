@@ -65,6 +65,17 @@
   padding-bottom: 30px;
 }
 
+.card_content_footer_pages {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 30px 0;
+}
+
 /* ЛЕВАЯ СТОРОНА */
 .card_content_left {
   display: flex;

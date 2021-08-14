@@ -34,11 +34,21 @@ const Footer = () => {
           <div className="footer-first-col">
             <ul className="footer-first-ul">
               <li className="footer-first-li main-footer-li">Сервис</li>
-              <li className="footer-first-li">Как это работает</li>
-              <li className="footer-first-li">Помощь</li>
-              <li className="footer-first-li">Доставка и оплата</li>
-              <li className="footer-first-li">Вопросы и ответы</li>
-              <li className="footer-first-li">Сотрудничество</li>
+              <Link style={{ textDecoration: 'none' }} to="/how-it-works">
+                <li className="footer-first-li">Как это работает</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/help">
+                <li className="footer-first-li">Помощь</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/delivery-and-payment">
+                <li className="footer-first-li">Доставка и оплата</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/faq">
+                <li className="footer-first-li">Вопросы и ответы</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/collaboration">
+                <li className="footer-first-li">Сотрудничество</li>
+              </Link>
               <li className="footer-first-li">Пресса о нас</li>
               <li className="footer-first-li">Отзывы участников</li>
               <li className="footer-first-li">Контакты</li>
@@ -46,19 +56,33 @@ const Footer = () => {
           </div>
           <div className="footer-second-col">
             <ul className="footer-second-ul-first">
-              <li className="footer-second-li main-footer-li">Помощь</li>
-              <li className="footer-second-li">Как подать объявление</li>
-              <li className="footer-second-li">Спорные ситуации</li>
-              <li className="footer-second-li">Защита и гарантии</li>
+              <Link style={{ textDecoration: 'none' }} to="/help">
+                <li className="footer-second-li main-footer-li">Помощь</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/guide">
+                <li className="footer-second-li">Как подать объявление</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/disputs">
+                <li className="footer-second-li">Спорные ситуации</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/protection">
+                <li className="footer-second-li">Защита и гарантии</li>
+              </Link>
             </ul>
             <ul className="footer-second-ul-second">
               <li className="footer-second-li main-footer-li">Арендаторам</li>
-              <li className="footer-second-li">Как взять в аренду</li>
+              <Link style={{ textDecoration: 'none' }} to="/how-to-rent">
+                <li className="footer-second-li">Как взять в аренду</li>
+              </Link>
             </ul>
             <ul className="footer-second-ul-third">
               <li className="footer-second-li main-footer-li">Владельцам</li>
-              <li className="footer-second-li">Как сдать в аренду</li>
-              <li className="footer-second-li">Аренда для бизнеса</li>
+              <Link style={{ textDecoration: 'none' }} to="/how-to-rent-out">
+                <li className="footer-second-li">Как сдать в аренду</li>
+              </Link>
+              <Link style={{ textDecoration: 'none' }} to="/for-business">
+                <li className="footer-second-li">Аренда для бизнеса</li>
+              </Link>
             </ul>
           </div>
           <div className="footer-third-col">
@@ -68,9 +92,13 @@ const Footer = () => {
                 [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
                   if (index <= 8) {
                     return (
-                      <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
-                        {chapter[0]}
-                      </li>
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        to={`/catalog?chapter_id=${chapter[1]}`}>
+                        <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
+                          {chapter[0]}
+                        </li>
+                      </Link>
                     );
                   }
                 })}
@@ -82,9 +110,13 @@ const Footer = () => {
                 [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
                   if (index > 8) {
                     return (
-                      <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
-                        {chapter[0]}
-                      </li>
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        to={`/catalog?chapter_id=${chapter[1]}`}>
+                        <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
+                          {chapter[0]}
+                        </li>
+                      </Link>
                     );
                   }
                 })}

@@ -44,7 +44,6 @@ const CatalogComponent = ({ chapterId }) => {
     });
     setRedirect(<Redirect to="/search" />);
   };
-
   return (
     <div className="CatalogComponent">
       {/* ШАПКА С ФОТО */}
@@ -111,7 +110,6 @@ const CatalogComponent = ({ chapterId }) => {
         <p>
           {[].concat.apply(Object.entries(chapters)).map((chapter, index) => {
             if (chapterId === chapter[1][0]) {
-              console.log(chapter[1][1]);
               return chapter[1][3];
             }
           })}

@@ -10,6 +10,17 @@ import {
   PublicProfile,
   Catalog,
   MyFavorites,
+  HowItWorks,
+  HelpPage,
+  DeliveryAndPayment,
+  FAQ,
+  Collab,
+  Guide,
+  Disputs,
+  Protection,
+  HowToRentOut,
+  HowToRent,
+  ForBusiness,
 } from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
@@ -33,7 +44,6 @@ function App() {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(setItemsLoading());
     Requests.fetchItems()
       .then((response) => {
         dispatch(setItems(response.data));
@@ -42,11 +52,9 @@ function App() {
       .then(
         Requests.fetchUserProfile().then((response) => {
           dispatch(setUserData(response.data));
-          dispatch(setItemsLoading());
           Requests.fetchAdresses()
             .then((response) => {
               dispatch(setAdresses(response.data));
-              dispatch(setItemsLoaded());
             })
             .then(() => {
               Requests.fetchSubjects().then((response) => {
@@ -89,6 +97,17 @@ function App() {
         <Route path="/public-profile" component={PublicProfile} exact />
         <Route path="/catalog" component={Catalog} exact />
         <Route path="/favorites" component={MyFavorites} exact />
+        <Route path="/how-it-works" component={HowItWorks} exact />
+        <Route path="/help" component={HelpPage} exact />
+        <Route path="/delivery-and-payment" component={DeliveryAndPayment} exact />
+        <Route path="/FAQ" component={FAQ} exact />
+        <Route path="/collaboration" component={Collab} exact />
+        <Route path="/guide" component={Guide} exact />
+        <Route path="/disputs" component={Disputs} exact />
+        <Route path="/protection" component={Protection} exact />
+        <Route path="/how-to-rent-out" component={HowToRentOut} exact />
+        <Route path="/how-to-rent" component={HowToRent} exact />
+        <Route path="/for-business" component={ForBusiness} exact />
       </div>
     </div>
   );

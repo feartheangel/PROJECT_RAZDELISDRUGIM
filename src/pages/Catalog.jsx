@@ -28,6 +28,12 @@ const Catalog = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  React.useEffect(() => {
+    if (window.location.href.split('?chapter_id=')[1]) {
+      setActiveForm(Number(window.location.href.split('?chapter_id=')[1]));
+    }
+  }, [window.location.href]);
+
   return (
     <div className="Catalog">
       <Header />
@@ -63,7 +69,9 @@ const Catalog = () => {
                   [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
                     return (
                       <div
-                        onClick={() => setActiveForm(chapter[1][0])}
+                        onClick={() => {
+                          setActiveForm(chapter[1][0]);
+                        }}
                         key={index}
                         className="left_category_global_div">
                         <img
@@ -87,7 +95,7 @@ const Catalog = () => {
 
             {/* ПРАВАЯ СТОРОНА КОНТЕНТА */}
             <div className="container_down_right">
-              <CatalogComponent chapterId={activeForm} chapters={chapters} />
+              <CatalogComponent chapterId={activeForm} />
             </div>
           </div>
         </div>
