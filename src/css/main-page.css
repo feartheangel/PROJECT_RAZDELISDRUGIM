@@ -1286,11 +1286,27 @@ button {
 #login-button2 {
   display: none;
 }
+#logged-div-wrapper2{
+  display: none;
+}
+
+
+
+
+
 
 /* МЕДИА ЗАПРОСЫ  */
 
 @media (max-width: 479px) {
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 478px;
+    min-width: 478px;
+    height: 100%;
+    overflow-x: hidden;
+  }
   .content {
     display: flex;
     flex-direction: column;
@@ -1300,7 +1316,25 @@ button {
     overflow-x: hidden;
   }
   /* БЛОК HEADER */
+  /* БЛОК УЖЕ АВТОРИЗИРОВАННОГО ПОЛЬЗОВАТЕЛЯ */
+  #logged-div-wrapper1{
+    display: none;
+  }
+  #logged-div-wrapper2{
+    display: flex;
+  }
+  .header-right-content-logged-div-wrapper{
+    margin-left: 10px;
+  }
+  .header-right-content-logged-img{
+    margin-right: 10px;
+  }
+  .dropdown-profile-menu-wrapper.active{
+    right: -95px;
+    top: 85px;
+  }
 
+  /* БЛОК НЕАВТОРИЗИРОВАННОГО ПОЛЬЗОВАТЕЛЯ */
   .header {
     display: flex;
     max-width: 478px;
@@ -1327,8 +1361,6 @@ button {
     justify-content: space-between;
   }
   .location-selector {
-    /* margin-left: 85px;
-  margin-right: 110px; */
     margin: 0;
   }
   .language-selector {
@@ -1341,6 +1373,10 @@ button {
     margin: 0;
     width: 121px;
     height: 41px;
+  }
+  .language-planet-img{
+    width: 22px;
+    height: 22px;
   }
   /* кнопки входа и тд */
   .header-right-content {
@@ -1427,8 +1463,13 @@ button {
   }
   /* БУРГЕР МЕНЮ */
   .burger_dropdown_menu {
-    top: 0;
-    left: 14px;
+    top: 80px;
+    left: 0;
+    padding: 10px 10px 10px 20px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 0px 0px 15px 0px;
+    height: auto;
   }
 
   /* БЛОК ПОД ШАПКОЙ */
@@ -1853,6 +1894,40 @@ button {
     margin: 20px 0 15px 0;
   }
 
+  /* НОВОСТИ И ОБЗОРЫ */
+  .news-reviews{
+    max-width: 478px;
+    height: auto;
+    padding: 20px 0;
+  }
+  .news-reviews-content{
+    padding: 0;
+  }
+  .news-reviews-blocks{
+    margin: 0;
+  }
+.main-news-reviews-title{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #F7FFF7;
+  margin-bottom: 15px;
+  height: auto;
+}
+.news-reviews-block{
+  height: auto;
+  margin-bottom: 40px;
+}
+.news-reviews-text{
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
   /*  КАТЕГОРИИ ПЕРЕД ПОДВАЛОМ */
   .main-sections {
     margin: 15px;
@@ -1880,8 +1955,9 @@ button {
     height: auto;
   }
   .main-sections-first-ul {
-    width: 220px;
+    width: 210px;
     margin-bottom: 20px;
+    margin-right: 20px;
   }
   .main-section-first-li {
     font-weight: normal;
@@ -1898,7 +1974,7 @@ button {
 
   /* 2 */
   .main-sections-second-ul {
-    width: 220px;
+    width: 210px;
     margin-bottom: 20px;
   }
   .main-sections-second-li.main-li {
@@ -1915,8 +1991,9 @@ button {
   }
   /* 3 */
   .main-sections-third-ul {
-    width: 220px;
+    width: 210px;
     margin-bottom: 20px;
+    margin-right: 20px;
   }
   .main-sections-third-li.main-li {
     font-weight: 500;
@@ -1933,7 +2010,7 @@ button {
 
   /* 4 */
   .main-sections-fourth-ul {
-    width: 220px;
+    width: 210px;
     margin-bottom: 20px;
   }
   .main-sections-fourth-li.main-li {
