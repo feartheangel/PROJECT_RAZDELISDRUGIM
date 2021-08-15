@@ -460,3 +460,45 @@
 .password-control:hover {
   cursor: pointer;
 }
+
+
+
+/* МЕДИА ЗАПРОСЫ */
+@media (max-width: 479px){
+
+  /* форма входа */
+  .reg-form {
+    max-width: 478px;
+    margin-top: 30px;
+  }
+  .reg-form-wrapper{
+    height: 100%;
+  }
+  .reg-content{
+    height: 850px;
+  }
+  .reg-auth-wrapper{
+    height: 100%;
+  }
+  .log-form{
+    max-width: 478px;
+    height: 700px;
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

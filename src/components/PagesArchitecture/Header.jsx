@@ -202,6 +202,33 @@ const Header = () => {
               id="login-button2"
             />
           )}
+           {isLoggedIn && (
+            <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper2">
+              <div className="header-right-content-logged-div">
+                <Link to="/favorites">
+                  <img className="header-right-content-logged-img" src={Favorites} />
+                </Link>
+                <img className="header-right-content-logged-img" src={Notifications} />
+                <div
+                  onClick={() => setProfilePopUpActive(!profilePopUpActive)}
+                  className="user-avatar-group">
+                  <img
+                    style={{ width: '30px', height: '30px', borderRadius: '100%' }}
+                    className="header-right-content-logged-img"
+                    src={`https://razdelisdrugim.by${userData.image_profile}`}
+                  />
+                  <img className="header-right-content-logged-img" src={MenuStroke} />
+                </div>
+              </div>
+              {profilePopUpActive && (
+                <ProfilePopUp
+                  setProfilePopUpActive={setProfilePopUpActive}
+                  profilePopUpActive={profilePopUpActive}
+                  logout={logout}
+                />
+              )}
+            </div>
+          )}
         </div>
         <div className="header-right-content">
           <div className="header-lower-table-left" id="header-lower-table-left2">
@@ -232,7 +259,7 @@ const Header = () => {
           )}
 
           {isLoggedIn && (
-            <div className="header-right-content-logged-div-wrapper">
+            <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper1">
               <div className="header-right-content-logged-div">
                 <Link to="/favorites">
                   <img className="header-right-content-logged-img" src={Favorites} />
