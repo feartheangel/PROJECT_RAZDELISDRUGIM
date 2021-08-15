@@ -24,12 +24,19 @@ const Header = () => {
   const searchButton = React.useRef(null);
 
   const [modalActive, setModalActive] = React.useState(false);
+  const [currentLocation, setCurrentLocation] = React.useState(false);
 
   React.useEffect(() => {
     if (localStorage.getItem('key')) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
   }, [localStorage.getItem('key')]);
+
+  React.useEffect(() => {
+    Requests.fetchMainPageBlocks().then((res) => {
+      setCurrentLocation(res.data[0].city.city);
+    });
+  }, []);
 
   const [redirect, setRedirect] = React.useState();
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
@@ -38,7 +45,10 @@ const Header = () => {
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const keyDownHandler = React.useCallback((event) => {
-    if (event.keyCode === 13 && window.location.href.includes('search')) {
+    if (
+      event.keyCode === 13 &&
+      (window.location.href.includes('search') || window.location.href.split('/')[1] === '')
+    ) {
       searchButton.current.click();
     }
   });
@@ -168,9 +178,7 @@ const Header = () => {
   return (
     <header className="header" onKeyDown={(e) => keyDownHandler(e)}>
       <div className="news-alert-block">
-        <p className="news-alert-p">
-          Теперь вы можете искать вещь в аренду на карте!
-        </p>
+        <p className="news-alert-p">Теперь вы можете искать вещь в аренду на карте!</p>
       </div>
       <div className="header__inner">
         <div className="header-left-content">
@@ -179,7 +187,7 @@ const Header = () => {
           </Link>
           <div className="location-selector">
             <img src={mark} alt="" className="location-img" />
-            <p className="location-p">Минск</p>
+            <p className="location-p">{currentLocation && currentLocation}</p>
           </div>
           <div className="laguage-selector-wrapper">
             <img src={LanguagePlanet} alt="" className="language-planet-img" />
@@ -196,16 +204,16 @@ const Header = () => {
           )}
         </div>
         <div className="header-right-content">
-        <div className="header-lower-table-left" id="header-lower-table-left2">
-          <img
-            onClick={() => setBurgerActive(!burgerActive)}
-            src={Burger}
-            alt=""
-            className="burger-button"
-            id="header-lower-table-left2"
-          />
-          <p className="header-lower-table-p" >Каталог</p>
-        </div>
+          <div className="header-lower-table-left" id="header-lower-table-left2">
+            <img
+              onClick={() => setBurgerActive(!burgerActive)}
+              src={Burger}
+              alt=""
+              className="burger-button"
+              id="header-lower-table-left2"
+            />
+            <p className="header-lower-table-p">Каталог</p>
+          </div>
           <input
             onClick={addSubjectHandler}
             type="button"

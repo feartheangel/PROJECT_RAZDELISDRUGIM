@@ -20,6 +20,7 @@
 .reg-auth-wrapper.active {
   opacity: 100;
   pointer-events: all;
+  overflow-y: scroll;
 }
 
 .reg-form-action-type-list a {

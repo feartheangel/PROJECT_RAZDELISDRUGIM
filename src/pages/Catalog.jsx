@@ -41,7 +41,7 @@ const Catalog = () => {
         <div className="Catalog_wrapper_container">
           <div className="Catalog_wrapper_container_up">
             {/* ТЕКС ПУТЕЙ ПО КАТЕГОРИЯМ ( с cardthings взято ) */}
-            <div className="card_shapka">
+            <div style={{ display: 'none' }} className="card_shapka">
               <div>
                 <p className="card_shapka_hover"> Главная </p>
                 <img src={Vector1} alt="" />

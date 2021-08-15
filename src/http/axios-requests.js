@@ -60,28 +60,29 @@ class Requests {
     });
   }
 
-  static passwordRecoveryEntry(email) {
+  static passwordRecoveryEmail(email) {
     return axios({
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: {
         email: email,
+        username: email,
       },
-      url: 'https://razdelisdrugim.by/api/password_reset/',
+      url: 'https://razdelisdrugim.by/api/jwt/reset-password-email/',
     }).then((response) => {
       return response;
     });
   }
 
-  static passwordRecoverySubmit(token, password) {
-    axios({
+  static passwordRecoveryPhone(phone) {
+    return axios({
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: {
-        token: token,
-        password: password,
+        phone: phone,
+        username: phone,
       },
-      url: 'https://razdelisdrugim.by/api/password_reset/confirm/',
+      url: 'https://razdelisdrugim.by/api/jwt/reset-password-phone/',
     }).then((response) => {
       return response;
     });
@@ -1024,6 +1025,18 @@ class Requests {
         'Content-Type': 'application/json',
       },
       url: `https://razdelisdrugim.by/api/additional_entities/news/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static fetchMainPageBlocks() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/additional_entities/blocks/`,
     }).then((response) => {
       return response;
     });

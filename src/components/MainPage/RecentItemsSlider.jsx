@@ -1,23 +1,14 @@
 import React from 'react';
 import { ItemCard } from '../index';
-import ArrowLeft from '../../img/MainPage/Arrow_left.png';
-import ArrowRight from '../../img/MainPage/Arrow_right.png';
 import Requests from '../../http/axios-requests';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 const RecentItemsSlider = () => {
+  // install Swiper modules
+  SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
   const [recentItems, setRecentItems] = React.useState([]);
-  const [recentSliderPos, setRecentSliderPos] = React.useState(0);
-
-  const recentSliderPosHandler = (dir) => {
-    if (dir === 'less' && recentSliderPos !== 0) {
-      setRecentSliderPos(recentSliderPos + 293);
-    }
-
-    if (dir === 'more' && recentSliderPos !== -1758) {
-      setRecentSliderPos(recentSliderPos - 293);
-      console.log(recentSliderPos);
-    }
-  };
 
   React.useEffect(() => {
     Requests.getRecentItems().then((res) => {
@@ -30,26 +21,21 @@ const RecentItemsSlider = () => {
       <div className="recent-content">
         <p className="recent-p">Недавно добавленные</p>
         <div className="recent-blocks-wrapper">
-          <img
-            onClick={() => recentSliderPosHandler('less')}
-            src={ArrowLeft}
-            alt=""
-            className="recent-arrow-left"
-          />
           <div className="recent-blocks-slider-container">
-            <div
-              style={{ transform: `translate(${recentSliderPos}px, 0px)` }}
-              className="home_slider_track">
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={4}
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}>
               {recentItems &&
-                recentItems.map((item, index) => <ItemCard key={index} item={item} />)}
-            </div>
+                recentItems.map((item, index) => (
+                  <SwiperSlide style={{ display: 'flex' }}>
+                    {' '}
+                    <ItemCard key={index} item={item} />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
           </div>
-          <img
-            onClick={() => recentSliderPosHandler('more')}
-            src={ArrowRight}
-            alt=""
-            className="recent-arrow-right"
-          />
         </div>
       </div>
     </section>

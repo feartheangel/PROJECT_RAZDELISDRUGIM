@@ -398,7 +398,9 @@ const SearchPage = () => {
             </div>
 
             <div>
-              <p className="SearchPage_container_shapka_hover"> Каталог </p>
+              <Link style={{ textDecoration: 'none' }} to="/catalog">
+                <p className="SearchPage_container_shapka_hover"> Каталог </p>
+              </Link>
               {category && <img src={vector1} alt="" />}
             </div>
 

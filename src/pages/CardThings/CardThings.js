@@ -43,8 +43,13 @@ import Google from '../../img/ProfilePage/google.png';
 import Facebook from '../../img/ProfilePage/facebook2.png';
 import Ok from '../../img/ProfilePage/ok.png';
 import copy from '../../img/MainPage/copy.png';
+import Favorites from '../../img/MainPage/Favorites.png';
+import FavoritesDisabled from '../../img/MainPage/FavoritesDisabled.png';
 
 const CardThings = () => {
+  const dispatch = useDispatch();
+  const { searchItems } = useSelector(({ search }) => search);
+  const { isLoggedIn, favorites } = useSelector(({ userData }) => userData);
   //расчет времени на платформе
   function getDaysBetweenDates(d0, d1) {
     var msPerDay = 8.64e7;
@@ -76,6 +81,20 @@ const CardThings = () => {
     dispatch(setCategoryId(id_category));
   };
 
+  const addFavoriteHandler = (e) => {
+    e.preventDefault();
+    Requests.addFavoriteItem(window.location.href.split('?id=')[1]).then(() => {
+      setIsFavorite(true);
+    });
+  };
+
+  const deleteFavoriteHandler = (e) => {
+    e.preventDefault();
+    Requests.deleteFavoriteItem(window.location.href.split('?id=')[1]).then(() => {
+      setIsFavorite(false);
+    });
+  };
+
   React.useEffect(() => {
     Requests.getSingleItem(window.location.href.split('?id=')[1]).then((response) => {
       setItemData(response.data);
@@ -88,6 +107,16 @@ const CardThings = () => {
   }, [window.location.href]);
 
   React.useEffect(() => {
+    favorites &&
+      favorites.forEach((elem) => {
+        if (elem.item.id === Number(window.location.href.split('?id=')[1])) {
+          setIsFavorite(true);
+        }
+        return;
+      });
+  }, [favorites]);
+
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
@@ -96,12 +125,8 @@ const CardThings = () => {
   const [selectedImage, setSelectedImage] = React.useState();
   const [contactVisible, setContactVisible] = React.useState();
   const [shareVisible, setShareVisible] = React.useState();
-  const [redirect, setRedirect] = React.useState();
+  const [isFavorite, setIsFavorite] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
-
-  const dispatch = useDispatch();
-  const { searchItems } = useSelector(({ search }) => search);
-  const { isLoggedIn } = useSelector(({ userData }) => userData);
 
   const mapData = {
     center: itemData && itemData.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse(),
@@ -125,7 +150,9 @@ const CardThings = () => {
               </Link>
 
               <div>
-                <p className="card_shapka_hover"> Каталог </p>
+                <Link style={{ textDecoration: 'none' }} to="/catalog">
+                  <p className="card_shapka_hover"> Каталог </p>
+                </Link>
                 <img src={Vector1} alt="" />
               </div>
               <Link style={{ textDecoration: 'none' }} to="/search">
@@ -585,7 +612,21 @@ const CardThings = () => {
                         className="contactOwner_btn"
                       />
 
-                      <img src={Love} alt="" className="img_contactOwner" />
+                      {favorites && !isFavorite && (
+                        <img
+                          onClick={(e) => addFavoriteHandler(e)}
+                          className="img_contactOwner"
+                          src={FavoritesDisabled}
+                        />
+                      )}
+
+                      {favorites && isFavorite && (
+                        <img
+                          onClick={(e) => deleteFavoriteHandler(e)}
+                          className="img_contactOwner"
+                          src={Favorites}
+                        />
+                      )}
                     </div>
                     {contactVisible && (
                       <div style={{ marginBottom: '70px' }} className={'item_share_link'}>

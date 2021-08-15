@@ -22,6 +22,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
   const [passwordError, setPasswordError] = React.useState('Поле не может быть пустым');
   const [formValid, setFormValid] = React.useState(false);
   const [successLogin, setSuccessLogin] = React.useState(false);
+  const [showPass, setShowPass] = React.useState(false);
 
   //проверка валидности полей
   React.useEffect(() => {
@@ -81,6 +82,8 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           alert('Авторизация прошла успешно');
           localStorage.setItem('key', response.data.access);
           setModalActive(false);
+          setLogin('');
+          setPassword('');
         }
       })
       .catch((err) => alert('Ошибка авторизации (данные введены неверно)'));
@@ -134,12 +137,13 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <input
             name="password"
             id="password"
-            type="password"
+            type={showPass ? 'text' : 'password'}
             placeholder="..."
             className="reg-form-contact-input"
             value={password}
             onChange={(e) => passwordHandler(e)}
           />
+          <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
           {passwordDirty && passwordError && (
             <label className="reg-form-text-label-l__alert">{passwordError}</label>
           )}

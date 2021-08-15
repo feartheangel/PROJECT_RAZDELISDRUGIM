@@ -152,9 +152,31 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
     if (activeSocial === 'tg') {
       userData.telegram_account ? setContact(userData.telegram_account) : setContact('');
     } else if (activeSocial === 'viber') {
-      userData.viber_account ? setContact(userData.viber_account) : setContact('');
+      userData.viber_account
+        ? setContact(userData.viber_account)
+        : userData.phone
+        ? setContact(
+            userData.phone.includes('+')
+              ? userData.phone
+                  .split('')
+                  .splice(userData.phone.indexOf('+') + 1, userData.phone.length - 1)
+                  .join('')
+              : userData.phone,
+          )
+        : setContact('');
     } else if (activeSocial === 'wa') {
-      userData.whatsapp_account ? setContact(userData.whatsapp_account) : setContact('');
+      userData.whatsapp_account
+        ? setContact(userData.whatsapp_account)
+        : userData.phone
+        ? setContact(
+            userData.phone.includes('+')
+              ? userData.phone
+                  .split('')
+                  .splice(userData.phone.indexOf('+') + 1, userData.phone.length - 1)
+                  .join('')
+              : userData.phone,
+          )
+        : setContact('');
     } else if (activeSocial === 'google') {
       userData.google_account ? setContact(userData.google_account) : setContact('');
     } else if (activeSocial === 'fb') {

@@ -1,23 +1,14 @@
 import React from 'react';
 import Requests from '../../http/axios-requests';
-import ArrowLeft from '../../img/MainPage/Arrow_left.png';
-import ArrowRight from '../../img/MainPage/Arrow_right.png';
 import { ItemCard } from '../index';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 const RandomItemsSlider = () => {
+  // install Swiper modules
+  SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   const [randomItems, setRandomItems] = React.useState([]);
-  const [randomSliderPos, setRandomSliderPos] = React.useState(0);
-
-  const randomSliderPosHandler = (dir) => {
-    if (dir === 'less' && randomSliderPos !== 0) {
-      setRandomSliderPos(randomSliderPos + 293);
-    }
-
-    if (dir === 'more' && randomSliderPos !== -1758) {
-      setRandomSliderPos(randomSliderPos - 293);
-    }
-  };
 
   React.useEffect(() => {
     Requests.getRandomItems().then((res) => {
@@ -29,25 +20,21 @@ const RandomItemsSlider = () => {
     <section className="popular-wrapper">
       <p className="popular-p">Случаные вещи, услуги</p>
       <div className="recent-blocks-wrapper">
-        <img
-          onClick={() => randomSliderPosHandler('less')}
-          src={ArrowLeft}
-          alt=""
-          className="recent-arrow-left"
-        />
         <div className="recent-blocks-slider-container">
-          <div
-            style={{ transform: `translate(${randomSliderPos}px, 0px)` }}
-            className="home_slider_track">
-            {randomItems && randomItems.map((item, index) => <ItemCard key={index} item={item} />)}
-          </div>
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={4}
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}>
+            {randomItems &&
+              randomItems.map((item, index) => (
+                <SwiperSlide style={{ display: 'flex' }}>
+                  {' '}
+                  <ItemCard key={index} item={item} />
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </div>
-        <img
-          onClick={() => randomSliderPosHandler('more')}
-          src={ArrowRight}
-          alt=""
-          className="recent-arrow-right"
-        />
       </div>
       <Link style={{ textDecoration: 'none' }} to="/catalog">
         <input type="button" value="Смотреть каталог" className="popular-button" />

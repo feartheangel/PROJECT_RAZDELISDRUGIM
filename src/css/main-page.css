@@ -878,22 +878,24 @@ button {
 
 .main-li {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .main-sections-first-ul {
   margin-bottom: 50px;
-  width: 600px;
+  width: 540px;
+  margin-left: 170px;
 }
 
 .main-sections-third-ul {
   margin-bottom: 50px;
-  width: 600px;
+  width: 390px;
+  margin-left: 50px;
 }
 
 .main-sections-second-ul {
-  width: 315px;
+  width: 390px;
 }
 
 .main-sections-fourth-ul {
