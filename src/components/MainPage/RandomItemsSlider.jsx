@@ -25,7 +25,9 @@ const RandomItemsSlider = () => {
             spaceBetween={50}
             slidesPerView={4}
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}>
+            scrollbar={{ draggable: true }}
+            id ="swiper_comp"
+            >
             {randomItems &&
               randomItems.map((item, index) => (
                 <SwiperSlide style={{ display: 'flex' }}>
@@ -34,6 +36,22 @@ const RandomItemsSlider = () => {
                 </SwiperSlide>
               ))}
           </Swiper>
+                      {/* копия для адаптива */}
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={2}
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            id ="swiper_mobile"
+            >
+            {randomItems &&
+              randomItems.map((item, index) => (
+                <SwiperSlide style={{ display: 'flex' }}>
+                  {' '}
+                  <ItemCard key={index} item={item} />
+                </SwiperSlide>
+              ))}
+          </Swiper>     
         </div>
       </div>
       <Link style={{ textDecoration: 'none' }} to="/catalog">

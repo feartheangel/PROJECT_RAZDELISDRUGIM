@@ -26,10 +26,28 @@ const RecentItemsSlider = () => {
               spaceBetween={50}
               slidesPerView={4}
               pagination={{ clickable: true }}
-              scrollbar={{ draggable: true }}>
+              scrollbar={{ draggable: true }}
+              id ="swiper_comp"
+              >
               {recentItems &&
                 recentItems.map((item, index) => (
                   <SwiperSlide style={{ display: 'flex' }}>
+                    {' '}
+                    <ItemCard key={index} item={item} />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+            {/* копия для адаптива */}
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={2}
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}
+              id ="swiper_mobile"
+              >
+              {recentItems &&
+                recentItems.map((item, index) => (
+                  <SwiperSlide style={{ display: 'flex', marginRight: '20px' }}>
                     {' '}
                     <ItemCard key={index} item={item} />
                   </SwiperSlide>

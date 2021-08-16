@@ -86,7 +86,8 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
-          <div className="footer-third-col">
+          {/* пк версия */}
+          <div className="footer-third-col" id="main-sections-pk">
             <ul className="footer-third-ul">
               <li className="footer-third-li main-footer-li">Категории</li>
               {isLoaded &&
@@ -105,7 +106,7 @@ const Footer = () => {
                 })}
             </ul>
           </div>
-          <div className="footer-fourth-col">
+          <div className="footer-fourth-col" id="main-sections-pk">
             <ul className="footer-fourth-ul">
               {isLoaded &&
                 [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
@@ -126,6 +127,55 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
+
+          {/* мобильная версия */}
+          <div className="footer-third-col" id="main-sections-mobile">
+            <ul className="footer-third-ul">
+              <li className="footer-third-li main-footer-li">Категории</li>
+              {isLoaded &&
+                [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
+                  if (index <= 9) {
+                    return (
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        to={`/catalog?chapter_id=${chapter[1]}`}>
+                        <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
+                          {chapter[0]}
+                        </li>
+                      </Link>
+                    );
+                  }
+                })}
+            </ul>
+          </div>
+          <div className="footer-fourth-col" id="main-sections-mobile">
+            <ul className="footer-fourth-ul">
+              {isLoaded &&
+                [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
+                  if (index > 9) {
+                    return (
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        to={`/catalog?chapter_id=${chapter[1]}`}>
+                        <li style={{ cursor: 'pointer' }} key={index} value={chapter[1]}>
+                          {chapter[0]}
+                        </li>
+                      </Link>
+                    );
+                  }
+                })}
+              <Link style={{ textDecoration: 'none' }} to="/catalog">
+                <input type="button" value="Смотреть каталог" className="popular-button" id="popular-button1" />
+              </Link>
+            </ul>
+          </div>
+
+
+
+
+
+
+
           <div className="footer-fifth-col">
             <Link style={{ textDecoration: 'none' }} to="/catalog">
                   <input type="button" value="Смотреть каталог" className="popular-button" id="popular-button2" />

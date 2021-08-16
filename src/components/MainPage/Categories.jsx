@@ -30,7 +30,8 @@ const Categories = () => {
   return (
     <section className="main-sections">
       <div className="main-sections-content">
-        <div className="main-sections-first">
+                  {/* ДЛЯ ПК ВЕРСИИ */}
+        <div className="main-sections-first" id="main-sections-pk">
           <div className="categories_wrapper">
             <ul className="main-sections-first-ul">
               {isLoaded &&
@@ -123,6 +124,109 @@ const Categories = () => {
             </ul>
           </div>
         </div>
+
+                          {/* ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */}
+        <div className="main-sections-first" id="main-sections-mobile">
+          {/* 1 block */}
+          <div className="categories_wrapper">
+            <ul className="main-sections-first-ul">
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index <= 6 && index >= 0) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+              {redirect}
+            </ul>
+            <ul className="main-sections-second-ul">
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 7 && index <= 13) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+          </div>
+
+          {/* 2 block */}
+          <div className="categories_wrapper">
+            <ul className="main-sections-first-ul">
+            {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 13 && index <= 20) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+              {redirect}
+            </ul>
+            <ul className="main-sections-second-ul">
+            {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 21 && index <= 27) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+          </div>
+
+          {/* 3 block */}
+          <div className="categories_wrapper">
+            <ul className="main-sections-first-ul">
+            {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 28 && index <= 32) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+              {redirect}
+            </ul>
+            <ul className="main-sections-second-ul">
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 32 && index <= 44) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+          </div>
+        </div>
+
         <Link style={{ textDecoration: 'none' }} to="/catalog">
           <input type="button" value="Смотреть каталог" className="popular-button" />
         </Link>
