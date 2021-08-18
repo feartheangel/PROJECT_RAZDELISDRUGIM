@@ -29,11 +29,17 @@ const MapBlock = () => {
   return (
     <section className="map">
       <YMaps>
-        <Map width={1180} height={500} defaultState={mapData}>
+        <Map width={1180} height={500} defaultState={mapData} id="map_komp">
+          {marks && marks.map((mark) => <Placemark geometry={mark} />)}
+        </Map>
+
+
+        <Map width={1180} height={300} defaultState={mapData} id="map_adaptiv">
           {marks && marks.map((mark) => <Placemark geometry={mark} />)}
         </Map>
       </YMaps>
     </section>
+
   );
 };
 

@@ -220,13 +220,15 @@ const Footer = () => {
           <div className="footer-img-logo-wrapper">
             <img src={Logo2} alt="" className="footer-img-logo" />
           </div>
-          <div className="location-selector" id="location-selector2">
-              <img src={mark} alt="" className="location-img" />
-              <p className="location-p">Минск</p>
-          </div>
-          <div className="footer-localization-wrapper">
-            <img src={Planet} alt="" className="footer-planet-img" />
-            <p className="footer-localization-p">RU</p>
+          <div className="foooter-right_item">
+            <div className="location-selector" id="location-selector2">
+                <img src={mark} alt="" className="location-img" />
+                <p className="location-p">Минск</p>
+            </div>
+            <div className="footer-localization-wrapper">
+              <img src={Planet} alt="" className="footer-planet-img" />
+              <p className="footer-localization-p">RU</p>
+            </div>
           </div>
         </div>
 

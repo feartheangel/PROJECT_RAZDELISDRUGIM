@@ -37,6 +37,7 @@ const FirstBlockNavigation = () => {
                 type="button"
                 value="Найти вещь"
                 className="header-button add-subject2"
+                id="add-subject2"
               />
             </Link>
             <input
@@ -44,6 +45,7 @@ const FirstBlockNavigation = () => {
               type="button"
               value="Предложить вещь"
               className="header-button add-subject"
+              id="add-subject2"
             />
           </div>
         </div>

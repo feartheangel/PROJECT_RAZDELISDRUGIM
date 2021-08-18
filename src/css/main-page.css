@@ -1298,27 +1298,29 @@ button {
 #main-sections-mobile{
   display: none;
 }
+#map_adaptiv{
+  display: none;
+}
 
 
 
 
 /* МЕДИА ЗАПРОСЫ  */
 
-@media (max-width: 479px) {
+@media only screen and (max-width: 480px){
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
   .wrapper{
     display: flex;
     flex-direction: column;
-    max-width: 478px;
-    min-width: 478px;
+    max-width: 480px;
+    min-width: 320px;
+    width: 100%;
     height: 100%;
     overflow-x: hidden;
   }
   .content {
     display: flex;
     flex-direction: column;
-    max-width: 478px;
-    min-width: 478px;
     height: 100%;
     overflow-x: hidden;
   }
@@ -1345,8 +1347,6 @@ button {
   /* БЛОК НЕАВТОРИЗИРОВАННОГО ПОЛЬЗОВАТЕЛЯ */
   .header {
     display: flex;
-    max-width: 478px;
-    min-width: 478px;
     height: auto;
   }
   .news-alert-block {
@@ -1356,7 +1356,6 @@ button {
   /* шапка хедера */
   .header__inner {
     padding: 0;
-    max-width: 478px;
     height: auto;
     flex-wrap: wrap;
     margin: 10px 15px 0;
@@ -1379,12 +1378,22 @@ button {
   }
   .logo {
     margin: 0;
-    width: 121px;
-    height: 41px;
+    max-width: 121px;
+    max-height: 41px;
+    width: 100%;
+    height: 100%;
+  }
+  .location-img{
+    max-width: 17px;
+    max-height: 25px;
+    margin-right: 1px;
+    height: 100%;
   }
   .language-planet-img{
-    width: 22px;
-    height: 22px;
+    max-width: 22px;
+    max-height: 22px;
+    width: 100%;
+    height: 100%;
   }
   /* кнопки входа и тд */
   .header-right-content {
@@ -1393,16 +1402,12 @@ button {
     align-items: center;
     margin: 0;
   }
-  .add-subject {
-    width: 144px;
-    height: 40px;
-    font-size: 14px;
-    font-weight: 500;
-  }
   .login-button {
-    width: 90px;
-    height: 40px;
-    margin: 0;
+    max-width: 90px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+    margin: 0 0 0 10px;
     font-size: 14px;
     font-weight: 500;
     line-height: 23px;
@@ -1420,13 +1425,17 @@ button {
     text-align: center;
     align-items: center;
     justify-content: center;
+    max-width: 90px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
   }
   /* строка поиска и бургер */
   .header-lower-table {
     display: flex;
     justify-content: flex-end;
     padding: 0;
-    max-width: 478px;
+    width: 100%;
     height: auto;
     margin: 10px 15px 20px;
   }
@@ -1434,7 +1443,7 @@ button {
     width: auto;
   }
   .header-lower-table-p {
-    font-weight: normal;
+    font-weight: 500;
     font-size: 16px;
     line-height: 19px;
     color: #123940;
@@ -1458,7 +1467,7 @@ button {
     color: #123940;
   }
   .header-lower-table-right {
-    width: auto;
+    width: 100%;
   }
   .search-wrapper {
     width: auto;
@@ -1484,7 +1493,7 @@ button {
   .recent-wrapper {
     display: flex;
     flex-direction: column;
-    max-width: 478px;
+    max-width: 480px;
     height: 100%;
     align-items: center;
     margin: 15px 15px 5px 15px;
@@ -1492,7 +1501,7 @@ button {
   .main_page_first_content {
     display: flex;
     flex-direction: column;
-    max-width: 478px;
+    max-width: 480px;
     height: 100%;
   }
   .main_page_fris_block_left {
@@ -1503,7 +1512,7 @@ button {
     margin: 0;
   }
   .main_page_fris_block_left_main_p {
-    width: 450px;
+    width: 100%;
     max-width: 478px;
     font-weight: 600;
     font-size: 32px;
@@ -1530,24 +1539,31 @@ button {
   }
   /* КНОПКИ ДЕФОЛТ ВЕЗДЕ */
   .main_page_first_block_left_bottons {
-    max-width: 478px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 480px;
+    width: auto;
     margin-top: 10px;
+    padding: 0 10px;
   }
   .add-subject2 {
-    width: 200px;
-    height: 50px;
+    max-width: 144px;
+    max-height: 40px;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
   }
   .add-subject {
-    width: 200px;
-    height: 50px;
+    max-width: 144px;
+    max-height: 40px;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
   }
-
+  #add-subject2{
+    display: none;
+  }
 
 /* СЛАЙДЕРА */
 #swiper_comp{
@@ -1555,14 +1571,17 @@ button {
 }
 #swiper_mobile{
   display: flex;
+  width: 100%;
 }
 .swiper-slide swiper-slide-active{
-  margin-right: 20px;
+  margin-right: 10px;
+  width: 150px;
 }
+
 
   /* НЕДАВНО ДОБАВЛЕННЫЕ И КАРТОЧКИ */
   .recent-p {
-    margin: 0 15px 0 15px;
+    margin: 0;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -1573,12 +1592,10 @@ button {
   .recent-block {
     display: flex;
     padding: 10px;
-    width: 170px;
-    height: 375px;
+    max-width: 165px;
+    width: 100%;
+    height: auto;
     margin: 10px 15px;
-  }
-  .recent-block:first-child {
-    margin-right: 12px;
   }
   .recent-marks {
     margin-top: 10px;
@@ -1587,8 +1604,16 @@ button {
     margin-right: 12px;
   }
   .block-image {
-    width: 180px;
-    height: 205px;
+    max-width: 180px;
+    max-height: 205px;
+    width: 100%;
+    height: 100%;
+  }
+  .itemcard_favorite_img{
+    max-width: 25px;
+    max-height: 25px;
+    width: 100%;
+    height: 100%;
   }
   .recent-block-title-p {
     font-style: normal;
@@ -1624,12 +1649,14 @@ button {
   /* карточки(сами дивы для размещения )  */
   .recent-content {
     margin-bottom: 0;
+    width: 100%;
   }
   .recent-blocks-wrapper {
     margin: 0;
     display: flex;
     flex-direction: row;
-    max-width: 478px;
+    max-width: 480px;
+    width: 100%;
     height: auto;
     padding: 0;
   }
@@ -1637,16 +1664,16 @@ button {
   .recent-blocks-slider-container {
     display: flex;
     flex-direction: row;
-    max-width: 478px;
-    width: auto;
+    max-width: 480px;
+    width: 100%;
     height: auto;
-    padding: 10px;
+    padding: 10px 0;
     margin-bottom: 10px;
     margin-top: 10px;
   }
 
   .home_slider_track {
-    max-width: 478px;
+    max-width: 480px;
   }
   .recent-content {
     overflow-x: hidden;
@@ -1665,10 +1692,16 @@ button {
   }
 
   /* СЕКЦИЯ С КАРТОЙ  */
+  #map_komp{
+    display: none;
+  }
+  #map_adaptiv{
+    display: flex;
+  }
   .map {
     padding: 0;
     height: auto;
-    max-width: 478px;
+    max-width: 480px;
   }
   .map-input {
     width: 330px;
@@ -1733,11 +1766,11 @@ button {
   }
   .abilities-content {
     padding: 0;
-    max-width: 478px;
+    max-width: 480px;
   }
   .abilities-cards {
     margin: 0;
-    max-width: 478px;
+    max-width: 480px;
     color: #123940;
   }
   .abilities-card {
@@ -1772,7 +1805,7 @@ button {
 
   /* КНОПКИ ПОД КАРТОЧКАМИ ОПИСАНИЙ  */
   .abilities-buttons {
-    max-width: 478px;
+    max-width: 480px;
     margin: 10px 15px 20px 15px;
   }
   .abilities-button-find-subject {
@@ -1838,7 +1871,7 @@ button {
 
   /* КНОПКИ ПОД ОТЗЫВАМИ  */
   .reviews-buttons {
-    max-width: 478px;
+    max-width: 480px;
     margin: 10px 15px 20px 15px;
   }
   .reviews-button-write-dev {
@@ -1890,7 +1923,7 @@ button {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 478px;
+    max-width: 480px;
     width: 100%;
   }
   .about-middle-left {
@@ -1899,7 +1932,7 @@ button {
     height: 0;
   }
   .about-middle-right {
-    max-width: 478px;
+    max-width: 480px;
     font-weight: normal;
     font-size: 14px;
     line-height: 140%;
@@ -1917,11 +1950,14 @@ button {
 
   /* НОВОСТИ И ОБЗОРЫ */
   .news-reviews{
-    max-width: 478px;
+    max-width: 480px;
+    width: 100%;
     height: auto;
     padding: 20px 0;
   }
   .news-reviews-content{
+    max-width: 480px;
+    width: 100%;
     padding: 0;
   }
   .news-reviews-blocks{
@@ -1937,6 +1973,8 @@ button {
   height: auto;
 }
 .news-reviews-block{
+  max-width: 480px;
+  width: 100%;
   height: auto;
   margin-bottom: 40px;
 }
@@ -1961,7 +1999,7 @@ button {
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
-    max-width: 478px;
+    max-width: 480px;
     align-items: center;
     justify-content: center;
   }
@@ -1983,9 +2021,9 @@ button {
     height: auto;
   }
   .main-sections-first-ul {
-    width: 210px;
+    width: 162px;
     margin-bottom: 20px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-left: 0;
   }
   .main-section-first-li {
@@ -1996,14 +2034,14 @@ button {
   }
   .main-section-first-li.main-li {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 21px;
     color: #000000;
   }
 
   /* 2 */
   .main-sections-second-ul {
-    width: 210px;
+    width: 162px;
     margin-bottom: 20px;
   }
   .main-sections-second-li.main-li {
@@ -2020,7 +2058,7 @@ button {
   }
   /* 3 */
   .main-sections-third-ul {
-    width: 210px;
+    width: 162px;
     margin-bottom: 20px;
     margin-right: 20px;
     margin-left: 0;
@@ -2040,7 +2078,7 @@ button {
 
   /* 4 */
   .main-sections-fourth-ul {
-    width: 210px;
+    width: 162px;
     margin-bottom: 20px;
   }
   .main-sections-fourth-li.main-li {
@@ -2082,7 +2120,7 @@ button {
     background: #eecc36;
   }
   .footer-content {
-    max-width: 478px;
+    max-width: 480px;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -2092,7 +2130,7 @@ button {
   }
   /* блок 1 */
   .footer-first-col {
-    width: 220px;
+    width: 161px;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
@@ -2104,20 +2142,22 @@ button {
 
   /* блок 2 */
   .footer-second-ul-first {
-    width: 220px;
-    margin-bottom: 20px;
+    width: 161px;
+    margin-bottom: 10px;
   }
   .footer-second-ul-second {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   /* блок 3 */
   .footer-third-col {
+    width: 161px;
     margin-top: 10px;
   }
 
   /* блок 4 */
   .footer-fourth-col {
+    width: 161px;
     margin-top: 40px;
     margin-bottom: 20px;
   }
@@ -2152,7 +2192,7 @@ button {
   .footer-lower-part {
     display: flex;
     flex-direction: column;
-    max-width: 478px;
+    max-width: 480px;
     margin: 5px 15px 10px;
     padding: 0;
   }
@@ -2176,15 +2216,27 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     margin-top: 20px;
   }
   .footer-img-logo-wrapper {
-    margin-right: 115px;
+    margin-right: 0;
   }
   .footer-img-logo {
-    width: 140px;
-    height: 48px;
+    max-width: 140px;
+    width: 100%;
+    max-height: 48px;
     margin-right: 40px;
+  }
+  .footer-planet-img{
+    max-width: 25px;
+    width: 100%;
+    max-height: 18px;
+  }
+  .foooter-right_item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   #location-selector2 {
     margin: 0 10px 0 0;

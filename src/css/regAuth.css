@@ -464,25 +464,27 @@
 
 
 /* МЕДИА ЗАПРОСЫ */
-@media (max-width: 479px){
+@media (max-width: 480px){
 
   /* форма входа */
   .reg-form {
-    max-width: 478px;
+    max-width: 480px;
     margin-top: 30px;
   }
   .reg-form-wrapper{
     height: 100%;
   }
   .reg-content{
-    height: 850px;
+    height: 100%;
   }
   .reg-auth-wrapper{
     height: 100%;
   }
   .log-form{
-    max-width: 478px;
+    max-width: 480px;
     height: 700px;
+    margin:0;
+    border-radius: 0;
   }
 
 

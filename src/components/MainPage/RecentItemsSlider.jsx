@@ -39,15 +39,15 @@ const RecentItemsSlider = () => {
             </Swiper>
             {/* копия для адаптива */}
             <Swiper
-              spaceBetween={20}
-              slidesPerView={2}
+              spaceBetween={40}
+              slidesPerView={1.7}
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
               id ="swiper_mobile"
               >
               {recentItems &&
                 recentItems.map((item, index) => (
-                  <SwiperSlide style={{ display: 'flex', marginRight: '20px' }}>
+                  <SwiperSlide style={{ display: 'flex', width:'150px' }}>
                     {' '}
                     <ItemCard key={index} item={item} />
                   </SwiperSlide>
