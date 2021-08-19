@@ -11,6 +11,8 @@ import {
 import { Redirect } from 'react-router-dom';
 import Requests from '../../http/axios-requests';
 import './PlaseItem.css';
+import Vector2 from '../../img/CardThings/LeftContent/Vector2.png';
+
 // import Logo from "../../img/MainPage/Logo.png";
 // import mark from "../../img/MainPage/Mark.png";
 // import LanguagePlanet from "../../img/MainPage/Language-planet.png";
@@ -46,7 +48,6 @@ const PlaceItem = () => {
       return;
     }
     parsedFiles = Array.from(e.target.files);
-    console.log(parsedFiles);
     parsedFiles.forEach((file) => {
       files.push(file);
       resultList.push(URL.createObjectURL(file));
@@ -80,28 +81,24 @@ const PlaceItem = () => {
   };
   //обработчик времени подготовки
   const setPodgotovkaTimeHandler = (e) => {
-    console.log(e.target.value);
     if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
       setPodgotovkaTime(e.target.value);
     }
   };
   //обработчик суммы за доставку
   const setIndicateCostHandler = (e) => {
-    console.log(e.target.value);
     if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
       setIndicateCost(e.target.value);
     }
   };
   //обработчик суммы страховки
   const setInsuranceSummaHandler = (e) => {
-    console.log(e.target.value);
     if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
       setInsuranceSumma(e.target.value);
     }
   };
   //обработчик суммы за франшизу
   const setFranchiseSummaHandler = (e) => {
-    console.log(e.target.value);
     if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
       setFranchiseSumma(e.target.value);
     }
@@ -201,6 +198,13 @@ const PlaceItem = () => {
   const timeArendsHandler = (e) => {
     setTimeArends(e.target.value);
     setPrepareType(e.target.value);
+  };
+
+  const pladgeHandler = () => {
+    setPladge(!pladge);
+    if (cost) {
+      setPledgePrice(cost);
+    }
   };
 
   //обработчик сохранения нового адреса
@@ -680,7 +684,13 @@ const PlaceItem = () => {
             {/*  НАИМЕНОВАНИЕ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Название вещи <span className="add-item-span-zvezda">*</span>
+                Название вещи <span className="add-item-span-zvezda">*</span>{' '}
+                <img
+                  title="Назовите свое имущество так, чтобы пользователям было легко ее найти"
+                  src={Vector2}
+                  className="img_vector2"
+                  alt=""
+                />
               </label>
               {redirect}
               <input
@@ -695,7 +705,13 @@ const PlaceItem = () => {
             {/*  РАЗДЕЛ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Выберите раздел <span className="add-item-span-zvezda">*</span>
+                Выберите раздел <span className="add-item-span-zvezda">*</span>{' '}
+                <img
+                  title="Укажите раздел и категорию имущества, чтобы пользователям было легче найти его в нашем каталоге"
+                  src={Vector2}
+                  className="img_vector2"
+                  alt=""
+                />
               </label>
               <select onChange={(e) => setRazdel(e.target.value)} className="add-item-select-input">
                 <option>Не выбрано</option>
@@ -754,8 +770,11 @@ const PlaceItem = () => {
                   multiple
                   onChange={(e) => photoHandler(e)}
                 />
-                <label class="upload-file__label" htmlFor="photo_input">
-                  Добавить фото
+                <label
+                  title="Вы можете загрузить до 5 фото, которые будут приведены к размеру 440х400 px"
+                  class="upload-file__label"
+                  htmlFor="photo_input">
+                  Добавить фото{' '}
                 </label>
                 <div className="add-item-photo-field">
                   <div className="add-item-photos">
@@ -833,7 +852,9 @@ const PlaceItem = () => {
                   checked={yourCost}
                   disabled={giveFree}
                 />
-                <span>Предлагать цену</span>
+                <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
+                  Предлагать цену{' '}
+                </span>
               </label>
               <span className="add-item-cost-or">или</span>
               <label class="checkbox-btn">
@@ -854,12 +875,23 @@ const PlaceItem = () => {
                 checked={readySell}
                 onChange={readySellHandler}
               />
-              <label htmlFor="add-item-input-checkbox__2">Готов продать</label>
+              <label
+                title="Отмечая этот пункт, вы заявляете о том, что это имущество может быть продано"
+                htmlFor="add-item-input-checkbox__2">
+                Готов продать
+              </label>
             </div>
 
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Адрес вещи <span className="add-item-span-zvezda">*</span>
+                Адрес вещи{' '}
+                <img
+                  title="Введите и выберите адрес местоположения имущества, чтобы пользователям было легче найти его на карте или рядом с собой"
+                  src={Vector2}
+                  className="img_vector2"
+                  alt=""
+                />{' '}
+                <span className="add-item-span-zvezda">*</span>
               </label>
               <select
                 className="add-item-select-input"
@@ -1073,7 +1105,15 @@ const PlaceItem = () => {
                 {/*  КЛЮЧЕВЫЕ СЛОВА  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Ключевые слова</label>
+                  <label className="add-item-input-label">
+                    Ключевые слова{' '}
+                    <img
+                      title="Введите ключевые слова, опираясь на которые, мы в том числе, сможем осуществлять поиск"
+                      src={Vector2}
+                      className="img_vector2"
+                      alt=""
+                    />
+                  </label>
                   <input
                     placeholder="Например: компьютер, ноутбук, техника"
                     title="Укажите через запятую ключевые слова..."
@@ -1114,7 +1154,15 @@ const PlaceItem = () => {
                 {/*  АРТИКУЛ  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Артикул</label>
+                  <label className="add-item-input-label">
+                    Артикул{' '}
+                    <img
+                      title="Поле не обязательное, но, возможно, оно поможет отличить одну вещь от другой"
+                      src={Vector2}
+                      className="img_vector2"
+                      alt=""
+                    />
+                  </label>
                   <input
                     placeholder="Например: RK-260"
                     type="text"
@@ -1127,7 +1175,15 @@ const PlaceItem = () => {
                 {/*  ИНВЕНТАРНЫЙ НОМЕР  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Инвентарный номер</label>
+                  <label className="add-item-input-label">
+                    Инвентарный номер{' '}
+                    <img
+                      title="Поле не обязательное, но, возможно, оно поможет отличить одну вещь от другой"
+                      src={Vector2}
+                      className="img_vector2"
+                      alt=""
+                    />
+                  </label>
                   <input
                     placeholder="Например: 154A"
                     type="text"
@@ -1167,7 +1223,15 @@ const PlaceItem = () => {
                 {/*  ПРОБЕГ  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Пробег</label>
+                  <label className="add-item-input-label">
+                    Пробег{' '}
+                    <img
+                      title="Укажите тут пробег, износ, возраст, что может указать на уровень антикварности вашего имущества"
+                      src={Vector2}
+                      className="img_vector2"
+                      alt=""
+                    />
+                  </label>
                   <input
                     placeholder="Например: 1 год"
                     type="text"
@@ -1180,7 +1244,15 @@ const PlaceItem = () => {
                 {/*  СТОИМОСТЬ ЕСЛИ ОЦЕНИВАЕТСЯ  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Стоимость вещи (если оценивается)</label>
+                  <label className="add-item-input-label">
+                    Стоимость вещи (если оценивается){' '}
+                    <img
+                      title="Укажите тут, во что вы оцениваете имущество. Это может быть использовано для определения суммы залога"
+                      src={Vector2}
+                      className="img_vector2"
+                      alt=""
+                    />
+                  </label>
                   <input
                     type="number"
                     max="9999"
@@ -1195,7 +1267,15 @@ const PlaceItem = () => {
                 {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
                 <div className="add-item-time-block-wrapper">
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время получения (не позднее)</label>
+                    <label className="add-item-input-label">
+                      Время получения (не позднее){' '}
+                      <img
+                        title="Укажите, с какого времени вам было бы удобно предоставить имущество в пользование"
+                        src={Vector2}
+                        className="img_vector2"
+                        alt=""
+                      />
+                    </label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setTimeReceipt(e.target.value)}>
@@ -1232,7 +1312,15 @@ const PlaceItem = () => {
                   {/*  ВРЕМЯ ВОЗВРАТА  */}
 
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время возврата (не позднее)</label>
+                    <label className="add-item-input-label">
+                      Время возврата (не позднее){' '}
+                      <img
+                        title="Укажите, до какого времени вам хотелось бы получить имущество назад"
+                        src={Vector2}
+                        className="img_vector2"
+                        alt=""
+                      />
+                    </label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setReturnTime(e.target.value)}>
@@ -1270,7 +1358,15 @@ const PlaceItem = () => {
                 {/*  ВРЕМЯ ПОДГОТОВКИ ТОВАРА  */}
                 <div className="take-away-secondary-wrapper">
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время подготовки вещи</label>
+                    <label className="add-item-input-label">
+                      Время подготовки вещи{' '}
+                      <img
+                        title="Если между возвратом имущества и выдачей его новому арендатору вам потребуется время на подготовку – то укажите его тут"
+                        src={Vector2}
+                        className="img_vector2"
+                        alt=""
+                      />
+                    </label>
                     <input
                       placeholder="Например: 2"
                       type="number"
@@ -1306,7 +1402,15 @@ const PlaceItem = () => {
                 </div>
 
                 {/*  ВИД ДОСТАВКИ - САМОВЫВОЗ - ПРИВЕЗУ/ЗАБЕРУ - ОТПРАВКА */}
-                <label className="add-item-input-label">Вид доставки</label>
+                <label className="add-item-input-label">
+                  Вид доставки{' '}
+                  <img
+                    title="Выберите тут возможны для вас способ получения имущества, либо возможные варианты для доставки или отправки"
+                    src={Vector2}
+                    className="img_vector2"
+                    alt=""
+                  />
+                </label>
                 <div className="checkbox-btn secondary">
                   <input type="checkbox" className="input-checkbox" checked={pickUp} />
                   <span onClick={(e) => pickupHandler(e.target.value)}>Самовывоз</span>
@@ -1400,7 +1504,9 @@ const PlaceItem = () => {
                   <label className="add-item-input-label">Гарантии</label>
                   <div className="checkbox-btn secondary">
                     <input type="checkbox" className="input-checkbox" checked={contract} />
-                    <span onClick={(e) => contractHandler(e.target.value)}>
+                    <span
+                      title="Выделите этот пункт, если для сдачи имущества в аренду вы непременно предложите заключить письменный договор"
+                      onClick={(e) => contractHandler(e.target.value)}>
                       Договор/расписка обязательны
                     </span>
                   </div>
@@ -1411,7 +1517,11 @@ const PlaceItem = () => {
                       <div className="take-away-secondary-wrapper">
                         <div className="checkbox-btn secondary">
                           <input type="checkbox" className="input-checkbox" checked={insurance} />
-                          <span onClick={insuranceHandler}>Страхование</span>
+                          <span
+                            title="Укажите этот пункт, если вы будете страховать имущество, и укажите, сколько это будет стоить, чтобы мы добавили сумму страховки к стоимости аренды"
+                            onClick={insuranceHandler}>
+                            Страхование
+                          </span>
                         </div>
                         {insurance && (
                           <div className="take-away-secondary-wrapper">
@@ -1460,7 +1570,11 @@ const PlaceItem = () => {
                         <span className="take-away-secondary-wrapper">
                           <div className="checkbox-btn secondary">
                             <input type="checkbox" className="input-checkbox" checked={franchise} />
-                            <span onClick={franchiseHandler}>Франшиза</span>
+                            <span
+                              title="Если страхование будет с франшизой – укажите сумму, чтобы мы смогли ее добавить к стоимости залога"
+                              onClick={franchiseHandler}>
+                              Франшиза
+                            </span>
                           </div>
                           {franchise && (
                             <span>
@@ -1487,7 +1601,7 @@ const PlaceItem = () => {
                   <div className="take-away-secondary-wrapper">
                     <div className="checkbox-btn secondary">
                       <input type="checkbox" className="input-checkbox" checked={pladge} />
-                      <span>Залог</span>
+                      <span onClick={pladgeHandler}>Залог</span>
                     </div>
                     {pladge && (
                       <span>
@@ -1511,7 +1625,11 @@ const PlaceItem = () => {
                   <div className="take-away-secondary-wrapper">
                     <div className="checkbox-btn secondary">
                       <input type="checkbox" className="input-checkbox" checked={serviceSbor} />
-                      <span onClick={serviceSborHandler}>Сервисный сбор</span>
+                      <span
+                        title="Если после возврата вещи вам придется ее обслужить – укажите тут сумму сервисного сбора – мы добавим ее к стоимости аренды"
+                        onClick={serviceSborHandler}>
+                        Сервисный сбор
+                      </span>
                     </div>
                     {serviceSbor && (
                       <span>

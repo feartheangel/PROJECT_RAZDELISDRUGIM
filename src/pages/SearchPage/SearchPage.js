@@ -45,9 +45,6 @@ const SearchPage = () => {
     distance,
   } = useSelector(({ search }) => search);
 
-  const [openedCategories, setOpenedCategories] = React.useState([]);
-  const [activeCategory, setActiveCategory] = React.useState();
-
   //параметры карты
   const mapData = {
     center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.91, 27.55],
@@ -56,8 +53,6 @@ const SearchPage = () => {
 
   //координаты меток карты
   const [marks, setMarks] = React.useState([]);
-
-  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const dispatch = useDispatch();
 

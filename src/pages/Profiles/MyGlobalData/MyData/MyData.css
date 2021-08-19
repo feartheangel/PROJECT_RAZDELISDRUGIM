@@ -313,10 +313,8 @@ option {
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-
-  /* #091D20 */
-
-  color: rgba(9, 29, 32, 0.4);
+  color: black;
+  outline: none;
 }
 
 .setting_left_input_wrapper__row {

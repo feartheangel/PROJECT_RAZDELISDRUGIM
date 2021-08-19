@@ -12,7 +12,7 @@ const AboutBlock = () => {
           </div>
           <div className="about-middle-right">
             <p className="about-main-p">
-            <img src={jacket} alt="" className="about-jacket2" />
+              <img src={jacket} alt="" className="about-jacket2" />
               Все началось с моего смокинга. Это такая часть гардероба, которая в шкафу обычного
               современного человека если  и присутствует, то используется крайне редко, может быть
               1–2 раза в год, а иногда и того реже. Я давно хотел найти механизм монетизировать его,
@@ -30,6 +30,18 @@ const AboutBlock = () => {
           </div>
         </div>
         <p className="about-lower-p">Дмитрий, автор проекта</p>
+        <div className="main_page_first_block_left_bottons">
+          <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
+            <input
+              type="button"
+              value="Связаться с разработчиками"
+              className="header-button add-subject2 abilities_button"
+            />
+          </a>
+          <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
+            <input type="button" value="Оставить отзыв" className="header-button add-subject" />
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Requests from '../../../../http/axios-requests';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { reloadData } from '../../../../redux/actions/userData';
 import { SocialContactEnter } from '../../../../components/index';
 import './MyData.css';
-import Ellipse5 from '../../../../img/ProfilePage/Ellipse 5.png';
-import Star1 from '../../../../img/ProfilePage/Star 1.png';
 import Star5 from '../../../../img/ProfilePage/Star 5.png';
 import Vector from '../../../../img/ProfilePage/Vector.png';
 import VectorDisabled from '../../../../img/ProfilePage/VectorDisabled.png';
@@ -26,6 +24,7 @@ import FacebookNone from '../../../../img/ProfilePage/facebook2None.png';
 import VkNone from '../../../../img/ProfilePage/vkNone.png';
 import InstagramNone from '../../../../img/ProfilePage/instagramNone.png';
 import OkNone from '../../../../img/ProfilePage/okNone.png';
+import Vector2 from '../../../../img/CardThings/LeftContent/Vector2.png';
 
 const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
   //расчет времени на платформе
@@ -474,7 +473,16 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
           )}
 
           <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label"> О себе:</label>
+            <label className="setting_left_input-label">
+              {' '}
+              О себе:{' '}
+              <img
+                title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
+                src={Vector2}
+                className="img_vector2"
+                alt=""
+              />
+            </label>
             <textarea
               onChange={(e) => setAbout(e.target.value)}
               value={about}
@@ -496,7 +504,13 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
         <div className="content_setting_right">
           <p style={{ alignSelf: 'flex-start' }} className="setting_right_socialNetworks">
             {' '}
-            Социальные сети и месседжеры
+            Социальные сети и месседжеры{' '}
+            <img
+              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом"
+              src={Vector2}
+              className="img_vector2"
+              alt=""
+            />
           </p>
           <span>
             <img

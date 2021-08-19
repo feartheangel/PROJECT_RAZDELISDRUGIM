@@ -122,9 +122,6 @@ const Footer = () => {
                     );
                   }
                 })}
-              <Link style={{ textDecoration: 'none' }} to="/catalog">
-                <input type="button" value="Смотреть каталог" className="popular-button" id="popular-button1" />
-              </Link>
             </ul>
           </div>
 
@@ -164,22 +161,10 @@ const Footer = () => {
                     );
                   }
                 })}
-              <Link style={{ textDecoration: 'none' }} to="/catalog">
-                <input type="button" value="Смотреть каталог" className="popular-button" id="popular-button1" />
-              </Link>
             </ul>
           </div>
 
-
-
-
-
-
-
           <div className="footer-fifth-col">
-            <Link style={{ textDecoration: 'none' }} to="/catalog">
-                  <input type="button" value="Смотреть каталог" className="popular-button" id="popular-button2" />
-            </Link>
             <div className="footer-socials">
               <img src={Instagram} alt="" className="footer-social" />
               <img src={Facebook} alt="" className="footer-social" />
@@ -210,8 +195,7 @@ const Footer = () => {
         </div>
       </div>
 
-
-      <div className="footer-lower-part" id="footer-lower2" >
+      <div className="footer-lower-part" id="footer-lower2">
         <div className="footer-lower-labels">
           <p className="footer-lower-label">Пользовательское соглашение</p>
           <p className="footer-lower-label">Соглашение о конфиденциальности</p>
@@ -222,8 +206,8 @@ const Footer = () => {
           </div>
           <div className="foooter-right_item">
             <div className="location-selector" id="location-selector2">
-                <img src={mark} alt="" className="location-img" />
-                <p className="location-p">Минск</p>
+              <img src={mark} alt="" className="location-img" />
+              <p className="location-p">Минск</p>
             </div>
             <div className="footer-localization-wrapper">
               <img src={Planet} alt="" className="footer-planet-img" />
@@ -231,7 +215,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

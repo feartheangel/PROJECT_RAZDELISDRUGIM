@@ -2,11 +2,11 @@ import React from 'react';
 import facebookLogo from '../../img/Facebook.png';
 import vkLogo from '../../img/vk.png';
 import googleLogo from '../../img/Google.png';
-import { Redirect, Link } from 'react-router-dom';
-import { vkAuth } from '../../http/social-auth';
+import { Redirect } from 'react-router-dom';
 import Requests from '../../http/axios-requests';
 import { loginAction } from '../../redux/actions/userData';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { vkAuth, googleAuth, facebookAuth } from '../../http/social-auth';
 import '../../css/regAuth.css';
 
 const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
@@ -44,6 +44,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   const [referral, setReferral] = React.useState('');
   const [regType, setRegType] = React.useState('1');
   const [formValid, setFormValid] = React.useState(false);
+  const [successLogin, setSuccessLogin] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
 
   //проврека формы на валидность
@@ -54,29 +55,43 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       setFormValid(true);
     }
 
-    //проверка на строку авторизации через ВК
-    if (window.location.href.split('?code=')[1]) {
-      code = window.location.href.split('?code=')[1];
-      console.log(code);
-      Requests.sendVKCode(code).then((response) => {
-        console.log(response);
-        Requests.convertToken(response.data.access_token).then((response) => {
-          if (response.status === 200 || response.status === 201) {
-            localStorage.setItem('key', response.data.access_token);
-            dispatch(loginAction());
-            setModalActive(false);
-            setRedirect(<Redirect to="/" />);
-          }
-        });
-      });
-    }
-
     //проверка на строку авторизации Google
     if (window.location.href.split('&code')[1]) {
       code = window.location.href.split('&code')[1].split('&')[0];
       console.log(code);
     }
-  }, [contactError, passwordError, passwordSubmitError, window.location.href]);
+  }, [contactError, passwordError, passwordSubmitError]);
+
+  React.useEffect(() => {
+    //проверка на строку авторизации через соц. сети
+    if (window.location.href.split('?code=')[1]) {
+      if (window.location.href.includes('vk')) {
+        code = window.location.href.split('?code=')[1].split('state')[0];
+        Requests.vkAuth(code).then((res) => {
+          localStorage.setItem('key', res.data.access_token);
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      } else if (window.location.href.includes('facebook')) {
+        code = window.location.href.split('?code=')[1];
+        Requests.facebookAuth(code).then((res) => {
+          localStorage.setItem('key', res.data.access_token);
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      } else {
+        code = window.location.href.split('?code=')[1].split('&scope=')[0];
+        Requests.googleAuth(code).then((res) => {
+          localStorage.setItem('key', res.data.access_token);
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      }
+    }
+  }, [window.location.href]);
 
   //обработчики полей ввода
   const contactHandler = (e) => {
@@ -160,8 +175,8 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       </ul>
       <div className="reg-form-socials">
         <img onClick={vkAuth} src={vkLogo} alt="VK" />
-        <img src={facebookLogo} alt="Facebook" />
-        <img src={googleLogo} alt="Google" />
+        <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+        <img onClick={googleAuth} src={googleLogo} alt="Google" />
       </div>
       <div className="reg-form-text-label-p">
         <p>или</p>
