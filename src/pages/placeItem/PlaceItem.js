@@ -674,7 +674,7 @@ const PlaceItem = () => {
       <Header />
       <div className="PlaseItem">
         <div className="conteiner">
-          <form>
+          <form className="conteiner_form">
             <p className="conteiner-main-p">Подать объявление</p>
 
             {/*  НАИМЕНОВАНИЕ  */}
@@ -717,7 +717,7 @@ const PlaceItem = () => {
                 className="add-item-select-input"
                 value={viborCategory}
                 onChange={(e) => setViborCategory(e.target.value)}>
-                <option>Не выбрано</option>
+                <option style={{width:'200px'}}>Не выбрано</option>
                 {isLoaded &&
                   [].concat.apply(Object.entries(categories)).map((category, index) => (
                     <option key={index} value={category[1]}>
@@ -784,11 +784,10 @@ const PlaceItem = () => {
             <div className="item-add-cost-choice-wrapper">
               <div style={{ marginRight: '5px' }} className="add-item-input-wrapper">
                 <label className="add-item-input-label">
-                  Стоимость вещи в аренду <span className="add-item-span-zvezda">*</span>
+                  Стоимость вещи  <span className="add-item-span-zvezda">*</span>
                 </label>
                 <div>
                   <input
-                    style={{ width: '240px', marginRight: '5px' }}
                     className="add-item-input-number"
                     type="number"
                     max="9999"
@@ -801,12 +800,6 @@ const PlaceItem = () => {
                 </div>
               </div>
               <span
-                style={{
-                  marginRight: '30px',
-                  fontSize: '16px',
-                  alignSelf: 'flex-end',
-                  marginBottom: '15px',
-                }}
                 className="span-valuts">
                 BYN
               </span>
@@ -836,14 +829,14 @@ const PlaceItem = () => {
                 <span>Предлагать цену</span>
               </label>
               <span className="add-item-cost-or">или</span>
-              <label class="checkbox-btn">
+              <label class="checkbox-btn" id="checkbox-btn2">
                 <input
                   onChange={() => setGiveFree(!giveFree)}
                   type="checkbox"
                   checked={giveFree}
                   disabled={yourCost}
                 />
-                <span>Бесплатно</span>
+                <span id="checkbox-btn1">Бесплатно</span>
               </label>
             </div>
             <div className="add-item-ready-sell-wrapper">

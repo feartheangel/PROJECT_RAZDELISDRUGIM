@@ -216,8 +216,9 @@ const Header = () => {
                     style={{ width: '30px', height: '30px', borderRadius: '100%' }}
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
+                    id="logged-img_last_item"
                   />
-                  <img className="header-right-content-logged-img" src={MenuStroke} />
+                  <img className="header-right-content-logged-img" src={MenuStroke} id="menuStroke"/>
                 </div>
               </div>
               {profilePopUpActive && (
