@@ -2,8 +2,8 @@ import React from 'react';
 import facebookLogo from '../../img/Facebook.png';
 import vkLogo from '../../img/vk.png';
 import googleLogo from '../../img/Google.png';
-import { Link, Redirect } from 'react-router-dom';
-import { vkAuth } from '../../http/social-auth';
+import { Redirect } from 'react-router-dom';
+import { vkAuth, googleAuth, facebookAuth } from '../../http/social-auth';
 import Requests from '../../http/axios-requests';
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../../redux/actions/userData';
@@ -31,24 +31,38 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
     } else {
       setFormValid(true);
     }
+  }, [loginError, passwordError]);
 
-    //проверка на строку авторизации через ВК
+  React.useEffect(() => {
+    //проверка на строку авторизации через соц. сети
     if (window.location.href.split('?code=')[1]) {
-      code = window.location.href.split('?code=')[1];
-      console.log(code);
-      Requests.sendVKCode(code).then((response) => {
-        console.log(response);
-        Requests.convertToken(response.data.access_token).then((response) => {
-          if (response.status === 200 || response.status === 201) {
-            localStorage.setItem('key', response.data.access_token);
-            dispatch(loginAction());
-            setModalActive(false);
-            setSuccessLogin(<Redirect to="/" />);
-          }
+      if (window.location.href.includes('state=vk')) {
+        code = window.location.href.split('?code=')[1].split('state')[0];
+        Requests.vkAuth(code).then((res) => {
+          localStorage.setItem('key', res.data.access_token);
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
         });
-      });
+      } else if (window.location.href.includes('facebook')) {
+        code = window.location.href.split('?code=')[1];
+        Requests.facebookAuth(code).then((res) => {
+          localStorage.setItem('key', res.data.access_token);
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      } else {
+        code = window.location.href.split('?code=')[1];
+        Requests.googleAuth(code).then((res) => {
+          localStorage.setItem('key', res.data.access_token);
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      }
     }
-  }, [loginError, passwordError, window.location.href]);
+  }, [window.location.href]);
 
   //обработчики полей
   const loginHandler = (e) => {
@@ -106,8 +120,8 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       </div>
       <div className="reg-form-socials">
         <img onClick={vkAuth} src={vkLogo} alt="VK" />
-        <img src={facebookLogo} alt="Facebook" />
-        <img src={googleLogo} alt="Google" />
+        <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+        <img onClick={googleAuth} src={googleLogo} alt="Google" />
       </div>
       <div className="log-form-text-label-p__lower">
         <p>или</p>

@@ -1041,6 +1041,42 @@ class Requests {
       return response;
     });
   }
+
+  static vkAuth(code) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/jwt/access-token-vk/?code=${code}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static googleAuth(code) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/jwt/access-token-google/?code=${code}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static facebookAuth(code) {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/jwt/access-token-facebook/?code=${code}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 export default Requests;

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CardThings.css';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Header, Footer, ItemCard } from '../../components/index';
-import { setSearchCategory, setCategoryId } from '../../redux/actions/search';
+import { setSearchCategory, setCategoryId, setSearchItems } from '../../redux/actions/search';
 import { useSelector, useDispatch } from 'react-redux';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import CardProduct from '../SearchPage/CardProduct/CardProduct';
@@ -13,10 +13,6 @@ import Vector6 from '../../img/CardThings/RightContent/Vector6.png';
 import Vector7 from '../../img/CardThings/RightContent/Vector7.png';
 import ArrowLeft from '../../img/MainPage/Arrow_left.png';
 import ArrowRight from '../../img/MainPage/Arrow_right.png';
-import Rectangle2 from '../../img/CardThings/LeftContent/Rectangle 2.png';
-import Rectangle3 from '../../img/CardThings/LeftContent/Rectangle 3.png';
-import Rectangle4 from '../../img/CardThings/LeftContent/Rectangle 4.png';
-import Rectangle7 from '../../img/CardThings/LeftContent/Rectangle 7.png';
 import Share from '../../img/CardThings/LeftContent/Vector 1.png';
 import Union from '../../img/CardThings/LeftContent/Union.png';
 import CombinedShare from '../../img/CardThings/LeftContent/Combined Shape.png';
@@ -24,13 +20,9 @@ import Service from '../../img/CardThings/LeftContent/Service.png';
 import Clock from '../../img/CardThings/LeftContent/clock.png';
 import Sell1 from '../../img/CardThings/LeftContent/sell 1.png';
 import HandShake from '../../img/CardThings/RightContent/handShake1.png';
-import Fire from '../../img/CardThings/RightContent/Vector1.png';
 import Address from '../../img/CardThings/RightContent/Vector2.png';
 import Car from '../../img/CardThings/RightContent/Vector3.png';
 import Clock2 from '../../img/CardThings/RightContent/Vector5.png';
-import Love from '../../img/CardThings/RightContent/love.png';
-import AvatarOwner from '../../img/CardThings/RightContent/Ellipse 5.png';
-import Star1 from '../../img/CardThings/RightContent/Star 4.png';
 import Star2 from '../../img/CardThings/RightContent/Star 2.png';
 import Telegram from '../../img/CardThings/RightContent/Component 36.png';
 import Viber from '../../img/CardThings/RightContent/Component 37.png';
@@ -48,7 +40,6 @@ import FavoritesDisabled from '../../img/MainPage/FavoritesDisabled.png';
 
 const CardThings = () => {
   const dispatch = useDispatch();
-  const { searchItems } = useSelector(({ search }) => search);
   const { isLoggedIn, favorites } = useSelector(({ userData }) => userData);
   //расчет времени на платформе
   function getDaysBetweenDates(d0, d1) {
@@ -76,9 +67,12 @@ const CardThings = () => {
     setContactVisible(!contactVisible);
   };
 
-  const categoryRedirect = (name_category, id_category) => {
-    dispatch(setSearchCategory(name_category));
-    dispatch(setCategoryId(id_category));
+  const categoryRedirect = (name, id) => {
+    dispatch(setSearchCategory(name));
+    dispatch(setCategoryId(id));
+    Requests.search(false, id).then((res) => {
+      dispatch(setSearchItems(res.data));
+    });
   };
 
   const addFavoriteHandler = (e) => {
@@ -296,7 +290,12 @@ const CardThings = () => {
                     <div className="conditions_contract">
                       <img src={Union} className="img_union" alt="" />
                       <p>Договор или расписка</p>
-                      <img src={Vector2} className="img_vector2" alt="" />
+                      <img
+                        title="Указано, что владелец желает заключить письменный договор аренды или составить расписку"
+                        src={Vector2}
+                        className="img_vector2"
+                        alt=""
+                      />
                     </div>
                   )}
 
@@ -306,7 +305,12 @@ const CardThings = () => {
                       <div className="conditions_row">
                         <img src={CombinedShare} className="img_combinedShare" alt="" />
                         <p className="conditions_pledge_row-p">Залог</p>
-                        <img src={Vector2} className="img_vector2" alt="" />
+                        <img
+                          title="Владелец желает получить от Арендатора денежный залог, который будет возвращен после возврата имущества в надлежащем виде"
+                          src={Vector2}
+                          className="img_vector2"
+                          alt=""
+                        />
                       </div>
                       {<p className="conditions_pledge-p">— в сумме {itemData.pledge_price} BYN</p>}
                     </div>
@@ -318,7 +322,12 @@ const CardThings = () => {
                       <div className="conditions_row">
                         <img src={Service} className="img_service" alt="" />
                         <p className="conditions_service_row-p">Сервисный сбор</p>
-                        <img src={Vector2} className="img_vector2" alt="" />
+                        <img
+                          title="Владелец указывает, что к стоимости аренды будет добавлена стоимость работ, по приведению имущества в надлежащий вид перед следующей арендой"
+                          src={Vector2}
+                          className="img_vector2"
+                          alt=""
+                        />
                       </div>
                       <p className="conditions_service-p">
                         — {itemData && itemData.servicefee_choice.toLowerCase()} за{' '}
@@ -333,7 +342,12 @@ const CardThings = () => {
                       <div className="conditions_row">
                         <img src={Vector3} className="img_vector3" alt="" />
                         <p className="conditions_insurance_row-p">Страхование</p>
-                        <img src={Vector2} className="img_vector2" alt="" />
+                        <img
+                          title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости залога"
+                          src={Vector2}
+                          className="img_vector2"
+                          alt=""
+                        />
                       </div>
                       <p className="conditions_insurance-p">
                         — {itemData && itemData.insurance_choice.toLowerCase()} в сумме{' '}
@@ -347,26 +361,17 @@ const CardThings = () => {
                     </div>
                   )}
 
-                  {/* Время подготовки вещи*/}
-                  {itemData && itemData.prepare_time && (
-                    <div className="conditions_timeItem">
-                      <div className="conditions_row">
-                        <img src={Clock} className="img_clock" alt="" />
-                        <p className="conditions_timeItem_row-p">Время подготовки вещи</p>
-                        <img src={Vector2} className="img_vector2" alt="" />
-                      </div>
-                      <p className="conditions_timeItem-p">
-                        — около {itemData.prepare_time} {itemData.prepare_time_choice}
-                      </p>
-                    </div>
-                  )}
-
                   {/* Время получения и возврата*/}
                   <div className="conditions_return">
                     <div className="conditions_return_block1">
                       <div className="conditions_row">
                         <p className="conditions_return_row-p">Время получения</p>
-                        <img src={Vector2} className="img_vector2" alt="" />
+                        <img
+                          title="Тут указано, после какого времени можно получить имущество в аренду"
+                          src={Vector2}
+                          className="img_vector2"
+                          alt=""
+                        />
                       </div>
                       <p className="conditions_timeItem-p">
                         — не ранее {itemData && itemData.receive_time}
@@ -376,7 +381,12 @@ const CardThings = () => {
                     <div className="conditions_return_block2">
                       <div className="conditions_row">
                         <p className="conditions_return_row-p">Время возврата</p>
-                        <img src={Vector2} className="img_vector2" alt="" />
+                        <img
+                          title="Тут указано, до какого времени необходимо возвратить имущество владельцу"
+                          src={Vector2}
+                          className="img_vector2"
+                          alt=""
+                        />
                       </div>
                       <p className="conditions_timeItem-p">
                         — не позднее {itemData && itemData.return_time}
@@ -545,7 +555,12 @@ const CardThings = () => {
                     <div className="conditions_row">
                       <img src={Car} className="img_car" alt="" />
                       <p className="block_up_delivery_row-p">Доставка:</p>
-                      <img src={Vector2} className="img_vector2" alt="" />
+                      <img
+                        title="Тут указаны возможные варианты получения имущества, его доставки или отправки"
+                        src={Vector2}
+                        className="img_vector2"
+                        alt=""
+                      />
                     </div>
                     {itemData && itemData.delivery.includes('Самовывоз') && (
                       <p className="block_up_delivery-p1">— самовывоз</p>
@@ -589,7 +604,7 @@ const CardThings = () => {
 
                   <div style={{ marginTop: '20px', marginBottom: '20px' }}>
                     <YMaps>
-                      <Map width={300} height={200} defaultState={mapData}>
+                      <Map width={300} height={200} defaultState={itemData && mapData}>
                         <Placemark geometry={itemData && mapData.center} />
                       </Map>
                     </YMaps>

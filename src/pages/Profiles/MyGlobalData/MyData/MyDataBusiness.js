@@ -12,6 +12,7 @@ import Vector from '../../../../img/ProfilePage/Vector.png';
 import VectorDisabled from '../../../../img/ProfilePage/VectorDisabled.png';
 import Telegram from '../../../../img/ProfilePage/telegram.png';
 import Viber from '../../../../img/ProfilePage/viber.png';
+import Vector2 from '../../../../img/CardThings/LeftContent/Vector2.png';
 import WhatsApp from '../../../../img/ProfilePage/watsapp.png';
 import Google from '../../../../img/ProfilePage/google.png';
 import Facebook from '../../../../img/ProfilePage/facebook2.png';
@@ -564,7 +565,13 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
         <div className="content_setting_right">
           <p style={{ alignSelf: 'flex-start' }} className="setting_right_socialNetworks">
             {' '}
-            Социальные сети и месседжеры
+            Социальные сети и месседжеры{' '}
+            <img
+              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом"
+              src={Vector2}
+              className="img_vector2"
+              alt=""
+            />
           </p>
           <span>
             <img

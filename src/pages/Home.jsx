@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/main-page.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Header,
   Footer,
@@ -17,8 +17,6 @@ import {
   Adverts,
   MediaAbout,
 } from '../components/index';
-import Requests from '../http/axios-requests';
-import { Link } from 'react-router-dom';
 
 import { loginAction, logoutAction } from '../redux/actions/userData';
 

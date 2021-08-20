@@ -185,6 +185,7 @@ const Header = () => {
           <Link to="/">
             <img src={Logo} alt="Global Sharing Platform" className="logo" />
           </Link>
+          <div className="selector_header_items">
           <div className="location-selector">
             <img src={mark} alt="" className="location-img" />
             <p className="location-p">{currentLocation && currentLocation}</p>
@@ -192,6 +193,7 @@ const Header = () => {
           <div className="laguage-selector-wrapper">
             <img src={LanguagePlanet} alt="" className="language-planet-img" />
             <p className="language-selector">RU</p>
+          </div>
           </div>
           {!isLoggedIn && (
             <input
@@ -206,14 +208,13 @@ const Header = () => {
             <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper2">
               <div className="header-right-content-logged-div">
                 <Link to="/favorites">
-                  <img className="header-right-content-logged-img" src={Favorites} />
+                  <img className="header-right-content-logged-img" src={Favorites} id="favorites"/>
                 </Link>
-                <img className="header-right-content-logged-img" src={Notifications} />
+                <img className="header-right-content-logged-img" src={Notifications} id="notifications" />
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group">
                   <img
-                    style={{ width: '30px', height: '30px', borderRadius: '100%' }}
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                     id="logged-img_last_item"
