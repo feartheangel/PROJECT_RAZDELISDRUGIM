@@ -699,3 +699,248 @@ select {
 .add-item-input-text__address__house:disabled {
   opacity: 0.4;
 }
+.add-item-input-number{
+  width: 240px;
+  margin-right: 5px;
+}
+.span-valuts{
+  margin-right: 30px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  align-self: flex-end;
+}
+#take_Away_adaptive{
+  display: none;
+}
+#br_gl{
+  display: none;
+}
+
+
+
+/* МЕДИА ЗАПРОСЫ  */
+@media only screen and (max-width: 480px){
+
+  #take_Away_komp{
+    display: none;
+  }
+  #take_Away_adaptive{
+    display: flex;
+  }
+  #br_gl{
+    display: flex;
+  }
+  
+  .PlaseItem{
+    max-width: 480px;
+    min-width: 320px;
+    width: 100%;
+    height: auto;
+  }
+
+  .conteiner{
+    max-width: 480px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 0px 0px 15px 15px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .conteiner_form{
+    margin: 10px 15px 30px;
+  }
+  .add-item-input-wrapper{
+    margin-right: 0;
+  }
+  #add_item_gl_margin{
+    margin-right: 10px;
+  }
+  .add-item-input-text{
+    font-size: 16px;
+    width: 100%;
+  }
+  .add-item-select-input{
+    width: 100%;
+    font-size: 16px;
+  }
+  .add-item-textarea{
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+/* КНОПКА ДОБАВИТЬ ФОТО */
+  .input_photo{
+    margin-bottom: 10px;
+  }
+/* СТОИМОСТЬ ВЕЩИ В АРЕНДУ */
+  .item-add-cost-choice-wrapper{
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  .add-item-input-label{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  .add-item-input-number{
+    max-width: 146px;
+    height: 45px;
+    margin-bottom: 15px;
+  }
+  .span-valuts{
+    margin-right: 10px;
+    margin-bottom: 0;
+    align-self: center;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  .add-item-select-input__time{
+    max-width: 146px;
+    height: 45px;
+    margin-bottom: 15px;
+    margin-right: 0;
+    font-size: 16px;
+  }
+  .add-item-cost-or{
+    font-size: 14px;
+    margin-right: 10px;
+    align-self: flex-start;
+  }
+
+/* КНОПКИ ПРЕДЛАГАТЬ ЦЕНУ И БЕСПЛАТНО */
+  .checkbox-btn span{
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px;
+  }
+  .checkbox-btn{
+    height: 45px;
+    margin-right: 10px;
+  }
+  #checkbox-btn1{
+    max-width: 93px;
+    height: 45px;
+    padding: 10px;
+    margin-right: 0;
+  }
+  #checkbox-btn2{
+    margin-right: 0;
+  }
+  /* ГОТОВ ПРОДАТЬ */
+  .add-item-ready-sell-wrapper{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+  }
+  /* ДОБАВИТЬ ДРУГОЙ АДРЕСС И СТРОЧКА ПОД НИМ */
+  .add-item-input-checkbox__3 + label{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 15px;
+  }
+  /* КНОПКА ОТПРАВИТЬ */
+  .button_loading{
+    margin-top: 15px;
+  }
+/* НАСТРОЙКИ РАЗМЕРА ОПЦИЙ */
+  .content_setting_left option{
+    width: 200px;
+  }
+
+  /* СТРОКА ДОБАВИТЬ АДРЕС И ФУНКЦИОНАЛ В НЕЙ */
+
+  /* область район пункт */
+.take-away-secondary-wrapper-column{
+  width: 100%;
+}
+.take-away-secondary-wrapper{
+  width: 100%;
+  flex-direction: column;
+  align-items: unset;
+}
+.add-item-input-text__address{
+  max-width: 480px;
+  width: 100%;
+  font-size: 16px;
+}
+.add-item-input-text__address__street{
+  width: 100%;
+  font-size: 16px;
+}
+/* квартира строение */
+#take-away-secondary-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.add-item-input-text__address__house:last-child{
+  margin-right: 0;
+}
+.add-item-input-text__address__house{
+  width: 108px;
+  margin-right: 10px;
+}
+
+/* ДОПОЛНИТЕЛЬНЫЙ ПАРАМЕТРЫ РАЗДЕЛ */
+/* время получения возврата */
+.add-item-select-clock{
+  width: 167px;
+}
+.add-item-time-block-wrapper{
+  justify-content: space-between;
+}
+.checkbox-btn.secondary{
+  margin: 20px 0 0 0;
+}
+.add-item-delivery-type-wrapper{
+  flex-wrap: wrap;
+}
+.add-item-input-label__lower{
+  display: none;
+}
+#checkbox-btn-margin{
+  margin-right: 15px;
+}
+.form_radio_btn input[type='radio']:checked + label{
+  padding: 10px;
+  font-size: 14px;
+}
+.form_radio_btn label{
+  padding: 10px;
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

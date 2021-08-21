@@ -36,10 +36,11 @@ const AboutBlock = () => {
               type="button"
               value="Связаться с разработчиками"
               className="header-button add-subject2 abilities_button"
+              id="abilities_button"
             />
           </a>
           <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
-            <input type="button" value="Оставить отзыв" className="header-button add-subject" />
+            <input type="button" value="Оставить отзыв" className="header-button add-subject" id="abilities_button2" />
           </a>
         </div>
       </div>

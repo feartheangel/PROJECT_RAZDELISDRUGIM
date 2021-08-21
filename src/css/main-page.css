@@ -1246,6 +1246,11 @@ button {
 .main_page_fris_block_left {
   margin-right: 253px;
 }
+.selector_header_items{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .home_slider_track {
   display: flex;
@@ -1307,6 +1312,21 @@ button {
 #map_adaptiv {
   display: none;
 }
+#logged-img_last_item{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* МЕДИА ЗАПРОСЫ  */
 
@@ -1340,11 +1360,19 @@ button {
     margin-left: 10px;
   }
   .header-right-content-logged-img {
-    margin-right: 10px;
+    margin-right: 20px;
   }
+
+  #logged-img_last_item{
+    margin-right: 0;
+  }
+
   .dropdown-profile-menu-wrapper.active {
-    right: -95px;
+    right: 15px;
     top: 85px;
+  }
+  #menuStroke{
+    display: none;
   }
 
   /* БЛОК НЕАВТОРИЗИРОВАННОГО ПОЛЬЗОВАТЕЛЯ */
@@ -1372,12 +1400,26 @@ button {
   }
   .location-selector {
     margin: 0;
+    width: 24px;
+    height: 24px;
+  }
+  .location-p{
+    display: none;
   }
   .language-selector {
+    display: none;
     margin: 0;
   }
   .laguage-selector-wrapper {
+    width: 100%;
+    height: 100%;
     margin: 0;
+    margin-left: 20px;
+  }
+  #logged-img_last_item{
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
   }
   .logo {
     margin: 0;
@@ -1387,16 +1429,22 @@ button {
     height: 100%;
   }
   .location-img {
-    max-width: 17px;
-    max-height: 25px;
+    width: 17px;
+    height: 24px;
     margin-right: 1px;
     height: 100%;
   }
   .language-planet-img {
-    max-width: 22px;
-    max-height: 22px;
-    width: 100%;
-    height: 100%;
+    width: 24px;
+    height: 24px;
+  }
+  #notifications{
+    width: 26px;
+    height: 26px;
+  }
+  #favorites{
+    width: 24px;
+    height: 24px;
   }
   /* кнопки входа и тд */
   .header-right-content {
@@ -1548,7 +1596,6 @@ button {
     max-width: 480px;
     width: auto;
     margin-top: 10px;
-    padding: 0 10px;
   }
   .add-subject2 {
     max-width: 144px;
@@ -1603,7 +1650,7 @@ button {
     margin-top: 10px;
   }
   .card-mark:not(:last-child) {
-    margin-right: 12px;
+    margin-right: 10px;
   }
   .block-image {
     max-width: 180px;
@@ -1620,7 +1667,7 @@ button {
   .recent-block-title-p {
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 16px;
     color: #000000;
     margin-top: 7px;
@@ -1628,7 +1675,6 @@ button {
   .recent-time-cost-wrapper {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
@@ -1965,6 +2011,7 @@ button {
   .news-reviews-blocks {
     margin: 0;
   }
+
   .main-news-reviews-title {
     font-style: normal;
     font-weight: 500;
@@ -1976,7 +2023,7 @@ button {
   }
   .news-reviews-block {
     max-width: 480px;
-    width: 100%;
+    width: 310px;
     height: auto;
     margin-bottom: 40px;
   }
@@ -2245,4 +2292,15 @@ button {
   .footer-localization-wrapper {
     margin: 0;
   }
+  .footer-localization-p{
+    margin-right: 15px;
+  }
+  #abilities_button{
+    max-width: 205px;
+  }
+  #abilities_button2{
+    max-width: 120px;
+  }
+
+  
 }
