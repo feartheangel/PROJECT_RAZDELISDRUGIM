@@ -13,7 +13,7 @@ const MyFavorites = () => {
     Requests.fetchFavorites().then((res) => {
       dispatch(setFavorites(res.data));
     });
-  });
+  }, []);
 
   return (
     <div>

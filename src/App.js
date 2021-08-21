@@ -44,32 +44,30 @@ function App() {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    Requests.fetchItems()
-      .then((response) => {
-        dispatch(setItems(response.data));
-        dispatch(setItemsLoaded());
-      })
-      .then(
-        Requests.fetchUserProfile().then((response) => {
-          dispatch(setUserData(response.data));
-          Requests.fetchAdresses()
-            .then((response) => {
-              dispatch(setAdresses(response.data));
-            })
-            .then(() => {
-              Requests.fetchSubjects().then((response) => {
-                dispatch(setUserSubjects(response.data));
-              });
-            })
-            .then(() => {
-              Requests.fetchFavorites().then((response) => {
-                dispatch(setFavorites(response.data));
-              });
-            })
+    Requests.fetchItems().then((response) => {
+      dispatch(setItems(response.data));
+      dispatch(setItemsLoaded());
+    });
+    isLoggedIn &&
+      Requests.fetchUserProfile().then((response) => {
+        dispatch(setUserData(response.data));
+        Requests.fetchAdresses()
+          .then((response) => {
+            dispatch(setAdresses(response.data));
+          })
+          .then(() => {
+            Requests.fetchSubjects().then((response) => {
+              dispatch(setUserSubjects(response.data));
+            });
+          })
+          .then(() => {
+            Requests.fetchFavorites().then((response) => {
+              dispatch(setFavorites(response.data));
+            });
+          })
 
-            .catch();
-        }),
-      );
+          .catch((err) => console.log(err));
+      });
   }, [isLoggedIn, reload]);
 
   React.useEffect(() => {

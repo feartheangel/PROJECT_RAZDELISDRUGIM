@@ -9,6 +9,7 @@ const CatalogComponent = ({ chapterId }) => {
   const dispatch = useDispatch();
   const { isLoaded, items } = useSelector(({ items }) => items);
   const [redirect, setRedirect] = React.useState();
+  let chapterText = '';
 
   //выделяем разделы
   const chapters = {};
@@ -35,6 +36,14 @@ const CatalogComponent = ({ chapterId }) => {
         categories[item.name_category] = [item.id];
       }
     });
+
+  //выделяем текст каталога
+  [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
+    if (chapterId === chapter[1][0]) {
+      chapterText = chapter[1][3];
+    }
+    return;
+  });
 
   const categoryRedirect = (name, id) => {
     dispatch(setSearchCategory(name));
@@ -107,21 +116,7 @@ const CatalogComponent = ({ chapterId }) => {
 
       {/* ТЕКСТ С ИНФОЙ СНИЗУ*/}
       <div className="CatalogComponent_informations">
-        <p>
-          {[].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-            if (chapterId === chapter[1][0]) {
-              return chapter[1][3];
-            }
-          })}
-        </p>
-        <p>
-          Информация о товаре предоставлена для ознакомления и не является публичной офертой.
-          Производители оставляют за собой право изменять внешний вид, характеристики и комплектацию
-          товара, предварительно не уведомляя продавцов и потребителей. Просим вас отнестись с
-          пониманием к данному факту и заранее приносим извинения за возможные неточности в описании
-          и фотографиях товара. Будем благодарны вам за сообщение об ошибках — это поможет сделать
-          наш каталог еще точнее!
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: chapterText && chapterText }} />
       </div>
     </div>
   );

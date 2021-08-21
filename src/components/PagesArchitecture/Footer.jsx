@@ -92,7 +92,7 @@ const Footer = () => {
               <li className="footer-third-li main-footer-li">Категории</li>
               {isLoaded &&
                 [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-                  if (index <= 8) {
+                  if (index <= 9) {
                     return (
                       <Link
                         style={{ textDecoration: 'none' }}
@@ -110,7 +110,7 @@ const Footer = () => {
             <ul className="footer-fourth-ul">
               {isLoaded &&
                 [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-                  if (index > 8) {
+                  if (index > 9) {
                     return (
                       <Link
                         style={{ textDecoration: 'none' }}

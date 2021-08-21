@@ -166,7 +166,7 @@ const CardThings = () => {
               </Link>
 
               <div>
-                <p className="card_shapka_hover"> {itemData && itemData.name_item} </p>
+                <p style={{ color: 'black' }}> {itemData && itemData.name_item} </p>
               </div>
             </div>
 

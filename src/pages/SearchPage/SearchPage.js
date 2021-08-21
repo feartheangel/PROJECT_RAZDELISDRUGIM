@@ -32,6 +32,7 @@ const SearchPage = () => {
   const {
     searchItems,
     words,
+    category_id,
     category,
     min_price,
     max_price,
@@ -71,7 +72,7 @@ const SearchPage = () => {
   React.useEffect(() => {
     if (
       !words &&
-      !category &&
+      !category_id &&
       !min_price &&
       !max_price &&
       !free &&
@@ -88,7 +89,7 @@ const SearchPage = () => {
     } else {
       Requests.search(
         words,
-        category,
+        category_id,
         min_price,
         max_price,
         free,
@@ -160,7 +161,7 @@ const SearchPage = () => {
     dispatch(setMinPrice(e.target.value));
     searchHandler(
       words,
-      category,
+      category_id,
       e.target.value,
       max_price,
       free,
@@ -181,7 +182,7 @@ const SearchPage = () => {
     dispatch(setMaxPrice(e.target.value));
     searchHandler(
       words,
-      category,
+      category_id,
       min_price,
       e.target.value,
       free,
@@ -199,7 +200,7 @@ const SearchPage = () => {
     dispatch(setFree(!free));
     searchHandler(
       words,
-      category,
+      category_id,
       min_price,
       max_price,
       !free,
@@ -218,7 +219,7 @@ const SearchPage = () => {
       dispatch(setStatus(false));
       searchHandler(
         words,
-        category,
+        category_id,
         min_price,
         max_price,
         free,
@@ -234,7 +235,7 @@ const SearchPage = () => {
       dispatch(setStatus(e.target.value));
       searchHandler(
         words,
-        category,
+        category_id,
         min_price,
         max_price,
         free,
@@ -253,7 +254,7 @@ const SearchPage = () => {
     dispatch(setDelivery(!delivery));
     searchHandler(
       words,
-      category,
+      category_id,
       min_price,
       max_price,
       free,
@@ -271,7 +272,7 @@ const SearchPage = () => {
     dispatch(setInsurance(!insurance));
     searchHandler(
       words,
-      category,
+      category_id,
       min_price,
       max_price,
       free,
@@ -289,7 +290,7 @@ const SearchPage = () => {
     dispatch(setContract(!contract));
     searchHandler(
       words,
-      category,
+      category_id,
       min_price,
       max_price,
       free,
@@ -307,7 +308,7 @@ const SearchPage = () => {
     dispatch(setPledge(!pledge));
     searchHandler(
       words,
-      category,
+      category_id,
       min_price,
       max_price,
       free,
@@ -326,7 +327,7 @@ const SearchPage = () => {
       dispatch(setDistance(false));
       searchHandler(
         words,
-        category,
+        category_id,
         min_price,
         max_price,
         free,
@@ -342,7 +343,7 @@ const SearchPage = () => {
       dispatch(setDistance(props));
       searchHandler(
         words,
-        category,
+        category_id,
         min_price,
         max_price,
         free,
@@ -400,7 +401,7 @@ const SearchPage = () => {
             </div>
 
             <div>
-              <p className="SearchPage_container_shapka_hover"> {category} </p>
+              <p style={{ color: 'black' }}> {category} </p>
             </div>
 
             <p className="container_shapka_result">

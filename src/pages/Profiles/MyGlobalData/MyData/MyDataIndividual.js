@@ -56,6 +56,8 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
     const formData = new FormData();
     delete formData.image_profile;
     formData.append('image_profile', e.target.files[0]);
+    formData.append('email', userData.email);
+    formData.append('phone', userData.phone);
     Requests.updateProfileImageReq(formData).then(() => {
       alert('Картинка успешно обновлена!');
       dispatch(reloadData(!reload));
@@ -414,61 +416,66 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
             )}
           </div>
 
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">Пароль</label>
-            <p
-              onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
-              className="my-data-lower-p__password">
-              {' '}
-              Изменить пароль{' '}
-            </p>
-          </div>
-          {showPasswordChangeTable && (
-            <div className="setting_left_input_wrapper">
+          {(contactEmailRegExp.test(userData && userData.username) ||
+            contactNumberRegExp.test(userData && userData.username)) && (
+            <div>
               <div className="setting_left_input_wrapper">
-                <label className="setting_left_input-label">Старый пароль</label>
-                <input
-                  onChange={(e) => setOldPassword(e.target.value)}
-                  value={oldPassword}
-                  className="setting_left_input__password"
-                  type={showOldPass ? 'text' : 'password'}
-                />
-                <a
-                  onClick={() => setShowOldPass(!showOldPass)}
-                  class="password-control__profile"></a>
+                <label className="setting_left_input-label">Пароль</label>
+                <p
+                  onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
+                  className="my-data-lower-p__password">
+                  {' '}
+                  Изменить пароль{' '}
+                </p>
               </div>
-              <div className="setting_left_input_wrapper">
-                <label className="setting_left_input-label">Новый пароль</label>
-                <input
-                  onChange={(e) => setNewPassword1(e.target.value)}
-                  value={newPassword1}
-                  className="setting_left_input__password"
-                  type={showNewPass1 ? 'text' : 'password'}
-                />
-                <a
-                  onClick={() => setShowNewPass1(!showNewPass1)}
-                  class="password-control__profile"></a>
-              </div>
-              <div className="setting_left_input_wrapper">
-                <label className="setting_left_input-label">Повторите новый пароль</label>
-                <input
-                  onChange={(e) => setNewPassword2(e.target.value)}
-                  value={newPassword2}
-                  className="setting_left_input__password"
-                  type={showNewPass2 ? 'text' : 'password'}
-                />
-                <a
-                  onClick={() => setShowNewPass2(!showNewPass2)}
-                  class="password-control__profile"></a>
-              </div>
-              <div className=" button_save">
-                <input
-                  value="ИЗМЕНИТЬ"
-                  type="button"
-                  onClick={passwordChangeHandler}
-                  className=" button_download"
-                />
-              </div>
+              {showPasswordChangeTable && (
+                <div className="setting_left_input_wrapper">
+                  <div className="setting_left_input_wrapper">
+                    <label className="setting_left_input-label">Старый пароль</label>
+                    <input
+                      onChange={(e) => setOldPassword(e.target.value)}
+                      value={oldPassword}
+                      className="setting_left_input__password"
+                      type={showOldPass ? 'text' : 'password'}
+                    />
+                    <a
+                      onClick={() => setShowOldPass(!showOldPass)}
+                      class="password-control__profile"></a>
+                  </div>
+                  <div className="setting_left_input_wrapper">
+                    <label className="setting_left_input-label">Новый пароль</label>
+                    <input
+                      onChange={(e) => setNewPassword1(e.target.value)}
+                      value={newPassword1}
+                      className="setting_left_input__password"
+                      type={showNewPass1 ? 'text' : 'password'}
+                    />
+                    <a
+                      onClick={() => setShowNewPass1(!showNewPass1)}
+                      class="password-control__profile"></a>
+                  </div>
+                  <div className="setting_left_input_wrapper">
+                    <label className="setting_left_input-label">Повторите новый пароль</label>
+                    <input
+                      onChange={(e) => setNewPassword2(e.target.value)}
+                      value={newPassword2}
+                      className="setting_left_input__password"
+                      type={showNewPass2 ? 'text' : 'password'}
+                    />
+                    <a
+                      onClick={() => setShowNewPass2(!showNewPass2)}
+                      class="password-control__profile"></a>
+                  </div>
+                  <div className=" button_save">
+                    <input
+                      value="ИЗМЕНИТЬ"
+                      type="button"
+                      onClick={passwordChangeHandler}
+                      className=" button_download"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -506,7 +513,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
             {' '}
             Социальные сети и месседжеры{' '}
             <img
-              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом"
+              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
               src={Vector2}
               className="img_vector2"
               alt=""

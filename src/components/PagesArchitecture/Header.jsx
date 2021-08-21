@@ -55,7 +55,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, userData, subjects } = useSelector(({ userData }) => userData);
+  const { isLoggedIn, userData, subjects, reload } = useSelector(({ userData }) => userData);
   const { items, isLoaded } = useSelector(({ items }) => items);
   const {
     searchItems,
@@ -77,6 +77,7 @@ const Header = () => {
   const logout = () => {
     setProfilePopUpActive(false);
     localStorage.removeItem('key');
+    localStorage.removeItem('refresh');
     dispatch(logoutAction());
     setRedirect(<Redirect to="/" />);
   };
@@ -202,7 +203,7 @@ const Header = () => {
               id="login-button2"
             />
           )}
-           {isLoggedIn && (
+          {isLoggedIn && (
             <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper2">
               <div className="header-right-content-logged-div">
                 <Link to="/favorites">

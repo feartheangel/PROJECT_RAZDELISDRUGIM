@@ -48,6 +48,10 @@ const EditItem = () => {
     parsedFiles = Array.from(e.target.files);
     console.log(parsedFiles);
     parsedFiles.forEach((file) => {
+      if (file.size > 4.9e6) {
+        alert('Вес одной картинки не может превышать 5 мегабайт!');
+        return;
+      }
       files.push(file);
       resultList.push(URL.createObjectURL(file));
     });

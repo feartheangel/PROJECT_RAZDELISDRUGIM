@@ -58,6 +58,8 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
     const formData = new FormData();
     delete formData.image_profile;
     formData.append('image_profile', e.target.files[0]);
+    formData.append('email', userData.email);
+    formData.append('phone', userData.phone);
     Requests.updateProfileImageReq(formData).then(() => {
       alert('Картинка успешно обновлена!');
       dispatch(reloadData(!reload));
@@ -567,7 +569,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             {' '}
             Социальные сети и месседжеры{' '}
             <img
-              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом"
+              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
               src={Vector2}
               className="img_vector2"
               alt=""

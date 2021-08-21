@@ -16,6 +16,8 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
               .splice(contact.indexOf('@') + 1, contact.length - 1)
               .join('')
           : contact,
+        userData.email,
+        userData.phone,
       ).then(() => {
         alert('Telegram аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
@@ -30,6 +32,8 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
               .splice(contact.indexOf('+') + 1, contact.length - 1)
               .join('')
           : contact,
+        userData.email,
+        userData.phone,
       ).then(() => {
         alert('Viber аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
@@ -44,6 +48,8 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
               .splice(contact.indexOf('+') + 1, contact.length - 1)
               .join('')
           : contact,
+        userData.email,
+        userData.phone,
       ).then(() => {
         alert('WhatsApp аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
@@ -51,14 +57,14 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'google') {
-      Requests.updateGoogle(contact).then(() => {
+      Requests.updateGoogle(contact, userData.email, userData.phone).then(() => {
         alert('Google аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'fb') {
-      Requests.updateFacebook(contact).then(() => {
+      Requests.updateFacebook(contact, userData.email, userData.phone).then(() => {
         alert('Facebook аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
@@ -72,14 +78,14 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'inst') {
-      Requests.updateInstagram(contact).then(() => {
+      Requests.updateInstagram(contact, userData.email, userData.phone).then(() => {
         alert('Instagram аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'ok') {
-      Requests.updateOK(contact).then(() => {
+      Requests.updateOK(contact, userData.email, userData.phone).then(() => {
         alert('OK аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
@@ -90,56 +96,56 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
 
   const deleteSocialHandler = () => {
     if (activeSocial === 'tg') {
-      Requests.updateTG('').then(() => {
+      Requests.updateTG('', userData.email, userData.phone).then(() => {
         alert('Telegram аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'viber') {
-      Requests.updateViber('').then(() => {
+      Requests.updateViber('', userData.email, userData.phone).then(() => {
         alert('Viber аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'wa') {
-      Requests.updateWhatsapp('').then(() => {
+      Requests.updateWhatsapp('', userData.email, userData.phone).then(() => {
         alert('WhatsApp аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'google') {
-      Requests.updateGoogle('').then(() => {
+      Requests.updateGoogle('', userData.email, userData.phone).then(() => {
         alert('Google аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'fb') {
-      Requests.updateFacebook('').then(() => {
+      Requests.updateFacebook('', userData.email, userData.phone).then(() => {
         alert('Facebook аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'vk') {
-      Requests.updateVK('').then(() => {
+      Requests.updateVK('', userData.email, userData.phone).then(() => {
         alert('VK аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'inst') {
-      Requests.updateInstagram('').then(() => {
+      Requests.updateInstagram('', userData.email, userData.phone).then(() => {
         alert('Instagram аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'ok') {
-      Requests.updateOK('').then(() => {
+      Requests.updateOK('', userData.email, userData.phone).then(() => {
         alert('OK аккаунт успешно удален!');
         setSocialPopUpActive(false);
         setActiveSocial(false);

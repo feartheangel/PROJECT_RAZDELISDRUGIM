@@ -90,17 +90,16 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
   const onClickSubmit = () => {
     Requests.login(login, password)
       .then((response) => {
-        if (response.status === 200 || response.status === 201) {
-          console.log(response);
-          dispatch(loginAction());
-          alert('Авторизация прошла успешно');
-          localStorage.setItem('key', response.data.access);
-          setModalActive(false);
-          setLogin('');
-          setPassword('');
-        }
+        console.log(response);
+        alert('Авторизация прошла успешно');
+        localStorage.setItem('key', response.data.access);
+        localStorage.setItem('refresh', response.data.refresh);
+        dispatch(loginAction());
+        setModalActive(false);
+        setLogin('');
+        setPassword('');
       })
-      .catch((err) => alert('Ошибка авторизации (данные введены неверно)'));
+      .catch(() => alert('Ошибка авторизации (данные введены неверно)'));
   };
   return (
     <div className="log-form">

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { logoutAction } from '../redux/actions/userData';
+import { useDispatch } from 'react-redux';
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 const rootAddress = 'https://razdelisdrugim.by/';
@@ -55,6 +57,17 @@ class Requests {
         password: password,
       },
       url: 'https://razdelisdrugim.by/api/jwt/token/',
+    });
+  }
+
+  static refresh(token) {
+    return axios({
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: {
+        refresh: token,
+      },
+      url: 'https://razdelisdrugim.by/api/jwt/token/refresh/',
     }).then((response) => {
       return response;
     });
@@ -83,24 +96,6 @@ class Requests {
         username: phone,
       },
       url: 'https://razdelisdrugim.by/api/jwt/reset-password-phone/',
-    }).then((response) => {
-      return response;
-    });
-  }
-
-  static convertToken(access_token) {
-    return axios({
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: {
-        grant_type: 'convert_token',
-        client_id: 'zyE2kzBjyp0PtLhGV1ulQWQOmpBM3v6u03nj2fdF',
-        backend: 'vk-oauth2',
-        token: access_token,
-      },
-      url: `https://razdelisdrugim.by/social/convert-token/`,
     }).then((response) => {
       return response;
     });
@@ -712,7 +707,7 @@ class Requests {
     });
   }
 
-  static updateTG(telegram_account) {
+  static updateTG(telegram_account, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -721,6 +716,8 @@ class Requests {
       },
       data: {
         telegram_account: telegram_account,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -728,7 +725,7 @@ class Requests {
     });
   }
 
-  static updateViber(viber_account) {
+  static updateViber(viber_account, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -737,6 +734,8 @@ class Requests {
       },
       data: {
         viber_account: viber_account,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -744,7 +743,7 @@ class Requests {
     });
   }
 
-  static updateWhatsapp(whatsapp_account) {
+  static updateWhatsapp(whatsapp_account, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -753,6 +752,8 @@ class Requests {
       },
       data: {
         whatsapp_account: whatsapp_account,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -760,7 +761,7 @@ class Requests {
     });
   }
 
-  static updateGoogle(google_account) {
+  static updateGoogle(google_account, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -769,6 +770,8 @@ class Requests {
       },
       data: {
         google_account: google_account,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -776,7 +779,7 @@ class Requests {
     });
   }
 
-  static updateFacebook(link_facebook) {
+  static updateFacebook(link_facebook, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -792,7 +795,7 @@ class Requests {
     });
   }
 
-  static updateVK(vk_account) {
+  static updateVK(vk_account, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -801,6 +804,8 @@ class Requests {
       },
       data: {
         vk_account: vk_account,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -808,7 +813,7 @@ class Requests {
     });
   }
 
-  static updateInstagram(link_instagram) {
+  static updateInstagram(link_instagram, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -824,7 +829,7 @@ class Requests {
     });
   }
 
-  static updateOK(ok_account) {
+  static updateOK(ok_account, email, phone) {
     return axios({
       method: 'POST',
       headers: {
@@ -833,6 +838,8 @@ class Requests {
       },
       data: {
         ok_account: ok_account,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -984,8 +991,6 @@ class Requests {
         Authorization: `Bearer ${localStorage.getItem('key')}`,
       },
       url: `https://razdelisdrugim.by/api/items/favorite/`,
-    }).then((response) => {
-      return response;
     });
   }
 
@@ -1078,5 +1083,41 @@ class Requests {
     });
   }
 }
+
+axios.interceptors.response.use(
+  (config) => {
+    return config;
+  },
+  (error) => {
+    const originalRequest = error.config;
+    if (
+      error.response.status === 401 &&
+      error.config &&
+      !error.config._isRetry &&
+      localStorage.getItem('refresh')
+    ) {
+      originalRequest._isRetry = true;
+      Requests.refresh(localStorage.getItem('refresh'))
+        .then((response) => {
+          localStorage.setItem('key', response.data.access);
+          originalRequest.headers.Authorization = `Bearer ${localStorage.getItem('key')}`;
+          return axios.request(originalRequest).then((res) => res);
+        })
+        .catch(() => {
+          localStorage.removeItem('key');
+          localStorage.removeItem('refresh');
+          setTimeout(() => {
+            window.location.href = 'https://razdelisdrugim.by';
+          }, 2000);
+          return;
+        });
+    }
+
+    if (error.response.status === 304) {
+      return error;
+    }
+    throw error;
+  },
+);
 
 export default Requests;
