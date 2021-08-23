@@ -38,8 +38,8 @@ const RandomItemsSlider = () => {
           </Swiper>
                       {/* копия для адаптива */}
           <Swiper
-            spaceBetween={40}
-            slidesPerView={1.7}
+            spaceBetween={0}
+            slidesPerView={2}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             id ="swiper_mobile"
