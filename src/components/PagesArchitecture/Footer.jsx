@@ -187,7 +187,9 @@ const Footer = () => {
         </div>
         <div className="footer-lower-labels">
           <p className="footer-lower-label">Пользовательское соглашение</p>
-          <p className="footer-lower-label">Соглашение о конфиденциальности</p>
+          <Link style={{ textDecoration: 'none', cursor: 'pointer' }} to="/confidence-policy">
+            <p className="footer-lower-label">Соглашение о конфиденциальности</p>
+          </Link>
         </div>
         <div className="footer-localization-wrapper">
           <img src={Planet} alt="" className="footer-planet-img" />
@@ -198,7 +200,9 @@ const Footer = () => {
       <div className="footer-lower-part" id="footer-lower2">
         <div className="footer-lower-labels">
           <p className="footer-lower-label">Пользовательское соглашение</p>
-          <p className="footer-lower-label">Соглашение о конфиденциальности</p>
+          <Link style={{ textDecoration: 'none', cursor: 'pointer' }} to="/confidence-policy">
+            <p className="footer-lower-label">Соглашение о конфиденциальности</p>
+          </Link>
         </div>
         <div className="footer-img-logo-wrapper_gl">
           <div className="footer-img-logo-wrapper">

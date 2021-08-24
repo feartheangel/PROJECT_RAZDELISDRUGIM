@@ -11,14 +11,14 @@ const RandomItemsSlider = () => {
   const [randomItems, setRandomItems] = React.useState([]);
 
   React.useEffect(() => {
-    Requests.getRandomItems().then((res) => {
-      setRandomItems(res.data.reverse());
+    Requests.fetchPopular().then((res) => {
+      setRandomItems(res.data);
     });
   }, []);
 
   return (
     <section className="popular-wrapper">
-      <p className="popular-p">Случаные вещи, услуги</p>
+      <p className="popular-p">Самые просматриваеиые</p>
       <div className="recent-blocks-wrapper">
         <div className="recent-blocks-slider-container">
           <Swiper
@@ -26,8 +26,7 @@ const RandomItemsSlider = () => {
             slidesPerView={4}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            id ="swiper_comp"
-            >
+            id="swiper_comp">
             {randomItems &&
               randomItems.map((item, index) => (
                 <SwiperSlide style={{ display: 'flex' }}>
@@ -36,22 +35,21 @@ const RandomItemsSlider = () => {
                 </SwiperSlide>
               ))}
           </Swiper>
-                      {/* копия для адаптива */}
+          {/* копия для адаптива */}
           <Swiper
             spaceBetween={0}
             slidesPerView={2}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            id ="swiper_mobile"
-            >
+            id="swiper_mobile">
             {randomItems &&
               randomItems.map((item, index) => (
-                <SwiperSlide style={{ display: 'flex', width:'150px'  }}>
+                <SwiperSlide style={{ display: 'flex', width: '150px' }}>
                   {' '}
                   <ItemCard key={index} item={item} />
                 </SwiperSlide>
               ))}
-          </Swiper>     
+          </Swiper>
         </div>
       </div>
       <Link style={{ textDecoration: 'none' }} to="/catalog">

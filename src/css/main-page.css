@@ -33,9 +33,9 @@ button {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  height: 221px;
   box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
   align-items: center;
+  padding-bottom: 15px;
 }
 
 .news-alert-block-wrapper {
@@ -234,7 +234,7 @@ button {
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-  background: #ffe66d;
+  background: #eecc36;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
   border: 1px solid transparent;
@@ -248,7 +248,6 @@ button {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
   width: 1512px;
 }
 
@@ -602,7 +601,7 @@ button {
 .abilities-button-find-subject {
   width: 228px;
   height: 45px;
-  background: #ffe66d;
+  background: #eecc36;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
   border: 1px solid transparent;
@@ -693,7 +692,7 @@ button {
 .reviews-button-write-dev {
   width: 228px;
   height: 45px;
-  background: #ffe66d;
+  background: #eecc36;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
   border: 1px solid transparent;
@@ -1208,7 +1207,7 @@ button {
   overflow-x: hidden;
   background-color: white;
   left: 160px;
-  top: 95px;
+  top: 75px;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
   padding: 10px;
@@ -1247,7 +1246,7 @@ button {
 .main_page_fris_block_left {
   margin-right: 253px;
 }
-.selector_header_items{
+.selector_header_items {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1313,21 +1312,11 @@ button {
 #map_adaptiv {
   display: none;
 }
-#logged-img_last_item{
+#logged-img_last_item {
   width: 30px;
   height: 30px;
   border-radius: 100%;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* МЕДИА ЗАПРОСЫ  */
 
@@ -1364,7 +1353,7 @@ button {
     margin-right: 20px;
   }
 
-  #logged-img_last_item{
+  #logged-img_last_item {
     margin-right: 0;
   }
 
@@ -1372,7 +1361,7 @@ button {
     right: 15px;
     top: 85px;
   }
-  #menuStroke{
+  #menuStroke {
     display: none;
   }
 
@@ -1404,7 +1393,7 @@ button {
     width: 24px;
     height: 24px;
   }
-  .location-p{
+  .location-p {
     display: none;
   }
   .language-selector {
@@ -1417,7 +1406,7 @@ button {
     margin: 0;
     margin-left: 20px;
   }
-  #logged-img_last_item{
+  #logged-img_last_item {
     width: 26px;
     height: 26px;
     border-radius: 100%;
@@ -1439,11 +1428,11 @@ button {
     width: 24px;
     height: 24px;
   }
-  #notifications{
+  #notifications {
     width: 26px;
     height: 26px;
   }
-  #favorites{
+  #favorites {
     width: 24px;
     height: 24px;
   }
@@ -1625,7 +1614,7 @@ button {
     display: flex;
     width: 100%;
   }
-  #wrapper_slider{
+  #wrapper_slider {
     margin: 15px 0 5px;
   }
   .swiper-slide swiper-slide-active {
@@ -2298,15 +2287,13 @@ button {
   .footer-localization-wrapper {
     margin: 0;
   }
-  .footer-localization-p{
+  .footer-localization-p {
     margin-right: 15px;
   }
-  #abilities_button{
+  #abilities_button {
     max-width: 205px;
   }
-  #abilities_button2{
+  #abilities_button2 {
     max-width: 120px;
   }
-
-  
 }

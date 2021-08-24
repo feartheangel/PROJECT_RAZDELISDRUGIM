@@ -21,6 +21,7 @@ import {
   HowToRentOut,
   HowToRent,
   ForBusiness,
+  ConfidencePolicy,
 } from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
@@ -68,7 +69,7 @@ function App() {
 
           .catch((err) => console.log(err));
       });
-  }, [isLoggedIn, reload]);
+  }, [isLoggedIn, reload, localStorage.getItem('key')]);
 
   React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -106,6 +107,7 @@ function App() {
         <Route path="/how-to-rent-out" component={HowToRentOut} exact />
         <Route path="/how-to-rent" component={HowToRent} exact />
         <Route path="/for-business" component={ForBusiness} exact />
+        <Route path="/confidence-policy" component={ConfidencePolicy} exact />
       </div>
     </div>
   );

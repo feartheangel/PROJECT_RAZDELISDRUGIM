@@ -833,6 +833,11 @@ const EditItem = () => {
     console.log(willSendWays);
   }, [taxi, courier, pochta, willSendWays]);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Редактирование';
+  }, []);
+
   //выделяем разделы
   const chapters = {};
   isLoaded &&

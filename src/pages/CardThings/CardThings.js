@@ -5,7 +5,6 @@ import { Header, Footer, ItemCard } from '../../components/index';
 import { setSearchCategory, setCategoryId, setSearchItems } from '../../redux/actions/search';
 import { useSelector, useDispatch } from 'react-redux';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
-import CardProduct from '../SearchPage/CardProduct/CardProduct';
 import Vector1 from '../../img/SearchPage/Vector1.png';
 import Vector2 from '../../img/CardThings/LeftContent/Vector2.png';
 import Vector3 from '../../img/CardThings/LeftContent/Vector3.png';
@@ -17,7 +16,6 @@ import Share from '../../img/CardThings/LeftContent/Vector 1.png';
 import Union from '../../img/CardThings/LeftContent/Union.png';
 import CombinedShare from '../../img/CardThings/LeftContent/Combined Shape.png';
 import Service from '../../img/CardThings/LeftContent/Service.png';
-import Clock from '../../img/CardThings/LeftContent/clock.png';
 import Sell1 from '../../img/CardThings/LeftContent/sell 1.png';
 import HandShake from '../../img/CardThings/RightContent/handShake1.png';
 import Address from '../../img/CardThings/RightContent/Vector2.png';
@@ -29,6 +27,7 @@ import Viber from '../../img/CardThings/RightContent/Component 37.png';
 import Whatsapp from '../../img/CardThings/RightContent/Component 38.png';
 import Instagram from '../../img/CardThings/RightContent/Component 39.png';
 import Vk from '../../img/CardThings/RightContent/Component 42.png';
+import Views from '../../img/CardThings/LeftContent/views.png';
 import freePrice from '../../img/MainPage/freePrice.png';
 import Requests from '../../http/axios-requests';
 import Google from '../../img/ProfilePage/google.png';
@@ -110,10 +109,6 @@ const CardThings = () => {
       });
   }, [favorites]);
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const [itemData, setItemData] = React.useState();
   const [simillarSubjects, setSimillarSubjects] = React.useState();
   const [selectedImage, setSelectedImage] = React.useState();
@@ -121,6 +116,11 @@ const CardThings = () => {
   const [shareVisible, setShareVisible] = React.useState();
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = itemData && itemData.name_item;
+  }, [itemData]);
 
   const mapData = {
     center: itemData && itemData.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse(),
@@ -250,13 +250,18 @@ const CardThings = () => {
                     )}
                   </div>
                 </div>
-
-                <div
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => setShareVisible(!shareVisible)}
-                  className="left_block_toShare">
-                  <img src={Share} alt="" />
-                  <p> Поделиться</p>
+                <div className="card_photo_lower_table_wrapper">
+                  <div
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => setShareVisible(!shareVisible)}
+                    className="left_block_toShare">
+                    <img src={Share} alt="" />
+                    <p> Поделиться</p>
+                  </div>
+                  <div className="card_views_wrapper">
+                    <img src={Views} className="card_views_icon" />
+                    <p>{itemData && itemData.item_views} просмотра(-ов)</p>
+                  </div>
                 </div>
 
                 {shareVisible && (

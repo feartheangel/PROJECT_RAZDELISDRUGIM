@@ -646,6 +646,11 @@ const PlaceItem = () => {
     console.log(willSendWays);
   }, [taxi, courier, pochta]);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Добавление';
+  }, []);
+
   const { items, isLoaded } = useSelector(({ items }) => items);
   const { addresses, requestActive, userData, reload } = useSelector(({ userData }) => userData);
 
@@ -737,7 +742,7 @@ const PlaceItem = () => {
                 className="add-item-select-input"
                 value={viborCategory}
                 onChange={(e) => setViborCategory(e.target.value)}>
-                <option style={{width:'200px'}}>Не выбрано</option>
+                <option style={{ width: '200px' }}>Не выбрано</option>
                 {isLoaded &&
                   [].concat.apply(Object.entries(categories)).map((category, index) => (
                     <option key={index} value={category[1]}>
@@ -807,7 +812,7 @@ const PlaceItem = () => {
             <div className="item-add-cost-choice-wrapper">
               <div style={{ marginRight: '5px' }} className="add-item-input-wrapper">
                 <label className="add-item-input-label">
-                  Стоимость вещи  <span className="add-item-span-zvezda">*</span>
+                  Стоимость вещи <span className="add-item-span-zvezda">*</span>
                 </label>
                 <div>
                   <input
@@ -822,10 +827,7 @@ const PlaceItem = () => {
                   />
                 </div>
               </div>
-              <span
-                className="span-valuts">
-                BYN
-              </span>
+              <span className="span-valuts">BYN</span>
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
                   Срок <span className="add-item-span-zvezda">*</span>
@@ -1084,28 +1086,30 @@ const PlaceItem = () => {
                     </div>
 
                     <div className="add-item-input-wrapper" id="add_item_gl_margin">
-                        <label className="add-item-input-label">Корпус</label>
-                        <input
-                          disabled={room || office || building}
-                          type="text"
-                          className="add-item-input-text__address__house"
-                          value={body}
-                          onChange={(e) => setBody(e.target.value)}
-                        />
-                      </div>
+                      <label className="add-item-input-label">Корпус</label>
+                      <input
+                        disabled={room || office || building}
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
+                      />
+                    </div>
 
-                      <div className="add-item-input-wrapper">
-                        <label className="add-item-input-label">Квартира</label>
-                        <input
-                          disabled={room || office || building}
-                          type="text"
-                          className="add-item-input-text__address__house"
-                          value={flat}
-                          onChange={(e) => setFlat(e.target.value)}
-                        />
-                      </div>
+                    <div className="add-item-input-wrapper">
+                      <label className="add-item-input-label">Квартира</label>
+                      <input
+                        disabled={room || office || building}
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={flat}
+                        onChange={(e) => setFlat(e.target.value)}
+                      />
+                    </div>
 
-                    <span style={{ marginRight: '30px', display:'none'}} className="add-item-cost-or__secondary">
+                    <span
+                      style={{ marginRight: '30px', display: 'none' }}
+                      className="add-item-cost-or__secondary">
                       или
                     </span>
                     <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
@@ -1122,26 +1126,26 @@ const PlaceItem = () => {
                         />
                       </div>
                       <div className="add-item-input-wrapper" id="add_item_gl_margin">
-                          <label className="add-item-input-label">Офис</label>
-                          <input
-                            disabled={house || body || flat}
-                            type="text"
-                            className="add-item-input-text__address__house"
-                            value={office}
-                            onChange={(e) => setOffice(e.target.value)}
-                          />
-                        </div>
+                        <label className="add-item-input-label">Офис</label>
+                        <input
+                          disabled={house || body || flat}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={office}
+                          onChange={(e) => setOffice(e.target.value)}
+                        />
+                      </div>
 
-                        <div className="add-item-input-wrapper">
-                          <label className="add-item-input-label">Строение</label>
-                          <input
-                            disabled={house || body || flat}
-                            type="text"
-                            className="add-item-input-text__address__house"
-                            value={building}
-                            onChange={(e) => setBuilding(e.target.value)}
-                          />
-                        </div>
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">Строение</label>
+                        <input
+                          disabled={house || body || flat}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={building}
+                          onChange={(e) => setBuilding(e.target.value)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1344,7 +1348,7 @@ const PlaceItem = () => {
                 <div className="add-item-time-block-wrapper">
                   <div className="add-item-input-wrapper">
                     <label className="add-item-input-label">
-                      Время получения <br id="br_gl"/> (не позднее){' '}
+                      Время получения <br id="br_gl" /> (не позднее){' '}
                       <img
                         title="Укажите, с какого времени вам было бы удобно предоставить имущество в пользование"
                         src={Vector2}
@@ -1389,7 +1393,7 @@ const PlaceItem = () => {
 
                   <div className="add-item-input-wrapper">
                     <label className="add-item-input-label">
-                      Время возврата <br id="br_gl"/> (не позднее){' '}
+                      Время возврата <br id="br_gl" /> (не позднее){' '}
                       <img
                         title="Укажите, до какого времени вам хотелось бы получить имущество назад"
                         src={Vector2}
@@ -1534,7 +1538,9 @@ const PlaceItem = () => {
                       </div>
 
                       {yourSend && (
-                        <span className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                        <span
+                          className="take-away-secondary-wrapper"
+                          id="take-away-secondary-wrapper">
                           <div className="checkbox-btn secondary" id="checkbox-btn-margin">
                             <input type="checkbox" className="input-checkbox" checked={taxi} />
                             <span onClick={(e) => taxiHandler(e.target.value)}>Такси</span>
