@@ -11,6 +11,11 @@ const MyItems = () => {
   const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Я сдаю';
+  }, []);
+
   return (
     <div>
       <Header />

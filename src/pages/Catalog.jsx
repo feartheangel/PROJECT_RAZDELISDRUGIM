@@ -31,6 +31,7 @@ const Catalog = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = 'Каталог';
   }, []);
 
   React.useEffect(() => {

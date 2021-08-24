@@ -83,8 +83,8 @@ const Header = () => {
   };
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length < 5) {
-      window.location.href = '/place-item';
+    if (isLoggedIn && subjects.length >= 5) {
+      alert('Лимит вещей достигнут (5)');
       return;
     } else if (isLoggedIn && subjects.length >= 5) {
       alert('Лимит вещей достигнут (5)');
@@ -97,6 +97,7 @@ const Header = () => {
       setRedirect(<Redirect to="/private-profile" />);
       return;
     }
+    window.location.href = '/place-item';
   };
 
   const searchRedirect = () => {
@@ -187,14 +188,14 @@ const Header = () => {
             <img src={Logo} alt="Global Sharing Platform" className="logo" />
           </Link>
           <div className="selector_header_items">
-          <div className="location-selector">
-            <img src={mark} alt="" className="location-img" />
-            <p className="location-p">{currentLocation && currentLocation}</p>
-          </div>
-          <div className="laguage-selector-wrapper">
-            <img src={LanguagePlanet} alt="" className="language-planet-img" />
-            <p className="language-selector">RU</p>
-          </div>
+            <div className="location-selector">
+              <img src={mark} alt="" className="location-img" />
+              <p className="location-p">{currentLocation && currentLocation}</p>
+            </div>
+            <div className="laguage-selector-wrapper">
+              <img src={LanguagePlanet} alt="" className="language-planet-img" />
+              <p className="language-selector">RU</p>
+            </div>
           </div>
           {!isLoggedIn && (
             <input
@@ -209,9 +210,13 @@ const Header = () => {
             <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper2">
               <div className="header-right-content-logged-div">
                 <Link to="/favorites">
-                  <img className="header-right-content-logged-img" src={Favorites} id="favorites"/>
+                  <img className="header-right-content-logged-img" src={Favorites} id="favorites" />
                 </Link>
-                <img className="header-right-content-logged-img" src={Notifications} id="notifications" />
+                <img
+                  className="header-right-content-logged-img"
+                  src={Notifications}
+                  id="notifications"
+                />
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group">
@@ -220,7 +225,11 @@ const Header = () => {
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                     id="logged-img_last_item"
                   />
-                  <img className="header-right-content-logged-img" src={MenuStroke} id="menuStroke"/>
+                  <img
+                    className="header-right-content-logged-img"
+                    src={MenuStroke}
+                    id="menuStroke"
+                  />
                 </div>
               </div>
               {profilePopUpActive && (

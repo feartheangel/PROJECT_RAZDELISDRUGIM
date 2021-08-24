@@ -67,7 +67,11 @@ const PublicProfile = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    document.title =
+      profileData && profileData.company_name
+        ? profileData && profileData.company_name
+        : profileData && profileData.first_name;
+  }, [profileData]);
 
   return (
     <div>

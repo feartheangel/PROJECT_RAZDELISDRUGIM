@@ -1082,6 +1082,18 @@ class Requests {
       return response;
     });
   }
+
+  static fetchPopular() {
+    return axios({
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url: `https://razdelisdrugim.by/api/items/popular/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

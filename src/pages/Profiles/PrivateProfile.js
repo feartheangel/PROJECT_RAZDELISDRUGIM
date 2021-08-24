@@ -27,6 +27,11 @@ const PrivateProfile = () => {
   const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Мой профиль';
+  }, []);
+
   return (
     <div>
       <Header />
