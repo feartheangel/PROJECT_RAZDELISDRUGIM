@@ -10,5 +10,5 @@ export const googleAuth = () => {
 
 export const facebookAuth = () => {
   window.location.href =
-    'https://www.facebook.com/v11.0/dialog/oauth?client_id=575975343564703&redirect_uri=https://razdelisdrugim.by/&state=facebook';
+    'https://www.facebook.com/v11.0/dialog/oauth?client_id=197920688990183&redirect_uri=https://razdelisdrugim.by/&state=facebook';
 };

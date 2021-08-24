@@ -87,3 +87,28 @@ textarea {
   cursor: pointer;
   color: #56ccf2;
 }
+
+@media only screen and (max-width: 480px) {
+  .container_profile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container_profile_optional {
+    display: flex;
+    flex-direction: row;
+    width: 130%;
+  }
+
+  .container_profile_optional p {
+    margin-right: 20px;
+    padding-top: 0px;
+    margin-top: 0;
+  }
+
+  .container_profile_content {
+    width: 100%;
+    box-shadow: none;
+    padding: 1px;
+  }
+}

@@ -22,7 +22,7 @@ import {
   setDistance,
   setCategoryId,
 } from '../../redux/actions/search';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, Clusterer } from 'react-yandex-maps';
 import CardProduct from './CardProduct/CardProduct';
 import map from '../../img/SearchPage/map.png';
 
@@ -55,13 +55,86 @@ const SearchPage = () => {
   //координаты меток карты
   const [marks, setMarks] = React.useState([]);
 
+  const getPointOptions = () => {
+    return {
+      preset: 'islands#violetIcon',
+    };
+  };
+
+  const getPointData = (index) => {
+    return {
+      balloonContentBody: [
+        `
+        <div class="recent-block-wrapper">
+        <a style={{ textDecoration: 'none' }} target="_blank">
+          <div style={{ cursor: 'pointer' }} className="recent-block">
+           <img style=width:220px height:200px src=${`https://razdelisdrugim.by${marks[index][1]}`} alt="" class="block-image" />
+            <div class="recent-block-up">
+              <strong><p class="recent-block-title-p">${marks[index][2]}</p></strong>
+            </div>
+              ${
+                !marks[index][6] && !marks[index][7]
+                  ? `<div class="recent-time-cost-wrapper">
+                <p  class="recent-cost-p">${marks[index][3]} BYN</p>
+                <p class="recent-time-p">
+                ${marks[index][4]}
+                </p>
+              </div>`
+                  : ''
+              }
+              ${
+                marks[index][7]
+                  ? `<div style={{ marginTop: '10px' }} class="recent-time-cost-wrapper">
+                  <p class="recent-time-p">
+                    Предложить свою цену
+                  </p>
+                </div>`
+                  : ''
+              }
+              ${
+                marks[index][6]
+                  ? `<div
+                  style={{ justifyContent: 'flex-start', marginTop: '10px' }}
+                  class="recent-time-cost-wrapper">
+                  <p class="recent-time-p">
+                    Бесплатно
+                  </p>
+                </div>`
+                  : ''
+              }
+              <a href=/item-card?id=${marks[index][5]} target='_blank'>
+            <p
+              class="recent-block-title-p">
+              Подробнее
+            </p>
+            </a>
+          </div>
+        </a>
+      </div>
+          `,
+      ].join(''),
+      clusterCaption: `${marks[index][2]}`,
+    };
+  };
+
   const dispatch = useDispatch();
 
+  //определение координат последних вещей
   React.useEffect(() => {
     setMarks(
-      searchItems.map((item) => {
-        return item.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse();
-      }),
+      searchItems &&
+        searchItems.map((item) => {
+          return [
+            item.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse(),
+            item.image_1,
+            item.name_item,
+            item.price_rent,
+            item.rent,
+            item.id,
+            item.free_rent,
+            item.offer_price_rent,
+          ];
+        }),
     );
   }, [searchItems]);
 
@@ -615,8 +688,27 @@ const SearchPage = () => {
                     {searchItems && (
                       <div style={{ marginBottom: '30px' }}>
                         <YMaps>
-                          <Map width={850} height={500} defaultState={mapData}>
-                            {marks && marks.map((mark) => <Placemark geometry={mark} />)}
+                          <Map state={mapData} width={850} height={500} modules={['package.full']}>
+                            <Clusterer
+                              options={{
+                                preset: 'islands#invertedVioletClusterIcons',
+                                groupByCoordinates: false,
+                                clusterDisableClickZoom: true,
+                                clusterHideIconOnBalloonOpen: true,
+                                geoObjectHideIconOnBalloonOpen: true,
+                                hasBalloon: true,
+                              }}>
+                              {marks &&
+                                marks.map((mark, index) => (
+                                  <Placemark
+                                    key={index}
+                                    geometry={mark[0]}
+                                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                                    properties={getPointData(index)}
+                                    options={getPointOptions()}
+                                  />
+                                ))}
+                            </Clusterer>
                           </Map>
                         </YMaps>
                       </div>

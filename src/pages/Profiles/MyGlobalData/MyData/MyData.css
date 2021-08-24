@@ -438,3 +438,62 @@ option {
 .profile-photo-overlay:hover {
   opacity: 0.6;
 }
+
+@media only screen and (max-width: 480px) {
+  .block2_mail_text {
+    margin-bottom: 10px;
+  }
+
+  .online_time_text {
+    margin-bottom: 10px;
+  }
+
+  .content_block2 {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 30px 30px 10px;
+    width: 53%;
+  }
+
+  .block2_reviews_text {
+    margin: 1px 5px 10px;
+  }
+
+  .setting_left_input {
+    width: 58%;
+  }
+
+  .my-data-lower-p {
+    align-self: flex-start;
+  }
+
+  .setting_left_input__textarea {
+    width: 58%;
+  }
+
+  .settings-profile-form {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .mydata-settings-main-content {
+    flex-direction: column;
+  }
+
+  .setting_left_input__password {
+    width: 58%;
+  }
+
+  .password-control__profile {
+    left: 279px;
+  }
+
+  .content_setting_right {
+    align-items: flex-start;
+  }
+
+  .content_setting_right img {
+    width: 32px;
+    height: 32px;
+  }
+}
