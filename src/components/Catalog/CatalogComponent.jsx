@@ -56,7 +56,8 @@ const CatalogComponent = ({ chapterId }) => {
   return (
     <div className="CatalogComponent">
       {/* ШАПКА С ФОТО */}
-      <div className="CatalogComponent_shapka">
+      <div id="catalog_gl_pk">
+      <div className="CatalogComponent_shapka"  id="catalog_gl_pk">
         <p className="CatalogComponent_shapka_p">
           {[].concat.apply(Object.entries(chapters)).map((chapter, index) => {
             if (chapterId === chapter[1][0]) {
@@ -113,7 +114,72 @@ const CatalogComponent = ({ chapterId }) => {
             })}
         </div>
       </div>
+      </div>
 
+      {/* МОБИЛЬНЫЙ ВИД  */}
+
+      <div  className="gl_div_onlyshapka" id="catalog_gl_mobile">
+      <div className="CatalogComponent_shapka" id="catalog_gl_mobile">
+        <p className="CatalogComponent_shapka_p">
+          {[].concat.apply(Object.entries(chapters)).map((chapter, index) => {
+            if (chapterId === chapter[1][0]) {
+              return chapter[1][4];
+            }
+          })}{' '}
+          {redirect}в аренду
+        </p>
+        <img
+          src={`https://razdelisdrugim.by${[].concat
+            .apply(Object.entries(chapters))
+            .map((chapter, index) => {
+              if (chapterId === chapter[1][0]) {
+                return chapter[1][1];
+              }
+            })}`.replace(/,/g, '')}
+          alt=""
+          className="CatalogComponent_shapka_img"
+        />
+      </div>
+      {/* СПИСОК КАТЕГОРИЙ В ЦЕНТРЕ*/}
+      <div className="CatalogComponent_list">
+        <div className="CatalogComponent_list_left">
+          {isLoaded &&
+            [].concat.apply(Object.entries(categories)).map((category, index) => {
+              if (index % 2 === 0) {
+                return (
+                  <p
+                    onClick={() => categoryRedirect(category[0], category[1][0])}
+                    style={{ cursor: 'pointer' }}
+                    key={index}
+                    value={category[1]}>
+                    {category[0]}
+                  </p>
+                );
+              }
+            })}
+        </div>
+
+        <div className="CatalogComponent_list_right">
+          {isLoaded &&
+            [].concat.apply(Object.entries(categories)).map((category, index) => {
+              if (index % 2 === 1) {
+                return (
+                  <p
+                    onClick={() => categoryRedirect(category[0], category[1][0])}
+                    style={{ cursor: 'pointer' }}
+                    key={index}
+                    value={category[1]}>
+                    {category[0]}
+                  </p>
+                );
+              }
+            })}
+        </div>
+      </div>
+      </div>
+
+
+{/* ПК ВЕРСИЯ */}
       {/* ТЕКСТ С ИНФОЙ СНИЗУ*/}
       <div className="CatalogComponent_informations">
         <p dangerouslySetInnerHTML={{ __html: chapterText && chapterText }} />

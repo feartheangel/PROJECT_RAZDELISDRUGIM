@@ -152,13 +152,15 @@ const ItemCard = ({ item }) => {
           )}
 
           {favorites && isFavorite && (
-            <img
-              onClick={(e) => deleteFavoriteHandler(e)}
-              className="itemcard_favorite_img"
-              src={Favorites}
-            />
+            <div className="itemCard_favorites">
+              <img
+                onClick={(e) => deleteFavoriteHandler(e)}
+                className="itemcard_favorite_img"
+                src={Favorites}
+              />
+            </div>
           )}
-        </div>
+          </div>
       </a>
     </div>
   );

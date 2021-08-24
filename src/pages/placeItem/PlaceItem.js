@@ -984,6 +984,8 @@ const PlaceItem = () => {
                     />
                   </div>
                 </div>
+
+                
                 {/* КОМП ВЕРСИЯ */}
                 <div className="take-away-secondary-wrapper" id="take_Away_komp">
                   <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">

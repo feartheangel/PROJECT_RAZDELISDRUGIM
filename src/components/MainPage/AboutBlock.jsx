@@ -34,7 +34,7 @@ const AboutBlock = () => {
           <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
             <input
               type="button"
-              value="Связаться с разработчиками"
+              value="Связаться с нами"
               className="header-button add-subject2 abilities_button"
               id="abilities_button"
             />
