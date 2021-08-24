@@ -78,6 +78,7 @@ button {
 
 .location-img {
   margin-right: 15px;
+  margin-left: 5px;
   width: 17px;
   height: 25px;
 }
@@ -1538,6 +1539,7 @@ button {
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 0px 0px 15px 0px;
     height: auto;
+    width: 325px;
   }
 
   /* БЛОК ПОД ШАПКОЙ */
@@ -1622,6 +1624,9 @@ button {
   #swiper_mobile {
     display: flex;
     width: 100%;
+  }
+  #wrapper_slider{
+    margin: 15px 0 5px;
   }
   .swiper-slide swiper-slide-active {
     margin-right: 10px;
@@ -1716,8 +1721,8 @@ button {
     width: 100%;
     height: auto;
     padding: 10px 0;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 5px;
+    /* margin-top: 10px; */
   }
 
   .home_slider_track {
@@ -2059,6 +2064,7 @@ button {
   /*  первый блок на 4 раздела */
   .Main_page li {
     margin-bottom: 10px;
+    line-height: 21px;
   }
   /* 1 */
   .main-sections-first {
@@ -2069,7 +2075,7 @@ button {
     height: auto;
   }
   .main-sections-first-ul {
-    width: 162px;
+    width: 140px;
     margin-bottom: 20px;
     margin-right: 10px;
     margin-left: 0;
@@ -2082,14 +2088,14 @@ button {
   }
   .main-section-first-li.main-li {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 21px;
     color: #000000;
   }
 
   /* 2 */
   .main-sections-second-ul {
-    width: 162px;
+    width: 140px;
     margin-bottom: 20px;
   }
   .main-sections-second-li.main-li {
@@ -2106,7 +2112,7 @@ button {
   }
   /* 3 */
   .main-sections-third-ul {
-    width: 162px;
+    width: 140px;
     margin-bottom: 20px;
     margin-right: 20px;
     margin-left: 0;
@@ -2126,7 +2132,7 @@ button {
 
   /* 4 */
   .main-sections-fourth-ul {
-    width: 162px;
+    width: 140px;
     margin-bottom: 20px;
   }
   .main-sections-fourth-li.main-li {
@@ -2178,7 +2184,7 @@ button {
   }
   /* блок 1 */
   .footer-first-col {
-    width: 161px;
+    width: 140px;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
@@ -2190,7 +2196,7 @@ button {
 
   /* блок 2 */
   .footer-second-ul-first {
-    width: 161px;
+    width: 140px;
     margin-bottom: 10px;
   }
   .footer-second-ul-second {
@@ -2199,13 +2205,13 @@ button {
 
   /* блок 3 */
   .footer-third-col {
-    width: 161px;
+    width: 140px;
     margin-top: 10px;
   }
 
   /* блок 4 */
   .footer-fourth-col {
-    width: 161px;
+    width: 140px;
     margin-top: 40px;
     margin-bottom: 20px;
   }

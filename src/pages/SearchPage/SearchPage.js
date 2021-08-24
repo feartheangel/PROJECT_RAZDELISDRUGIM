@@ -27,6 +27,10 @@ import CardProduct from './CardProduct/CardProduct';
 import map from '../../img/SearchPage/map.png';
 
 const SearchPage = () => {
+  const [filter, setFilter] = React.useState(false);
+  const filterhandler = () => {
+      setFilter(!filter);
+  }
   const { items, isLoaded } = useSelector(({ items }) => items);
   const { userData, subjects, isLoggedIn } = useSelector(({ userData }) => userData);
   const {
@@ -45,6 +49,7 @@ const SearchPage = () => {
     pledge,
     distance,
   } = useSelector(({ search }) => search);
+
 
   //параметры карты
   const mapData = {
@@ -458,7 +463,7 @@ const SearchPage = () => {
       <div className="SearchPage">
         <div className="SearchPage_container">
           {/* КОНТЕЙНЕР ШАПКИ*/}
-          <div className="SearchPage_container_shapka">
+          <div className="SearchPage_container_shapka"  id="search_pk">
             <div>
               <Link style={{ textDecoration: 'none' }} to="/">
                 <p className="SearchPage_container_shapka_hover"> Главная </p>
@@ -499,9 +504,98 @@ const SearchPage = () => {
             </p>
           </div>
 
+          {/* МОБИЛЬНАЯ ВЕРСИЯ */}
+          <div className="SearchPage_container_shapka" id="search_mobile">
+
+            <div className="SearchPage_shapka_up">
+              <div>
+                <Link style={{ textDecoration: 'none' }} to="/">
+                  <p className="SearchPage_container_shapka_hover"> Главная </p>
+                </Link>
+                <img src={vector1} alt="" />
+              </div>
+
+              <div>
+                <Link style={{ textDecoration: 'none' }} to="/catalog">
+                  <p className="SearchPage_container_shapka_hover"> Каталог </p>
+                </Link>
+                {category && <img src={vector1} alt="" />}
+              </div>
+
+              <div>
+                <p style={{ color: 'black' }}> {category} </p>
+              </div>
+            </div>
+
+            <p className="container_shapka_result">
+              Найдено предложений: {searchItems.length}
+              {category ? (
+                <p>
+                  В категории: {category}
+                  <span
+                    onClick={categoryResetHandler}
+                    style={{
+                      color: 'red',
+                      fontSize: '14px',
+                      marginLeft: '10px',
+                      cursor: 'pointer',
+                    }}>
+                    Сбросить категорию
+                  </span>
+                </p>
+              ) : (
+                ''
+              )}
+            </p>
+          </div>
+
+                        {/* МОБИЛЬНАЯ ВЕРСИЯ */}
+                        <div className="content_right_shapka"  id="search_mobile">
+                <div className="shapka_top">
+                  <div className="shapka_top_up">
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={distance === '200' ? 'distance_p active' : 'distance_p'}
+                      onClick={() => distanceHandler('200')}>
+                      До 200 м
+                    </p>
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={distance === '1000' ? 'distance_p active' : 'distance_p'}
+                      onClick={() => distanceHandler('1000')}>
+                      До 1 км
+                    </p>
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={distance === '5000' ? 'distance_p active' : 'distance_p'}
+                      onClick={() => distanceHandler('5000')}>
+                      До 5 км
+                    </p>
+                  </div>
+                  <div className="search_top_up_row">
+                    <p
+                      onClick={() => distanceHandler(false)}
+                      className={distance === false ? 'distance_p active' : 'distance_p'}>
+                      Показать все
+                    </p>
+                    <p 
+                    style={{margin:'0'}}
+                    onClick={() => filterhandler()}
+                    className={filter === true ? 'distance_p active' : 'distance_p'}
+                    >
+                      Фильтры
+                    </p>
+                    
+                  </div>
+                </div>
+              </div>
+
+
+
+
           {/* ОБЩИЙ КОНТЕЙНЕР С КОНТЕНТОМ ЛЕВАЯ И ПРАВАЯ СТОРОНА  */}
           <div className="SearchPage_container_content">
-            <div className="SearchPage_container_content_left">
+            <div className="SearchPage_container_content_left"  id="search_pk">
               <ul>
                 <li>
                   <p className="content_left_cost"> Цена </p>
@@ -643,11 +737,157 @@ const SearchPage = () => {
               </ul>
             </div>
 
+            {/* АДАПТИВ ЛЕВОЙ СТОРОНЫ */}
+            {filter&&
+                        <div className="SearchPage_container_content_left"  id="search_mobile">
+                        <ul>
+                          <li>
+                            <p className="content_left_cost"> Цена </p>
+                          </li>
+          
+                          <li className="content_left_priceRange">
+                            <input
+                              value={min_price}
+                              onChange={(e) => minPriceHandler(e)}
+                              type="number"
+                              min="0"
+                              max="99999"
+                            />
+                            <label> до </label>
+                            <input
+                              value={max_price}
+                              onChange={(e) => maxPriceHandler(e)}
+                              type="number"
+                              min="0"
+                              max="99999"
+                            />
+                          </li>
+          
+                          <li>
+                            <input
+                              style={{ cursor: 'pointer' }}
+                              checked={free}
+                              onChange={freeRentHandler}
+                              id="free"
+                              type="checkbox"
+                              className="input_left_checkbox"
+                            />
+                            <label style={{ cursor: 'pointer' }} htmlFor="free">
+                              Бесплатно
+                            </label>
+                          </li>
+          
+                          <li>
+                            <input
+                              style={{ cursor: 'pointer' }}
+                              checked={status === '2'}
+                              value="2"
+                              onChange={(e) => statusHandler(e)}
+                              id="companies"
+                              type="checkbox"
+                              className="input_left_checkbox"
+                            />
+                            <label style={{ cursor: 'pointer' }} htmlFor="companies">
+                              Компании
+                            </label>
+                          </li>
+          
+                          <li>
+                            <input
+                              style={{ cursor: 'pointer' }}
+                              checked={status === '1'}
+                              value="1"
+                              onChange={(e) => statusHandler(e)}
+                              id="individual"
+                              type="checkbox"
+                              className="input_left_checkbox"
+                            />
+                            <label style={{ cursor: 'pointer' }} htmlFor="individual">
+                              {' '}
+                              Частные лица{' '}
+                            </label>
+                          </li>
+          
+                          <li>
+                            <input
+                              style={{ cursor: 'pointer' }}
+                              checked={delivery}
+                              onChange={deliveryHandler}
+                              id="delivery"
+                              type="checkbox"
+                              className="input_left_checkbox"
+                            />
+                            <label style={{ cursor: 'pointer' }} htmlFor="delivery">
+                              {' '}
+                              Доставка{' '}
+                            </label>
+                          </li>
+          
+                          <li>
+                            <input
+                              style={{ cursor: 'pointer' }}
+                              checked={insurance}
+                              onChange={insuranceHandler}
+                              id="insurance"
+                              type="checkbox"
+                              className="input_left_checkbox"
+                            />
+                            <label style={{ cursor: 'pointer' }} htmlFor="insurance">
+                              {' '}
+                              Страховка{' '}
+                            </label>
+                          </li>
+          
+                          <li>
+                            <input
+                              style={{ cursor: 'pointer' }}
+                              checked={contract}
+                              onChange={contractHandler}
+                              id="contract"
+                              type="checkbox"
+                              className="input_left_checkbox"
+                            />
+                            <label style={{ cursor: 'pointer' }} htmlFor="contract">
+                              {' '}
+                              По договору{' '}
+                            </label>
+                          </li>
+          
+                          <li>
+                            <input
+                              style={{ cursor: 'pointer' }}
+                              checked={pledge}
+                              onChange={pledgeHandler}
+                              id="pledge"
+                              type="checkbox"
+                              className="input_left_checkbox"
+                            />
+                            <label style={{ cursor: 'pointer' }} htmlFor="pledge">
+                              {' '}
+                              Без залога{' '}
+                            </label>
+                          </li>
+          
+                          <li>
+                            <input disabled type="checkbox" className="input_left_checkbox" />
+                            <label style={{ opacity: '0.6' }}> Акции </label>
+                          </li>
+                          <li>
+                            <input id="minPrice" disabled type="checkbox" className="input_left_checkbox" />
+                            <label htmlFor="minPrice" style={{ opacity: '0.6' }}>
+                              Скоро освободится
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+            }
+
+
             {/* ПРАВАЯ СТОРОНА */}
 
             <div className="SearchPage_container_content_right">
               {/* ШАПКА */}
-              <div className="content_right_shapka">
+              <div className="content_right_shapka"  id="search_pk">
                 <div className="shapka_top">
                   <p
                     title="Кликните повторно, чтобы выключить фильтр по дистанции"
@@ -675,8 +915,9 @@ const SearchPage = () => {
                 </div>
               </div>
 
+
               {/* КОНТЕНТ ПОД ШАПКОЙ */}
-              <div className="content_right_all_content">
+              <div className="content_right_all_content"   id="search_pk">
                 {searchItems.length > 0 && (
                   <div className="all_content_blocks">
                     {searchItems.map((item, index) => {
@@ -738,6 +979,62 @@ const SearchPage = () => {
                   </div>
                 )}
               </div>
+
+              {/* МОБИЛЬНЫЙ ВИД */}
+              <div className="content_right_all_content"  id="search_mobile">
+                {searchItems.length > 0 && (
+                  <div className="all_content_blocks">
+                    <div className="all_content_blocks_up">
+                    {searchItems.map((item, index) => {
+                      if (index <= 1) {
+                        return <ItemCard key={index} item={item} />;
+                      }
+                    })}
+                    </div>
+
+                    {searchItems && (
+                      <div style={{ marginBottom: '10px' }}>
+                        <YMaps>
+                        <Map width={480} height={300} defaultState={mapData}>
+                            {marks && marks.map((mark) => <Placemark geometry={mark} />)}
+                          </Map>
+                        </YMaps>
+                      </div>
+                    )}
+
+
+                    <div className="all_content_blocks_down">
+                      {searchItems.map((item, index) => {
+                        if (index > 1) {
+                          return (
+                            <div className="card_div">
+                            <ItemCard key={index} item={item} />
+                            </div>
+                          );
+                        }
+                      })}
+                    </div>
+                  </div>
+                )}
+                {searchItems.length === 0 && (
+                  <div className="all_content_blocks">
+                    <div className="search_not_found">
+                      <p style={{ marginBottom: '10px' }}>Сегодня ничего не найдено по заданным параметрам.</p>
+                      <p style={{ marginBottom: '20px' }}>
+                        Вы можете предложить свою вещь, услугу или иное имущество, либо зайти
+                        завтра...
+                      </p>
+                      <input
+                        onClick={addSubjectHandler}
+                        type="button"
+                        value="Предложить вещь"
+                        className="header-button add-subject"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
         </div>

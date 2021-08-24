@@ -17,7 +17,7 @@ const RecentItemsSlider = () => {
   }, []);
 
   return (
-    <section className="recent-wrapper">
+    <section className="recent-wrapper" id="wrapper_slider">
       <div className="recent-content">
         <p className="recent-p">Недавно добавленные</p>
         <div className="recent-blocks-wrapper">
@@ -39,8 +39,8 @@ const RecentItemsSlider = () => {
             </Swiper>
             {/* копия для адаптива */}
             <Swiper
-              spaceBetween={40}
-              slidesPerView={1.7}
+              spaceBetween={0}
+              slidesPerView={2}
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
               id ="swiper_mobile"
