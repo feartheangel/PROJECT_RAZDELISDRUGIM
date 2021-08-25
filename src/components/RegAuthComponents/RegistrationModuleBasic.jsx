@@ -69,6 +69,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
         code = window.location.href.split('?code=')[1].split('state')[0];
         Requests.vkAuth(code).then((res) => {
           localStorage.setItem('key', res.data.access_token);
+          localStorage.setItem('social', 'vk');
           dispatch(loginAction());
           setModalActive(false);
           setSuccessLogin(<Redirect to="/" />);
@@ -77,6 +78,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
         code = window.location.href.split('?code=')[1];
         Requests.facebookAuth(code).then((res) => {
           localStorage.setItem('key', res.data.access_token);
+          localStorage.setItem('social', 'facebook');
           dispatch(loginAction());
           setModalActive(false);
           setSuccessLogin(<Redirect to="/" />);
@@ -85,6 +87,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
         code = window.location.href.split('?code=')[1].split('&scope=')[0];
         Requests.googleAuth(code).then((res) => {
           localStorage.setItem('key', res.data.access_token);
+          localStorage.setItem('social', 'google');
           dispatch(loginAction());
           setModalActive(false);
           setSuccessLogin(<Redirect to="/" />);

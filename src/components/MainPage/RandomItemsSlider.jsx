@@ -18,7 +18,7 @@ const RandomItemsSlider = () => {
 
   return (
     <section className="popular-wrapper">
-      <p className="popular-p">Самые просматриваеиые</p>
+      <p className="popular-p">Самые просматриваемые</p>
       <div className="recent-blocks-wrapper">
         <div className="recent-blocks-slider-container">
           <Swiper

@@ -23,3 +23,4 @@ export { default as HowToRentOut } from './FooterPages/HowToRentOut';
 export { default as HowToRent } from './FooterPages/HowToRent';
 export { default as ForBusiness } from './FooterPages/ForBusiness';
 export { default as ConfidencePolicy } from './FooterPages/ConfidencePolicy';
+export { default as AccountDeletion } from './FooterPages/AccountDeletion';
