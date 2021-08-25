@@ -529,16 +529,17 @@ const SearchPage = () => {
               {category ? (
                 <p>
                   В категории: {category}
-                  <span
+                  <div
                     onClick={categoryResetHandler}
                     style={{
                       color: 'red',
                       fontSize: '14px',
-                      marginLeft: '10px',
+                      marginTop: '5px',
+                      marginBottom: '10px',
                       cursor: 'pointer',
                     }}>
                     Сбросить категорию
-                  </span>
+                  </div>
                 </p>
               ) : (
                 ''

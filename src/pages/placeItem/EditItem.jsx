@@ -871,7 +871,7 @@ const EditItem = () => {
       <Header />
       <div className="PlaseItem">
         <div className="conteiner">
-          <form>
+          <form className="conteiner_form">
             <p className="conteiner-main-p">Редактировать объявление</p>
 
             {/*  НАИМЕНОВАНИЕ  */}
@@ -984,11 +984,10 @@ const EditItem = () => {
             <div className="item-add-cost-choice-wrapper">
               <div style={{ marginRight: '5px' }} className="add-item-input-wrapper">
                 <label className="add-item-input-label">
-                  Стоимость вещи в аренду <span className="add-item-span-zvezda">*</span>
+                  Стоимость вещи <span className="add-item-span-zvezda">*</span>
                 </label>
                 <div>
                   <input
-                    style={{ width: '240px', marginRight: '5px' }}
                     className="add-item-input-number"
                     type="number"
                     max="9999"
@@ -1001,12 +1000,6 @@ const EditItem = () => {
                 </div>
               </div>
               <span
-                style={{
-                  marginRight: '30px',
-                  fontSize: '16px',
-                  alignSelf: 'flex-end',
-                  marginBottom: '15px',
-                }}
                 className="span-valuts">
                 BYN
               </span>
@@ -1170,8 +1163,9 @@ const EditItem = () => {
                   </div>
                 </div>
 
-                <div className="take-away-secondary-wrapper">
-                  <div className="take-away-secondary-wrapper">
+                {/* КОМП ВЕРСИЯ */}
+                <div className="take-away-secondary-wrapper" id="take_Away_komp">
+                  <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
                     <div className="add-item-input-wrapper">
                       <label className="add-item-input-label">
                         Дом <span className="add-item-span-zvezda">*</span>
@@ -1185,7 +1179,7 @@ const EditItem = () => {
                       />
                     </div>
 
-                    <div className="take-away-secondary-wrapper">
+                    <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
                       <div className="add-item-input-wrapper">
                         <label className="add-item-input-label">Корпус</label>
                         <input
@@ -1225,7 +1219,7 @@ const EditItem = () => {
                         />
                       </div>
 
-                      <div className="take-away-secondary-wrapper">
+                      <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
                         <div className="add-item-input-wrapper">
                           <label className="add-item-input-label">Офис</label>
                           <input
@@ -1248,6 +1242,85 @@ const EditItem = () => {
                           />
                         </div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                                {/* АДАПТИВКА */}
+                  <div className="take-away-secondary-wrapper" id="take_Away_adaptive">
+                  <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                    <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                      <label className="add-item-input-label">
+                        Дом <span className="add-item-span-zvezda">*</span>
+                      </label>
+                      <input
+                        disabled={room || office || building}
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={house}
+                        onChange={(e) => setHouse(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                        <label className="add-item-input-label">Корпус</label>
+                        <input
+                          disabled={room || office || building}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={body}
+                          onChange={(e) => setBody(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">Квартира</label>
+                        <input
+                          disabled={room || office || building}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={flat}
+                          onChange={(e) => setFlat(e.target.value)}
+                        />
+                      </div>
+
+                    <span style={{ marginRight: '30px', display:'none'}} className="add-item-cost-or__secondary">
+                      или
+                    </span>
+                    <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                      <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                        <label className="add-item-input-label">
+                          Помещение <span className="add-item-span-zvezda">*</span>
+                        </label>
+                        <input
+                          disabled={house || body || flat}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={room}
+                          onChange={(e) => setRoom(e.target.value)}
+                        />
+                      </div>
+                      <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                          <label className="add-item-input-label">Офис</label>
+                          <input
+                            disabled={house || body || flat}
+                            type="text"
+                            className="add-item-input-text__address__house"
+                            value={office}
+                            onChange={(e) => setOffice(e.target.value)}
+                          />
+                        </div>
+
+                        <div className="add-item-input-wrapper">
+                          <label className="add-item-input-label">Строение</label>
+                          <input
+                            disabled={house || body || flat}
+                            type="text"
+                            className="add-item-input-text__address__house"
+                            value={building}
+                            onChange={(e) => setBuilding(e.target.value)}
+                          />
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -1409,7 +1482,7 @@ const EditItem = () => {
                 {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
                 <div className="add-item-time-block-wrapper">
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время получения (не позднее)</label>
+                    <label className="add-item-input-label">Время получения  <br id="br_gl"/> (не позднее)</label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setTimeReceipt(e.target.value)}>
@@ -1446,7 +1519,7 @@ const EditItem = () => {
                   {/*  ВРЕМЯ ВОЗВРАТА  */}
 
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время возврата (не позднее)</label>
+                    <label className="add-item-input-label">Время возврата <br id="br_gl"/>  (не позднее)</label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setReturnTime(e.target.value)}>
@@ -1535,7 +1608,7 @@ const EditItem = () => {
                   </div>
 
                   {takeAway && (
-                    <div className="take-away-secondary-wrapper">
+                    <div className="take-away-secondary-wrapper"  id="take-away-secondary-wrapper">
                       <div className="checkbox-btn secondary">
                         <input type="checkbox" className="input-checkbox" checked={typeService} />
                         <span onClick={() => setTypeService(!typeService)}>Бесплатно</span>
@@ -1567,13 +1640,13 @@ const EditItem = () => {
                       </div>
 
                       {yourSend && (
-                        <span className="take-away-secondary-wrapper">
-                          <div className="checkbox-btn secondary">
+                        <span className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                          <div className="checkbox-btn secondary" id="checkbox-btn-margin">
                             <input type="checkbox" className="input-checkbox" checked={taxi} />
                             <span onClick={(e) => taxiHandler(e.target.value)}>Такси</span>
                           </div>
 
-                          <div className="checkbox-btn secondary">
+                          <div className="checkbox-btn secondary" id="checkbox-btn-margin">
                             <input type="checkbox" className="input-checkbox" checked={courier} />
                             <span onClick={(e) => courierHandler(e.target.value)}>Курьер</span>
                           </div>

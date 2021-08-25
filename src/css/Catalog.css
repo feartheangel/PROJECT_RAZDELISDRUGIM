@@ -86,3 +86,115 @@
   display: flex;
   flex-direction: column;
 }
+
+#catalog_mobile{
+  display: none;
+}
+
+
+
+
+
+
+/* АДАПТИВНЫЙ ДИЗАЙН */
+@media only screen and (max-width:480px){
+  #catalog_pk{
+    display: none;
+  }
+  #catalog_mobile{
+    display: flex;
+  }
+
+
+  /* ГЛАВНЫЙ КОНТЕЙНЕР */
+  .Catalog_wrapper{
+    padding: 0;
+  }
+  .container_down_left_burger{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 5px 0 15px;
+    width: auto;
+  }
+  .container_down_left-p{
+    margin: 0 5px 0 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .vector2_img{
+    max-width: 24px;
+    max-height: 24px;
+    
+  }
+  .Catalog_wrapper_container_down{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 0 0 15px 0;
+    box-shadow: none;
+  }
+
+  /*ОПИСАНИЕ КАРТОЧЕК  */
+  .CatalogComponent_shapka_p{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 15px;
+  }
+  .left_category_global_div{
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .container_down_right{
+    background: #FFFFFF;
+  }
+  .container_down_left{
+    padding: 0 15px;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

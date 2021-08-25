@@ -373,7 +373,7 @@
       margin: 10px 10px 15px;
       width: auto;
       /* height: 320px; */
-      height: auto;
+      height: 290px;
     }
     .all_content_blocks_up{
       display: flex;
@@ -384,6 +384,7 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      width: 100%;
     }
     .recent-marks{
       display: flex;
