@@ -1094,6 +1094,22 @@ class Requests {
       return response;
     });
   }
+
+  static deleteAccount(type) {
+    return axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('key')}`,
+      },
+      data: {
+        login_type: type,
+      },
+      url: `https://razdelisdrugim.by/api/jwt/delete-account-facebook/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(
@@ -1118,6 +1134,7 @@ axios.interceptors.response.use(
         .catch(() => {
           localStorage.removeItem('key');
           localStorage.removeItem('refresh');
+          localStorage.removeItem('social');
           setTimeout(() => {
             window.location.href = 'https://razdelisdrugim.by';
           }, 2000);
