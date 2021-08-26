@@ -85,3 +85,78 @@
 .button_download:hover {
   font-weight: bold;
 }
+
+/* АДАПТИВНЫЙ ДИЗАЙН */
+
+@media only screen and (max-width:480px){
+
+  .myAddresses_content_addresses_left{
+    width: 100%;
+  }
+
+  .addresses_left_address1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .address_row_style{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+    align-items: baseline;
+  }
+
+  .addresses_left_address1_text{
+    font-size: 18px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

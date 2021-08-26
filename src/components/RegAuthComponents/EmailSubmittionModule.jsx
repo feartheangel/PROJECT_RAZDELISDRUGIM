@@ -78,10 +78,11 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
   };
 
   return (
-    <div className={modalActiveEmail ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}>
-      <div className="reg-content">
+    <div  className={modalActiveEmail ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'} >
+    <div className={modalActiveEmail ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'} id="regform_pk">
+      <div className="reg-content" >
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
-          <div style={{ height: '400px' }} className="reg-form-email-verification">
+          <div style={{ height: '400px' }} className="reg-form-email-verification" id="regform_pk">
             <img
               onClick={() => setModalActiveEmail(false)}
               style={{
@@ -90,7 +91,7 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
                 height: '14px',
                 width: '14px',
                 cursor: 'pointer',
-              }}
+              }}              
               src={Shape}
             />
             <div className="log-form-text-label-p-email__upper">
@@ -148,6 +149,75 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
           </div>
         </div>
       </div>
+    </div>
+
+    {/* МОБИЛЬНАЯ ВЕРСИЯ */}
+    <div className={modalActiveEmail ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'} id="regform_mobile">
+      <div className="reg-content" >
+        <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
+          <div style={{ height: '400px' }} className="reg-form-email-verification" id="regform_mobile">
+            <img
+              onClick={() => setModalActiveEmail(false)}    
+              className="img_krestik"         
+              src={Shape}
+            />
+            <div className="log-form-text-label-p-email__upper">
+              <p>Подтвердите почту</p>
+            </div>
+            <div className="reg-form-annotation-wrapper">
+              <div className="reg-form-annotation__email">
+                <p>(На указанный адрес почты было отправлено письмо с кодом подтверждения)</p>
+              </div>
+            </div>
+            <div className="reg-form-input-area">
+              <form>
+                <label htmlFor="login" className="log-form-text-label-l">
+                  Код из письма
+                </label>
+                <input
+                  name="code"
+                  id="code"
+                  type="text"
+                  placeholder="..."
+                  className="reg-form-contact-input"
+                  value={code}
+                  onChange={(e) => {
+                    codeHandler(e);
+                  }}
+                />
+                {codeDirty && codeError && (
+                  <label className="reg-form-text-label-l__alert">{codeError}</label>
+                )}
+                <input
+                  onClick={onClickSubmit}
+                  type="button"
+                  value="Продолжить"
+                  className="reg-form-submit-button"
+                  disabled={!formValid}
+                />
+              </form>
+              {timer > 0 ? (
+                <p style={{ marginTop: '20px', fontSize: '18px' }}>
+                  Отправить повторно можно через: {timer}с
+                </p>
+              ) : (
+                <p
+                  onClick={resendHandler}
+                  style={{
+                    marginTop: '20px',
+                    fontSize: '18px',
+                    cursor: 'pointer',
+                    color: 'rgba(76, 201, 240, 1)',
+                  }}>
+                  Отправить код повторно
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     </div>
   );
 };

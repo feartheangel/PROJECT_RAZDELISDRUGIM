@@ -221,7 +221,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
             </div>
           </div>
 
-          <div className="take-away-secondary-wrapper">
+          <div className="take-away-secondary-wrapper" id="globaldata_pk">
             <div className="take-away-secondary-wrapper">
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
@@ -302,6 +302,89 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               </div>
             </div>
           </div>
+
+          {/* МОБИЛЬНАЯ ВЕРСИЯ ( дом квартира и тд ) */}
+
+          <div className="take-away-secondary-wrapper" id="globaldata_mobile">
+            <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+              <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                  <label className="add-item-input-label">
+                    Дом <span className="add-item-span-zvezda">*</span>
+                  </label>
+                  <input
+                    disabled={room || office || building}
+                    type="text"
+                    className="add-item-input-text__address__house"
+                    value={house}
+                    onChange={(e) => setHouse(e.target.value)}
+                  />
+                </div>
+                <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                  <label className="add-item-input-label">Корпус</label>
+                  <input
+                    disabled={room || office || building}
+                    type="text"
+                    className="add-item-input-text__address__house"
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                  />
+                </div>
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Квартира</label>
+                  <input
+                    disabled={room || office || building}
+                    type="text"
+                    className="add-item-input-text__address__house"
+                    value={flat}
+                    onChange={(e) => setFlat(e.target.value)}
+                  />
+                </div>
+              </div>
+              
+              <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                  <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                    <label className="add-item-input-label">
+                      Помещение <span className="add-item-span-zvezda">*</span>
+                    </label>
+                    <input
+                      disabled={house || body || flat}
+                      type="text"
+                      className="add-item-input-text__address__house"
+                      value={room}
+                      onChange={(e) => setRoom(e.target.value)}
+                    />
+                  </div>
+                  <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                    <label className="add-item-input-label">Офис</label>
+                    <input
+                      disabled={house || body || flat}
+                      type="text"
+                      className="add-item-input-text__address__house"
+                      value={office}
+                      onChange={(e) => setOffice(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">Строение</label>
+                    <input
+                      disabled={house || body || flat}
+                      type="text"
+                      className="add-item-input-text__address__house"
+                      value={building}
+                      onChange={(e) => setBuilding(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+                {/*КНОПКА СОХРАНЕНИЯ*/}
           <input
             disabled={requestActive}
             id="save_address"
@@ -316,8 +399,6 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
           />
         </div>
       )}
-
-      {/*КНОПКА СОХРАНЕНИЯ*/}
     </div>
   );
 };

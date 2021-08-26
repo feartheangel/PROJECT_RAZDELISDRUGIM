@@ -71,6 +71,9 @@
   color: #4cc9f0;
 }
 
+
+
+/* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
   .privateProfile {
     justify-content: flex-start;
@@ -82,9 +85,10 @@
   }
 
   .privateProfile_container {
-    padding: 0px 10px;
+    padding: 0px 15px;
     border-radius: 0px;
     background-color: white;
+    width: 100%;
   }
 
   .conteiner_shapka {

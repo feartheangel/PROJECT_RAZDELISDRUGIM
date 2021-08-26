@@ -25,10 +25,10 @@
   transition: 0.2s;
 }
 
-.container_profile_optional p:hover {
+/* .container_profile_optional p:hover {
   color: #56ccf2;
   cursor: pointer;
-}
+} */
 
 /*  КОНТЕЙНЕР С ФОНОМ ДЛЯ КОНТЕНТА СПРАВА */
 .container_profile_content {
@@ -87,28 +87,75 @@ textarea {
   cursor: pointer;
   color: #56ccf2;
 }
+#globaldata_mobile{
+  display: none;
+}
 
+
+
+
+
+
+
+/* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
+  #globaldata_mobile{
+    display: flex;
+  }
+  #globaldata_pk{
+    display: none;
+  }
+
+
   .container_profile {
     display: flex;
     flex-direction: column;
+    margin-right: 15px;
   }
 
+  /* БЛОК С ОПЦИЯМИ (ГОРИЗОНТАЛЬНЫЙ СКРОЛ) */
   .container_profile_optional {
     display: flex;
     flex-direction: row;
-    width: 130%;
+    margin: 0;
+    padding-top: 0;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: normal;
+  }
+  .container_profile_optional::-webkit-scrollbar{
+    width: 0;
+  }
+
+  .optional_scroll1{
+    min-width: 120px;
+  }
+  .optional_scroll2{
+    min-width: 117px;
+  }
+  .optional_scroll3{
+    min-width: 154px;
+  }
+  .optional_scroll4{
+    min-width: 92px;
+  }
+  .optional_scroll1,  .optional_scroll2,   .optional_scroll3,   .optional_scroll4{
+    margin-right: 10px;
   }
 
   .container_profile_optional p {
-    margin-right: 20px;
+    margin-right: 0;
     padding-top: 0px;
     margin-top: 0;
+    margin-bottom: 5px;
   }
 
   .container_profile_content {
     width: 100%;
     box-shadow: none;
     padding: 1px;
+    margin-top: 0;
   }
 }

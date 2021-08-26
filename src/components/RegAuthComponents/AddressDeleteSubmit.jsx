@@ -33,7 +33,7 @@ const AddressDeleteSubmit = ({ deleteId, setModalActiveSubmit, modalActiveSubmit
       onClick={() => setModalActiveSubmit(false)}>
       <div className="reg-content">
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
-          <div style={{ height: '230px' }} className="reg-form-email-verification">
+          <div className="reg-form-email-verification" id="regform_pk">
             <img
               onClick={() => setModalActiveSubmit(false)}
               style={{
@@ -65,13 +65,46 @@ const AddressDeleteSubmit = ({ deleteId, setModalActiveSubmit, modalActiveSubmit
                   boxShadow: '3px 3px 22px rgba(219, 13, 13, 0.24)',
                 }}
                 type="button"
-                value="Нет"
                 className="reg-form-contact-input__delete"
                 value="Да"
                 onClick={yesHandler}
               />
             </div>
           </div>
+          {/* МОБИЛЬНАЯ ВЕРСИЯ */}
+          <div style={{ height: '230px' }} className="reg-form-email-verification" id="regform_mobile">
+            <img
+              onClick={() => setModalActiveSubmit(false)}
+              src={Shape}
+              className="img_krestik"   
+            />
+            <div className="log-form-text-label-p-email__upper">
+              <p>Вы уверены, что хотите удалить этот адрес?</p>
+            </div>
+            <div
+              style={{ display: 'flex', flexDirection: 'row', marginTop: '20px' }}
+              className="reg-form-input-area">
+              <input
+                style={{ marginRight: '20px' }}
+                type="button"
+                value="Нет"
+                className="reg-form-contact-input__delete"
+                onClick={noHandler}
+              />
+
+              <input
+                style={{
+                  backgroundColor: 'red',
+                  boxShadow: '3px 3px 22px rgba(219, 13, 13, 0.24)',
+                }}
+                type="button"
+                className="reg-form-contact-input__delete"
+                value="Да"
+                onClick={yesHandler}
+              />
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

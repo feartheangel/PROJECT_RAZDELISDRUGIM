@@ -753,6 +753,7 @@ select {
   }
   .add-item-input-wrapper{
     margin-right: 0;
+    /* width: 100%; */
   }
   #add_item_gl_margin{
     margin-right: 10px;
