@@ -414,13 +414,12 @@ const EditItem = () => {
     ({ userData }) => userData,
   );
 
-  const [currentSubject, setCurrentSubject] = React.useState();
+  let currentSubject = '';
 
   React.useEffect(() => {
-    setCurrentSubject(
-      subjects.filter((subject) => subject.id === Number(window.location.href.split('?id=')[1])),
+    currentSubject = subjects.filter(
+      (subject) => subject.id === Number(window.location.href.split('?id=')[1]),
     );
-
     currentSubject &&
       setTimeout(() => {
         setNameItem(currentSubject[0] && currentSubject[0].name_item);
@@ -999,10 +998,7 @@ const EditItem = () => {
                   />
                 </div>
               </div>
-              <span
-                className="span-valuts">
-                BYN
-              </span>
+              <span className="span-valuts">BYN</span>
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
                   Срок <span className="add-item-span-zvezda">*</span>
@@ -1246,8 +1242,8 @@ const EditItem = () => {
                   </div>
                 </div>
 
-                                {/* АДАПТИВКА */}
-                  <div className="take-away-secondary-wrapper" id="take_Away_adaptive">
+                {/* АДАПТИВКА */}
+                <div className="take-away-secondary-wrapper" id="take_Away_adaptive">
                   <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
                     <div className="add-item-input-wrapper" id="add_item_gl_margin">
                       <label className="add-item-input-label">
@@ -1263,28 +1259,30 @@ const EditItem = () => {
                     </div>
 
                     <div className="add-item-input-wrapper" id="add_item_gl_margin">
-                        <label className="add-item-input-label">Корпус</label>
-                        <input
-                          disabled={room || office || building}
-                          type="text"
-                          className="add-item-input-text__address__house"
-                          value={body}
-                          onChange={(e) => setBody(e.target.value)}
-                        />
-                      </div>
+                      <label className="add-item-input-label">Корпус</label>
+                      <input
+                        disabled={room || office || building}
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
+                      />
+                    </div>
 
-                      <div className="add-item-input-wrapper">
-                        <label className="add-item-input-label">Квартира</label>
-                        <input
-                          disabled={room || office || building}
-                          type="text"
-                          className="add-item-input-text__address__house"
-                          value={flat}
-                          onChange={(e) => setFlat(e.target.value)}
-                        />
-                      </div>
+                    <div className="add-item-input-wrapper">
+                      <label className="add-item-input-label">Квартира</label>
+                      <input
+                        disabled={room || office || building}
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={flat}
+                        onChange={(e) => setFlat(e.target.value)}
+                      />
+                    </div>
 
-                    <span style={{ marginRight: '30px', display:'none'}} className="add-item-cost-or__secondary">
+                    <span
+                      style={{ marginRight: '30px', display: 'none' }}
+                      className="add-item-cost-or__secondary">
                       или
                     </span>
                     <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
@@ -1301,26 +1299,26 @@ const EditItem = () => {
                         />
                       </div>
                       <div className="add-item-input-wrapper" id="add_item_gl_margin">
-                          <label className="add-item-input-label">Офис</label>
-                          <input
-                            disabled={house || body || flat}
-                            type="text"
-                            className="add-item-input-text__address__house"
-                            value={office}
-                            onChange={(e) => setOffice(e.target.value)}
-                          />
-                        </div>
+                        <label className="add-item-input-label">Офис</label>
+                        <input
+                          disabled={house || body || flat}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={office}
+                          onChange={(e) => setOffice(e.target.value)}
+                        />
+                      </div>
 
-                        <div className="add-item-input-wrapper">
-                          <label className="add-item-input-label">Строение</label>
-                          <input
-                            disabled={house || body || flat}
-                            type="text"
-                            className="add-item-input-text__address__house"
-                            value={building}
-                            onChange={(e) => setBuilding(e.target.value)}
-                          />
-                        </div>
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">Строение</label>
+                        <input
+                          disabled={house || body || flat}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={building}
+                          onChange={(e) => setBuilding(e.target.value)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1482,7 +1480,9 @@ const EditItem = () => {
                 {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
                 <div className="add-item-time-block-wrapper">
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время получения  <br id="br_gl"/> (не позднее)</label>
+                    <label className="add-item-input-label">
+                      Время получения <br id="br_gl" /> (не позднее)
+                    </label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setTimeReceipt(e.target.value)}>
@@ -1519,7 +1519,9 @@ const EditItem = () => {
                   {/*  ВРЕМЯ ВОЗВРАТА  */}
 
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время возврата <br id="br_gl"/>  (не позднее)</label>
+                    <label className="add-item-input-label">
+                      Время возврата <br id="br_gl" /> (не позднее)
+                    </label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setReturnTime(e.target.value)}>
@@ -1608,7 +1610,7 @@ const EditItem = () => {
                   </div>
 
                   {takeAway && (
-                    <div className="take-away-secondary-wrapper"  id="take-away-secondary-wrapper">
+                    <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
                       <div className="checkbox-btn secondary">
                         <input type="checkbox" className="input-checkbox" checked={typeService} />
                         <span onClick={() => setTypeService(!typeService)}>Бесплатно</span>
@@ -1640,7 +1642,9 @@ const EditItem = () => {
                       </div>
 
                       {yourSend && (
-                        <span className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                        <span
+                          className="take-away-secondary-wrapper"
+                          id="take-away-secondary-wrapper">
                           <div className="checkbox-btn secondary" id="checkbox-btn-margin">
                             <input type="checkbox" className="input-checkbox" checked={taxi} />
                             <span onClick={(e) => taxiHandler(e.target.value)}>Такси</span>

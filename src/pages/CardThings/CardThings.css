@@ -609,3 +609,177 @@
 .card_views_icon {
   margin-right: 20px;
 }
+
+#card_thing_mobile {
+  display: none;
+}
+
+/* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
+@media only screen and (max-width: 480px) {
+  #card_thing_pc {
+    display: none;
+  }
+
+  #card_thing_mobile {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .CardThings_Wrapper_container {
+    max-width: 100%;
+  }
+
+  .CardThings_Wrapper {
+    padding: 0;
+  }
+
+  .card_content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card_shapka {
+    margin: 20px 1%;
+  }
+
+  .card_shapka div p {
+    font-size: 12px;
+  }
+
+  .card_content_left {
+    padding: 6% 4%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .left_block_photo {
+    max-width: 100%;
+  }
+
+  .left_block_photo_big {
+    height: auto;
+  }
+
+  .left_block_photo_small img {
+    max-width: 64px;
+    height: auto;
+    width: 100%;
+  }
+
+  .left_block_photo_big img {
+    max-width: 286px;
+    width: 94%;
+    height: auto;
+  }
+
+  .card_photo_lower_table_wrapper {
+    flex-direction: column;
+  }
+
+  .item_share_link {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toShare_button_wrapper {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .left_block_conditions {
+    margin-top: 30px;
+  }
+
+  .block_up_delivery_row-p {
+    font-size: 16px;
+  }
+
+  .block_up_delivery-p1 {
+    font-size: 14px;
+  }
+
+  .block_up_delivery-p2 {
+    font-size: 14px;
+  }
+
+  .block_up_delivery-p3 {
+    font-size: 14px;
+  }
+
+  .conditions_contract p {
+    font-size: 16px;
+  }
+
+  .conditions_pledge_row-p {
+    font-size: 16px;
+  }
+
+  .conditions_pledge-p {
+    font-size: 14px;
+  }
+
+  .conditions_service_row-p {
+    font-size: 16px;
+  }
+
+  .conditions_service-p {
+    font-size: 14px;
+  }
+
+  .conditions_insurance_row-p {
+    font-size: 16px;
+  }
+
+  .conditions_insurance-p {
+    font-size: 14px;
+  }
+
+  .conditions_service-p {
+    font-size: 14px;
+  }
+
+  .conditions_return_row-p {
+    font-size: 16px;
+  }
+
+  .conditions_timeItem-p {
+    font-size: 14px;
+  }
+
+  .conditions_readySell_row-p {
+    font-size: 16px;
+  }
+
+  .conditions_return_block1 {
+    margin-right: 25px;
+  }
+
+  .card_content_right {
+    padding-left: 15px;
+  }
+
+  .img_contactOwner {
+    background-color: white;
+  }
+
+  .contactOwner_btn {
+    max-width: 230px;
+  }
+
+  .contactOwner_btn {
+    width: 264px;
+    height: 45px;
+    background: #4cc9f0;
+    box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    border-color: #4cc9f0;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: none;
+  }
+}
