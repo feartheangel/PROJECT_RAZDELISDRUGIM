@@ -92,6 +92,29 @@
   }
 
   .conteiner_shapka {
-    display: none;
+    /* display: none; */
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
   }
+  .conteiner_shapka p{
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .conteiner_shapka span{
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .div_favorites{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+
+
+
+
+
+
+
 }

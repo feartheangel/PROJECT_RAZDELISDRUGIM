@@ -343,7 +343,7 @@
       background: #FFFFFF;
     }
     .SearchPage_container_content_left ul{
-      margin: 15px 15px 20px;
+      /* margin: 15px 15px 20px; */
       width: 100%;
     }
     .SearchPage_container_content_left ul li:not(:last-child){
@@ -372,8 +372,7 @@
     .recent-block{
       margin: 10px 10px 15px;
       width: auto;
-      /* height: 320px; */
-      height: 290px;
+      height: 295px;
     }
     .all_content_blocks_up{
       display: flex;

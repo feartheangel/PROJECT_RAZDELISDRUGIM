@@ -50,12 +50,27 @@
   flex-direction: column;
 }
 
+/* АДАПТИВНЫЙ ДИЗАЙН */
+
 @media only screen and (max-width:480px){
 
   .container_profile_content__myItems{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     margin: 0;
     padding: 0;
+    box-shadow: none;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .container_profile{
+    margin-right: 0;
+  }
+  .item-card-profile-button__edit{
+    width: auto;
+    font-size: 14px;
   }
 
 

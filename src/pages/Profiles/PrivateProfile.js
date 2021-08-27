@@ -37,7 +37,7 @@ const PrivateProfile = () => {
       <Header />
       <div className="privateProfile">
         <div className="privateProfile_container">
-          <div className="conteiner_shapka">
+          <div className="conteiner_shapka" style={{display:'none'}}>
             <Link
               style={
                 subjects.length === 0

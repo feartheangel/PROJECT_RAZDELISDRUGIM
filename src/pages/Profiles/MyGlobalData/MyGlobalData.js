@@ -16,7 +16,7 @@ const MyGlobalData = ({
   const { status } = useSelector(({ userData }) => userData.userData);
 
   return (
-    <div className="container_profile">
+    <div className="container_profile" style={{marginRight:'15px'}}>
       <div  className="container_profile" id="globaldata_pk">
       {/* ЛЕВЫЙ ОПЦИОНАЛ */}
       <div className="container_profile_optional">
@@ -69,7 +69,7 @@ const MyGlobalData = ({
       </div>
 
                 {/* МОБИЛЬНАЯ ВЕРСИЯ */}
-      <div  className="container_profile" id="globaldata_mobile">
+      <div  className="container_profile" id="globaldata_mobile" style={{marginRight:'15px'}}>
       {/* ЛЕВЫЙ ОПЦИОНАЛ */}
       <div className="container_profile_optional">
         <div className="optional_scroll1">
