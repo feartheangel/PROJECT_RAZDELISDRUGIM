@@ -37,7 +37,7 @@ const PrivateProfile = () => {
       <Header />
       <div className="privateProfile">
         <div className="privateProfile_container">
-          <div className="conteiner_shapka" style={{display:'none'}}>
+          <div className="conteiner_shapka" id ="globaldata_pk">
             <Link
               style={
                 subjects.length === 0
@@ -75,6 +75,51 @@ const PrivateProfile = () => {
               Мой профиль
             </p>
           </div>
+
+          {/* MOBILE */}
+          <div className="conteiner_shapka" id ="globaldata_mobile">
+            <Link
+              style={
+                subjects.length === 0
+                  ? { pointerEvents: 'none', textDecoration: 'none' }
+                  : { textDecoration: 'none' }
+              }
+              className="conteiner_shapka_myProfile"
+              to="/i-rent-out">
+              <p style={subjects.length === 0 ? { opacity: '0.4', pointerEvents: 'none' } : {}} style={{display:'none'}}>
+                Я сдаю <span> {subjects.length} </span>
+              </p>
+            </Link>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{display:'none'}}>
+              Я беру <span> - </span>
+            </p>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{display:'none'}}>
+              Мои сообщения <span> - </span>
+            </p>
+            <Link
+              style={
+                subjects.length === 0
+                  ? { pointerEvents: 'none', textDecoration: 'none' }
+                  : { textDecoration: 'none' }
+              }
+              style={{display:'none'}}
+              className="conteiner_shapka_myProfile"
+              to="/favorites">
+              <p className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
+                Избранное
+              </p>
+            </Link>
+            <p
+            style={{display:'none'}}
+              className={activeForm === 'myProfile' && 'conteiner_shapka_myProfile'}
+              onClick={() => setActiveForm('myProfile')}>
+              {' '}
+              Мой профиль
+            </p>
+          </div>
+
+
+
 
           {activeForm === 'myProfile' && (
             <MyData
