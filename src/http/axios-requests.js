@@ -234,19 +234,17 @@ class Requests {
       },
       url: 'https://razdelisdrugim.by/api/items/create/',
     }).then((response) => {
-      if (response.status === 200 || response.status === 201) {
-        return axios({
-          method: 'POST',
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${localStorage.getItem('key')}`,
-          },
-          data: formData,
-          url: `https://razdelisdrugim.by/api/items/update/${response.data.id}/`,
-        }).then((response) => {
-          return response;
-        });
-      }
+      return axios({
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('key')}`,
+        },
+        data: formData,
+        url: `https://razdelisdrugim.by/api/items/update/${response.data.id}/`,
+      }).then((response) => {
+        return response;
+      });
     });
   }
 
@@ -1113,8 +1111,8 @@ class Requests {
 }
 
 axios.interceptors.response.use(
-  (config) => {
-    return config;
+  (response) => {
+    return response;
   },
   (error) => {
     const originalRequest = error.config;
@@ -1129,7 +1127,9 @@ axios.interceptors.response.use(
         .then((response) => {
           localStorage.setItem('key', response.data.access);
           originalRequest.headers.Authorization = `Bearer ${localStorage.getItem('key')}`;
-          return axios.request(originalRequest).then((res) => res);
+          return axios.request(originalRequest).then((res) => {
+            return res;
+          });
         })
         .catch(() => {
           localStorage.removeItem('key');

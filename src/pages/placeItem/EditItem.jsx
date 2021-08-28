@@ -295,6 +295,7 @@ const EditItem = () => {
   };
 
   const [redirect, setRedirect] = React.useState(false);
+  let currentSubject = '';
 
   //обработчик отправки формы
   const sendHandler = () => {
@@ -346,6 +347,10 @@ const EditItem = () => {
       return;
     }
 
+    Requests.refresh(localStorage.getItem('refresh')).then((res) => {
+      localStorage.setItem('key', res.data.access);
+    });
+
     dispatch(setQueryStarted());
 
     Requests.updateItem(
@@ -392,7 +397,7 @@ const EditItem = () => {
         : coords[0],
       String(prepareType),
       String(coords[1]),
-      currentSubject[0].id,
+      Number(id),
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
@@ -401,11 +406,10 @@ const EditItem = () => {
           dispatch(setQueryDone());
           dispatch(reloadData(!reload));
         }
-        console.log(response);
       })
-      .catch((response) => {
+      .catch((error) => {
         dispatch(setQueryDone());
-        alert('Ошибка!');
+        alert('Произошла серверная ошибка редактирования.');
       });
   };
 
@@ -413,8 +417,6 @@ const EditItem = () => {
   const { addresses, requestActive, userData, reload, subjects } = useSelector(
     ({ userData }) => userData,
   );
-
-  let currentSubject = '';
 
   React.useEffect(() => {
     currentSubject = subjects.filter(
@@ -505,6 +507,7 @@ const EditItem = () => {
         setPladge(currentSubject[0] && currentSubject[0].pledge);
         setPledgePrice(currentSubject[0] && currentSubject[0].pledge_price);
         setServiceSbor(currentSubject[0] && currentSubject[0].servicefee);
+        setId(currentSubject[0] && currentSubject[0].id);
         setOptionServiceSbor(
           currentSubject[0] && currentSubject[0].servicefee_choice === 'Химчистка'
             ? 'DRYCLEANING'
@@ -525,7 +528,6 @@ const EditItem = () => {
           currentSubject[0].image_1 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_1}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_1.png', { type: 'image/png' }))
@@ -540,7 +542,6 @@ const EditItem = () => {
           currentSubject[0].image_2 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_2}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_2.png', { type: 'image/png' }))
@@ -555,7 +556,6 @@ const EditItem = () => {
           currentSubject[0].image_3 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_3}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_3.png', { type: 'image/png' }))
@@ -570,7 +570,6 @@ const EditItem = () => {
           currentSubject[0].image_4 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_4}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_4.png', { type: 'image/png' }))
@@ -585,7 +584,6 @@ const EditItem = () => {
           currentSubject[0].image_5 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_5}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_5.png', { type: 'image/png' }))
@@ -601,6 +599,7 @@ const EditItem = () => {
   }, [window.location, subjects]);
 
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
+  const [id, setId] = React.useState(null);
   //хранение типа доставки
   const [deliveryType, setDeliveryType] = useState('NONE');
 

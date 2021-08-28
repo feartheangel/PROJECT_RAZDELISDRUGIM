@@ -99,30 +99,58 @@ const MapBlock = () => {
 
   return (
     <section className="map">
-      <YMaps>
-        <Map state={mapData} width={1180} height={500} modules={['package.full']}>
-          <Clusterer
-            options={{
-              preset: 'islands#invertedVioletClusterIcons',
-              groupByCoordinates: false,
-              clusterDisableClickZoom: true,
-              clusterHideIconOnBalloonOpen: true,
-              geoObjectHideIconOnBalloonOpen: true,
-              hasBalloon: true,
-            }}>
-            {marks &&
-              marks.map((mark, index) => (
-                <Placemark
-                  key={index}
-                  geometry={mark[0]}
-                  modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-                  properties={getPointData(index)}
-                  options={getPointOptions()}
-                />
-              ))}
-          </Clusterer>
-        </Map>
-      </YMaps>
+      <div id="map_komp">
+        <YMaps>
+          <Map state={mapData} width={1180} height={500} modules={['package.full']}>
+            <Clusterer
+              options={{
+                preset: 'islands#invertedVioletClusterIcons',
+                groupByCoordinates: false,
+                clusterDisableClickZoom: true,
+                clusterHideIconOnBalloonOpen: true,
+                geoObjectHideIconOnBalloonOpen: true,
+                hasBalloon: true,
+              }}>
+              {marks &&
+                marks.map((mark, index) => (
+                  <Placemark
+                    key={index}
+                    geometry={mark[0]}
+                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                    properties={getPointData(index)}
+                    options={getPointOptions()}
+                  />
+                ))}
+            </Clusterer>
+          </Map>
+        </YMaps>
+      </div>
+      <div id="map_adaptiv">
+        <YMaps>
+          <Map state={mapData} width={320} height={300} modules={['package.full']}>
+            <Clusterer
+              options={{
+                preset: 'islands#invertedVioletClusterIcons',
+                groupByCoordinates: false,
+                clusterDisableClickZoom: true,
+                clusterHideIconOnBalloonOpen: true,
+                geoObjectHideIconOnBalloonOpen: true,
+                hasBalloon: true,
+              }}>
+              {marks &&
+                marks.map((mark, index) => (
+                  <Placemark
+                    key={index}
+                    geometry={mark[0]}
+                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                    properties={getPointData(index)}
+                    options={getPointOptions()}
+                  />
+                ))}
+            </Clusterer>
+          </Map>
+        </YMaps>
+      </div>
     </section>
   );
 };

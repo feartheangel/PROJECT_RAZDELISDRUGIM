@@ -89,7 +89,7 @@ const Footer = () => {
           {/* пк версия */}
           <div className="footer-third-col" id="main-sections-pk">
             <ul className="footer-third-ul">
-              <li className="footer-third-li main-footer-li">Категории</li>
+              <li className="footer-third-li main-footer-li">Разделы</li>
               {isLoaded &&
                 [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
                   if (index <= 9) {
@@ -128,7 +128,7 @@ const Footer = () => {
           {/* мобильная версия */}
           <div className="footer-third-col" id="main-sections-mobile">
             <ul className="footer-third-ul">
-              <li className="footer-third-li main-footer-li">Категории</li>
+              <li className="footer-third-li main-footer-li">Разделы</li>
               {isLoaded &&
                 [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
                   if (index <= 9) {

@@ -19,12 +19,15 @@ const AddressDeleteSubmit = ({ deleteId, setModalActiveSubmit, modalActiveSubmit
   const yesHandler = () => {
     Requests.removeAddress(deleteId)
       .then(() => {
-        alert('Адрес удален!');
+        console.log('Адрес удален!');
         dispatch(reloadData(!reload));
         setModalActiveSubmit(false);
-        dispatch(reloadData(!reload));
       })
-      .catch((e) => alert('Ошибка удаления адреса!'));
+      .catch((e) => {
+        dispatch(reloadData(!reload));
+        console.log('Ошибка удаления адреса!');
+        setModalActiveSubmit(false);
+      });
   };
 
   return (
@@ -72,12 +75,11 @@ const AddressDeleteSubmit = ({ deleteId, setModalActiveSubmit, modalActiveSubmit
             </div>
           </div>
           {/* МОБИЛЬНАЯ ВЕРСИЯ */}
-          <div style={{ height: '230px' }} className="reg-form-email-verification" id="regform_mobile">
-            <img
-              onClick={() => setModalActiveSubmit(false)}
-              src={Shape}
-              className="img_krestik"   
-            />
+          <div
+            style={{ height: '230px' }}
+            className="reg-form-email-verification"
+            id="regform_mobile">
+            <img onClick={() => setModalActiveSubmit(false)} src={Shape} className="img_krestik" />
             <div className="log-form-text-label-p-email__upper">
               <p>Вы уверены, что хотите удалить этот адрес?</p>
             </div>
@@ -104,7 +106,6 @@ const AddressDeleteSubmit = ({ deleteId, setModalActiveSubmit, modalActiveSubmit
               />
             </div>
           </div>
-
         </div>
       </div>
     </div>

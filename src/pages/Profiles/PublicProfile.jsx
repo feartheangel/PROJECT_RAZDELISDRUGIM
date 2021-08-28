@@ -387,7 +387,17 @@ const PublicProfile = () => {
                 </div>
 
                 {/* ДЛЯ КОМПОНЕНТА АДРЕССА */}
-                <div>{activeForm2 === 'address' && <Address addresses={profileAddresses} />}</div>
+                <div>
+                  {activeForm2 === 'address' && isLoggedIn ? (
+                    <Address addresses={profileAddresses} />
+                  ) : activeForm2 === 'address' && !isLoggedIn ? (
+                    <p style={{ color: '#4CC9F0' }} className="block_up_address-p">
+                      Адреса доступны после регистрации
+                    </p>
+                  ) : (
+                    ''
+                  )}
+                </div>
               </div>
             </div>
           </div>

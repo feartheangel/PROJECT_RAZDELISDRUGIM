@@ -564,10 +564,16 @@ const CardThings = () => {
                         <img src={Address} className="img_address" alt="" />
                         <p className="block_up_address_row-p">Адрес местонахождения:</p>
                       </div>
-                      <p className="block_up_address-p">
-                        {itemData && itemData.items_address.split(',')[0]},{' '}
-                        {itemData && itemData.items_address.split(',')[1]}
-                      </p>
+                      {isLoggedIn ? (
+                        <p className="block_up_address-p">
+                          {itemData && itemData.items_address.split(',')[0]},{' '}
+                          {itemData && itemData.items_address.split(',')[1]}
+                        </p>
+                      ) : (
+                        <p style={{ color: '#4CC9F0' }} className="block_up_address-p">
+                          Адрес доступен после регистрации
+                        </p>
+                      )}
                     </div>
 
                     {/* Доставка */}
@@ -623,11 +629,13 @@ const CardThings = () => {
                     </div>
 
                     <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-                      <YMaps>
-                        <Map width={300} height={200} defaultState={itemData && mapData}>
-                          <Placemark geometry={itemData && mapData.center} />
-                        </Map>
-                      </YMaps>
+                      {isLoggedIn && (
+                        <YMaps>
+                          <Map width={300} height={200} defaultState={itemData && mapData}>
+                            <Placemark geometry={itemData && mapData.center} />
+                          </Map>
+                        </YMaps>
+                      )}
                     </div>
 
                     {/* Свободно*/}
@@ -1091,10 +1099,16 @@ const CardThings = () => {
                       <img src={Address} className="img_address" alt="" />
                       <p className="block_up_address_row-p">Адрес местонахождения:</p>
                     </div>
-                    <p className="block_up_address-p">
-                      {itemData && itemData.items_address.split(',')[0]},{' '}
-                      {itemData && itemData.items_address.split(',')[1]}
-                    </p>
+                    {isLoggedIn ? (
+                      <p className="block_up_address-p">
+                        {itemData && itemData.items_address.split(',')[0]},{' '}
+                        {itemData && itemData.items_address.split(',')[1]}
+                      </p>
+                    ) : (
+                      <p style={{ color: '#4CC9F0' }} className="block_up_address-p">
+                        Адрес доступен после регистрации
+                      </p>
+                    )}
                   </div>
                   <div className="card_photo_lower_table_wrapper">
                     <div
@@ -1394,13 +1408,15 @@ const CardThings = () => {
                 {/*ПРАВАЯ СТОРОНА*/}
                 <div className="card_content_right">
                   <div className="right_block_up">
-                    <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-                      <YMaps>
-                        <Map width={300} height={200} defaultState={itemData && mapData}>
-                          <Placemark geometry={itemData && mapData.center} />
-                        </Map>
-                      </YMaps>
-                    </div>
+                    {isLoggedIn && (
+                      <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+                        <YMaps>
+                          <Map width={300} height={200} defaultState={itemData && mapData}>
+                            <Placemark geometry={itemData && mapData.center} />
+                          </Map>
+                        </YMaps>
+                      </div>
+                    )}
 
                     {/* Свободно*/}
                     <div style={{ display: 'none' }} className="block_up_free">
