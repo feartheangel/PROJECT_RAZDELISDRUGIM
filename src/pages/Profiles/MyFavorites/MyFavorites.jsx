@@ -23,10 +23,9 @@ const MyFavorites = () => {
   return (
     <div>
       <Header />
-      <div className="privateProfile">
+      <div className="privateProfile" id="globaldata_pk">
         <div className="privateProfile_container">
-          <div className="div_favorites"> Избранное </div>
-          <div className="conteiner_shapka" style={{display:'none'}}>
+          <div className="conteiner_shapka" >
             <Link
               style={
                 subjects.length === 0
@@ -60,8 +59,39 @@ const MyFavorites = () => {
                 </div>
               )}
             </div>
-            {/* mobile */}
-            <div className="container_profile_content__myItems" id="globaldata_mobile">
+          </div>
+        </div>
+      </div>
+      {/* МОБИЛКА */}
+      <div className="privateProfile" id="globaldata_mobile">
+        <div className="privateProfile_container">
+          <div className="div_favorites"> Избранное </div>
+          <div className="conteiner_shapka" style={{display:'none'}}>
+            <Link
+              style={
+                subjects.length === 0
+                  ? { pointerEvents: 'none', textDecoration: 'none' }
+                  : { textDecoration: 'none' }
+              }
+              className="conteiner_shapka_myProfile"
+              to="/i-rent-out">
+              <p className="favorites" >
+                Я сдаю <span> {subjects.length} </span>
+              </p>
+            </Link>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+              Я беру <span> - </span>
+            </p>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+              Мои сообщения <span> - </span>
+            </p>
+            <p className="conteiner_shapka_myProfile">Избранное</p>
+            <Link style={{ textDecoration: 'none' }} to="/private-profile">
+              <p> Мой профиль</p>
+            </Link>
+          </div>
+          <div className="container_profile" >
+          <div className="container_profile_content__myItems" id="globaldata_mobile">
               <div>
               {favorites &&
                 favorites.map((subject, index) => <ItemCard  item={subject.item} key={index} />)}
@@ -72,7 +102,6 @@ const MyFavorites = () => {
                 </div>
               )}
             </div>
-
           </div>
         </div>
       </div>

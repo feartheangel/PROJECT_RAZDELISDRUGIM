@@ -73,6 +73,8 @@
 
 
 
+
+
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
   .privateProfile {
@@ -94,7 +96,7 @@
   .conteiner_shapka {
     /* display: none; */
     margin: 0 0 15px 0;
-    display: flex;
+    /* display: flex; */
     align-items: center;
   }
   .conteiner_shapka p{
