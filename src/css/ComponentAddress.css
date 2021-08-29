@@ -21,6 +21,22 @@
     height: 20px;
 }
 
+/* АДАПТИВ */
+
+@media only screen and ( max-width:480px){
+
+    .Component_Address_row2{
+        margin-bottom: 10px;
+      }
+
+
+
+
+
+
+
+
+}
 
 
 
