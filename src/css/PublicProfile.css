@@ -190,7 +190,8 @@
     width: 100%;
   }
   .PublicProfile_Wrapper_container{
-    padding: 10px 15px 15px 15px;
+    /* padding: 10px 15px 15px 15px; */
+    padding: 10px 0 15px;
     margin: 0;
     border-radius: 0;
   }
@@ -198,6 +199,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 0;
+    margin: 0 15px;
   }
   .container_up{
     margin-bottom: 5px;
@@ -340,8 +342,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 15px;
-    width: 100%;
+    margin: 0 15px 15px 15px;
+    width: auto;
   }
   .footer_btn1{
     width: 57%;
@@ -366,7 +368,7 @@
     justify-content: space-between;
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 15px;
+    margin: 0 15px 15px 15px;
   }
   .down_header_text1{
     margin: 0;
@@ -374,17 +376,21 @@
 
   /* 1 - адреса  */
   .down_content{
-    margin: 0;
     width: 100%;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
+    margin-bottom: 0;
   }
 
   /* 2 - сдаёт */
   .down_content_cards{
+    width: auto;
+    justify-content: space-between;
+  }
+  .public_aboutme_address{
     width: 100%;
-    justify-content: flex-start;
+    margin: 0 15px;
   }
 
 

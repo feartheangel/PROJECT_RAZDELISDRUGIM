@@ -229,7 +229,7 @@ const ItemCard = ({ item }) => {
               )}
             </div>
             <div className="recent-block-up">
-              <p className="recent-block-title-p">{item.name_item}</p>
+              <p className="recent-block-title-name">{item.name_item}</p>
             </div>
             {!item.offer_price_rent && !item.free_rent && (
               <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
@@ -264,21 +264,24 @@ const ItemCard = ({ item }) => {
             <p className="recent-block-title-p">
               {item.profile.company_name ? item.profile.company_name : item.profile.first_name}
             </p>
-            {favorites && !isFavorite && (
-              <img
-                onClick={(e) => addFavoriteHandler(e)}
-                className="itemcard_favorite_img"
-                src={FavoritesDisabled}
-              />
-            )}
 
-            {favorites && isFavorite && (
-              <img
-                onClick={(e) => deleteFavoriteHandler(e)}
-                className="itemcard_favorite_img"
-                src={Favorites}
-              />
-            )}
+            <div className="div_favorites">
+              {favorites && !isFavorite && (
+                <img
+                  onClick={(e) => addFavoriteHandler(e)}
+                  className="itemcard_favorite_img"
+                  src={FavoritesDisabled}
+                />
+              )}
+
+                {favorites && isFavorite && (
+                  <img
+                    onClick={(e) => deleteFavoriteHandler(e)}
+                    className="itemcard_favorite_img"
+                    src={Favorites}
+                  />
+                )}
+            </div>
           </div>
         </a>
       </div>

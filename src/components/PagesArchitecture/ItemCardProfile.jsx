@@ -332,7 +332,7 @@ const ItemCardProfile = ({
             <p
               style={{ cursor: 'pointer' }}
               onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-              className="recent-block-title-p">
+              className="recent-block-title-name">
               {title}
             </p>
           </div>

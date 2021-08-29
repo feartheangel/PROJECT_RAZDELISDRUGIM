@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Requests from '../../http/axios-requests';
+import Shape from '../../img/Shape.png';
 
 const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
   const inputErrors = ['Поле не может быть пустым', 'Некорректный логин'];
@@ -56,6 +57,13 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
   };
   return (
     <div className="reg-form-email-verification">
+            <div className="div_for_krestik">
+                <img
+                  src={Shape}
+                  className="img_krestik"
+                  style={{marginRight:'85px'}}
+                />
+            </div>
       <ul className="reg-form-action-type-list">
         <li
           onClick={() => setActiveForm('register')}

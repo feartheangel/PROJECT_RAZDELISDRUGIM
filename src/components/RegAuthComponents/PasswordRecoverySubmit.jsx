@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Requests from '../../http/axios-requests';
+import Shape from '../../img/Shape.png';
 
 const PasswordRecoverySubmit = () => {
   const passwordErrors = [
@@ -78,9 +79,16 @@ const PasswordRecoverySubmit = () => {
   };
   return (
     <div className="reg-auth-wrapper">
-      <div className="reg-content">
+      <div className="reg-content" >
         <div className="reg-form-wrapper-email-verification">
           <div className="reg-form-email-verification">
+            <div className="div_for_krestik">
+                <img
+                  src={Shape}
+                  className="img_krestik"
+                  style={{marginRight:'85px'}}
+                />
+            </div>
             <ul className="reg-form-action-type-list">
               <Link tag="li" to="/registration">
                 <li href="#" className="reg-form-action-type-link">

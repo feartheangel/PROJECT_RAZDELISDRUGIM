@@ -359,9 +359,10 @@
   }
   /* сама карточка */
   .recent-block {
-    margin: 10px 10px 15px;
+    margin: 10px 10px 10px;
     width: auto;
-    height: 298px;
+    max-height: 310px;
+    height: 100%;
   }
   .all_content_blocks_up {
     display: flex;

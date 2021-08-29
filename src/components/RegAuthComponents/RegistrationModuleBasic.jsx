@@ -8,7 +8,7 @@ import { loginAction } from '../../redux/actions/userData';
 import { useDispatch } from 'react-redux';
 import { vkAuth, googleAuth, facebookAuth } from '../../http/social-auth';
 import '../../css/regAuth.css';
-
+import Shape from '../../img/Shape.png';
 const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   const dispatch = useDispatch();
 
@@ -167,7 +167,14 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   };
 
   return (
-    <div className="reg-form">
+    <div className="reg-form"> 
+                <div className="div_for_krestik">
+                <img
+                  src={Shape}
+                  className="img_krestik"
+                  style={{marginRight:'85px'}}
+                />
+                </div>
       <ul className="reg-form-action-type-list">
         <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
           Регистрация

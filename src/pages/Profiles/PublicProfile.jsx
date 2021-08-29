@@ -724,20 +724,22 @@ const PublicProfile = () => {
                   <div className="down_content_cards">
                     {profileItems &&
                       profileItems.map((item, index) => {
-                        return <ItemCard item={item} key={index} />;
+                        return <div style={{width:'50%', marginBottom:'20px'}}><ItemCard item={item} key={index} /> </div>;
                       })}
                   </div>
                 )}
 
                 {/* ДЛЯ КОМПОНЕНТА ОПИСАНИЯ О СЕБЕ */}
-                <div>
+                <div className="public_aboutme_address">
                   {activeForm2 === 'about_me' && (
                     <AboutMe about={profileData && profileData.about} />
                   )}
                 </div>
 
                 {/* ДЛЯ КОМПОНЕНТА АДРЕССА */}
-                <div>{activeForm2 === 'address' && <Address addresses={profileAddresses} />}</div>
+                <div className="public_aboutme_address">
+                  {activeForm2 === 'address' && <Address addresses={profileAddresses} />}
+                  </div>
               </div>
             </div>
           </div>
