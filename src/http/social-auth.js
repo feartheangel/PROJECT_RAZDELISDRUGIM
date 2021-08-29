@@ -5,7 +5,7 @@ export const vkAuth = () => {
 
 export const googleAuth = () => {
   window.location.href =
-    'https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://razdelisdrugim.by/&response_type=code&client_id=1055303949536-f48flgc218nqkv8092ks478v2lp5rksv.apps.googleusercontent.com&scope=https://www.googleapis.com/auth/userinfo.profile&access_type=offline';
+    'https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://razdelisdrugim.by/&response_type=code&client_id=57397743113-lfuevkuofu43tmo363bb8092j03apuai.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=offline';
 };
 
 export const facebookAuth = () => {

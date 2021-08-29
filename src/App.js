@@ -46,6 +46,13 @@ function App() {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
+    isLoggedIn &&
+      Requests.refresh(localStorage.getItem('refresh')).then((res) => {
+        localStorage.setItem('key', res.data.access);
+      });
+  }, [window.location.href]);
+
+  React.useEffect(() => {
     Requests.fetchItems().then((response) => {
       dispatch(setItems(response.data));
       dispatch(setItemsLoaded());

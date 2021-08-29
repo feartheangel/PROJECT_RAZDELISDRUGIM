@@ -984,9 +984,9 @@ const SearchPage = () => {
                     </div>
 
                     {searchItems && (
-                      <div style={{ marginBottom: '10px' }}>
+                      <div style={{ marginBottom: '10px', alignSelf: 'center' }}>
                         <YMaps>
-                          <Map state={mapData} width={480} height={300} modules={['package.full']}>
+                          <Map state={mapData} width={320} height={300} modules={['package.full']}>
                             <Clusterer
                               options={{
                                 preset: 'islands#invertedVioletClusterIcons',

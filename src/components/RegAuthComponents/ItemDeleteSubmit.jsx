@@ -19,11 +19,15 @@ const ItemDeleteSubmit = ({ deleteId, setModalActiveSubmit, modalActiveSubmit })
   const yesHandler = () => {
     Requests.deleteSubject(deleteId)
       .then(() => {
-        alert('Вещь успешно удалена!');
+        console.log('Вещь успешно удалена!');
         dispatch(reloadData(!reload));
         setModalActiveSubmit(false);
       })
-      .catch(() => alert('Ошибка удаления вещи.'));
+      .catch(() => {
+        dispatch(reloadData(!reload));
+        console.log('Ошибка удаления вещи.');
+        setModalActiveSubmit(false);
+      });
   };
 
   return (

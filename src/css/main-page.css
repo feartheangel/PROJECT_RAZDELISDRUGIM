@@ -73,7 +73,7 @@ button {
 }
 
 .logo {
-  margin-right: 364px;
+  margin-right: 357px;
 }
 
 .location-img {
@@ -152,26 +152,26 @@ button {
 .dropdown-profile-menu-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 10px;
   z-index: 5;
-  background-color: white;
-  filter: drop-shadow(3px 3px 22px rgba(99, 212, 248, 0.24));
-  border-radius: 5px;
-  border: 1px solid #4cc9f0;
   box-sizing: border-box;
+  width: 160px;
+  height: 140px;
+  background: #ffffff;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
 }
 
 .dropdown-profile-menu-content a {
-  width: 175px;
   text-decoration: none;
 }
 
 .dropdown-profile-menu-p {
-  text-align: center;
   font-size: 16px;
-  color: #123940;
-  font-weight: 600;
+  line-height: 19px;
+  color: #091d20;
   padding: 5px 0;
   width: 100%;
   height: 100%;
@@ -186,12 +186,16 @@ button {
   cursor: pointer;
 }
 
-.dropdown-profile-menu-p.logout {
-  color: red;
+.dropdown-profile-menu-p:hover {
+  color: #4cc9f0;
 }
 
-.dropdown-profile-menu-p:hover {
-  background-color: whitesmoke;
+.profile_popup_line {
+  background-color: #4cc9f0;
+  width: 100%;
+  border: 0;
+  height: 1px;
+  margin: 2px 0px;
 }
 
 .login-button {
@@ -385,7 +389,7 @@ button {
 .recent-block-title-p {
   font-style: normal;
   font-weight: 500;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 26px;
 
   color: #000000;
@@ -549,7 +553,7 @@ button {
   font-weight: 500;
   font-size: 36px;
   line-height: 42px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .abilities-cards {
@@ -1178,7 +1182,7 @@ button {
   padding: 20px;
 }
 .burger-button {
-  margin-right: 355px;
+  margin-right: 371px;
   cursor: pointer;
 }
 .burger-catalog {
@@ -1187,14 +1191,13 @@ button {
 .recent-block-up {
   width: 214px;
   height: 60px;
-  overflow: hidden;
 }
-.recent-block-title-p {
+/* .recent-block-title-p {
   font-size: 18px;
   line-height: 21px;
   color: rgba(9, 29, 32, 0.8);
   margin-top: 20px;
-}
+} */
 .recent-time-p {
   font-size: 16px;
   margin-left: 5px;
@@ -1386,7 +1389,6 @@ button {
     margin-bottom: 15px;
     width: 100%;
     align-items: center;
-    text-align: center;
     justify-content: space-between;
   }
   .location-selector {
@@ -1688,7 +1690,7 @@ button {
   }
 
   /* карточки(сами дивы для размещения )  */
-  .swiper-wrapper{
+  .swiper-wrapper {
     height: 375px;
   }
   .recent-content {
@@ -2293,55 +2295,33 @@ button {
     margin-right: 15px;
   }
 
-  .recent-block{
+  .recent-block {
     height: 290px;
   }
 
-/* карточка в Я СДАЮ */
-.recent-block__profile{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0;
-  padding: 10px 5px;
-  height: 450px;
-  margin-bottom: 20px;
-}
-.recent-block-wrapper{
-  display: flex;
-}
-.recent-block-wrapper-gl{
-  display: flex;
-  width: 48%;
-}
-#recent-block-wrapper-gl{
-  display: flex;
-  /* width: 48%; */
-}
+  /* карточка в Я СДАЮ */
+  .recent-block__profile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 10px 5px;
+    height: 450px;
+    margin-bottom: 20px;
+  }
+  .recent-block-wrapper {
+    display: flex;
+  }
+  .recent-block-wrapper-gl {
+    display: flex;
+    width: 48%;
+  }
+  #recent-block-wrapper-gl {
+    display: flex;
+    /* width: 48%; */
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  .profile_popup_line {
+    margin: 1px 0px;
+  }
 }

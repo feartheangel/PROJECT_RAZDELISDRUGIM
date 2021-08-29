@@ -10,9 +10,9 @@ const ProfilePopUp = ({ logout, profilePopUpActive, setProfilePopUpActive }) => 
           : 'dropdown-profile-menu-wrapper'
       }>
       <div className="dropdown-profile-menu-content">
-        <Link to="/private-profile">
+        <Link to="/i-rent-out">
           <p onClick={() => setProfilePopUpActive(false)} className="dropdown-profile-menu-p">
-            Профиль
+            Я сдаю
           </p>
         </Link>
         <Link to="/favorites">
@@ -20,11 +20,12 @@ const ProfilePopUp = ({ logout, profilePopUpActive, setProfilePopUpActive }) => 
             Избранное
           </p>
         </Link>
-        <Link to="/i-rent-out">
+        <Link to="/private-profile">
           <p onClick={() => setProfilePopUpActive(false)} className="dropdown-profile-menu-p">
-            Я сдаю
+            Мой профиль
           </p>
         </Link>
+        <hr className="profile_popup_line" />
         <p onClick={logout} className="dropdown-profile-menu-p logout">
           Выйти
         </p>

@@ -295,6 +295,7 @@ const EditItem = () => {
   };
 
   const [redirect, setRedirect] = React.useState(false);
+  let currentSubject = '';
 
   //обработчик отправки формы
   const sendHandler = () => {
@@ -346,6 +347,10 @@ const EditItem = () => {
       return;
     }
 
+    Requests.refresh(localStorage.getItem('refresh')).then((res) => {
+      localStorage.setItem('key', res.data.access);
+    });
+
     dispatch(setQueryStarted());
 
     Requests.updateItem(
@@ -392,7 +397,7 @@ const EditItem = () => {
         : coords[0],
       String(prepareType),
       String(coords[1]),
-      currentSubject[0].id,
+      Number(id),
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
@@ -401,11 +406,10 @@ const EditItem = () => {
           dispatch(setQueryDone());
           dispatch(reloadData(!reload));
         }
-        console.log(response);
       })
-      .catch((response) => {
+      .catch((error) => {
         dispatch(setQueryDone());
-        alert('Ошибка!');
+        alert('Произошла серверная ошибка редактирования.');
       });
   };
 
@@ -414,13 +418,10 @@ const EditItem = () => {
     ({ userData }) => userData,
   );
 
-  const [currentSubject, setCurrentSubject] = React.useState();
-
   React.useEffect(() => {
-    setCurrentSubject(
-      subjects.filter((subject) => subject.id === Number(window.location.href.split('?id=')[1])),
+    currentSubject = subjects.filter(
+      (subject) => subject.id === Number(window.location.href.split('?id=')[1]),
     );
-
     currentSubject &&
       setTimeout(() => {
         setNameItem(currentSubject[0] && currentSubject[0].name_item);
@@ -506,6 +507,7 @@ const EditItem = () => {
         setPladge(currentSubject[0] && currentSubject[0].pledge);
         setPledgePrice(currentSubject[0] && currentSubject[0].pledge_price);
         setServiceSbor(currentSubject[0] && currentSubject[0].servicefee);
+        setId(currentSubject[0] && currentSubject[0].id);
         setOptionServiceSbor(
           currentSubject[0] && currentSubject[0].servicefee_choice === 'Химчистка'
             ? 'DRYCLEANING'
@@ -526,7 +528,6 @@ const EditItem = () => {
           currentSubject[0].image_1 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_1}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_1.png', { type: 'image/png' }))
@@ -541,7 +542,6 @@ const EditItem = () => {
           currentSubject[0].image_2 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_2}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_2.png', { type: 'image/png' }))
@@ -556,7 +556,6 @@ const EditItem = () => {
           currentSubject[0].image_3 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_3}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_3.png', { type: 'image/png' }))
@@ -571,7 +570,6 @@ const EditItem = () => {
           currentSubject[0].image_4 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_4}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_4.png', { type: 'image/png' }))
@@ -586,7 +584,6 @@ const EditItem = () => {
           currentSubject[0].image_5 &&
           fetch(`https://razdelisdrugim.by${currentSubject[0].image_5}`)
             .then((response) => {
-              console.log(response);
               return response.blob();
             })
             .then((blobFile) => new File([blobFile], 'image_5.png', { type: 'image/png' }))
@@ -602,6 +599,7 @@ const EditItem = () => {
   }, [window.location, subjects]);
 
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
+  const [id, setId] = React.useState(null);
   //хранение типа доставки
   const [deliveryType, setDeliveryType] = useState('NONE');
 
@@ -999,10 +997,7 @@ const EditItem = () => {
                   />
                 </div>
               </div>
-              <span
-                className="span-valuts">
-                BYN
-              </span>
+              <span className="span-valuts">BYN</span>
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
                   Срок <span className="add-item-span-zvezda">*</span>
@@ -1246,8 +1241,8 @@ const EditItem = () => {
                   </div>
                 </div>
 
-                                {/* АДАПТИВКА */}
-                  <div className="take-away-secondary-wrapper" id="take_Away_adaptive">
+                {/* АДАПТИВКА */}
+                <div className="take-away-secondary-wrapper" id="take_Away_adaptive">
                   <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
                     <div className="add-item-input-wrapper" id="add_item_gl_margin">
                       <label className="add-item-input-label">
@@ -1263,28 +1258,30 @@ const EditItem = () => {
                     </div>
 
                     <div className="add-item-input-wrapper" id="add_item_gl_margin">
-                        <label className="add-item-input-label">Корпус</label>
-                        <input
-                          disabled={room || office || building}
-                          type="text"
-                          className="add-item-input-text__address__house"
-                          value={body}
-                          onChange={(e) => setBody(e.target.value)}
-                        />
-                      </div>
+                      <label className="add-item-input-label">Корпус</label>
+                      <input
+                        disabled={room || office || building}
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
+                      />
+                    </div>
 
-                      <div className="add-item-input-wrapper">
-                        <label className="add-item-input-label">Квартира</label>
-                        <input
-                          disabled={room || office || building}
-                          type="text"
-                          className="add-item-input-text__address__house"
-                          value={flat}
-                          onChange={(e) => setFlat(e.target.value)}
-                        />
-                      </div>
+                    <div className="add-item-input-wrapper">
+                      <label className="add-item-input-label">Квартира</label>
+                      <input
+                        disabled={room || office || building}
+                        type="text"
+                        className="add-item-input-text__address__house"
+                        value={flat}
+                        onChange={(e) => setFlat(e.target.value)}
+                      />
+                    </div>
 
-                    <span style={{ marginRight: '30px', display:'none'}} className="add-item-cost-or__secondary">
+                    <span
+                      style={{ marginRight: '30px', display: 'none' }}
+                      className="add-item-cost-or__secondary">
                       или
                     </span>
                     <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
@@ -1301,26 +1298,26 @@ const EditItem = () => {
                         />
                       </div>
                       <div className="add-item-input-wrapper" id="add_item_gl_margin">
-                          <label className="add-item-input-label">Офис</label>
-                          <input
-                            disabled={house || body || flat}
-                            type="text"
-                            className="add-item-input-text__address__house"
-                            value={office}
-                            onChange={(e) => setOffice(e.target.value)}
-                          />
-                        </div>
+                        <label className="add-item-input-label">Офис</label>
+                        <input
+                          disabled={house || body || flat}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={office}
+                          onChange={(e) => setOffice(e.target.value)}
+                        />
+                      </div>
 
-                        <div className="add-item-input-wrapper">
-                          <label className="add-item-input-label">Строение</label>
-                          <input
-                            disabled={house || body || flat}
-                            type="text"
-                            className="add-item-input-text__address__house"
-                            value={building}
-                            onChange={(e) => setBuilding(e.target.value)}
-                          />
-                        </div>
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">Строение</label>
+                        <input
+                          disabled={house || body || flat}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={building}
+                          onChange={(e) => setBuilding(e.target.value)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1482,7 +1479,9 @@ const EditItem = () => {
                 {/*  ВРЕМЯ ПОЛУЧЕНИЯ  */}
                 <div className="add-item-time-block-wrapper">
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время получения  <br id="br_gl"/> (не позднее)</label>
+                    <label className="add-item-input-label">
+                      Время получения <br id="br_gl" /> (не позднее)
+                    </label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setTimeReceipt(e.target.value)}>
@@ -1519,7 +1518,9 @@ const EditItem = () => {
                   {/*  ВРЕМЯ ВОЗВРАТА  */}
 
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время возврата <br id="br_gl"/>  (не позднее)</label>
+                    <label className="add-item-input-label">
+                      Время возврата <br id="br_gl" /> (не позднее)
+                    </label>
                     <select
                       className="add-item-select-clock"
                       onChange={(e) => setReturnTime(e.target.value)}>
@@ -1608,7 +1609,7 @@ const EditItem = () => {
                   </div>
 
                   {takeAway && (
-                    <div className="take-away-secondary-wrapper"  id="take-away-secondary-wrapper">
+                    <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
                       <div className="checkbox-btn secondary">
                         <input type="checkbox" className="input-checkbox" checked={typeService} />
                         <span onClick={() => setTypeService(!typeService)}>Бесплатно</span>
@@ -1640,7 +1641,9 @@ const EditItem = () => {
                       </div>
 
                       {yourSend && (
-                        <span className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                        <span
+                          className="take-away-secondary-wrapper"
+                          id="take-away-secondary-wrapper">
                           <div className="checkbox-btn secondary" id="checkbox-btn-margin">
                             <input type="checkbox" className="input-checkbox" checked={taxi} />
                             <span onClick={(e) => taxiHandler(e.target.value)}>Такси</span>
