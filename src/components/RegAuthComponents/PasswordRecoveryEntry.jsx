@@ -61,19 +61,21 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
                 <img
                   src={Shape}
                   className="img_krestik"
-                  style={{marginRight:'85px'}}
+                  style={{marginRight:'15px'}}
                 />
             </div>
       <ul className="reg-form-action-type-list">
         <li
           onClick={() => setActiveForm('register')}
           href="#"
+          style={{fontSize:'25px'}}
           className="reg-form-action-type-link">
           Регистрация
         </li>
         <li
           onClick={() => setActiveForm('login')}
           href="#"
+          style={{fontSize:'25px'}}
           className="reg-form-action-type-link reg-form-action-type-link__active">
           Вход
         </li>

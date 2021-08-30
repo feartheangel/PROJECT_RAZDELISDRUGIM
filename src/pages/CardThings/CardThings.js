@@ -931,6 +931,10 @@ const CardThings = () => {
         </div>
       </div>
 
+
+
+
+                          {/* МОБИЛЬНЫЙ АДАПТИВ */}
       <div id="card_thing_mobile">
         <div className="CardThings_Wrapper">
           <div className="CardThings_Wrapper_container">
@@ -976,6 +980,7 @@ const CardThings = () => {
               <div className="card_content">
                 {/*ЛЕВАЯ СТОРОНА*/}
                 <div className="card_content_left">
+                  <div className="background_blocks">
                   <div className="left_block_photo">
                     <div className="left_block_photo_small">
                       {itemData && itemData.image_1 && (
@@ -1147,6 +1152,8 @@ const CardThings = () => {
                       <p>{itemData && itemData.item_views} просмотра(-ов)</p>
                     </div>
                   </div>
+                  </div>
+
 
                   {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
@@ -1409,9 +1416,9 @@ const CardThings = () => {
                 <div className="card_content_right">
                   <div className="right_block_up">
                     {isLoggedIn && (
-                      <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+                      <div style={{ marginTop: '20px', marginBottom: '20px', width:'100%' }}>
                         <YMaps>
-                          <Map width={300} height={200} defaultState={itemData && mapData}>
+                          <Map width={'auto'} height={200} defaultState={itemData && mapData}>
                             <Placemark geometry={itemData && mapData.center} />
                           </Map>
                         </YMaps>
@@ -1427,7 +1434,7 @@ const CardThings = () => {
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
                     <div
                       style={{
-                        width: '90%',
+                        width: '100%',
                         position: ' fixed',
                         bottom: '0',
                         display: 'flex',
@@ -1461,7 +1468,7 @@ const CardThings = () => {
                   </div>
 
                   {/* НИЗ ПРАВОЙ СТОРОНЫ*/}
-                  <div style={{ width: '365px' }} className="right_block_down">
+                  <div  className="right_block_down">
                     <div className="block_down_owner">
                       <p>Владелец</p>
                     </div>
@@ -1666,7 +1673,6 @@ const CardThings = () => {
                               }`}
                               target="_blank">
                               <img
-                                style={{ height: '30px', width: '30px', cursor: 'pointer' }}
                                 src={Ok}
                                 className="img_social"
                                 alt=""

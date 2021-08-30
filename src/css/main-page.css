@@ -2040,8 +2040,9 @@ button {
   .news-reviews-block {
     max-width: 480px;
     width: 310px;
-    height: auto;
-    margin-bottom: 40px;
+    max-height: 200px;
+    height: 100%;
+    margin-bottom: 35px;
   }
   .news-reviews-text {
     margin-bottom: 20px;
@@ -2076,7 +2077,7 @@ button {
   .Main_page li {
     margin-bottom: 10px;
     line-height: 21px;
-    font-size: 25px;
+    font-size: 14px;
   }
   /* 1 */
   .main-sections-first {

@@ -107,21 +107,22 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
   };
   return (
     <div className="log-form">
-                <div className="div_for_krestik">
+                <div className="div_for_krestik" >
                 <img
                   src={Shape}
                   className="img_krestik"
-                  style={{marginRight:'85px'}}
+                  style={{marginRight:'15px'}}
                 />
                 </div>
       <ul className="reg-form-action-type-list">
         <li
           onClick={() => setActiveForm('register')}
           href="#"
+          style={{fontSize:'25px'}}
           className="reg-form-action-type-link">
           Регистрация{successLogin}
         </li>
-        <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
+        <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
           Вход
         </li>
       </ul>

@@ -494,10 +494,11 @@
 
   /* форма входа */
   .reg-form {
-    width: auto;
+    /* width: auto; */
     height: auto;
     margin: 0;
-    border-radius: 0px 0px 15px 15px;
+    /* border-radius: 0px 0px 15px 15px; */
+    border-radius: 0;
     transform: none;
   }
   .reg-form-annotation-wrapper{
@@ -520,14 +521,15 @@
     display: flex;
     align-items: center;
     height: 100%;
+    overflow-x: hidden;
   }
   .log-form{
     max-width: 480px;
     height: auto;
-    width: auto;
+    /* width: 100%; */
     margin:0;
     border-radius: 0;
-    border-radius: 0px 0px 15px 15px;
+    /* border-radius: 0px 0px 15px 15px; */
     transform: none;
   }
   .reg-form-input-area form{
@@ -535,9 +537,11 @@
   }
   .reg-form-email-verification{
     height: 100%;
-    width: 480px;
+    /* width: 480px; */
     margin: 0;
     transform: none;
+    border-radius: 0;
+    /* border-radius: 0px 0px 15px 15px; */
   }
   .log-form-text-label-p-email__upper{
     font-size: 15px;
@@ -545,7 +549,7 @@
     margin-top: 30px;
   }
   .reg-form-input-area{
-    padding: 0 85px;
+    padding: 0 10px;
   }
   .div_for_krestik{
     display: flex;
@@ -562,11 +566,18 @@
     height: 100%;
   }
   .reg-form-action-type-list{
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .reg-form-text-label-l__radio{
     margin-left: 12px;
   }
+  .reg-form-socials img{
+    margin-top: 20px;
+  }
+  .log-form-text-label-p__lower{
+    margin-top: 20px;
+  }
+  
 
 
 

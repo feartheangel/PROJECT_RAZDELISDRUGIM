@@ -330,6 +330,7 @@
   .SearchPage_container_content_left {
     width: 100%;
     background: #ffffff;
+    margin: 0 15px;
   }
   .SearchPage_container_content_left ul {
     /* margin: 15px 15px 20px; */
@@ -349,9 +350,10 @@
 
   /* КАРТОЧКИ - ОБЩИЙ БЛОК */
   .all_content_blocks {
+    height: auto;
     min-width: auto;
     flex-direction: column;
-    margin: 15px 0 15px 0;
+    margin: 15px 0 30px 0;
   }
   .search_map {
     width: 100%;

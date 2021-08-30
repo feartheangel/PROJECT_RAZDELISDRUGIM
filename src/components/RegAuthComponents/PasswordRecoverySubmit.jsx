@@ -86,16 +86,16 @@ const PasswordRecoverySubmit = () => {
                 <img
                   src={Shape}
                   className="img_krestik"
-                  style={{marginRight:'85px'}}
+                  style={{marginRight:'15px'}}
                 />
             </div>
             <ul className="reg-form-action-type-list">
               <Link tag="li" to="/registration">
-                <li href="#" className="reg-form-action-type-link">
+                <li href="#" className="reg-form-action-type-link" style={{fontSize:'25px'}}>
                   Регистрация{redirect}
                 </li>
               </Link>
-              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
+              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
                 Вход
               </li>
             </ul>

@@ -637,10 +637,26 @@
   .card_content {
     display: flex;
     flex-direction: column;
+    box-shadow: none;
+    padding-bottom: 10px;
+    width: 100%;
+    margin-top: 0;
+  }
+  .left_block_information{
+    padding: 15px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 15px;
+    margin-top: 30px;
   }
 
   .card_shapka {
-    margin: 20px 1%;
+    margin: 5px 15px;
+    width: auto;
+    overflow-x: auto;
+  }
+  .card_shapka::-webkit-scrollbar{
+    width: 0;
   }
 
   .card_shapka div p {
@@ -648,7 +664,7 @@
   }
 
   .card_content_left {
-    padding: 6% 4%;
+    padding: 0;
     max-width: 100%;
     box-sizing: border-box;
   }
@@ -688,6 +704,10 @@
   }
 
   .left_block_conditions {
+    padding: 15px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 15px;
     margin-top: 30px;
   }
 
@@ -756,7 +776,17 @@
   }
 
   .card_content_right {
-    padding-left: 15px;
+    padding: 0;
+  }
+  .right_block_up{
+    width: 100%;
+  }
+  .right_block_down{
+    width: auto;
+    padding: 15px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 15px;
   }
 
   .img_contactOwner {
@@ -782,4 +812,25 @@
     justify-content: center;
     border: none;
   }
+
+  .background_blocks{
+    padding: 15px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 15px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
