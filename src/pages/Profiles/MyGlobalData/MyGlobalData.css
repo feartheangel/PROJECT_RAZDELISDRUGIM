@@ -124,6 +124,7 @@ textarea {
     font-size: 18px;
     line-height: 21px;
     font-weight: normal;
+    margin: 0 15px;
   }
   .container_profile_optional::-webkit-scrollbar{
     width: 0;
@@ -157,5 +158,6 @@ textarea {
     box-shadow: none;
     padding: 1px;
     margin-top: 0;
+    margin: 10px 15px 25px 15px;
   }
 }

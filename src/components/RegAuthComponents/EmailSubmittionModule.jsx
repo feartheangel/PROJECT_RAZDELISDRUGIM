@@ -153,7 +153,7 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
 
     {/* МОБИЛЬНАЯ ВЕРСИЯ */}
     <div className={modalActiveEmail ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'} id="regform_mobile">
-      <div className="reg-content" >
+      <div className="reg-content">
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
           <div style={{ height: '400px' }} className="reg-form-email-verification" id="regform_mobile">
             <img

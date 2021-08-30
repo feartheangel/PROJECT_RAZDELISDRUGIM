@@ -617,6 +617,17 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
         </div>
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
       {/* МОБИЛЬНЫЙ АДАПТИВ */}
       {/*верхняя часть*/}
       <div id="profile_mobile">

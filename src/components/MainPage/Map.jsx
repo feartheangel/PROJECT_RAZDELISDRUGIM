@@ -125,9 +125,11 @@ const MapBlock = () => {
           </Map>
         </YMaps>
       </div>
+      {/* МОБИЛЬНЫЙ ДИЗАЙН */}
       <div id="map_adaptiv">
+        <div style={{width:'100%'}}>
         <YMaps>
-          <Map state={mapData} width={320} height={300} modules={['package.full']}>
+          <Map state={mapData} width={'auto'} height={300} modules={['package.full']}>
             <Clusterer
               options={{
                 preset: 'islands#invertedVioletClusterIcons',
@@ -150,6 +152,7 @@ const MapBlock = () => {
             </Clusterer>
           </Map>
         </YMaps>
+        </div>
       </div>
     </section>
   );

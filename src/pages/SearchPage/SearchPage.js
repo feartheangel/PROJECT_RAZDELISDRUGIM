@@ -978,15 +978,15 @@ const SearchPage = () => {
                     <div className="all_content_blocks_up">
                       {searchItems.map((item, index) => {
                         if (index <= 1) {
-                          return <ItemCard key={index} item={item} />;
+                          return <div style={{marginBottom:'0'}}><ItemCard key={index} item={item} /> </div>;
                         }
                       })}
                     </div>
 
                     {searchItems && (
-                      <div style={{ marginBottom: '10px', alignSelf: 'center' }}>
+                      <div style={{ alignSelf: 'center', width:'100%',  marginTop:'20px' }}>
                         <YMaps>
-                          <Map state={mapData} width={320} height={300} modules={['package.full']}>
+                          <Map state={mapData} width={'auto'} height={300} modules={['package.full']}>
                             <Clusterer
                               options={{
                                 preset: 'islands#invertedVioletClusterIcons',
@@ -1016,8 +1016,8 @@ const SearchPage = () => {
                       {searchItems.map((item, index) => {
                         if (index > 1) {
                           return (
-                            <div className="card_div">
-                              <ItemCard key={index} item={item} />
+                            <div className="card_div" >
+                              <div style={{marginBottom:'20px', marginTop:'20px'}}><ItemCard key={index} item={item} /></div>
                             </div>
                           );
                         }

@@ -145,7 +145,6 @@ const CatalogComponent = ({ chapterId }) => {
         <div className="CatalogComponent_list_left">
           {isLoaded &&
             [].concat.apply(Object.entries(categories)).map((category, index) => {
-              if (index % 2 === 0) {
                 return (
                   <p
                     onClick={() => categoryRedirect(category[0], category[1][0])}
@@ -155,25 +154,11 @@ const CatalogComponent = ({ chapterId }) => {
                     {category[0]}
                   </p>
                 );
-              }
+              
             })}
         </div>
 
         <div className="CatalogComponent_list_right">
-          {isLoaded &&
-            [].concat.apply(Object.entries(categories)).map((category, index) => {
-              if (index % 2 === 1) {
-                return (
-                  <p
-                    onClick={() => categoryRedirect(category[0], category[1][0])}
-                    style={{ cursor: 'pointer' }}
-                    key={index}
-                    value={category[1]}>
-                    {category[0]}
-                  </p>
-                );
-              }
-            })}
         </div>
       </div>
       </div>

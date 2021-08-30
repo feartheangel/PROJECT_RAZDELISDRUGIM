@@ -932,6 +932,7 @@ const CardThings = () => {
         </div>
       </div>
 
+      {/* МОБИЛЬНЫЙ АДАПТИВ */}
       <div id="card_thing_mobile">
         <div className="CardThings_Wrapper">
           <div className="CardThings_Wrapper_container">
@@ -977,175 +978,178 @@ const CardThings = () => {
               <div className="card_content">
                 {/*ЛЕВАЯ СТОРОНА*/}
                 <div className="card_content_left">
-                  <div className="left_block_photo">
-                    <div className="left_block_photo_small">
-                      {itemData && itemData.image_1 && (
-                        <img
-                          className={
-                            selectedImage === itemData.image_1
-                              ? 'card_thing_image active'
-                              : 'card_thing_image'
-                          }
-                          onClick={() => setSelectedImage(itemData && itemData.image_1)}
-                          src={itemData && `https://razdelisdrugim.by${itemData.image_1}`}
-                          alt=""
-                        />
-                      )}
-                      {itemData && itemData.image_2 && (
-                        <img
-                          className={
-                            selectedImage === itemData.image_2
-                              ? 'card_thing_image active'
-                              : 'card_thing_image'
-                          }
-                          onClick={() => setSelectedImage(itemData && itemData.image_2)}
-                          src={itemData && `https://razdelisdrugim.by${itemData.image_2}`}
-                          alt=""
-                        />
-                      )}
-                      {itemData && itemData.image_3 && (
-                        <img
-                          className={
-                            selectedImage === itemData.image_3
-                              ? 'card_thing_image active'
-                              : 'card_thing_image'
-                          }
-                          onClick={() => setSelectedImage(itemData && itemData.image_3)}
-                          src={itemData && `https://razdelisdrugim.by${itemData.image_3}`}
-                          alt=""
-                        />
-                      )}
-                      {itemData && itemData.image_4 && (
-                        <img
-                          className={
-                            selectedImage === itemData.image_4
-                              ? 'card_thing_image active'
-                              : 'card_thing_image'
-                          }
-                          onClick={() => setSelectedImage(itemData && itemData.image_4)}
-                          src={itemData && `https://razdelisdrugim.by${itemData.image_4}`}
-                          alt=""
-                        />
-                      )}
-                      {itemData && itemData.image_5 && (
-                        <img
-                          className={
-                            selectedImage === itemData.image_5
-                              ? 'card_thing_image active'
-                              : 'card_thing_image'
-                          }
-                          onClick={() => setSelectedImage(itemData && itemData.image_5)}
-                          src={itemData && `https://razdelisdrugim.by${itemData.image_5}`}
-                          alt=""
-                        />
-                      )}
-                    </div>
-
-                    <div className="left_block_photo_big">
-                      {itemData && itemData.image_1 && (
-                        <img
-                          onClick={() => setSelectedImage(itemData && itemData.image_1)}
-                          src={
-                            itemData && `https://razdelisdrugim.by${selectedImage && selectedImage}`
-                          }
-                          alt=""
-                        />
-                      )}
-                    </div>
-                  </div>
-                  <div className="block_up_notebook">
-                    <p>{itemData && itemData.name_item}</p>
-                  </div>
-                  <div className="block_up_yourCost">
-                    {itemData && itemData.offer_price_rent && (
-                      <div style={{ display: 'flex' }}>
-                        <img src={HandShake} className="yourCost_handShake" alt="" />
-                        <p className="block_up_yourCost-p1">Предложить свою цену</p>
-                      </div>
-                    )}
-                    {itemData && itemData.free_rent && (
-                      <div style={{ display: 'flex' }}>
-                        <img src={freePrice} className="yourCost_handShake" alt="" />
-                        <p className="block_up_yourCost-p1">Бесплатно</p>
-                      </div>
-                    )}
-                    {itemData && !itemData.offer_price_rent && !itemData.free_rent && (
-                      <div style={{ display: 'flex' }}>
-                        <p style={{ marginRight: '10px' }} className="block_up_yourCost-p1">
-                          <span style={{ fontWeight: '500' }}>
-                            {itemData && itemData.price_rent}
-                          </span>{' '}
-                          BYN
-                        </p>
-                        <p style={{ marginRight: '10px' }} className="block_up_yourCost-p1">
-                          в
-                        </p>
-                        <p style={{ fontWeight: '500' }} className="block_up_yourCost-p1">
-                          {itemData && itemData.rent === 'Час'
-                            ? 'час'
-                            : itemData && itemData.rent === 'День'
-                            ? 'день'
-                            : itemData && itemData.rent === 'Неделя'
-                            ? 'неделю'
-                            : itemData && itemData.rent === 'Месяц'
-                            ? 'месяц'
-                            : ''}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                  {/* Адрес местонахождения*/}
-                  <div className="block_up_address">
-                    <div className="conditions_row">
-                      <img src={Address} className="img_address" alt="" />
-                      <p className="block_up_address_row-p">Адрес местонахождения:</p>
-                    </div>
-                    {isLoggedIn ? (
-                      <p className="block_up_address-p">
-                        {itemData && itemData.items_address.split(',')[0]},{' '}
-                        {itemData && itemData.items_address.split(',')[1]}
-                      </p>
-                    ) : (
-                      <p style={{ color: '#4CC9F0' }} className="block_up_address-p">
-                        Адрес доступен после регистрации
-                      </p>
-                    )}
-                  </div>
-                  <div className="card_photo_lower_table_wrapper">
-                    <div
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => setShareVisible(!shareVisible)}
-                      className="left_block_toShare">
-                      <img src={Share} alt="" />
-                      <p> Поделиться</p>
-                    </div>
-                    {shareVisible && (
-                      <div className={'item_share_link'}>
-                        <input type="text" value={window.location.href} />
-                        <div className="toShare_button_wrapper">
+                  <div className="background_blocks">
+                    <div className="left_block_photo">
+                      <div className="left_block_photo_small">
+                        {itemData && itemData.image_1 && (
                           <img
-                            onClick={window.navigator.clipboard.writeText(
-                              `${window.location.href}`,
-                            )}
-                            style={{ cursor: 'pointer' }}
-                            src={copy}
-                            className={'item-card-profile-button-image'}
+                            className={
+                              selectedImage === itemData.image_1
+                                ? 'card_thing_image active'
+                                : 'card_thing_image'
+                            }
+                            onClick={() => setSelectedImage(itemData && itemData.image_1)}
+                            src={itemData && `https://razdelisdrugim.by${itemData.image_1}`}
+                            alt=""
                           />
-                          <label
-                            onClick={() => {
-                              window.navigator.clipboard.writeText(`${window.location.href}`);
-                              setShareVisible(false);
-                            }}
-                            style={{ cursor: 'pointer' }}
-                            className="item-card-profile-button__optional">
-                            Копировать
-                          </label>
-                        </div>
+                        )}
+                        {itemData && itemData.image_2 && (
+                          <img
+                            className={
+                              selectedImage === itemData.image_2
+                                ? 'card_thing_image active'
+                                : 'card_thing_image'
+                            }
+                            onClick={() => setSelectedImage(itemData && itemData.image_2)}
+                            src={itemData && `https://razdelisdrugim.by${itemData.image_2}`}
+                            alt=""
+                          />
+                        )}
+                        {itemData && itemData.image_3 && (
+                          <img
+                            className={
+                              selectedImage === itemData.image_3
+                                ? 'card_thing_image active'
+                                : 'card_thing_image'
+                            }
+                            onClick={() => setSelectedImage(itemData && itemData.image_3)}
+                            src={itemData && `https://razdelisdrugim.by${itemData.image_3}`}
+                            alt=""
+                          />
+                        )}
+                        {itemData && itemData.image_4 && (
+                          <img
+                            className={
+                              selectedImage === itemData.image_4
+                                ? 'card_thing_image active'
+                                : 'card_thing_image'
+                            }
+                            onClick={() => setSelectedImage(itemData && itemData.image_4)}
+                            src={itemData && `https://razdelisdrugim.by${itemData.image_4}`}
+                            alt=""
+                          />
+                        )}
+                        {itemData && itemData.image_5 && (
+                          <img
+                            className={
+                              selectedImage === itemData.image_5
+                                ? 'card_thing_image active'
+                                : 'card_thing_image'
+                            }
+                            onClick={() => setSelectedImage(itemData && itemData.image_5)}
+                            src={itemData && `https://razdelisdrugim.by${itemData.image_5}`}
+                            alt=""
+                          />
+                        )}
                       </div>
-                    )}
-                    <div className="card_views_wrapper">
-                      <img src={Views} className="card_views_icon" />
-                      <p>{itemData && itemData.item_views} просмотра(-ов)</p>
+
+                      <div className="left_block_photo_big">
+                        {itemData && itemData.image_1 && (
+                          <img
+                            onClick={() => setSelectedImage(itemData && itemData.image_1)}
+                            src={
+                              itemData &&
+                              `https://razdelisdrugim.by${selectedImage && selectedImage}`
+                            }
+                            alt=""
+                          />
+                        )}
+                      </div>
+                    </div>
+                    <div className="block_up_notebook">
+                      <p>{itemData && itemData.name_item}</p>
+                    </div>
+                    <div className="block_up_yourCost">
+                      {itemData && itemData.offer_price_rent && (
+                        <div style={{ display: 'flex' }}>
+                          <img src={HandShake} className="yourCost_handShake" alt="" />
+                          <p className="block_up_yourCost-p1">Предложить свою цену</p>
+                        </div>
+                      )}
+                      {itemData && itemData.free_rent && (
+                        <div style={{ display: 'flex' }}>
+                          <img src={freePrice} className="yourCost_handShake" alt="" />
+                          <p className="block_up_yourCost-p1">Бесплатно</p>
+                        </div>
+                      )}
+                      {itemData && !itemData.offer_price_rent && !itemData.free_rent && (
+                        <div style={{ display: 'flex' }}>
+                          <p style={{ marginRight: '10px' }} className="block_up_yourCost-p1">
+                            <span style={{ fontWeight: '500' }}>
+                              {itemData && itemData.price_rent}
+                            </span>{' '}
+                            BYN
+                          </p>
+                          <p style={{ marginRight: '10px' }} className="block_up_yourCost-p1">
+                            в
+                          </p>
+                          <p style={{ fontWeight: '500' }} className="block_up_yourCost-p1">
+                            {itemData && itemData.rent === 'Час'
+                              ? 'час'
+                              : itemData && itemData.rent === 'День'
+                              ? 'день'
+                              : itemData && itemData.rent === 'Неделя'
+                              ? 'неделю'
+                              : itemData && itemData.rent === 'Месяц'
+                              ? 'месяц'
+                              : ''}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                    {/* Адрес местонахождения*/}
+                    <div className="block_up_address">
+                      <div className="conditions_row">
+                        <img src={Address} className="img_address" alt="" />
+                        <p className="block_up_address_row-p">Адрес местонахождения:</p>
+                      </div>
+                      {isLoggedIn ? (
+                        <p className="block_up_address-p">
+                          {itemData && itemData.items_address.split(',')[0]},{' '}
+                          {itemData && itemData.items_address.split(',')[1]}
+                        </p>
+                      ) : (
+                        <p style={{ color: '#4CC9F0' }} className="block_up_address-p">
+                          Адрес доступен после регистрации
+                        </p>
+                      )}
+                    </div>
+                    <div className="card_photo_lower_table_wrapper">
+                      <div
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => setShareVisible(!shareVisible)}
+                        className="left_block_toShare">
+                        <img src={Share} alt="" />
+                        <p> Поделиться</p>
+                      </div>
+                      {shareVisible && (
+                        <div className={'item_share_link'}>
+                          <input type="text" value={window.location.href} />
+                          <div className="toShare_button_wrapper">
+                            <img
+                              onClick={window.navigator.clipboard.writeText(
+                                `${window.location.href}`,
+                              )}
+                              style={{ cursor: 'pointer' }}
+                              src={copy}
+                              className={'item-card-profile-button-image'}
+                            />
+                            <label
+                              onClick={() => {
+                                window.navigator.clipboard.writeText(`${window.location.href}`);
+                                setShareVisible(false);
+                              }}
+                              style={{ cursor: 'pointer' }}
+                              className="item-card-profile-button__optional">
+                              Копировать
+                            </label>
+                          </div>
+                        </div>
+                      )}
+                      <div className="card_views_wrapper">
+                        <img src={Views} className="card_views_icon" />
+                        <p>{itemData && itemData.item_views} просмотра(-ов)</p>
+                      </div>
                     </div>
                   </div>
 
@@ -1409,9 +1413,9 @@ const CardThings = () => {
                 {/*ПРАВАЯ СТОРОНА*/}
                 <div className="card_content_right">
                   <div className="right_block_up">
-                    <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+                    <div style={{ marginTop: '20px', marginBottom: '20px', width: '100%' }}>
                       <YMaps>
-                        <Map width={300} height={200} defaultState={itemData && mapData}>
+                        <Map width={'auto'} height={200} defaultState={itemData && mapData}>
                           <Placemark geometry={itemData && mapData.center} />
                         </Map>
                       </YMaps>
@@ -1426,7 +1430,7 @@ const CardThings = () => {
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
                     <div
                       style={{
-                        width: '90%',
+                        width: '100%',
                         position: ' fixed',
                         bottom: '0',
                         display: 'flex',
@@ -1460,7 +1464,7 @@ const CardThings = () => {
                   </div>
 
                   {/* НИЗ ПРАВОЙ СТОРОНЫ*/}
-                  <div style={{ width: '365px' }} className="right_block_down">
+                  <div className="right_block_down">
                     <div className="block_down_owner">
                       <p>Владелец</p>
                     </div>
@@ -1667,12 +1671,7 @@ const CardThings = () => {
                                   : `https://${itemData && itemData.profile.ok_account}`
                               }`}
                               target="_blank">
-                              <img
-                                style={{ height: '30px', width: '30px', cursor: 'pointer' }}
-                                src={Ok}
-                                className="img_social"
-                                alt=""
-                              />
+                              <img src={Ok} className="img_social" alt="" />
                             </a>
                           )}
                         </div>

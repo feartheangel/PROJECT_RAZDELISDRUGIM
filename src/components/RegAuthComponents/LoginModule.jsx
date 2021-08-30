@@ -7,6 +7,7 @@ import { vkAuth, googleAuth, facebookAuth } from '../../http/social-auth';
 import Requests from '../../http/axios-requests';
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../../redux/actions/userData';
+import Shape from '../../img/Shape.png';
 
 const LoginModule = ({ setModalActive, setActiveForm }) => {
   const dispatch = useDispatch();
@@ -106,14 +107,26 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
   };
   return (
     <div className="log-form">
+      <div className="div_for_krestik">
+        <img
+          onClick={() => setModalActive(false)}
+          src={Shape}
+          className="img_krestik"
+          style={{ marginRight: '15px' }}
+        />
+      </div>
       <ul className="reg-form-action-type-list">
         <li
           onClick={() => setActiveForm('register')}
           href="#"
+          style={{ fontSize: '25px' }}
           className="reg-form-action-type-link">
           Регистрация{successLogin}
         </li>
-        <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active">
+        <li
+          href="#"
+          className="reg-form-action-type-link reg-form-action-type-link__active"
+          style={{ fontSize: '25px' }}>
           Вход
         </li>
       </ul>

@@ -80,7 +80,7 @@ const NumberSubmittionModule = ({ modalActiveNumber, setModalActiveNumber }) => 
     <div
       className={modalActiveNumber ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}
       onClick={() => setModalActiveNumber(false)}>
-      <div className="reg-content">
+      <div className="reg-content" >
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
           <div style={{ height: '400px' }} className="reg-form-email-verification">
             <img
