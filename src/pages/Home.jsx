@@ -31,7 +31,7 @@ const Home = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Главная';
+    document.title = 'Главная: #разделисдругим';
   }, []);
 
   return (

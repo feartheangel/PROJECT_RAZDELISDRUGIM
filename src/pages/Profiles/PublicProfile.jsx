@@ -4,14 +4,12 @@ import './MyGlobalData/MyData/MyData.css';
 import { Header, Footer, ItemCard } from '../../components/index';
 import { useSelector } from 'react-redux';
 import Requests from '../../http/axios-requests';
-import CardProduct from '../../pages/SearchPage/CardProduct/CardProduct.js';
 import Address from '../../components/PublicProfile/Address.jsx';
 import AboutMe from '../../components/PublicProfile/AboutMe.jsx';
 import Vector6 from '../../img/CardThings/RightContent/Vector6.png';
 import Vector7 from '../../img/CardThings/RightContent/Vector7.png';
 import Star1 from '../../img/CardThings/RightContent/Star 4.png';
 import Star2 from '../../img/CardThings/RightContent/Star 2.png';
-import AvatarOwner from '../../img/CardThings/RightContent/Ellipse 5.png';
 import Telegram from '../../img/CardThings/RightContent/Component 36.png';
 import Viber from '../../img/CardThings/RightContent/Component 37.png';
 import Whatsapp from '../../img/CardThings/RightContent/Component 38.png';
@@ -114,12 +112,15 @@ const PublicProfile = () => {
                 <div className="up_global_alight">
                   <div className="up_global_margin">
                     <div className="block_down_star">
-                      <div className="conditions_row">
+                      <div style={{ display: 'none' }} className="conditions_row">
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
+                      </div>
+                      <div className="block2_reviews_stars">
+                        <p className="block2_reviews_text">Пока нет оценок</p>
                       </div>
                       <p className="block_down_star-p">Пока нет отзывов</p>
                     </div>

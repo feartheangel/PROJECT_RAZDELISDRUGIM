@@ -6,6 +6,10 @@
   font-family: 'Raleway', 'Sans-serif';
 }
 
+html {
+  background-color: #fffef9;
+}
+
 p,
 input,
 button {
@@ -73,7 +77,7 @@ button {
 }
 
 .logo {
-  margin-right: 357px;
+  margin-right: 356px;
 }
 
 .location-img {
@@ -201,7 +205,7 @@ button {
 .login-button {
   margin-left: 60px;
   width: 124px;
-  height: 40px;
+  height: 45px;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -218,7 +222,7 @@ button {
 }
 
 .add-subject {
-  width: 218px;
+  width: 228px;
   height: 45px;
   font-style: normal;
   font-weight: normal;
@@ -233,7 +237,7 @@ button {
   cursor: pointer;
 }
 .add-subject2 {
-  width: 218px;
+  width: 228px;
   height: 45px;
   font-style: normal;
   font-weight: normal;
@@ -512,7 +516,7 @@ button {
 }
 
 .popular-button {
-  width: 214px;
+  width: 228px;
   height: 45px;
   background: #4cc9f0;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
@@ -561,6 +565,12 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 40px;
+}
+
+.abilities-cards-upper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .abilities-card {
@@ -747,7 +757,6 @@ button {
 }
 
 .about-middle-right {
-  display: flex;
   justify-content: center;
   align-items: flex-start;
   font-size: 20px;
@@ -792,7 +801,7 @@ button {
   font-size: 36px;
   line-height: 42px;
   color: #f7fff7;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .news-reviews-blocks {
@@ -813,7 +822,7 @@ button {
   align-items: center;
   flex-direction: column;
   width: 349px;
-  height: 254px;
+  height: 180px;
   padding: 15px;
   background: #f7fff7;
   border: 1px solid rgba(76, 201, 240, 0.14);
@@ -860,7 +869,6 @@ button {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
   font-size: 20px;
   flex-wrap: wrap;
 }
@@ -889,7 +897,7 @@ button {
 
 .main-sections-first-ul {
   margin-bottom: 50px;
-  width: 540px;
+  width: 470px;
   margin-left: 170px;
 }
 
@@ -1091,7 +1099,7 @@ button {
 }
 
 .abilities_button {
-  width: 300px;
+  width: 228px;
   margin-bottom: 20px;
 }
 
@@ -1253,6 +1261,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 233px;
 }
 
 .home_slider_track {
@@ -1375,7 +1384,7 @@ button {
     padding-bottom: 0;
   }
   .news-alert-block {
-    height: 37px;
+    height: auto;
     font-size: 14px;
   }
   /* шапка хедера */
@@ -2323,5 +2332,9 @@ button {
 
   .profile_popup_line {
     margin: 1px 0px;
+  }
+
+  .selector_header_items {
+    width: 70px;
   }
 }

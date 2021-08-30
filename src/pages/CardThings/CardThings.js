@@ -629,13 +629,11 @@ const CardThings = () => {
                     </div>
 
                     <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-                      {isLoggedIn && (
-                        <YMaps>
-                          <Map width={300} height={200} defaultState={itemData && mapData}>
-                            <Placemark geometry={itemData && mapData.center} />
-                          </Map>
-                        </YMaps>
-                      )}
+                      <YMaps>
+                        <Map width={300} height={200} defaultState={itemData && mapData}>
+                          <Placemark geometry={itemData && mapData.center} />
+                        </Map>
+                      </YMaps>
                     </div>
 
                     {/* Свободно*/}
@@ -726,12 +724,15 @@ const CardThings = () => {
 
                     {/*Звездочки и отзывы*/}
                     <div className="block_down_star">
-                      <div className="conditions_row">
+                      <div style={{ display: 'none' }} className="conditions_row">
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
+                      </div>
+                      <div className="block2_reviews_stars">
+                        <p className="block2_reviews_text">Пока нет оценок</p>
                       </div>
                       <p className="block_down_star-p">Отзывов пока нет</p>
                     </div>
@@ -1408,15 +1409,13 @@ const CardThings = () => {
                 {/*ПРАВАЯ СТОРОНА*/}
                 <div className="card_content_right">
                   <div className="right_block_up">
-                    {isLoggedIn && (
-                      <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-                        <YMaps>
-                          <Map width={300} height={200} defaultState={itemData && mapData}>
-                            <Placemark geometry={itemData && mapData.center} />
-                          </Map>
-                        </YMaps>
-                      </div>
-                    )}
+                    <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+                      <YMaps>
+                        <Map width={300} height={200} defaultState={itemData && mapData}>
+                          <Placemark geometry={itemData && mapData.center} />
+                        </Map>
+                      </YMaps>
+                    </div>
 
                     {/* Свободно*/}
                     <div style={{ display: 'none' }} className="block_up_free">
@@ -1495,12 +1494,15 @@ const CardThings = () => {
 
                     {/*Звездочки и отзывы*/}
                     <div className="block_down_star">
-                      <div className="conditions_row">
+                      <div style={{ display: 'none' }} className="conditions_row">
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
+                      </div>
+                      <div className="block2_reviews_stars">
+                        <p className="block2_reviews_text">Пока нет оценок</p>
                       </div>
                       <p className="block_down_star-p">Отзывов пока нет</p>
                     </div>

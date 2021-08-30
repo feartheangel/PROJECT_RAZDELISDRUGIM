@@ -268,12 +268,15 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
           {/*ОТЗЫВЫ ОЦЕНКИ*/}
           <div className="content_block2_reviews">
+            <div style={{ display: 'none' }} className="block2_reviews_stars">
+              <img src={Star5} alt="" />
+              <img src={Star5} alt="" />
+              <img src={Star5} alt="" />
+              <img src={Star5} alt="" />
+              <img src={Star5} alt="" />
+            </div>
             <div className="block2_reviews_stars">
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
+              <p className="block2_reviews_text">Пока нет оценок</p>
             </div>
             <p className="block2_reviews_text"> 0 отзывов </p>
           </div>

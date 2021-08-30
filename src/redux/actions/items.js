@@ -12,3 +12,8 @@ export const setItemsLoading = () => ({
   type: 'SET_ITEMS_LOADING',
   payload: false,
 });
+
+export const setNews = (arr) => ({
+  type: 'SET_NEWS',
+  payload: arr,
+});

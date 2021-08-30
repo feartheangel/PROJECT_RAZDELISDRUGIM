@@ -58,7 +58,6 @@
   color: #f5d32c;
 }
 .block2_reviews_text {
-  margin: 10px 5px 0;
   font-size: 18px;
   color: #4cc9f0;
 }
@@ -439,35 +438,28 @@ option {
   opacity: 0.6;
 }
 
-#profile_mobile{
+#profile_mobile {
   display: none;
 }
-.setting_right_socialNetworks{
+.setting_right_socialNetworks {
   align-self: flex-start;
 }
 
-
-
-
-
 /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
 @media only screen and (max-width: 480px) {
-
-  #profile_mobile{
+  #profile_mobile {
     display: flex;
     flex-direction: column;
   }
-  #profile_pk{
+  #profile_pk {
     display: none;
   }
-  .content_block2_rent_take{
+  .content_block2_rent_take {
     display: none;
   }
-  .block1_right_watchProfile{
+  .block1_right_watchProfile {
     display: none;
   }
-
-
 
   .settings-profile-form {
     width: 100%;
@@ -482,18 +474,16 @@ option {
     width: 58%;
   }
 
-
-
-/* адаптив v2 */
+  /* адаптив v2 */
 
   /* ФОТО АВАТАРКИ */
-  .profile-photo{
+  .profile-photo {
     margin-right: 30px;
     border-radius: 100%;
     cursor: pointer;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   }
-  .my-data-settings-header-wrapper{
+  .my-data-settings-header-wrapper {
     width: 100%;
     flex-direction: column;
     border-bottom: 1px solid rgba(76, 201, 240, 0.77);
@@ -507,34 +497,34 @@ option {
     padding: 15px 0;
     justify-content: space-between;
   }
-  .block1_left_name{
+  .block1_left_name {
     font-size: 16px;
     font-weight: 500;
   }
-  .block1_left_privateFace{
+  .block1_left_privateFace {
     font-size: 14px;
     font-weight: 400;
     margin-top: 5px;
   }
-  .content_block2_image{
+  .content_block2_image {
     width: 80px;
     height: 100px;
     margin-right: 15px;
     display: flex;
     align-self: center;
   }
-  .content_block2_reviews{
+  .content_block2_reviews {
     margin-top: 5px;
     margin-right: 0;
   }
-  .content_block2_reviews img:first-child{
+  .content_block2_reviews img:first-child {
     margin: 0 5px 0 0;
   }
-  .content_block2_connection{
+  .content_block2_connection {
     margin: 0;
     width: 59%;
   }
-  .content_block2_telephone{
+  .content_block2_telephone {
     display: flex;
     font-weight: normal;
     font-size: 14px;
@@ -543,11 +533,11 @@ option {
     justify-content: space-between;
     align-items: baseline;
   }
-  .my-data-submitted-img{
+  .my-data-submitted-img {
     width: 12px;
     height: 10px;
   }
-  .content_block2_mail{
+  .content_block2_mail {
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
@@ -556,7 +546,7 @@ option {
     justify-content: space-between;
     align-items: baseline;
   }
-  .content_block2_online{
+  .content_block2_online {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -567,22 +557,22 @@ option {
     color: #123940;
     width: 35%;
   }
-  .content_block2_online_website{
+  .content_block2_online_website {
     display: flex;
     justify-content: space-between;
   }
-  .online_website_text{
+  .online_website_text {
     margin-right: 0;
   }
   .online_time_text {
     margin-bottom: 10px;
     margin-right: 0;
   }
-  .content_block2_online_time{
+  .content_block2_online_time {
     display: flex;
     justify-content: space-between;
   }
-  .block2_telephone_text{
+  .block2_telephone_text {
     font-size: 14px;
     line-height: 16px;
     color: #123940;
@@ -601,13 +591,13 @@ option {
     font-size: 14px;
     line-height: 16px;
   }
-  .block2_reviews_stars img{
+  .block2_reviews_stars img {
     width: 16px;
     height: 16px;
   }
 
   /* соц сети и месседжеры */
-  .setting_right_socialNetworks{
+  .setting_right_socialNetworks {
     display: flex;
     align-self: flex-start;
     font-weight: normal;
@@ -616,7 +606,7 @@ option {
     align-items: center;
     width: 100%;
   }
-  .content_setting_right{
+  .content_setting_right {
     align-items: flex-start;
     width: 100%;
   }
@@ -625,21 +615,21 @@ option {
     height: 32px;
     margin: 10px 0 15px 0;
   }
-  .social_icons{
+  .social_icons {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
   }
-  .setting_right_socialNetworks-p{
+  .setting_right_socialNetworks-p {
     margin-right: 5px;
   }
 
   /* ОПЦИИ - ИНПУТЫ под ШАПКОЙ */
-  .setting_left_input_wrapper{
+  .setting_left_input_wrapper {
     margin: 15px 0;
   }
-  .setting_left_input-label{
+  .setting_left_input-label {
     font-size: 16px;
     margin-bottom: 5px;
   }
@@ -655,72 +645,21 @@ option {
   .setting_left_input__textarea {
     width: 100%;
   }
-  .my-data-lower-p__password{
+  .my-data-lower-p__password {
     font-size: 18px;
   }
-  .button_password_profile{
+  .button_password_profile {
     margin-bottom: 20px;
   }
   .password-control__profile {
     left: 230px;
   }
-  .setting_left_input_row{
+  .setting_left_input_row {
     display: flex;
   }
 
   /* КНОПКА СОХРАНИТЬ */
-  #button_max_width{
+  #button_max_width {
     width: 100%;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
