@@ -125,7 +125,7 @@ const CardThings = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = itemData && itemData.name_item;
+    document.title = `${itemData && itemData.name_item}: #разделисдругим`;
   }, [itemData]);
 
   const mapData = {

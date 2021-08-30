@@ -139,7 +139,7 @@ const SearchPage = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Поиск';
+    document.title = 'Поиск: #разделисдругим';
   }, []);
 
   React.useEffect(() => {
