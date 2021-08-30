@@ -31,7 +31,7 @@ const AbilitiesBlock = () => {
     <section className="abilities">
       <div className="abilities-content">
         <p className="abilities-mail-title">Возможности с платформой #разделисдругим</p>
-        <div className="abilities-cards">
+        <div className="abilities-cards-upper">
           <div className="abilities-card">
             <p className="main-abilities-card-title">Делитесь с другими</p>
             <img src={abil1} alt="" className="abilities-card-img" />
@@ -59,6 +59,8 @@ const AbilitiesBlock = () => {
               аренды. Закажи у нас мобильное приложение для своей компании!
             </p>
           </div>
+        </div>
+        <div className="abilities-cards">
           <div className="abilities-card">
             <p className="main-abilities-card-title">Экономьте время</p>
             <img src={abil4} alt="" className="abilities-card-img" />
@@ -80,11 +82,7 @@ const AbilitiesBlock = () => {
         </div>
         <div className="main_page_first_block_left_bottons">
           <Link style={{ textDecoration: 'none' }} to="/search">
-            <input
-              type="button"
-              value="Найти вещь"
-              className="header-button add-subject2"
-            />
+            <input type="button" value="Найти вещь" className="header-button add-subject2" />
           </Link>
           <input
             onClick={addSubjectHandler}

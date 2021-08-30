@@ -167,19 +167,27 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   };
 
   return (
-    <div className="reg-form"> 
-                <div className="div_for_krestik" >
-                <img
-                  src={Shape}
-                  className="img_krestik"
-                  style={{marginRight:'15px'}}
-                />
-                </div>
+    <div className="reg-form">
+      <div className="div_for_krestik">
+        <img
+          onClick={() => setModalActive(false)}
+          src={Shape}
+          className="img_krestik"
+          style={{ marginRight: '15px' }}
+        />
+      </div>
       <ul className="reg-form-action-type-list">
-        <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
+        <li
+          href="#"
+          className="reg-form-action-type-link reg-form-action-type-link__active"
+          style={{ fontSize: '25px' }}>
           Регистрация
         </li>
-        <li onClick={() => setActiveForm('login')} href="#" className="reg-form-action-type-link" style={{fontSize:'25px'}}>
+        <li
+          onClick={() => setActiveForm('login')}
+          href="#"
+          className="reg-form-action-type-link"
+          style={{ fontSize: '25px' }}>
           Вход
         </li>
       </ul>

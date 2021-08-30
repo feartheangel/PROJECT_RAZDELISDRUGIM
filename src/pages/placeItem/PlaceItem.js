@@ -652,7 +652,7 @@ const PlaceItem = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Добавление';
+    document.title = 'Добавление: #разделисдругим';
   }, []);
 
   const { items, isLoaded } = useSelector(({ items }) => items);

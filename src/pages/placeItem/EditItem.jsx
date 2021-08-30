@@ -833,7 +833,7 @@ const EditItem = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Редактирование';
+    document.title = 'Редактирование: #разделисдругим';
   }, []);
 
   //выделяем разделы

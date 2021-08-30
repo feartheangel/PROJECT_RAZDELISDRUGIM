@@ -31,7 +31,7 @@ const FirstBlockNavigation = () => {
         <div className="main_page_fris_block_left">
           <p className="main_page_fris_block_left_main_p">#РАЗДЕЛИСДРУГИМ</p>
           <p className="main_page_fris_block_left_second_p">
-            Платформа, где делятся вещами друг с другом в аренду
+            Платформа, где делятся вещами<br></br> друг с другом в аренду
           </p>
           <img src={FirstImage} className="FirstImage2" />
           <div className="main_page_first_block_left_bottons">

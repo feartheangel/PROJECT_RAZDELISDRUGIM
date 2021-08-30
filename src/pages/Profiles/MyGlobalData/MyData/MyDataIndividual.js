@@ -200,418 +200,421 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
       {/* ШАПКА С ПРОФИЛЕМ*/}
 
       {/*верхняя часть*/}
-      <div  id="profile_pk">
-      <div className="content_block1">
-        <div className="content_block1_left">
-          <p className="block1_left_name">
-            {userData.first_name ? userData.first_name : 'Имя не указано'}
-          </p>
-          <p className="block1_left_privateFace"> Частное лицо </p>
-        </div>
-        {redirect}
-
-        <div className="content_block1_right">
-          <a
-            style={{ textDecoration: 'none' }}
-            target="_blank"
-            href={`/public-profile?id=${userData && userData.id}`}>
-            <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
-          </a>
-        </div>
-      </div>
-
-      {/*нижняя часть часть*/}
-      {/*ФОТО*/}
-      <div className="my-data-settings-header-wrapper">
-        <div className="content_block2">
-          <div className="content_block2_image">
-            <input
-              style={{ display: 'none' }}
-              type="file"
-              accept="image/*,image/jpeg"
-              id="photo_input"
-              onChange={(e) => photoHandler(e)}
-            />
-            <label className="profile-photo-wrapper" for="photo_input">
-              <img
-                style={{
-                  marginRight: '30px',
-                  borderRadius: '100%',
-                  boxShadow: '3px 3px 22px rgba(99, 212, 248, 0.24)',
-                  cursor: 'pointer',
-                }}
-                className="profile-photo"
-                src={`https://razdelisdrugim.by${userData.image_profile}`}
-                alt=""
-              />
-              <div className="profile-photo-overlay">Изменить</div>
-            </label>
+      <div id="profile_pk">
+        <div className="content_block1">
+          <div className="content_block1_left">
+            <p className="block1_left_name">
+              {userData.first_name ? userData.first_name : 'Имя не указано'}
+            </p>
+            <p className="block1_left_privateFace"> Частное лицо </p>
           </div>
+          {redirect}
 
-          {/*ОТЗЫВЫ ОЦЕНКИ*/}
-          <div className="content_block2_reviews">
-            <div className="block2_reviews_stars">
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
-              <img src={Star5} alt="" />
-            </div>
-            <p className="block2_reviews_text"> 0 отзывов </p>
-          </div>
-
-          {/*ТЕЛЕФОН / ПОЧТА*/}
-
-          <div className="content_block2_connection">
-            <div className="content_block2_telephone">
-              <p className="block2_telephone_text">{'Телефон подтвержден'}</p>
-              <img
-                className="my-data-submitted-img"
-                src={userData.phone_verify ? Vector : VectorDisabled}
-              />
-            </div>
-
-            <div className="content_block2_mail">
-              <p className="block2_mail_text">{'Почта подтверждена'}</p>
-              <img
-                className="my-data-submitted-img"
-                src={userData.email_verify ? Vector : VectorDisabled}
-              />
-            </div>
-          </div>
-
-          {/*ТЕЛЕФОН / ПОЧТА*/}
-          <div className="content_block2_online">
-            <div className="content_block2_online_website">
-              <p className="online_website_text"> На сайте </p>
-              <p className="online_website_text2">
-                {' '}
-                {getDaysBetweenDates(userData.register_date, new Date())}
-              </p>
-            </div>
-
-            <div className="content_block2_online_time">
-              <p className="online_time_text"> Время ответа </p>
-              <p className="online_time_text2"> - </p>
-            </div>
-          </div>
-
-          {/*Я СДАЮ / БЕРУ*/}
-
-          <div className="content_block2_rent_take">
-            <div className="rent_take_content1">
-              <p className="rent_take_content1_rent"> Я сдаю </p>
-              <p className="rent_take_content1_number"> {subjects.length} </p>
-            </div>
-
-            <div className="rent_take_content2">
-              <p className="rent_take_content2_take"> Я беру </p>
-              <p className="rent_take_content2_number"> - </p>
-            </div>
+          <div className="content_block1_right">
+            <a
+              style={{ textDecoration: 'none' }}
+              target="_blank"
+              href={`/public-profile?id=${userData && userData.id}`}>
+              <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
+            </a>
           </div>
         </div>
-      </div>
 
-      {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
-      <div className="mydata-settings-main-content">
-        <form className="settings-profile-form">
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Имя <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              className="setting_left_input"
-              type="text"
-            />
-          </div>
+        {/*нижняя часть часть*/}
+        {/*ФОТО*/}
+        <div className="my-data-settings-header-wrapper">
+          <div className="content_block2">
+            <div className="content_block2_image">
+              <input
+                style={{ display: 'none' }}
+                type="file"
+                accept="image/*,image/jpeg"
+                id="photo_input"
+                onChange={(e) => photoHandler(e)}
+              />
+              <label className="profile-photo-wrapper" for="photo_input">
+                <img
+                  style={{
+                    marginRight: '30px',
+                    borderRadius: '100%',
+                    boxShadow: '3px 3px 22px rgba(99, 212, 248, 0.24)',
+                    cursor: 'pointer',
+                  }}
+                  className="profile-photo"
+                  src={`https://razdelisdrugim.by${userData.image_profile}`}
+                  alt=""
+                />
+                <div className="profile-photo-overlay">Изменить</div>
+              </label>
+            </div>
 
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Фамилия <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              onChange={(e) => setSurname(e.target.value)}
-              value={surname}
-              className="setting_left_input"
-              type="text"
-            />
-          </div>
+            {/*ОТЗЫВЫ ОЦЕНКИ*/}
+            <div className="content_block2_reviews">
+              <div style={{ display: 'none' }} className="block2_reviews_stars">
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+              </div>
+              <div className="block2_reviews_stars">
+                <p className="block2_reviews_text">Пока нет оценок</p>
+              </div>
+              <p className="block2_reviews_text"> 0 отзывов </p>
+            </div>
 
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Пол <span className="Red_star"> * </span>{' '}
-            </label>
-            <select
-              onChange={(e) => setGender(e.target.value)}
-              value={gender}
-              className="setting_left_input">
-              <option />
-              <option value="MAN"> Мужской</option>
-              <option value="WOMAN"> Женский </option>
-            </select>
-          </div>
+            {/*ТЕЛЕФОН / ПОЧТА*/}
 
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Дата рождения <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              onChange={(e) => setBirth(e.target.value)}
-              value={birth}
-              className="setting_left_input"
-              type="date"
-            />
-          </div>
+            <div className="content_block2_connection">
+              <div className="content_block2_telephone">
+                <p className="block2_telephone_text">{'Телефон подтвержден'}</p>
+                <img
+                  className="my-data-submitted-img"
+                  src={userData.phone_verify ? Vector : VectorDisabled}
+                />
+              </div>
 
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              E-mail <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              disabled={contactEmailRegExp.test(userData && userData.username)}
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              className="setting_left_input"
-              type="text"
-            />
-            {!userData.email_verify ? (
-              <p onClick={emailVerifyHandler} className="my-data-lower-p">
-                {' '}
-                Подтвердить{' '}
-              </p>
-            ) : (
-              <p
-                style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
-                className="my-data-lower-p">
-                {' '}
-                Подтверждено{' '}
-              </p>
-            )}
-          </div>
+              <div className="content_block2_mail">
+                <p className="block2_mail_text">{'Почта подтверждена'}</p>
+                <img
+                  className="my-data-submitted-img"
+                  src={userData.email_verify ? Vector : VectorDisabled}
+                />
+              </div>
+            </div>
 
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Номер телефона <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              disabled={contactNumberRegExp.test(userData && userData.username)}
-              onChange={(e) => setNumber(e.target.value)}
-              value={number}
-              className="setting_left_input"
-              type="text"
-            />
-            {!userData.phone_verify ? (
-              <p onClick={numberVerifyHandler} className="my-data-lower-p">
-                {' '}
-                Подтвердить{' '}
-              </p>
-            ) : (
-              <p
-                style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
-                className="my-data-lower-p">
-                {' '}
-                Подтверждено{' '}
-              </p>
-            )}
-          </div>
-
-          {(contactEmailRegExp.test(userData && userData.username) ||
-            contactNumberRegExp.test(userData && userData.username)) && (
-            <div>
-              <div className="setting_left_input_wrapper">
-                <label className="setting_left_input-label">Пароль</label>
-                <p
-                  onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
-                  className="my-data-lower-p__password">
+            {/*ТЕЛЕФОН / ПОЧТА*/}
+            <div className="content_block2_online">
+              <div className="content_block2_online_website">
+                <p className="online_website_text"> На сайте </p>
+                <p className="online_website_text2">
                   {' '}
-                  Изменить пароль{' '}
+                  {getDaysBetweenDates(userData.register_date, new Date())}
                 </p>
               </div>
-              {showPasswordChangeTable && (
-                <div className="setting_left_input_wrapper">
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Старый пароль</label>
-                    <input
-                      onChange={(e) => setOldPassword(e.target.value)}
-                      value={oldPassword}
-                      className="setting_left_input__password"
-                      type={showOldPass ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowOldPass(!showOldPass)}
-                      class="password-control__profile"></a>
-                  </div>
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Новый пароль</label>
-                    <input
-                      onChange={(e) => setNewPassword1(e.target.value)}
-                      value={newPassword1}
-                      className="setting_left_input__password"
-                      type={showNewPass1 ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowNewPass1(!showNewPass1)}
-                      class="password-control__profile"></a>
-                  </div>
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Повторите новый пароль</label>
-                    <input
-                      onChange={(e) => setNewPassword2(e.target.value)}
-                      value={newPassword2}
-                      className="setting_left_input__password"
-                      type={showNewPass2 ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowNewPass2(!showNewPass2)}
-                      class="password-control__profile"></a>
-                  </div>
-                  <div className=" button_save">
-                    <input
-                      value="ИЗМЕНИТЬ"
-                      type="button"
-                      onClick={passwordChangeHandler}
-                      className=" button_download"
-                    />
-                  </div>
-                </div>
+
+              <div className="content_block2_online_time">
+                <p className="online_time_text"> Время ответа </p>
+                <p className="online_time_text2"> - </p>
+              </div>
+            </div>
+
+            {/*Я СДАЮ / БЕРУ*/}
+
+            <div className="content_block2_rent_take">
+              <div className="rent_take_content1">
+                <p className="rent_take_content1_rent"> Я сдаю </p>
+                <p className="rent_take_content1_number"> {subjects.length} </p>
+              </div>
+
+              <div className="rent_take_content2">
+                <p className="rent_take_content2_take"> Я беру </p>
+                <p className="rent_take_content2_number"> - </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
+        <div className="mydata-settings-main-content">
+          <form className="settings-profile-form">
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Имя <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                className="setting_left_input"
+                type="text"
+              />
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Фамилия <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                onChange={(e) => setSurname(e.target.value)}
+                value={surname}
+                className="setting_left_input"
+                type="text"
+              />
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Пол <span className="Red_star"> * </span>{' '}
+              </label>
+              <select
+                onChange={(e) => setGender(e.target.value)}
+                value={gender}
+                className="setting_left_input">
+                <option />
+                <option value="MAN"> Мужской</option>
+                <option value="WOMAN"> Женский </option>
+              </select>
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Дата рождения <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                onChange={(e) => setBirth(e.target.value)}
+                value={birth}
+                className="setting_left_input"
+                type="date"
+              />
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                E-mail <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                disabled={contactEmailRegExp.test(userData && userData.username)}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                className="setting_left_input"
+                type="text"
+              />
+              {!userData.email_verify ? (
+                <p onClick={emailVerifyHandler} className="my-data-lower-p">
+                  {' '}
+                  Подтвердить{' '}
+                </p>
+              ) : (
+                <p
+                  style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
+                </p>
               )}
             </div>
-          )}
 
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Номер телефона <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                disabled={contactNumberRegExp.test(userData && userData.username)}
+                onChange={(e) => setNumber(e.target.value)}
+                value={number}
+                className="setting_left_input"
+                type="text"
+              />
+              {!userData.phone_verify ? (
+                <p onClick={numberVerifyHandler} className="my-data-lower-p">
+                  {' '}
+                  Подтвердить{' '}
+                </p>
+              ) : (
+                <p
+                  style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
+                </p>
+              )}
+            </div>
+
+            {(contactEmailRegExp.test(userData && userData.username) ||
+              contactNumberRegExp.test(userData && userData.username)) && (
+              <div>
+                <div className="setting_left_input_wrapper">
+                  <label className="setting_left_input-label">Пароль</label>
+                  <p
+                    onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
+                    className="my-data-lower-p__password">
+                    {' '}
+                    Изменить пароль{' '}
+                  </p>
+                </div>
+                {showPasswordChangeTable && (
+                  <div className="setting_left_input_wrapper">
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Старый пароль</label>
+                      <input
+                        onChange={(e) => setOldPassword(e.target.value)}
+                        value={oldPassword}
+                        className="setting_left_input__password"
+                        type={showOldPass ? 'text' : 'password'}
+                      />
+                      <a
+                        onClick={() => setShowOldPass(!showOldPass)}
+                        class="password-control__profile"></a>
+                    </div>
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Новый пароль</label>
+                      <input
+                        onChange={(e) => setNewPassword1(e.target.value)}
+                        value={newPassword1}
+                        className="setting_left_input__password"
+                        type={showNewPass1 ? 'text' : 'password'}
+                      />
+                      <a
+                        onClick={() => setShowNewPass1(!showNewPass1)}
+                        class="password-control__profile"></a>
+                    </div>
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Повторите новый пароль</label>
+                      <input
+                        onChange={(e) => setNewPassword2(e.target.value)}
+                        value={newPassword2}
+                        className="setting_left_input__password"
+                        type={showNewPass2 ? 'text' : 'password'}
+                      />
+                      <a
+                        onClick={() => setShowNewPass2(!showNewPass2)}
+                        class="password-control__profile"></a>
+                    </div>
+                    <div className=" button_save">
+                      <input
+                        value="ИЗМЕНИТЬ"
+                        type="button"
+                        onClick={passwordChangeHandler}
+                        className=" button_download"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                {' '}
+                О себе:{' '}
+                <img
+                  title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
+                  src={Vector2}
+                  className="img_vector2"
+                  alt=""
+                />
+              </label>
+              <textarea
+                onChange={(e) => setAbout(e.target.value)}
+                value={about}
+                className="setting_left_input__textarea"
+              />
+            </div>
+
+            {/*КНОПКА СОХРАНЕНИЯ*/}
+
+            <div className=" button_save">
+              <input
+                value="СОХРАНИТЬ"
+                type="button"
+                onClick={profileSaveHandler}
+                className=" button_download"
+              />
+            </div>
+          </form>
+          <div className="content_setting_right">
+            <p style={{ alignSelf: 'flex-start' }} className="setting_right_socialNetworks">
               {' '}
-              О себе:{' '}
+              Социальные сети и месседжеры{' '}
               <img
-                title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
+                title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
                 src={Vector2}
                 className="img_vector2"
                 alt=""
               />
-            </label>
-            <textarea
-              onChange={(e) => setAbout(e.target.value)}
-              value={about}
-              className="setting_left_input__textarea"
-            />
+            </p>
+            <span>
+              <img
+                onClick={() => socialClickHandler('tg')}
+                className={
+                  activeSocial === 'tg'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.telegram_account ? Telegram : TelegramNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('viber')}
+                className={
+                  activeSocial === 'viber'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.viber_account ? Viber : ViberNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('wa')}
+                className={
+                  activeSocial === 'wa'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('google')}
+                className={
+                  activeSocial === 'google'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.google_account ? Google : GoogleNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('fb')}
+                className={
+                  activeSocial === 'fb'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.link_facebook ? Facebook : FacebookNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('vk')}
+                className={
+                  activeSocial === 'vk'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.vk_account ? Vk : VkNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('inst')}
+                className={
+                  activeSocial === 'inst'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.link_instagram ? Instagram : InstagramNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('ok')}
+                className={
+                  activeSocial === 'ok'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.ok_account ? Ok : OkNone}
+                alt=""
+              />
+            </span>
+
+            {socialPopUpActive && (
+              <SocialContactEnter
+                activeSocial={activeSocial}
+                setSocialPopUpActive={setSocialPopUpActive}
+                setActiveSocial={setActiveSocial}
+              />
+            )}
           </div>
-
-          {/*КНОПКА СОХРАНЕНИЯ*/}
-
-          <div className=" button_save">
-            <input
-              value="СОХРАНИТЬ"
-              type="button"
-              onClick={profileSaveHandler}
-              className=" button_download"
-            />
-          </div>
-        </form>
-        <div className="content_setting_right">
-          <p style={{ alignSelf: 'flex-start' }} className="setting_right_socialNetworks">
-            {' '}
-            Социальные сети и месседжеры{' '}
-            <img
-              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
-              src={Vector2}
-              className="img_vector2"
-              alt=""
-            />
-          </p>
-          <span>
-            <img
-              onClick={() => socialClickHandler('tg')}
-              className={
-                activeSocial === 'tg'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.telegram_account ? Telegram : TelegramNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('viber')}
-              className={
-                activeSocial === 'viber'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.viber_account ? Viber : ViberNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('wa')}
-              className={
-                activeSocial === 'wa'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('google')}
-              className={
-                activeSocial === 'google'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.google_account ? Google : GoogleNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('fb')}
-              className={
-                activeSocial === 'fb'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.link_facebook ? Facebook : FacebookNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('vk')}
-              className={
-                activeSocial === 'vk'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.vk_account ? Vk : VkNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('inst')}
-              className={
-                activeSocial === 'inst'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.link_instagram ? Instagram : InstagramNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('ok')}
-              className={
-                activeSocial === 'ok'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.ok_account ? Ok : OkNone}
-              alt=""
-            />
-          </span>
-
-          {socialPopUpActive && (
-            <SocialContactEnter
-              activeSocial={activeSocial}
-              setSocialPopUpActive={setSocialPopUpActive}
-              setActiveSocial={setActiveSocial}
-            />
-          )}
         </div>
-      </div>
       </div>
 
 
@@ -627,41 +630,44 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
       {/* МОБИЛЬНЫЙ АДАПТИВ */}
       {/*верхняя часть*/}
-      <div  id="profile_mobile">
+      <div id="profile_mobile">
         <div className="content_block1">
-                    {/* ФОТО */}
-              <div className="content_block2_image">
-                <input
-                  style={{ display: 'none' }}
-                  type="file"
-                  accept="image/*,image/jpeg"
-                  id="photo_input"
-                  onChange={(e) => photoHandler(e)}
-                />
-                <label className="profile-photo-wrapper" for="photo_input">
-                  <img
-                    className="profile-photo"
-                    src={`https://razdelisdrugim.by${userData.image_profile}`}
-                    alt=""
-                  />
-                  <div className="profile-photo-overlay">Изменить</div>
-                </label>
-              </div>
+          {/* ФОТО */}
+          <div className="content_block2_image">
+            <input
+              style={{ display: 'none' }}
+              type="file"
+              accept="image/*,image/jpeg"
+              id="photo_input"
+              onChange={(e) => photoHandler(e)}
+            />
+            <label className="profile-photo-wrapper" for="photo_input">
+              <img
+                className="profile-photo"
+                src={`https://razdelisdrugim.by${userData.image_profile}`}
+                alt=""
+              />
+              <div className="profile-photo-overlay">Изменить</div>
+            </label>
+          </div>
           <div className="content_block1_left">
             <p className="block1_left_name">
               {userData.first_name ? userData.first_name : 'Имя не указано'}
             </p>
             <p className="block1_left_privateFace"> Частное лицо </p>
-                      {/*ОТЗЫВЫ ОЦЕНКИ*/}
-              <div className="content_block2_reviews">
-                <div className="block2_reviews_stars">
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                </div>
-                <p className="block2_reviews_text"> 0 отзывов </p>
+            {/*ОТЗЫВЫ ОЦЕНКИ*/}
+            <div className="content_block2_reviews">
+              <div style={{ display: 'none' }} className="block2_reviews_stars">
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+              </div>
+              <div className="block2_reviews_stars">
+                <p className="block2_reviews_text">Пока нет оценок</p>
+              </div>
+              <p className="block2_reviews_text"> 0 отзывов </p>
             </div>
           </div>
           {redirect}
@@ -676,369 +682,365 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
           </div>
         </div>
 
+        {/*нижняя часть часть*/}
+        <div className="my-data-settings-header-wrapper">
+          <div className="content_block2">
+            {/*ТЕЛЕФОН / ПОЧТА*/}
 
-      {/*нижняя часть часть*/}
-      <div className="my-data-settings-header-wrapper">
-        <div className="content_block2">
-          {/*ТЕЛЕФОН / ПОЧТА*/}
-
-          <div className="content_block2_connection">
-            <div className="content_block2_telephone">
-              <p className="block2_telephone_text">{'Телефон подтвержден'}</p>
-              <img
-                className="my-data-submitted-img"
-                src={userData.phone_verify ? Vector : VectorDisabled}
-              />
-            </div>
-
-            <div className="content_block2_mail">
-              <p className="block2_mail_text">{'Почта подтверждена'}</p>
-              <img
-                className="my-data-submitted-img"
-                src={userData.email_verify ? Vector : VectorDisabled}
-              />
-            </div>
-          </div>
-
-          {/*НА САЙТЕ  - ВРЕМЯ ОТВЕТА*/}
-          <div className="content_block2_online">
-            <div className="content_block2_online_website">
-              <p className="online_website_text"> На сайте </p>
-              <p className="online_website_text2">
-                {' '}
-                {getDaysBetweenDates(userData.register_date, new Date())}
-              </p>
-            </div>
-
-            <div className="content_block2_online_time">
-              <p className="online_time_text"> Время ответа </p>
-              <p className="online_time_text2"> - </p>
-            </div>
-          </div>
-
-          {/*Я СДАЮ / БЕРУ*/}
-
-          <div className="content_block2_rent_take">
-            <div className="rent_take_content1">
-              <p className="rent_take_content1_rent"> Я сдаю </p>
-              <p className="rent_take_content1_number"> {subjects.length} </p>
-            </div>
-
-            <div className="rent_take_content2">
-              <p className="rent_take_content2_take"> Я беру </p>
-              <p className="rent_take_content2_number"> - </p>
-            </div>
-          </div>
-        </div>
-        {/* СОЦ СЕТИ  */}
-        <div className="content_setting_right">
-          <div className="setting_right_socialNetworks">
-            <p className="setting_right_socialNetworks-p">Социальные сети и месседжеры</p>
-            <img
-              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
-              src={Vector2}
-              className="img_vector2"
-              alt=""
-            />
-          </div>
-          <div className="social_icons">
-            <img
-              onClick={() => socialClickHandler('tg')}
-              className={
-                activeSocial === 'tg'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.telegram_account ? Telegram : TelegramNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('viber')}
-              className={
-                activeSocial === 'viber'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.viber_account ? Viber : ViberNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('wa')}
-              className={
-                activeSocial === 'wa'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('google')}
-              className={
-                activeSocial === 'google'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.google_account ? Google : GoogleNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('fb')}
-              className={
-                activeSocial === 'fb'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.link_facebook ? Facebook : FacebookNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('vk')}
-              className={
-                activeSocial === 'vk'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.vk_account ? Vk : VkNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('inst')}
-              className={
-                activeSocial === 'inst'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.link_instagram ? Instagram : InstagramNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('ok')}
-              className={
-                activeSocial === 'ok'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.ok_account ? Ok : OkNone}
-              alt=""
-            />
-          </div>
-
-          {socialPopUpActive && (
-            <SocialContactEnter
-              activeSocial={activeSocial}
-              setSocialPopUpActive={setSocialPopUpActive}
-              setActiveSocial={setActiveSocial}
-            />
-          )}
-        </div>
-      </div>
-
-      {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
-      <div className="mydata-settings-main-content">
-        <form className="settings-profile-form">
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Имя <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              className="setting_left_input"
-              type="text"
-            />
-          </div>
-
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Фамилия <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              onChange={(e) => setSurname(e.target.value)}
-              value={surname}
-              className="setting_left_input"
-              type="text"
-            />
-          </div>
-
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Пол <span className="Red_star"> * </span>{' '}
-            </label>
-            <select
-              onChange={(e) => setGender(e.target.value)}
-              value={gender}
-              className="setting_left_input">
-              <option />
-              <option value="MAN"> Мужской</option>
-              <option value="WOMAN"> Женский </option>
-            </select>
-          </div>
-
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Дата рождения <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              onChange={(e) => setBirth(e.target.value)}
-              value={birth}
-              className="setting_left_input"
-              type="date"
-            />
-          </div>
-
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              E-mail <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              disabled={contactEmailRegExp.test(userData && userData.username)}
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              className="setting_left_input"
-              type="text"
-            />
-            {!userData.email_verify ? (
-
-              <div onClick={emailVerifyHandler} className="my-data-lower-p">
-                {' '}
-                Подтвердить{' '}
+            <div className="content_block2_connection">
+              <div className="content_block2_telephone">
+                <p className="block2_telephone_text">{'Телефон подтвержден'}</p>
+                <img
+                  className="my-data-submitted-img"
+                  src={userData.phone_verify ? Vector : VectorDisabled}
+                />
               </div>
-            ) : (
-              <div
-                style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
-                className="my-data-lower-p">
-                {' '}
-                Подтверждено{' '}
+
+              <div className="content_block2_mail">
+                <p className="block2_mail_text">{'Почта подтверждена'}</p>
+                <img
+                  className="my-data-submitted-img"
+                  src={userData.email_verify ? Vector : VectorDisabled}
+                />
               </div>
-            )}
+            </div>
+
+            {/*НА САЙТЕ  - ВРЕМЯ ОТВЕТА*/}
+            <div className="content_block2_online">
+              <div className="content_block2_online_website">
+                <p className="online_website_text"> На сайте </p>
+                <p className="online_website_text2">
+                  {' '}
+                  {getDaysBetweenDates(userData.register_date, new Date())}
+                </p>
+              </div>
+
+              <div className="content_block2_online_time">
+                <p className="online_time_text"> Время ответа </p>
+                <p className="online_time_text2"> - </p>
+              </div>
+            </div>
+
+            {/*Я СДАЮ / БЕРУ*/}
+
+            <div className="content_block2_rent_take">
+              <div className="rent_take_content1">
+                <p className="rent_take_content1_rent"> Я сдаю </p>
+                <p className="rent_take_content1_number"> {subjects.length} </p>
+              </div>
+
+              <div className="rent_take_content2">
+                <p className="rent_take_content2_take"> Я беру </p>
+                <p className="rent_take_content2_number"> - </p>
+              </div>
+            </div>
           </div>
-
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              Номер телефона <span className="Red_star"> * </span>{' '}
-            </label>
-            <input
-              disabled={contactNumberRegExp.test(userData && userData.username)}
-              onChange={(e) => setNumber(e.target.value)}
-              value={number}
-              className="setting_left_input"
-              type="text"
-            />
-            {!userData.phone_verify ? (
-              <p onClick={numberVerifyHandler} className="my-data-lower-p">
-                {' '}
-                Подтвердить{' '}
-              </p>
-            ) : (
-              <p
-                style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
-                className="my-data-lower-p">
-                {' '}
-                Подтверждено{' '}
-              </p>
-            )}
-          </div>
-
-
-          <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              {' '}
-              О себе:{' '}
+          {/* СОЦ СЕТИ  */}
+          <div className="content_setting_right">
+            <div className="setting_right_socialNetworks">
+              <p className="setting_right_socialNetworks-p">Социальные сети и месседжеры</p>
               <img
-                title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
+                title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
                 src={Vector2}
                 className="img_vector2"
                 alt=""
               />
-            </label>
-            <textarea
-              onChange={(e) => setAbout(e.target.value)}
-              value={about}
-              className="setting_left_input__textarea"
-            />
-          </div>
+            </div>
+            <div className="social_icons">
+              <img
+                onClick={() => socialClickHandler('tg')}
+                className={
+                  activeSocial === 'tg'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.telegram_account ? Telegram : TelegramNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('viber')}
+                className={
+                  activeSocial === 'viber'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.viber_account ? Viber : ViberNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('wa')}
+                className={
+                  activeSocial === 'wa'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('google')}
+                className={
+                  activeSocial === 'google'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.google_account ? Google : GoogleNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('fb')}
+                className={
+                  activeSocial === 'fb'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.link_facebook ? Facebook : FacebookNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('vk')}
+                className={
+                  activeSocial === 'vk'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.vk_account ? Vk : VkNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('inst')}
+                className={
+                  activeSocial === 'inst'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.link_instagram ? Instagram : InstagramNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('ok')}
+                className={
+                  activeSocial === 'ok'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.ok_account ? Ok : OkNone}
+                alt=""
+              />
+            </div>
 
-          {/* ИЗМЕНЕНИЕ ПАРОЛЯ И ИНПУТ ПАРОЛЯ */}
-          {(contactEmailRegExp.test(userData && userData.username) ||
-            contactNumberRegExp.test(userData && userData.username)) && (
-            <div>
-              <div className="setting_left_input_wrapper">
-                <p
-                  onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
-                  className="my-data-lower-p__password">
+            {socialPopUpActive && (
+              <SocialContactEnter
+                activeSocial={activeSocial}
+                setSocialPopUpActive={setSocialPopUpActive}
+                setActiveSocial={setActiveSocial}
+              />
+            )}
+          </div>
+        </div>
+
+        {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
+        <div className="mydata-settings-main-content">
+          <form className="settings-profile-form">
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Имя <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                className="setting_left_input"
+                type="text"
+              />
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Фамилия <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                onChange={(e) => setSurname(e.target.value)}
+                value={surname}
+                className="setting_left_input"
+                type="text"
+              />
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Пол <span className="Red_star"> * </span>{' '}
+              </label>
+              <select
+                onChange={(e) => setGender(e.target.value)}
+                value={gender}
+                className="setting_left_input">
+                <option />
+                <option value="MAN"> Мужской</option>
+                <option value="WOMAN"> Женский </option>
+              </select>
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Дата рождения <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                onChange={(e) => setBirth(e.target.value)}
+                value={birth}
+                className="setting_left_input"
+                type="date"
+              />
+            </div>
+
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                E-mail <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                disabled={contactEmailRegExp.test(userData && userData.username)}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                className="setting_left_input"
+                type="text"
+              />
+              {!userData.email_verify ? (
+                <div onClick={emailVerifyHandler} className="my-data-lower-p">
                   {' '}
-                  Изменить пароль{' '}
-                </p>
-              </div>
-              {showPasswordChangeTable && (
-                <div className="setting_left_input_wrapper">
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Старый пароль</label>
-                    <div className="setting_left_input_row">
-                    <input
-                      onChange={(e) => setOldPassword(e.target.value)}
-                      value={oldPassword}
-                      className="setting_left_input__password"
-                      type={showOldPass ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowOldPass(!showOldPass)}
-                      class="password-control__profile"></a>
-                    </div>
-                  </div>
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Новый пароль</label>
-                    <input
-                      onChange={(e) => setNewPassword1(e.target.value)}
-                      value={newPassword1}
-                      className="setting_left_input__password"
-                      type={showNewPass1 ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowNewPass1(!showNewPass1)}
-                      class="password-control__profile"></a>
-                  </div>
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Повторите новый пароль</label>
-                    <input
-                      onChange={(e) => setNewPassword2(e.target.value)}
-                      value={newPassword2}
-                      className="setting_left_input__password"
-                      type={showNewPass2 ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowNewPass2(!showNewPass2)}
-                      class="password-control__profile"></a>
-                  </div>
-                  <div className=" button_password_profile">
-                    <input
-                      value="ИЗМЕНИТЬ"
-                      type="button"
-                      onClick={passwordChangeHandler}
-                      className=" button_download"
-                    />
-                  </div>
+                  Подтвердить{' '}
+                </div>
+              ) : (
+                <div
+                  style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
                 </div>
               )}
             </div>
-          )}
 
-          {/*КНОПКА СОХРАНЕНИЯ*/}
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                Номер телефона <span className="Red_star"> * </span>{' '}
+              </label>
+              <input
+                disabled={contactNumberRegExp.test(userData && userData.username)}
+                onChange={(e) => setNumber(e.target.value)}
+                value={number}
+                className="setting_left_input"
+                type="text"
+              />
+              {!userData.phone_verify ? (
+                <p onClick={numberVerifyHandler} className="my-data-lower-p">
+                  {' '}
+                  Подтвердить{' '}
+                </p>
+              ) : (
+                <p
+                  style={{ color: 'green', fontSize: '16px', cursor: 'default' }}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
+                </p>
+              )}
+            </div>
 
-          <div className=" button_save">
-            <input
-              value="СОХРАНИТЬ"
-              type="button"
-              onClick={profileSaveHandler}
-              className=" button_download"
-              id="button_max_width"
-            />
-          </div>
-        </form>
+            <div className="setting_left_input_wrapper">
+              <label className="setting_left_input-label">
+                {' '}
+                О себе:{' '}
+                <img
+                  title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
+                  src={Vector2}
+                  className="img_vector2"
+                  alt=""
+                />
+              </label>
+              <textarea
+                onChange={(e) => setAbout(e.target.value)}
+                value={about}
+                className="setting_left_input__textarea"
+              />
+            </div>
+
+            {/* ИЗМЕНЕНИЕ ПАРОЛЯ И ИНПУТ ПАРОЛЯ */}
+            {(contactEmailRegExp.test(userData && userData.username) ||
+              contactNumberRegExp.test(userData && userData.username)) && (
+              <div>
+                <div className="setting_left_input_wrapper">
+                  <p
+                    onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
+                    className="my-data-lower-p__password">
+                    {' '}
+                    Изменить пароль{' '}
+                  </p>
+                </div>
+                {showPasswordChangeTable && (
+                  <div className="setting_left_input_wrapper">
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Старый пароль</label>
+                      <div className="setting_left_input_row">
+                        <input
+                          onChange={(e) => setOldPassword(e.target.value)}
+                          value={oldPassword}
+                          className="setting_left_input__password"
+                          type={showOldPass ? 'text' : 'password'}
+                        />
+                        <a
+                          onClick={() => setShowOldPass(!showOldPass)}
+                          class="password-control__profile"></a>
+                      </div>
+                    </div>
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Новый пароль</label>
+                      <input
+                        onChange={(e) => setNewPassword1(e.target.value)}
+                        value={newPassword1}
+                        className="setting_left_input__password"
+                        type={showNewPass1 ? 'text' : 'password'}
+                      />
+                      <a
+                        onClick={() => setShowNewPass1(!showNewPass1)}
+                        class="password-control__profile"></a>
+                    </div>
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Повторите новый пароль</label>
+                      <input
+                        onChange={(e) => setNewPassword2(e.target.value)}
+                        value={newPassword2}
+                        className="setting_left_input__password"
+                        type={showNewPass2 ? 'text' : 'password'}
+                      />
+                      <a
+                        onClick={() => setShowNewPass2(!showNewPass2)}
+                        class="password-control__profile"></a>
+                    </div>
+                    <div className=" button_password_profile">
+                      <input
+                        value="ИЗМЕНИТЬ"
+                        type="button"
+                        onClick={passwordChangeHandler}
+                        className=" button_download"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/*КНОПКА СОХРАНЕНИЯ*/}
+
+            <div className=" button_save">
+              <input
+                value="СОХРАНИТЬ"
+                type="button"
+                onClick={profileSaveHandler}
+                className=" button_download"
+                id="button_max_width"
+              />
+            </div>
+          </form>
+        </div>
       </div>
-      </div>
-
     </div>
   );
 };

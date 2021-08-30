@@ -1,5 +1,7 @@
 import React from 'react';
 import Requests from '../../http/axios-requests';
+import { useSelector, useDispatch } from 'react-redux';
+import { setNews } from '../../redux/actions/items';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper.scss';
@@ -13,11 +15,12 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const News = () => {
-  const [news, setNews] = React.useState();
+  const dispatch = useDispatch();
+  const { news } = useSelector(({ items }) => items);
 
   React.useEffect(() => {
     Requests.fetchNews().then((res) => {
-      setNews(res.data);
+      dispatch(setNews(res.data));
     });
   }, []);
 
@@ -31,8 +34,7 @@ const News = () => {
             slidesPerView={3}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            id ="swiper_comp"
-            >
+            id="swiper_comp">
             {news &&
               news.map((item) => {
                 return (
@@ -59,7 +61,8 @@ const News = () => {
             {news &&
               news.map((item) => {
                 return (
-                  <SwiperSlide style={{ display: 'flex', width:"250px", justifyContent:'center' }}>
+                  <SwiperSlide
+                    style={{ display: 'flex', width: '250px', justifyContent: 'center' }}>
                     <div className="news-reviews-block">
                       <p className="news-reviews-date">{news && item.news_title}</p>
                       <p style={{ display: 'none' }} className="news-reviews-title">

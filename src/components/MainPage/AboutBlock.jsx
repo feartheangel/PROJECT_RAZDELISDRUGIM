@@ -27,9 +27,9 @@ const AboutBlock = () => {
               простой инструмент выхода на рынок краткосрочной аренды вещей, как в качестве
               Владельцев, так в качестве Рентеров чужих вещей. И об этом наша платформа…
             </p>
+            <p className="about-lower-p">Дмитрий, автор проекта</p>
           </div>
         </div>
-        <p className="about-lower-p">Дмитрий, автор проекта</p>
         <div className="main_page_first_block_left_bottons">
           <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
             <input
@@ -40,7 +40,12 @@ const AboutBlock = () => {
             />
           </a>
           <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
-            <input type="button" value="Оставить отзыв" className="header-button add-subject" id="abilities_button2" />
+            <input
+              type="button"
+              value="Оставить отзыв"
+              className="header-button add-subject"
+              id="abilities_button2"
+            />
           </a>
         </div>
       </div>

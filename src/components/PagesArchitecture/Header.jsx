@@ -61,7 +61,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const { isLoggedIn, userData, subjects, reload } = useSelector(({ userData }) => userData);
-  const { items, isLoaded } = useSelector(({ items }) => items);
+  const { items, isLoaded, news } = useSelector(({ items }) => items);
   const {
     searchItems,
     words,
@@ -83,6 +83,7 @@ const Header = () => {
     setProfilePopUpActive(false);
     localStorage.removeItem('key');
     localStorage.removeItem('refresh');
+    localStorage.removeItem('social');
     dispatch(logoutAction());
     setRedirect(<Redirect to="/" />);
   };
@@ -185,7 +186,7 @@ const Header = () => {
   return (
     <header className="header" onKeyDown={(e) => keyDownHandler(e)}>
       <div className="news-alert-block">
-        <p className="news-alert-p">Теперь вы можете искать вещь в аренду на карте!</p>
+        <p className="news-alert-p">{news && news[0].news_description.split('.')[0]}</p>
       </div>
       <div className="header__inner">
         <div className="header-left-content">
@@ -290,7 +291,7 @@ const Header = () => {
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                   />
-                  <img className="header-right-content-logged-img" src={MenuStroke} />
+                  <img src={MenuStroke} />
                 </div>
               </div>
               {profilePopUpActive && (

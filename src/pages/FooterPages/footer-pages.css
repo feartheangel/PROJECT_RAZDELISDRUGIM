@@ -1,5 +1,6 @@
 .footer_pages_main_title {
-  margin-bottom: 50px;
+  margin-bottom: 24px;
+  margin-top: 30px;
 }
 
 .footer_pages_main_p {
@@ -11,4 +12,10 @@
   font-size: 18px;
   text-decoration: underline;
   margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+  .footer_pages_main_title {
+    font-size: 24px;
+  }
 }

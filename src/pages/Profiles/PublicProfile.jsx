@@ -4,14 +4,12 @@ import './MyGlobalData/MyData/MyData.css';
 import { Header, Footer, ItemCard } from '../../components/index';
 import { useSelector } from 'react-redux';
 import Requests from '../../http/axios-requests';
-import CardProduct from '../../pages/SearchPage/CardProduct/CardProduct.js';
 import Address from '../../components/PublicProfile/Address.jsx';
 import AboutMe from '../../components/PublicProfile/AboutMe.jsx';
 import Vector6 from '../../img/CardThings/RightContent/Vector6.png';
 import Vector7 from '../../img/CardThings/RightContent/Vector7.png';
 import Star1 from '../../img/CardThings/RightContent/Star 4.png';
 import Star2 from '../../img/CardThings/RightContent/Star 2.png';
-import AvatarOwner from '../../img/CardThings/RightContent/Ellipse 5.png';
 import Telegram from '../../img/CardThings/RightContent/Component 36.png';
 import Viber from '../../img/CardThings/RightContent/Component 37.png';
 import Whatsapp from '../../img/CardThings/RightContent/Component 38.png';
@@ -114,12 +112,15 @@ const PublicProfile = () => {
                 <div className="up_global_alight">
                   <div className="up_global_margin">
                     <div className="block_down_star">
-                      <div className="conditions_row">
+                      <div style={{ display: 'none' }} className="conditions_row">
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
                         <img src={Star2} className="img_star" alt="" />
+                      </div>
+                      <div className="block2_reviews_stars">
+                        <p className="block2_reviews_text">Пока нет оценок</p>
                       </div>
                       <p className="block_down_star-p">Пока нет отзывов</p>
                     </div>
@@ -404,20 +405,6 @@ const PublicProfile = () => {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       {/* МОБИЛЬНЫЙ АДАПТИВ */}
 
       <div className="PublicProfile" id="globaldata_mobile">
@@ -426,10 +413,9 @@ const PublicProfile = () => {
           <div className="PublicProfile_Wrapper_container">
             {/*  ВЕРХНЯЯ ЧАСТЬ  */}
             <div className="container_up">
-
               {/*  КОНТЕНТ С АВАТАРКОЙ  */}
               <div className="up_content">
-                <div  className="up_content_rowstyle">
+                <div className="up_content_rowstyle">
                   {/*Аватарка владельца */}
                     <div className="block_down_owner_photo" style={{width:'auto'}}>
                       <img
@@ -438,6 +424,14 @@ const PublicProfile = () => {
                         style={{ width: '80px', height: 'auto', borderRadius: '100%' }}
                       />
                     </div>
+                  <div className="block_down_owner_photo">
+                    <img
+                      src={`https://razdelisdrugim.by${profileData && profileData.image_profile}`}
+                      alt=""
+                      style={{ width: '80px', height: 'auto', borderRadius: '100%' }}
+                    />
+                  </div>
+
 
                   <div>
                     {/*  СПРАВА ОТ АВАТАРКИ  */}
@@ -447,34 +441,38 @@ const PublicProfile = () => {
                           {profileData && profileData.status === 1
                             ? profileData && profileData.first_name
                             : profileData && profileData.company_name}
-                          <p className="header_down">
-                            Новичок
-                          </p>
+                          <p className="header_down">Новичок</p>
                         </p>
                         <p className="header_up-p2">
-                          {profileData && profileData.status === 1 ? 'Частное лицо' : 'Компания'}</p>
+                          {profileData && profileData.status === 1 ? 'Частное лицо' : 'Компания'}
+                        </p>
                       </div>
                     </div>
 
-
                     {/*Звездочки и отзывы*/}
-                      <div className="up_global_star" >
-                        <div className="block_down_star">
-                          <div className="conditions_row" style={{marginBottom:'5px'}}>
-                            <img src={Star2} className="img_star" alt="" />
-                            <img src={Star2} className="img_star" alt="" />
-                            <img src={Star2} className="img_star" alt="" />
-                            <img src={Star2} className="img_star" alt="" />
-                            <img src={Star2} className="img_star" alt="" />
-                          </div>
-                          <p className="block_down_star-p">Пока нет отзывов</p>
+                    <div className="up_global_star">
+                      <div className="block_down_star">
+                        <div
+                          style={{ display: 'none' }}
+                          className="conditions_row"
+                          style={{ marginBottom: '5px' }}>
+                          <img src={Star2} className="img_star" alt="" />
+                          <img src={Star2} className="img_star" alt="" />
+                          <img src={Star2} className="img_star" alt="" />
+                          <img src={Star2} className="img_star" alt="" />
+                          <img src={Star2} className="img_star" alt="" />
                         </div>
+                        <div style={{ marginBottom: '5px' }} className="block2_reviews_stars">
+                          <p className="block2_reviews_text">Пока нет оценок</p>
+                        </div>
+                        <p className="block_down_star-p">Пока нет отзывов</p>
                       </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="up_global_alight">
-                                    {/*СОЦ СЕТИ*/}
+                  {/*СОЦ СЕТИ*/}
                   {isLoggedIn && (
                     <div className="block_down_social">
                       <div className="telephone_row2">
@@ -590,11 +588,7 @@ const PublicProfile = () => {
                                 : `https://${profileData && profileData.ok_account}`
                             }`}
                             target="_blank">
-                            <img
-                              src={Ok}
-                              className="img_social"
-                              alt=""
-                            />
+                            <img src={Ok} className="img_social" alt="" />
                           </a>
                         )}
                       </div>
@@ -603,7 +597,6 @@ const PublicProfile = () => {
 
                   {/*телефон и почта*/}
                   <div className="up_content_rowstyle_telephone">
-
                     <div className="up_global_margin">
                       <div className="block_down_telephone">
                         {profileData && profileData.phone_verify ? (
@@ -653,21 +646,20 @@ const PublicProfile = () => {
                     </div>
                   </div>
                 </div>
-
               </div>
               {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
               <div className="container_up_footer">
                 <input
                   value="Отправить сообщение"
                   type="button"
-                  style={{ border: 'none'}}
+                  style={{ border: 'none' }}
                   className="footer_btn1"
                 />
 
                 <input
                   value="Оставить отзыв"
                   type="button"
-                  style={{ border: 'none'}}
+                  style={{ border: 'none' }}
                   className="footer_btn2"
                 />
               </div>
@@ -724,7 +716,11 @@ const PublicProfile = () => {
                   <div className="down_content_cards">
                     {profileItems &&
                       profileItems.map((item, index) => {
-                        return <div style={{width:'50%', marginBottom:'20px'}}><ItemCard item={item} key={index} /> </div>;
+                        return (
+                          <div style={{ width: '50%', marginBottom: '20px' }}>
+                            <ItemCard item={item} key={index} />{' '}
+                          </div>
+                        );
                       })}
                   </div>
                 )}
@@ -739,7 +735,7 @@ const PublicProfile = () => {
                 {/* ДЛЯ КОМПОНЕНТА АДРЕССА */}
                 <div className="public_aboutme_address">
                   {activeForm2 === 'address' && <Address addresses={profileAddresses} />}
-                  </div>
+                </div>
               </div>
             </div>
           </div>

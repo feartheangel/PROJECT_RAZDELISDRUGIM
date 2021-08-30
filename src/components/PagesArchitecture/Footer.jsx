@@ -188,7 +188,7 @@ const Footer = () => {
         <div className="footer-lower-labels">
           <p className="footer-lower-label">Пользовательское соглашение</p>
           <Link style={{ textDecoration: 'none', cursor: 'pointer' }} to="/confidence-policy">
-            <p className="footer-lower-label">Соглашение о конфиденциальности</p>
+            <p className="footer-lower-label">Политика конфиденциальности</p>
           </Link>
         </div>
         <div className="footer-localization-wrapper">
@@ -201,7 +201,7 @@ const Footer = () => {
         <div className="footer-lower-labels">
           <p className="footer-lower-label">Пользовательское соглашение</p>
           <Link style={{ textDecoration: 'none', cursor: 'pointer' }} to="/confidence-policy">
-            <p className="footer-lower-label">Соглашение о конфиденциальности</p>
+            <p className="footer-lower-label">Политика конфиденциальности</p>
           </Link>
         </div>
         <div className="footer-img-logo-wrapper_gl">

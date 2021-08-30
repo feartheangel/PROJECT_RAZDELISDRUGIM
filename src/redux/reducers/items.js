@@ -1,12 +1,14 @@
 const initialState = {
   items: '',
   isLoaded: false,
+  news: '',
 };
 
 const items = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_ITEMS':
       return {
+        ...state,
         items: action.payload,
       };
       break;
@@ -22,6 +24,13 @@ const items = (state = initialState, action) => {
       return {
         ...state,
         isLoaded: action.payload,
+      };
+      break;
+
+    case 'SET_NEWS':
+      return {
+        ...state,
+        news: action.payload,
       };
       break;
   }

@@ -13,7 +13,7 @@ const MyItems = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Я сдаю';
+    document.title = 'Я сдаю: #разделисдругим';
   }, []);
 
   return (
@@ -22,13 +22,13 @@ const MyItems = () => {
       <div className="privateProfile" id="globaldata_pk">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile" >
+            <p className="conteiner_shapka_myProfile">
               Я сдаю <span> {subjects.length} </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} >
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} >
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
               Мои сообщения <span> - </span>
             </p>
             <Link
@@ -41,11 +41,11 @@ const MyItems = () => {
               to="/favorites">
               <p>Избранное</p>
             </Link>
-            <Link style={{ textDecoration: 'none' }}  to="/private-profile">
+            <Link style={{ textDecoration: 'none' }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{marginRight:'0'}}>
+          <div className="container_profile" style={{ marginRight: '0' }}>
             <div className="container_profile_content__myItems">
               {subjects &&
                 subjects.map((subject, index) => (
@@ -110,13 +110,13 @@ const MyItems = () => {
       <div className="privateProfile" id="globaldata_mobile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile" >
+            <p className="conteiner_shapka_myProfile">
               Я сдаю <span> {subjects.length} </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{display:'none'}}>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{display:'none'}}>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
               Мои сообщения <span> - </span>
             </p>
             <Link
@@ -125,16 +125,19 @@ const MyItems = () => {
                   ? { pointerEvents: 'none', textDecoration: 'none' }
                   : { textDecoration: 'none' }
               }
-              style={{display:'none'}}
+              style={{ display: 'none' }}
               className="conteiner_shapka_myProfile"
               to="/favorites">
               <p>Избранное</p>
             </Link>
-            <Link style={{ textDecoration: 'none' }} style={{display:'none'}} to="/private-profile">
+            <Link
+              style={{ textDecoration: 'none' }}
+              style={{ display: 'none' }}
+              to="/private-profile">
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{marginRight:'0'}}>
+          <div className="container_profile" style={{ marginRight: '0' }}>
             <div className="container_profile_content__myItems">
               {subjects &&
                 subjects.map((subject, index) => (

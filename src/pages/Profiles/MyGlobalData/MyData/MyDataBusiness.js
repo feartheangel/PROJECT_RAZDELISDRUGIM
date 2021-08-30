@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import "./MyData.css";
-import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { reloadData } from "../../../../redux/actions/userData";
-import { SocialContactEnter } from "../../../../components/index";
-import Requests from "../../../../http/axios-requests";
-import Ellipse5 from "../../../../img/ProfilePage/Ellipse 5.png";
-import Star1 from "../../../../img/ProfilePage/Star 1.png";
-import Star5 from "../../../../img/ProfilePage/Star 5.png";
-import Vector from "../../../../img/ProfilePage/Vector.png";
-import VectorDisabled from "../../../../img/ProfilePage/VectorDisabled.png";
-import Telegram from "../../../../img/ProfilePage/telegram.png";
-import Viber from "../../../../img/ProfilePage/viber.png";
-import Vector2 from "../../../../img/CardThings/LeftContent/Vector2.png";
-import WhatsApp from "../../../../img/ProfilePage/watsapp.png";
-import Google from "../../../../img/ProfilePage/google.png";
-import Facebook from "../../../../img/ProfilePage/facebook2.png";
-import Vk from "../../../../img/ProfilePage/vk.png";
-import Instagram from "../../../../img/ProfilePage/instagram.png";
-import Ok from "../../../../img/ProfilePage/ok.png";
-import TelegramNone from "../../../../img/ProfilePage/telegramNone.png";
-import ViberNone from "../../../../img/ProfilePage/viberNone.png";
-import WhatsAppNone from "../../../../img/ProfilePage/watsappNone.png";
-import GoogleNone from "../../../../img/ProfilePage/googleNone.png";
-import FacebookNone from "../../../../img/ProfilePage/facebook2None.png";
-import VkNone from "../../../../img/ProfilePage/vkNone.png";
-import InstagramNone from "../../../../img/ProfilePage/instagramNone.png";
-import OkNone from "../../../../img/ProfilePage/okNone.png";
+import React, { useState } from 'react';
+import './MyData.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { reloadData } from '../../../../redux/actions/userData';
+import { SocialContactEnter } from '../../../../components/index';
+import Requests from '../../../../http/axios-requests';
+import Ellipse5 from '../../../../img/ProfilePage/Ellipse 5.png';
+import Star1 from '../../../../img/ProfilePage/Star 1.png';
+import Star5 from '../../../../img/ProfilePage/Star 5.png';
+import Vector from '../../../../img/ProfilePage/Vector.png';
+import VectorDisabled from '../../../../img/ProfilePage/VectorDisabled.png';
+import Telegram from '../../../../img/ProfilePage/telegram.png';
+import Viber from '../../../../img/ProfilePage/viber.png';
+import Vector2 from '../../../../img/CardThings/LeftContent/Vector2.png';
+import WhatsApp from '../../../../img/ProfilePage/watsapp.png';
+import Google from '../../../../img/ProfilePage/google.png';
+import Facebook from '../../../../img/ProfilePage/facebook2.png';
+import Vk from '../../../../img/ProfilePage/vk.png';
+import Instagram from '../../../../img/ProfilePage/instagram.png';
+import Ok from '../../../../img/ProfilePage/ok.png';
+import TelegramNone from '../../../../img/ProfilePage/telegramNone.png';
+import ViberNone from '../../../../img/ProfilePage/viberNone.png';
+import WhatsAppNone from '../../../../img/ProfilePage/watsappNone.png';
+import GoogleNone from '../../../../img/ProfilePage/googleNone.png';
+import FacebookNone from '../../../../img/ProfilePage/facebook2None.png';
+import VkNone from '../../../../img/ProfilePage/vkNone.png';
+import InstagramNone from '../../../../img/ProfilePage/instagramNone.png';
+import OkNone from '../../../../img/ProfilePage/okNone.png';
 
 const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
   //расчет времени на платформе
@@ -57,11 +57,11 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
   const photoHandler = (e) => {
     const formData = new FormData();
     delete formData.image_profile;
-    formData.append("image_profile", e.target.files[0]);
-    formData.append("email", userData.email);
-    formData.append("phone", userData.phone);
+    formData.append('image_profile', e.target.files[0]);
+    formData.append('email', userData.email);
+    formData.append('phone', userData.phone);
     Requests.updateProfileImageReq(formData).then(() => {
-      alert("Картинка успешно обновлена!");
+      alert('Картинка успешно обновлена!');
       dispatch(reloadData(!reload));
     });
   };
@@ -78,10 +78,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
   const numberVerifyHandler = () => {
     if (!userData.phone) {
-      alert("Сначала сохраните номер телефона в профиле!");
+      alert('Сначала сохраните номер телефона в профиле!');
       return;
     } else if (userData.phone !== number) {
-      alert("Сначала сохраните новый номер телефона в профиле!");
+      alert('Сначала сохраните новый номер телефона в профиле!');
       return;
     } else if (sendCountNumber > 0) {
       setModalActiveNumber(true);
@@ -94,10 +94,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
   const emailVerifyHandler = () => {
     if (!userData.email) {
-      alert("Сначала сохраните адрес почты в профиле!");
+      alert('Сначала сохраните адрес почты в профиле!');
       return;
     } else if (userData.email !== email) {
-      alert("Сначала сохраните новый адрес почты в профиле!");
+      alert('Сначала сохраните новый адрес почты в профиле!');
       return;
     } else if (sendCountEmail > 0) {
       setModalActiveEmail(true);
@@ -110,40 +110,40 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
   const profileSaveHandler = () => {
     if (!name) {
-      alert("Не указано имя!");
+      alert('Не указано имя!');
       return;
     } else if (!surname) {
-      alert("Не указана фамилия!");
+      alert('Не указана фамилия!');
       return;
     } else if (!email) {
-      alert("Не указан email!");
+      alert('Не указан email!');
       return;
     } else if (!companyName) {
-      alert("Не указано название компании!");
+      alert('Не указано название компании!');
       return;
     } else if (!address) {
-      alert("Не указан юридический адрес компании!");
+      alert('Не указан юридический адрес компании!');
       return;
     } else if (!iban) {
-      alert("Не указан расчетный счет IBAN!");
+      alert('Не указан расчетный счет IBAN!');
       return;
     } else if (!bic) {
-      alert("Не указан БИК!");
+      alert('Не указан БИК!');
       return;
     } else if (!bank) {
-      alert("Не указан банк!");
+      alert('Не указан банк!');
       return;
     } else if (!unpUnn) {
-      alert("Не указан УНП/УНН!");
+      alert('Не указан УНП/УНН!');
       return;
     } else if (!number) {
-      alert("Не указан номер телефона!");
+      alert('Не указан номер телефона!');
       return;
     } else if (!contactEmailRegExp.test(email)) {
-      alert("Указан некорректный адрес электронной почты!");
+      alert('Указан некорректный адрес электронной почты!');
       return;
     } else if (!contactNumberRegExp.test(number)) {
-      alert("Указан некорректный номер телефона!");
+      alert('Указан некорректный номер телефона!');
       return;
     }
     Requests.updateProfileMain(
@@ -157,33 +157,31 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
       bic,
       email,
       number,
-      "NONE",
+      'NONE',
       null,
       about,
-      address
+      address,
     )
       .then((response) => {
-        alert("Обновлено");
+        alert('Обновлено');
         dispatch(reloadData(!reload));
       })
-      .catch((e) => alert("Ошибка!"));
+      .catch((e) => alert('Ошибка!'));
   };
 
   const passwordChangeHandler = () => {
     if (newPassword1 !== newPassword2) {
-      alert("Пароли не совпадают");
+      alert('Пароли не совпадают');
       return;
     }
 
     Requests.updatePassword(oldPassword, newPassword1, newPassword2)
       .then((response) => {
-        alert(
-          "Пароль успешно изменен, выполните вход в свой аккаунт с новым паролем."
-        );
-        localStorage.removeItem("key");
+        alert('Пароль успешно изменен, выполните вход в свой аккаунт с новым паролем.');
+        localStorage.removeItem('key');
         setRedirect(<Redirect to="/" />);
       })
-      .catch((e) => alert("Произошла ошибка изменения пароля!"));
+      .catch((e) => alert('Произошла ошибка изменения пароля!'));
   };
 
   //состояния контроля ввода данных в поля
@@ -200,8 +198,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
   const [number, setNumber] = React.useState(userData.phone);
   const [about, setAbout] = React.useState(userData.about);
 
-  const [showPasswordChangeTable, setShowPasswordChangeTable] =
-    React.useState(false);
+  const [showPasswordChangeTable, setShowPasswordChangeTable] = React.useState(false);
   const [oldPassword, setOldPassword] = React.useState();
   const [newPassword1, setNewPassword1] = React.useState();
   const [newPassword2, setNewPassword2] = React.useState();
@@ -225,9 +222,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
         <div className="content_block1">
           <div className="content_block1_left">
             <p className="block1_left_name">
-              {userData.company_name
-                ? userData.company_name
-                : "Название организации не указано"}{" "}
+              {userData.company_name ? userData.company_name : 'Название организации не указано'}{' '}
             </p>
             <p className="block1_left_privateFace"> Компания </p>
             {redirect}
@@ -235,14 +230,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
           <div className="content_block1_right">
             <a
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: 'none' }}
               target="_blank"
-              href={`/public-profile?id=${userData && userData.id}`}
-            >
-              <p className="block1_right_watchProfile">
-                {" "}
-                Посмотреть мой профиль
-              </p>
+              href={`/public-profile?id=${userData && userData.id}`}>
+              <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
             </a>
           </div>
         </div>
@@ -253,7 +244,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
           <div className="content_block2">
             <div className="content_block2_image">
               <input
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
                 type="file"
                 accept="image/*,image/jpeg"
                 id="photo_input"
@@ -262,10 +253,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               <label className="profile-photo-wrapper" for="photo_input">
                 <img
                   style={{
-                    marginRight: "30px",
-                    borderRadius: "100%",
-                    boxShadow: "3px 3px 22px rgba(99, 212, 248, 0.24)",
-                    cursor: "pointer",
+                    marginRight: '30px',
+                    borderRadius: '100%',
+                    boxShadow: '3px 3px 22px rgba(99, 212, 248, 0.24)',
+                    cursor: 'pointer',
                   }}
                   className="profile-photo"
                   src={`https://razdelisdrugim.by${userData.image_profile}`}
@@ -276,13 +267,16 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </div>
 
             {/*ОТЗЫВЫ ОЦЕНКИ*/}
-            <div className="content_block2_reviews">
+            <div style={{ display: 'none' }} className="content_block2_reviews">
               <div className="block2_reviews_stars">
                 <img src={Star5} alt="" />
                 <img src={Star5} alt="" />
                 <img src={Star5} alt="" />
                 <img src={Star5} alt="" />
                 <img src={Star5} alt="" />
+              </div>
+              <div className="block2_reviews_stars">
+                <p className="block2_reviews_text">Пока нет оценок</p>
               </div>
               <p className="block2_reviews_text"> 0 отзывов </p>
             </div>
@@ -291,7 +285,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="content_block2_connection">
               <div className="content_block2_telephone">
-                <p className="block2_telephone_text">{"Телефон подтвержден"}</p>
+                <p className="block2_telephone_text">{'Телефон подтвержден'}</p>
                 <img
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
@@ -299,7 +293,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               </div>
 
               <div className="content_block2_mail">
-                <p className="block2_mail_text">{"Почта подтверждена"}</p>
+                <p className="block2_mail_text">{'Почта подтверждена'}</p>
                 <img
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
@@ -313,7 +307,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               <div className="content_block2_online_website">
                 <p className="online_website_text"> На сайте </p>
                 <p className="online_website_text2">
-                  {" "}
+                  {' '}
                   {getDaysBetweenDates(userData.register_date, new Date())}
                 </p>
               </div>
@@ -345,7 +339,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
           <form className="settings-profile-form">
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Имя <span className="Red_star"> * </span>{" "}
+                Имя <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setName(e.target.value)}
@@ -357,7 +351,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Фамилия <span className="Red_star"> * </span>{" "}
+                Фамилия <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setSurname(e.target.value)}
@@ -369,7 +363,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Наименование компании/ИП <span className="Red_star"> * </span>{" "}
+                Наименование компании/ИП <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setCompanyName(e.target.value)}
@@ -381,7 +375,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                УНП/УНН <span className="Red_star"> * </span>{" "}
+                УНП/УНН <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setUnpUnn(e.target.value)}
@@ -393,7 +387,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Адрес местонахождения <span className="Red_star"> * </span>{" "}
+                Адрес местонахождения <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setAddress(e.target.value)}
@@ -405,7 +399,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Расчетный счет IBAN <span className="Red_star"> * </span>{" "}
+                Расчетный счет IBAN <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setIban(e.target.value)}
@@ -417,11 +411,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper__row">
               <div
-                style={{ marginRight: "20px", margin: "0 20px 0 0" }}
-                className="setting_left_input_wrapper"
-              >
+                style={{ marginRight: '20px', margin: '0 20px 0 0' }}
+                className="setting_left_input_wrapper">
                 <label className="setting_left_input-label">
-                  Банк <span className="Red_star"> * </span>{" "}
+                  Банк <span className="Red_star"> * </span>{' '}
                 </label>
                 <input
                   onChange={(e) => setBank(e.target.value)}
@@ -431,12 +424,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 />
               </div>
 
-              <div
-                style={{ margin: "0 0 0 0" }}
-                className="setting_left_input_wrapper"
-              >
+              <div style={{ margin: '0 0 0 0' }} className="setting_left_input_wrapper">
                 <label className="setting_left_input-label">
-                  БИК <span className="Red_star"> * </span>{" "}
+                  БИК <span className="Red_star"> * </span>{' '}
                 </label>
                 <input
                   onChange={(e) => setBic(e.target.value)}
@@ -449,12 +439,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Email <span className="Red_star"> * </span>{" "}
+                Email <span className="Red_star"> * </span>{' '}
               </label>
               <input
-                disabled={contactEmailRegExp.test(
-                  userData && userData.username
-                )}
+                disabled={contactEmailRegExp.test(userData && userData.username)}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 className="setting_left_input"
@@ -462,32 +450,29 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               {!userData.email_verify ? (
                 <p onClick={emailVerifyHandler} className="my-data-lower-p">
-                  {" "}
-                  Подтвердить{" "}
+                  {' '}
+                  Подтвердить{' '}
                 </p>
               ) : (
                 <p
                   style={{
-                    color: "green",
-                    fontSize: "16px",
-                    cursor: "default",
+                    color: 'green',
+                    fontSize: '16px',
+                    cursor: 'default',
                   }}
-                  className="my-data-lower-p"
-                >
-                  {" "}
-                  Подтверждено{" "}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
                 </p>
               )}
             </div>
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Номер телефона <span className="Red_star"> * </span>{" "}
+                Номер телефона <span className="Red_star"> * </span>{' '}
               </label>
               <input
-                disabled={contactNumberRegExp.test(
-                  userData && userData.username
-                )}
+                disabled={contactNumberRegExp.test(userData && userData.username)}
                 onChange={(e) => setNumber(e.target.value)}
                 value={number}
                 className="setting_left_input"
@@ -495,20 +480,19 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               {!userData.phone_verify ? (
                 <p onClick={numberVerifyHandler} className="my-data-lower-p">
-                  {" "}
-                  Подтвердить{" "}
+                  {' '}
+                  Подтвердить{' '}
                 </p>
               ) : (
                 <p
                   style={{
-                    color: "green",
-                    fontSize: "16px",
-                    cursor: "default",
+                    color: 'green',
+                    fontSize: '16px',
+                    cursor: 'default',
                   }}
-                  className="my-data-lower-p"
-                >
-                  {" "}
-                  Подтверждено{" "}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
                 </p>
               )}
             </div>
@@ -516,61 +500,49 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">Пароль</label>
               <p
-                onClick={() =>
-                  setShowPasswordChangeTable(!showPasswordChangeTable)
-                }
-                className="my-data-lower-p__password"
-              >
-                {" "}
-                Изменить пароль{" "}
+                onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
+                className="my-data-lower-p__password">
+                {' '}
+                Изменить пароль{' '}
               </p>
             </div>
             {showPasswordChangeTable && (
               <div className="setting_left_input_wrapper">
                 <div className="setting_left_input_wrapper">
-                  <label className="setting_left_input-label">
-                    Старый пароль
-                  </label>
+                  <label className="setting_left_input-label">Старый пароль</label>
                   <input
                     onChange={(e) => setOldPassword(e.target.value)}
                     value={oldPassword}
                     className="setting_left_input__password"
-                    type={showOldPass ? "text" : "password"}
+                    type={showOldPass ? 'text' : 'password'}
                   />
                   <a
                     onClick={() => setShowOldPass(!showOldPass)}
-                    class="password-control__profile"
-                  ></a>
+                    class="password-control__profile"></a>
                 </div>
                 <div className="setting_left_input_wrapper">
-                  <label className="setting_left_input-label">
-                    Новый пароль
-                  </label>
+                  <label className="setting_left_input-label">Новый пароль</label>
                   <input
                     onChange={(e) => setNewPassword1(e.target.value)}
                     value={newPassword1}
                     className="setting_left_input__password"
-                    type={showNewPass1 ? "text" : "password"}
+                    type={showNewPass1 ? 'text' : 'password'}
                   />
                   <a
                     onClick={() => setShowNewPass1(!showNewPass1)}
-                    class="password-control__profile"
-                  ></a>
+                    class="password-control__profile"></a>
                 </div>
                 <div className="setting_left_input_wrapper">
-                  <label className="setting_left_input-label">
-                    Повторите новый пароль
-                  </label>
+                  <label className="setting_left_input-label">Повторите новый пароль</label>
                   <input
                     onChange={(e) => setNewPassword2(e.target.value)}
                     value={newPassword2}
                     className="setting_left_input__password"
-                    type={showNewPass2 ? "text" : "password"}
+                    type={showNewPass2 ? 'text' : 'password'}
                   />
                   <a
                     onClick={() => setShowNewPass2(!showNewPass2)}
-                    class="password-control__profile"
-                  ></a>
+                    class="password-control__profile"></a>
                 </div>
                 <div className=" button_save">
                   <input
@@ -604,12 +576,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </div>
           </form>
           <div className="content_setting_right">
-            <p
-              style={{ alignSelf: "flex-start" }}
-              className="setting_right_socialNetworks"
-            >
-              {" "}
-              Социальные сети и месседжеры{" "}
+            <p style={{ alignSelf: 'flex-start' }} className="setting_right_socialNetworks">
+              {' '}
+              Социальные сети и месседжеры{' '}
               <img
                 title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
                 src={Vector2}
@@ -619,81 +588,81 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </p>
             <span>
               <img
-                onClick={() => socialClickHandler("tg")}
+                onClick={() => socialClickHandler('tg')}
                 className={
-                  activeSocial === "tg"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'tg'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.telegram_account ? Telegram : TelegramNone}
                 alt=""
               />
               <img
-                onClick={() => socialClickHandler("viber")}
+                onClick={() => socialClickHandler('viber')}
                 className={
-                  activeSocial === "viber"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'viber'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.viber_account ? Viber : ViberNone}
                 alt=""
               />
               <img
-                onClick={() => socialClickHandler("wa")}
+                onClick={() => socialClickHandler('wa')}
                 className={
-                  activeSocial === "wa"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'wa'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
                 alt=""
               />
               <img
-                onClick={() => socialClickHandler("google")}
+                onClick={() => socialClickHandler('google')}
                 className={
-                  activeSocial === "google"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'google'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.google_account ? Google : GoogleNone}
                 alt=""
               />
               <img
-                onClick={() => socialClickHandler("fb")}
+                onClick={() => socialClickHandler('fb')}
                 className={
-                  activeSocial === "fb"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'fb'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.link_facebook ? Facebook : FacebookNone}
                 alt=""
               />
               <img
-                onClick={() => socialClickHandler("vk")}
+                onClick={() => socialClickHandler('vk')}
                 className={
-                  activeSocial === "vk"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'vk'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.vk_account ? Vk : VkNone}
                 alt=""
               />
               <img
-                onClick={() => socialClickHandler("inst")}
+                onClick={() => socialClickHandler('inst')}
                 className={
-                  activeSocial === "inst"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'inst'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.link_instagram ? Instagram : InstagramNone}
                 alt=""
               />
               <img
-                onClick={() => socialClickHandler("ok")}
+                onClick={() => socialClickHandler('ok')}
                 className={
-                  activeSocial === "ok"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
+                  activeSocial === 'ok'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
                 }
                 src={userData.ok_account ? Ok : OkNone}
                 alt=""
@@ -720,7 +689,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             {/* ФОТО */}
             <div className="content_block2_image">
               <input
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
                 type="file"
                 accept="image/*,image/jpeg"
                 id="photo_input"
@@ -737,19 +706,20 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </div>
             <div className="content_block1_left">
               <p className="block1_left_name">
-                {userData.company_name
-                  ? userData.company_name
-                  : "Название организации не указано"}{" "}
+                {userData.company_name ? userData.company_name : 'Название организации не указано'}{' '}
               </p>
               <p className="block1_left_privateFace"> Компания </p>
               {/*ОТЗЫВЫ ОЦЕНКИ*/}
-              <div className="content_block2_reviews">
+              <div style={{ display: 'none' }} className="content_block2_reviews">
                 <div className="block2_reviews_stars">
                   <img src={Star5} alt="" />
                   <img src={Star5} alt="" />
                   <img src={Star5} alt="" />
                   <img src={Star5} alt="" />
                   <img src={Star5} alt="" />
+                </div>
+                <div className="block2_reviews_stars">
+                  <p className="block2_reviews_text">Пока нет оценок</p>
                 </div>
                 <p className="block2_reviews_text"> 0 отзывов </p>
               </div>
@@ -758,14 +728,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="content_block1_right">
               <a
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: 'none' }}
                 target="_blank"
-                href={`/public-profile?id=${userData && userData.id}`}
-              >
-                <p className="block1_right_watchProfile">
-                  {" "}
-                  Посмотреть мой профиль
-                </p>
+                href={`/public-profile?id=${userData && userData.id}`}>
+                <p className="block1_right_watchProfile"> Посмотреть мой профиль</p>
               </a>
             </div>
           </div>
@@ -778,7 +744,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="content_block2_connection">
               <div className="content_block2_telephone">
-                <p className="block2_telephone_text">{"Телефон подтвержден"}</p>
+                <p className="block2_telephone_text">{'Телефон подтвержден'}</p>
                 <img
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
@@ -786,7 +752,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               </div>
 
               <div className="content_block2_mail">
-                <p className="block2_mail_text">{"Почта подтверждена"}</p>
+                <p className="block2_mail_text">{'Почта подтверждена'}</p>
                 <img
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
@@ -800,7 +766,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               <div className="content_block2_online_website">
                 <p className="online_website_text"> На сайте </p>
                 <p className="online_website_text2">
-                  {" "}
+                  {' '}
                   {getDaysBetweenDates(userData.register_date, new Date())}
                 </p>
               </div>
@@ -825,108 +791,108 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               </div>
             </div>
           </div>
-                  {/* СОЦ СЕТИ  */}
-        <div className="content_setting_right">
-          <div className="setting_right_socialNetworks">
-            <p className="setting_right_socialNetworks-p">Социальные сети и месседжеры</p>
-            <img
-              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
-              src={Vector2}
-              className="img_vector2"
-              alt=""
-            />
-          </div>
-          <div className="social_icons">
-            <img
-              onClick={() => socialClickHandler('tg')}
-              className={
-                activeSocial === 'tg'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.telegram_account ? Telegram : TelegramNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('viber')}
-              className={
-                activeSocial === 'viber'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.viber_account ? Viber : ViberNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('wa')}
-              className={
-                activeSocial === 'wa'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('google')}
-              className={
-                activeSocial === 'google'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.google_account ? Google : GoogleNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('fb')}
-              className={
-                activeSocial === 'fb'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.link_facebook ? Facebook : FacebookNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('vk')}
-              className={
-                activeSocial === 'vk'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.vk_account ? Vk : VkNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('inst')}
-              className={
-                activeSocial === 'inst'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.link_instagram ? Instagram : InstagramNone}
-              alt=""
-            />
-            <img
-              onClick={() => socialClickHandler('ok')}
-              className={
-                activeSocial === 'ok'
-                  ? 'setting_right_socialNetworks_img active'
-                  : 'setting_right_socialNetworks_img'
-              }
-              src={userData.ok_account ? Ok : OkNone}
-              alt=""
-            />
-          </div>
+          {/* СОЦ СЕТИ  */}
+          <div className="content_setting_right">
+            <div className="setting_right_socialNetworks">
+              <p className="setting_right_socialNetworks-p">Социальные сети и месседжеры</p>
+              <img
+                title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
+                src={Vector2}
+                className="img_vector2"
+                alt=""
+              />
+            </div>
+            <div className="social_icons">
+              <img
+                onClick={() => socialClickHandler('tg')}
+                className={
+                  activeSocial === 'tg'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.telegram_account ? Telegram : TelegramNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('viber')}
+                className={
+                  activeSocial === 'viber'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.viber_account ? Viber : ViberNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('wa')}
+                className={
+                  activeSocial === 'wa'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('google')}
+                className={
+                  activeSocial === 'google'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.google_account ? Google : GoogleNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('fb')}
+                className={
+                  activeSocial === 'fb'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.link_facebook ? Facebook : FacebookNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('vk')}
+                className={
+                  activeSocial === 'vk'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.vk_account ? Vk : VkNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('inst')}
+                className={
+                  activeSocial === 'inst'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.link_instagram ? Instagram : InstagramNone}
+                alt=""
+              />
+              <img
+                onClick={() => socialClickHandler('ok')}
+                className={
+                  activeSocial === 'ok'
+                    ? 'setting_right_socialNetworks_img active'
+                    : 'setting_right_socialNetworks_img'
+                }
+                src={userData.ok_account ? Ok : OkNone}
+                alt=""
+              />
+            </div>
 
-          {socialPopUpActive && (
-            <SocialContactEnter
-              activeSocial={activeSocial}
-              setSocialPopUpActive={setSocialPopUpActive}
-              setActiveSocial={setActiveSocial}
-            />
-          )}
-        </div>
+            {socialPopUpActive && (
+              <SocialContactEnter
+                activeSocial={activeSocial}
+                setSocialPopUpActive={setSocialPopUpActive}
+                setActiveSocial={setActiveSocial}
+              />
+            )}
+          </div>
         </div>
 
         {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
@@ -934,7 +900,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
           <form className="settings-profile-form">
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Имя <span className="Red_star"> * </span>{" "}
+                Имя <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setName(e.target.value)}
@@ -946,7 +912,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Фамилия <span className="Red_star"> * </span>{" "}
+                Фамилия <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setSurname(e.target.value)}
@@ -958,7 +924,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Наименование компании/ИП <span className="Red_star"> * </span>{" "}
+                Наименование компании/ИП <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setCompanyName(e.target.value)}
@@ -970,7 +936,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                УНП/УНН <span className="Red_star"> * </span>{" "}
+                УНП/УНН <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setUnpUnn(e.target.value)}
@@ -982,7 +948,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Адрес местонахождения <span className="Red_star"> * </span>{" "}
+                Адрес местонахождения <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setAddress(e.target.value)}
@@ -994,7 +960,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Расчетный счет IBAN <span className="Red_star"> * </span>{" "}
+                Расчетный счет IBAN <span className="Red_star"> * </span>{' '}
               </label>
               <input
                 onChange={(e) => setIban(e.target.value)}
@@ -1005,12 +971,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </div>
 
             <div className="setting_left_input_wrapper__row">
-            <div
-                style={{ margin: "0 0 0 0" }}
-                className="setting_left_input_wrapper"
-              >
+              <div style={{ margin: '0 0 0 0' }} className="setting_left_input_wrapper">
                 <label className="setting_left_input-label">
-                  Банк <span className="Red_star"> * </span>{" "}
+                  Банк <span className="Red_star"> * </span>{' '}
                 </label>
                 <input
                   onChange={(e) => setBank(e.target.value)}
@@ -1022,12 +985,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </div>
 
             <div className="setting_left_input_wrapper__row">
-              <div
-                style={{ margin: "0 0 0 0" }}
-                className="setting_left_input_wrapper"
-              >
+              <div style={{ margin: '0 0 0 0' }} className="setting_left_input_wrapper">
                 <label className="setting_left_input-label">
-                  БИК <span className="Red_star"> * </span>{" "}
+                  БИК <span className="Red_star"> * </span>{' '}
                 </label>
                 <input
                   onChange={(e) => setBic(e.target.value)}
@@ -1040,12 +1000,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Email <span className="Red_star"> * </span>{" "}
+                Email <span className="Red_star"> * </span>{' '}
               </label>
               <input
-                disabled={contactEmailRegExp.test(
-                  userData && userData.username
-                )}
+                disabled={contactEmailRegExp.test(userData && userData.username)}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 className="setting_left_input"
@@ -1053,32 +1011,29 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               {!userData.email_verify ? (
                 <p onClick={emailVerifyHandler} className="my-data-lower-p">
-                  {" "}
-                  Подтвердить{" "}
+                  {' '}
+                  Подтвердить{' '}
                 </p>
               ) : (
                 <p
                   style={{
-                    color: "green",
-                    fontSize: "16px",
-                    cursor: "default",
+                    color: 'green',
+                    fontSize: '16px',
+                    cursor: 'default',
                   }}
-                  className="my-data-lower-p"
-                >
-                  {" "}
-                  Подтверждено{" "}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
                 </p>
               )}
             </div>
 
             <div className="setting_left_input_wrapper">
               <label className="setting_left_input-label">
-                Номер телефона <span className="Red_star"> * </span>{" "}
+                Номер телефона <span className="Red_star"> * </span>{' '}
               </label>
               <input
-                disabled={contactNumberRegExp.test(
-                  userData && userData.username
-                )}
+                disabled={contactNumberRegExp.test(userData && userData.username)}
                 onChange={(e) => setNumber(e.target.value)}
                 value={number}
                 className="setting_left_input"
@@ -1086,118 +1041,117 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               {!userData.phone_verify ? (
                 <p onClick={numberVerifyHandler} className="my-data-lower-p">
-                  {" "}
-                  Подтвердить{" "}
+                  {' '}
+                  Подтвердить{' '}
                 </p>
               ) : (
                 <p
                   style={{
-                    color: "green",
-                    fontSize: "16px",
-                    cursor: "default",
+                    color: 'green',
+                    fontSize: '16px',
+                    cursor: 'default',
                   }}
-                  className="my-data-lower-p"
-                >
-                  {" "}
-                  Подтверждено{" "}
+                  className="my-data-lower-p">
+                  {' '}
+                  Подтверждено{' '}
                 </p>
               )}
             </div>
 
             <div className="setting_left_input_wrapper">
-            <label className="setting_left_input-label">
-              {' '}
-              О себе:{' '}
-              <img
-                title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
-                src={Vector2}
-                className="img_vector2"
-                alt=""
+              <label className="setting_left_input-label">
+                {' '}
+                О себе:{' '}
+                <img
+                  title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
+                  src={Vector2}
+                  className="img_vector2"
+                  alt=""
+                />
+              </label>
+              <textarea
+                onChange={(e) => setAbout(e.target.value)}
+                value={about}
+                className="setting_left_input__textarea"
               />
-            </label>
-            <textarea
-              onChange={(e) => setAbout(e.target.value)}
-              value={about}
-              className="setting_left_input__textarea"
-            />
-          </div>
+            </div>
 
-          {/* ИЗМЕНЕНИЕ ПАРОЛЯ И ИНПУТ ПАРОЛЯ */}
-          {(contactEmailRegExp.test(userData && userData.username) ||
-            contactNumberRegExp.test(userData && userData.username)) && (
-            <div>
-              <div className="setting_left_input_wrapper">
-                <p
-                  onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
-                  className="my-data-lower-p__password">
-                  {' '}
-                  Изменить пароль{' '}
-                </p>
-              </div>
-              {showPasswordChangeTable && (
+            {/* ИЗМЕНЕНИЕ ПАРОЛЯ И ИНПУТ ПАРОЛЯ */}
+            {(contactEmailRegExp.test(userData && userData.username) ||
+              contactNumberRegExp.test(userData && userData.username)) && (
+              <div>
                 <div className="setting_left_input_wrapper">
+                  <p
+                    onClick={() => setShowPasswordChangeTable(!showPasswordChangeTable)}
+                    className="my-data-lower-p__password">
+                    {' '}
+                    Изменить пароль{' '}
+                  </p>
+                </div>
+                {showPasswordChangeTable && (
                   <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Старый пароль</label>
-                    <div className="setting_left_input_row">
-                    <input
-                      onChange={(e) => setOldPassword(e.target.value)}
-                      value={oldPassword}
-                      className="setting_left_input__password"
-                      type={showOldPass ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowOldPass(!showOldPass)}
-                      class="password-control__profile"></a>
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Старый пароль</label>
+                      <div className="setting_left_input_row">
+                        <input
+                          onChange={(e) => setOldPassword(e.target.value)}
+                          value={oldPassword}
+                          className="setting_left_input__password"
+                          type={showOldPass ? 'text' : 'password'}
+                        />
+                        <a
+                          onClick={() => setShowOldPass(!showOldPass)}
+                          class="password-control__profile"></a>
+                      </div>
+                    </div>
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Новый пароль</label>
+                      <input
+                        onChange={(e) => setNewPassword1(e.target.value)}
+                        value={newPassword1}
+                        className="setting_left_input__password"
+                        type={showNewPass1 ? 'text' : 'password'}
+                      />
+                      <a
+                        onClick={() => setShowNewPass1(!showNewPass1)}
+                        class="password-control__profile"></a>
+                    </div>
+                    <div className="setting_left_input_wrapper">
+                      <label className="setting_left_input-label">Повторите новый пароль</label>
+                      <input
+                        onChange={(e) => setNewPassword2(e.target.value)}
+                        value={newPassword2}
+                        className="setting_left_input__password"
+                        type={showNewPass2 ? 'text' : 'password'}
+                      />
+                      <a
+                        onClick={() => setShowNewPass2(!showNewPass2)}
+                        class="password-control__profile"></a>
+                    </div>
+                    <div className=" button_password_profile">
+                      <input
+                        value="ИЗМЕНИТЬ"
+                        type="button"
+                        onClick={passwordChangeHandler}
+                        className=" button_download"
+                      />
                     </div>
                   </div>
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Новый пароль</label>
-                    <input
-                      onChange={(e) => setNewPassword1(e.target.value)}
-                      value={newPassword1}
-                      className="setting_left_input__password"
-                      type={showNewPass1 ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowNewPass1(!showNewPass1)}
-                      class="password-control__profile"></a>
-                  </div>
-                  <div className="setting_left_input_wrapper">
-                    <label className="setting_left_input-label">Повторите новый пароль</label>
-                    <input
-                      onChange={(e) => setNewPassword2(e.target.value)}
-                      value={newPassword2}
-                      className="setting_left_input__password"
-                      type={showNewPass2 ? 'text' : 'password'}
-                    />
-                    <a
-                      onClick={() => setShowNewPass2(!showNewPass2)}
-                      class="password-control__profile"></a>
-                  </div>
-                  <div className=" button_password_profile">
-                    <input
-                      value="ИЗМЕНИТЬ"
-                      type="button"
-                      onClick={passwordChangeHandler}
-                      className=" button_download"
-                    />
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
+            )}
+
+            {/*КНОПКА СОХРАНЕНИЯ*/}
+
+            <div className=" button_save">
+              <input
+                value="СОХРАНИТЬ"
+                type="button"
+                onClick={profileSaveHandler}
+                className=" button_download"
+                id="button_max_width"
+              />
             </div>
-          )}
-
-          {/*КНОПКА СОХРАНЕНИЯ*/}
-
-          <div className=" button_save">
-            <input
-              value="СОХРАНИТЬ"
-              type="button"
-              onClick={profileSaveHandler}
-              className=" button_download"
-              id="button_max_width"
-            />
-          </div>
           </form>
         </div>
       </div>

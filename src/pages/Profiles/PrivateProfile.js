@@ -29,7 +29,7 @@ const PrivateProfile = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Мой профиль';
+    document.title = 'Мой профиль: #разделисдругим';
   }, []);
 
   return (
@@ -37,7 +37,7 @@ const PrivateProfile = () => {
       <Header />
       <div className="privateProfile">
         <div className="privateProfile_container">
-          <div className="conteiner_shapka" id ="globaldata_pk">
+          <div className="conteiner_shapka" id="globaldata_pk">
             <Link
               style={
                 subjects.length === 0
@@ -77,7 +77,7 @@ const PrivateProfile = () => {
           </div>
 
           {/* MOBILE */}
-          <div className="conteiner_shapka" id ="globaldata_mobile">
+          <div className="conteiner_shapka" id="globaldata_mobile">
             <Link
               style={
                 subjects.length === 0
@@ -86,14 +86,16 @@ const PrivateProfile = () => {
               }
               className="conteiner_shapka_myProfile"
               to="/i-rent-out">
-              <p style={subjects.length === 0 ? { opacity: '0.4', pointerEvents: 'none' } : {}} style={{display:'none'}}>
+              <p
+                style={subjects.length === 0 ? { opacity: '0.4', pointerEvents: 'none' } : {}}
+                style={{ display: 'none' }}>
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{display:'none'}}>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{display:'none'}}>
+            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
               Мои сообщения <span> - </span>
             </p>
             <Link
@@ -102,7 +104,7 @@ const PrivateProfile = () => {
                   ? { pointerEvents: 'none', textDecoration: 'none' }
                   : { textDecoration: 'none' }
               }
-              style={{display:'none'}}
+              style={{ display: 'none' }}
               className="conteiner_shapka_myProfile"
               to="/favorites">
               <p className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
@@ -110,16 +112,13 @@ const PrivateProfile = () => {
               </p>
             </Link>
             <p
-            style={{display:'none'}}
+              style={{ display: 'none' }}
               className={activeForm === 'myProfile' && 'conteiner_shapka_myProfile'}
               onClick={() => setActiveForm('myProfile')}>
               {' '}
               Мой профиль
             </p>
           </div>
-
-
-
 
           {activeForm === 'myProfile' && (
             <MyData
