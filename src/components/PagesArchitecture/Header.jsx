@@ -19,6 +19,11 @@ import Favorites from '../../img/MainPage/FavoritesDisabled.png';
 import Notifications from '../../img/MainPage/Notifications.png';
 import UserAvatar from '../../img/MainPage/UserAvatar.png';
 import MenuStroke from '../../img/MainPage/MenuStroke.png';
+import Planet2 from '../../img/MainPage/Vector (Stroke2).png';
+import Local2 from '../../img/MainPage/local2.png';
+import Like_vector from '../../img/MainPage/like_vector.png';
+import Bell2 from '../../img/MainPage/bell2.png';
+
 
 const Header = () => {
   const searchButton = React.useRef(null);
@@ -189,11 +194,11 @@ const Header = () => {
           </Link>
           <div className="selector_header_items">
             <div className="location-selector">
-              <img src={mark} alt="" className="location-img" />
+              <img src={Local2} alt="" className="location-img" />
               <p className="location-p">{currentLocation && currentLocation}</p>
             </div>
             <div className="laguage-selector-wrapper">
-              <img src={LanguagePlanet} alt="" className="language-planet-img" />
+            <img src={Planet2} alt="" className="language-planet-img" />
               <p className="language-selector">RU</p>
             </div>
           </div>
@@ -209,12 +214,12 @@ const Header = () => {
           {isLoggedIn && (
             <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper2">
               <div className="header-right-content-logged-div">
-                <Link to="/favorites">
-                  <img className="header-right-content-logged-img" src={Favorites} id="favorites" />
+                <Link to="/favorites" style={{display:'flex'}}>
+                  <img className="header-right-content-logged-img" src={Like_vector} id="favorites" />
                 </Link>
                 <img
                   className="header-right-content-logged-img"
-                  src={Notifications}
+                  src={Bell2}
                   id="notifications"
                 />
                 <div

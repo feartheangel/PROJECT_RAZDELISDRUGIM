@@ -984,7 +984,7 @@ const SearchPage = () => {
                     </div>
 
                     {searchItems && (
-                      <div style={{ alignSelf: 'center', width:'100%',  marginTop:'20px' }}>
+                      <div style={{ alignSelf: 'center', width:'100%',  marginTop:'15px', marginBottom:'15px' }}>
                         <YMaps>
                           <Map state={mapData} width={'auto'} height={300} modules={['package.full']}>
                             <Clusterer
@@ -1017,7 +1017,7 @@ const SearchPage = () => {
                         if (index > 1) {
                           return (
                             <div className="card_div" >
-                              <div style={{marginBottom:'20px', marginTop:'20px'}}><ItemCard key={index} item={item} /></div>
+                              <div ><ItemCard key={index} item={item} /></div>
                             </div>
                           );
                         }

@@ -1329,7 +1329,18 @@ const CardThings = () => {
                   </div>
 
                   {/* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ*/}
-                  <div className="left_block_information">
+        {itemData &&
+                      (itemData.structure ||
+                        itemData.description ||
+                        itemData.article ||
+                        itemData.appointment ||
+                        itemData.article ||
+                        itemData.inventory_number ||
+                        itemData.color ||
+                        itemData.year_release ||
+                        itemData.mileage) &&
+                  <div className="left_block_information"                  
+                  >
                     {itemData &&
                       (itemData.structure ||
                         itemData.description ||
@@ -1410,6 +1421,7 @@ const CardThings = () => {
                       )}
                     </div>
                   </div>
+                  }
                 </div>
 
                 {/*ПРАВАЯ СТОРОНА*/}

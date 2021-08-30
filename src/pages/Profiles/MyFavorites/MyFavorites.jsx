@@ -95,7 +95,7 @@ const MyFavorites = () => {
           <div className="container_profile_content__myItems" id="globaldata_mobile">
               <div className="onlydiv_forcards">
               {favorites &&
-                favorites.map((subject, index) => <div style={{width:'50%', marginBottom:'20px'}}><ItemCard  item={subject.item} key={index} /></div>)}
+                favorites.map((subject, index) => <div style={{width:'50%'}}><ItemCard  item={subject.item} key={index} /></div>)}
               </div>
               {favorites && favorites.length === 0 && (
                 <div className="favorites_empty">

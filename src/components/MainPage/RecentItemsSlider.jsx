@@ -42,7 +42,7 @@ const RecentItemsSlider = () => {
               spaceBetween={0}
               slidesPerView={2}
               pagination={{ clickable: true }}
-              scrollbar={{ draggable: true }}
+              // scrollbar={{ draggable: true }}
               id ="swiper_mobile"
               >
               {recentItems &&

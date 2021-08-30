@@ -53,7 +53,7 @@ const News = () => {
             spaceBetween={70}
             slidesPerView={1}
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
+            // scrollbar={{ draggable: true }}
             id ="swiper_mobile"
             >
             {news &&

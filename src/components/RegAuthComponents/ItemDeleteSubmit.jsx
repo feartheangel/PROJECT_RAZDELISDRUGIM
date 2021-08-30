@@ -33,16 +33,19 @@ const ItemDeleteSubmit = ({ deleteId, setModalActiveSubmit, modalActiveSubmit })
   return (
     <div
       className={modalActiveSubmit ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}
+      style={{display:'flex'}}
       onClick={() => setModalActiveSubmit(false)}>
       <div className="reg-content">
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
-          <div style={{ height: '230px' }} className="reg-form-email-verification">
+          <div 
+            style={{ height: '200px', display:'flex', width:'100%', borderRadius:'0'}}
+           className="reg-form-email-verification">
             <div className="div_for_krestik">
               <img
                 onClick={() => setModalActiveSubmit(false)}
                 src={Shape}
                 className="img_krestik"
-                style={{marginRight:'85px'}}
+                style={{marginRight:'15px'}}
               />
             </div>
             <div className="log-form-text-label-p-email__upper">

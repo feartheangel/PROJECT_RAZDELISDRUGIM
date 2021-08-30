@@ -40,7 +40,7 @@ const RandomItemsSlider = () => {
             spaceBetween={0}
             slidesPerView={2}
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
+            // scrollbar={{ draggable: true }}
             id="swiper_mobile">
             {randomItems &&
               randomItems.map((item, index) => (
@@ -52,7 +52,7 @@ const RandomItemsSlider = () => {
           </Swiper>
         </div>
       </div>
-      <Link style={{ textDecoration: 'none' }} to="/catalog">
+      <Link style={{ textDecoration: 'none' }} to="/catalog" style={{marginTop:'5px'}}>
         <input type="button" value="Смотреть каталог" className="popular-button" />
       </Link>
     </section>

@@ -431,7 +431,7 @@ const PublicProfile = () => {
               <div className="up_content">
                 <div  className="up_content_rowstyle">
                   {/*Аватарка владельца */}
-                    <div className="block_down_owner_photo">
+                    <div className="block_down_owner_photo" style={{width:'auto'}}>
                       <img
                         src={`https://razdelisdrugim.by${profileData && profileData.image_profile}`}
                         alt=""

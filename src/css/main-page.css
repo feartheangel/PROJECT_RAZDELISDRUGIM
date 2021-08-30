@@ -1353,7 +1353,7 @@ button {
     margin-left: 10px;
   }
   .header-right-content-logged-img {
-    margin-right: 20px;
+    margin-right: 15px;
   }
 
   #logged-img_last_item {
@@ -1394,7 +1394,7 @@ button {
   .location-selector {
     margin: 0;
     width: 24px;
-    height: 24px;
+    height: auto;
   }
   .location-p {
     display: none;
@@ -1423,21 +1423,20 @@ button {
   }
   .location-img {
     width: 17px;
-    height: 24px;
+    height: 22px;
     margin-right: 1px;
-    height: 100%;
   }
   .language-planet-img {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
   #notifications {
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 22px;
   }
   #favorites {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 20px;
   }
   /* кнопки входа и тд */
   .header-right-content {
@@ -1603,6 +1602,11 @@ button {
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
+    background: #4CC9F0;
+    box-shadow: 0.78125px 0.78125px 5.72917px rgba(99, 212, 248, 0.24);
+    border-radius: 3px;
+    left: 201px;
+    top: 0px;
   }
   #add-subject2 {
     display: none;
@@ -1676,7 +1680,7 @@ button {
     line-height: 16px;
     color: #000000;
     margin-top: 7px;
-    max-height: 50px;
+    max-height: 48px;
     overflow-y: hidden;
   }
   .div_favorites{
@@ -1729,10 +1733,8 @@ button {
     flex-direction: row;
     max-width: 480px;
     width: 100%;
-    height: 375px;
-    padding: 10px 0;
-    margin-bottom: 5px;
-    /* margin-top: 10px; */
+    height: 370px;
+    padding: 10px 0 5px 0;
   }
 
   .home_slider_track {
@@ -1797,7 +1799,7 @@ button {
 
   /* ЧАСТО АРЕНДУЕМЫЕ */
   .popular-p {
-    margin: 15px;
+    margin: 15px 0 5px 0;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -2014,10 +2016,9 @@ button {
 
   /* НОВОСТИ И ОБЗОРЫ */
   .news-reviews {
-    max-width: 480px;
     width: 100%;
     height: auto;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
   }
   .news-reviews-content {
     max-width: 480px;
@@ -2026,6 +2027,7 @@ button {
   }
   .news-reviews-blocks {
     margin: 0;
+    width: 100%;
   }
 
   .main-news-reviews-title {
@@ -2038,14 +2040,13 @@ button {
     height: auto;
   }
   .news-reviews-block {
-    max-width: 480px;
-    width: 310px;
-    max-height: 200px;
-    height: 100%;
+    width: auto;
+    min-height: 175px;
+    height: auto;
     margin-bottom: 35px;
   }
   .news-reviews-text {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   /*  КАТЕГОРИИ ПЕРЕД ПОДВАЛОМ */
@@ -2327,11 +2328,11 @@ button {
     margin: 0;
     padding: 10px 5px;
     height: 450px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .recent-block-wrapper {
     display: flex;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
   .recent-block-wrapper-gl {
     display: flex;
