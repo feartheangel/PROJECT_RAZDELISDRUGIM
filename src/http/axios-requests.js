@@ -786,6 +786,8 @@ class Requests {
       },
       data: {
         link_facebook: link_facebook,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -820,6 +822,8 @@ class Requests {
       },
       data: {
         link_instagram: link_instagram,
+        email: email,
+        phone: phone,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {

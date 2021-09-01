@@ -77,7 +77,7 @@ button {
 }
 
 .logo {
-  margin-right: 356px;
+  margin-right: 345px;
 }
 
 .location-img {
@@ -199,7 +199,7 @@ button {
   width: 100%;
   border: 0;
   height: 1px;
-  margin: 2px 0px;
+  margin: 1px 0px;
 }
 
 .login-button {
@@ -212,7 +212,7 @@ button {
   line-height: 23px;
   border: 2px solid #4cc9f0;
   box-sizing: border-box;
-  filter: drop-shadow(3px 3px 22px rgba(99, 212, 248, 0.24));
+  filter: drop-shadow(3px 3px 22px rgba(114, 120, 122, 0.24));
   border-radius: 5px;
   background: transparent;
 }
@@ -352,7 +352,8 @@ button {
 .recent-block {
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
+  margin-right: 15px;
+  margin-left: 15px;
   margin-bottom: 30px;
   margin-top: 25px;
   width: 220px;
@@ -569,7 +570,6 @@ button {
 
 .abilities-cards-upper {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -2366,5 +2366,9 @@ button {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 0;
+  }
+
+  .abilities-cards-upper {
+    flex-wrap: wrap;
   }
 }

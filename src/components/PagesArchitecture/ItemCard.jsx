@@ -21,7 +21,7 @@ import FavoritesDisabled from '../../img/MainPage/FavoritesDisabled.png';
 
 const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
-  const { reload, favorites } = useSelector(({ userData }) => userData);
+  const { reload, favorites, isLoggedIn } = useSelector(({ userData }) => userData);
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   const addFavoriteHandler = (e) => {
@@ -146,7 +146,7 @@ const ItemCard = ({ item }) => {
             <p className="recent-block-title-p">
               {item.profile.company_name ? item.profile.company_name : item.profile.first_name}
             </p>
-            {favorites && !isFavorite && (
+            {favorites && !isFavorite && isLoggedIn && (
               <img
                 onClick={(e) => addFavoriteHandler(e)}
                 className="itemcard_favorite_img"
@@ -154,7 +154,7 @@ const ItemCard = ({ item }) => {
               />
             )}
 
-            {favorites && isFavorite && (
+            {favorites && isFavorite && isLoggedIn && (
               <img
                 onClick={(e) => deleteFavoriteHandler(e)}
                 className="itemcard_favorite_img"
@@ -266,7 +266,7 @@ const ItemCard = ({ item }) => {
             </p>
 
             <div className="div_favorites">
-              {favorites && !isFavorite && (
+              {favorites && !isFavorite && isLoggedIn && (
                 <img
                   onClick={(e) => addFavoriteHandler(e)}
                   className="itemcard_favorite_img"
@@ -274,7 +274,7 @@ const ItemCard = ({ item }) => {
                 />
               )}
 
-                {favorites && isFavorite && (
+                {favorites && isFavorite && isLoggedIn &&(
                   <img
                     onClick={(e) => deleteFavoriteHandler(e)}
                     className="itemcard_favorite_img"

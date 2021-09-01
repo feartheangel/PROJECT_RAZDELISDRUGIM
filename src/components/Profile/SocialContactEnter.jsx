@@ -71,7 +71,7 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
         dispatch(reloadData(!reload));
       });
     } else if (activeSocial === 'vk') {
-      Requests.updateVK(contact).then(() => {
+      Requests.updateVK(contact, userData.email, userData.phone).then(() => {
         alert('VK аккаунт успешно обновлен!');
         setSocialPopUpActive(false);
         setActiveSocial(false);

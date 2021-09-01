@@ -22,7 +22,7 @@ const RandomItemsSlider = () => {
       <div className="recent-blocks-wrapper">
         <div className="recent-blocks-slider-container">
           <Swiper
-            spaceBetween={50}
+            spaceBetween={0}
             slidesPerView={4}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
@@ -40,6 +40,7 @@ const RandomItemsSlider = () => {
             spaceBetween={0}
             slidesPerView={2}
             pagination={{ clickable: true }}
+            
             // scrollbar={{ draggable: true }}
             id="swiper_mobile">
             {randomItems &&

@@ -75,6 +75,10 @@ const CardThings = () => {
   };
 
   const addFavoriteHandler = (e) => {
+    if (!isLoggedIn){
+      alert('Доступно только авторизованным пользователям.')
+      return
+    }
     e.preventDefault();
     setIsFavorite(true);
     Requests.addFavoriteItem(window.location.href.split('?id=')[1])
@@ -85,6 +89,10 @@ const CardThings = () => {
   };
 
   const deleteFavoriteHandler = (e) => {
+    if (!isLoggedIn){
+      alert('Доступно только авторизованным пользователям.')
+      return
+    }
     e.preventDefault();
     setIsFavorite(false);
     Requests.deleteFavoriteItem(window.location.href.split('?id=')[1])
@@ -93,6 +101,15 @@ const CardThings = () => {
       })
       .catch(() => setIsFavorite(true));
   };
+
+  const mobileContactHandler = (e) => {
+    if (!isLoggedIn) {
+      e.preventDefault()
+      alert('Доступно только авторизованным пользователям.')
+    }
+  } 
+
+  
 
   React.useEffect(() => {
     Requests.getSingleItem(window.location.href.split('?id=')[1]).then((response) => {
@@ -631,7 +648,7 @@ const CardThings = () => {
                     <div style={{ marginTop: '20px', marginBottom: '20px' }}>
                       <YMaps>
                         <Map width={300} height={200} defaultState={itemData && mapData}>
-                          <Placemark geometry={itemData && mapData.center} />
+                          <Placemark geometry={itemData && mapData.center} options={{preset: 'islands#yellowIcon'}}/>
                         </Map>
                       </YMaps>
                     </div>
@@ -914,7 +931,7 @@ const CardThings = () => {
             </div>
 
             {/* КАРТОЧКИ С ДРУГИМИ ОБЬЯВЛЕНИЯМИ*/}
-            <div className="container_content_ads">
+            <div style={{display: 'none'}} className="container_content_ads">
               <p className="container_content_ads-p"> Похожие объявления </p>
 
               <div className="content_ads_card">
@@ -1428,7 +1445,7 @@ const CardThings = () => {
                     <div style={{ marginTop: '20px', marginBottom: '20px', width: '100%' }}>
                       <YMaps>
                         <Map width={'auto'} height={200} defaultState={itemData && mapData}>
-                          <Placemark geometry={itemData && mapData.center} />
+                          <Placemark geometry={itemData && mapData.center} options={{preset: 'islands#yellowIcon'}} />
                         </Map>
                       </YMaps>
                     </div>
@@ -1450,6 +1467,7 @@ const CardThings = () => {
                       }}>
                       <div className="block_up_contactOwner">
                         <a
+                        onClick={(e) => mobileContactHandler(e)}
                           href={`tel: ${itemData && itemData.profile.phone}`}
                           style={{ cursor: 'pointer' }}
                           className="contactOwner_btn">
@@ -1464,7 +1482,7 @@ const CardThings = () => {
                           />
                         )}
 
-                        {favorites && isFavorite && (
+                        {favorites && isFavorite && isLoggedIn && (
                           <img
                             onClick={(e) => deleteFavoriteHandler(e)}
                             className="img_contactOwner"
