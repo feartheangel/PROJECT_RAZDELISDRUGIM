@@ -99,7 +99,7 @@ const MyFavorites = () => {
 
                 {favorites &&
                   favorites.map((subject, index) => (
-                    <div style={{ width: '50%', marginBottom: '20px' }}>
+                    <div style={{ width: '50%' }}>
                       <ItemCard item={subject.item} key={index} />
                     </div>
                   ))}
