@@ -424,14 +424,6 @@ const PublicProfile = () => {
                         style={{ width: '80px', height: 'auto', borderRadius: '100%' }}
                       />
                     </div>
-                  <div className="block_down_owner_photo">
-                    <img
-                      src={`https://razdelisdrugim.by${profileData && profileData.image_profile}`}
-                      alt=""
-                      style={{ width: '80px', height: 'auto', borderRadius: '100%' }}
-                    />
-                  </div>
-
 
                   <div>
                     {/*  СПРАВА ОТ АВАТАРКИ  */}
@@ -717,7 +709,7 @@ const PublicProfile = () => {
                     {profileItems &&
                       profileItems.map((item, index) => {
                         return (
-                          <div style={{ width: '50%', marginBottom: '20px' }}>
+                          <div style={{ width: '50%'}}>
                             <ItemCard item={item} key={index} />{' '}
                           </div>
                         );
