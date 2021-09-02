@@ -23,6 +23,7 @@ import {
   ForBusiness,
   ConfidencePolicy,
   AccountDeletion,
+  Contacts
 } from './pages/index';
 import { PasswordRecoverySubmit } from './components/index';
 import './css/main-page.css';
@@ -117,6 +118,7 @@ function App() {
         <Route path="/for-business" component={ForBusiness} exact />
         <Route path="/confidence-policy" component={ConfidencePolicy} exact />
         <Route path="/account-deletion" component={AccountDeletion} exact />
+        <Route path="/contacts" component={Contacts} exact />
       </div>
     </div>
   );

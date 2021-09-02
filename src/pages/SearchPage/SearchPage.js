@@ -1,10 +1,10 @@
-import React from 'react';
-import './SearchPage.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
-import { Header, Footer, ItemCard } from '../../components/index';
-import Requests from '../../http/axios-requests';
-import vector1 from '../../img/SearchPage/Vector1.png';
+import React from "react";
+import "./SearchPage.css";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { Header, Footer, ItemCard } from "../../components/index";
+import Requests from "../../http/axios-requests";
+import vector1 from "../../img/SearchPage/Vector1.png";
 import {
   setSearchCategory,
   setSearchItems,
@@ -18,15 +18,17 @@ import {
   setPledge,
   setDistance,
   setCategoryId,
-} from '../../redux/actions/search';
-import { YMaps, Map, Placemark, Clusterer } from 'react-yandex-maps';
+} from "../../redux/actions/search";
+import { YMaps, Map, Placemark, Clusterer } from "react-yandex-maps";
 
 const SearchPage = () => {
   const [filter, setFilter] = React.useState(false);
   const filterhandler = () => {
     setFilter(!filter);
   };
-  const { userData, subjects, isLoggedIn } = useSelector(({ userData }) => userData);
+  const { userData, subjects, isLoggedIn } = useSelector(
+    ({ userData }) => userData
+  );
   const {
     searchItems,
     words,
@@ -46,7 +48,9 @@ const SearchPage = () => {
 
   //параметры карты
   const mapData = {
-    center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.91, 27.55],
+    center: userCoordinates
+      ? userCoordinates.split(" ").reverse()
+      : [53.91, 27.55],
     zoom: 12,
   };
 
@@ -56,9 +60,7 @@ const SearchPage = () => {
 
   const getPointOptions = (index) => {
     return {
-      iconLayout: 'default#image',
-      iconImageHref: `https://razdelisdrugim.by${marks[index][1]}`,
-      balloonPanelMaxMapArea: 0
+      preset: `islands#blueDotIcon`,
     };
   };
 
@@ -79,7 +81,7 @@ const SearchPage = () => {
                 ${marks[index][4]}
                 </p>
               </div>`
-                  : ''
+                  : ""
               }
               ${
                 marks[index][7]
@@ -88,7 +90,7 @@ const SearchPage = () => {
                     Предложить свою цену
                   </p>
                 </div>`
-                  : ''
+                  : ""
               }
               ${
                 marks[index][6]
@@ -99,7 +101,7 @@ const SearchPage = () => {
                     Бесплатно
                   </p>
                 </div>`
-                  : ''
+                  : ""
               }
               <a href=/item-card?id=${marks[index][5]} target='_blank'>
             <p
@@ -112,7 +114,7 @@ const SearchPage = () => {
         </a>
       </div>
           `,
-      ].join(''),
+      ].join(""),
     };
   };
 
@@ -124,7 +126,11 @@ const SearchPage = () => {
       searchItems &&
         searchItems.map((item) => {
           return [
-            item.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse(),
+            item.items_coordinates
+              .split("(")[1]
+              .split(")")[0]
+              .split(" ")
+              .reverse(),
             item.image_1,
             item.name_item,
             item.price_rent,
@@ -133,13 +139,13 @@ const SearchPage = () => {
             item.free_rent,
             item.offer_price_rent,
           ];
-        }),
+        })
     );
   }, [searchItems]);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Поиск: #разделисдругим';
+    document.title = "Поиск: #разделисдругим";
   }, []);
 
   React.useEffect(() => {
@@ -172,7 +178,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
-        distance,
+        distance
       ).then((res) => {
         dispatch(setSearchItems(res.data));
       });
@@ -180,21 +186,23 @@ const SearchPage = () => {
   }, []);
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length >= 5) {
-      alert('Лимит вещей достигнут (5)');
+    if (isLoggedIn && subjects.length >= 10) {
+      alert("Лимит вещей достигнут (10)");
       return;
-    } else if (isLoggedIn && subjects.length >= 5) {
-      alert('Лимит вещей достигнут (5)');
+    } else if (isLoggedIn && subjects.length >= 10) {
+      alert("Лимит вещей достигнут (10)");
       return;
     } else if (!isLoggedIn) {
-      alert('Сначала авторизуйтесь!');
+      alert("Сначала авторизуйтесь!");
       return;
     } else if (!userData.email_verify || !userData.phone_verify) {
-      alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
+      alert(
+        "У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле."
+      );
       setRedirect(<Redirect to="/private-profile" />);
       return;
     }
-    window.location.href = '/place-item';
+    window.location.href = "/place-item";
   };
 
   const searchHandler = (
@@ -209,7 +217,7 @@ const SearchPage = () => {
     contract,
     pledge,
     userCoordinates,
-    distance,
+    distance
   ) => {
     Requests.search(
       words,
@@ -223,7 +231,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     ).then((res) => {
       dispatch(setSearchItems(res.data));
     });
@@ -246,7 +254,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     );
   };
 
@@ -267,7 +275,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     );
   };
 
@@ -285,7 +293,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     );
   };
 
@@ -304,7 +312,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
-        distance,
+        distance
       );
     } else {
       dispatch(setStatus(e.target.value));
@@ -320,7 +328,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
-        distance,
+        distance
       );
     }
   };
@@ -339,7 +347,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     );
   };
 
@@ -357,7 +365,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     );
   };
 
@@ -375,7 +383,7 @@ const SearchPage = () => {
       !contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     );
   };
 
@@ -393,7 +401,7 @@ const SearchPage = () => {
       contract,
       !pledge,
       userCoordinates,
-      distance,
+      distance
     );
   };
 
@@ -412,7 +420,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
-        false,
+        false
       );
     } else {
       dispatch(setDistance(props));
@@ -428,7 +436,7 @@ const SearchPage = () => {
         contract,
         pledge,
         userCoordinates,
-        props,
+        props
       );
     }
   };
@@ -448,7 +456,7 @@ const SearchPage = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     ).then((res) => {
       dispatch(setSearchItems(res.data));
     });
@@ -462,14 +470,14 @@ const SearchPage = () => {
           {/* КОНТЕЙНЕР ШАПКИ*/}
           <div className="SearchPage_container_shapka" id="search_pk">
             <div>
-              <Link style={{ textDecoration: 'none' }} to="/">
+              <Link style={{ textDecoration: "none" }} to="/">
                 <p className="SearchPage_container_shapka_hover"> Главная </p>
               </Link>
               <img src={vector1} alt="" />
             </div>
 
             <div>
-              <Link style={{ textDecoration: 'none' }} to="/catalog">
+              <Link style={{ textDecoration: "none" }} to="/catalog">
                 <p className="SearchPage_container_shapka_hover"> Каталог </p>
               </Link>
               {category && <img src={vector1} alt="" />}
@@ -477,7 +485,7 @@ const SearchPage = () => {
             {redirect}
 
             <div>
-              <p style={{ color: 'black' }}> {category} </p>
+              <p style={{ color: "black" }}> {category} </p>
             </div>
 
             <p className="container_shapka_result">
@@ -488,16 +496,17 @@ const SearchPage = () => {
                   <span
                     onClick={categoryResetHandler}
                     style={{
-                      color: 'red',
-                      fontSize: '14px',
-                      marginLeft: '10px',
-                      cursor: 'pointer',
-                    }}>
+                      color: "red",
+                      fontSize: "14px",
+                      marginLeft: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
                     Сбросить категорию
                   </span>
                 </p>
               ) : (
-                ''
+                ""
               )}
             </p>
           </div>
@@ -506,21 +515,21 @@ const SearchPage = () => {
           <div className="SearchPage_container_shapka" id="search_mobile">
             <div className="SearchPage_shapka_up">
               <div>
-                <Link style={{ textDecoration: 'none' }} to="/">
+                <Link style={{ textDecoration: "none" }} to="/">
                   <p className="SearchPage_container_shapka_hover"> Главная </p>
                 </Link>
                 <img src={vector1} alt="" />
               </div>
 
               <div>
-                <Link style={{ textDecoration: 'none' }} to="/catalog">
+                <Link style={{ textDecoration: "none" }} to="/catalog">
                   <p className="SearchPage_container_shapka_hover"> Каталог </p>
                 </Link>
                 {category && <img src={vector1} alt="" />}
               </div>
 
               <div>
-                <p style={{ color: 'black' }}> {category} </p>
+                <p style={{ color: "black" }}> {category} </p>
               </div>
             </div>
 
@@ -532,17 +541,18 @@ const SearchPage = () => {
                   <div
                     onClick={categoryResetHandler}
                     style={{
-                      color: 'red',
-                      fontSize: '14px',
-                      marginTop: '5px',
-                      marginBottom: '10px',
-                      cursor: 'pointer',
-                    }}>
+                      color: "red",
+                      fontSize: "14px",
+                      marginTop: "5px",
+                      marginBottom: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
                     Сбросить категорию
                   </div>
                 </p>
               ) : (
-                ''
+                ""
               )}
             </p>
           </div>
@@ -553,33 +563,48 @@ const SearchPage = () => {
               <div className="shapka_top_up">
                 <p
                   title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                  className={distance === '200' ? 'distance_p active' : 'distance_p'}
-                  onClick={() => distanceHandler('200')}>
+                  className={
+                    distance === "200" ? "distance_p active" : "distance_p"
+                  }
+                  onClick={() => distanceHandler("200")}
+                >
                   До 200 м
                 </p>
                 <p
                   title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                  className={distance === '1000' ? 'distance_p active' : 'distance_p'}
-                  onClick={() => distanceHandler('1000')}>
+                  className={
+                    distance === "1000" ? "distance_p active" : "distance_p"
+                  }
+                  onClick={() => distanceHandler("1000")}
+                >
                   До 1 км
                 </p>
                 <p
                   title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                  className={distance === '5000' ? 'distance_p active' : 'distance_p'}
-                  onClick={() => distanceHandler('5000')}>
+                  className={
+                    distance === "5000" ? "distance_p active" : "distance_p"
+                  }
+                  onClick={() => distanceHandler("5000")}
+                >
                   До 5 км
                 </p>
               </div>
               <div className="search_top_up_row">
                 <p
                   onClick={() => distanceHandler(false)}
-                  className={distance === false ? 'distance_p active' : 'distance_p'}>
+                  className={
+                    distance === false ? "distance_p active" : "distance_p"
+                  }
+                >
                   Показать все
                 </p>
                 <p
-                  style={{ margin: '0' }}
+                  style={{ margin: "0" }}
                   onClick={() => filterhandler()}
-                  className={filter === true ? 'distance_p active' : 'distance_p'}>
+                  className={
+                    filter === true ? "distance_p active" : "distance_p"
+                  }
+                >
                   Фильтры
                 </p>
               </div>
@@ -614,116 +639,125 @@ const SearchPage = () => {
 
                 <li>
                   <input
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                     checked={free}
                     onChange={freeRentHandler}
                     id="free"
                     type="checkbox"
                     className="input_left_checkbox"
                   />
-                  <label style={{ cursor: 'pointer' }} htmlFor="free">
+                  <label style={{ cursor: "pointer" }} htmlFor="free">
                     Бесплатно
                   </label>
                 </li>
 
                 <li>
                   <input
-                    style={{ cursor: 'pointer' }}
-                    checked={status === '2'}
+                    style={{ cursor: "pointer" }}
+                    checked={status === "2"}
                     value="2"
                     onChange={(e) => statusHandler(e)}
                     id="companies"
                     type="checkbox"
                     className="input_left_checkbox"
                   />
-                  <label style={{ cursor: 'pointer' }} htmlFor="companies">
+                  <label style={{ cursor: "pointer" }} htmlFor="companies">
                     Компании
                   </label>
                 </li>
 
                 <li>
                   <input
-                    style={{ cursor: 'pointer' }}
-                    checked={status === '1'}
+                    style={{ cursor: "pointer" }}
+                    checked={status === "1"}
                     value="1"
                     onChange={(e) => statusHandler(e)}
                     id="individual"
                     type="checkbox"
                     className="input_left_checkbox"
                   />
-                  <label style={{ cursor: 'pointer' }} htmlFor="individual">
-                    {' '}
-                    Частные лица{' '}
+                  <label style={{ cursor: "pointer" }} htmlFor="individual">
+                    {" "}
+                    Частные лица{" "}
                   </label>
                 </li>
 
                 <li>
                   <input
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                     checked={delivery}
                     onChange={deliveryHandler}
                     id="delivery"
                     type="checkbox"
                     className="input_left_checkbox"
                   />
-                  <label style={{ cursor: 'pointer' }} htmlFor="delivery">
-                    {' '}
-                    Доставка{' '}
+                  <label style={{ cursor: "pointer" }} htmlFor="delivery">
+                    {" "}
+                    Доставка{" "}
                   </label>
                 </li>
 
                 <li>
                   <input
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                     checked={insurance}
                     onChange={insuranceHandler}
                     id="insurance"
                     type="checkbox"
                     className="input_left_checkbox"
                   />
-                  <label style={{ cursor: 'pointer' }} htmlFor="insurance">
-                    {' '}
-                    Страховка{' '}
+                  <label style={{ cursor: "pointer" }} htmlFor="insurance">
+                    {" "}
+                    Страховка{" "}
                   </label>
                 </li>
 
                 <li>
                   <input
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                     checked={contract}
                     onChange={contractHandler}
                     id="contract"
                     type="checkbox"
                     className="input_left_checkbox"
                   />
-                  <label style={{ cursor: 'pointer' }} htmlFor="contract">
-                    {' '}
-                    По договору{' '}
+                  <label style={{ cursor: "pointer" }} htmlFor="contract">
+                    {" "}
+                    По договору{" "}
                   </label>
                 </li>
 
                 <li>
                   <input
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                     checked={pledge}
                     onChange={pledgeHandler}
                     id="pledge"
                     type="checkbox"
                     className="input_left_checkbox"
                   />
-                  <label style={{ cursor: 'pointer' }} htmlFor="pledge">
-                    {' '}
-                    Без залога{' '}
+                  <label style={{ cursor: "pointer" }} htmlFor="pledge">
+                    {" "}
+                    Без залога{" "}
                   </label>
                 </li>
 
                 <li>
-                  <input disabled type="checkbox" className="input_left_checkbox" />
-                  <label style={{ opacity: '0.6' }}> Акции </label>
+                  <input
+                    disabled
+                    type="checkbox"
+                    className="input_left_checkbox"
+                  />
+                  <label style={{ opacity: "0.6" }}> Акции </label>
                 </li>
                 <li>
-                  <input id="minPrice" disabled type="checkbox" className="input_left_checkbox" />
-                  <label htmlFor="minPrice" style={{ opacity: '0.6' }}>
+                  <input
+                    id="minPrice"
+                    disabled
+                    type="checkbox"
+                    className="input_left_checkbox"
+                  />
+                  <label htmlFor="minPrice" style={{ opacity: "0.6" }}>
                     Скоро освободится
                   </label>
                 </li>
@@ -732,7 +766,10 @@ const SearchPage = () => {
 
             {/* АДАПТИВ ЛЕВОЙ СТОРОНЫ */}
             {filter && (
-              <div className="SearchPage_container_content_left" id="search_mobile">
+              <div
+                className="SearchPage_container_content_left"
+                id="search_mobile"
+              >
                 <ul>
                   <li>
                     <p className="content_left_cost"> Цена </p>
@@ -758,116 +795,125 @@ const SearchPage = () => {
 
                   <li>
                     <input
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       checked={free}
                       onChange={freeRentHandler}
                       id="free"
                       type="checkbox"
                       className="input_left_checkbox"
                     />
-                    <label style={{ cursor: 'pointer' }} htmlFor="free">
+                    <label style={{ cursor: "pointer" }} htmlFor="free">
                       Бесплатно
                     </label>
                   </li>
 
                   <li>
                     <input
-                      style={{ cursor: 'pointer' }}
-                      checked={status === '2'}
+                      style={{ cursor: "pointer" }}
+                      checked={status === "2"}
                       value="2"
                       onChange={(e) => statusHandler(e)}
                       id="companies"
                       type="checkbox"
                       className="input_left_checkbox"
                     />
-                    <label style={{ cursor: 'pointer' }} htmlFor="companies">
+                    <label style={{ cursor: "pointer" }} htmlFor="companies">
                       Компании
                     </label>
                   </li>
 
                   <li>
                     <input
-                      style={{ cursor: 'pointer' }}
-                      checked={status === '1'}
+                      style={{ cursor: "pointer" }}
+                      checked={status === "1"}
                       value="1"
                       onChange={(e) => statusHandler(e)}
                       id="individual"
                       type="checkbox"
                       className="input_left_checkbox"
                     />
-                    <label style={{ cursor: 'pointer' }} htmlFor="individual">
-                      {' '}
-                      Частные лица{' '}
+                    <label style={{ cursor: "pointer" }} htmlFor="individual">
+                      {" "}
+                      Частные лица{" "}
                     </label>
                   </li>
 
                   <li>
                     <input
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       checked={delivery}
                       onChange={deliveryHandler}
                       id="delivery"
                       type="checkbox"
                       className="input_left_checkbox"
                     />
-                    <label style={{ cursor: 'pointer' }} htmlFor="delivery">
-                      {' '}
-                      Доставка{' '}
+                    <label style={{ cursor: "pointer" }} htmlFor="delivery">
+                      {" "}
+                      Доставка{" "}
                     </label>
                   </li>
 
                   <li>
                     <input
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       checked={insurance}
                       onChange={insuranceHandler}
                       id="insurance"
                       type="checkbox"
                       className="input_left_checkbox"
                     />
-                    <label style={{ cursor: 'pointer' }} htmlFor="insurance">
-                      {' '}
-                      Страховка{' '}
+                    <label style={{ cursor: "pointer" }} htmlFor="insurance">
+                      {" "}
+                      Страховка{" "}
                     </label>
                   </li>
 
                   <li>
                     <input
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       checked={contract}
                       onChange={contractHandler}
                       id="contract"
                       type="checkbox"
                       className="input_left_checkbox"
                     />
-                    <label style={{ cursor: 'pointer' }} htmlFor="contract">
-                      {' '}
-                      По договору{' '}
+                    <label style={{ cursor: "pointer" }} htmlFor="contract">
+                      {" "}
+                      По договору{" "}
                     </label>
                   </li>
 
                   <li>
                     <input
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                       checked={pledge}
                       onChange={pledgeHandler}
                       id="pledge"
                       type="checkbox"
                       className="input_left_checkbox"
                     />
-                    <label style={{ cursor: 'pointer' }} htmlFor="pledge">
-                      {' '}
-                      Без залога{' '}
+                    <label style={{ cursor: "pointer" }} htmlFor="pledge">
+                      {" "}
+                      Без залога{" "}
                     </label>
                   </li>
 
                   <li>
-                    <input disabled type="checkbox" className="input_left_checkbox" />
-                    <label style={{ opacity: '0.6' }}> Акции </label>
+                    <input
+                      disabled
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ opacity: "0.6" }}> Акции </label>
                   </li>
                   <li>
-                    <input id="minPrice" disabled type="checkbox" className="input_left_checkbox" />
-                    <label htmlFor="minPrice" style={{ opacity: '0.6' }}>
+                    <input
+                      id="minPrice"
+                      disabled
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label htmlFor="minPrice" style={{ opacity: "0.6" }}>
                       Скоро освободится
                     </label>
                   </li>
@@ -883,25 +929,37 @@ const SearchPage = () => {
                 <div className="shapka_top">
                   <p
                     title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={distance === '200' ? 'distance_p active' : 'distance_p'}
-                    onClick={() => distanceHandler('200')}>
+                    className={
+                      distance === "200" ? "distance_p active" : "distance_p"
+                    }
+                    onClick={() => distanceHandler("200")}
+                  >
                     До 200 м
                   </p>
                   <p
                     title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={distance === '1000' ? 'distance_p active' : 'distance_p'}
-                    onClick={() => distanceHandler('1000')}>
+                    className={
+                      distance === "1000" ? "distance_p active" : "distance_p"
+                    }
+                    onClick={() => distanceHandler("1000")}
+                  >
                     До 1 км
                   </p>
                   <p
                     title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={distance === '5000' ? 'distance_p active' : 'distance_p'}
-                    onClick={() => distanceHandler('5000')}>
+                    className={
+                      distance === "5000" ? "distance_p active" : "distance_p"
+                    }
+                    onClick={() => distanceHandler("5000")}
+                  >
                     До 5 км
                   </p>
                   <p
                     onClick={() => distanceHandler(false)}
-                    className={distance === false ? 'distance_p active' : 'distance_p'}>
+                    className={
+                      distance === false ? "distance_p active" : "distance_p"
+                    }
+                  >
                     Показать все
                   </p>
                 </div>
@@ -918,31 +976,41 @@ const SearchPage = () => {
                     })}
 
                     {searchItems && (
-                      <div style={{ marginBottom: '30px', marginLeft: '15px' }}>
+                      <div style={{ marginBottom: "30px", marginLeft: "15px" }}>
                         <YMaps>
-                          <Map state={mapData} width={850} height={500} modules={['package.full']}>
+                          <Map
+                            state={mapData}
+                            width={850}
+                            height={500}
+                            modules={["package.full"]}
+                          >
                             <Clusterer
                               options={{
-                                preset: 'islands#invertedYellowClusterIcons',
+                                preset: "islands#invertedBlueClusterIcons",
                                 groupByCoordinates: false,
                                 clusterDisableClickZoom: true,
                                 clusterHideIconOnBalloonOpen: true,
                                 geoObjectHideIconOnBalloonOpen: true,
                                 hasBalloon: true,
-                                clusterBalloonContentLayout: 'cluster#balloonCarousel',
-      clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonContentLayoutHeight: 130,
-        clusterBalloonPagerSize: 5,
-        clusterBalloonContentLayoutHeight: 270,
-        clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonPanelMaxMapArea: 0,
-                              }}>
+                                clusterBalloonContentLayout:
+                                  "cluster#balloonCarousel",
+                                clusterBalloonContentLayoutWidth: 200,
+                                clusterBalloonContentLayoutHeight: 130,
+                                clusterBalloonPagerSize: 5,
+                                clusterBalloonContentLayoutHeight: 270,
+                                clusterBalloonContentLayoutWidth: 200,
+                                clusterBalloonPanelMaxMapArea: 0,
+                              }}
+                            >
                               {marks &&
                                 marks.map((mark, index) => (
                                   <Placemark
                                     key={index}
                                     geometry={mark[0]}
-                                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                                    modules={[
+                                      "geoObject.addon.balloon",
+                                      "geoObject.addon.hint",
+                                    ]}
                                     properties={getPointData(index)}
                                     options={getPointOptions(index)}
                                   />
@@ -963,9 +1031,9 @@ const SearchPage = () => {
                   <div className="all_content_blocks">
                     <div className="search_not_found">
                       <p>Сегодня ничего не найдено по заданным параметрам.</p>
-                      <p style={{ marginBottom: '20px' }}>
-                        Вы можете предложить свою вещь, услугу или иное имущество, либо зайти
-                        завтра...
+                      <p style={{ marginBottom: "20px" }}>
+                        Вы можете предложить свою вещь, услугу или иное
+                        имущество, либо зайти завтра...
                       </p>
                       <input
                         onClick={addSubjectHandler}
@@ -985,37 +1053,58 @@ const SearchPage = () => {
                     <div className="all_content_blocks_up">
                       {searchItems.map((item, index) => {
                         if (index <= 1) {
-                          return <div style={{marginBottom:'0'}}><ItemCard key={index} item={item} /> </div>;
+                          return (
+                            <div style={{ marginBottom: "0" }}>
+                              <ItemCard key={index} item={item} />{" "}
+                            </div>
+                          );
                         }
                       })}
                     </div>
 
                     {searchItems && (
-                      <div style={{ alignSelf: 'center', width:'100%',  marginTop:'15px', marginBottom:'15px' }}>
+                      <div
+                        style={{
+                          alignSelf: "center",
+                          width: "100%",
+                          marginTop: "15px",
+                          marginBottom: "15px",
+                        }}
+                      >
                         <YMaps>
-                          <Map state={mapData} width={'auto'} height={300} modules={['package.full']}>
+                          <Map
+                            state={mapData}
+                            width={"auto"}
+                            height={300}
+                            modules={["package.full"]}
+                          >
                             <Clusterer
                               options={{
-                                preset: 'islands#invertedYellowClusterIcons',
+                                preset: "islands#invertedBlueClusterIcons",
                                 groupByCoordinates: false,
                                 clusterDisableClickZoom: true,
                                 clusterHideIconOnBalloonOpen: true,
                                 geoObjectHideIconOnBalloonOpen: true,
                                 hasBalloon: true,
-                                clusterBalloonContentLayout: 'cluster#balloonCarousel',
-      clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonContentLayoutHeight: 130,
-        clusterBalloonPagerSize: 5,
-        clusterBalloonContentLayoutHeight: 270,
-        clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonPanelMaxMapArea: 0,
-                              }}>
+                                clusterBalloonContentLayout:
+                                  "cluster#balloonCarousel",
+                                clusterBalloonContentLayoutWidth: 200,
+                                clusterBalloonContentLayoutHeight: 130,
+                                clusterBalloonPagerSize: 5,
+                                clusterBalloonContentLayoutHeight: 270,
+                                clusterBalloonContentLayoutWidth: 200,
+                                clusterBalloonPanelMaxMapArea: 0,
+                              }}
+                            >
                               {marks &&
                                 marks.map((mark, index) => (
                                   <Placemark
                                     key={index}
                                     geometry={mark[0]}
-                                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                                    modules={[
+                                      "geoObject.addon.balloon",
+                                      "geoObject.addon.hint",
+                                    ]}
                                     properties={getPointData(index)}
                                     options={getPointOptions(index)}
                                   />
@@ -1030,8 +1119,10 @@ const SearchPage = () => {
                       {searchItems.map((item, index) => {
                         if (index > 1) {
                           return (
-                            <div className="card_div" >
-                              <div ><ItemCard key={index} item={item} /></div>
+                            <div className="card_div">
+                              <div>
+                                <ItemCard key={index} item={item} />
+                              </div>
                             </div>
                           );
                         }
@@ -1042,12 +1133,12 @@ const SearchPage = () => {
                 {searchItems.length === 0 && (
                   <div className="all_content_blocks">
                     <div className="search_not_found">
-                      <p style={{ marginBottom: '10px' }}>
+                      <p style={{ marginBottom: "10px" }}>
                         Сегодня ничего не найдено по заданным параметрам.
                       </p>
-                      <p style={{ marginBottom: '20px' }}>
-                        Вы можете предложить свою вещь, услугу или иное имущество, либо зайти
-                        завтра...
+                      <p style={{ marginBottom: "20px" }}>
+                        Вы можете предложить свою вещь, услугу или иное
+                        имущество, либо зайти завтра...
                       </p>
                       <input
                         onClick={addSubjectHandler}

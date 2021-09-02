@@ -1,18 +1,16 @@
-import React from 'react';
-import { YMaps, Map, Placemark, Clusterer } from 'react-yandex-maps';
-import { useSelector } from 'react-redux';
-import Requests from '../../http/axios-requests';
+import React from "react";
+import { YMaps, Map, Placemark, Clusterer } from "react-yandex-maps";
+import { useSelector } from "react-redux";
+import Requests from "../../http/axios-requests";
 
 const MapBlock = () => {
   //координаты меток карты
-  const [marks, setMarks] = React.useState([]);
+  const [marks, setMarks] = React.useState();
   const { userCoordinates } = useSelector(({ search }) => search);
 
   const getPointOptions = (index) => {
     return {
-      iconLayout: 'default#image',
-      iconImageHref: `https://razdelisdrugim.by${marks[index][1]}`,
-      balloonPanelMaxMapArea: 0
+      preset: `islands#blueDotIcon`,
     };
   };
 
@@ -33,7 +31,7 @@ const MapBlock = () => {
                 ${marks[index][4]}
                 </p>
               </div>`
-                  : ''
+                  : ""
               }
               ${
                 marks[index][7]
@@ -42,7 +40,7 @@ const MapBlock = () => {
                     Предложить свою цену
                   </p>
                 </div>`
-                  : ''
+                  : ""
               }
               ${
                 marks[index][6]
@@ -53,7 +51,7 @@ const MapBlock = () => {
                     Бесплатно
                   </p>
                 </div>`
-                  : ''
+                  : ""
               }
               <a href=/item-card?id=${marks[index][5]} target='_blank'>
             <p
@@ -66,25 +64,34 @@ const MapBlock = () => {
         </a>
       </div>
           `,
-      ].join(''),
+      ].join(""),
     };
   };
 
-
-  //параметры карты
-  const mapData = {
-    center: userCoordinates ? userCoordinates.split(' ').reverse() : [53.91, 27.55],
-    zoom: 12,
-    behaviors: ['default', 'scrollZoom'],
-  };
+  const [mapData, setMapData] = React.useState();
 
   //определение координат последних вещей
   React.useEffect(() => {
-    Requests.getRecentItems().then((response) => {
+    //параметры карты
+    setMapData({
+      center: userCoordinates
+        ? userCoordinates.split(" ").reverse()
+        : [53.91, 27.55],
+      zoom: 12,
+      behaviors: ["default", "scrollZoom"],
+    });
+
+    Requests.getLastNearestItems(
+      userCoordinates ? userCoordinates.split(" ").join(" ") : ``
+    ).then((response) => {
       setMarks(
         response.data.map((item) => {
           return [
-            item.items_coordinates.split('(')[1].split(')')[0].split(' ').reverse(),
+            item.items_coordinates
+              .split("(")[1]
+              .split(")")[0]
+              .split(" ")
+              .reverse(),
             item.image_1,
             item.name_item,
             item.price_rent,
@@ -93,82 +100,102 @@ const MapBlock = () => {
             item.free_rent,
             item.offer_price_rent,
           ];
-        }),
+        })
       );
     });
-  }, []);
+  }, [userCoordinates]);
 
   return (
     <section className="map">
       <div id="map_komp">
         <YMaps>
-          <Map defaultState={mapData} width={1150} height={500} modules={['package.full']}>
-          <Clusterer
-                              options={{
-                                preset: 'islands#invertedYellowClusterIcons',
-                                groupByCoordinates: false,
-                                clusterDisableClickZoom: true,
-                                clusterHideIconOnBalloonOpen: true,
-                                geoObjectHideIconOnBalloonOpen: true,
-                                hasBalloon: true,
-                                clusterBalloonContentLayout: 'cluster#balloonCarousel',
-      clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonContentLayoutHeight: 130,
-        clusterBalloonPagerSize: 5,
-        clusterBalloonContentLayoutHeight: 270,
-        clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonPanelMaxMapArea: 0,
-                              }}>
-                              {marks &&
-                                marks.map((mark, index) => (
-                                  <Placemark
-                                    key={index}
-                                    geometry={mark[0]}
-                                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-                                    properties={getPointData(index)}
-                                    options={getPointOptions(index)}
-                                  />
-                                ))}
-                            </Clusterer>
+          <Map
+            state={mapData}
+            width={1150}
+            height={500}
+            modules={["package.full"]}
+          >
+            <Clusterer
+              options={{
+                preset: "islands#invertedBlueClusterIcons",
+                groupByCoordinates: false,
+                clusterDisableClickZoom: true,
+                clusterHideIconOnBalloonOpen: true,
+                geoObjectHideIconOnBalloonOpen: true,
+                hasBalloon: true,
+                clusterBalloonContentLayout: "cluster#balloonCarousel",
+                clusterBalloonContentLayoutWidth: 200,
+                clusterBalloonContentLayoutHeight: 130,
+                clusterBalloonPagerSize: 5,
+                clusterBalloonContentLayoutHeight: 270,
+                clusterBalloonContentLayoutWidth: 200,
+                clusterBalloonPanelMaxMapArea: 0,
+              }}
+            >
+              {marks &&
+                marks.map((mark, index) => (
+                  <Placemark
+                    key={index}
+                    geometry={mark[0]}
+                    modules={[
+                      "geoObject.addon.balloon",
+                      "geoObject.addon.hint",
+                    ]}
+                    properties={getPointData(index)}
+                    options={getPointOptions(index)}
+                  />
+                ))}
+            </Clusterer>
           </Map>
         </YMaps>
       </div>
       {/* МОБИЛЬНЫЙ ДИЗАЙН */}
-      <div id="map_adaptiv">
-        <div style={{width:'100%'}}>
-        <YMaps>
-          <Map defaultState={mapData} width={'auto'} height={300} modules={['package.full']}>
-          <Clusterer
-                              options={{
-                                preset: 'islands#invertedYellowClusterIcons',
-                                groupByCoordinates: false,
-                                clusterDisableClickZoom: true,
-                                clusterHideIconOnBalloonOpen: true,
-                                geoObjectHideIconOnBalloonOpen: true,
-                                hasBalloon: true,
-                                clusterBalloonContentLayout: 'cluster#balloonCarousel',
-      clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonContentLayoutHeight: 130,
-        clusterBalloonPagerSize: 5,
-        clusterBalloonContentLayoutHeight: 270,
-        clusterBalloonContentLayoutWidth: 200,
-        clusterBalloonPanelMaxMapArea: 0,
-                              }}>
-                              {marks &&
-                                marks.map((mark, index) => (
-                                  <Placemark
-                                    key={index}
-                                    geometry={mark[0]}
-                                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-                                    properties={getPointData(index)}
-                                    options={getPointOptions(index)}
-                                  />
-                                ))}
-                            </Clusterer>
-          </Map>
-        </YMaps>
+      {marks && (
+        <div id="map_adaptiv">
+          <div style={{ width: "100%" }}>
+            <YMaps>
+              <Map
+                state={mapData}
+                width={"auto"}
+                height={300}
+                modules={["package.full"]}
+              >
+                <Clusterer
+                  options={{
+                    preset: "islands#invertedBlueClusterIcons",
+                    groupByCoordinates: false,
+                    clusterDisableClickZoom: true,
+                    clusterHideIconOnBalloonOpen: true,
+                    geoObjectHideIconOnBalloonOpen: true,
+                    hasBalloon: true,
+                    clusterBalloonContentLayout: "cluster#balloonCarousel",
+                    clusterBalloonContentLayoutWidth: 200,
+                    clusterBalloonContentLayoutHeight: 130,
+                    clusterBalloonPagerSize: 5,
+                    clusterBalloonContentLayoutHeight: 270,
+                    clusterBalloonContentLayoutWidth: 200,
+                    clusterBalloonPanelMaxMapArea: 0,
+                  }}
+                >
+                  {marks &&
+                    marks.map((mark, index) => (
+                      <Placemark
+                        key={index}
+                        geometry={mark[0]}
+                        modules={[
+                          "geoObject.addon.balloon",
+                          "geoObject.addon.hint",
+                        ]}
+                        properties={getPointData(index)}
+                        options={getPointOptions(index)}
+                      />
+                    ))}
+                </Clusterer>
+              </Map>
+            </YMaps>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

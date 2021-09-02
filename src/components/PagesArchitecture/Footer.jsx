@@ -52,7 +52,9 @@ const Footer = () => {
               </Link>
               <li className="footer-first-li">Пресса о нас</li>
               <li className="footer-first-li">Отзывы участников</li>
+              <Link style={{ textDecoration: 'none' }} to="/contacts">
               <li className="footer-first-li">Контакты</li>
+              </Link>
             </ul>
           </div>
           <div className="footer-second-col">

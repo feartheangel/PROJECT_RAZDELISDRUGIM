@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Raleway', 'Sans-serif';
+  font-family: "Raleway", "Sans-serif";
 }
 
 html {
@@ -13,7 +13,7 @@ html {
 p,
 input,
 button {
-  font-family: 'Raleway', 'Sans-serif';
+  font-family: "Raleway", "Sans-serif";
 }
 
 .content {
@@ -63,7 +63,7 @@ button {
 }
 .news-alert-p {
   color: white;
-  width: '100%';
+  width: "100%";
 }
 
 .header__inner {
@@ -330,7 +330,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Raleway', 'Sans-serif';
+  font-family: "Raleway", "Sans-serif";
 }
 
 .recent-p {
@@ -338,7 +338,7 @@ button {
   font-weight: normal;
   font-size: 36px;
   line-height: 42px;
-  font-family: 'Raleway', 'Sans-serif';
+  font-family: "Raleway", "Sans-serif";
 }
 
 .recent-blocks-wrapper {
@@ -363,7 +363,7 @@ button {
   box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
   border-radius: 5px;
   border: 1px solid transparent;
-  font-family: 'Raleway', 'sans-serif';
+  font-family: "Raleway", "sans-serif";
 }
 
 .recent-block__profile {
@@ -1232,7 +1232,7 @@ button {
 }
 
 .main_page_fris_block_left_main_p {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-style: normal;
   font-weight: 600;
   font-size: 44px;
@@ -1386,6 +1386,7 @@ button {
   .news-alert-block {
     height: auto;
     font-size: 14px;
+    padding: 8px;
   }
   /* шапка хедера */
   .header__inner {
@@ -1611,7 +1612,7 @@ button {
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
-    background: #4CC9F0;
+    background: #4cc9f0;
     box-shadow: 0.78125px 0.78125px 5.72917px rgba(99, 212, 248, 0.24);
     border-radius: 3px;
     left: 201px;
@@ -2051,7 +2052,6 @@ button {
   .news-reviews-block {
     width: auto;
     min-height: 175px;
-    height: auto;
     margin-bottom: 35px;
   }
   .news-reviews-text {

@@ -8,11 +8,11 @@ const FirstBlockNavigation = () => {
   const [redirect, setRedirect] = React.useState();
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length >= 5) {
-      alert('Лимит вещей достигнут (5)');
+    if (isLoggedIn && subjects.length >= 10) {
+      alert('Лимит вещей достигнут (10)');
       return;
-    } else if (isLoggedIn && subjects.length >= 5) {
-      alert('Лимит вещей достигнут (5)');
+    } else if (isLoggedIn && subjects.length >= 10) {
+      alert('Лимит вещей достигнут (10)');
       return;
     } else if (!isLoggedIn) {
       alert('Сначала авторизуйтесь!');

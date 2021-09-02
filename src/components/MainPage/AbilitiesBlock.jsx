@@ -12,11 +12,11 @@ const AbilitiesBlock = () => {
   const { userData, subjects, isLoggedIn } = useSelector(({ userData }) => userData);
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length < 5) {
+    if (isLoggedIn && subjects.length < 10) {
       window.location.href = '/place-item';
       return;
-    } else if (isLoggedIn && subjects.length >= 5) {
-      alert('Лимит вещей достигнут (5)');
+    } else if (isLoggedIn && subjects.length >= 10) {
+      alert('Лимит вещей достигнут (10)');
       return;
     } else if (!isLoggedIn) {
       alert('Сначала авторизуйтесь!');

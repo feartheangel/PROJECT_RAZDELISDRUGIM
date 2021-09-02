@@ -23,7 +23,7 @@ const RecentItemsSlider = () => {
         <div className="recent-blocks-wrapper">
           <div className="recent-blocks-slider-container">
             <Swiper
-              spaceBetween={0}
+              spaceBetween={-8}
               slidesPerView={4}
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}

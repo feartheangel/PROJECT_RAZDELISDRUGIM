@@ -2,10 +2,8 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Requests from '../../http/axios-requests';
-import LanguagePlanet from '../../img/MainPage/Language-planet.png';
 import Burger from '../../img/MainPage/Burger.png';
 import Logo from '../../img/MainPage/Logo.png';
-import mark from '../../img/MainPage/Mark.png';
 import vector2 from '../../img/SearchPage/Vector2.png';
 import { logoutAction, loginAction } from '../../redux/actions/userData';
 import {
@@ -17,7 +15,7 @@ import {
 import { ProfilePopUp, BaseModal } from '../index';
 import Favorites from '../../img/MainPage/FavoritesDisabled.png';
 import Notifications from '../../img/MainPage/Notifications.png';
-import UserAvatar from '../../img/MainPage/UserAvatar.png';
+import { setNews } from '../../redux/actions/items';
 import MenuStroke from '../../img/MainPage/MenuStroke.png';
 import Planet2 from '../../img/MainPage/Vector (Stroke2).png';
 import Local2 from '../../img/MainPage/local2.png';
@@ -48,6 +46,7 @@ const Header = () => {
   const [burgerActive, setBurgerActive] = React.useState(false);
   const [openedCategories, setOpenedCategories] = React.useState([]);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
+
 
   const keyDownHandler = React.useCallback((event) => {
     if (
@@ -89,11 +88,11 @@ const Header = () => {
   };
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length >= 5) {
-      alert('Лимит вещей достигнут (5)');
+    if (isLoggedIn && subjects.length >= 10) {
+      alert('Лимит вещей достигнут (10)');
       return;
-    } else if (isLoggedIn && subjects.length >= 5) {
-      alert('Лимит вещей достигнут (5)');
+    } else if (isLoggedIn && subjects.length >= 10) {
+      alert('Лимит вещей достигнут (10)');
       return;
     } else if (!isLoggedIn) {
       alert('Сначала авторизуйтесь!');
@@ -162,6 +161,12 @@ const Header = () => {
       forceUpdate();
     }
   };
+
+  React.useEffect(() => {
+    Requests.fetchNews().then((res) => {
+      dispatch(setNews(res.data));
+    });
+  }, []);
 
   //выделяем разделы
   const chapters = {};

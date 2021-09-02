@@ -1,7 +1,5 @@
 import React from 'react';
-import Requests from '../../http/axios-requests';
 import { useSelector, useDispatch } from 'react-redux';
-import { setNews } from '../../redux/actions/items';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper.scss';
@@ -18,11 +16,6 @@ const News = () => {
   const dispatch = useDispatch();
   const { news } = useSelector(({ items }) => items);
 
-  React.useEffect(() => {
-    Requests.fetchNews().then((res) => {
-      dispatch(setNews(res.data));
-    });
-  }, []);
 
   return (
     <section className="news-reviews">

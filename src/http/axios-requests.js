@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { logoutAction } from '../redux/actions/userData';
-import { useDispatch } from 'react-redux';
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
+import axios from "axios";
+import { logoutAction } from "../redux/actions/userData";
+import { useDispatch } from "react-redux";
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom";
 
-const rootAddress = 'https://razdelisdrugim.by/';
+const rootAddress = "https://razdelisdrugim.by/";
 
 //регулярные выражения для проверки телефона и почты
 const contactEmailRegExp =
@@ -15,15 +15,15 @@ class Requests {
 
   static register(contact, email, password, passwordSubmit) {
     return axios({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       data: {
         username: contact,
-        email: email ? email : 'null',
+        email: email ? email : "null",
         password: password,
         password2: passwordSubmit,
       },
-      url: 'https://razdelisdrugim.by/api/jwt/register/',
+      url: "https://razdelisdrugim.by/api/jwt/register/",
     }).then((response) => {
       return response;
     });
@@ -31,16 +31,16 @@ class Requests {
 
   static updateProfile(status, referral, id, token, login) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       data: {
         status: status,
-        referral_code: referral ? referral : '',
-        phone: contactNumberRegExp.test(login) ? login : '',
-        email: contactEmailRegExp.test(login) ? login : '',
+        referral_code: referral ? referral : "",
+        phone: contactNumberRegExp.test(login) ? login : "",
+        email: contactEmailRegExp.test(login) ? login : "",
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/${id}/`,
     }).then((response) => {
@@ -50,24 +50,24 @@ class Requests {
 
   static login(username, password) {
     return axios({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       data: {
         username: username,
         password: password,
       },
-      url: 'https://razdelisdrugim.by/api/jwt/token/',
+      url: "https://razdelisdrugim.by/api/jwt/token/",
     });
   }
 
   static refresh(token) {
     return axios({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       data: {
         refresh: token,
       },
-      url: 'https://razdelisdrugim.by/api/jwt/token/refresh/',
+      url: "https://razdelisdrugim.by/api/jwt/token/refresh/",
     }).then((response) => {
       return response;
     });
@@ -75,13 +75,13 @@ class Requests {
 
   static passwordRecoveryEmail(email) {
     return axios({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       data: {
         email: email,
         username: email,
       },
-      url: 'https://razdelisdrugim.by/api/jwt/reset-password-email/',
+      url: "https://razdelisdrugim.by/api/jwt/reset-password-email/",
     }).then((response) => {
       return response;
     });
@@ -89,13 +89,13 @@ class Requests {
 
   static passwordRecoveryPhone(phone) {
     return axios({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       data: {
         phone: phone,
         username: phone,
       },
-      url: 'https://razdelisdrugim.by/api/jwt/reset-password-phone/',
+      url: "https://razdelisdrugim.by/api/jwt/reset-password-phone/",
     }).then((response) => {
       return response;
     });
@@ -103,9 +103,9 @@ class Requests {
 
   static sendVKCode(code) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/jwt/access-token-vk/${code}/`,
     }).then((response) => {
@@ -115,9 +115,9 @@ class Requests {
 
   static sendGoogleCode(code) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/jwt/access-token-vk/${code}/`,
     }).then((response) => {
@@ -127,9 +127,9 @@ class Requests {
 
   static fetchItems() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/items/category/`,
     }).then((response) => {
@@ -178,28 +178,28 @@ class Requests {
     formData,
     coords,
     prepare_time_choice,
-    items_address,
+    items_address
   ) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         category_id: category_id,
         name_item: name_item,
-        description: description ? description : '',
+        description: description ? description : "",
         rent: rent,
         price_rent: price_rent,
-        key_words: key_words ? key_words : '',
+        key_words: key_words ? key_words : "",
         year_release: year_release ? year_release : null,
-        mileage: mileage ? mileage : '',
+        mileage: mileage ? mileage : "",
         price_item: price_item ? price_item : null,
-        receive_time: receive_time ? receive_time : '',
-        return_time: return_time ? return_time : '',
+        receive_time: receive_time ? receive_time : "",
+        return_time: return_time ? return_time : "",
         prepare_time: prepare_time ? prepare_time : null,
-        delivery: delivery ? delivery : 'NONE',
+        delivery: delivery ? delivery : "NONE",
         delivery_free: delivery_free ? delivery_free : false,
         self_delivery_price: delivery_free
           ? null
@@ -207,38 +207,38 @@ class Requests {
           ? self_delivery_price
           : null,
         will_send: will_send,
-        will_send_choice: will_send_choice ? will_send_choice : 'NONE',
-        send_payer: send_payer ? send_payer : 'NONE',
+        will_send_choice: will_send_choice ? will_send_choice : "NONE",
+        send_payer: send_payer ? send_payer : "NONE",
         servicefee: servicefee ? servicefee : false,
-        servicefee_choice: servicefee_choice ? servicefee_choice : 'NONE',
+        servicefee_choice: servicefee_choice ? servicefee_choice : "NONE",
         servicefee_price: servicefee_price ? servicefee_price : null,
         pledge: pledge ? pledge : false,
         pledge_price: pledge_price ? pledge_price : null,
         insurance: insurance ? insurance : false,
-        insurance_choice: insurance_choice ? insurance_choice : 'NONE',
+        insurance_choice: insurance_choice ? insurance_choice : "NONE",
         insurance_price: insurance_price ? insurance_price : null,
         sell: sell ? sell : false,
         contract: contract ? contract : false,
-        appointment: appointment ? appointment : '',
-        structure: structure ? structure : ' ',
+        appointment: appointment ? appointment : "",
+        structure: structure ? structure : " ",
         free_rent: free_rent ? free_rent : false,
         offer_price_rent: offer_price_rent ? offer_price_rent : false,
-        color: color ? color : '',
+        color: color ? color : "",
         franchise: franchise ? franchise : false,
         franchise_price: franchise_price ? franchise_price : null,
-        article: article ? article : '',
-        inventory_number: inventory_number ? inventory_number : '',
+        article: article ? article : "",
+        inventory_number: inventory_number ? inventory_number : "",
         items_coordinates: coords,
-        prepare_time_choice: prepare_time_choice ? prepare_time_choice : 'NONE',
+        prepare_time_choice: prepare_time_choice ? prepare_time_choice : "NONE",
         items_address: items_address,
       },
-      url: 'https://razdelisdrugim.by/api/items/create/',
+      url: "https://razdelisdrugim.by/api/items/create/",
     }).then((response) => {
       return axios({
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${localStorage.getItem('key')}`,
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("key")}`,
         },
         data: formData,
         url: `https://razdelisdrugim.by/api/items/update/${response.data.id}/`,
@@ -250,9 +250,9 @@ class Requests {
 
   static getCords(area, locality, street, house, room, index) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://geocode-maps.yandex.ru/1.x/?apikey=28e5fc84-32d6-402e-a231-cefeaccfcf85&format=json&geocode=Беларусь, ${area} область, ${locality}, ${street}, д. ${
         house ? house : room
@@ -274,26 +274,26 @@ class Requests {
     space_room,
     office,
     building,
-    coordinates,
+    coordinates
   ) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
-        area: area ? area : '',
-        region: region ? region : '',
+        area: area ? area : "",
+        region: region ? region : "",
         index: index ? index : null,
-        city: city ? city : '',
-        street: street ? street : '',
+        city: city ? city : "",
+        street: street ? street : "",
         house: house ? house : null,
-        corpus: corpus ? corpus : '',
+        corpus: corpus ? corpus : "",
         apartment: apartment ? apartment : null,
-        space_room: space_room ? space_room : '',
-        office: office ? office : '',
-        building: building ? building : '',
+        space_room: space_room ? space_room : "",
+        office: office ? office : "",
+        building: building ? building : "",
         coordinates: `${Number(coordinates[0])} ${Number(coordinates[1])}`,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/create/address/`,
@@ -305,10 +305,10 @@ class Requests {
 
   static fetchAdresses() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/address/`,
     }).then((response) => {
@@ -318,12 +318,12 @@ class Requests {
 
   static fetchUserProfile() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
-      url: 'https://razdelisdrugim.by/api/jwt/profile/',
+      url: "https://razdelisdrugim.by/api/jwt/profile/",
     }).then((response) => {
       return response;
     });
@@ -343,29 +343,29 @@ class Requests {
     gender,
     birth,
     about,
-    legal_address,
+    legal_address
   ) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
-        first_name: name ? name : '',
-        last_name: surname ? surname : '',
-        company_name: companyName ? companyName : '',
-        unp_inn_company: unpUnn ? unpUnn : '',
-        legal_address: address ? address : '',
-        bank_account: iban ? iban : '',
-        name_bank: bank ? bank : '',
-        bank_code: bic ? bic : '',
-        email: email ? email : '',
-        phone: number ? number : '',
+        first_name: name ? name : "",
+        last_name: surname ? surname : "",
+        company_name: companyName ? companyName : "",
+        unp_inn_company: unpUnn ? unpUnn : "",
+        legal_address: address ? address : "",
+        bank_account: iban ? iban : "",
+        name_bank: bank ? bank : "",
+        bank_code: bic ? bic : "",
+        email: email ? email : "",
+        phone: number ? number : "",
         sex: gender ? gender : null,
-        date_birthday: birth === 'YYYY-MM-DD' ? '0000-00-00' : birth,
-        about: about ? about : '',
-        legal_address: legal_address ? legal_address : '',
+        date_birthday: birth === "YYYY-MM-DD" ? "0000-00-00" : birth,
+        about: about ? about : "",
+        legal_address: legal_address ? legal_address : "",
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
     }).then((response) => {
@@ -374,10 +374,10 @@ class Requests {
   }
   static updatePassword(old_password, new_password1, new_password2) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         old_password: old_password,
@@ -403,26 +403,26 @@ class Requests {
     office,
     building,
     coordinates,
-    id,
+    id
   ) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
-        area: area ? area : '',
-        region: region ? region : '',
+        area: area ? area : "",
+        region: region ? region : "",
         index: index ? index : null,
-        city: city ? city : '',
-        street: street ? street : '',
+        city: city ? city : "",
+        street: street ? street : "",
         house: house ? house : null,
-        corpus: corpus ? corpus : '',
+        corpus: corpus ? corpus : "",
         apartment: apartment ? apartment : null,
-        space_room: space_room ? space_room : '',
-        office: office ? office : '',
-        building: building ? building : '',
+        space_room: space_room ? space_room : "",
+        office: office ? office : "",
+        building: building ? building : "",
         coordinates: `${Number(coordinates[0])} ${Number(coordinates[1])}`,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/address/update/${id}/`,
@@ -434,10 +434,10 @@ class Requests {
 
   static sendVerifyNumberCode() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/jwt/sms/send/`,
     }).then((response) => {
@@ -448,10 +448,10 @@ class Requests {
 
   static checkVerifyNumberCode(code) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         code: code,
@@ -465,10 +465,10 @@ class Requests {
 
   static sendVerifyEmailCode() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/jwt/email/send/`,
     }).then((response) => {
@@ -479,10 +479,10 @@ class Requests {
 
   static checkVerifyEmailCode(code) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         code: code,
@@ -496,10 +496,10 @@ class Requests {
 
   static removeAddress(id) {
     return axios({
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/address/delete/${id}/`,
     }).then((response) => {
@@ -509,10 +509,10 @@ class Requests {
 
   static fetchSubjects() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/items/profile-items/`,
     }).then((response) => {
@@ -522,10 +522,10 @@ class Requests {
 
   static deleteSubject(id) {
     return axios({
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/items/delete/${id}/`,
     }).then((response) => {
@@ -535,10 +535,10 @@ class Requests {
 
   static copySubject(id) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/items/copy/${id}/`,
     }).then((response) => {
@@ -548,10 +548,10 @@ class Requests {
 
   static hideSubject(id) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         is_hidden: true,
@@ -564,10 +564,10 @@ class Requests {
 
   static showSubject(id) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         is_hidden: false,
@@ -620,28 +620,28 @@ class Requests {
     coords,
     prepare_time_choice,
     items_address,
-    id,
+    id
   ) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         category_id: category_id,
         name_item: name_item,
-        description: description ? description : ' ',
+        description: description ? description : " ",
         rent: rent,
         price_rent: price_rent,
-        key_words: key_words ? key_words : ' ',
+        key_words: key_words ? key_words : " ",
         year_release: year_release ? year_release : null,
-        mileage: mileage ? mileage : ' ',
+        mileage: mileage ? mileage : " ",
         price_item: price_item ? price_item : null,
-        receive_time: receive_time ? receive_time : ' ',
-        return_time: return_time ? return_time : ' ',
+        receive_time: receive_time ? receive_time : " ",
+        return_time: return_time ? return_time : " ",
         prepare_time: prepare_time ? prepare_time : null,
-        delivery: delivery ? delivery : 'NONE',
+        delivery: delivery ? delivery : "NONE",
         delivery_free: delivery_free ? delivery_free : false,
         self_delivery_price: delivery_free
           ? null
@@ -649,39 +649,39 @@ class Requests {
           ? self_delivery_price
           : null,
         will_send: will_send,
-        will_send_choice: will_send_choice ? will_send_choice : 'NONE',
-        send_payer: send_payer ? send_payer : 'NONE',
+        will_send_choice: will_send_choice ? will_send_choice : "NONE",
+        send_payer: send_payer ? send_payer : "NONE",
         servicefee: servicefee ? servicefee : false,
-        servicefee_choice: servicefee_choice ? servicefee_choice : 'NONE',
+        servicefee_choice: servicefee_choice ? servicefee_choice : "NONE",
         servicefee_price: servicefee_price ? servicefee_price : null,
         pledge: pledge ? pledge : false,
         pledge_price: pledge_price ? pledge_price : null,
         insurance: insurance ? insurance : false,
-        insurance_choice: insurance_choice ? insurance_choice : 'NONE',
+        insurance_choice: insurance_choice ? insurance_choice : "NONE",
         insurance_price: insurance_price ? insurance_price : null,
         sell: sell ? sell : false,
         contract: contract ? contract : false,
-        appointment: appointment ? appointment : '',
-        structure: structure ? structure : '',
+        appointment: appointment ? appointment : "",
+        structure: structure ? structure : "",
         free_rent: free_rent ? free_rent : false,
         offer_price_rent: offer_price_rent ? offer_price_rent : false,
-        color: color ? color : '',
+        color: color ? color : "",
         franchise: franchise ? franchise : false,
         franchise_price: franchise_price ? franchise_price : null,
-        article: article ? article : '',
-        inventory_number: inventory_number ? inventory_number : '',
+        article: article ? article : "",
+        inventory_number: inventory_number ? inventory_number : "",
         items_coordinates: coords,
-        prepare_time_choice: prepare_time_choice ? prepare_time_choice : 'NONE',
+        prepare_time_choice: prepare_time_choice ? prepare_time_choice : "NONE",
         items_address: items_address,
       },
       url: `https://razdelisdrugim.by/api/items/update/${id}/`,
     }).then((response) => {
       if (response.status === 200 || response.status === 201) {
         return axios({
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${localStorage.getItem('key')}`,
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("key")}`,
           },
           data: formData,
           url: `https://razdelisdrugim.by/api/items/update/${id}/`,
@@ -694,10 +694,10 @@ class Requests {
 
   static loadImage(url) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `${url}`,
     }).then((response) => {
@@ -707,10 +707,10 @@ class Requests {
 
   static updateTG(telegram_account, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         telegram_account: telegram_account,
@@ -725,10 +725,10 @@ class Requests {
 
   static updateViber(viber_account, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         viber_account: viber_account,
@@ -743,10 +743,10 @@ class Requests {
 
   static updateWhatsapp(whatsapp_account, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         whatsapp_account: whatsapp_account,
@@ -761,10 +761,10 @@ class Requests {
 
   static updateGoogle(google_account, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         google_account: google_account,
@@ -779,10 +779,10 @@ class Requests {
 
   static updateFacebook(link_facebook, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         link_facebook: link_facebook,
@@ -797,10 +797,10 @@ class Requests {
 
   static updateVK(vk_account, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         vk_account: vk_account,
@@ -815,10 +815,10 @@ class Requests {
 
   static updateInstagram(link_instagram, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         link_instagram: link_instagram,
@@ -833,10 +833,10 @@ class Requests {
 
   static updateOK(ok_account, email, phone) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         ok_account: ok_account,
@@ -851,10 +851,10 @@ class Requests {
 
   static updateProfileImageReq(formData) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: formData,
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
@@ -875,24 +875,24 @@ class Requests {
     contract,
     pledge,
     coordinates,
-    distance,
+    distance
   ) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/items/search/?${
-        search_words ? `search_words=${search_words}&` : ''
-      }${category ? `category_name=${category}&` : ''}${
-        min_price ? `min_price=${min_price}&` : ''
-      }${max_price ? `max_price=${max_price}&` : ''}${free_rent ? `free_rent=1&` : ''}${
-        status ? `status=${status}&` : ''
-      }${will_send ? `delivery=1&` : ''}${insurance ? `insurance=1&` : ''}${
-        contract ? `contract=1&` : ''
-      }${pledge ? `pledge=1&` : ''}${coordinates ? `coordinates=${coordinates}&` : ''}${
-        distance ? `distance=${distance}&` : ''
-      }
+        search_words ? `search_words=${search_words}&` : ""
+      }${category ? `category_name=${category}&` : ""}${
+        min_price ? `min_price=${min_price}&` : ""
+      }${max_price ? `max_price=${max_price}&` : ""}${
+        free_rent ? `free_rent=1&` : ""
+      }${status ? `status=${status}&` : ""}${will_send ? `delivery=1&` : ""}${
+        insurance ? `insurance=1&` : ""
+      }${contract ? `contract=1&` : ""}${pledge ? `pledge=1&` : ""}${
+        coordinates ? `coordinates=${coordinates}&` : ""
+      }${distance ? `distance=${distance}&` : ""}
       `,
     }).then((response) => {
       return response;
@@ -901,10 +901,10 @@ class Requests {
 
   static updateProfileImage(formData) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: formData,
       url: `https://razdelisdrugim.by/api/jwt/profile/update/`,
@@ -915,9 +915,9 @@ class Requests {
 
   static getSingleItem(id) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/items/${id}/`,
     }).then((response) => {
@@ -927,9 +927,9 @@ class Requests {
 
   static getPublicProfile(id) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/${id}/`,
     }).then((response) => {
@@ -939,9 +939,9 @@ class Requests {
 
   static getPublicProfileItems(id) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/items/profile-items/${id}/`,
     }).then((response) => {
@@ -951,9 +951,9 @@ class Requests {
 
   static getPublicProfileAddresses(id) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/jwt/profile/address/${id}/`,
     }).then((response) => {
@@ -963,9 +963,9 @@ class Requests {
 
   static getRecentItems() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/items/recent/`,
     }).then((response) => {
@@ -975,9 +975,9 @@ class Requests {
 
   static getRandomItems() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/items/random/`,
     }).then((response) => {
@@ -987,10 +987,10 @@ class Requests {
 
   static fetchFavorites(id) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/items/favorite/`,
     });
@@ -998,10 +998,10 @@ class Requests {
 
   static addFavoriteItem(id) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         item: id,
@@ -1014,10 +1014,10 @@ class Requests {
 
   static deleteFavoriteItem(id) {
     return axios({
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `https://razdelisdrugim.by/api/items/favorite/delete/${id}/`,
     }).then((response) => {
@@ -1027,9 +1027,9 @@ class Requests {
 
   static fetchNews() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/additional_entities/news/`,
     }).then((response) => {
@@ -1039,9 +1039,9 @@ class Requests {
 
   static fetchMainPageBlocks() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/additional_entities/blocks/`,
     }).then((response) => {
@@ -1051,9 +1051,9 @@ class Requests {
 
   static vkAuth(code) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/jwt/access-token-vk/?code=${code}/`,
     }).then((response) => {
@@ -1063,9 +1063,9 @@ class Requests {
 
   static googleAuth(code) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/jwt/access-token-google/?code=${code}/`,
     }).then((response) => {
@@ -1075,9 +1075,9 @@ class Requests {
 
   static facebookAuth(code) {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/jwt/access-token-facebook/?code=${code}/`,
     }).then((response) => {
@@ -1087,9 +1087,9 @@ class Requests {
 
   static fetchPopular() {
     return axios({
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/items/popular/`,
     }).then((response) => {
@@ -1099,15 +1099,29 @@ class Requests {
 
   static deleteAccount(type) {
     return axios({
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('key')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         login_type: type,
       },
       url: `https://razdelisdrugim.by/api/jwt/delete-account-facebook/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getLastNearestItems(coords) {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: `https://razdelisdrugim.by/api/items/ten_km/${
+        coords ? `?coordinates=${coords}` : ""
+      }`,
     }).then((response) => {
       return response;
     });
@@ -1124,23 +1138,25 @@ axios.interceptors.response.use(
       error.response.status === 401 &&
       error.config &&
       !error.config._isRetry &&
-      localStorage.getItem('refresh')
+      localStorage.getItem("refresh")
     ) {
       originalRequest._isRetry = true;
-      Requests.refresh(localStorage.getItem('refresh'))
+      Requests.refresh(localStorage.getItem("refresh"))
         .then((response) => {
-          localStorage.setItem('key', response.data.access);
-          originalRequest.headers.Authorization = `Bearer ${localStorage.getItem('key')}`;
+          localStorage.setItem("key", response.data.access);
+          originalRequest.headers.Authorization = `Bearer ${localStorage.getItem(
+            "key"
+          )}`;
           return axios.request(originalRequest).then((res) => {
             return res;
           });
         })
         .catch(() => {
-          localStorage.removeItem('key');
-          localStorage.removeItem('refresh');
-          localStorage.removeItem('social');
+          localStorage.removeItem("key");
+          localStorage.removeItem("refresh");
+          localStorage.removeItem("social");
           setTimeout(() => {
-            window.location.href = 'https://razdelisdrugim.by';
+            window.location.href = "https://razdelisdrugim.by";
           }, 2000);
           return;
         });
@@ -1150,7 +1166,7 @@ axios.interceptors.response.use(
       return error;
     }
     throw error;
-  },
+  }
 );
 
 export default Requests;
