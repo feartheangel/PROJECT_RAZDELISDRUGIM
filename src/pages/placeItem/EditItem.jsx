@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { Header, Footer } from '../../components/index';
-import { useSelector, useDispatch } from 'react-redux';
-import { setItems, setItemsLoaded, setItemsLoading } from '../../redux/actions/items';
+import React, { useState } from "react";
+import { Header, Footer } from "../../components/index";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setItems,
+  setItemsLoaded,
+  setItemsLoading,
+} from "../../redux/actions/items";
 import {
   setAdresses,
   setQueryStarted,
   setQueryDone,
   reloadData,
-} from '../../redux/actions/userData';
-import { Redirect } from 'react-router-dom';
-import Requests from '../../http/axios-requests';
-import './PlaseItem.css';
+} from "../../redux/actions/userData";
+import { Redirect } from "react-router-dom";
+import Requests from "../../http/axios-requests";
+import "./PlaseItem.css";
 // import Logo from "../../img/MainPage/Logo.png";
 // import mark from "../../img/MainPage/Mark.png";
 // import LanguagePlanet from "../../img/MainPage/Language-planet.png";
@@ -23,10 +27,10 @@ let parsedFiles = [];
 const EditItem = () => {
   //конвертация байтов в размер
   function bytesToSize(bytes) {
-    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    if (bytes == 0) return '0 Byte';
+    var sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+    if (bytes == 0) return "0 Byte";
     var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+    return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
   }
 
   const dispatch = useDispatch();
@@ -42,14 +46,14 @@ const EditItem = () => {
   //обработчик добавления фотографий
   const photoHandler = (e) => {
     if (files.length + e.target.files.length > 5) {
-      alert('Максимум 5 изображений!');
+      alert("Максимум 5 изображений!");
       return;
     }
     parsedFiles = Array.from(e.target.files);
     console.log(parsedFiles);
     parsedFiles.forEach((file) => {
       if (file.size > 4.9e6) {
-        alert('Вес одной картинки не может превышать 5 мегабайт!');
+        alert("Вес одной картинки не может превышать 5 мегабайт!");
         return;
       }
       files.push(file);
@@ -63,7 +67,7 @@ const EditItem = () => {
   //обрабочтик цены аренды
   const setCostArendsHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setCostArends(e.target.value);
     }
   };
@@ -71,7 +75,7 @@ const EditItem = () => {
   //обработчик года выпуска
   const setYearCreateHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setYearCreate(e.target.value);
     }
   };
@@ -79,42 +83,42 @@ const EditItem = () => {
   //обработчик цены продажи
   const setCostHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setCost(e.target.value);
     }
   };
   //обработчик времени подготовки
   const setPodgotovkaTimeHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setPodgotovkaTime(e.target.value);
     }
   };
   //обработчик суммы за доставку
   const setIndicateCostHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setIndicateCost(e.target.value);
     }
   };
   //обработчик суммы страховки
   const setInsuranceSummaHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setInsuranceSumma(e.target.value);
     }
   };
   //обработчик суммы за франшизу
   const setFranchiseSummaHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setFranchiseSumma(e.target.value);
     }
   };
   //обработчик суммы сервисного сбора
   const setSummaServiceSborHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setSummaServiceSbor(e.target.value);
     }
   };
@@ -193,7 +197,7 @@ const EditItem = () => {
   //обработчик суммы залога
   const pledgePriceHandler = (e) => {
     console.log(e.target.value);
-    if (!e.target.value.includes('-') && !e.target.value.includes('--')) {
+    if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setPledgePrice(e.target.value);
     }
   };
@@ -207,19 +211,19 @@ const EditItem = () => {
   //обработчик сохранения нового адреса
   const saveNewAddress = () => {
     if (!area) {
-      alert('Не указана область!');
+      alert("Не указана область!");
       return;
     } else if (!locality) {
-      alert('Не указан населенный пункт!');
+      alert("Не указан населенный пункт!");
       return;
     } else if (!street) {
-      alert('Не указана улица!');
+      alert("Не указана улица!");
       return;
     } else if (!index) {
-      alert('Не указан индекс!');
+      alert("Не указан индекс!");
       return;
     } else if (!house && !room) {
-      alert('Не указан номер дома либо помещения!');
+      alert("Не указан номер дома либо помещения!");
       return;
     }
 
@@ -230,7 +234,7 @@ const EditItem = () => {
       String(street),
       String(house),
       String(room),
-      String(index),
+      String(index)
     )
       .then((response) => {
         if (response.status === 200) {
@@ -247,25 +251,25 @@ const EditItem = () => {
             office,
             building,
             response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
-              .split(' ')
-              .reverse(),
+              .split(" ")
+              .reverse()
           )
             .then((response) => {
               Requests.fetchAdresses()
                 .then((response) => {
                   dispatch(setAdresses(response.data));
                   setShowAddressAddTable(false);
-                  setArea('');
-                  setDistrict('');
-                  setIndex('');
-                  setLocality('');
-                  setStreet('');
-                  setHouse('');
-                  setBody('');
-                  setFlat('');
-                  setRoom('');
-                  setOffice('');
-                  setBuilding('');
+                  setArea("");
+                  setDistrict("");
+                  setIndex("");
+                  setLocality("");
+                  setStreet("");
+                  setHouse("");
+                  setBody("");
+                  setFlat("");
+                  setRoom("");
+                  setOffice("");
+                  setBuilding("");
                   dispatch(setQueryDone());
                   setAddressAdded(true);
                   setCoords([
@@ -279,76 +283,80 @@ const EditItem = () => {
                     }`,
                   ]);
                 })
-                .catch((e) => alert('Ошибка получения категорий/адресов'));
-              alert('Адрес успешно добавлен в профиль!');
+                .catch((e) => alert("Ошибка получения категорий/адресов"));
+              alert("Адрес успешно добавлен в профиль!");
             })
             .catch((e) => {
-              alert('Не удалось подтвердить адрес, проверьте правильность ввода данных в поля.');
+              alert(
+                "Не удалось подтвердить адрес, проверьте правильность ввода данных в поля."
+              );
               dispatch(setQueryDone());
             });
         }
       })
       .catch((e) => {
         dispatch(setQueryDone());
-        alert('Ошибка сохранения адреса!');
+        alert("Ошибка сохранения адреса!");
       });
   };
 
   const [redirect, setRedirect] = React.useState(false);
-  let currentSubject = '';
+  let currentSubject = "";
 
   //обработчик отправки формы
   const sendHandler = () => {
     const formData = new FormData();
-    files[0] && formData.append('image_1', files[0]);
-    files[1] && formData.append('image_2', files[1]);
-    files[2] && formData.append('image_3', files[2]);
-    files[3] && formData.append('image_4', files[3]);
-    files[4] && formData.append('image_5', files[4]);
+    files[0] && formData.append("image_1", files[0]);
+    files[1] && formData.append("image_2", files[1]);
+    files[2] && formData.append("image_3", files[2]);
+    files[3] && formData.append("image_4", files[3]);
+    files[4] && formData.append("image_5", files[4]);
 
     if (!userData.phone_verify || !userData.email_verify) {
-      alert('У вас не подтвержден телефон либо почта. Это можно сделать в профиле!');
+      alert(
+        "У вас не подтвержден телефон либо почта. Это можно сделать в профиле!"
+      );
       return;
     } else if (!nameItem) {
-      alert('Не указано название вещи!');
+      alert("Не указано название вещи!");
       return;
     } else if (!viborCategory) {
-      alert('Не указана категория!');
+      alert("Не указана категория!");
       return;
     } else if (!costArends && !giveFree && !yourCost) {
-      alert('Не указана цена аренды!');
+      alert("Не указана цена аренды!");
       return;
-    } else if (coords === 'NONE') {
-      alert('Не указан адрес!');
+    } else if (coords === "NONE") {
+      alert("Не указан адрес!");
       return;
     } else if (!files[0]) {
-      alert('Загрузка одной картинки обязательна!');
+      alert("Загрузка одной картинки обязательна!");
       return;
-    } else if (insurance && insuranceTime === 'NONE') {
-      alert('Не указан период страховки!');
+    } else if (insurance && insuranceTime === "NONE") {
+      alert("Не указан период страховки!");
       return;
     } else if (insurance && !insuranceSumma) {
-      alert('Не указана сумма страховки!');
+      alert("Не указана сумма страховки!");
       return;
     } else if (pladge && !pledgePrice) {
-      alert('Не указана сумма залога!');
+      alert("Не указана сумма залога!");
       return;
     } else if (franchise && !franchiseSumma) {
-      alert('Не указана сумма франшизы!');
+      alert("Не указана сумма франшизы!");
       return;
     } else if (serviceSbor && !optionServiceSbor) {
-      alert('Не указан тип сервисного сбора!');
+      alert("Не указан тип сервисного сбора!");
       return;
     } else if (serviceSbor && !summaServiceSbor) {
-      alert('Не указана сумма сервисного сбора!');
+      alert("Не указана сумма сервисного сбора!");
       return;
     } else if (takeAway && !typeService && !indicateCost) {
-      alert('Не указана сумма за личную доставку!');
+      alert("Не указана сумма за личную доставку!");
       return;
     }
 
-    Requests.refresh(localStorage.getItem('refresh')).then((res) => {
-      localStorage.setItem('key', res.data.access);
+    Requests.refresh(localStorage.getItem("refresh")).then((res) => {
+      localStorage.setItem("key", res.data.access);
     });
 
     dispatch(setQueryStarted());
@@ -392,16 +400,16 @@ const EditItem = () => {
       String(artikul),
       String(inventoryNumber),
       formData,
-      coords[0].includes(')')
-        ? coords[0].split('(')[1].split(')')[0].split(' ').reverse().join(' ')
+      coords[0].includes(")")
+        ? coords[0].split("(")[1].split(")")[0].split(" ").reverse().join(" ")
         : coords[0],
       String(prepareType),
       String(coords[1]),
-      Number(id),
+      Number(id)
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
-          alert('Успешно обновлено!');
+          alert("Успешно обновлено!");
           setRedirect(<Redirect to="/i-rent-out" />);
           dispatch(setQueryDone());
           dispatch(reloadData(!reload));
@@ -409,36 +417,38 @@ const EditItem = () => {
       })
       .catch((error) => {
         dispatch(setQueryDone());
-        alert('Произошла серверная ошибка редактирования.');
+        alert("Произошла серверная ошибка редактирования.");
       });
   };
 
   const { items, isLoaded } = useSelector(({ items }) => items);
   const { addresses, requestActive, userData, reload, subjects } = useSelector(
-    ({ userData }) => userData,
+    ({ userData }) => userData
   );
 
   React.useEffect(() => {
     currentSubject = subjects.filter(
-      (subject) => subject.id === Number(window.location.href.split('?id=')[1]),
+      (subject) => subject.id === Number(window.location.href.split("?id=")[1])
     );
     currentSubject &&
       setTimeout(() => {
         setNameItem(currentSubject[0] && currentSubject[0].name_item);
-        setRazdel(currentSubject[0] && currentSubject[0].category_id.chapter_id.id);
+        setRazdel(
+          currentSubject[0] && currentSubject[0].category_id.chapter_id.id
+        );
         setViborCategory(currentSubject[0] && currentSubject[0].category_id.id);
         setDescription(currentSubject[0] && currentSubject[0].description);
         setCostArends(currentSubject[0] && currentSubject[0].price_rent);
         setTimeArends(
-          currentSubject[0] && currentSubject[0].rent === 'Час'
-            ? 'HOUR'
-            : currentSubject[0] && currentSubject[0].rent === 'День'
-            ? 'DAY'
-            : currentSubject[0] && currentSubject[0].rent === 'Неделя'
-            ? 'WEEK'
-            : currentSubject[0] && currentSubject[0].rent === 'Месяц'
-            ? 'MONTH'
-            : '',
+          currentSubject[0] && currentSubject[0].rent === "Час"
+            ? "HOUR"
+            : currentSubject[0] && currentSubject[0].rent === "День"
+            ? "DAY"
+            : currentSubject[0] && currentSubject[0].rent === "Неделя"
+            ? "WEEK"
+            : currentSubject[0] && currentSubject[0].rent === "Месяц"
+            ? "MONTH"
+            : ""
         );
         setGiveFree(currentSubject[0] && currentSubject[0].free_rent);
         setYourCost(currentSubject[0] && currentSubject[0].offer_price_rent);
@@ -447,7 +457,9 @@ const EditItem = () => {
         setSostav(currentSubject[0] && currentSubject[0].structure);
         setNaznacheniye(currentSubject[0] && currentSubject[0].appointment);
         setArtikul(currentSubject[0] && currentSubject[0].article);
-        setInventoryNumber(currentSubject[0] && currentSubject[0].inventory_number);
+        setInventoryNumber(
+          currentSubject[0] && currentSubject[0].inventory_number
+        );
         setYourColor(currentSubject[0] && currentSubject[0].color);
         setYearCreate(currentSubject[0] && currentSubject[0].year_release);
         setMileAge(currentSubject[0] && currentSubject[0].mileage);
@@ -456,73 +468,98 @@ const EditItem = () => {
         setReturnTime(currentSubject[0] && currentSubject[0].return_time);
         setPodgotovkaTime(currentSubject[0] && currentSubject[0].prepare_time);
         setPrepareType(
-          currentSubject[0] && currentSubject[0].prepare_time_choice === 'Час'
-            ? 'HOUR'
-            : currentSubject[0] && currentSubject[0].prepare_time_choice === 'День'
-            ? 'DAY'
-            : currentSubject[0] && currentSubject[0].prepare_time_choice === 'Неделя'
-            ? 'WEEK'
-            : currentSubject[0] && currentSubject[0].prepare_time_choice === 'Месяц'
-            ? 'MONTH'
-            : 'NONE',
+          currentSubject[0] && currentSubject[0].prepare_time_choice === "Час"
+            ? "HOUR"
+            : currentSubject[0] &&
+              currentSubject[0].prepare_time_choice === "День"
+            ? "DAY"
+            : currentSubject[0] &&
+              currentSubject[0].prepare_time_choice === "Неделя"
+            ? "WEEK"
+            : currentSubject[0] &&
+              currentSubject[0].prepare_time_choice === "Месяц"
+            ? "MONTH"
+            : "NONE"
         );
         setDeliveryType(currentSubject[0] && currentSubject[0].delivery);
-        setPickUp(currentSubject[0] && currentSubject[0].delivery.split(',').includes('Самовывоз'));
+        setPickUp(
+          currentSubject[0] &&
+            currentSubject[0].delivery.split(",").includes("Самовывоз")
+        );
         setTakeAway(
           currentSubject[0] &&
-            currentSubject[0].delivery.split(',').includes(' Привезу и заберу сам'),
+            currentSubject[0].delivery
+              .split(",")
+              .includes(" Привезу и заберу сам")
         );
         setYourSend(
-          currentSubject[0] && currentSubject[0].delivery.split(',').includes(' Доставка курьером'),
+          currentSubject[0] &&
+            currentSubject[0].delivery.split(",").includes(" Доставка курьером")
         );
         setTypeService(currentSubject[0] && currentSubject[0].delivery_free);
-        setIndicateCost(currentSubject[0] && currentSubject[0].self_delivery_price);
+        setIndicateCost(
+          currentSubject[0] && currentSubject[0].self_delivery_price
+        );
         setWillSendWays(
           currentSubject[0] && currentSubject[0].will_send_choice
             ? currentSubject[0] && currentSubject[0].will_send_choice
-            : 'NONE',
+            : "NONE"
         );
         setTaxi(
-          currentSubject[0] && currentSubject[0].will_send_choice.split(',').includes('Такси'),
+          currentSubject[0] &&
+            currentSubject[0].will_send_choice.split(",").includes("Такси")
         );
         setCourier(
-          currentSubject[0] && currentSubject[0].will_send_choice.split(',').includes(' Курьер'),
+          currentSubject[0] &&
+            currentSubject[0].will_send_choice.split(",").includes(" Курьер")
         );
         setPochta(
-          currentSubject[0] && currentSubject[0].will_send_choice.split(',').includes(' Почта'),
+          currentSubject[0] &&
+            currentSubject[0].will_send_choice.split(",").includes(" Почта")
         );
         setRadio(currentSubject[0] && currentSubject[0].send_payer);
         setContract(currentSubject[0] && currentSubject[0].contract);
         setInsurance(currentSubject[0] && currentSubject[0].insurance);
         setInsuranceTime(
-          currentSubject[0] && currentSubject[0].insurance_choice === 'За период'
-            ? 'PERIOD'
-            : currentSubject[0] && currentSubject[0].insurance_choice === 'За сутки'
-            ? 'DAY'
-            : 'NONE',
+          currentSubject[0] &&
+            currentSubject[0].insurance_choice === "За период"
+            ? "PERIOD"
+            : currentSubject[0] &&
+              currentSubject[0].insurance_choice === "За сутки"
+            ? "DAY"
+            : "NONE"
         );
-        setInsuranceSumma(currentSubject[0] && currentSubject[0].insurance_price);
+        setInsuranceSumma(
+          currentSubject[0] && currentSubject[0].insurance_price
+        );
         setFranchise(currentSubject[0] && currentSubject[0].franchise);
-        setFranchiseSumma(currentSubject[0] && currentSubject[0].franchise_price);
+        setFranchiseSumma(
+          currentSubject[0] && currentSubject[0].franchise_price
+        );
         setPladge(currentSubject[0] && currentSubject[0].pledge);
         setPledgePrice(currentSubject[0] && currentSubject[0].pledge_price);
         setServiceSbor(currentSubject[0] && currentSubject[0].servicefee);
         setId(currentSubject[0] && currentSubject[0].id);
         setOptionServiceSbor(
-          currentSubject[0] && currentSubject[0].servicefee_choice === 'Химчистка'
-            ? 'DRYCLEANING'
-            : currentSubject[0] && currentSubject[0].servicefee_choice === 'Уборка'
-            ? 'CLEANING'
-            : currentSubject[0] && currentSubject[0].servicefee_choice === 'Мытье'
-            ? 'WASHINGUP'
-            : 'NONE',
+          currentSubject[0] &&
+            currentSubject[0].servicefee_choice === "Химчистка"
+            ? "DRYCLEANING"
+            : currentSubject[0] &&
+              currentSubject[0].servicefee_choice === "Уборка"
+            ? "CLEANING"
+            : currentSubject[0] &&
+              currentSubject[0].servicefee_choice === "Мытье"
+            ? "WASHINGUP"
+            : "NONE"
         );
-        setSummaServiceSbor(currentSubject[0] && currentSubject[0].servicefee_price);
+        setSummaServiceSbor(
+          currentSubject[0] && currentSubject[0].servicefee_price
+        );
         setCoords(
           currentSubject[0] && [
             currentSubject[0].items_coordinates,
             currentSubject[0].items_address,
-          ],
+          ]
         );
         currentSubject[0] &&
           currentSubject[0].image_1 &&
@@ -530,7 +567,10 @@ const EditItem = () => {
             .then((response) => {
               return response.blob();
             })
-            .then((blobFile) => new File([blobFile], 'image_1.png', { type: 'image/png' }))
+            .then(
+              (blobFile) =>
+                new File([blobFile], "image_1.png", { type: "image/png" })
+            )
             .then((file) => {
               files.push(file);
               resultList.push(URL.createObjectURL(file));
@@ -544,7 +584,10 @@ const EditItem = () => {
             .then((response) => {
               return response.blob();
             })
-            .then((blobFile) => new File([blobFile], 'image_2.png', { type: 'image/png' }))
+            .then(
+              (blobFile) =>
+                new File([blobFile], "image_2.png", { type: "image/png" })
+            )
             .then((file) => {
               files.push(file);
               resultList.push(URL.createObjectURL(file));
@@ -558,7 +601,10 @@ const EditItem = () => {
             .then((response) => {
               return response.blob();
             })
-            .then((blobFile) => new File([blobFile], 'image_3.png', { type: 'image/png' }))
+            .then(
+              (blobFile) =>
+                new File([blobFile], "image_3.png", { type: "image/png" })
+            )
             .then((file) => {
               files.push(file);
               resultList.push(URL.createObjectURL(file));
@@ -572,7 +618,10 @@ const EditItem = () => {
             .then((response) => {
               return response.blob();
             })
-            .then((blobFile) => new File([blobFile], 'image_4.png', { type: 'image/png' }))
+            .then(
+              (blobFile) =>
+                new File([blobFile], "image_4.png", { type: "image/png" })
+            )
             .then((file) => {
               files.push(file);
               resultList.push(URL.createObjectURL(file));
@@ -586,7 +635,10 @@ const EditItem = () => {
             .then((response) => {
               return response.blob();
             })
-            .then((blobFile) => new File([blobFile], 'image_5.png', { type: 'image/png' }))
+            .then(
+              (blobFile) =>
+                new File([blobFile], "image_5.png", { type: "image/png" })
+            )
             .then((file) => {
               files.push(file);
               resultList.push(URL.createObjectURL(file));
@@ -601,25 +653,25 @@ const EditItem = () => {
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
   const [id, setId] = React.useState(null);
   //хранение типа доставки
-  const [deliveryType, setDeliveryType] = useState('NONE');
+  const [deliveryType, setDeliveryType] = useState("NONE");
 
   //РАЗДЕЛ - опции
-  const [razdel, setRazdel] = useState('');
+  const [razdel, setRazdel] = useState("");
 
   // КАТЕГОРИИ - опции
-  const [viborCategory, setViborCategory] = useState('');
+  const [viborCategory, setViborCategory] = useState("");
 
   //НАИМЕНОВАНИЕ ВЕЩИ
   const [nameItem, setNameItem] = useState();
 
   // Я ПРЕДЛАГАЮ(ОПИСАНИЕ)
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
 
   //ЗАГРУЗКА ФОТО
   const [loadedPhotos, setLoadedPhotos] = React.useState();
   //СТОИМОСТЬ АРЕНДЫ / ВРЕМЯ АРЕНДЫ
-  const [costArends, setCostArends] = useState('');
-  const [timeArends, setTimeArends] = useState('DAY');
+  const [costArends, setCostArends] = useState("");
+  const [timeArends, setTimeArends] = useState("DAY");
 
   //БЕСПЛАТНО
   const [giveFree, setGiveFree] = useState(false);
@@ -633,45 +685,45 @@ const EditItem = () => {
   // {/*--------------------------------- ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ ---------------------------------------*/}
 
   //КЛЮЧЕВЫЕ СЛОВА
-  const [yourKeyWord, setYourKeyWord] = useState('');
+  const [yourKeyWord, setYourKeyWord] = useState("");
 
   //СОСТАВ-КОМЛЕКТНОСТЬ
-  const [sostav, setSostav] = useState('');
+  const [sostav, setSostav] = useState("");
 
   //НАЗНАЧЕНИЕ
-  const [naznacheniye, setNaznacheniye] = useState('');
+  const [naznacheniye, setNaznacheniye] = useState("");
 
   //АРТИКУЛ
-  const [artikul, setArtikul] = useState('');
+  const [artikul, setArtikul] = useState("");
 
   //ИНВЕНТАРНЫЙ НОМЕР
-  const [inventoryNumber, setInventoryNumber] = useState('');
+  const [inventoryNumber, setInventoryNumber] = useState("");
 
   //ЦВЕТ
-  const [yourColor, setYourColor] = useState('');
+  const [yourColor, setYourColor] = useState("");
 
   //ГОД ВЫПУСКА
-  const [yearCreate, setYearCreate] = useState('');
+  const [yearCreate, setYearCreate] = useState("");
 
   //ПРОБЕГ
-  const [mileAge, setMileAge] = useState('');
+  const [mileAge, setMileAge] = useState("");
 
   //СТОИМОСТЬ ЕСЛИ ОЦЕНИВАЕТСЯ
-  const [cost, setCost] = useState('');
+  const [cost, setCost] = useState("");
 
   //ВРЕМЯ ПОЛУЧЕНИЯ И ВОЗВРАТА
-  const [timeReceipt, setTimeReceipt] = useState('12ч');
-  const [returnTime, setReturnTime] = useState('12ч');
+  const [timeReceipt, setTimeReceipt] = useState("12ч");
+  const [returnTime, setReturnTime] = useState("12ч");
 
   //ВРЕМЯ ПОДГОТОВКИ ТОВАРА
-  const [podgotovkaTime, setPodgotovkaTime] = useState(' ');
-  const [prepareType, setPrepareType] = React.useState('DAY');
+  const [podgotovkaTime, setPodgotovkaTime] = useState(" ");
+  const [prepareType, setPrepareType] = React.useState("DAY");
 
   // ВИД ДОСТАВКИ - САМОВЫВОЗ
   const [pickUp, setPickUp] = useState(true);
 
   // ВИД ДОСТАВКИ - ЗАБЕРУ ПРИВЕЗУ САМ ( ОПЦИИ - выбор и стомость )
-  const [takeAway, setTakeAway] = useState('');
+  const [takeAway, setTakeAway] = useState("");
 
   const [typeService, setTypeService] = useState(false);
   const [indicateCost, setIndicateCost] = useState(false);
@@ -686,7 +738,7 @@ const EditItem = () => {
   const [radio, setRadio] = useState();
 
   //методы доставки отправкой
-  const [willSendWays, setWillSendWays] = React.useState('NONE');
+  const [willSendWays, setWillSendWays] = React.useState("NONE");
 
   //ДОГОВОР - СТРАХОВКА - ФРАНШИЗА
   const [contract, setContract] = useState();
@@ -697,16 +749,16 @@ const EditItem = () => {
 
   //ФРАНШИЗА - СУММА
   const [franchise, setFranchise] = useState();
-  const [franchiseSumma, setFranchiseSumma] = useState('');
+  const [franchiseSumma, setFranchiseSumma] = useState("");
 
   //ПРЕДУСМОТРЕН ЗАЛОГ
   const [pladge, setPladge] = useState();
-  const [pledgePrice, setPledgePrice] = useState('');
+  const [pledgePrice, setPledgePrice] = useState("");
 
   // СЕРВИСНЫЙ СБОР - ЧЕКБОКС/ОПЦИИ/СУММА
-  const [serviceSbor, setServiceSbor] = useState('');
-  const [optionServiceSbor, setOptionServiceSbor] = useState('');
-  const [summaServiceSbor, setSummaServiceSbor] = useState('');
+  const [serviceSbor, setServiceSbor] = useState("");
+  const [optionServiceSbor, setOptionServiceSbor] = useState("");
+  const [summaServiceSbor, setSummaServiceSbor] = useState("");
 
   //ГОТОВ ПРОДАТЬ
   const [readySell, setReadySell] = useState();
@@ -756,7 +808,7 @@ const EditItem = () => {
     }
 
     if (insurance === false) {
-      setInsuranceTime('NONE');
+      setInsuranceTime("NONE");
       setInsuranceSumma(null);
       setFranchise(false);
       setFranchiseSumma(null);
@@ -767,7 +819,7 @@ const EditItem = () => {
     if (franchise === false) setFranchiseSumma(false);
 
     if (serviceSbor === false) {
-      setOptionServiceSbor('NONE');
+      setOptionServiceSbor("NONE");
       setSummaServiceSbor(null);
     }
 
@@ -788,52 +840,52 @@ const EditItem = () => {
   React.useEffect(() => {
     if (pickUp) {
       if (pickUp && takeAway && yourSend) {
-        setDeliveryType('1, 2, 3');
+        setDeliveryType("1, 2, 3");
       } else if (pickUp && takeAway) {
-        setDeliveryType('1, 2');
+        setDeliveryType("1, 2");
       } else if (pickUp && yourSend) {
-        setDeliveryType('1, 3');
+        setDeliveryType("1, 3");
       } else if (pickUp) {
-        setDeliveryType('1');
+        setDeliveryType("1");
       }
     } else if (takeAway) {
       if (takeAway && yourSend) {
-        setDeliveryType('2, 3');
+        setDeliveryType("2, 3");
       } else if (takeAway) {
-        setDeliveryType('2');
+        setDeliveryType("2");
       }
     } else if (yourSend) {
-      setDeliveryType('3');
-    } else setDeliveryType('NONE');
+      setDeliveryType("3");
+    } else setDeliveryType("NONE");
   }, [pickUp, takeAway, yourSend]);
 
   //определение способов доставки отправкой
   React.useEffect(() => {
     if (taxi) {
       if (taxi && courier && pochta) {
-        setWillSendWays('1, 2, 3');
+        setWillSendWays("1, 2, 3");
       } else if (taxi && courier) {
-        setWillSendWays('1, 2');
+        setWillSendWays("1, 2");
       } else if (taxi && pochta) {
-        setWillSendWays('1, 3');
+        setWillSendWays("1, 3");
       } else if (taxi) {
-        setWillSendWays('1');
+        setWillSendWays("1");
       }
     } else if (courier) {
       if (courier && pochta) {
-        setWillSendWays('2, 3');
+        setWillSendWays("2, 3");
       } else if (courier) {
-        setWillSendWays('2');
+        setWillSendWays("2");
       }
     } else if (pochta) {
-      setWillSendWays('3');
-    } else setWillSendWays('NONE');
+      setWillSendWays("3");
+    } else setWillSendWays("NONE");
     console.log(willSendWays);
   }, [taxi, courier, pochta, willSendWays]);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Редактирование: #разделисдругим';
+    document.title = "Редактирование: #разделисдругим";
   }, []);
 
   //выделяем разделы
@@ -859,7 +911,9 @@ const EditItem = () => {
   isLoaded &&
     addresses.map((item, index) => {
       addressesFormatted.push([
-        `${item.city}, ${item.street}, ${item.house ? item.house : item.apartment}`,
+        `${item.city}, ${item.street}, ${
+          item.house ? item.house : item.apartment
+        }`,
         item.coordinates,
       ]);
     });
@@ -895,33 +949,40 @@ const EditItem = () => {
               <select
                 value={razdel}
                 onChange={(e) => setRazdel(e.target.value)}
-                className="add-item-select-input">
+                className="add-item-select-input"
+              >
                 <option>Не выбрано</option>
                 {isLoaded &&
-                  [].concat.apply(Object.entries(chapters)).map((chapter, index) => (
-                    <option key={index} value={chapter[1]}>
-                      {chapter[0]}
-                    </option>
-                  ))}
+                  [].concat
+                    .apply(Object.entries(chapters))
+                    .map((chapter, index) => (
+                      <option key={index} value={chapter[1]}>
+                        {chapter[0]}
+                      </option>
+                    ))}
               </select>
             </div>
 
             {/*  КАТЕГОРИЯ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Выберите категорию <span className="add-item-span-zvezda">*</span>
+                Выберите категорию{" "}
+                <span className="add-item-span-zvezda">*</span>
               </label>
               <select
                 className="add-item-select-input"
                 value={viborCategory}
-                onChange={(e) => setViborCategory(e.target.value)}>
+                onChange={(e) => setViborCategory(e.target.value)}
+              >
                 <option>Не выбрано</option>
                 {isLoaded &&
-                  [].concat.apply(Object.entries(categories)).map((category, index) => (
-                    <option key={index} value={category[1]}>
-                      {category[0]}
-                    </option>
-                  ))}
+                  [].concat
+                    .apply(Object.entries(categories))
+                    .map((category, index) => (
+                      <option key={index} value={category[1]}>
+                        {category[0]}
+                      </option>
+                    ))}
               </select>
             </div>
 
@@ -962,16 +1023,21 @@ const EditItem = () => {
                           <div key={index} className="add-item-photo-wrapper">
                             <div
                               onClick={() => removePhotoHandler(index)}
-                              className="add-item-photo-remove">
+                              className="add-item-photo-remove"
+                            >
                               &times;
                             </div>
-                            <img className="add-item-photo" key={index} src={photo} />
+                            <img
+                              className="add-item-photo"
+                              key={index}
+                              src={photo}
+                            />
                             <div className="add-photo-info">
                               <span>{bytesToSize(files[index].size)}</span>
                             </div>
                           </div>
                         ))
-                      : ''}
+                      : ""}
                   </div>
                 </div>
               </div>
@@ -980,7 +1046,10 @@ const EditItem = () => {
             {/*  СТОИМОСТЬ АРЕНДЫ  */}
 
             <div className="item-add-cost-choice-wrapper">
-              <div style={{ marginRight: '5px' }} className="add-item-input-wrapper">
+              <div
+                style={{ marginRight: "5px" }}
+                className="add-item-input-wrapper"
+              >
                 <label className="add-item-input-label">
                   Стоимость вещи <span className="add-item-span-zvezda">*</span>
                 </label>
@@ -1004,17 +1073,18 @@ const EditItem = () => {
                 </label>
                 <select
                   className="add-item-select-input__time"
-                  onChange={(e) => timeArendsHandler(e)}>
-                  <option value="HOUR" selected={timeArends === 'HOUR'}>
+                  onChange={(e) => timeArendsHandler(e)}
+                >
+                  <option value="HOUR" selected={timeArends === "HOUR"}>
                     Час
                   </option>
-                  <option value="DAY" selected={timeArends === 'DAY'}>
+                  <option value="DAY" selected={timeArends === "DAY"}>
                     Сутки
                   </option>
-                  <option value="WEEK" selected={timeArends === 'WEEK'}>
+                  <option value="WEEK" selected={timeArends === "WEEK"}>
                     Неделя
                   </option>
-                  <option value="MONTH" selected={timeArends === 'MONTH'}>
+                  <option value="MONTH" selected={timeArends === "MONTH"}>
                     Месяц
                   </option>
                 </select>
@@ -1060,19 +1130,26 @@ const EditItem = () => {
               <select
                 className="add-item-select-input"
                 onChange={(e) =>
-                  setCoords(e.target.value === 'NONE' ? 'NONE' : e.target.value.split(',,'))
-                }>
+                  setCoords(
+                    e.target.value === "NONE"
+                      ? "NONE"
+                      : e.target.value.split(",,")
+                  )
+                }
+              >
                 <option value="NONE">Не выбран</option>
                 {isLoaded &&
                   coords &&
                   addressesFormatted.map((item, index) => (
                     <option
                       selected={
-                        (addressAdded && index + 1 === addressesFormatted.length) ||
+                        (addressAdded &&
+                          index + 1 === addressesFormatted.length) ||
                         item[0] === coords[1]
                       }
                       value={`${item[1]},,${item[0]}`}
-                      key={index}>
+                      key={index}
+                    >
                       {item[0]}
                     </option>
                   ))}
@@ -1080,11 +1157,16 @@ const EditItem = () => {
             </div>
 
             {addresses.length < 2 && (
-              <div style={{ marginBottom: '20px' }} id="dop_parametr_wrapper">
-                <input id="dop_parametr" className="add-item-input-checkbox__3" type="checkbox" />
+              <div style={{ marginBottom: "20px" }} id="dop_parametr_wrapper">
+                <input
+                  id="dop_parametr"
+                  className="add-item-input-checkbox__3"
+                  type="checkbox"
+                />
                 <label
                   onClick={() => setShowAddressAddTable(!showAddressAddTable)}
-                  htmlFor="dop_parametr">
+                  htmlFor="dop_parametr"
+                >
                   + Добавить другой адрес
                 </label>
               </div>
@@ -1107,7 +1189,8 @@ const EditItem = () => {
 
                   <div className="add-item-input-wrapper">
                     <label className="add-item-input-label">
-                      Населенный пункт <span className="add-item-span-zvezda">*</span>
+                      Населенный пункт{" "}
+                      <span className="add-item-span-zvezda">*</span>
                     </label>
                     <input
                       placeholder="Например: Минск"
@@ -1133,7 +1216,8 @@ const EditItem = () => {
                 <div className="take-away-secondary-wrapper">
                   <div className="add-item-input-wrapper">
                     <label className="add-item-input-label">
-                      Улица/Проспект/Переулок <span className="add-item-span-zvezda">*</span>
+                      Улица/Проспект/Переулок{" "}
+                      <span className="add-item-span-zvezda">*</span>
                     </label>
                     <input
                       placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -1159,8 +1243,14 @@ const EditItem = () => {
                 </div>
 
                 {/* КОМП ВЕРСИЯ */}
-                <div className="take-away-secondary-wrapper" id="take_Away_komp">
-                  <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                <div
+                  className="take-away-secondary-wrapper"
+                  id="take_Away_komp"
+                >
+                  <div
+                    className="take-away-secondary-wrapper"
+                    id="take-away-secondary-wrapper"
+                  >
                     <div className="add-item-input-wrapper">
                       <label className="add-item-input-label">
                         Дом <span className="add-item-span-zvezda">*</span>
@@ -1174,7 +1264,10 @@ const EditItem = () => {
                       />
                     </div>
 
-                    <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                    <div
+                      className="take-away-secondary-wrapper"
+                      id="take-away-secondary-wrapper"
+                    >
                       <div className="add-item-input-wrapper">
                         <label className="add-item-input-label">Корпус</label>
                         <input
@@ -1197,13 +1290,17 @@ const EditItem = () => {
                         />
                       </div>
                     </div>
-                    <span style={{ marginRight: '30px' }} className="add-item-cost-or__secondary">
+                    <span
+                      style={{ marginRight: "30px" }}
+                      className="add-item-cost-or__secondary"
+                    >
                       или
                     </span>
                     <div className="take-away-secondary-wrapper">
                       <div className="add-item-input-wrapper">
                         <label className="add-item-input-label">
-                          Помещение <span className="add-item-span-zvezda">*</span>
+                          Помещение{" "}
+                          <span className="add-item-span-zvezda">*</span>
                         </label>
                         <input
                           disabled={house || body || flat}
@@ -1214,7 +1311,10 @@ const EditItem = () => {
                         />
                       </div>
 
-                      <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                      <div
+                        className="take-away-secondary-wrapper"
+                        id="take-away-secondary-wrapper"
+                      >
                         <div className="add-item-input-wrapper">
                           <label className="add-item-input-label">Офис</label>
                           <input
@@ -1227,7 +1327,9 @@ const EditItem = () => {
                         </div>
 
                         <div className="add-item-input-wrapper">
-                          <label className="add-item-input-label">Строение</label>
+                          <label className="add-item-input-label">
+                            Строение
+                          </label>
                           <input
                             disabled={house || body || flat}
                             type="text"
@@ -1242,9 +1344,18 @@ const EditItem = () => {
                 </div>
 
                 {/* АДАПТИВКА */}
-                <div className="take-away-secondary-wrapper" id="take_Away_adaptive">
-                  <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
-                    <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                <div
+                  className="take-away-secondary-wrapper"
+                  id="take_Away_adaptive"
+                >
+                  <div
+                    className="take-away-secondary-wrapper"
+                    id="take-away-secondary-wrapper"
+                  >
+                    <div
+                      className="add-item-input-wrapper"
+                      id="add_item_gl_margin"
+                    >
                       <label className="add-item-input-label">
                         Дом <span className="add-item-span-zvezda">*</span>
                       </label>
@@ -1257,7 +1368,10 @@ const EditItem = () => {
                       />
                     </div>
 
-                    <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                    <div
+                      className="add-item-input-wrapper"
+                      id="add_item_gl_margin"
+                    >
                       <label className="add-item-input-label">Корпус</label>
                       <input
                         disabled={room || office || building}
@@ -1280,14 +1394,22 @@ const EditItem = () => {
                     </div>
 
                     <span
-                      style={{ marginRight: '30px', display: 'none' }}
-                      className="add-item-cost-or__secondary">
+                      style={{ marginRight: "30px", display: "none" }}
+                      className="add-item-cost-or__secondary"
+                    >
                       или
                     </span>
-                    <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
-                      <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                    <div
+                      className="take-away-secondary-wrapper"
+                      id="take-away-secondary-wrapper"
+                    >
+                      <div
+                        className="add-item-input-wrapper"
+                        id="add_item_gl_margin"
+                      >
                         <label className="add-item-input-label">
-                          Помещение <span className="add-item-span-zvezda">*</span>
+                          Помещение{" "}
+                          <span className="add-item-span-zvezda">*</span>
                         </label>
                         <input
                           disabled={house || body || flat}
@@ -1297,7 +1419,10 @@ const EditItem = () => {
                           onChange={(e) => setRoom(e.target.value)}
                         />
                       </div>
-                      <div className="add-item-input-wrapper" id="add_item_gl_margin">
+                      <div
+                        className="add-item-input-wrapper"
+                        id="add_item_gl_margin"
+                      >
                         <label className="add-item-input-label">Офис</label>
                         <input
                           disabled={house || body || flat}
@@ -1326,11 +1451,11 @@ const EditItem = () => {
                   id="save_address"
                   className={
                     requestActive
-                      ? 'add-item-save-new-address-button disabled'
-                      : 'add-item-save-new-address-button'
+                      ? "add-item-save-new-address-button disabled"
+                      : "add-item-save-new-address-button"
                   }
                   type="button"
-                  value={requestActive ? 'ОТПРАВКА...' : 'Сохранить адрес'}
+                  value={requestActive ? "ОТПРАВКА..." : "Сохранить адрес"}
                   onClick={saveNewAddress}
                 />
               </div>
@@ -1371,7 +1496,9 @@ const EditItem = () => {
                 {/*  СОСТАВ/КОМПЛЕКТНОСТЬ  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Состав/комплектность</label>
+                  <label className="add-item-input-label">
+                    Состав/комплектность
+                  </label>
                   <input
                     placeholder="Например: ноутбук, мышь, подставка"
                     type="text"
@@ -1411,7 +1538,9 @@ const EditItem = () => {
                 {/*  ИНВЕНТАРНЫЙ НОМЕР  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Инвентарный номер</label>
+                  <label className="add-item-input-label">
+                    Инвентарный номер
+                  </label>
                   <input
                     placeholder="Например: 154A"
                     type="text"
@@ -1464,7 +1593,9 @@ const EditItem = () => {
                 {/*  СТОИМОСТЬ ЕСЛИ ОЦЕНИВАЕТСЯ  */}
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">Стоимость вещи (если оценивается)</label>
+                  <label className="add-item-input-label">
+                    Стоимость вещи (если оценивается)
+                  </label>
                   <input
                     type="number"
                     max="9999"
@@ -1484,7 +1615,8 @@ const EditItem = () => {
                     </label>
                     <select
                       className="add-item-select-clock"
-                      onChange={(e) => setTimeReceipt(e.target.value)}>
+                      onChange={(e) => setTimeReceipt(e.target.value)}
+                    >
                       <option />
                       <option value="1ч">1ч</option>
                       <option value="2ч">2ч</option>
@@ -1523,7 +1655,8 @@ const EditItem = () => {
                     </label>
                     <select
                       className="add-item-select-clock"
-                      onChange={(e) => setReturnTime(e.target.value)}>
+                      onChange={(e) => setReturnTime(e.target.value)}
+                    >
                       <option />
                       <option value="1ч">1ч</option>
                       <option value="2ч">2ч</option>
@@ -1558,7 +1691,9 @@ const EditItem = () => {
                 {/*  ВРЕМЯ ПОДГОТОВКИ ТОВАРА  */}
                 <div className="take-away-secondary-wrapper">
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">Время подготовки вещи</label>
+                    <label className="add-item-input-label">
+                      Время подготовки вещи
+                    </label>
                     <input
                       placeholder="Например: 2"
                       type="number"
@@ -1569,23 +1704,26 @@ const EditItem = () => {
                     />
                   </div>
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">В чем считаем?</label>
+                    <label className="add-item-input-label">
+                      В чем считаем?
+                    </label>
                     <select
                       className="add-item-select-input__time"
-                      onChange={(e) => setPrepareType(e.target.value)}>
-                      <option value="NONE" selected={prepareType === 'NONE'}>
+                      onChange={(e) => setPrepareType(e.target.value)}
+                    >
+                      <option value="NONE" selected={prepareType === "NONE"}>
                         Не выбрано
                       </option>
-                      <option value="HOUR" selected={prepareType === 'HOUR'}>
+                      <option value="HOUR" selected={prepareType === "HOUR"}>
                         Час(-ов)
                       </option>
-                      <option value="DAY" selected={prepareType === 'DAY'}>
+                      <option value="DAY" selected={prepareType === "DAY"}>
                         Сутки(-ок)
                       </option>
-                      <option value="WEEK" selected={prepareType === 'WEEK'}>
+                      <option value="WEEK" selected={prepareType === "WEEK"}>
                         Неделя(-ль)
                       </option>
-                      <option value="MONTH" selected={prepareType === 'MONTH'}>
+                      <option value="MONTH" selected={prepareType === "MONTH"}>
                         Месяц(-ев)
                       </option>
                     </select>
@@ -1595,27 +1733,48 @@ const EditItem = () => {
                 {/*  ВИД ДОСТАВКИ - САМОВЫВОЗ - ПРИВЕЗУ/ЗАБЕРУ - ОТПРАВКА */}
                 <label className="add-item-input-label">Вид доставки</label>
                 <div className="checkbox-btn secondary">
-                  <input type="checkbox" className="input-checkbox" checked={pickUp} />
-                  <span onClick={(e) => pickupHandler(e.target.value)}>Самовывоз</span>
+                  <input
+                    type="checkbox"
+                    className="input-checkbox"
+                    checked={pickUp}
+                  />
+                  <span onClick={(e) => pickupHandler(e.target.value)}>
+                    Самовывоз
+                  </span>
                 </div>
 
                 {/*  ПРИВЕЗУ/ЗАБЕРУ САМ  */}
                 <div className="add-item-delivery-type-wrapper">
                   <div className="checkbox-btn secondary">
-                    <input type="checkbox" className="input-checkbox" checked={takeAway} />
+                    <input
+                      type="checkbox"
+                      className="input-checkbox"
+                      checked={takeAway}
+                    />
                     <span onClick={(e) => takeAwayHandler(e.target.value)}>
                       Привезу и заберу сам
                     </span>
                   </div>
 
                   {takeAway && (
-                    <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+                    <div
+                      className="take-away-secondary-wrapper"
+                      id="take-away-secondary-wrapper"
+                    >
                       <div className="checkbox-btn secondary">
-                        <input type="checkbox" className="input-checkbox" checked={typeService} />
-                        <span onClick={() => setTypeService(!typeService)}>Бесплатно</span>
+                        <input
+                          type="checkbox"
+                          className="input-checkbox"
+                          checked={typeService}
+                        />
+                        <span onClick={() => setTypeService(!typeService)}>
+                          Бесплатно
+                        </span>
                       </div>
                       <span className="add-item-cost-or__secondary">или</span>
-                      <span className="add-item-input-label__lower">Указать стоимость</span>
+                      <span className="add-item-input-label__lower">
+                        Указать стоимость
+                      </span>
                       <input
                         disabled={typeService}
                         type="number"
@@ -1636,37 +1795,75 @@ const EditItem = () => {
                   <div className="take-away-secondary-wrapper-column">
                     <div className="take-away-secondary-wrapper">
                       <div className="checkbox-btn secondary">
-                        <input type="checkbox" className="input-checkbox" checked={yourSend} />
-                        <span onClick={(e) => yourSendHandler(e.target.value)}>Отправлю</span>
+                        <input
+                          type="checkbox"
+                          className="input-checkbox"
+                          checked={yourSend}
+                        />
+                        <span onClick={(e) => yourSendHandler(e.target.value)}>
+                          Отправлю
+                        </span>
                       </div>
 
                       {yourSend && (
                         <span
                           className="take-away-secondary-wrapper"
-                          id="take-away-secondary-wrapper">
-                          <div className="checkbox-btn secondary" id="checkbox-btn-margin">
-                            <input type="checkbox" className="input-checkbox" checked={taxi} />
-                            <span onClick={(e) => taxiHandler(e.target.value)}>Такси</span>
+                          id="take-away-secondary-wrapper"
+                        >
+                          <div
+                            className="checkbox-btn secondary"
+                            id="checkbox-btn-margin"
+                          >
+                            <input
+                              type="checkbox"
+                              className="input-checkbox"
+                              checked={taxi}
+                            />
+                            <span onClick={(e) => taxiHandler(e.target.value)}>
+                              Такси
+                            </span>
                           </div>
 
-                          <div className="checkbox-btn secondary" id="checkbox-btn-margin">
-                            <input type="checkbox" className="input-checkbox" checked={courier} />
-                            <span onClick={(e) => courierHandler(e.target.value)}>Курьер</span>
+                          <div
+                            className="checkbox-btn secondary"
+                            id="checkbox-btn-margin"
+                          >
+                            <input
+                              type="checkbox"
+                              className="input-checkbox"
+                              checked={courier}
+                            />
+                            <span
+                              onClick={(e) => courierHandler(e.target.value)}
+                            >
+                              Курьер
+                            </span>
                           </div>
 
                           <div className="checkbox-btn secondary">
-                            <input type="checkbox" className="input-checkbox" checked={pochta} />
-                            <span onClick={(e) => pochtaHandler(e.target.value)}>Почта</span>
+                            <input
+                              type="checkbox"
+                              className="input-checkbox"
+                              checked={pochta}
+                            />
+                            <span
+                              onClick={(e) => pochtaHandler(e.target.value)}
+                            >
+                              Почта
+                            </span>
                           </div>
                         </span>
                       )}
                     </div>
 
                     {(taxi || courier || pochta) && (
-                      <div className="add-item-radio-wrapper" onChange={(e) => radioHandler(e)}>
+                      <div
+                        className="add-item-radio-wrapper"
+                        onChange={(e) => radioHandler(e)}
+                      >
                         <span class="form_radio_btn">
                           <input
-                            defaultChecked={radio === 'OWNER'}
+                            defaultChecked={radio === "OWNER"}
                             id="radio-1"
                             type="radio"
                             name="radio_choice"
@@ -1677,7 +1874,7 @@ const EditItem = () => {
 
                         <span class="form_radio_btn">
                           <input
-                            defaultChecked={radio === 'RENTER'}
+                            defaultChecked={radio === "RENTER"}
                             id="radio-2"
                             type="radio"
                             name="radio_choice"
@@ -1694,7 +1891,11 @@ const EditItem = () => {
                 <div className="add-item-gurantee-wrapper">
                   <label className="add-item-input-label">Гарантии</label>
                   <div className="checkbox-btn secondary">
-                    <input type="checkbox" className="input-checkbox" checked={contract} />
+                    <input
+                      type="checkbox"
+                      className="input-checkbox"
+                      checked={contract}
+                    />
                     <span onClick={(e) => contractHandler(e.target.value)}>
                       Договор/расписка обязательны
                     </span>
@@ -1705,17 +1906,22 @@ const EditItem = () => {
                     <div className="take-away-secondary-wrapper-column">
                       <div className="take-away-secondary-wrapper">
                         <div className="checkbox-btn secondary">
-                          <input type="checkbox" className="input-checkbox" checked={insurance} />
+                          <input
+                            type="checkbox"
+                            className="input-checkbox"
+                            checked={insurance}
+                          />
                           <span onClick={insuranceHandler}>Страхование</span>
                         </div>
                         {insurance && (
                           <div className="take-away-secondary-wrapper">
                             <div
                               className="add-item-radio-wrapper"
-                              onChange={(e) => setInsuranceTime(e.target.value)}>
+                              onChange={(e) => setInsuranceTime(e.target.value)}
+                            >
                               <span class="form_radio_btn">
                                 <input
-                                  checked={insuranceTime === 'PERIOD'}
+                                  checked={insuranceTime === "PERIOD"}
                                   id="radio-3"
                                   type="radio"
                                   name="radio_choice_ins"
@@ -1726,7 +1932,7 @@ const EditItem = () => {
 
                               <span class="form_radio_btn">
                                 <input
-                                  checked={insuranceTime === 'DAY'}
+                                  checked={insuranceTime === "DAY"}
                                   id="radio-4"
                                   type="radio"
                                   name="radio_choice_ins"
@@ -1735,9 +1941,12 @@ const EditItem = () => {
                                 <label for="radio-4">За сутки</label>
                               </span>
                             </div>
-                            {(insuranceTime === 'PERIOD' || insuranceTime === 'DAY') && (
+                            {(insuranceTime === "PERIOD" ||
+                              insuranceTime === "DAY") && (
                               <span>
-                                <label className="add-item-input-label__lower">В сумме</label>
+                                <label className="add-item-input-label__lower">
+                                  В сумме
+                                </label>
                                 <input
                                   type="number"
                                   max="9999"
@@ -1756,12 +1965,18 @@ const EditItem = () => {
                       {insurance && (
                         <span className="take-away-secondary-wrapper">
                           <div className="checkbox-btn secondary">
-                            <input type="checkbox" className="input-checkbox" checked={franchise} />
+                            <input
+                              type="checkbox"
+                              className="input-checkbox"
+                              checked={franchise}
+                            />
                             <span onClick={franchiseHandler}>Франшиза</span>
                           </div>
                           {franchise && (
                             <span>
-                              <label className="add-item-input-label__lower">В сумме</label>
+                              <label className="add-item-input-label__lower">
+                                В сумме
+                              </label>
                               <input
                                 type="number"
                                 max="9999"
@@ -1783,12 +1998,18 @@ const EditItem = () => {
 
                   <div className="take-away-secondary-wrapper">
                     <div className="checkbox-btn secondary">
-                      <input type="checkbox" className="input-checkbox" checked={pladge} />
+                      <input
+                        type="checkbox"
+                        className="input-checkbox"
+                        checked={pladge}
+                      />
                       <span onClick={pladgeHandler}>Залог</span>
                     </div>
                     {pladge && (
                       <span>
-                        <label className="add-item-input-label__lower">В сумме</label>
+                        <label className="add-item-input-label__lower">
+                          В сумме
+                        </label>
                         <input
                           className="add-item-input-number__secondary"
                           type="number"
@@ -1807,7 +2028,11 @@ const EditItem = () => {
 
                   <div className="take-away-secondary-wrapper">
                     <div className="checkbox-btn secondary">
-                      <input type="checkbox" className="input-checkbox" checked={serviceSbor} />
+                      <input
+                        type="checkbox"
+                        className="input-checkbox"
+                        checked={serviceSbor}
+                      />
                       <span onClick={serviceSborHandler}>Сервисный сбор</span>
                     </div>
                     {serviceSbor && (
@@ -1815,10 +2040,13 @@ const EditItem = () => {
                         <div className="take-away-secondary-wrapper">
                           <div
                             className="add-item-radio-wrapper"
-                            onChange={(e) => setOptionServiceSbor(e.target.value)}>
+                            onChange={(e) =>
+                              setOptionServiceSbor(e.target.value)
+                            }
+                          >
                             <span class="form_radio_btn">
                               <input
-                                checked={optionServiceSbor === 'DRYCLEANING'}
+                                checked={optionServiceSbor === "DRYCLEANING"}
                                 id="radio-5"
                                 type="radio"
                                 name="radio_choice_serv"
@@ -1829,7 +2057,7 @@ const EditItem = () => {
 
                             <span class="form_radio_btn">
                               <input
-                                checked={optionServiceSbor === 'CLEANING'}
+                                checked={optionServiceSbor === "CLEANING"}
                                 id="radio-6"
                                 type="radio"
                                 name="radio_choice_serv"
@@ -1840,7 +2068,7 @@ const EditItem = () => {
 
                             <span class="form_radio_btn">
                               <input
-                                checked={optionServiceSbor === 'WASHINGUP'}
+                                checked={optionServiceSbor === "WASHINGUP"}
                                 id="radio-7"
                                 type="radio"
                                 name="radio_choice_serv"
@@ -1849,11 +2077,13 @@ const EditItem = () => {
                               <label for="radio-7">Мытьё</label>
                             </span>
                           </div>
-                          {(optionServiceSbor === 'DRYCLEANING' ||
-                            optionServiceSbor === 'CLEANING' ||
-                            optionServiceSbor === 'WASHINGUP') && (
+                          {(optionServiceSbor === "DRYCLEANING" ||
+                            optionServiceSbor === "CLEANING" ||
+                            optionServiceSbor === "WASHINGUP") && (
                             <span>
-                              <label className="add-item-input-label__lower">В сумме</label>
+                              <label className="add-item-input-label__lower">
+                                В сумме
+                              </label>
                               <input
                                 type="number"
                                 className="add-item-input-number__secondary"
@@ -1882,9 +2112,11 @@ const EditItem = () => {
                 onClick={sendHandler}
                 type="button"
                 name="a"
-                value={requestActive ? 'ОТПРАВКА...' : 'ОТПРАВИТЬ'}
-                className={requestActive ? 'button_loading disabled' : 'button_loading'}
-              />{' '}
+                value={requestActive ? "ОТПРАВКА..." : "ОТПРАВИТЬ"}
+                className={
+                  requestActive ? "button_loading disabled" : "button_loading"
+                }
+              />{" "}
             </div>
           </form>
         </div>

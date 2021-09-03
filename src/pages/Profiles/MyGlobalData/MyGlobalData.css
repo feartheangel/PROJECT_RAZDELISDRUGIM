@@ -23,6 +23,7 @@
   text-align: left;
   margin: 20px 0;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 /* .container_profile_optional p:hover {
@@ -53,6 +54,7 @@
   background: #ffffff;
   margin: 20px 0;
   padding: 30px;
+  min-height: 300px;
 }
 
 .container_profile_content input,
@@ -87,25 +89,18 @@ textarea {
   cursor: pointer;
   color: #56ccf2;
 }
-#globaldata_mobile{
+#globaldata_mobile {
   display: none;
 }
 
-
-
-
-
-
-
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
-  #globaldata_mobile{
+  #globaldata_mobile {
     display: flex;
   }
-  #globaldata_pk{
+  #globaldata_pk {
     display: none;
   }
-
 
   .container_profile {
     display: flex;
@@ -126,23 +121,26 @@ textarea {
     font-weight: normal;
     margin: 0 15px;
   }
-  .container_profile_optional::-webkit-scrollbar{
+  .container_profile_optional::-webkit-scrollbar {
     width: 0;
   }
 
-  .optional_scroll1{
+  .optional_scroll1 {
     min-width: 120px;
   }
-  .optional_scroll2{
+  .optional_scroll2 {
     min-width: 117px;
   }
-  .optional_scroll3{
+  .optional_scroll3 {
     min-width: 154px;
   }
-  .optional_scroll4{
+  .optional_scroll4 {
     min-width: 92px;
   }
-  .optional_scroll1,  .optional_scroll2,   .optional_scroll3,   .optional_scroll4{
+  .optional_scroll1,
+  .optional_scroll2,
+  .optional_scroll3,
+  .optional_scroll4 {
     margin-right: 10px;
   }
 

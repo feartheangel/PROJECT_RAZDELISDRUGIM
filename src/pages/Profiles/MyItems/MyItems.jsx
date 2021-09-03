@@ -1,9 +1,9 @@
-import React from 'react';
-import { ItemCardProfile, ItemDeleteSubmit } from '../../../components/index';
-import { useSelector } from 'react-redux';
-import './MyItems.css';
-import { Link } from 'react-router-dom';
-import { Header, Footer } from '../../../components/index';
+import React from "react";
+import { ItemCardProfile, ItemDeleteSubmit } from "../../../components/index";
+import { useSelector } from "react-redux";
+import "./MyItems.css";
+import { Link } from "react-router-dom";
+import { Header, Footer } from "../../../components/index";
 
 const MyItems = () => {
   const { subjects } = useSelector(({ userData }) => userData);
@@ -13,7 +13,7 @@ const MyItems = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Я сдаю: #разделисдругим';
+    document.title = "Я сдаю: #разделисдругим";
   }, []);
 
   return (
@@ -25,27 +25,26 @@ const MyItems = () => {
             <p className="conteiner_shapka_myProfile">
               Я сдаю <span> {subjects.length} </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Мои сообщения <span> - </span>
             </p>
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: 'none', textDecoration: 'none' }
-                  : { textDecoration: 'none' }
-              }
+              style={{
+                textDecoration: "none",
+              }}
               className="conteiner_shapka_myProfile"
-              to="/favorites">
+              to="/favorites"
+            >
               <p>Избранное</p>
             </Link>
-            <Link style={{ textDecoration: 'none' }} to="/private-profile">
+            <Link style={{ textDecoration: "none" }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{ marginRight: '0' }}>
+          <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="container_profile_content__myItems">
               {subjects &&
                 subjects.map((subject, index) => (
@@ -102,6 +101,11 @@ const MyItems = () => {
                     id={subject.id}
                   />
                 ))}
+              {subjects && subjects.length === 0 && (
+                <div className="favorites_empty">
+                  <p>Вы ничего не сдаете.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -113,31 +117,39 @@ const MyItems = () => {
             <p className="conteiner_shapka_myProfile">
               Я сдаю <span> {subjects.length} </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
+            <p
+              style={{ opacity: "0.4", pointerEvents: "none" }}
+              style={{ display: "none" }}
+            >
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
+            <p
+              style={{ opacity: "0.4", pointerEvents: "none" }}
+              style={{ display: "none" }}
+            >
               Мои сообщения <span> - </span>
             </p>
             <Link
               style={
                 subjects.length === 0
-                  ? { pointerEvents: 'none', textDecoration: 'none' }
-                  : { textDecoration: 'none' }
+                  ? { pointerEvents: "none", textDecoration: "none" }
+                  : { textDecoration: "none" }
               }
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
-              to="/favorites">
+              to="/favorites"
+            >
               <p>Избранное</p>
             </Link>
             <Link
-              style={{ textDecoration: 'none' }}
-              style={{ display: 'none' }}
-              to="/private-profile">
+              style={{ textDecoration: "none" }}
+              style={{ display: "none" }}
+              to="/private-profile"
+            >
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{ marginRight: '0' }}>
+          <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="container_profile_content__myItems">
               {subjects &&
                 subjects.map((subject, index) => (
@@ -194,6 +206,11 @@ const MyItems = () => {
                     id={subject.id}
                   />
                 ))}
+              {subjects && subjects.length === 0 && (
+                <div className="favorites_empty">
+                  <p>Вы ничего не сдаете.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
