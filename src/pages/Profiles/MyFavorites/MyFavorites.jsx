@@ -94,9 +94,6 @@ const MyFavorites = () => {
           <div className="container_profile">
             <div className="container_profile_content__myItems" id="globaldata_mobile">
               <div className="onlydiv_forcards">
-              {favorites &&
-                favorites.map((subject, index) => <div style={{width:'50%'}}><ItemCard  item={subject.item} key={index} /></div>)}
-
                 {favorites &&
                   favorites.map((subject, index) => (
                     <div style={{ width: '50%' }}>

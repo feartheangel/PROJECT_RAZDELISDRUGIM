@@ -630,7 +630,7 @@ const PublicProfile = () => {
                           </p>
                         </div>
 
-                        <div className="telephone_row2">
+                        <div className="telephone_row2_time">
                           <p className="block_down_online-p2">Время ответа</p>
                           <p className="block_down_online-p2_2">-</p>
                         </div>

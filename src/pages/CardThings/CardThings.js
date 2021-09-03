@@ -1141,6 +1141,18 @@ const CardThings = () => {
         </div>
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
       {/* МОБИЛЬНЫЙ АДАПТИВ */}
       <div id="card_thing_mobile">
         <div className="CardThings_Wrapper">
@@ -1662,7 +1674,6 @@ const CardThings = () => {
                         {itemData && itemData.description && (
                           <div className="information_description">
                             <p
-                              style={{ fontWeight: "600" }}
                               className="information_description-p1"
                             >
                               Описание
@@ -1827,7 +1838,7 @@ const CardThings = () => {
                       to={`/public-profile?id=${
                         itemData && itemData.profile.id
                       }`}
-                      style={{ textDecoration: "none" }}
+                      style={{ textDecoration: "none", width:'fit-content' }}
                     >
                       <div className="block_down_owner_photo">
                         <img

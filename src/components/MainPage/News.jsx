@@ -55,7 +55,7 @@ const News = () => {
               news.map((item) => {
                 return (
                   <SwiperSlide
-                    style={{ display: 'flex', width: '250px', justifyContent: 'center' }}>
+                    style={{ display: 'flex', width: '250px', justifyContent: 'center'}}>
                     <div className="news-reviews-block">
                       <p className="news-reviews-date">{news && item.news_title}</p>
                       <p style={{ display: 'none' }} className="news-reviews-title">

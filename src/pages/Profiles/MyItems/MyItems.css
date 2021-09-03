@@ -75,6 +75,11 @@
     width: auto;
     font-size: 14px;
   }
+  .favorites_empty{
+    height: auto;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
 
 
 

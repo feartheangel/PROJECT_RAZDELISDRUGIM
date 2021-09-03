@@ -108,7 +108,9 @@ const Catalog = () => {
           {/* МОБИЛЬНАЯ ВЕРСИЯ */}
           <div
             className="container_down_left_burger"
-            onClick={() => setActiveVector(!activeVector)}>
+            onClick={() => setActiveVector(!activeVector)}
+            id="globaldata_mobile"
+            >
             <p className="container_down_left-p">Каталог</p>
             <img src={Vector2} alt="vector" className="vector2_img" />
           </div>
@@ -137,7 +139,7 @@ const Catalog = () => {
                             className={
                               activeForm === chapter[1][0]
                                 ? 'left_category_global_div_active'
-                                : 'left_category_global_div'
+                                : 'left_category_global_div_p'
                             }>
                             {chapter[0]}
                           </p>

@@ -113,6 +113,9 @@
         margin-right: 0;
         font-size: 18px;
     }
+    .CatalogComponent_list_left p{
+        width: fit-content;
+    }
 
     .gl_div_onlyshapka{
         display: flex;

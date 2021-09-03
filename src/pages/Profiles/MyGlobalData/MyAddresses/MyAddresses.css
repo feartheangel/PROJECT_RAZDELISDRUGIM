@@ -85,10 +85,26 @@
 .button_download:hover {
   font-weight: bold;
 }
+#dop_parametr_wrapper_mobile{
+  display: none;
+}
+
+
+
+
+
+
 
 /* АДАПТИВНЫЙ ДИЗАЙН */
 
 @media only screen and (max-width:480px){
+
+  #dop_parametr_wrapper{
+    display: none;
+  }
+  #dop_parametr_wrapper_mobile{
+    display: flex;
+  }
 
   .myAddresses_content_addresses_left{
     width: 100%;
@@ -99,6 +115,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 15px;
+    width: fit-content;
   }
 
   .address_row_style{
