@@ -338,6 +338,8 @@
   }
   .SearchPage_container_content_left ul li:not(:last-child) {
     margin-bottom: 15px;
+  }  .SearchPage_container_content_left ul li{
+    width: fit-content;
   }
   .content_left_cost {
     margin-bottom: -15px;

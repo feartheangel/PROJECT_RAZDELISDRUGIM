@@ -149,8 +149,20 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
             htmlFor="dop_parametr">
             + Добавить другой адрес
           </label>
-        </div>
+        </div>      
       )}
+
+                {/* СНИЗУ БЛОК ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */}
+        {addresses.length < 2 && (
+          <div id="dop_parametr_wrapper_mobile">
+            <input id="dop_parametr" className="add-item-input-checkbox__3" type="checkbox" />
+            <label
+              onClick={() => setShowAddressAddTable(!showAddressAddTable)}
+              htmlFor="dop_parametr">
+              + Добавить другой адрес
+            </label>
+          </div>      
+        )}
 
       {showAddressAddTable && (
         <div className="take-away-secondary-wrapper-column">

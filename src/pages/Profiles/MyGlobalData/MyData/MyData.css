@@ -664,6 +664,9 @@ option {
   .setting_left_input_row {
     display: flex;
   }
+  .profile-photo-overlay{
+    top: 0;
+  }
 
   /* КНОПКА СОХРАНИТЬ */
   #button_max_width {
