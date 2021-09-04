@@ -15,7 +15,37 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .footer_pages_main_title {
-    font-size: 24px;
+  .footer_pages_main_title{
+    margin-top: 0;
+    font-size: 22px;
   }
+  .footer_pages_main_p{
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

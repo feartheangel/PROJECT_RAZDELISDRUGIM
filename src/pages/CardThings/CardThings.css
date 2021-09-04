@@ -853,6 +853,10 @@
   .left_block_toShare{
     width: fit-content;
   }
+  .card_content_footer_pages{
+    margin: 0;
+    border-radius: 0;
+  }
 
 
 

@@ -356,7 +356,7 @@ const ItemCardProfile = ({
           {offer_price_rent && (
             <div style={{ marginTop: '10px' }} className="recent-time-cost-wrapper">
               <img style={{ width: '20px', height: '20px' }} src={yourCost} />
-              <p style={{ fontSize: '16px', marginLeft: '5px' }} className="recent-time-p">
+              <p className="recent-time-p">
                 Предложить свою цену
               </p>
             </div>
@@ -371,7 +371,7 @@ const ItemCardProfile = ({
               </p>
             </div>
           )}
-          <div style={{ marginTop: '20px' }} className={'item-card-profile-buttons'}>
+          <div style={{ marginTop: '10px' }} className={'item-card-profile-buttons'}>
             <a className="item-card-profile-button__edit" href={`/edit-item?id=${id}`}>
               <p>Редактировать</p>
             </a>

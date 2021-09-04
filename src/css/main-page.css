@@ -2337,12 +2337,13 @@ button {
   /* карточка в Я СДАЮ */
   .recent-block__profile {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 100%;
     margin: 0;
     padding: 10px 5px;
     height: 450px;
     margin-bottom: 20px;
+    height: 400px;
   }
   .recent-block-wrapper {
     display: flex;
@@ -2376,6 +2377,10 @@ button {
   .abilities-cards-upper {
     flex-wrap: wrap;
   }
+  .footer li{
+    line-height: 17px;
+  }
+
 
 
 

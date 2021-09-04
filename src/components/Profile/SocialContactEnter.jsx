@@ -199,43 +199,87 @@ const SocialContactEnter = ({ activeSocial, setSocialPopUpActive, setActiveSocia
   const [contact, setContact] = React.useState();
 
   return (
-    <div className="social-contact-enter-form">
-      <div className="social-contact-enter-content">
-        <div
-          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-          className="social-contact-enter-p">
-          <p>{`${
-            activeSocial === 'tg'
-              ? 'Ваш ник-нейм в Telegram без "@"'
-              : activeSocial === 'google' ||
-                activeSocial === 'fb' ||
-                activeSocial === 'vk' ||
-                activeSocial === 'inst' ||
-                activeSocial === 'ok'
-              ? 'Полная ссылка на ваш профиль'
-              : activeSocial === 'viber' || activeSocial === 'wa'
-              ? 'Ваш номер телефона без "+"'
-              : ''
-          }`}</p>
+    <div>
+      <div className="social-contact-enter-form"  id="globaldata_pk">
+        <div className="social-contact-enter-content">
+          <div
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            className="social-contact-enter-p">
+            <p>{`${
+              activeSocial === 'tg'
+                ? 'Ваш ник-нейм в Telegram без "@"'
+                : activeSocial === 'google' ||
+                  activeSocial === 'fb' ||
+                  activeSocial === 'vk' ||
+                  activeSocial === 'inst' ||
+                  activeSocial === 'ok'
+                ? 'Полная ссылка на ваш профиль'
+                : activeSocial === 'viber' || activeSocial === 'wa'
+                ? 'Ваш номер телефона без "+"'
+                : ''
+            }`}</p>
+          </div>
+          <input
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+            className="social-contact-enter-text-input"
+            type="text"
+          />
+          <input
+            onClick={saveSocialHandler}
+            className="social-contact-enter-button-input"
+            type="button"
+            value="Сохранить"
+          />
+          <input
+            onClick={deleteSocialHandler}
+            className="social-contact-enter-button-input"
+            type="button"
+            value="Удалить"
+          />
         </div>
-        <input
-          value={contact}
-          onChange={(e) => setContact(e.target.value)}
-          className="social-contact-enter-text-input"
-          type="text"
-        />
-        <input
-          onClick={saveSocialHandler}
-          className="social-contact-enter-button-input"
-          type="button"
-          value="Изменить"
-        />
-        <input
-          onClick={deleteSocialHandler}
-          className="social-contact-enter-button-input"
-          type="button"
-          value="Удалить"
-        />
+      </div>
+
+      {/* МОБИЛЬНЫЙ ВИД */}
+
+        <div className="social-contact-enter-form" id="globaldata_mobile">
+        <div className="social-contact-enter-content">
+          <div
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            className="social-contact-enter-p">
+            <p>{`${
+              activeSocial === 'tg'
+                ? 'Ваш ник-нейм в Telegram без "@"'
+                : activeSocial === 'google' ||
+                  activeSocial === 'fb' ||
+                  activeSocial === 'vk' ||
+                  activeSocial === 'inst' ||
+                  activeSocial === 'ok'
+                ? 'Полная ссылка на ваш профиль'
+                : activeSocial === 'viber' || activeSocial === 'wa'
+                ? 'Ваш номер телефона без "+"'
+                : ''
+            }`}</p>
+          </div>
+          <input
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+            className="social-contact-enter-text-input"
+            type="text"
+          />
+          <input
+            onClick={saveSocialHandler}
+            className="social-contact-enter-button-input"
+            type="button"
+            value="Сохранить"
+          />
+          <input
+            onClick={deleteSocialHandler}
+            className="social-contact-enter-button-input"
+            type="button"
+            value="Удалить"
+          />
+        </div>
       </div>
     </div>
   );

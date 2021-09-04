@@ -1171,7 +1171,7 @@ const PlaceItem = () => {
 
             {/*  КНОПКА ДОП. ПАРАМЕТРЫ  */}
 
-            <div id="dop_parametr_wrapper">
+            <div id="dop_parametr_wrapper_mobile">
               <input
                 id="dop_parametr"
                 className="add-item-input-checkbox__3"

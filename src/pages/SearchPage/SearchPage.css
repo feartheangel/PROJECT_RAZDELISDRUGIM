@@ -338,7 +338,8 @@
   }
   .SearchPage_container_content_left ul li:not(:last-child) {
     margin-bottom: 15px;
-  }  .SearchPage_container_content_left ul li{
+  }  
+  .SearchPage_container_content_left ul li{
     width: fit-content;
   }
   .content_left_cost {
@@ -348,6 +349,9 @@
     max-width: 154px;
     width: 100%;
     height: 45px;
+  }
+  .SearchPage_container_content_left ul li:active{
+    color: black;
   }
 
   /* КАРТОЧКИ - ОБЩИЙ БЛОК */
@@ -398,4 +402,27 @@
     padding: 0 15px;
     width: initial;
   }
+
+  /* ВЫКЛЮЧЕНИЕ ПОДСВЕТОК БЛОКОВ ПРИ КЛИКЕ */
+  .SearchPage_container_content_left ul li{
+    -webkit-tap-highlight-color:transparent;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
