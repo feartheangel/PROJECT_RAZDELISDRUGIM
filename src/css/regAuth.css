@@ -523,6 +523,7 @@
     align-items: center;
     height: 100%;
     overflow-x: hidden;
+    width: 100%;
   }
   .log-form{
     max-width: 480px;
@@ -539,6 +540,7 @@
   .reg-form-email-verification{
     height: 100%;
     /* width: 480px; */
+    width: 100%;
     margin: 0;
     transform: none;
     border-radius: 0;
@@ -551,6 +553,7 @@
   }
   .reg-form-input-area{
     padding: 0 10px;
+    margin-bottom: 20px;
   }
   .div_for_krestik{
     display: flex;

@@ -607,6 +607,7 @@ option {
     width: 100%;
   }
   .content_setting_right {
+    display: flex;
     align-items: flex-start;
     width: 100%;
   }

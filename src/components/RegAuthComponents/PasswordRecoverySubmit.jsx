@@ -78,79 +78,169 @@ const PasswordRecoverySubmit = () => {
       .catch((err) => alert('Ошибка сброса пароля!'));
   };
   return (
-    <div className="reg-auth-wrapper">
-      <div className="reg-content" >
-        <div className="reg-form-wrapper-email-verification">
-          <div className="reg-form-email-verification">
-            <div className="div_for_krestik">
-                <img
-                  src={Shape}
-                  className="img_krestik"
-                  style={{marginRight:'15px'}}
-                />
-            </div>
-            <ul className="reg-form-action-type-list">
-              <Link tag="li" to="/registration">
-                <li href="#" className="reg-form-action-type-link" style={{fontSize:'25px'}}>
-                  Регистрация{redirect}
+    <div>
+      <div className="reg-auth-wrapper" id="globaldata_pk">
+        <div className="reg-content" >
+          <div className="reg-form-wrapper-email-verification">
+            <div className="reg-form-email-verification" style={{ height: '400px' }} >
+            <img
+                style={{
+                  marginTop: '25px',
+                  marginLeft: '485px',
+                  height: '14px',
+                  width: '14px',
+                  cursor: 'pointer',
+                }}
+                src={Shape}
+              />
+              <ul className="reg-form-action-type-list">
+                <Link tag="li" to="/registration">
+                  <li href="#" className="reg-form-action-type-link" style={{fontSize:'25px'}}>
+                    Регистрация{redirect}
+                  </li>
+                </Link>
+                <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
+                  Вход
                 </li>
-              </Link>
-              <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
-                Вход
-              </li>
-            </ul>
-            <div className="log-form-text-label-p-email__upper">
-              <p>Придумайте новый пароль</p>
-            </div>
-            <div className="reg-form-annotation-wrapper"></div>
-            <div className="reg-form-input-area">
-              <form>
-                <label htmlFor="password" className="log-form-text-label-l">
-                  Введите новый пароль
-                </label>
-                <input
-                  name="password"
-                  id="passsword"
-                  type={showPass ? 'text' : 'password'}
-                  placeholder="..."
-                  className="reg-form-contact-input"
-                  value={password}
-                  onChange={(e) => {
-                    passwordHandler(e);
-                  }}
-                />
-                <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
-                {passwordDirty && passwordError && (
-                  <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
-                )}
-                <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
-                  Подтвердите новый пароль
-                </label>
-                <input
-                  name="passwordSubmit"
-                  id="passwordSubmit"
-                  type={showSubmitPass ? 'text' : 'password'}
-                  placeholder="..."
-                  className="reg-form-contact-input"
-                  value={passwordSubmit}
-                  onChange={(e) => {
-                    passwordSubmitHandler(e);
-                  }}
-                />
-                <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
-                {passwordSubmitDirty && passwordSubmitError && (
-                  <label className="reg-form-text-label-l__alert-moved">
-                    {passwordSubmitError}
+              </ul>
+              <div className="log-form-text-label-p-email__upper">
+                <p>Придумайте новый пароль</p>
+              </div>
+              <div className="reg-form-annotation-wrapper"></div>
+              <div className="reg-form-input-area">
+                <form>
+                  <label htmlFor="password" className="log-form-text-label-l">
+                    Введите новый пароль
                   </label>
-                )}
-                <input
-                  onClick={onClickSubmit}
-                  type="button"
-                  value="Продолжить"
-                  className="reg-form-submit-button"
-                  disabled={!formValid}
-                />
-              </form>
+                  <input
+                    name="password"
+                    id="passsword"
+                    type={showPass ? 'text' : 'password'}
+                    placeholder="..."
+                    className="reg-form-contact-input"
+                    value={password}
+                    onChange={(e) => {
+                      passwordHandler(e);
+                    }}
+                  />
+                  <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
+                  {passwordDirty && passwordError && (
+                    <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
+                  )}
+                  <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
+                    Подтвердите новый пароль
+                  </label>
+                  <input
+                    name="passwordSubmit"
+                    id="passwordSubmit"
+                    type={showSubmitPass ? 'text' : 'password'}
+                    placeholder="..."
+                    className="reg-form-contact-input"
+                    value={passwordSubmit}
+                    onChange={(e) => {
+                      passwordSubmitHandler(e);
+                    }}
+                  />
+                  <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
+                  {passwordSubmitDirty && passwordSubmitError && (
+                    <label className="reg-form-text-label-l__alert-moved">
+                      {passwordSubmitError}
+                    </label>
+                  )}
+                  <input
+                    onClick={onClickSubmit}
+                    type="button"
+                    value="Продолжить"
+                    className="reg-form-submit-button"
+                    disabled={!formValid}
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* МОБИЛЬНАЯ ВЕРСИЯ */}
+      <div
+        // className={modalActiveNumber ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}
+        // onClick={() => setModalActiveNumber(false)}
+        id="globaldata_mobile"
+        >
+        <div className="reg-content" >
+          <div className="reg-form-wrapper-email-verification">
+            <div className="reg-form-email-verification">
+              <div className="div_for_krestik">
+                  <img
+                    onClick={() => setPasswordSubmitDirty(false)}
+                    src={Shape}
+                    className="img_krestik"
+                    style={{marginRight:'15px'}}
+                  />
+              </div>
+              <ul className="reg-form-action-type-list">
+                <Link tag="li" to="/registration">
+                  <li href="#" className="reg-form-action-type-link" style={{fontSize:'25px'}}>
+                    Регистрация{redirect}
+                  </li>
+                </Link>
+                <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
+                  Вход
+                </li>
+              </ul>
+              <div className="log-form-text-label-p-email__upper">
+                <p>Придумайте новый пароль</p>
+              </div>
+              <div className="reg-form-annotation-wrapper"></div>
+              <div className="reg-form-input-area">
+                <form>
+                  <label htmlFor="password" className="log-form-text-label-l">
+                    Введите новый пароль
+                  </label>
+                  <input
+                    name="password"
+                    id="passsword"
+                    type={showPass ? 'text' : 'password'}
+                    placeholder="..."
+                    className="reg-form-contact-input"
+                    value={password}
+                    onChange={(e) => {
+                      passwordHandler(e);
+                    }}
+                  />
+                  <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
+                  {passwordDirty && passwordError && (
+                    <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
+                  )}
+                  <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
+                    Подтвердите новый пароль
+                  </label>
+                  <input
+                    name="passwordSubmit"
+                    id="passwordSubmit"
+                    type={showSubmitPass ? 'text' : 'password'}
+                    placeholder="..."
+                    className="reg-form-contact-input"
+                    value={passwordSubmit}
+                    onChange={(e) => {
+                      passwordSubmitHandler(e);
+                    }}
+                  />
+                  <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
+                  {passwordSubmitDirty && passwordSubmitError && (
+                    <label className="reg-form-text-label-l__alert-moved">
+                      {passwordSubmitError}
+                    </label>
+                  )}
+                  <input
+                    onClick={onClickSubmit}
+                    type="button"
+                    value="Продолжить"
+                    className="reg-form-submit-button"
+                    disabled={!formValid}
+                  />
+                </form>
+              </div>
             </div>
           </div>
         </div>

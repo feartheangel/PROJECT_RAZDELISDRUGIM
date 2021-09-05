@@ -718,6 +718,13 @@ select {
 
 
 
+
+
+
+
+
+
+
 /* МЕДИА ЗАПРОСЫ  */
 @media only screen and (max-width: 480px){
 
@@ -913,6 +920,9 @@ select {
 }
 .form_radio_btn label{
   padding: 10px;
+}
+.add-item-photo-remove{
+  right: -10px;
 }
 
 
