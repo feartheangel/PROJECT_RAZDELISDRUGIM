@@ -172,16 +172,22 @@ const CardThings = () => {
             <div className="container_content_card">
               {/* ШАПКА КАРТОЧКИ*/}
               <div className="card_shapka">
-                <Link style={{ textDecoration: "none" }} to="/">
-                  <div>
-                    <p className="card_shapka_hover"> Главная </p>
-                    <img src={Vector1} alt="" />
-                  </div>
-                </Link>
-
                 <div>
                   <Link style={{ textDecoration: "none" }} to="/catalog">
                     <p className="card_shapka_hover"> Каталог </p>
+                  </Link>
+                  <img src={Vector1} alt="" />
+                </div>
+                <div>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/catalog?chapter_id=${
+                      itemData && itemData.category_id.chapter_id.id
+                    }`}
+                  >
+                    <p className="card_shapka_hover">
+                      {itemData && itemData.category_id.chapter_id.name_chapter}
+                    </p>
                   </Link>
                   <img src={Vector1} alt="" />
                 </div>
@@ -1153,16 +1159,22 @@ const CardThings = () => {
             <div className="container_content_card">
               {/* ШАПКА КАРТОЧКИ*/}
               <div className="card_shapka">
-                <Link style={{ textDecoration: "none" }} to="/">
-                  <div>
-                    <p className="card_shapka_hover"> Главная </p>
-                    <img src={Vector1} alt="" />
-                  </div>
-                </Link>
-
                 <div>
                   <Link style={{ textDecoration: "none" }} to="/catalog">
                     <p className="card_shapka_hover"> Каталог </p>
+                  </Link>
+                  <img src={Vector1} alt="" />
+                </div>
+                <div>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/catalog?chapter_id=${
+                      itemData && itemData.category_id.chapter_id.id
+                    }`}
+                  >
+                    <p className="card_shapka_hover">
+                      {itemData && itemData.category_id.chapter_id.name_chapter}
+                    </p>
                   </Link>
                   <img src={Vector1} alt="" />
                 </div>

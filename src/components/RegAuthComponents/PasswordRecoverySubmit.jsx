@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import Requests from '../../http/axios-requests';
-import Shape from '../../img/Shape.png';
+import React from "react";
+import { Link, Redirect } from "react-router-dom";
+import Requests from "../../http/axios-requests";
+import Shape from "../../img/Shape.png";
 
-const PasswordRecoverySubmit = () => {
+const PasswordRecoverySubmit = ({ setModalActive }) => {
   const passwordErrors = [
-    'Пароли не совпадают',
-    'Это поле не может быть пустым',
-    'Пароль должен содержать минимум 8 символов',
+    "Пароли не совпадают",
+    "Это поле не может быть пустым",
+    "Пароль должен содержать минимум 8 символов",
   ];
 
   //состояния для валидации, хранения данных из полей
@@ -17,15 +17,15 @@ const PasswordRecoverySubmit = () => {
   const [passwordSubmitDirty, setPasswordSubmitDirty] = React.useState();
   const [passwordError, setPasswordError] = React.useState();
   const [passwordSubmitError, setPasswordSubmitError] = React.useState();
-  const [token, setToken] = React.useState('');
+  const [token, setToken] = React.useState("");
   const [showPass, setShowPass] = React.useState(false);
   const [showSubmitPass, setShowSubmitPass] = React.useState(false);
   const [formValid, setFormValid] = React.useState();
-  const [redirect, setRedirect] = React.useState('');
+  const [redirect, setRedirect] = React.useState("");
 
   React.useEffect(() => {
-    if (window.location.href.split('token=')[1]) {
-      setToken(window.location.href.split('token=')[1]);
+    if (window.location.href.split("token=")[1]) {
+      setToken(window.location.href.split("token=")[1]);
       console.log(token);
     }
   }, [window.location.href]);
@@ -48,11 +48,11 @@ const PasswordRecoverySubmit = () => {
     } else if (e.target.value.length !== 0 && e.target.value.length < 8) {
       setPasswordError(passwordErrors[2]);
     } else {
-      setPasswordError('');
+      setPasswordError("");
     }
     if (e.target.value !== passwordSubmit) {
       setPasswordSubmitError(passwordErrors[0]);
-    } else setPasswordSubmitError('');
+    } else setPasswordSubmitError("");
   };
 
   const passwordSubmitHandler = (e) => {
@@ -61,7 +61,7 @@ const PasswordRecoverySubmit = () => {
     if (e.target.value !== password && passwordDirty) {
       setPasswordSubmitError(passwordErrors[0]);
     } else {
-      setPasswordSubmitError('');
+      setPasswordSubmitError("");
     }
   };
 
@@ -71,35 +71,47 @@ const PasswordRecoverySubmit = () => {
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
           console.log(response);
-          alert('Пароль успешно обновлен!');
+          alert("Пароль успешно обновлен!");
           setRedirect(<Redirect to="/" />);
         }
       })
-      .catch((err) => alert('Ошибка сброса пароля!'));
+      .catch((err) => alert("Ошибка сброса пароля!"));
   };
   return (
     <div>
       <div className="reg-auth-wrapper" id="globaldata_pk">
-        <div className="reg-content" >
+        <div className="reg-content">
           <div className="reg-form-wrapper-email-verification">
-            <div className="reg-form-email-verification" style={{ height: '400px' }} >
-            <img
+            <div
+              className="reg-form-email-verification"
+              style={{ height: "400px" }}
+            >
+              <img
+                onClick={() => setModalActive(false)}
                 style={{
-                  marginTop: '25px',
-                  marginLeft: '485px',
-                  height: '14px',
-                  width: '14px',
-                  cursor: 'pointer',
+                  marginTop: "25px",
+                  marginLeft: "485px",
+                  height: "14px",
+                  width: "14px",
+                  cursor: "pointer",
                 }}
                 src={Shape}
               />
               <ul className="reg-form-action-type-list">
                 <Link tag="li" to="/registration">
-                  <li href="#" className="reg-form-action-type-link" style={{fontSize:'25px'}}>
+                  <li
+                    href="#"
+                    className="reg-form-action-type-link"
+                    style={{ fontSize: "25px" }}
+                  >
                     Регистрация{redirect}
                   </li>
                 </Link>
-                <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
+                <li
+                  href="#"
+                  className="reg-form-action-type-link reg-form-action-type-link__active"
+                  style={{ fontSize: "25px" }}
+                >
                   Вход
                 </li>
               </ul>
@@ -115,7 +127,7 @@ const PasswordRecoverySubmit = () => {
                   <input
                     name="password"
                     id="passsword"
-                    type={showPass ? 'text' : 'password'}
+                    type={showPass ? "text" : "password"}
                     placeholder="..."
                     className="reg-form-contact-input"
                     value={password}
@@ -123,17 +135,25 @@ const PasswordRecoverySubmit = () => {
                       passwordHandler(e);
                     }}
                   />
-                  <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
+                  <a
+                    onClick={() => setShowPass(!showPass)}
+                    class="password-control"
+                  ></a>
                   {passwordDirty && passwordError && (
-                    <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
+                    <label className="reg-form-text-label-l__alert-moved">
+                      {passwordError}
+                    </label>
                   )}
-                  <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
+                  <label
+                    htmlFor="passwordSubmit"
+                    className="reg-form-text-label-l__moved"
+                  >
                     Подтвердите новый пароль
                   </label>
                   <input
                     name="passwordSubmit"
                     id="passwordSubmit"
-                    type={showSubmitPass ? 'text' : 'password'}
+                    type={showSubmitPass ? "text" : "password"}
                     placeholder="..."
                     className="reg-form-contact-input"
                     value={passwordSubmit}
@@ -141,7 +161,10 @@ const PasswordRecoverySubmit = () => {
                       passwordSubmitHandler(e);
                     }}
                   />
-                  <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
+                  <a
+                    onClick={() => setShowSubmitPass(!showSubmitPass)}
+                    class="password-control"
+                  ></a>
                   {passwordSubmitDirty && passwordSubmitError && (
                     <label className="reg-form-text-label-l__alert-moved">
                       {passwordSubmitError}
@@ -166,25 +189,33 @@ const PasswordRecoverySubmit = () => {
         // className={modalActiveNumber ? 'reg-auth-wrapper active' : 'reg-auth-wrapper'}
         // onClick={() => setModalActiveNumber(false)}
         id="globaldata_mobile"
-        >
-        <div className="reg-content" >
+      >
+        <div className="reg-content">
           <div className="reg-form-wrapper-email-verification">
             <div className="reg-form-email-verification">
               <div className="div_for_krestik">
-                  <img
-                    onClick={() => setPasswordSubmitDirty(false)}
-                    src={Shape}
-                    className="img_krestik"
-                    style={{marginRight:'15px'}}
-                  />
+                <img
+                  onClick={() => setModalActive(false)}
+                  src={Shape}
+                  className="img_krestik"
+                  style={{ marginRight: "15px" }}
+                />
               </div>
               <ul className="reg-form-action-type-list">
                 <Link tag="li" to="/registration">
-                  <li href="#" className="reg-form-action-type-link" style={{fontSize:'25px'}}>
+                  <li
+                    href="#"
+                    className="reg-form-action-type-link"
+                    style={{ fontSize: "25px" }}
+                  >
                     Регистрация{redirect}
                   </li>
                 </Link>
-                <li href="#" className="reg-form-action-type-link reg-form-action-type-link__active" style={{fontSize:'25px'}}>
+                <li
+                  href="#"
+                  className="reg-form-action-type-link reg-form-action-type-link__active"
+                  style={{ fontSize: "25px" }}
+                >
                   Вход
                 </li>
               </ul>
@@ -200,7 +231,7 @@ const PasswordRecoverySubmit = () => {
                   <input
                     name="password"
                     id="passsword"
-                    type={showPass ? 'text' : 'password'}
+                    type={showPass ? "text" : "password"}
                     placeholder="..."
                     className="reg-form-contact-input"
                     value={password}
@@ -208,17 +239,25 @@ const PasswordRecoverySubmit = () => {
                       passwordHandler(e);
                     }}
                   />
-                  <a onClick={() => setShowPass(!showPass)} class="password-control"></a>
+                  <a
+                    onClick={() => setShowPass(!showPass)}
+                    class="password-control"
+                  ></a>
                   {passwordDirty && passwordError && (
-                    <label className="reg-form-text-label-l__alert-moved">{passwordError}</label>
+                    <label className="reg-form-text-label-l__alert-moved">
+                      {passwordError}
+                    </label>
                   )}
-                  <label htmlFor="passwordSubmit" className="reg-form-text-label-l__moved">
+                  <label
+                    htmlFor="passwordSubmit"
+                    className="reg-form-text-label-l__moved"
+                  >
                     Подтвердите новый пароль
                   </label>
                   <input
                     name="passwordSubmit"
                     id="passwordSubmit"
-                    type={showSubmitPass ? 'text' : 'password'}
+                    type={showSubmitPass ? "text" : "password"}
                     placeholder="..."
                     className="reg-form-contact-input"
                     value={passwordSubmit}
@@ -226,7 +265,10 @@ const PasswordRecoverySubmit = () => {
                       passwordSubmitHandler(e);
                     }}
                   />
-                  <a onClick={() => setShowSubmitPass(!showSubmitPass)} class="password-control"></a>
+                  <a
+                    onClick={() => setShowSubmitPass(!showSubmitPass)}
+                    class="password-control"
+                  ></a>
                   {passwordSubmitDirty && passwordSubmitError && (
                     <label className="reg-form-text-label-l__alert-moved">
                       {passwordSubmitError}

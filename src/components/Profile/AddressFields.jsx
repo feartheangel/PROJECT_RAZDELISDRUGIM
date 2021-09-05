@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setAdresses,
   setQueryStarted,
   setQueryDone,
   reloadData,
-} from '../../redux/actions/userData';
-import '../../pages/Profiles/MyGlobalData/MyAddresses/MyAddresses.css';
-import Vector1 from '../../img/ProfilePage/Vector2.png';
-import Vector3 from '../../img/ProfilePage/Vector3.png';
-import Requests from '../../http/axios-requests';
+} from "../../redux/actions/userData";
+import "../../pages/Profiles/MyGlobalData/MyAddresses/MyAddresses.css";
+import Vector1 from "../../img/ProfilePage/Vector2.png";
+import Vector3 from "../../img/ProfilePage/Vector3.png";
+import Requests from "../../http/axios-requests";
 
 const AddressFields = ({
   setModalActiveSubmit,
@@ -41,19 +41,19 @@ const AddressFields = ({
 
   const updateAddressHandler = () => {
     if (!area) {
-      alert('Не указана область!');
+      alert("Не указана область!");
       return;
     } else if (!locality) {
-      alert('Не указан населенный пункт!');
+      alert("Не указан населенный пункт!");
       return;
     } else if (!street) {
-      alert('Не указана улица!');
+      alert("Не указана улица!");
       return;
     } else if (!index) {
-      alert('Не указан индекс!');
+      alert("Не указан индекс!");
       return;
     } else if (!house && !room) {
-      alert('Не указан номер дома либо помещения!');
+      alert("Не указан номер дома либо помещения!");
       return;
     }
 
@@ -64,7 +64,7 @@ const AddressFields = ({
       String(street),
       String(house),
       String(room),
-      String(index),
+      String(index)
     )
       .then((response) => {
         if (response.status === 200) {
@@ -81,29 +81,31 @@ const AddressFields = ({
             office,
             building,
             response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
-              .split(' ')
+              .split(" ")
               .reverse(),
-            sentId,
+            sentId
           )
             .then((response) => {
               Requests.fetchAdresses()
                 .then((response) => {
                   dispatch(setAdresses(response.data));
                   dispatch(setQueryDone());
-                  alert('Адрес успешно обновлен!');
+                  alert("Адрес успешно обновлен!");
                   dispatch(reloadData(!reload));
                 })
                 .catch();
             })
             .catch((e) => {
-              alert('Не удалось подтвердить адрес, проверьте правильность ввода данных в поля.');
+              alert(
+                "Не удалось подтвердить адрес, проверьте правильность ввода данных в поля."
+              );
               dispatch(setQueryDone());
             });
         }
       })
       .catch((e) => {
         dispatch(setQueryDone());
-        alert('Ошибка сохранения адреса!');
+        alert("Ошибка сохранения адреса!");
       });
   };
 
@@ -123,48 +125,64 @@ const AddressFields = ({
   const [showAddressFields, setShowAddressFields] = React.useState(false);
 
   return (
-    <div style={{ marginTop: '20px' }} className="myAddresses_content_addresses_left">
+    <div
+      style={{ marginTop: "20px" }}
+      className="myAddresses_content_addresses_left"
+    >
       {/* пк версия */}
       <div className="addresses_left_address1" id="globaldata_pk">
         <p
           onClick={() => setShowAddressFields(!showAddressFields)}
-          className="addresses_left_address1_text">
-          {`${sentLocality}, ${sentStreet_}, ${sentHouse ? sentHouse : sentSpaceRoom}`}
+          className="addresses_left_address1_text"
+        >
+          {`${sentLocality}, ${sentStreet_}, ${
+            sentHouse ? sentHouse : sentSpaceRoom
+          }`}
         </p>
-        <img onClick={() => setShowAddressFields(!showAddressFields)} src={Vector1} />
-        <div style={{ width: '200px' }}>
+        <img
+          onClick={() => setShowAddressFields(!showAddressFields)}
+          src={Vector1}
+        />
+        <div style={{ width: "200px" }}>
           <p
             onClick={addressRemoveHandler}
             className="addresses_left_address1_text"
-            style={{ color: 'red', marginLeft: '30px', fontSize: '16px' }}>
+            style={{ color: "red", marginLeft: "30px", fontSize: "16px" }}
+          >
             Удалить адрес
           </p>
         </div>
       </div>
-            {/* мобайл версия */}
+      {/* мобайл версия */}
       <div className="addresses_left_address1" id="globaldata_mobile">
         <div className="address_row_style">
           <p
             onClick={() => setShowAddressFields(!showAddressFields)}
-            className="addresses_left_address1_text">
-            {`${sentLocality}, ${sentStreet_}, ${sentHouse ? sentHouse : sentSpaceRoom}`}
+            className="addresses_left_address1_text"
+          >
+            {`${sentLocality}, ${sentStreet_}, ${
+              sentHouse ? sentHouse : sentSpaceRoom
+            }`}
           </p>
-          <img onClick={() => setShowAddressFields(!showAddressFields)} src={Vector1} />
+          <img
+            onClick={() => setShowAddressFields(!showAddressFields)}
+            src={Vector1}
+          />
         </div>
-        <div style={{ width: '200px' }}>
+        <div style={{ width: "200px" }}>
           <p
             onClick={addressRemoveHandler}
             className="addresses_left_address1_text"
-            style={{ color: 'red', fontSize:'14px' }}>
+            style={{ color: "red", fontSize: "14px" }}
+          >
             Удалить адрес
           </p>
         </div>
       </div>
 
-
       {showAddressFields && (
         <div className="take-away-secondary-wrapper-column" id="globaldata_pk">
-          <div style={{ marginTop: '20px' }} className="add-item-input-wrapper">
+          <div style={{ marginTop: "20px" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Страна <span className="add-item-span-zvezda">*</span>
             </label>
@@ -215,7 +233,8 @@ const AddressFields = ({
           </div>
           <div className="add-item-input-wrapper">
             <label className="add-item-input-label">
-              Улица/Проспект/Переулок <span className="add-item-span-zvezda">*</span>
+              Улица/Проспект/Переулок{" "}
+              <span className="add-item-span-zvezda">*</span>
             </label>
             <input
               placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -239,7 +258,7 @@ const AddressFields = ({
             />
           </div>
 
-          <div className="take-away-secondary-wrapper" >
+          <div className="take-away-secondary-wrapper">
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
                 Дом <span className="add-item-span-zvezda">*</span>
@@ -278,14 +297,14 @@ const AddressFields = ({
           <div className="take-away-secondary-wrapper">
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Помещение <span className="add-item-span-zvezda">*</span>
+                Строение <span className="add-item-span-zvezda">*</span>
               </label>
               <input
                 disabled={house || body || flat}
                 type="text"
                 className="add-item-input-text__address__house__profile"
-                value={room}
-                onChange={(e) => setRoom(e.target.value)}
+                value={building}
+                onChange={(e) => setBuilding(e.target.value)}
               />
             </div>
 
@@ -299,15 +318,14 @@ const AddressFields = ({
                 onChange={(e) => setOffice(e.target.value)}
               />
             </div>
-
             <div className="add-item-input-wrapper">
-              <label className="add-item-input-label">Строение</label>
+              <label className="add-item-input-label">Помещение</label>
               <input
                 disabled={house || body || flat}
                 type="text"
                 className="add-item-input-text__address__house__profile"
-                value={building}
-                onChange={(e) => setBuilding(e.target.value)}
+                value={room}
+                onChange={(e) => setRoom(e.target.value)}
               />
             </div>
           </div>
@@ -318,12 +336,18 @@ const AddressFields = ({
             value="Сохранить"
             onClick={updateAddressHandler}
           />
-        </div>       
+        </div>
       )}
-                    {/* МОБИЛЬНАЯ ВЕРСИЯ */}
-        {showAddressFields && (
-        <div className="take-away-secondary-wrapper-column" id="globaldata_mobile">
-          <div style={{ marginTop: '10px', width:'100%' }} className="add-item-input-wrapper">
+      {/* МОБИЛЬНАЯ ВЕРСИЯ */}
+      {showAddressFields && (
+        <div
+          className="take-away-secondary-wrapper-column"
+          id="globaldata_mobile"
+        >
+          <div
+            style={{ marginTop: "10px", width: "100%" }}
+            className="add-item-input-wrapper"
+          >
             <label className="add-item-input-label">
               Страна <span className="add-item-span-zvezda">*</span>
             </label>
@@ -336,7 +360,7 @@ const AddressFields = ({
             />
           </div>
 
-          <div style={{ width:'100%' }} className="add-item-input-wrapper">
+          <div style={{ width: "100%" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Область <span className="add-item-span-zvezda">*</span>
             </label>
@@ -349,7 +373,7 @@ const AddressFields = ({
             />
           </div>
 
-          <div  style={{ width:'100%' }} className="add-item-input-wrapper">
+          <div style={{ width: "100%" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Населенный пункт <span className="add-item-span-zvezda">*</span>
             </label>
@@ -362,7 +386,7 @@ const AddressFields = ({
             />
           </div>
 
-          <div  style={{ width:'100%' }} className="add-item-input-wrapper">
+          <div style={{ width: "100%" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">Район</label>
             <input
               placeholder="Например: Советский"
@@ -372,9 +396,10 @@ const AddressFields = ({
               onChange={(e) => setDistrict(e.target.value)}
             />
           </div>
-          <div  style={{ width:'100%' }} className="add-item-input-wrapper">
+          <div style={{ width: "100%" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">
-              Улица/Проспект/Переулок <span className="add-item-span-zvezda">*</span>
+              Улица/Проспект/Переулок{" "}
+              <span className="add-item-span-zvezda">*</span>
             </label>
             <input
               placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -385,7 +410,7 @@ const AddressFields = ({
             />
           </div>
 
-          <div  style={{ width:'100%' }} className="add-item-input-wrapper">
+          <div style={{ width: "100%" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Индекс<span className="add-item-span-zvezda">*</span>
             </label>
@@ -398,7 +423,10 @@ const AddressFields = ({
             />
           </div>
 
-          <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper" >
+          <div
+            className="take-away-secondary-wrapper"
+            id="take-away-secondary-wrapper"
+          >
             <div className="add-item-input-wrapper" id="add_item_gl_margin">
               <label className="add-item-input-label">
                 Дом <span className="add-item-span-zvezda">*</span>
@@ -434,7 +462,10 @@ const AddressFields = ({
               />
             </div>
           </div>
-          <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">
+          <div
+            className="take-away-secondary-wrapper"
+            id="take-away-secondary-wrapper"
+          >
             <div className="add-item-input-wrapper" id="add_item_gl_margin">
               <label className="add-item-input-label">
                 Помещение <span className="add-item-span-zvezda">*</span>
@@ -477,9 +508,8 @@ const AddressFields = ({
             value="Сохранить"
             onClick={updateAddressHandler}
           />
-        </div>       
+        </div>
       )}
-
     </div>
   );
 };
