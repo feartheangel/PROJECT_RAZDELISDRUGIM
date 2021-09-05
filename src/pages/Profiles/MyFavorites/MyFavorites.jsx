@@ -100,16 +100,6 @@ const MyFavorites = () => {
               id="globaldata_mobile"
             >
               <div className="onlydiv_forcards">
-<<<<<<< HEAD
-                {favorites &&
-                  favorites.map((subject, index) => (
-                    <div style={{ width: "50%" }}>
-                      <ItemCard item={subject.item} key={index} />
-                    </div>
-                  ))}
-
-=======
->>>>>>> 2942bf8380f836a0c41b2b2fbcddeeba585e602d
                 {favorites &&
                   favorites.map((subject, index) => (
                     <div style={{ width: "50%" }}>

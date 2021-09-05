@@ -61,16 +61,12 @@ const News = () => {
               news.map((item) => {
                 return (
                   <SwiperSlide
-<<<<<<< HEAD
                     style={{
                       display: "flex",
                       width: "250px",
                       justifyContent: "center",
                     }}
                   >
-=======
-                    style={{ display: 'flex', width: '250px', justifyContent: 'center'}}>
->>>>>>> 2942bf8380f836a0c41b2b2fbcddeeba585e602d
                     <div className="news-reviews-block">
                       <p className="news-reviews-date">
                         {news && item.news_title}
