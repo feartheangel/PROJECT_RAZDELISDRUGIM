@@ -43,7 +43,7 @@ const News = () => {
                 );
               })}
           </Swiper>
-          {/* мобильный адаптив */}
+          {/* мобильный адаптив 480*/}
           <Swiper
             spaceBetween={70}
             slidesPerView={1}
@@ -67,6 +67,33 @@ const News = () => {
                 );
               })}
           </Swiper>
+
+                    {/* планшет адаптив 800*/}
+                    <Swiper
+                    style={{height:'auto'}}
+            spaceBetween={0}
+            slidesPerView={2}
+            pagination={{ clickable: true }}
+            // scrollbar={{ draggable: true }}
+            id ="swiper_mobile_800"
+            >
+            {news &&
+              news.map((item) => {
+                return (
+                  <SwiperSlide
+                    style={{ display: 'flex', width:'350px',  justifyContent: 'center'}}>
+                    <div className="news-reviews-block">
+                      <p className="news-reviews-date">{news && item.news_title}</p>
+                      <p style={{ display: 'none' }} className="news-reviews-title">
+                        У нас появилась доставка!
+                      </p>
+                      <p className="news-reviews-text">{news && item.news_description}</p>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+          </Swiper>
+
         </div>
       </div>
     </section>

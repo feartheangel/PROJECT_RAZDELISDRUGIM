@@ -38,7 +38,7 @@ const RecentItemsSlider = () => {
                   </SwiperSlide>
                 ))}
             </Swiper>
-            {/* копия для адаптива */}
+            {/* копия для адаптива 480 */}
             <Swiper
               spaceBetween={0}
               slidesPerView={2}
@@ -46,6 +46,24 @@ const RecentItemsSlider = () => {
               
               // scrollbar={{ draggable: true }}
               id ="swiper_mobile"
+              >
+              {recentItems &&
+                recentItems.map((item, index) => (
+                  <SwiperSlide style={{ display: 'flex', width:'150px' }}>
+                    {' '}
+                    <ItemCard key={index} item={item} />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+
+            {/* копия для адаптива 800 */}
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={2.5}
+              pagination={{ clickable: true }}
+              
+              // scrollbar={{ draggable: true }}
+              id ="swiper_mobile_800"
               >
               {recentItems &&
                 recentItems.map((item, index) => (
