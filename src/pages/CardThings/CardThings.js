@@ -146,7 +146,9 @@ const CardThings = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `${itemData && itemData.name_item}: #разделисдругим`;
+    document.title = `${
+      itemData && itemData.name_item
+    } в аренду: #разделисдругим`;
   }, [itemData]);
 
   const mapData = {
@@ -170,16 +172,22 @@ const CardThings = () => {
             <div className="container_content_card">
               {/* ШАПКА КАРТОЧКИ*/}
               <div className="card_shapka">
-                <Link style={{ textDecoration: "none" }} to="/">
-                  <div>
-                    <p className="card_shapka_hover"> Главная </p>
-                    <img src={Vector1} alt="" />
-                  </div>
-                </Link>
-
                 <div>
                   <Link style={{ textDecoration: "none" }} to="/catalog">
                     <p className="card_shapka_hover"> Каталог </p>
+                  </Link>
+                  <img src={Vector1} alt="" />
+                </div>
+                <div>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/catalog?chapter_id=${
+                      itemData && itemData.category_id.chapter_id.id
+                    }`}
+                  >
+                    <p className="card_shapka_hover">
+                      {itemData && itemData.category_id.chapter_id.name_chapter}
+                    </p>
                   </Link>
                   <img src={Vector1} alt="" />
                 </div>
@@ -362,7 +370,9 @@ const CardThings = () => {
                   {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
                   <div className="left_block_conditions">
-                    <p className="left_block_conditions-p">Условия получения</p>
+                    <p className="left_block_conditions-p">
+                      Условия получения в аренду
+                    </p>
 
                     {/* ДОГОВОР*/}
                     {itemData && itemData.contract && (
@@ -616,7 +626,7 @@ const CardThings = () => {
                   <div className="right_block_up">
                     {/*название вещи*/}
                     <div className="block_up_notebook">
-                      <p>{itemData && itemData.name_item}</p>
+                      <p>{itemData && itemData.name_item} в аренду</p>
                     </div>
 
                     {/*предложи стоимость вещи*/}
@@ -1141,18 +1151,6 @@ const CardThings = () => {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
       {/* МОБИЛЬНЫЙ АДАПТИВ */}
       <div id="card_thing_mobile">
         <div className="CardThings_Wrapper">
@@ -1161,16 +1159,22 @@ const CardThings = () => {
             <div className="container_content_card">
               {/* ШАПКА КАРТОЧКИ*/}
               <div className="card_shapka">
-                <Link style={{ textDecoration: "none" }} to="/">
-                  <div>
-                    <p className="card_shapka_hover"> Главная </p>
-                    <img src={Vector1} alt="" />
-                  </div>
-                </Link>
-
                 <div>
                   <Link style={{ textDecoration: "none" }} to="/catalog">
                     <p className="card_shapka_hover"> Каталог </p>
+                  </Link>
+                  <img src={Vector1} alt="" />
+                </div>
+                <div>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/catalog?chapter_id=${
+                      itemData && itemData.category_id.chapter_id.id
+                    }`}
+                  >
+                    <p className="card_shapka_hover">
+                      {itemData && itemData.category_id.chapter_id.name_chapter}
+                    </p>
                   </Link>
                   <img src={Vector1} alt="" />
                 </div>
@@ -1311,7 +1315,7 @@ const CardThings = () => {
                       </div>
                     </div>
                     <div className="block_up_notebook">
-                      <p>{itemData && itemData.name_item}</p>
+                      <p>{itemData && itemData.name_item} в аренду</p>
                     </div>
                     <div className="block_up_yourCost">
                       {itemData && itemData.offer_price_rent && (
@@ -1440,7 +1444,9 @@ const CardThings = () => {
                   {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
                   <div className="left_block_conditions">
-                    <p className="left_block_conditions-p">Условия</p>
+                    <p className="left_block_conditions-p">
+                      Условия получения в аренду
+                    </p>
 
                     <div className="block_up_delivery">
                       <div className="conditions_row">
@@ -1673,9 +1679,7 @@ const CardThings = () => {
                           )}
                         {itemData && itemData.description && (
                           <div className="information_description">
-                            <p
-                              className="information_description-p1"
-                            >
+                            <p className="information_description-p1">
                               Описание
                             </p>
                             <p className="information_description-p2">
@@ -1838,7 +1842,7 @@ const CardThings = () => {
                       to={`/public-profile?id=${
                         itemData && itemData.profile.id
                       }`}
-                      style={{ textDecoration: "none", width:'fit-content' }}
+                      style={{ textDecoration: "none", width: "fit-content" }}
                     >
                       <div className="block_down_owner_photo">
                         <img

@@ -1,9 +1,9 @@
-import React from 'react';
-import Requests from '../../http/axios-requests';
-import { ItemCard } from '../index';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import React from "react";
+import Requests from "../../http/axios-requests";
+import { ItemCard } from "../index";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
 const RandomItemsSlider = () => {
   // install Swiper modules
@@ -25,12 +25,12 @@ const RandomItemsSlider = () => {
             spaceBetween={-8}
             slidesPerView={4}
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            id="swiper_comp">
+            id="swiper_comp"
+          >
             {randomItems &&
               randomItems.map((item, index) => (
-                <SwiperSlide style={{ display: 'flex' }}>
-                  {' '}
+                <SwiperSlide style={{ display: "flex" }}>
+                  {" "}
                   <ItemCard key={index} item={item} />
                 </SwiperSlide>
               ))}
@@ -40,13 +40,13 @@ const RandomItemsSlider = () => {
             spaceBetween={0}
             slidesPerView={2}
             pagination={{ clickable: true }}
-            
             // scrollbar={{ draggable: true }}
-            id="swiper_mobile">
+            id="swiper_mobile"
+          >
             {randomItems &&
               randomItems.map((item, index) => (
-                <SwiperSlide style={{ display: 'flex', width: '150px' }}>
-                  {' '}
+                <SwiperSlide style={{ display: "flex", width: "150px" }}>
+                  {" "}
                   <ItemCard key={index} item={item} />
                 </SwiperSlide>
               ))}
@@ -72,8 +72,16 @@ const RandomItemsSlider = () => {
 
         </div>
       </div>
-      <Link style={{ textDecoration: 'none' }} to="/catalog" style={{marginTop:'5px'}}>
-        <input type="button" value="Смотреть каталог" className="popular-button" />
+      <Link
+        style={{ textDecoration: "none" }}
+        to="/catalog"
+        style={{ marginTop: "5px" }}
+      >
+        <input
+          type="button"
+          value="Смотреть каталог"
+          className="popular-button"
+        />
       </Link>
     </section>
   );

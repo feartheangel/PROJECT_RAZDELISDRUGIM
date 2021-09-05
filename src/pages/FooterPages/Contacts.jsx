@@ -17,19 +17,40 @@ const Contacts = () => {
               <h1 className="footer_pages_main_title">Контакты</h1>
               <p className="footer_pages_main_p">
                 Вы всегда можете связаться с нами по электронной почте:
-                admin@razdelisdrugim.by<br></br>
+                <strong>
+                  <a href="mailto:admin@razdelisdrugim.by" target="_blank">
+                    {" "}
+                    admin@razdelisdrugim.by
+                  </a>{" "}
+                </strong>
+                <br></br>
+                <br></br>
                 Вы можете написать или позвонить нам в мессенджере Telegram
-                сюда: @razdelisdrugim<br></br>
+                сюда:{" "}
+                <strong>
+                  <a href="https://telegram.me/razdelisdrugim" target="_blank">
+                    {" "}
+                    @razdelisdrugim
+                  </a>
+                </strong>
+                <br></br>
+                <br></br>
                 Приглашаем Вам принять участие в разработке нашего проекта, и
                 внести все свои предложения и пожелания тут:{" "}
                 <a href="https://forms.gle/p3LjbTYphj1QCLK5A" target="_blank">
-                  https://forms.gle/p3LjbTYphj1QCLK5A
+                  <strong>https://forms.gle/p3LjbTYphj1QCLK5A</strong>
                 </a>
+                <br></br>
                 <br></br>
               </p>
               <p className="footer_pages_main_p">
                 По вопросам рекламы и сотрудничества обращайтесь по адресу:
-                mail@razdelisdrugim.by.
+                <strong>
+                  <a href="mailto:mail@razdelisdrugim.by" target="_blank">
+                    {" "}
+                    mail@razdelisdrugim.by.
+                  </a>
+                </strong>
               </p>
             </div>
           </div>

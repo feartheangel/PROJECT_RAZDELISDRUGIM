@@ -1126,6 +1126,23 @@ class Requests {
       return response;
     });
   }
+
+  static changeLogin(old_login, new_login) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        username: old_login,
+        new_username: new_login,
+      },
+
+      url: `https://razdelisdrugim.by/api/jwt/change-login/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

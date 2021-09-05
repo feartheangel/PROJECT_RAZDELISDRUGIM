@@ -79,6 +79,7 @@ const MapBlock = () => {
         : [53.91, 27.55],
       zoom: 12,
       behaviors: ["default", "scrollZoom"],
+      controls: ["zoomControl", "fullscreenControl", "rulerControl"],
     });
 
     Requests.getLastNearestItems(

@@ -445,6 +445,21 @@ option {
   align-self: flex-start;
 }
 
+.profile_login_change_wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.my-data-lower-p_login {
+  align-self: flex-start;
+  margin-top: 5px;
+  font-size: 20px;
+  line-height: 23px;
+  color: #4cc9f0;
+  cursor: pointer;
+}
+
 /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
 @media only screen and (max-width: 480px) {
   #profile_mobile {
@@ -665,7 +680,7 @@ option {
   .setting_left_input_row {
     display: flex;
   }
-  .profile-photo-overlay{
+  .profile-photo-overlay {
     top: 0;
   }
 

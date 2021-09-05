@@ -1,8 +1,8 @@
-import React from 'react';
-import { ItemCard } from '../index';
-import Requests from '../../http/axios-requests';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import React from "react";
+import { ItemCard } from "../index";
+import Requests from "../../http/axios-requests";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
 const RecentItemsSlider = () => {
   // install Swiper modules
@@ -26,14 +26,12 @@ const RecentItemsSlider = () => {
               spaceBetween={-8}
               slidesPerView={4}
               pagination={{ clickable: true }}
-              scrollbar={{ draggable: true }}
-              
-              id ="swiper_comp"
-              >
+              id="swiper_comp"
+            >
               {recentItems &&
                 recentItems.map((item, index) => (
-                  <SwiperSlide style={{ display: 'flex' }}>
-                    {' '}
+                  <SwiperSlide style={{ display: "flex" }}>
+                    {" "}
                     <ItemCard key={index} item={item} />
                   </SwiperSlide>
                 ))}
@@ -43,14 +41,13 @@ const RecentItemsSlider = () => {
               spaceBetween={0}
               slidesPerView={2}
               pagination={{ clickable: true }}
-              
               // scrollbar={{ draggable: true }}
-              id ="swiper_mobile"
-              >
+              id="swiper_mobile"
+            >
               {recentItems &&
                 recentItems.map((item, index) => (
-                  <SwiperSlide style={{ display: 'flex', width:'150px' }}>
-                    {' '}
+                  <SwiperSlide style={{ display: "flex", width: "150px" }}>
+                    {" "}
                     <ItemCard key={index} item={item} />
                   </SwiperSlide>
                 ))}

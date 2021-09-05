@@ -1199,13 +1199,9 @@ button {
 .recent-block-up {
   width: 214px;
   height: 60px;
+  overflow: hidden;
 }
-/* .recent-block-title-p {
-  font-size: 18px;
-  line-height: 21px;
-  color: rgba(9, 29, 32, 0.8);
-  margin-top: 20px;
-} */
+
 .recent-time-p {
   font-size: 16px;
   margin-left: 5px;
@@ -1728,6 +1724,7 @@ button {
   }
   .recent-block-up {
     width: auto;
+    overflow: visible;
   }
 
   /* карточки(сами дивы для размещения )  */

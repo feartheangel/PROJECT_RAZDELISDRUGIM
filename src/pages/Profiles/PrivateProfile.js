@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
-import './PrivateProfile.css';
-import { Header, Footer } from '../../components/index';
-import MyData from './MyGlobalData/MyGlobalData';
-import { Link } from 'react-router-dom';
-import MyItems from './MyItems/MyItems';
-import Requests from '../../http/axios-requests';
-import { setItems, setItemsLoaded, setItemsLoading } from '../../redux/actions/items';
-import { setAdresses, setQueryStarted, setQueryDone } from '../../redux/actions/userData';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import "./PrivateProfile.css";
+import { Header, Footer } from "../../components/index";
+import MyData from "./MyGlobalData/MyGlobalData";
+import { Link } from "react-router-dom";
+import MyItems from "./MyItems/MyItems";
+import Requests from "../../http/axios-requests";
+import {
+  setItems,
+  setItemsLoaded,
+  setItemsLoading,
+} from "../../redux/actions/items";
+import {
+  setAdresses,
+  setQueryStarted,
+  setQueryDone,
+} from "../../redux/actions/userData";
+import { useSelector, useDispatch } from "react-redux";
 import {
   NumberSubmittionModule,
   EmailSubmittionModule,
   AddressDeleteSubmit,
-} from '../../components/index';
+} from "../../components/index";
 
 const PrivateProfile = () => {
   const dispatch = useDispatch();
@@ -20,7 +28,7 @@ const PrivateProfile = () => {
 
   // ХРАНЕНИЕ ДАННЫХ ИЗ ПОЛЕЙ
 
-  const [activeForm, setActiveForm] = React.useState('myProfile');
+  const [activeForm, setActiveForm] = React.useState("myProfile");
   const [modalActiveEmail, setModalActiveEmail] = React.useState(false);
   const [modalActiveNumber, setModalActiveNumber] = React.useState(false);
 
@@ -29,7 +37,7 @@ const PrivateProfile = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Мой профиль: #разделисдругим';
+    document.title = "Мой профиль: #разделисдругим";
   }, []);
 
   return (
@@ -39,39 +47,41 @@ const PrivateProfile = () => {
         <div className="privateProfile_container">
           <div className="conteiner_shapka" id="globaldata_pk">
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: 'none', textDecoration: 'none' }
-                  : { textDecoration: 'none' }
-              }
+              style={{ textDecoration: "none" }}
               className="conteiner_shapka_myProfile"
-              to="/i-rent-out">
-              <p style={subjects.length === 0 ? { opacity: '0.4', pointerEvents: 'none' } : {}}>
+              to="/i-rent-out"
+            >
+              <p>
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }}>
+            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Мои сообщения <span> - </span>
             </p>
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: 'none', textDecoration: 'none' }
-                  : { textDecoration: 'none' }
-              }
+              style={{ textDecoration: "none" }}
               className="conteiner_shapka_myProfile"
-              to="/favorites">
-              <p className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
+              to="/favorites"
+            >
+              <p
+                className={
+                  activeForm === "favorites" &&
+                  "privateProfile_container_favorites"
+                }
+              >
                 Избранное
               </p>
             </Link>
             <p
-              className={activeForm === 'myProfile' && 'conteiner_shapka_myProfile'}
-              onClick={() => setActiveForm('myProfile')}>
-              {' '}
+              className={
+                activeForm === "myProfile" && "conteiner_shapka_myProfile"
+              }
+              onClick={() => setActiveForm("myProfile")}
+            >
+              {" "}
               Мой профиль
             </p>
           </div>
@@ -81,46 +91,67 @@ const PrivateProfile = () => {
             <Link
               style={
                 subjects.length === 0
-                  ? { pointerEvents: 'none', textDecoration: 'none' }
-                  : { textDecoration: 'none' }
+                  ? { pointerEvents: "none", textDecoration: "none" }
+                  : { textDecoration: "none" }
               }
               className="conteiner_shapka_myProfile"
-              to="/i-rent-out">
+              to="/i-rent-out"
+            >
               <p
-                style={subjects.length === 0 ? { opacity: '0.4', pointerEvents: 'none' } : {}}
-                style={{ display: 'none' }}>
+                style={
+                  subjects.length === 0
+                    ? { opacity: "0.4", pointerEvents: "none" }
+                    : {}
+                }
+                style={{ display: "none" }}
+              >
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
+            <p
+              style={{ opacity: "0.4", pointerEvents: "none" }}
+              style={{ display: "none" }}
+            >
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: '0.4', pointerEvents: 'none' }} style={{ display: 'none' }}>
+            <p
+              style={{ opacity: "0.4", pointerEvents: "none" }}
+              style={{ display: "none" }}
+            >
               Мои сообщения <span> - </span>
             </p>
             <Link
               style={
                 subjects.length === 0
-                  ? { pointerEvents: 'none', textDecoration: 'none' }
-                  : { textDecoration: 'none' }
+                  ? { pointerEvents: "none", textDecoration: "none" }
+                  : { textDecoration: "none" }
               }
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
-              to="/favorites">
-              <p className={activeForm === 'favorites' && 'privateProfile_container_favorites'}>
+              to="/favorites"
+            >
+              <p
+                className={
+                  activeForm === "favorites" &&
+                  "privateProfile_container_favorites"
+                }
+              >
                 Избранное
               </p>
             </Link>
             <p
-              style={{ display: 'none' }}
-              className={activeForm === 'myProfile' && 'conteiner_shapka_myProfile'}
-              onClick={() => setActiveForm('myProfile')}>
-              {' '}
+              style={{ display: "none" }}
+              className={
+                activeForm === "myProfile" && "conteiner_shapka_myProfile"
+              }
+              onClick={() => setActiveForm("myProfile")}
+            >
+              {" "}
               Мой профиль
             </p>
           </div>
 
-          {activeForm === 'myProfile' && (
+          {activeForm === "myProfile" && (
             <MyData
               setModalActiveSubmit={setModalActiveSubmit}
               setDeleteId={setDeleteId}

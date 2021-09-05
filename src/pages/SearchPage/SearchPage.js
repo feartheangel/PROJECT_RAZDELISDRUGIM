@@ -52,6 +52,7 @@ const SearchPage = () => {
       ? userCoordinates.split(" ").reverse()
       : [53.91, 27.55],
     zoom: 12,
+    controls: ["zoomControl", "fullscreenControl", "rulerControl"],
   };
 
   //координаты меток карты
