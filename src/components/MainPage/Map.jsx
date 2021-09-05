@@ -108,6 +108,7 @@ const MapBlock = () => {
 
   return (
     <section className="map">
+            {marks && (
       <div id="map_komp">
         <YMaps>
           <Map
@@ -150,6 +151,7 @@ const MapBlock = () => {
           </Map>
         </YMaps>
       </div>
+            )}
       {/* МОБИЛЬНЫЙ ДИЗАЙН */}
       {marks && (
         <div id="map_adaptiv">
@@ -199,7 +201,9 @@ const MapBlock = () => {
       )}
 
             {/* МОБИЛЬНЫЙ ДИЗАЙН 1024*/}
-          <div style={{ width: "100%" }} id ="swiper_mobile_800">
+            {marks && (
+        <div id="map_adaptiv">
+          <div style={{ width: "100%" }}>
             <YMaps>
               <Map
                 state={mapData}
@@ -241,7 +245,8 @@ const MapBlock = () => {
               </Map>
             </YMaps>
           </div>
-
+        </div>
+      )}
     </section>
   );
 };

@@ -1302,6 +1302,9 @@ button {
 #footer-lower2 {
   display: none;
 }
+#map_komp{
+  display: flex;
+}
 #header-lower-table-left2 {
   display: none;
 }
