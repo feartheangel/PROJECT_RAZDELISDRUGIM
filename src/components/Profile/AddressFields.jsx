@@ -52,7 +52,7 @@ const AddressFields = ({
     } else if (!index) {
       alert("Не указан индекс!");
       return;
-    } else if (!house && !room) {
+    } else if (!house && !building) {
       alert("Не указан номер дома либо помещения!");
       return;
     }
