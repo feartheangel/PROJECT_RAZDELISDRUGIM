@@ -1559,13 +1559,14 @@ button {
     max-width: 480px;
     height: 100%;
     align-items: center;
-    margin: 15px 15px 5px 15px;
+    margin: 15px 15px 0 15px;
   }
   .main_page_first_content {
     display: flex;
     flex-direction: column;
     max-width: 480px;
     height: 100%;
+    width: 100%;
   }
   .main_page_fris_block_left {
     display: flex;
@@ -1573,6 +1574,7 @@ button {
     justify-content: center;
     align-items: center;
     margin: 0;
+    width: 100%;
   }
   .main_page_fris_block_left_main_p {
     width: 100%;
@@ -1606,7 +1608,7 @@ button {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0;
   }
   .add-subject2 {
     max-width: 144px;
@@ -1654,6 +1656,7 @@ button {
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
+    margin-bottom: 10px;
   }
 
   /* карточки(внутренние элементы)  */
@@ -1755,6 +1758,7 @@ button {
     width: 100%;
     height: 370px;
     padding: 10px 0 5px 0;
+    margin-top: 10px;
   }
 
   .home_slider_track {
@@ -2409,9 +2413,9 @@ button {
   #swiper_mobile_800 {
     display: flex;
   }
-  /* #map_komp{
+  #map_komp{
     display: none;
-  } */
+  }
   #swiper_comp {
     display: none;
   }
@@ -2483,18 +2487,37 @@ button {
   width: 100%;
 }
 .recent-blocks-slider-container{
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  height: 520px;
+  padding: 10px 0 5px 0;
+  margin-top: 10px;
+  margin: 20px 0 30px 0;
+}
+.recent-block{
+  cursor: pointer;
+  width: auto;
+  max-width: 200px;
+  margin: 20px;
 }
 #wrapper_slider{
   padding: 0;
 }
 .recent-blocks-wrapper{
-  width: -webkit-fill-available;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  padding: 0;
 }
-.recent-block-title-p{
-  height: 55px;
-  overflow-y: hidden;
-}
+
+
+
+
+
+
 /* карта */
 .map{
   padding: 0;
@@ -2588,7 +2611,7 @@ button {
   width: 30%;
 }
 .popular-button{
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 /* КОНТЕНТ ФУТЕРА */

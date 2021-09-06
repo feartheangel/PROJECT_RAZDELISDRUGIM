@@ -108,7 +108,6 @@ const MapBlock = () => {
 
   return (
     <section className="map">
-            {marks && (
       <div id="map_komp">
         <YMaps>
           <Map
@@ -151,7 +150,7 @@ const MapBlock = () => {
           </Map>
         </YMaps>
       </div>
-            )}
+
       {/* МОБИЛЬНЫЙ ДИЗАЙН */}
       {marks && (
         <div id="map_adaptiv">
@@ -200,53 +199,51 @@ const MapBlock = () => {
         </div>
       )}
 
-            {/* МОБИЛЬНЫЙ ДИЗАЙН 1024*/}
-            {marks && (
-        <div id="map_adaptiv">
-          <div style={{ width: "100%" }}>
-            <YMaps>
-              <Map
-                state={mapData}
-                width={"auto"}
-                height={300}
-                modules={["package.full"]}
-              >
-                <Clusterer
-                  options={{
-                    preset: "islands#invertedBlueClusterIcons",
-                    groupByCoordinates: false,
-                    clusterDisableClickZoom: true,
-                    clusterHideIconOnBalloonOpen: true,
-                    geoObjectHideIconOnBalloonOpen: true,
-                    hasBalloon: true,
-                    clusterBalloonContentLayout: "cluster#balloonCarousel",
-                    clusterBalloonContentLayoutWidth: 200,
-                    clusterBalloonContentLayoutHeight: 130,
-                    clusterBalloonPagerSize: 5,
-                    clusterBalloonContentLayoutHeight: 270,
-                    clusterBalloonContentLayoutWidth: 200,
-                    clusterBalloonPanelMaxMapArea: 0,
-                  }}
-                >
-                  {marks &&
-                    marks.map((mark, index) => (
-                      <Placemark
-                        key={index}
-                        geometry={mark[0]}
-                        modules={[
-                          "geoObject.addon.balloon",
-                          "geoObject.addon.hint",
-                        ]}
-                        properties={getPointData(index)}
-                        options={getPointOptions(index)}
-                      />
-                    ))}
-                </Clusterer>
-              </Map>
-            </YMaps>
-          </div>
-        </div>
-      )}
+      {/* планшеты */}
+      <div id="swiper_mobile_800">
+        <YMaps>
+          <Map
+            state={mapData}
+            width={768}
+            height={500}
+            modules={["package.full"]}
+          >
+            <Clusterer
+              options={{
+                preset: "islands#invertedBlueClusterIcons",
+                groupByCoordinates: false,
+                clusterDisableClickZoom: true,
+                clusterHideIconOnBalloonOpen: true,
+                geoObjectHideIconOnBalloonOpen: true,
+                hasBalloon: true,
+                clusterBalloonContentLayout: "cluster#balloonCarousel",
+                clusterBalloonContentLayoutWidth: 200,
+                clusterBalloonContentLayoutHeight: 130,
+                clusterBalloonPagerSize: 5,
+                clusterBalloonContentLayoutHeight: 270,
+                clusterBalloonContentLayoutWidth: 200,
+                clusterBalloonPanelMaxMapArea: 0,
+              }}
+            >
+              {marks &&
+                marks.map((mark, index) => (
+                  <Placemark
+                    key={index}
+                    geometry={mark[0]}
+                    modules={[
+                      "geoObject.addon.balloon",
+                      "geoObject.addon.hint",
+                    ]}
+                    properties={getPointData(index)}
+                    options={getPointOptions(index)}
+                  />
+                ))}
+            </Clusterer>
+          </Map>
+        </YMaps>
+      </div>
+
+
     </section>
   );
 };
