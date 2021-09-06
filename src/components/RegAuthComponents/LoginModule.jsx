@@ -140,7 +140,12 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       <div className="reg-form-socials">
         <img onClick={vkAuth} src={vkLogo} alt="VK" />
         <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-        <img onClick={googleAuth} src={googleLogo} alt="Google" />
+        <img
+          style={{ display: "none" }}
+          onClick={googleAuth}
+          src={googleLogo}
+          alt="Google"
+        />
       </div>
       <div className="log-form-text-label-p__lower">
         <p>или</p>
