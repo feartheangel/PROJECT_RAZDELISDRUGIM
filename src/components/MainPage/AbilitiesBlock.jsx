@@ -28,8 +28,8 @@ const AbilitiesBlock = () => {
   };
 
   return (
-    <section className="abilities">
-      <div className="abilities-content">
+    <section className="abilities" >
+      <div className="abilities-content" id="info_block">
         <p className="abilities-mail-title">Возможности с платформой #разделисдругим</p>
         <div className="abilities-cards-upper">
           <div className="abilities-card">
@@ -81,6 +81,73 @@ const AbilitiesBlock = () => {
           </div>
         </div>
         <div className="main_page_first_block_left_bottons">
+          <Link style={{ textDecoration: 'none' }} to="/search">
+            <input type="button" value="Найти вещь" className="header-button add-subject2" />
+          </Link>
+          <input
+            onClick={addSubjectHandler}
+            type="button"
+            value="Предложить вещь"
+            className="header-button add-subject"
+          />
+        </div>
+      </div>
+
+      {/* планшет версия */}
+      <div className="abilities-content" id="swiper_mobile_800">
+        <p className="abilities-mail-title">Возможности с платформой #разделисдругим</p>
+        <div className="abilities-cards-upper" id="abilities_upper">
+            <div className="abilities-card" id="abilities_upper">
+              <p className="main-abilities-card-title">Делитесь с другими</p>
+              <img src={abil1} alt="" className="abilities-card-img" />
+              <p className="abilities-card-p" id="abilities_upper">
+                У каждого из нас есть такие вещи, которые нам жалко продать, но мы могли бы поделиться
+                ими с другими, оказав им услугу, получив за это некоторую сумму. И для этого наша
+                платформа… Мы поддерживаем шеринговую экономику!
+              </p>
+            </div>
+        </div>
+
+        <div className="abilities-cards-upper">
+          <div className="abilities-card">
+            <p className="main-abilities-card-title">Арендуйте что хотите</p>
+            <img src={abil2} alt="" className="abilities-card-img" />
+            <p className="abilities-card-p">
+              Вам нужно воспользоваться чем-то, но покупать не имеет смысла? Найдите нужную вещь
+              через поиск или на карте, возможно, вы уже сегодня возьмете ее в аренду у соседа по
+              подъезду
+            </p>
+          </div>
+          <div className="abilities-card">
+            <p className="main-abilities-card-title">Расширяйте свой бизнес</p>
+            <img src={abil3} alt="" className="abilities-card-img" />
+            <p className="abilities-card-p">
+              Вы компания или предприниматель, который работает в сфере аренды инструментов, одежды,
+              аксессуаров? Наша платформа поможет продвинуть ваш бизнес и автоматизирует процесс
+              аренды. Закажи у нас мобильное приложение для своей компании!
+            </p>
+          </div>
+          <div className="abilities-card">
+            <p className="main-abilities-card-title">Экономьте время</p>
+            <img src={abil4} alt="" className="abilities-card-img" />
+            <p className="abilities-card-p">
+              Вам не нужно тратить много времени на поиск нужной вещь – наш интеллектуальный поиск,
+              карта и фильтры в один клик помогут найти нужное с любого устройства
+            </p>
+          </div>
+          <div className="abilities-card">
+            <p className="main-abilities-card-title">Будьте спокойны</p>
+            <img src={abil5} alt="" className="abilities-card-img" />
+            <p className="abilities-card-p">
+              Мы сделали все возможное, для проверки и обеспечения конфиденциальности наших
+              пользователей, а также для обеспечения безопасности сделок, защиты данных, страхования
+              и составления необходимых бумаг. И еще… Мы не храним у себя данные ваших банковских
+              карт!
+            </p>
+          </div>
+        </div>
+
+        <div className="main_page_first_block_left_bottons" style={{ marginTop:'30px', marginBottom:'0' }}>
           <Link style={{ textDecoration: 'none' }} to="/search">
             <input type="button" value="Найти вещь" className="header-button add-subject2" />
           </Link>

@@ -1702,7 +1702,7 @@ button {
     line-height: 16px;
     color: #000000;
     margin-top: 7px;
-    max-height: 48px;
+    max-height: 50px;
     overflow-y: hidden;
   }
   .div_favorites {
@@ -2419,6 +2419,9 @@ button {
   #swiper_comp {
     display: none;
   }
+  #info_block{
+    display: none;
+  }
 
 /* header */
 .header__inner{
@@ -2490,16 +2493,17 @@ button {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 520px;
+  height: 545px;
   padding: 10px 0 5px 0;
   margin-top: 10px;
-  margin: 20px 0 30px 0;
+  margin: 20px 0 15px 0;
 }
 .recent-block{
   cursor: pointer;
   width: auto;
   max-width: 200px;
-  margin: 20px;
+  margin: 20px 5px;
+  height: 450px;
 }
 #wrapper_slider{
   padding: 0;
@@ -2512,8 +2516,27 @@ button {
   height: auto;
   padding: 0;
 }
-
-
+.recent-block-title-name{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 19px;
+  color: #000000;
+  margin-top: 10px;
+  max-height: 55px;
+  overflow-y: hidden;
+}
+.recent-block-up{
+  width: auto;
+  overflow: visible;
+  height: auto;
+}
+.recent-time-cost-wrapper{
+  margin-top: 10px;
+}
+.recent-block-title-p{
+  margin-top: 30px;
+}
 
 
 
@@ -2521,16 +2544,26 @@ button {
 /* карта */
 .map{
   padding: 0;
-  width: 100%;
+  height: auto;
 }
 
 /* Под слайдерами блок о проекте */
+#abilities_upper{
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  align-items: center;
+}
+.abilities{
+  margin-bottom: 30px;
+}
 .abilities-content{
   padding: 0;
   width: 100%;
 }
 .abilities-mail-title{
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 32px;
 }
 .abilities-cards-upper{
@@ -2542,6 +2575,12 @@ button {
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.abilities-card{
+  margin-top: 30px;
+}
+.abilities-card-img{
+  width: 100px;
 }
 .main_page_first_block_left_bottons{
   display: flex;

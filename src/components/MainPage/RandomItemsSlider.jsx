@@ -55,7 +55,7 @@ const RandomItemsSlider = () => {
                     {/* копия для адаптива  800*/}
                     <Swiper
             spaceBetween={0}
-            slidesPerView={2.5}
+            slidesPerView={3}
             pagination={{ clickable: true }}
             
             // scrollbar={{ draggable: true }}

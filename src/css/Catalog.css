@@ -170,9 +170,33 @@
   .Catalog_wrapper{
     padding: 0;
   }
+  .Catalog_wrapper_container{
+    width: 100%;
+  }
   .container_down_left{
     margin-right: 20px;
+    width: 35%;
   }
+  .container_down_right{
+    width: 65%;
+  }
+  .Catalog_wrapper_container_down{
+    padding: 20px;
+    width: auto;
+  }
+  .CatalogComponent_shapka_img{
+    width: auto;
+    max-width: 98%;
+  }
+
+  .CatalogComponent_list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+
 
 
 
