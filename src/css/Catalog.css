@@ -161,25 +161,18 @@
   }
    
 
+}
 
 
+/* АДАПТИВ ПЛАНШЕТЫ до 1024 */
+@media only screen and (max-width: 1024px) and (min-width:481px) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .Catalog_wrapper{
+    padding: 0;
+  }
+  .container_down_left{
+    margin-right: 20px;
+  }
 
 
 
@@ -194,9 +187,6 @@
 
 
 }
-
-
-
 
 
 
