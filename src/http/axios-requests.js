@@ -1143,6 +1143,18 @@ class Requests {
       return response;
     });
   }
+
+  static getPartners() {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: `https://razdelisdrugim.by/api/additional_entities/partners/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(
@@ -1177,6 +1189,20 @@ axios.interceptors.response.use(
           }, 2000);
           return;
         });
+    }
+
+    if (
+      error.response.status === 401 &&
+      error.config &&
+      !localStorage.getItem("refresh")
+    ) {
+      localStorage.removeItem("key");
+      localStorage.removeItem("refresh");
+      localStorage.removeItem("social");
+      setTimeout(() => {
+        window.location.href = "https://razdelisdrugim.by";
+      }, 2000);
+      return;
     }
 
     if (error.response.status === 304) {

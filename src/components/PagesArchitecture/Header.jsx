@@ -1,27 +1,26 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import Requests from '../../http/axios-requests';
-import Burger from '../../img/MainPage/Burger.png';
-import Logo from '../../img/MainPage/Logo.png';
-import vector2 from '../../img/SearchPage/Vector2.png';
-import { logoutAction, loginAction } from '../../redux/actions/userData';
+import React from "react";
+import { Link, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Requests from "../../http/axios-requests";
+import Burger from "../../img/MainPage/Burger.png";
+import Logo from "../../img/MainPage/Logo.png";
+import vector2 from "../../img/SearchPage/Vector2.png";
+import { logoutAction, loginAction } from "../../redux/actions/userData";
 import {
   setSearchWords,
   setSearchItems,
   setSearchCategory,
   setCategoryId,
-} from '../../redux/actions/search';
-import { ProfilePopUp, BaseModal } from '../index';
-import Favorites from '../../img/MainPage/FavoritesDisabled.png';
-import Notifications from '../../img/MainPage/Notifications.png';
-import { setNews } from '../../redux/actions/items';
-import MenuStroke from '../../img/MainPage/MenuStroke.png';
-import Planet2 from '../../img/MainPage/Vector (Stroke2).png';
-import Local2 from '../../img/MainPage/local2.png';
-import Like_vector from '../../img/MainPage/like_vector.png';
-import Bell2 from '../../img/MainPage/bell2.png';
-
+} from "../../redux/actions/search";
+import { ProfilePopUp, BaseModal } from "../index";
+import Favorites from "../../img/MainPage/FavoritesDisabled.png";
+import Notifications from "../../img/MainPage/Notifications.png";
+import { setNews } from "../../redux/actions/items";
+import MenuStroke from "../../img/MainPage/MenuStroke.png";
+import Planet2 from "../../img/MainPage/Vector (Stroke2).png";
+import Local2 from "../../img/MainPage/local2.png";
+import Like_vector from "../../img/MainPage/like_vector.png";
+import Bell2 from "../../img/MainPage/bell2.png";
 
 const Header = () => {
   const searchButton = React.useRef(null);
@@ -30,10 +29,10 @@ const Header = () => {
   const [currentLocation, setCurrentLocation] = React.useState(false);
 
   React.useEffect(() => {
-    if (localStorage.getItem('key')) {
+    if (localStorage.getItem("key")) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
-  }, [localStorage.getItem('key')]);
+  }, [localStorage.getItem("key")]);
 
   React.useEffect(() => {
     Requests.fetchMainPageBlocks().then((res) => {
@@ -47,11 +46,11 @@ const Header = () => {
   const [openedCategories, setOpenedCategories] = React.useState([]);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
-
   const keyDownHandler = React.useCallback((event) => {
     if (
       event.keyCode === 13 &&
-      (window.location.href.includes('search') || window.location.href.split('/')[1] === '')
+      (window.location.href.includes("search") ||
+        window.location.href.split("/")[1] === "")
     ) {
       searchButton.current.click();
     }
@@ -59,7 +58,9 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, userData, subjects, reload } = useSelector(({ userData }) => userData);
+  const { isLoggedIn, userData, subjects, reload } = useSelector(
+    ({ userData }) => userData
+  );
   const { items, isLoaded, news } = useSelector(({ items }) => items);
   const {
     searchItems,
@@ -80,33 +81,35 @@ const Header = () => {
 
   const logout = () => {
     setProfilePopUpActive(false);
-    localStorage.removeItem('key');
-    localStorage.removeItem('refresh');
-    localStorage.removeItem('social');
+    localStorage.removeItem("key");
+    localStorage.removeItem("refresh");
+    localStorage.removeItem("social");
     dispatch(logoutAction());
     setRedirect(<Redirect to="/" />);
   };
 
   const addSubjectHandler = () => {
     if (isLoggedIn && subjects.length >= 10) {
-      alert('Лимит вещей достигнут (10)');
+      alert("Лимит вещей достигнут (10)");
       return;
     } else if (isLoggedIn && subjects.length >= 10) {
-      alert('Лимит вещей достигнут (10)');
+      alert("Лимит вещей достигнут (10)");
       return;
     } else if (!isLoggedIn) {
-      alert('Сначала авторизуйтесь!');
+      alert("Сначала авторизуйтесь!");
       return;
     } else if (!userData.email_verify || !userData.phone_verify) {
-      alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
+      alert(
+        "У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле."
+      );
       setRedirect(<Redirect to="/private-profile" />);
       return;
     }
-    window.location.href = '/place-item';
+    window.location.href = "/place-item";
   };
 
   const searchRedirect = () => {
-    if (words === [] && window.location.href === 'http://localhost:3000/') {
+    if (words === [] && window.location.href === "http://localhost:3000/") {
       setRedirect(<Redirect to={`/search`} />);
       return;
     }
@@ -122,7 +125,7 @@ const Header = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     ).then((res) => {
       dispatch(setSearchItems(res.data));
     });
@@ -145,7 +148,7 @@ const Header = () => {
       contract,
       pledge,
       userCoordinates,
-      distance,
+      distance
     ).then((res) => {
       dispatch(setSearchItems(res.data));
     });
@@ -183,28 +186,30 @@ const Header = () => {
   isLoaded &&
     items.length > 2 &&
     items.map((item, index) => {
-      if (!categories[item.name_category]) {
-        categories[item.name_category] = [[item.id, item.chapter_id.id]];
+      if (!categories[item.id]) {
+        categories[item.id] = [[item.name_category, item.chapter_id.id]];
       }
     });
 
   return (
     <header className="header" onKeyDown={(e) => keyDownHandler(e)}>
       <div className="news-alert-block">
-        <p className="news-alert-p">{news && news[0].news_description.split('.')[0]}</p>
+        <p className="news-alert-p">
+          {news && news[0].news_description.split(".")[0]}
+        </p>
       </div>
       <div className="header__inner">
         <div className="header-left-content">
-          <Link to="/">
+          <a href="/">
             <img src={Logo} alt="Global Sharing Platform" className="logo" />
-          </Link>
+          </a>
           <div className="selector_header_items">
             <div className="location-selector">
               <img src={Local2} alt="" className="location-img" />
               <p className="location-p">{currentLocation && currentLocation}</p>
             </div>
             <div className="laguage-selector-wrapper">
-            <img src={Planet2} alt="" className="language-planet-img" />
+              <img src={Planet2} alt="" className="language-planet-img" />
               <p className="language-selector">RU</p>
             </div>
           </div>
@@ -218,10 +223,17 @@ const Header = () => {
             />
           )}
           {isLoggedIn && (
-            <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper2">
+            <div
+              className="header-right-content-logged-div-wrapper"
+              id="logged-div-wrapper2"
+            >
               <div className="header-right-content-logged-div">
-                <Link to="/favorites" style={{display:'flex'}}>
-                  <img className="header-right-content-logged-img" src={Like_vector} id="favorites" />
+                <Link to="/favorites" style={{ display: "flex" }}>
+                  <img
+                    className="header-right-content-logged-img"
+                    src={Like_vector}
+                    id="favorites"
+                  />
                 </Link>
                 <img
                   className="header-right-content-logged-img"
@@ -230,7 +242,8 @@ const Header = () => {
                 />
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
-                  className="user-avatar-group">
+                  className="user-avatar-group"
+                >
                   <img
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
@@ -254,7 +267,10 @@ const Header = () => {
           )}
         </div>
         <div className="header-right-content">
-          <div className="header-lower-table-left" id="header-lower-table-left2">
+          <div
+            className="header-lower-table-left"
+            id="header-lower-table-left2"
+          >
             <img
               onClick={() => setBurgerActive(!burgerActive)}
               src={Burger}
@@ -282,17 +298,31 @@ const Header = () => {
           )}
 
           {isLoggedIn && (
-            <div className="header-right-content-logged-div-wrapper" id="logged-div-wrapper1">
+            <div
+              className="header-right-content-logged-div-wrapper"
+              id="logged-div-wrapper1"
+            >
               <div className="header-right-content-logged-div">
                 <Link to="/favorites">
-                  <img className="header-right-content-logged-img" src={Favorites} />
+                  <img
+                    className="header-right-content-logged-img"
+                    src={Favorites}
+                  />
                 </Link>
-                <img className="header-right-content-logged-img" src={Notifications} />
+                <img
+                  className="header-right-content-logged-img"
+                  src={Notifications}
+                />
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
-                  className="user-avatar-group">
+                  className="user-avatar-group"
+                >
                   <img
-                    style={{ width: '30px', height: '30px', borderRadius: '100%' }}
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      borderRadius: "100%",
+                    }}
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                   />
@@ -322,43 +352,54 @@ const Header = () => {
         </div>
 
         {burgerActive && (
-          <div className={'burger_dropdown_menu'}>
+          <div className={"burger_dropdown_menu"}>
             <div className="SearchPage_container_content_left">
               <ul>
                 {isLoaded &&
-                  [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-                    return (
-                      <li
-                        style={{ display: 'flex', flexDirection: 'column' }}
-                        className="content_left_optional_li">
-                        <p onClick={() => openChapterHandler(chapter[1])}>
-                          {chapter[0]}
-                          <span>
-                            <img src={vector2} alt="" />
-                          </span>
-                        </p>
-                        {isLoaded &&
-                          [].concat.apply(Object.entries(categories)).map((category, index) => {
-                            if (
-                              category[1][0][1] === chapter[1] &&
-                              openedCategories === category[1][0][1]
-                            ) {
-                              return (
-                                <p
-                                  onClick={() => categorySetHandler(category[1][0][0], category[0])}
-                                  className={
-                                    category_id === category[1][0][0]
-                                      ? 'content_left_optional_li__sub active'
-                                      : 'content_left_optional_li__sub'
-                                  }>
-                                  {category[0]}
-                                </p>
-                              );
-                            }
-                          })}
-                      </li>
-                    );
-                  })}
+                  [].concat
+                    .apply(Object.entries(chapters))
+                    .map((chapter, index) => {
+                      return (
+                        <li
+                          style={{ display: "flex", flexDirection: "column" }}
+                          className="content_left_optional_li"
+                        >
+                          <p onClick={() => openChapterHandler(chapter[1])}>
+                            {chapter[0]}
+                            <span>
+                              <img src={vector2} alt="" />
+                            </span>
+                          </p>
+                          {isLoaded &&
+                            [].concat
+                              .apply(Object.entries(categories))
+                              .map((category, index) => {
+                                if (
+                                  category[1][0][1] === chapter[1] &&
+                                  openedCategories === category[1][0][1]
+                                ) {
+                                  return (
+                                    <p
+                                      onClick={() =>
+                                        categorySetHandler(
+                                          category[0],
+                                          category[1][0][0]
+                                        )
+                                      }
+                                      className={
+                                        category_id === category[0]
+                                          ? "content_left_optional_li__sub active"
+                                          : "content_left_optional_li__sub"
+                                      }
+                                    >
+                                      {category[1][0][0]}
+                                    </p>
+                                  );
+                                }
+                              })}
+                        </li>
+                      );
+                    })}
               </ul>
             </div>
           </div>
@@ -373,7 +414,7 @@ const Header = () => {
               className="search-input"
             />
             <input
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               onClick={searchRedirect}
               type="button"
               className="search-button"

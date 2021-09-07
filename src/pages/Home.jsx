@@ -1,6 +1,6 @@
-import React from 'react';
-import '../css/main-page.css';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import "../css/main-page.css";
+import { useDispatch } from "react-redux";
 import {
   Header,
   Footer,
@@ -16,22 +16,22 @@ import {
   Partners,
   Adverts,
   MediaAbout,
-} from '../components/index';
+} from "../components/index";
 
-import { loginAction, logoutAction } from '../redux/actions/userData';
+import { loginAction, logoutAction } from "../redux/actions/userData";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (localStorage.getItem('key')) {
+    if (localStorage.getItem("key")) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
-  }, [localStorage.getItem('key')]);
+  }, [localStorage.getItem("key")]);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Главная: #разделисдругим';
+    document.title = "Главная: #разделисдругим";
   }, []);
 
   return (
@@ -47,7 +47,7 @@ const Home = () => {
         <AboutBlock />
         <News />
         <Categories />
-        {false && <Partners />}
+        <Partners />
         {false && <Adverts />}
         {false && <MediaAbout />}
         <Footer />

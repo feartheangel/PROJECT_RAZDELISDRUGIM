@@ -418,12 +418,10 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 type="text"
               />
               {!userData.email_verify ? (
-                <div>
-                  <p onClick={emailVerifyHandler} className="my-data-lower-p">
-                    {" "}
-                    Подтвердить{" "}
-                  </p>
-                </div>
+                <p onClick={emailVerifyHandler} className="my-data-lower-p">
+                  {" "}
+                  Подтвердить{" "}
+                </p>
               ) : (
                 <div className="profile_login_change_wrapper">
                   <p

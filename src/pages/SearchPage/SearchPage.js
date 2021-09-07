@@ -1017,6 +1017,20 @@ const SearchPage = () => {
                                   />
                                 ))}
                             </Clusterer>
+                            {userCoordinates && (
+                              <Placemark
+                                key={"own_geo"}
+                                geometry={userCoordinates.split(" ").reverse()}
+                                modules={[
+                                  "geoObject.addon.balloon",
+                                  "geoObject.addon.hint",
+                                ]}
+                                options={{ preset: `islands#redDotIcon` }}
+                                properties={{
+                                  iconCaption: "Я тут!",
+                                }}
+                              />
+                            )}
                           </Map>
                         </YMaps>
                       </div>
@@ -1111,6 +1125,20 @@ const SearchPage = () => {
                                   />
                                 ))}
                             </Clusterer>
+                            {userCoordinates && (
+                              <Placemark
+                                key={"own_geo"}
+                                geometry={userCoordinates.split(" ").reverse()}
+                                modules={[
+                                  "geoObject.addon.balloon",
+                                  "geoObject.addon.hint",
+                                ]}
+                                options={{ preset: `islands#redDotIcon` }}
+                                properties={{
+                                  iconCaption: "Я тут!",
+                                }}
+                              />
+                            )}
                           </Map>
                         </YMaps>
                       </div>

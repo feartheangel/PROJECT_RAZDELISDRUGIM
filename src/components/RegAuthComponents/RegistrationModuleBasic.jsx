@@ -213,12 +213,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       <div className="reg-form-socials">
         <img onClick={vkAuth} src={vkLogo} alt="VK" />
         <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-        <img
-          style={{ display: "none" }}
-          onClick={googleAuth}
-          src={googleLogo}
-          alt="Google"
-        />
+        <img onClick={googleAuth} src={googleLogo} alt="Google" />
       </div>
       <div className="reg-form-text-label-p">
         <p>или</p>
