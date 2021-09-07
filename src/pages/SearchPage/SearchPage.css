@@ -263,6 +263,9 @@
   display: none;
 }
 
+
+
+
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
   #search_pk {
@@ -410,12 +413,49 @@
 
 
 
+}
 
 
+/*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
+@media only screen and (max-width: 1024px) and (min-width:481px) {
 
+ /* сама карточка */
+ .recent-block {
 
-
+  max-height: 450px;
+  min-height: 450px;
+}
+.all_content_blocks_up {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.all_content_blocks_down {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.recent-marks {
+  display: flex;
+  justify-content: space-between;
+}
+.card-mark:not(:last-child) {
+  margin-right: 0;
+}
+.block-image {
+  height: auto;
+}
+.card_div {
+  width: 50%;
+}
+/* NOT FOUND - если карточка не найдена */
+.search_not_found {
+  height: auto;
+  padding: 0 15px;
+  width: initial;
+}
 
 
 
@@ -426,3 +466,17 @@
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

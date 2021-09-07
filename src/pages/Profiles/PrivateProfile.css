@@ -119,10 +119,30 @@
     margin-left: 10px;
   }
 
-
-
-
-
-
-
 }
+
+
+/*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
+
+@media only screen and (max-width: 1024px) and (min-width:481px) {
+
+  .div_favorites{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+  }
+  .div_favorites_text{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+}
+
+
+
+
+
+
+
+

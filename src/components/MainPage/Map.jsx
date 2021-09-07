@@ -226,10 +226,11 @@ const MapBlock = () => {
 
       {/* планшеты */}
       <div id="swiper_mobile_800">
+      <div style={{ width: "100%" }}>
         <YMaps>
           <Map
             state={mapData}
-            width={768}
+            width={"auto"}
             height={500}
             modules={["package.full"]}
           >
@@ -277,6 +278,7 @@ const MapBlock = () => {
             )}
           </Map>
         </YMaps>
+        </div>
       </div>
     </section>
   );

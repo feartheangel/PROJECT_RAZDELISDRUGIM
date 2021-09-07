@@ -59,7 +59,8 @@
     display: none;
   }
 
-/* АДАПАТАЦИЯ */
+
+/* АДАПАТАЦИЯ mobile */
 
 @media only screen and ( max-width:480px){
 
@@ -127,18 +128,30 @@
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+/* АДАПТИВ ПЛАНШЕТЫ до 1024 */
+@media only screen and (max-width: 1024px) and (min-width:481px) {
+    .CatalogComponent_informations{
+        width: 100%;
+    }
+
+
+
+
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

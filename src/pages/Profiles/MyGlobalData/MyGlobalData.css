@@ -92,6 +92,9 @@ textarea {
 #globaldata_mobile {
   display: none;
 }
+#swiper_mobile_800{
+  display: none;
+}
 
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
@@ -159,3 +162,29 @@ textarea {
     margin: 10px 15px 25px 15px;
   }
 }
+
+
+/*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
+
+@media only screen and (max-width: 1024px) and (min-width:481px) {
+  #globaldata_pk {
+    display: none;
+  }
+  
+  #swiper_mobile_800{
+    display: flex;
+    width: 100%;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
