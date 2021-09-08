@@ -227,6 +227,103 @@ const Categories = () => {
           </div>
         </div>
 
+                {/* ДЛЯ ПЛАНШЕТ ВЕРСИИ */}
+                <div className="main-sections-first" id="global_ipad">
+          {/* 1 block */}
+          <div className="categories_wrapper">
+            <ul className="main-sections-first-ul">
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index <= 4 && index >= 0) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+              {redirect}
+            </ul>
+            <ul className="main-sections-second-ul">
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 5 && index <= 11) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+
+            <ul className="main-sections-third-ul">
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 12 && index <= 17) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+          </div>
+          {/* 2 блок */}
+          <div className="categories_wrapper">
+            <ul className="main-sections-first-ul" style={{marginBottom:'0'}}>
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 18 && index <= 25) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+            <ul className="main-sections-second-ul">
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 26 && index <= 30) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+
+            <ul className="main-sections-third-ul" style={{marginBottom:'0'}}>
+              {isLoaded &&
+                validCategories.map((item, index) => {
+                  if (item.for_category_footer && index >= 31 && index <= 35) {
+                    return (
+                      <li
+                        onClick={() => categoryRedirect(item.name_category, item.id)}
+                        className="main-section-first-li main-li">
+                        {isLoaded && item.for_category_footer}
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
+          </div>
+        </div>
+
         <Link style={{ textDecoration: 'none' }} to="/catalog">
           <input type="button" value="Смотреть каталог" className="popular-button" />
         </Link>

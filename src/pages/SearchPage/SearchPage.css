@@ -262,6 +262,9 @@
 #search_mobile {
   display: none;
 }
+#search_ipad{
+  display: none;
+}
 
 
 
@@ -419,12 +422,20 @@
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
 @media only screen and (max-width: 1024px) and (min-width:481px) {
+  #search_ipad{
+    display: flex;
+    width: 100%;
+  }
+  #search_pk{
+    display: none;
+  }
 
  /* сама карточка */
  .recent-block {
 
   max-height: 450px;
   min-height: 450px;
+  margin: 10px;
 }
 .all_content_blocks_up {
   display: flex;
@@ -456,8 +467,67 @@
   padding: 0 15px;
   width: initial;
 }
+  /* ВЫКЛЮЧЕНИЕ ПОДСВЕТОК БЛОКОВ ПРИ КЛИКЕ */
+  .SearchPage_container_content_left ul li{
+    -webkit-tap-highlight-color:transparent;
+  }
 
-
+/* контент правая старона в основном */
+.SearchPage{
+  justify-content: flex-start;
+  width: 100%;
+  min-width: auto;
+}
+.SearchPage_container_content_left{
+  padding: 0 20px;
+}
+.SearchPage_container{
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+.SearchPage_container_content{
+  display: flex;
+  flex-direction: column;
+}
+.SearchPage_container_content_right{
+  display: flex;
+  flex-direction: column;
+}
+.search_option_left{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.search_option_left_left{
+  display: flex;
+  flex-direction: column;
+}
+.search_option_left_right{
+  display: flex;
+  flex-direction: column;
+}
+.SearchPage_container_content_left ul{
+  width: 100%;
+  flex-direction: row;
+}
+.all_content_blocks{
+  min-width: auto;
+  margin-bottom: 0;
+}
+.content_right_shapka{
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.SearchPage_container_content_left ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.distance_p.active{
+  margin-left: 10px;
+}
 
 
 
