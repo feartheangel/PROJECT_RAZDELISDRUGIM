@@ -114,17 +114,24 @@ const CardThings = () => {
   };
 
   React.useEffect(() => {
+    let isMounted = true;
     Requests.getSingleItem(window.location.href.split("?id=")[1]).then(
       (response) => {
-        setItemData(response.data);
-        setSelectedImage(response.data.image_1);
+        if (isMounted) {
+          setItemData(response.data);
+          setSelectedImage(response.data.image_1);
+        }
       }
     );
 
     Requests.search().then((response) => {
       setSimillarSubjects(response.data);
     });
-  }, [window.location.href]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   React.useEffect(() => {
     favorites &&
@@ -142,7 +149,6 @@ const CardThings = () => {
   const [contactVisible, setContactVisible] = React.useState();
   const [shareVisible, setShareVisible] = React.useState();
   const [isFavorite, setIsFavorite] = React.useState(false);
-  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -336,7 +342,7 @@ const CardThings = () => {
                       <p> Поделиться</p>
                     </div>
                     <div className="card_views_wrapper">
-                      <img src={Views} className="card_views_icon" />
+                      <img alt="" src={Views} className="card_views_icon" />
                       <p>{itemData && itemData.item_views} просмотра(-ов)</p>
                     </div>
                   </div>
@@ -345,6 +351,7 @@ const CardThings = () => {
                     <div className={"item_share_link"}>
                       <input type="text" value={window.location.href} />
                       <img
+                        alt=""
                         onClick={window.navigator.clipboard.writeText(
                           `${window.location.href}`
                         )}
@@ -817,6 +824,7 @@ const CardThings = () => {
 
                         {favorites && !isFavorite && (
                           <img
+                            alt=""
                             onClick={(e) => addFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={FavoritesDisabled}
@@ -825,6 +833,7 @@ const CardThings = () => {
 
                         {favorites && isFavorite && (
                           <img
+                            alt=""
                             onClick={(e) => deleteFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={Favorites}
@@ -967,6 +976,7 @@ const CardThings = () => {
                         <div className="telephone_row2">
                           {itemData && itemData.profile.telegram_account && (
                             <a
+                              rel="noreferrer"
                               href={`https://t.me/${
                                 itemData && itemData.profile.telegram_account
                               }`}
@@ -982,6 +992,7 @@ const CardThings = () => {
                           )}
                           {itemData && itemData.profile.viber_account && (
                             <a
+                              rel="noreferrer"
                               target="_blank"
                               href={`viber://chat?number=+${
                                 itemData && itemData.profile.viber_account
@@ -997,6 +1008,7 @@ const CardThings = () => {
                           )}
                           {itemData && itemData.profile.whatsapp_account && (
                             <a
+                              rel="noreferrer"
                               href={`https://api.whatsapp.com/send/?phone=${
                                 itemData && itemData.profile.whatsapp_account
                               }&text=Здравствуйте, ${
@@ -1030,6 +1042,7 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                rel="noreferrer"
                                 style={{ cursor: "pointer" }}
                                 src={Google}
                                 className="img_social"
@@ -1039,6 +1052,7 @@ const CardThings = () => {
                           )}
                           {itemData && itemData.profile.link_facebook && (
                             <a
+                              rel="noreferrer"
                               href={`${
                                 itemData &&
                                 itemData.profile.link_facebook.includes("https")
@@ -1059,6 +1073,7 @@ const CardThings = () => {
                           )}
                           {itemData && itemData.profile.link_instagram && (
                             <a
+                              rel="noreferrer"
                               href={`${
                                 itemData &&
                                 itemData.profile.link_instagram.includes(
@@ -1082,6 +1097,7 @@ const CardThings = () => {
                           )}
                           {itemData && itemData.profile.vk_account && (
                             <a
+                              rel="noreferrer"
                               href={`${
                                 itemData &&
                                 itemData.profile.vk_account.includes("https")

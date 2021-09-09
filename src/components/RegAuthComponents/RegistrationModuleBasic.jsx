@@ -174,13 +174,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
             .catch(() => alert("Ошибка регистрации"));
         }
       })
-      .catch(() =>
-        alert(
-          email
-            ? "Такой Email уже зарегистрирован"
-            : "Такой номер уже зарегистрирован"
-        )
-      );
+      .catch((err) => alert(Object.values(err.response.data)));
   };
 
   return (

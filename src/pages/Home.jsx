@@ -45,9 +45,9 @@ const Home = () => {
         <AbilitiesBlock />
         {false && <ReviewsBlock />}
         <AboutBlock />
+        <Partners />
         <News />
         <Categories />
-        <Partners />
         {false && <Adverts />}
         {false && <MediaAbout />}
         <Footer />
