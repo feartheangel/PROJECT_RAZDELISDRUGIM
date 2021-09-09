@@ -291,7 +291,6 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
             Реферальный код{redirect}
           </label>
           <input
-            disabled
             name="referral"
             id="referral"
             type="text"

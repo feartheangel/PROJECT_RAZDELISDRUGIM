@@ -38,7 +38,7 @@ class Requests {
       },
       data: {
         status: status,
-        referral_code: referral ? referral : "",
+        ref_code: referral ? referral : "",
         phone: contactNumberRegExp.test(login) ? login : "",
         email: contactEmailRegExp.test(login) ? login : "",
       },
