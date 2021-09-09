@@ -718,7 +718,7 @@ option {
   }
 
   .referral_code_wrapper_profile {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     flex-direction: column;
     width: 100%;
     align-items: flex-start;

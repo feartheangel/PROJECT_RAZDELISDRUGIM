@@ -971,41 +971,6 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 setActiveSocial={setActiveSocial}
               />
             )}
-            <div className="referral_code_wrapper_profile">
-              <p style={{ fontSize: "16px" }}>Ваш реферальный код:</p>
-              <input
-                disabled
-                className="referral_code_input_profile"
-                type="text"
-                value={userData && userData.referral_code}
-              />
-            </div>
-            <div className="referral_code_wrapper_profile">
-              <p style={{ fontSize: "16px" }}>Ваша реферальная ссылка:</p>
-              <input
-                disabled
-                className="referral_code_input_profile"
-                type="text"
-                value={`https://razdelisdrugim.by/?referral=${
-                  userData && userData.referral_code
-                }`}
-              />
-              <div className="toShare_button_wrapper">
-                <label
-                  onClick={() => {
-                    window.navigator.clipboard.writeText(
-                      `${`https://razdelisdrugim.by/?referral=${
-                        userData && userData.referral_code
-                      }`}`
-                    );
-                  }}
-                  style={{ cursor: "pointer" }}
-                  className="item-card-profile-button__optional"
-                >
-                  Копировать
-                </label>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1257,6 +1222,41 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 )}
               </div>
             )}
+            <div className="referral_code_wrapper_profile">
+              <p style={{ fontSize: "16px" }}>Ваш реферальный код:</p>
+              <input
+                disabled
+                className="referral_code_input_profile"
+                type="text"
+                value={userData && userData.referral_code}
+              />
+            </div>
+            <div className="referral_code_wrapper_profile">
+              <p style={{ fontSize: "16px" }}>Ваша реферальная ссылка:</p>
+              <input
+                disabled
+                className="referral_code_input_profile"
+                type="text"
+                value={`https://razdelisdrugim.by/?referral=${
+                  userData && userData.referral_code
+                }`}
+              />
+              <div className="toShare_button_wrapper">
+                <label
+                  onClick={() => {
+                    window.navigator.clipboard.writeText(
+                      `${`https://razdelisdrugim.by/?referral=${
+                        userData && userData.referral_code
+                      }`}`
+                    );
+                  }}
+                  style={{ cursor: "pointer" }}
+                  className="item-card-profile-button__optional"
+                >
+                  Копировать
+                </label>
+              </div>
+            </div>
 
             {/*КНОПКА СОХРАНЕНИЯ*/}
 
