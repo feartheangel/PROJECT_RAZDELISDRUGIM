@@ -716,4 +716,14 @@ option {
   #button_max_width {
     width: 100%;
   }
+
+  .referral_code_wrapper_profile {
+    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .referral_code_input_profile {
+    margin-left: 0px;
+  }
 }
