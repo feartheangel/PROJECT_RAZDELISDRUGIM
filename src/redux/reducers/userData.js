@@ -1,75 +1,83 @@
 const initialState = {
   isLoggedIn: false,
   requestActive: false,
-  currentUserId: '',
+  currentUserId: "",
   addresses: [],
   userData: {},
   subjects: [],
   favorites: [],
   reload: false,
+  ref_code: "",
 };
 
 const userData = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case "LOGIN":
       return {
         ...state,
         isLoggedIn: action.payload,
       };
       break;
 
-    case 'LOGOUT':
+    case "LOGOUT":
       return {
         ...state,
         isLoggedIn: action.payload,
       };
       break;
 
-    case 'SET_ADDRESSES':
+    case "SET_ADDRESSES":
       return {
         ...state,
         addresses: action.payload,
       };
 
-    case 'SET_REQUEST_START':
+    case "SET_REQUEST_START":
       return {
         ...state,
         requestActive: action.payload,
       };
       break;
 
-    case 'SET_REQUEST_END':
+    case "SET_REQUEST_END":
       return {
         ...state,
         requestActive: action.payload,
       };
       break;
 
-    case 'SET_USER_DATA':
+    case "SET_USER_DATA":
       return {
         ...state,
         userData: action.payload,
       };
       break;
 
-    case 'SET_USER_SUBJECTS':
+    case "SET_USER_SUBJECTS":
       return {
         ...state,
         subjects: action.payload,
       };
       break;
 
-    case 'RELOAD':
+    case "RELOAD":
       return {
         ...state,
         reload: action.payload,
       };
       break;
 
-    case 'SET_FAVORITES':
+    case "SET_FAVORITES":
       return {
         ...state,
         favorites: action.payload,
+      };
+      break;
+
+    case "SET_REF_CODE":
+      return {
+        ...state,
+        ref_code: action.payload,
       };
       break;
   }

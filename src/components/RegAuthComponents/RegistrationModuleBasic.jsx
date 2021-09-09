@@ -5,7 +5,7 @@ import googleLogo from "../../img/Google.png";
 import { Redirect } from "react-router-dom";
 import Requests from "../../http/axios-requests";
 import { loginAction } from "../../redux/actions/userData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { vkAuth, googleAuth, facebookAuth } from "../../http/social-auth";
 import "../../css/regAuth.css";
 import Shape from "../../img/Shape.png";
@@ -53,6 +53,8 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   const [formValid, setFormValid] = React.useState(false);
   const [successLogin, setSuccessLogin] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
+
+  const { ref_code } = useSelector(({ userData }) => userData);
 
   //проврека формы на валидность
   React.useEffect(() => {
@@ -102,6 +104,10 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       }
     }
   }, [window.location.href]);
+
+  React.useEffect(() => {
+    setReferral(ref_code);
+  }, []);
 
   //обработчики полей ввода
   const contactHandler = (e) => {
@@ -174,13 +180,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
             .catch(() => alert("Ошибка регистрации"));
         }
       })
-      .catch(() =>
-        alert(
-          email
-            ? "Такой Email уже зарегистрирован"
-            : "Такой номер уже зарегистрирован"
-        )
-      );
+      .catch((err) => alert(Object.values(err.response.data)));
   };
 
   return (
@@ -291,7 +291,6 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
             Реферальный код{redirect}
           </label>
           <input
-            disabled
             name="referral"
             id="referral"
             type="text"

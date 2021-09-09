@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/main-page.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Header,
   Footer,
@@ -18,16 +18,16 @@ import {
   MediaAbout,
 } from "../components/index";
 
-import { loginAction, logoutAction } from "../redux/actions/userData";
+import { setRefCode } from "../redux/actions/userData";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (localStorage.getItem("key")) {
-      dispatch(loginAction());
-    } else dispatch(logoutAction());
-  }, [localStorage.getItem("key")]);
+    if (window.location.href.includes("?referral=")) {
+      dispatch(setRefCode(window.location.href.split("?referral=")[1]));
+    }
+  }, []);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,9 +45,9 @@ const Home = () => {
         <AbilitiesBlock />
         {false && <ReviewsBlock />}
         <AboutBlock />
+        <Partners />
         <News />
         <Categories />
-        <Partners />
         {false && <Adverts />}
         {false && <MediaAbout />}
         <Footer />

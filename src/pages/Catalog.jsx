@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import '..//css/Catalog.css';
-import { Footer, Header } from '../components/index.js';
-import { useSelector } from 'react-redux';
-import CatalogComponent from '../components/Catalog/CatalogComponent.jsx';
-import Vector1 from '../img/SearchPage/Vector1.png';
-import Vector2 from '../img/SearchPage/Vector2.png';
+import React, { useState } from "react";
+import "..//css/Catalog.css";
+import { Footer, Header } from "../components/index.js";
+import { useSelector } from "react-redux";
+import CatalogComponent from "../components/Catalog/CatalogComponent.jsx";
+import Vector1 from "../img/SearchPage/Vector1.png";
+import Vector2 from "../img/SearchPage/Vector2.png";
 const Catalog = () => {
   const { items, isLoaded } = useSelector(({ items }) => items);
   const [activeForm, setActiveForm] = useState(1);
@@ -31,12 +31,12 @@ const Catalog = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Каталог: #разделисдругим';
+    document.title = "Каталог: #разделисдругим";
   }, []);
 
   React.useEffect(() => {
-    if (window.location.href.split('?chapter_id=')[1]) {
-      setActiveForm(Number(window.location.href.split('?chapter_id=')[1]));
+    if (window.location.href.split("?chapter_id=")[1]) {
+      setActiveForm(Number(window.location.href.split("?chapter_id=")[1]));
     }
   }, [window.location.href]);
 
@@ -47,7 +47,7 @@ const Catalog = () => {
         <div className="Catalog_wrapper_container">
           <div className="Catalog_wrapper_container_up">
             {/* ТЕКС ПУТЕЙ ПО КАТЕГОРИЯМ ( с cardthings взято ) */}
-            <div style={{ display: 'none' }} className="card_shapka">
+            <div style={{ display: "none" }} className="card_shapka">
               <div>
                 <p className="card_shapka_hover"> Главная </p>
                 <img src={Vector1} alt="" />
@@ -72,30 +72,35 @@ const Catalog = () => {
               <div className="container_down_left_category">
                 {isLoaded &&
                   items &&
-                  [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          setActiveForm(chapter[1][0]);
-                        }}
-                        key={index}
-                        className="left_category_global_div">
-                        <img
-                          src={`https://razdelisdrugim.by${chapter[1][2]}`}
-                          alt=""
-                          className="category_img"
-                        />
-                        <p
-                          className={
-                            activeForm === chapter[1][0]
-                              ? 'left_category_global_div_active'
-                              : 'left_category_global_div'
-                          }>
-                          {chapter[0]}
-                        </p>
-                      </div>
-                    );
-                  })}
+                  [].concat
+                    .apply(Object.entries(chapters))
+                    .map((chapter, index) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            setActiveForm(chapter[1][0]);
+                            window.scrollTo(0, 0);
+                          }}
+                          key={index}
+                          className="left_category_global_div"
+                        >
+                          <img
+                            src={`https://razdelisdrugim.by${chapter[1][2]}`}
+                            alt=""
+                            className="category_img"
+                          />
+                          <p
+                            className={
+                              activeForm === chapter[1][0]
+                                ? "left_category_global_div_active"
+                                : "left_category_global_div"
+                            }
+                          >
+                            {chapter[0]}
+                          </p>
+                        </div>
+                      );
+                    })}
               </div>
             </div>
 
@@ -110,7 +115,7 @@ const Catalog = () => {
             className="container_down_left_burger"
             onClick={() => setActiveVector(!activeVector)}
             id="globaldata_mobile"
-            >
+          >
             <p className="container_down_left-p">Каталог</p>
             <img src={Vector2} alt="vector" className="vector2_img" />
           </div>
@@ -121,31 +126,35 @@ const Catalog = () => {
                 <div className="container_down_left_category">
                   {isLoaded &&
                     items &&
-                    [].concat.apply(Object.entries(chapters)).map((chapter, index) => {
-                      return (
-                        <div
-                          onClick={() => {
-                            setActiveForm(chapter[1][0]);
-                            setActiveVector(false);
-                          }}
-                          key={index}
-                          className="left_category_global_div">
-                          <img
-                            src={`https://razdelisdrugim.by${chapter[1][2]}`}
-                            alt=""
-                            className="category_img"
-                          />
-                          <p
-                            className={
-                              activeForm === chapter[1][0]
-                                ? 'left_category_global_div_active'
-                                : 'left_category_global_div_p'
-                            }>
-                            {chapter[0]}
-                          </p>
-                        </div>
-                      );
-                    })}
+                    [].concat
+                      .apply(Object.entries(chapters))
+                      .map((chapter, index) => {
+                        return (
+                          <div
+                            onClick={() => {
+                              setActiveForm(chapter[1][0]);
+                              setActiveVector(false);
+                            }}
+                            key={index}
+                            className="left_category_global_div"
+                          >
+                            <img
+                              src={`https://razdelisdrugim.by${chapter[1][2]}`}
+                              alt=""
+                              className="category_img"
+                            />
+                            <p
+                              className={
+                                activeForm === chapter[1][0]
+                                  ? "left_category_global_div_active"
+                                  : "left_category_global_div_p"
+                              }
+                            >
+                              {chapter[0]}
+                            </p>
+                          </div>
+                        );
+                      })}
                 </div>
               </div>
             )}
