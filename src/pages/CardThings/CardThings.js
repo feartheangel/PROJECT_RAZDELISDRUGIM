@@ -1015,7 +1015,7 @@ const CardThings = () => {
                                 itemData && itemData.profile.first_name
                               }. Пишу вам потому, что вы делитесь этим: '${
                                 itemData && itemData.name_item
-                              }' на платформе #разделисдругим.`}
+                              }' на платформе "Разделисдругим".`}
                               target="_blank"
                             >
                               <img
@@ -1995,7 +1995,7 @@ const CardThings = () => {
                                 itemData && itemData.profile.first_name
                               }. Пишу вам потому, что вы делитесь этим: '${
                                 itemData && itemData.name_item
-                              }' на платформе #разделисдругим.`}
+                              }' на платформе "Разделисдругим".`}
                               target="_blank"
                             >
                               <img

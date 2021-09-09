@@ -24,6 +24,7 @@ import {
   ConfidencePolicy,
   AccountDeletion,
   Contacts,
+  UsersAgreement,
 } from "./pages/index";
 import { PasswordRecoverySubmit } from "./components/index";
 import "./css/main-page.css";
@@ -155,6 +156,7 @@ function App() {
         <Route path="/confidence-policy" component={ConfidencePolicy} exact />
         <Route path="/account-deletion" component={AccountDeletion} exact />
         <Route path="/contacts" component={Contacts} exact />
+        <Route path="/users-agreement" component={UsersAgreement} exact />
         <div dangerouslySetInnerHTML={{ __html: YMetric }}></div>
         <div dangerouslySetInnerHTML={{ __html: GMetric }}></div>
       </div>

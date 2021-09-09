@@ -619,7 +619,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 alt=""
               />
             </p>
-            <span>
+            <span className="social_icons_profile_wrapper">
               <img
                 onClick={() => socialClickHandler("tg")}
                 className={
@@ -709,6 +709,26 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 setActiveSocial={setActiveSocial}
               />
             )}
+            <div className="referral_code_wrapper_profile">
+              <p>Ваш реферальный код:</p>
+              <input
+                disabled
+                className="referral_code_input_profile"
+                type="text"
+                value={userData && userData.referral_code}
+              />
+            </div>
+            <div className="referral_code_wrapper_profile">
+              <p>Ваша реферальныя ссылка:</p>
+              <input
+                disabled
+                className="referral_code_input_profile"
+                type="text"
+                value={`https://razdelisdrugim.by/?referral=${
+                  userData && userData.referral_code
+                }`}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -935,6 +955,10 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 setActiveSocial={setActiveSocial}
               />
             )}
+          </div>
+          <div className="referral_code_wrapper_profile">
+            <p>Ваш рефелральный код:</p>
+            <input type="text" value={userData && userData.referral_code} />
           </div>
         </div>
 

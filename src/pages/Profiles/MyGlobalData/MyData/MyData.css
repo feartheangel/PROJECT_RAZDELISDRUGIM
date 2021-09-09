@@ -460,6 +460,34 @@ option {
   cursor: pointer;
 }
 
+.referral_code_wrapper_profile {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.referral_code_input_profile {
+  margin-left: 5px;
+  width: 160px;
+  height: 45px;
+  padding: 5px 40px 5px 15px;
+  background: #ffffff;
+  border: 1.31722px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 6.5861px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #091d20;
+}
+
+.social_icons_profile_wrapper {
+  display: flex;
+  align-self: flex-start;
+}
+
 /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
 @media only screen and (max-width: 480px) {
   #profile_mobile {
