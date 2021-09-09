@@ -720,10 +720,12 @@ option {
   .referral_code_wrapper_profile {
     margin-bottom: 10px;
     flex-direction: column;
+    width: 100%;
     align-items: flex-start;
   }
 
   .referral_code_input_profile {
     margin-left: 0px;
+    width: 100%;
   }
 }

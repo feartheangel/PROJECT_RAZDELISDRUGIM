@@ -1007,10 +1007,6 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               </div>
             </div>
           </div>
-          <div className="referral_code_wrapper_profile">
-            <p>Ваш рефелральный код:</p>
-            <input type="text" value={userData && userData.referral_code} />
-          </div>
         </div>
 
         {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
