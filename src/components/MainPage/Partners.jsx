@@ -23,14 +23,26 @@ const Partners = () => {
         <p className="partners-main-title">С нами сотрудничают</p>
         <div className="partners-slider-container">
           <Swiper
-            spaceBetween={180}
-            slidesPerView={3}
+            spaceBetween={0}
+            slidesPerView={4}
             pagination={{ clickable: true }}
             id="swiper_comp"
+            style={{
+              display: "flex",
+              width:'100%',
+              justifyContent: "center",
+            }}
           >
             {partners &&
               partners.map((item, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide 
+                key={index}
+                style={{
+                  display: "flex",
+                  width:'25%',
+                  justifyContent: "center",
+                }}
+                >
                   <a href={item.link_partner} target="_blank">
                     <img
                       src={`https://razdelisdrugim.by${item.image_partner}`}
@@ -39,21 +51,50 @@ const Partners = () => {
                 </SwiperSlide>
               ))}
           </Swiper>
+          {/* мобилка */}
           <div id="swiper_mobile">
             <Swiper
-              style={{
-                display: "flex",
-                width: "250px",
-                justifyContent: "center",
-              }}
-              spaceBetween={20}
+              spaceBetween={0}
               slidesPerView={1}
               pagination={{ clickable: true }}
               id="swiper_mobile"
             >
               {partners &&
                 partners.map((item, index) => (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide
+                   key={index}
+                   style={{
+                    display: "flex",
+                    width: "250px",
+                    justifyContent: "center",
+                  }}
+                   >
+                    <a href={item.link_partner} target="_blank">
+                      <img
+                        src={`https://razdelisdrugim.by${item.image_partner}`}
+                      />
+                    </a>
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
+
+                    {/* планшеты */}
+                    <div id="global_ipad">
+            <Swiper
+              style={{
+                display: "flex",
+                width: "768px",
+                justifyContent: "center",
+              }}
+              spaceBetween={0}
+              slidesPerView={3}
+              pagination={{ clickable: true }}
+              id="swiper_mobile"
+            >
+              {partners &&
+                partners.map((item, index) => (
+                  <SwiperSlide key={index} style={{width:'25%'}}>
                     <a href={item.link_partner} target="_blank">
                       <img
                         src={`https://razdelisdrugim.by${item.image_partner}`}

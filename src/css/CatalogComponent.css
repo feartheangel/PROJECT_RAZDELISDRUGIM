@@ -133,9 +133,27 @@
 
 /* АДАПТИВ ПЛАНШЕТЫ до 1024 */
 @media only screen and (max-width: 1024px) and (min-width:481px) {
+
+    .CatalogComponent_shapka{
+        width: 100%;
+    }
     .CatalogComponent_informations{
         width: 100%;
     }
+
+    .CatalogComponent_shapka_img{
+        width: 100%;
+        min-width: 458px;
+    }
+    .CatalogComponent_list_left{
+        margin-right: 0;
+        width: 48%;
+    }
+    .CatalogComponent_list_right{
+        margin-right: 0;
+        width: 48%;
+    }
+
 
 
 

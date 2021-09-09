@@ -715,6 +715,12 @@ select {
 #br_gl{
   display: none;
 }
+#item_ipad{
+  display: none;
+}
+#take_Away_ipad{
+  display: none;
+}
 
 
 
@@ -931,6 +937,77 @@ select {
 
 
 
+
+/*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
+
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
+
+  #item_ipad{
+    display: flex;
+  }
+  #item_pk{
+    display: none;
+  }
+  #take_Away_komp{
+    display: none;
+  }
+  #take_Away_ipad{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .PlaseItem{
+    width: 100%;
+    min-width: auto;
+  }
+
+  .conteiner{
+    padding: 20px;
+    width: -webkit-fill-available;
+  }
+
+  .item-add-cost-choice-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .item_arend_block{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+  }
+  .upload-file__label{
+    left: 0;
+    margin-left: 20px;
+  }
+
+  /* опции из ДОБАВИТЬ ДРУГОЙ АДРЕС */
+  .add-item-input-text__address{
+    min-width: 230px;
+    max-width: 255px;
+    width: auto;
+  }
+  .add-item-cost-or__secondary{
+    margin: 0 20px 15px 20px;
+  }
+  .add-item-delivery-type-wrapper{
+    flex-wrap: wrap;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
