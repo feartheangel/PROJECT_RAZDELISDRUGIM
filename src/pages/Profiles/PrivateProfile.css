@@ -137,6 +137,40 @@
     font-weight: 500;
     margin-left: 10px;
   }
+
+  .privateProfile{
+    min-width: auto;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 100%;
+    height: auto;
+  }
+  .privateProfile_container{
+    padding: 0 20px;
+    width: -webkit-fill-available;
+    display: flex;
+  }
+  .conteiner_shapka{
+    margin: 20px 0 0 0;
+  }
+  .conteiner_shapka p{
+    font-size: 22px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

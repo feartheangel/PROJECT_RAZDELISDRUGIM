@@ -2486,6 +2486,7 @@ button {
   margin-right: 0;
 }
 .burger_dropdown_menu{
+  width: auto;
   left: 10px;
 }
 .search-wrapper{
@@ -2912,6 +2913,16 @@ button {
     margin-bottom: 15px;
   }
 
+
+  /* КАРТОЧКИ ИЗ Я СДАЮ В ПРОФИЛЕ */
+
+  .recent-block__profile{
+    margin: 10px;
+  }
+  .recent-cost-p{
+    width: 103px;
+    overflow-x: hidden;
+  }
 
 
 

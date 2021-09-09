@@ -459,6 +459,18 @@ option {
   color: #4cc9f0;
   cursor: pointer;
 }
+#profile_mobile {
+  display: none;
+}
+#profile_ipad{
+  display: none;
+}
+
+
+
+
+
+
 
 /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
 @media only screen and (max-width: 480px) {
@@ -689,3 +701,95 @@ option {
     width: 100%;
   }
 }
+
+
+
+@media only screen and (max-width: 1024px) and (min-width:481px) {
+
+  #profile_pk{
+    display: none;
+  }
+
+  #profile_ipad{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .container_profile_content{
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
+  .content_block2{
+    margin: 0 30px 0 0;
+    border-bottom: none;
+    padding-bottom: 10px;
+  }
+  .content_block1{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .my-data-settings-header-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .setting_right_socialNetworks{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 15px 0 10px 0;
+  }
+  .setting_right_socialNetworks-p{
+    margin-right: 10px;
+  }
+  .content_setting_right img{
+    margin: 0 10px 0 0 ;
+  }
+  .img_vector2{
+    margin: 0;
+  }
+  
+  .content_setting_right{
+    border-bottom: 1px solid rgba(76, 201, 240, 0.77);
+    align-items: flex-start;
+  }
+  .social_icons{
+    margin-bottom: 10px;
+  }
+  .content_block2_image img{
+    border-radius: 100%;
+    margin-right: 15px;
+  }
+  .content_block2_reviews{
+    margin: 10px 0 0 0 ;
+  }
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

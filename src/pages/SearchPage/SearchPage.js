@@ -766,8 +766,9 @@ const SearchPage = () => {
             </div>
 
             {/* ЦЕНА И ВЫБОР ДЛЯ ПЛАНШЕТОВ */}
-            <div className="SearchPage_container_content_left" id="search_ipad">
-              <ul>
+
+            <div className="SearchPage_container_content_left" id="search_ipad" >
+              <ul style={{display:'flex', flexDirection:'row'}}>
                 <div style={{display:'flex', flexDirection:'column'}}>
                 <li>
                   <p className="content_left_cost"> Цена </p>
@@ -932,6 +933,166 @@ const SearchPage = () => {
               <div
                 className="SearchPage_container_content_left"
                 id="search_mobile"
+              >
+                <ul>
+                  <li>
+                    <p className="content_left_cost"> Цена </p>
+                  </li>
+
+                  <li className="content_left_priceRange">
+                    <input
+                      value={min_price}
+                      onChange={(e) => minPriceHandler(e)}
+                      type="number"
+                      min="0"
+                      max="99999"
+                    />
+                    <label> до </label>
+                    <input
+                      value={max_price}
+                      onChange={(e) => maxPriceHandler(e)}
+                      type="number"
+                      min="0"
+                      max="99999"
+                    />
+                  </li>
+
+                  <li>
+                    <input
+                      style={{ cursor: "pointer" }}
+                      checked={free}
+                      onChange={freeRentHandler}
+                      id="free"
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ cursor: "pointer" }} htmlFor="free">
+                      Бесплатно
+                    </label>
+                  </li>
+
+                  <li>
+                    <input
+                      style={{ cursor: "pointer" }}
+                      checked={status === "2"}
+                      value="2"
+                      onChange={(e) => statusHandler(e)}
+                      id="companies"
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ cursor: "pointer" }} htmlFor="companies">
+                      Компании
+                    </label>
+                  </li>
+
+                  <li>
+                    <input
+                      style={{ cursor: "pointer" }}
+                      checked={status === "1"}
+                      value="1"
+                      onChange={(e) => statusHandler(e)}
+                      id="individual"
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ cursor: "pointer" }} htmlFor="individual">
+                      {" "}
+                      Частные лица{" "}
+                    </label>
+                  </li>
+
+                  <li>
+                    <input
+                      style={{ cursor: "pointer" }}
+                      checked={delivery}
+                      onChange={deliveryHandler}
+                      id="delivery"
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ cursor: "pointer" }} htmlFor="delivery">
+                      {" "}
+                      Доставка{" "}
+                    </label>
+                  </li>
+
+                  <li>
+                    <input
+                      style={{ cursor: "pointer" }}
+                      checked={insurance}
+                      onChange={insuranceHandler}
+                      id="insurance"
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ cursor: "pointer" }} htmlFor="insurance">
+                      {" "}
+                      Страховка{" "}
+                    </label>
+                  </li>
+
+                  <li>
+                    <input
+                      style={{ cursor: "pointer" }}
+                      checked={contract}
+                      onChange={contractHandler}
+                      id="contract"
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ cursor: "pointer" }} htmlFor="contract">
+                      {" "}
+                      По договору{" "}
+                    </label>
+                  </li>
+
+                  <li>
+                    <input
+                      style={{ cursor: "pointer" }}
+                      checked={pledge}
+                      onChange={pledgeHandler}
+                      id="pledge"
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ cursor: "pointer" }} htmlFor="pledge">
+                      {" "}
+                      Без залога{" "}
+                    </label>
+                  </li>
+
+                  <li>
+                    <input
+                      disabled
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label style={{ opacity: "0.6" }}> Акции </label>
+                  </li>
+                  <li>
+                    <input
+                      id="minPrice"
+                      disabled
+                      type="checkbox"
+                      className="input_left_checkbox"
+                    />
+                    <label htmlFor="minPrice" style={{ opacity: "0.6" }}>
+                      Скоро освободится
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            )}
+
+
+            {/* планшет версия левой стороны */}
+              {/* АДАПТИВ ЛЕВОЙ СТОРОНЫ */}
+              {filter && (
+              <div
+                className="SearchPage_container_content_left"
+                id="search_ipad"
+                style={{display:'flex', flexDirection:'row'}}
               >
                 <ul>
                   <li>

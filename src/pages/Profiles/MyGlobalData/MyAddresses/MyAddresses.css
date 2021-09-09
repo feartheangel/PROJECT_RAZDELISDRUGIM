@@ -14,6 +14,7 @@
   flex-direction: column;
   width: 50%;
   height: auto;
+  margin-top: 20px;
 }
 .myAddresses_content_addresses_left li:not(:last-child) {
   margin-bottom: 20px;
@@ -122,14 +123,39 @@
   }
 
 
+  }
 
 
 
 
+  /* ПЛАНШЕТ АДАПТАЦИЯ */
 
+@media only screen and (max-width: 1024px) and (min-width:481px) {
 
+  #globaldata_ipad{
+    display: flex;
+  }
 
-
+  .addresses_left_address1{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+  }
+  .myAddresses_content_addresses_left{
+    margin: 0;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .address_row_style{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin-bottom: 10px;
+    align-items: baseline;
+  }
+  .address_row_style img{
+    width: 10px;
+    height: 10px;
+  }
 
 
 

@@ -512,7 +512,7 @@
 }
 .SearchPage_container_content_left ul{
   width: 100%;
-  flex-direction: row;
+  /* flex-direction: row; */
 }
 .all_content_blocks{
   min-width: auto;

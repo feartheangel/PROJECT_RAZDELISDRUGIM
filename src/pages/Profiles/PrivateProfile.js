@@ -151,6 +151,49 @@ const PrivateProfile = () => {
             </p>
           </div>
 
+          {/* ДЛЯ ПЛАНШЕТОВ */}
+
+          <div className="conteiner_shapka" id="globaldata_ipad">
+            <Link
+              style={{ textDecoration: "none" }}
+              className="conteiner_shapka_myProfile"
+              to="/i-rent-out"
+            >
+              <p>
+                Я сдаю <span> {subjects.length} </span>
+              </p>
+            </Link>
+            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
+              Я беру <span> - </span>
+            </p>
+            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
+              Мои сообщения <span> - </span>
+            </p>
+            <Link
+              style={{ textDecoration: "none" }}
+              className="conteiner_shapka_myProfile"
+              to="/favorites"
+            >
+              <p
+                className={
+                  activeForm === "favorites" &&
+                  "privateProfile_container_favorites"
+                }
+              >
+                Избранное
+              </p>
+            </Link>
+            <p
+              className={
+                activeForm === "myProfile" && "conteiner_shapka_myProfile"
+              }
+              onClick={() => setActiveForm("myProfile")}
+            >
+              {" "}
+              Мой профиль
+            </p>
+          </div>
+
           {activeForm === "myProfile" && (
             <MyData
               setModalActiveSubmit={setModalActiveSubmit}
