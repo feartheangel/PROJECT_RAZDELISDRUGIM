@@ -67,7 +67,10 @@ const PlaceItem = () => {
 
   //обрабочтик цены аренды
   const setCostArendsHandler = (e) => {
-    console.log(e.target.value);
+    if (e.target.value > 10000) {
+      return;
+    }
+
     if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setCostArends(e.target.value);
     }
@@ -83,6 +86,9 @@ const PlaceItem = () => {
 
   //обработчик цены продажи
   const setCostHandler = (e) => {
+    if (e.target.value > 1000000) {
+      return;
+    }
     if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setCost(e.target.value);
     }
@@ -902,70 +908,71 @@ const PlaceItem = () => {
               </label>
             </div>
 
-                        {/* БЛОК АРЕНДА ДЛЯ ПЛАНШЕТА */}
+            {/* БЛОК АРЕНДА ДЛЯ ПЛАНШЕТА */}
             <div className="item-add-cost-choice-wrapper" id="item_ipad">
               <div className="item_arend_block">
-              <div
-                style={{ marginRight: "5px" }}
-                className="add-item-input-wrapper"
-              >
-                <label className="add-item-input-label">
-                  Стоимость вещи <span className="add-item-span-zvezda">*</span>
-                </label>
-                <div>
-                  <input
-                    className="add-item-input-number"
-                    type="number"
-                    max="9999"
-                    step="any"
-                    placeholder="0.00"
-                    value={costArends}
-                    disabled={giveFree || yourCost}
-                    onChange={(e) => setCostArendsHandler(e)}
-                  />
-                </div>
-              </div>
-              <span className="span-valuts">BYN</span>
-              <div className="add-item-input-wrapper">
-                <label className="add-item-input-label">
-                  Срок <span className="add-item-span-zvezda">*</span>
-                </label>
-                <select
-                  className="add-item-select-input__time"
-                  onChange={(e) => timeArendsHandler(e)}
+                <div
+                  style={{ marginRight: "5px" }}
+                  className="add-item-input-wrapper"
                 >
-                  <option value="HOUR">Час</option>
-                  <option value="DAY" selected>
-                    Сутки
-                  </option>
-                  <option value="WEEK">Неделя</option>
-                  <option value="MONTH">Месяц</option>
-                </select>
-              </div>
+                  <label className="add-item-input-label">
+                    Стоимость вещи{" "}
+                    <span className="add-item-span-zvezda">*</span>
+                  </label>
+                  <div>
+                    <input
+                      className="add-item-input-number"
+                      type="number"
+                      max="9999"
+                      step="any"
+                      placeholder="0.00"
+                      value={costArends}
+                      disabled={giveFree || yourCost}
+                      onChange={(e) => setCostArendsHandler(e)}
+                    />
+                  </div>
+                </div>
+                <span className="span-valuts">BYN</span>
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">
+                    Срок <span className="add-item-span-zvezda">*</span>
+                  </label>
+                  <select
+                    className="add-item-select-input__time"
+                    onChange={(e) => timeArendsHandler(e)}
+                  >
+                    <option value="HOUR">Час</option>
+                    <option value="DAY" selected>
+                      Сутки
+                    </option>
+                    <option value="WEEK">Неделя</option>
+                    <option value="MONTH">Месяц</option>
+                  </select>
+                </div>
               </div>
 
               <div className="item_arend_block">
-              <label class="checkbox-btn">
-                <input
-                  onChange={() => setYourCost(!yourCost)}
-                  type="checkbox"
-                  checked={yourCost}
-                  disabled={giveFree}
-                />
-                <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                  Предлагать цену{" "}
-                </span>
-              </label>
-              <span className="add-item-cost-or">или</span>
-              <label class="checkbox-btn" id="checkbox-btn2">
-                <input
-                  onChange={() => setGiveFree(!giveFree)}
-                  type="checkbox"
-                  checked={giveFree}
-                  disabled={yourCost}
-                />
-                <span id="checkbox-btn1">Бесплатно</span>
-              </label>
+                <label class="checkbox-btn">
+                  <input
+                    onChange={() => setYourCost(!yourCost)}
+                    type="checkbox"
+                    checked={yourCost}
+                    disabled={giveFree}
+                  />
+                  <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
+                    Предлагать цену{" "}
+                  </span>
+                </label>
+                <span className="add-item-cost-or">или</span>
+                <label class="checkbox-btn" id="checkbox-btn2">
+                  <input
+                    onChange={() => setGiveFree(!giveFree)}
+                    type="checkbox"
+                    checked={giveFree}
+                    disabled={yourCost}
+                  />
+                  <span id="checkbox-btn1">Бесплатно</span>
+                </label>
               </div>
             </div>
 
@@ -1317,51 +1324,54 @@ const PlaceItem = () => {
                 >
                   <div
                     className="take-away-secondary-wrapper"
-                    style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
                   >
-                    <div style={{display:'flex', flexDirection:'row'}}>
-                    <div
-                      className="add-item-input-wrapper"
-                      id="add_item_gl_margin"
-                    >
-                      <label className="add-item-input-label">
-                        Дом <span className="add-item-span-zvezda">*</span>
-                      </label>
-                      <input
-                        disabled={room || office || building}
-                        type="text"
-                        className="add-item-input-text__address__house"
-                        value={house}
-                        onChange={(e) => setHouse(e.target.value)}
-                      />
-                    </div>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <div
+                        className="add-item-input-wrapper"
+                        id="add_item_gl_margin"
+                      >
+                        <label className="add-item-input-label">
+                          Дом <span className="add-item-span-zvezda">*</span>
+                        </label>
+                        <input
+                          disabled={room || office || building}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={house}
+                          onChange={(e) => setHouse(e.target.value)}
+                        />
+                      </div>
 
-                    <div
-                      className="add-item-input-wrapper"
-                      id="add_item_gl_margin"
-                    >
-                      <label className="add-item-input-label">Корпус</label>
-                      <input
-                        disabled={room || office || building}
-                        type="text"
-                        className="add-item-input-text__address__house"
-                        value={body}
-                        onChange={(e) => setBody(e.target.value)}
-                      />
-                    </div>
+                      <div
+                        className="add-item-input-wrapper"
+                        id="add_item_gl_margin"
+                      >
+                        <label className="add-item-input-label">Корпус</label>
+                        <input
+                          disabled={room || office || building}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={body}
+                          onChange={(e) => setBody(e.target.value)}
+                        />
+                      </div>
 
-                    <div className="add-item-input-wrapper">
-                      <label className="add-item-input-label">Квартира</label>
-                      <input
-                        disabled={room || office || building}
-                        type="text"
-                        className="add-item-input-text__address__house"
-                        value={flat}
-                        onChange={(e) => setFlat(e.target.value)}
-                      />
+                      <div className="add-item-input-wrapper">
+                        <label className="add-item-input-label">Квартира</label>
+                        <input
+                          disabled={room || office || building}
+                          type="text"
+                          className="add-item-input-text__address__house"
+                          value={flat}
+                          onChange={(e) => setFlat(e.target.value)}
+                        />
+                      </div>
                     </div>
-                    </div>
-
 
                     <span
                       style={{ marginRight: "30px", display: "flex" }}
@@ -1372,7 +1382,7 @@ const PlaceItem = () => {
 
                     <div
                       className="take-away-secondary-wrapper"
-                      style={{display:'flex', flexDirection:'row'}}
+                      style={{ display: "flex", flexDirection: "row" }}
                     >
                       <div
                         className="add-item-input-wrapper"
@@ -1417,7 +1427,6 @@ const PlaceItem = () => {
                     </div>
                   </div>
                 </div>
-
 
                 <input
                   disabled={requestActive}
@@ -1940,7 +1949,10 @@ const PlaceItem = () => {
                   </div>
 
                   {/*  СТРАХОВАНИЕ  */}
-                  <div className="take-away-secondary-wrapper" id="take_Away_komp">
+                  <div
+                    className="take-away-secondary-wrapper"
+                    id="take_Away_komp"
+                  >
                     <div className="take-away-secondary-wrapper-column">
                       <div className="take-away-secondary-wrapper">
                         <div className="checkbox-btn secondary">
@@ -2040,10 +2052,13 @@ const PlaceItem = () => {
                     </div>
                   </div>
 
-                                    {/*  СТРАХОВАНИЕ  - ПЛАНШЕТ БЛОК */}
-                    <div className="take-away-secondary-wrapper" id="item_ipad">
+                  {/*  СТРАХОВАНИЕ  - ПЛАНШЕТ БЛОК */}
+                  <div className="take-away-secondary-wrapper" id="item_ipad">
                     <div className="take-away-secondary-wrapper-column">
-                      <div className="take-away-secondary-wrapper" style={{alignItems:'baseline'}}>
+                      <div
+                        className="take-away-secondary-wrapper"
+                        style={{ alignItems: "baseline" }}
+                      >
                         <div className="checkbox-btn secondary">
                           <input
                             type="checkbox"
@@ -2058,10 +2073,10 @@ const PlaceItem = () => {
                           </span>
                         </div>
                         {insurance && (
-                          <div 
-                          className="take-away-secondary-wrapper"
-                          style={{flexWrap:'wrap'}}
-                           >
+                          <div
+                            className="take-away-secondary-wrapper"
+                            style={{ flexWrap: "wrap" }}
+                          >
                             <div
                               className="add-item-radio-wrapper"
                               onChange={(e) => setInsuranceTime(e.target.value)}
@@ -2176,7 +2191,10 @@ const PlaceItem = () => {
 
                   {/*  СЕРВИСНЫЙ СБОР  */}
 
-                  <div className="take-away-secondary-wrapper" id="take_Away_komp">
+                  <div
+                    className="take-away-secondary-wrapper"
+                    id="take_Away_komp"
+                  >
                     <div className="checkbox-btn secondary">
                       <input
                         type="checkbox"
@@ -2253,10 +2271,17 @@ const PlaceItem = () => {
                     )}
                   </div>
 
-                 {/*  СЕРВИСНЫЙ СБОР - ПЛАНШЕТ ВЕРСИЯ  */}
+                  {/*  СЕРВИСНЫЙ СБОР - ПЛАНШЕТ ВЕРСИЯ  */}
 
-                  <div className="take-away-secondary-wrapper" id="item_ipad" style={{flexDirection:'column', alignItems:'flex-start'}}>
-                    <div className="checkbox-btn secondary" >
+                  <div
+                    className="take-away-secondary-wrapper"
+                    id="item_ipad"
+                    style={{
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <div className="checkbox-btn secondary">
                       <input
                         type="checkbox"
                         className="input-checkbox"
@@ -2271,7 +2296,10 @@ const PlaceItem = () => {
                     </div>
                     {serviceSbor && (
                       <span>
-                        <div className="take-away-secondary-wrapper" style={{flexWrap:'wrap'}}>
+                        <div
+                          className="take-away-secondary-wrapper"
+                          style={{ flexWrap: "wrap" }}
+                        >
                           <div
                             className="add-item-radio-wrapper"
                             onChange={(e) =>
@@ -2331,8 +2359,6 @@ const PlaceItem = () => {
                       </span>
                     )}
                   </div>
-
-
                 </div>
               </div>
             )}

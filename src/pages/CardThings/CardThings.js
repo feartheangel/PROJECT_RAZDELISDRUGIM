@@ -115,14 +115,14 @@ const CardThings = () => {
 
   React.useEffect(() => {
     let isMounted = true;
-    Requests.getSingleItem(window.location.href.split("?id=")[1]).then(
-      (response) => {
-        if (isMounted) {
-          setItemData(response.data);
-          setSelectedImage(response.data.image_1);
-        }
+    Requests.getSingleItem(
+      window.location.href.split("?id=")[1].split("&")[0]
+    ).then((response) => {
+      if (isMounted) {
+        setItemData(response.data);
+        setSelectedImage(response.data.image_1);
       }
-    );
+    });
 
     Requests.search().then((response) => {
       setSimillarSubjects(response.data);

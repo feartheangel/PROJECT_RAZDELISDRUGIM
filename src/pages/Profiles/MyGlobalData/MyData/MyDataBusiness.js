@@ -1398,7 +1398,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
         </div>
       </div>
 
-                        {/* ПЛАНШЕТ версия */}
+      {/* ПЛАНШЕТ версия */}
       <div id="profile_ipad">
         {/* ШАПКА С ПРОФИЛЕМ*/}
         {/*верхняя часть*/}
@@ -1950,8 +1950,6 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
           </form>
         </div>
       </div>
-
-
     </div>
   );
 };
