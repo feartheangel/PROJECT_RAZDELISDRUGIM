@@ -154,6 +154,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
 
       {showAddressAddTable && (
         <div className="take-away-secondary-wrapper-column">
+          <div className="take-away-secondary-wrapper-column" id="globaldata_pk">
           <div className="take-away-secondary-wrapper">
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
@@ -219,6 +220,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
                 onChange={(e) => setIndex(e.target.value)}
               />
             </div>
+          </div>
           </div>
 
           <div className="take-away-secondary-wrapper" id="globaldata_pk">
@@ -303,7 +305,228 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
             </div>
           </div>
 
+          {/* ПЛАНШЕТ */}
+
+          <div className="take-away-secondary-wrapper" id="globaldata_ipad"  style={{flexDirection:'column'}}>
+            <div className="take-away-secondary-wrapper" style={{flexWrap:'wrap'}}>
+            <div className="take-away-secondary-wrapper" style={{flexWrap:'wrap'}}>
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Область <span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: Минская"
+                type="text"
+                className="add-item-input-text__address"
+                value={area}
+                onChange={(e) => setArea(e.target.value)}
+              />
+            </div>
+
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Населенный пункт <span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: Минск"
+                type="text"
+                className="add-item-input-text__address"
+                value={locality}
+                onChange={(e) => setLocality(e.target.value)}
+              />
+            </div>
+
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">Район</label>
+              <input
+                placeholder="Например: Советский"
+                type="text"
+                className="add-item-input-text__address"
+                value={district}
+                onChange={(e) => setDistrict(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="take-away-secondary-wrapper" style={{flexWrap:'wrap'}}>
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Улица/Проспект/Переулок <span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
+                type="text"
+                className="add-item-input-text__address__street"
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
+              />
+            </div>
+
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Индекс<span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: 225417"
+                type="text"
+                className="add-item-input-text__address"
+                value={index}
+                onChange={(e) => setIndex(e.target.value)}
+              />
+            </div>
+          </div>
+            </div>
+            <div className="take-away-secondary-wrapper" style={{flexWrap:'wrap'}}>
+              <div className="add-item-input-wrapper">
+                <label className="add-item-input-label">
+                  Дом <span className="add-item-span-zvezda">*</span>
+                </label>
+                <input
+                  disabled={room || office || building}
+                  type="text"
+                  className="add-item-input-text__address__house"
+                  value={house}
+                  onChange={(e) => setHouse(e.target.value)}
+                />
+              </div>
+
+              <div className="take-away-secondary-wrapper">
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Корпус</label>
+                  <input
+                    disabled={room || office || building}
+                    type="text"
+                    className="add-item-input-text__address__house"
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                  />
+                </div>
+
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">Квартира</label>
+                  <input
+                    disabled={room || office || building}
+                    type="text"
+                    className="add-item-input-text__address__house"
+                    value={flat}
+                    onChange={(e) => setFlat(e.target.value)}
+                  />
+                </div>
+              </div>
+              <span style={{ marginRight: '30px' }} className="add-item-cost-or__secondary">
+                или
+              </span>
+              <div className="take-away-secondary-wrapper">
+                <div className="add-item-input-wrapper">
+                  <label className="add-item-input-label">
+                    Помещение <span className="add-item-span-zvezda">*</span>
+                  </label>
+                  <input
+                    disabled={house || body || flat}
+                    type="text"
+                    className="add-item-input-text__address__house"
+                    value={room}
+                    onChange={(e) => setRoom(e.target.value)}
+                  />
+                </div>
+
+                <div className="take-away-secondary-wrapper">
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">Офис</label>
+                    <input
+                      disabled={house || body || flat}
+                      type="text"
+                      className="add-item-input-text__address__house"
+                      value={office}
+                      onChange={(e) => setOffice(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="add-item-input-wrapper">
+                    <label className="add-item-input-label">Строение</label>
+                    <input
+                      disabled={house || body || flat}
+                      type="text"
+                      className="add-item-input-text__address__house"
+                      value={building}
+                      onChange={(e) => setBuilding(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* МОБИЛЬНАЯ ВЕРСИЯ ( дом квартира и тд ) */}
+
+          <div className="take-away-secondary-wrapper-column" id="globaldata_mobile">
+          <div className="take-away-secondary-wrapper">
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Область <span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: Минская"
+                type="text"
+                className="add-item-input-text__address"
+                value={area}
+                onChange={(e) => setArea(e.target.value)}
+              />
+            </div>
+
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Населенный пункт <span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: Минск"
+                type="text"
+                className="add-item-input-text__address"
+                value={locality}
+                onChange={(e) => setLocality(e.target.value)}
+              />
+            </div>
+
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">Район</label>
+              <input
+                placeholder="Например: Советский"
+                type="text"
+                className="add-item-input-text__address"
+                value={district}
+                onChange={(e) => setDistrict(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="take-away-secondary-wrapper">
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Улица/Проспект/Переулок <span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
+                type="text"
+                className="add-item-input-text__address__street"
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
+              />
+            </div>
+
+            <div className="add-item-input-wrapper">
+              <label className="add-item-input-label">
+                Индекс<span className="add-item-span-zvezda">*</span>
+              </label>
+              <input
+                placeholder="Например: 225417"
+                type="text"
+                className="add-item-input-text__address"
+                value={index}
+                onChange={(e) => setIndex(e.target.value)}
+              />
+            </div>
+          </div>
+          </div>
 
           <div className="take-away-secondary-wrapper" id="globaldata_mobile">
             <div className="take-away-secondary-wrapper" id="take-away-secondary-wrapper">

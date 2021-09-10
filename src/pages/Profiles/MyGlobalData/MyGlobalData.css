@@ -95,6 +95,19 @@ textarea {
 #swiper_mobile_800{
   display: none;
 }
+#globaldata_ipad{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
@@ -175,6 +188,30 @@ textarea {
     display: flex;
     width: 100%;
   }
+
+  #globaldata_ipad{
+    display: flex;
+  }
+
+  .container_profile{
+    width: -webkit-fill-available;
+  }
+
+  .container_profile_content__myItems{
+    width: -webkit-fill-available;
+    padding: 20px;
+    justify-content: space-evenly;
+  }
+
+
+
+
+
+
+
+
+
+
 
 }
 
