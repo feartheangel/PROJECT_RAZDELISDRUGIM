@@ -2359,7 +2359,7 @@ button {
     padding: 10px 5px;
     height: 450px;
     margin-bottom: 20px;
-    height: 400px;
+    height: 420px;
   }
   .recent-block-wrapper {
     display: flex;
@@ -2443,123 +2443,120 @@ button {
     display: none;
   }
 
-/* header */
-.header__inner{
-  display: flex;
-  width: auto;
-  justify-content: space-between;
-  padding: 0 20px;
-  width: -webkit-fill-available;
-}
-.logo{
-  max-width: 200px;
-  width: 80%;
-  margin: 0;
-}
-.selector_header_items{
-  width: auto;
-}
-.add-subject{
-  max-width: 228px;
-  min-width: 180px;
-  width: -webkit-fill-available;
-}
-.add-subject2{
-  max-width: 228px;
-  min-width: 180px;
-}
-.header-lower-table{
-  width: -webkit-fill-available;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-.burger-button{
-  margin-right: 0;
-}
-.burger_dropdown_menu{
-  width: auto;
-  left: 10px;
-}
-.search-wrapper{
-  width: auto;
-}
-.search-input{
-  width: 500px;
-}
+  /* header */
+  .header__inner {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: -webkit-fill-available;
+  }
+  .logo {
+    max-width: 200px;
+    width: 80%;
+    margin: 0;
+  }
+  .selector_header_items {
+    width: auto;
+  }
+  .add-subject {
+    max-width: 228px;
+    min-width: 180px;
+    width: -webkit-fill-available;
+  }
+  .add-subject2 {
+    max-width: 228px;
+    min-width: 180px;
+  }
+  .header-lower-table {
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .burger-button {
+    margin-right: 0;
+  }
+  .burger_dropdown_menu {
+    width: auto;
+    left: 10px;
+  }
+  .search-wrapper {
+    width: auto;
+  }
+  .search-input {
+    width: 500px;
+  }
 
-/* БОЛЬШОЕ ЛОГО И КНОПКИ  */
-.recent-wrapper{
-  padding: 0 20px;
-  width: -webkit-fill-available;
-  justify-content: space-between;
-}
-.main_page_first_content{
-  width: 100%;
-}
-.main_page_fris_block_left{
-  margin: 0;
-  width: 60%;
-}
-.FirstImage1{
-  width: 40%;
-}
+  /* БОЛЬШОЕ ЛОГО И КНОПКИ  */
+  .recent-wrapper {
+    padding: 0 20px;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+  }
+  .main_page_first_content {
+    width: 100%;
+  }
+  .main_page_fris_block_left {
+    margin: 0;
+    width: 60%;
+  }
+  .FirstImage1 {
+    width: 40%;
+  }
 
-
-/*  СЛАЙДЕРА БЛОК */
-.recent-content{
-  padding: 0;
-  width: 100%;
-}
-.recent-blocks-slider-container{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 545px;
-  padding: 10px 0 5px 0;
-  margin-top: 10px;
-  margin: 20px 0 15px 0;
-}
-.recent-block{
-  cursor: pointer;
-  width: auto;
-  max-width: 200px;
-  margin: 20px 5px;
-  height: 450px;
-}
-#wrapper_slider{
-  padding: 0;
-}
-.recent-blocks-wrapper{
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: auto;
-  padding: 0;
-}
-.recent-block-title-name{
-  font-style: normal;
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 19px;
-  color: #000000;
-  margin-top: 10px;
-  max-height: 55px;
-  overflow-y: hidden;
-}
-.recent-block-up{
-  width: auto;
-  overflow: visible;
-  height: auto;
-}
-.recent-time-cost-wrapper{
-  margin-top: 10px;
-}
-.recent-block-title-p{
-  margin-top: 30px;
-}
-
-
+  /*  СЛАЙДЕРА БЛОК */
+  .recent-content {
+    padding: 0;
+    width: 100%;
+  }
+  .recent-blocks-slider-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 545px;
+    padding: 10px 0 5px 0;
+    margin-top: 10px;
+    margin: 20px 0 15px 0;
+  }
+  .recent-block {
+    cursor: pointer;
+    width: auto;
+    max-width: 200px;
+    margin: 20px 5px;
+    height: 450px;
+  }
+  #wrapper_slider {
+    padding: 0;
+  }
+  .recent-blocks-wrapper {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+  .recent-block-title-name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 19px;
+    color: #000000;
+    margin-top: 10px;
+    max-height: 55px;
+    overflow-y: hidden;
+  }
+  .recent-block-up {
+    width: auto;
+    overflow: visible;
+    height: auto;
+  }
+  .recent-time-cost-wrapper {
+    margin-top: 10px;
+  }
+  .recent-block-title-p {
+    margin-top: 30px;
+  }
 
   /* header */
   .header__inner {
@@ -3015,28 +3012,13 @@ button {
     margin-bottom: 15px;
   }
 
-
   /* КАРТОЧКИ ИЗ Я СДАЮ В ПРОФИЛЕ */
 
-  .recent-block__profile{
+  .recent-block__profile {
     margin: 10px;
   }
-  .recent-cost-p{
+  .recent-cost-p {
     width: 103px;
     overflow-x: hidden;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -1184,6 +1184,7 @@ axios.interceptors.response.use(
           localStorage.removeItem("key");
           localStorage.removeItem("refresh");
           localStorage.removeItem("social");
+          localStorage.removeItem("ref");
           setTimeout(() => {
             window.location.href = "https://razdelisdrugim.by";
           }, 2000);
@@ -1199,6 +1200,7 @@ axios.interceptors.response.use(
       localStorage.removeItem("key");
       localStorage.removeItem("refresh");
       localStorage.removeItem("social");
+      localStorage.removeItem("ref");
       setTimeout(() => {
         window.location.href = "https://razdelisdrugim.by";
       }, 2000);

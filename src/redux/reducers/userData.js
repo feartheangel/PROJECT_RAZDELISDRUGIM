@@ -7,7 +7,6 @@ const initialState = {
   subjects: [],
   favorites: [],
   reload: false,
-  ref_code: "",
 };
 
 const userData = (state = initialState, action) => {
@@ -71,13 +70,6 @@ const userData = (state = initialState, action) => {
       return {
         ...state,
         favorites: action.payload,
-      };
-      break;
-
-    case "SET_REF_CODE":
-      return {
-        ...state,
-        ref_code: action.payload,
       };
       break;
   }

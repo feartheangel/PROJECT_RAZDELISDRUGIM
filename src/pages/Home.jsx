@@ -18,14 +18,12 @@ import {
   MediaAbout,
 } from "../components/index";
 
-import { setRefCode } from "../redux/actions/userData";
-
 const Home = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     if (window.location.href.includes("?referral=")) {
-      dispatch(setRefCode(window.location.href.split("?referral=")[1]));
+      localStorage.setItem("ref", window.location.href.split("?referral=")[1]);
     }
   }, []);
 

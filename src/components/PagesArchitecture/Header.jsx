@@ -84,6 +84,7 @@ const Header = () => {
     localStorage.removeItem("key");
     localStorage.removeItem("refresh");
     localStorage.removeItem("social");
+    localStorage.removeItem("ref");
     dispatch(logoutAction());
     setRedirect(<Redirect to="/" />);
   };

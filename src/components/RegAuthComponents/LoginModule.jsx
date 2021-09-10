@@ -186,7 +186,10 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
             </label>
           )}
           <div className="log-form-text-label-l__recover">
-            <label onClick={() => setActiveForm("passwordRecoveryEntry")}>
+            <label
+              className="reg_form_link"
+              onClick={() => setActiveForm("passwordRecoveryEntry")}
+            >
               Забыли пароль?
             </label>
           </div>

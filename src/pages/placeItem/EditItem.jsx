@@ -50,7 +50,6 @@ const EditItem = () => {
       return;
     }
     parsedFiles = Array.from(e.target.files);
-    console.log(parsedFiles);
     parsedFiles.forEach((file) => {
       if (file.size > 4.9e6) {
         alert("Вес одной картинки не может превышать 5 мегабайт!");
@@ -61,12 +60,13 @@ const EditItem = () => {
     });
     setLoadedPhotos(resultList);
     forceUpdate();
-    console.log(loadedPhotos);
   };
 
   //обрабочтик цены аренды
   const setCostArendsHandler = (e) => {
-    console.log(e.target.value);
+    if (e.target.value > 10000) {
+      return;
+    }
     if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setCostArends(e.target.value);
     }
@@ -82,7 +82,9 @@ const EditItem = () => {
 
   //обработчик цены продажи
   const setCostHandler = (e) => {
-    console.log(e.target.value);
+    if (e.target.value > 1000000) {
+      return;
+    }
     if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setCost(e.target.value);
     }

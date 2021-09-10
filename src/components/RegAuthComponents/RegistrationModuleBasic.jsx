@@ -50,26 +50,19 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   const [passwordSubmitDirty, setPasswordSubmitDirty] = React.useState();
   const [referral, setReferral] = React.useState("");
   const [regType, setRegType] = React.useState("1");
+  const [agree, setAgree] = React.useState(false);
   const [formValid, setFormValid] = React.useState(false);
   const [successLogin, setSuccessLogin] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
 
-  const { ref_code } = useSelector(({ userData }) => userData);
-
   //проврека формы на валидность
   React.useEffect(() => {
-    if (contactError || passwordError || passwordSubmitError) {
+    if (contactError || passwordError || passwordSubmitError || !agree) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-
-    //проверка на строку авторизации Google
-    if (window.location.href.split("&code")[1]) {
-      code = window.location.href.split("&code")[1].split("&")[0];
-      console.log(code);
-    }
-  }, [contactError, passwordError, passwordSubmitError]);
+  }, [contactError, passwordError, passwordSubmitError, agree]);
 
   React.useEffect(() => {
     //проверка на строку авторизации через соц. сети
@@ -106,11 +99,14 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   }, [window.location.href]);
 
   React.useEffect(() => {
-    setReferral(ref_code);
+    localStorage.getItem("ref") && setReferral(localStorage.getItem("ref"));
   }, []);
 
   //обработчики полей ввода
   const contactHandler = (e) => {
+    if (e.target.value.includes(" ")) {
+      return;
+    }
     setContactDirty(true);
     setContact(e.target.value);
     if (
@@ -171,10 +167,16 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
             contact
           )
             .then((response) => {
-              console.log(response);
               if (response.status === 200 || response.status === 201) {
-                alert("Регистрация прошла успешно, войдите со своими данными");
-                setActiveForm("login");
+                Requests.login(contact, password).then((res) => {
+                  localStorage.setItem("key", res.data.access);
+                  localStorage.setItem("refresh", res.data.refresh);
+                  dispatch(loginAction());
+                  setModalActive(false);
+                  setContact("");
+                  setPassword("");
+                  setPasswordSubmit("");
+                });
               }
             })
             .catch(() => alert("Ошибка регистрации"));
@@ -211,11 +213,29 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
         </li>
       </ul>
       <div className="reg-form-socials">
-        <img onClick={vkAuth} src={vkLogo} alt="VK" />
-        <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-        <img onClick={googleAuth} src={googleLogo} alt="Google" />
+        <img
+          style={localStorage.getItem("ref") ? { display: "none" } : {}}
+          onClick={vkAuth}
+          src={vkLogo}
+          alt="VK"
+        />
+        <img
+          style={localStorage.getItem("ref") ? { display: "none" } : {}}
+          onClick={facebookAuth}
+          src={facebookLogo}
+          alt="Facebook"
+        />
+        <img
+          style={localStorage.getItem("ref") ? { display: "none" } : {}}
+          onClick={googleAuth}
+          src={googleLogo}
+          alt="Google"
+        />
       </div>
-      <div className="reg-form-text-label-p">
+      <div
+        style={localStorage.getItem("ref") ? { display: "none" } : {}}
+        className="reg-form-text-label-p"
+      >
         <p>или</p>
       </div>
       <div className="reg-form-input-area">
@@ -338,22 +358,50 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
               </label>
             </div>
           </div>
+          <div className="reg-form-annotation-wrapper">
+            <div className="reg-form-annotation">
+              <input
+                type="checkbox"
+                name="agree"
+                id="agree"
+                className="reg-form-checkbox-button"
+                checked={agree}
+                onChange={() => setAgree(!agree)}
+              />
+              <label
+                htmlFor="agree"
+                className="reg-form-text-label-l__radio"
+              ></label>
+              <p>
+                Даю согласие на{" "}
+                <a
+                  className="reg_form_link"
+                  href="/confidence-policy"
+                  rel="noreffer"
+                  target="_blank"
+                >
+                  обработку персональных данных
+                </a>{" "}
+                и принимаю{" "}
+                <a
+                  className="reg_form_link"
+                  href="/users-agreement"
+                  rel="noreffer"
+                  target="_blank"
+                >
+                  условия пользовательского соглашения
+                </a>
+              </p>
+            </div>
+          </div>
           <input
+            style={!formValid ? { opacity: "0.6", pointerEvents: "none" } : {}}
             onClick={onClickSubmit}
             type="button"
             value="Зарегистрироваться"
             className="reg-form-submit-button"
-            disabled={!formValid}
           />
         </form>
-      </div>
-      <div className="reg-form-annotation-wrapper">
-        <div className="reg-form-annotation">
-          <p>
-            Нажимая «Зарегистрироваться», даю согласие на обработку персональных
-            данных и принимаю условия пользовательского соглашения
-          </p>
-        </div>
       </div>
     </div>
   );

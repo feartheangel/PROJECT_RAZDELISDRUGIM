@@ -42,8 +42,3 @@ export const setFavorites = (arr) => ({
   type: "SET_FAVORITES",
   payload: arr,
 });
-
-export const setRefCode = (code) => ({
-  type: "SET_REF_CODE",
-  payload: code,
-});

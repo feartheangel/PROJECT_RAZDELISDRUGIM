@@ -39,7 +39,7 @@
   width: 100%;
   height: auto;
   margin: 20px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 500;
 }
@@ -71,10 +71,6 @@
   color: #4cc9f0;
 }
 
-
-
-
-
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
   .privateProfile {
@@ -89,7 +85,7 @@
   .privateProfile_container {
     /* padding: 0px 15px; */
     padding: 0;
-    border-radius: 0px;
+    border-radius: 10px;
     background-color: white;
     width: 100%;
   }
@@ -101,44 +97,41 @@
     /* display: flex; */
     align-items: center;
   }
-  .conteiner_shapka p{
+  .conteiner_shapka p {
     font-size: 20px;
     font-weight: 500;
   }
-  .conteiner_shapka span{
+  .conteiner_shapka span {
     font-size: 20px;
     font-weight: 500;
   }
-  .div_favorites{
+  .div_favorites {
     width: 100%;
     height: 100%;
   }
-  .div_favorites_text{
+  .div_favorites_text {
     font-size: 20px;
     font-weight: 500;
     margin-left: 10px;
   }
-
 }
-
 
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
-@media only screen and (max-width: 1024px) and (min-width:481px) {
-
-  .div_favorites{
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
+  .div_favorites {
     display: flex;
     justify-content: flex-end;
     width: 100%;
     height: 100%;
   }
-  .div_favorites_text{
+  .div_favorites_text {
     font-size: 20px;
     font-weight: 500;
     margin-left: 10px;
   }
 
-  .privateProfile{
+  .privateProfile {
     min-width: auto;
     width: 100%;
     justify-content: flex-start;
@@ -146,37 +139,15 @@
     min-height: 100%;
     height: auto;
   }
-  .privateProfile_container{
+  .privateProfile_container {
     padding: 0 20px;
     width: -webkit-fill-available;
     display: flex;
   }
-  .conteiner_shapka{
+  .conteiner_shapka {
     margin: 20px 0 0 0;
   }
-  .conteiner_shapka p{
+  .conteiner_shapka p {
     font-size: 22px;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
