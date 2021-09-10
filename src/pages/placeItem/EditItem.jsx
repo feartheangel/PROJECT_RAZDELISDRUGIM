@@ -1045,7 +1045,7 @@ const EditItem = () => {
 
             {/*  СТОИМОСТЬ АРЕНДЫ  */}
 
-            <div className="item-add-cost-choice-wrapper">
+            <div className="item-add-cost-choice-wrapper" id="globaldata_pk">
               <div
                 style={{ marginRight: "5px" }}
                 className="add-item-input-wrapper"
@@ -1112,6 +1112,88 @@ const EditItem = () => {
                 <span>Бесплатно</span>
               </label>
             </div>
+
+
+            {/*  СТОИМОСТЬ АРЕНДЫ для планшет версии */}
+
+                        {/* БЛОК АРЕНДА ДЛЯ ПЛАНШЕТА */}
+                        <div className="item-add-cost-choice-wrapper" id="globaldata_ipad">
+              <div className="item_arend_block">
+              <div
+                style={{ marginRight: "5px" }}
+                className="add-item-input-wrapper"
+              >
+                <label className="add-item-input-label">
+                  Стоимость вещи <span className="add-item-span-zvezda">*</span>
+                </label>
+                <div>
+                  <input
+                    className="add-item-input-number"
+                    type="number"
+                    max="9999"
+                    step="any"
+                    placeholder="0.00"
+                    value={costArends}
+                    disabled={giveFree || yourCost}
+                    onChange={(e) => setCostArendsHandler(e)}
+                  />
+                </div>
+              </div>
+              <span className="span-valuts">BYN</span>
+              <div className="add-item-input-wrapper">
+                <label className="add-item-input-label">
+                  Срок <span className="add-item-span-zvezda">*</span>
+                </label>
+                <select
+                  className="add-item-select-input__time"
+                  onChange={(e) => timeArendsHandler(e)}
+                >
+                  <option value="HOUR" selected={timeArends === "HOUR"}>
+                    Час
+                  </option>
+                  <option value="DAY" selected={timeArends === "DAY"}>
+                    Сутки
+                  </option>
+                  <option value="WEEK" selected={timeArends === "WEEK"}>
+                    Неделя
+                  </option>
+                  <option value="MONTH" selected={timeArends === "MONTH"}>
+                    Месяц
+                  </option>
+                </select>
+              </div>
+              </div>
+
+              <div className="item_arend_block">
+              <label class="checkbox-btn">
+                <input
+                  onChange={() => setYourCost(!yourCost)}
+                  type="checkbox"
+                  checked={yourCost}
+                  disabled={giveFree}
+                />
+                <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
+                  Предлагать цену{" "}
+                </span>
+              </label>
+              <span className="add-item-cost-or">или</span>
+              <label class="checkbox-btn" id="checkbox-btn2">
+                <input
+                  onChange={() => setGiveFree(!giveFree)}
+                  type="checkbox"
+                  checked={giveFree}
+                  disabled={yourCost}
+                />
+                <span id="checkbox-btn1">Бесплатно</span>
+              </label>
+              </div>
+            </div>
+
+
+
+
+
+
             <div className="add-item-ready-sell-wrapper">
               <input
                 className="add-item-input-checkbox__2"
@@ -1343,7 +1425,7 @@ const EditItem = () => {
                   </div>
                 </div>
 
-                {/* АДАПТИВКА */}
+                {/* АДАПТИВКА mobile */}
                 <div
                   className="take-away-secondary-wrapper"
                   id="take_Away_adaptive"

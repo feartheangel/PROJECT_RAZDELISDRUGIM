@@ -403,32 +403,19 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
+
+
+@media only screen and (max-width: 1024px) and (min-width:481px) {
+
+  .list_span_right{
+    text-align: inherit;
+    margin-left: 20px;
+  }
+
+}
 
 
 
