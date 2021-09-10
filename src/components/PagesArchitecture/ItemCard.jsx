@@ -152,11 +152,8 @@ const ItemCard = ({ item }) => {
             </div>
             <div className="recent-block-up">
               <p className="recent-block-title-p">
-                {item.name_item && item.name_item.length > 26
-                  ? `${item.name_item
-                      .split("")
-                      .splice(0, item.name_item.length - 10)
-                      .join("")}...`
+                {item.name_item && item.name_item.length > 35
+                  ? `${item.name_item.split("").splice(0, 35).join("")}...`
                   : item.name_item}
               </p>
             </div>
@@ -321,11 +318,8 @@ const ItemCard = ({ item }) => {
             </div>
             <div className="recent-block-up">
               <p className="recent-block-title-name">
-                {item.name_item && item.name_item.length > 26
-                  ? `${item.name_item
-                      .split("")
-                      .splice(0, item.name_item.length - 10)
-                      .join("")}...`
+                {item.name_item && item.name_item.length > 35
+                  ? `${item.name_item.split("").splice(0, 35).join("")}...`
                   : item.name_item}
               </p>
             </div>
@@ -393,8 +387,8 @@ const ItemCard = ({ item }) => {
         </a>
       </div>
 
-            {/* планшет  - ИЗБРАННОЕ В ПРОФИЛЕ */}
-        <div className="recent-block-wrapper" id="swiper_mobile_800">
+      {/* планшет  - ИЗБРАННОЕ В ПРОФИЛЕ */}
+      <div className="recent-block-wrapper" id="swiper_mobile_800">
         <a
           style={{ textDecoration: "none" }}
           href={`/item-card?id=${item.id}`}
@@ -564,8 +558,6 @@ const ItemCard = ({ item }) => {
           </div>
         </a>
       </div>
-
-
     </div>
   );
 };
