@@ -1,8 +1,6 @@
 import React from "react";
 import Requests from "../../http/axios-requests";
-import { reloadData } from "../../redux/actions/userData";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import car from "../../img/MainPage/car.png";
 import cardMoney from "../../img/MainPage/card-money.png";
 import cardVerify from "../../img/MainPage/card-verify.png";
@@ -18,13 +16,15 @@ import yourCost from "../../img/MainPage/yourCost.png";
 import freePrice from "../../img/MainPage/freePrice.png";
 import Favorites from "../../img/MainPage/Favorites.png";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.png";
+import EditItemImage from "../../img/MainPage/editicon.png";
 
 const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
-  const { reload, favorites, isLoggedIn } = useSelector(
+  const { favorites, isLoggedIn, subjects } = useSelector(
     ({ userData }) => userData
   );
   const [isFavorite, setIsFavorite] = React.useState(false);
+  const [isOwn, setIsOwn] = React.useState(false);
 
   const addFavoriteHandler = (e) => {
     e.preventDefault();
@@ -51,6 +51,15 @@ const ItemCard = ({ item }) => {
         return;
       });
   }, [favorites]);
+
+  React.useEffect(() => {
+    subjects &&
+      subjects.forEach((elem) => {
+        if (elem.id === item.id) {
+          setIsOwn(true);
+        }
+      });
+  }, [subjects]);
 
   return (
     <div className="recent-block-wrapper ">
@@ -199,7 +208,7 @@ const ItemCard = ({ item }) => {
                 ? item.profile.company_name
                 : item.profile.first_name}
             </p>
-            {favorites && !isFavorite && isLoggedIn && (
+            {favorites && !isFavorite && isLoggedIn && !isOwn && (
               <img
                 onClick={(e) => addFavoriteHandler(e)}
                 className="itemcard_favorite_img"
@@ -207,11 +216,21 @@ const ItemCard = ({ item }) => {
               />
             )}
 
-            {favorites && isFavorite && isLoggedIn && (
+            {favorites && isFavorite && isLoggedIn && !isOwn && (
               <img
                 onClick={(e) => deleteFavoriteHandler(e)}
                 className="itemcard_favorite_img"
                 src={Favorites}
+              />
+            )}
+
+            {isOwn && (
+              <img
+                onClick={(e) =>
+                  (window.location.href = `/edit-item?id=${item.id}`)
+                }
+                className="itemcard_favorite_img"
+                src={EditItemImage}
               />
             )}
           </div>
@@ -367,7 +386,7 @@ const ItemCard = ({ item }) => {
             </p>
 
             <div className="div_favorites">
-              {favorites && !isFavorite && isLoggedIn && (
+              {favorites && !isFavorite && isLoggedIn && !isOwn && (
                 <img
                   onClick={(e) => addFavoriteHandler(e)}
                   className="itemcard_favorite_img"
@@ -375,11 +394,21 @@ const ItemCard = ({ item }) => {
                 />
               )}
 
-              {favorites && isFavorite && isLoggedIn && (
+              {favorites && isFavorite && isLoggedIn && !isOwn && (
                 <img
                   onClick={(e) => deleteFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={Favorites}
+                />
+              )}
+
+              {isOwn && (
+                <img
+                  onClick={(e) =>
+                    (window.location.href = `/edit-item?id=${item.id}`)
+                  }
+                  className="itemcard_favorite_img"
+                  src={EditItemImage}
                 />
               )}
             </div>
@@ -539,7 +568,7 @@ const ItemCard = ({ item }) => {
             </p>
 
             <div className="div_favorites">
-              {favorites && !isFavorite && isLoggedIn && (
+              {favorites && !isFavorite && isLoggedIn && !isOwn && (
                 <img
                   onClick={(e) => addFavoriteHandler(e)}
                   className="itemcard_favorite_img"
@@ -547,11 +576,21 @@ const ItemCard = ({ item }) => {
                 />
               )}
 
-              {favorites && isFavorite && isLoggedIn && (
+              {favorites && isFavorite && isLoggedIn && !isOwn && (
                 <img
                   onClick={(e) => deleteFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={Favorites}
+                />
+              )}
+
+              {isOwn && (
+                <img
+                  onClick={(e) =>
+                    (window.location.href = `/edit-item?id=${item.id}`)
+                  }
+                  className="itemcard_favorite_img"
+                  src={EditItemImage}
                 />
               )}
             </div>

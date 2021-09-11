@@ -1119,7 +1119,7 @@ class Requests {
       headers: {
         "Content-Type": "application/json",
       },
-      url: `https://razdelisdrugim.by/api/items/ten_km/${
+      url: `https://razdelisdrugim.by/api/items/more_n_km/${
         coords ? `?coordinates=${coords}` : ""
       }`,
     }).then((response) => {
@@ -1151,6 +1151,18 @@ class Requests {
         "Content-Type": "application/json",
       },
       url: `https://razdelisdrugim.by/api/additional_entities/partners/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getSiteSettings() {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: `https://razdelisdrugim.by/api/site_settings/settings/`,
     }).then((response) => {
       return response;
     });

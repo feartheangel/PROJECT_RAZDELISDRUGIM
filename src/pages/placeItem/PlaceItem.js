@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import { Header, Footer } from "../../components/index";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setItems,
-  setItemsLoaded,
-  setItemsLoading,
-} from "../../redux/actions/items";
-import {
   setAdresses,
   setQueryStarted,
   setQueryDone,
   reloadData,
 } from "../../redux/actions/userData";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Redirect } from "react-router-dom";
 import Requests from "../../http/axios-requests";
 import "./PlaseItem.css";
@@ -362,6 +358,9 @@ const PlaceItem = () => {
     } else if (takeAway && !typeService && !indicateCost) {
       alert("Не указана сумма за личную доставку!");
       return;
+    } else if (!captchaPassed) {
+      alert("Капча не пройдена!");
+      return;
     }
 
     dispatch(setQueryStarted());
@@ -563,6 +562,7 @@ const PlaceItem = () => {
   const [coords, setCoords] = React.useState();
 
   const [addressAdded, setAddressAdded] = React.useState(false);
+  const [captchaPassed, setCaptchaPassed] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   /*   //проврека на верификацию почты и телефона
@@ -674,6 +674,8 @@ const PlaceItem = () => {
     ({ userData }) => userData
   );
 
+  const { maxAddressesCount } = useSelector(({ settings }) => settings);
+
   //выделяем разделы
   const chapters = {};
   isLoaded &&
@@ -711,7 +713,6 @@ const PlaceItem = () => {
         <div className="conteiner">
           <form className="conteiner_form">
             <p className="conteiner-main-p">Подать объявление</p>
-
             {/*  НАИМЕНОВАНИЕ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
@@ -732,7 +733,6 @@ const PlaceItem = () => {
                 onChange={(e) => setNameItem(e.target.value)}
               />
             </div>
-
             {/*  РАЗДЕЛ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
@@ -759,7 +759,6 @@ const PlaceItem = () => {
                     ))}
               </select>
             </div>
-
             {/*  КАТЕГОРИЯ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
@@ -782,7 +781,6 @@ const PlaceItem = () => {
                     ))}
               </select>
             </div>
-
             {/*  Я ПРЕДЛАГАЮ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">Описание вещи</label>
@@ -798,7 +796,6 @@ const PlaceItem = () => {
                 />
               </div>
             </div>
-
             {/*  ЗАГРУЗКА ФОТО  */}
             <div>
               <div>
@@ -843,9 +840,7 @@ const PlaceItem = () => {
                 </div>
               </div>
             </div>
-
             {/*  СТОИМОСТЬ АРЕНДЫ  */}
-
             <div className="item-add-cost-choice-wrapper" id="item_pk">
               <div
                 style={{ marginRight: "5px" }}
@@ -907,7 +902,6 @@ const PlaceItem = () => {
                 <span id="checkbox-btn1">Бесплатно</span>
               </label>
             </div>
-
             {/* БЛОК АРЕНДА ДЛЯ ПЛАНШЕТА */}
             <div className="item-add-cost-choice-wrapper" id="item_ipad">
               <div className="item_arend_block">
@@ -975,7 +969,6 @@ const PlaceItem = () => {
                 </label>
               </div>
             </div>
-
             <div className="add-item-ready-sell-wrapper">
               <input
                 className="add-item-input-checkbox__2"
@@ -991,7 +984,6 @@ const PlaceItem = () => {
                 Готов продать
               </label>
             </div>
-
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
                 Адрес вещи{" "}
@@ -1022,8 +1014,7 @@ const PlaceItem = () => {
                   ))}
               </select>
             </div>
-
-            {addresses.length < 2 && (
+            {addresses.length < maxAddressesCount && (
               <div style={{ marginBottom: "20px" }} id="dop_parametr_wrapper">
                 <input
                   id="dop_parametr"
@@ -1442,9 +1433,7 @@ const PlaceItem = () => {
                 />
               </div>
             )}
-
             {/*  КНОПКА ДОП. ПАРАМЕТРЫ  */}
-
             <div id="dop_parametr_wrapper_mobile">
               <input
                 id="dop_parametr"
@@ -1456,9 +1445,7 @@ const PlaceItem = () => {
                 Дополнительные параметры
               </label>
             </div>
-
             {/*--------------------------------- ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ ---------------------------------------*/}
-
             {showFunctions && (
               <div className="secondary-parameters">
                 {/*  КЛЮЧЕВЫЕ СЛОВА  */}
@@ -2362,9 +2349,16 @@ const PlaceItem = () => {
                 </div>
               </div>
             )}
-
-            {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
-
+            <ReCAPTCHA
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20px",
+              }}
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              onChange={() => setCaptchaPassed(true)}
+            />
+            ,{/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
             <div className="button_load">
               <input
                 disabled={requestActive}

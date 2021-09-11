@@ -7,14 +7,15 @@ const FirstBlockNavigation = () => {
   const { userData, subjects, isLoggedIn } = useSelector(
     ({ userData }) => userData
   );
+  const { maxItemsToPlaceFree } = useSelector(({ settings }) => settings);
   const [redirect, setRedirect] = React.useState();
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length >= 10) {
-      alert("Лимит вещей достигнут (10)");
+    if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
+      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
       return;
-    } else if (isLoggedIn && subjects.length >= 10) {
-      alert("Лимит вещей достигнут (10)");
+    } else if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
+      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
       return;
     } else if (!isLoggedIn) {
       alert("Сначала авторизуйтесь!");

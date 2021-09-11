@@ -40,10 +40,13 @@ import Ok from "../../img/ProfilePage/ok.png";
 import copy from "../../img/MainPage/copy.png";
 import Favorites from "../../img/MainPage/Favorites.png";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.png";
+import EditItemImage from "../../img/MainPage/editicon.png";
 
 const CardThings = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, favorites } = useSelector(({ userData }) => userData);
+  const { isLoggedIn, favorites, subjects } = useSelector(
+    ({ userData }) => userData
+  );
   //расчет времени на платформе
   function getDaysBetweenDates(d0, d1) {
     var msPerDay = 8.64e7;
@@ -143,12 +146,22 @@ const CardThings = () => {
       });
   }, [favorites]);
 
+  React.useEffect(() => {
+    subjects &&
+      subjects.forEach((elem) => {
+        if (elem.id === Number(window.location.href.split("?id=")[1])) {
+          setIsOwn(true);
+        }
+      });
+  }, [subjects]);
+
   const [itemData, setItemData] = React.useState();
   const [simillarSubjects, setSimillarSubjects] = React.useState();
   const [selectedImage, setSelectedImage] = React.useState();
   const [contactVisible, setContactVisible] = React.useState();
   const [shareVisible, setShareVisible] = React.useState();
   const [isFavorite, setIsFavorite] = React.useState(false);
+  const [isOwn, setIsOwn] = React.useState(false);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -822,7 +835,7 @@ const CardThings = () => {
                           className="contactOwner_btn"
                         />
 
-                        {favorites && !isFavorite && (
+                        {favorites && !isFavorite && !isOwn && (
                           <img
                             alt=""
                             onClick={(e) => addFavoriteHandler(e)}
@@ -831,12 +844,23 @@ const CardThings = () => {
                           />
                         )}
 
-                        {favorites && isFavorite && (
+                        {favorites && isFavorite && !isOwn && (
                           <img
                             alt=""
                             onClick={(e) => deleteFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={Favorites}
+                          />
+                        )}
+
+                        {isOwn && (
+                          <img
+                            alt=""
+                            onClick={(e) =>
+                              (window.location.href = `/edit-item?id=${itemData.id}`)
+                            }
+                            className="img_contactOwner"
+                            src={EditItemImage}
                           />
                         )}
                       </div>
@@ -1828,19 +1852,32 @@ const CardThings = () => {
                           Связаться с владельцем
                         </a>
 
-                        {favorites && !isFavorite && (
+                        {favorites && !isFavorite && !isOwn && (
                           <img
+                            alt=""
                             onClick={(e) => addFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={FavoritesDisabled}
                           />
                         )}
 
-                        {favorites && isFavorite && isLoggedIn && (
+                        {favorites && isFavorite && !isOwn && (
                           <img
+                            alt=""
                             onClick={(e) => deleteFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={Favorites}
+                          />
+                        )}
+
+                        {isOwn && (
+                          <img
+                            alt=""
+                            onClick={(e) =>
+                              (window.location.href = `/edit-item?id=${itemData.id}`)
+                            }
+                            className="img_contactOwner"
+                            src={EditItemImage}
                           />
                         )}
                       </div>

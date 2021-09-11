@@ -32,11 +32,15 @@ import React from "react";
 import Requests from "./http/axios-requests";
 import { setUserData } from "./redux/actions/userData";
 import { useDispatch, useSelector } from "react-redux";
+import { setItems, setItemsLoaded } from "./redux/actions/items";
 import {
-  setItems,
-  setItemsLoaded,
-  setItemsLoading,
-} from "./redux/actions/items";
+  setmaxItemsToPlaceFree,
+  setLanguage,
+  setMaxAddressesCount,
+  setServiceIds,
+  setEmailSettings,
+  setEmailSupport,
+} from "./redux/actions/settings";
 import {
   setAdresses,
   setUserSubjects,
@@ -82,6 +86,15 @@ function App() {
       dispatch(setItems(response.data));
       dispatch(setItemsLoaded());
     });
+
+    Requests.getSiteSettings().then((res) => {
+      dispatch(setmaxItemsToPlaceFree(res.data[0].free_placement_items_count));
+      dispatch(setLanguage(res.data[0].language));
+      dispatch(setMaxAddressesCount(res.data[0].address_count_max));
+      dispatch(setServiceIds(res.data[0].serviceIds));
+      dispatch(setEmailSettings(res.data[0].email));
+      dispatch(setEmailSupport(res.data[0].email_support));
+    });
     isLoggedIn &&
       Requests.fetchUserProfile().then((response) => {
         dispatch(setUserData(response.data));
@@ -110,10 +123,9 @@ function App() {
         dispatch(
           setUserCoords(`${pos.coords.longitude} ${pos.coords.latitude}`)
         );
-        console.log(pos.coords.accuracy);
       },
       () => {},
-      { maximumAge: 0, enableHighAccuracy: true }
+      { maximumAge: 60000, enableHighAccuracy: true }
     );
   }, []);
 

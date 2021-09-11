@@ -427,6 +427,7 @@ const EditItem = () => {
   const { addresses, requestActive, userData, reload, subjects } = useSelector(
     ({ userData }) => userData
   );
+  const { maxAddressesCount } = useSelector(({ settings }) => settings);
 
   React.useEffect(() => {
     currentSubject = subjects.filter(
@@ -1158,7 +1159,7 @@ const EditItem = () => {
               </select>
             </div>
 
-            {addresses.length < 2 && (
+            {addresses.length < maxAddressesCount && (
               <div style={{ marginBottom: "20px" }} id="dop_parametr_wrapper">
                 <input
                   id="dop_parametr"

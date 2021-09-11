@@ -46,6 +46,8 @@ const SearchPage = () => {
     distance,
   } = useSelector(({ search }) => search);
 
+  const { maxItemsToPlaceFree } = useSelector(({ settings }) => settings);
+
   //параметры карты
   const mapData = {
     center: userCoordinates
@@ -187,11 +189,11 @@ const SearchPage = () => {
   }, []);
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length >= 10) {
-      alert("Лимит вещей достигнут (10)");
+    if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
+      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
       return;
-    } else if (isLoggedIn && subjects.length >= 10) {
-      alert("Лимит вещей достигнут (10)");
+    } else if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
+      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
       return;
     } else if (!isLoggedIn) {
       alert("Сначала авторизуйтесь!");
@@ -767,164 +769,162 @@ const SearchPage = () => {
 
             {/* ЦЕНА И ВЫБОР ДЛЯ ПЛАНШЕТОВ */}
 
-            <div className="SearchPage_container_content_left" id="search_ipad" >
-              <ul style={{display:'flex', flexDirection:'row'}}>
-                <div style={{display:'flex', flexDirection:'column'}}>
-                <li>
-                  <p className="content_left_cost"> Цена </p>
-                </li>
+            <div className="SearchPage_container_content_left" id="search_ipad">
+              <ul style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <li>
+                    <p className="content_left_cost"> Цена </p>
+                  </li>
 
-                <li className="content_left_priceRange">
-                  <input
-                    value={min_price}
-                    onChange={(e) => minPriceHandler(e)}
-                    type="number"
-                    min="0"
-                    max="99999"
-                  />
-                  <label> до </label>
-                  <input
-                    value={max_price}
-                    onChange={(e) => maxPriceHandler(e)}
-                    type="number"
-                    min="0"
-                    max="99999"
-                  />
-                </li>
+                  <li className="content_left_priceRange">
+                    <input
+                      value={min_price}
+                      onChange={(e) => minPriceHandler(e)}
+                      type="number"
+                      min="0"
+                      max="99999"
+                    />
+                    <label> до </label>
+                    <input
+                      value={max_price}
+                      onChange={(e) => maxPriceHandler(e)}
+                      type="number"
+                      min="0"
+                      max="99999"
+                    />
+                  </li>
                 </div>
 
                 <div className="search_option_left">
                   <div className="search_option_left_left">
-                  <li>
-                  <input
-                    style={{ cursor: "pointer" }}
-                    checked={free}
-                    onChange={freeRentHandler}
-                    id="free"
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ cursor: "pointer" }} htmlFor="free">
-                    Бесплатно
-                  </label>
-                </li>
+                    <li>
+                      <input
+                        style={{ cursor: "pointer" }}
+                        checked={free}
+                        onChange={freeRentHandler}
+                        id="free"
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ cursor: "pointer" }} htmlFor="free">
+                        Бесплатно
+                      </label>
+                    </li>
 
-                <li>
-                  <input
-                    style={{ cursor: "pointer" }}
-                    checked={status === "2"}
-                    value="2"
-                    onChange={(e) => statusHandler(e)}
-                    id="companies"
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ cursor: "pointer" }} htmlFor="companies">
-                    Компании
-                  </label>
-                </li>
+                    <li>
+                      <input
+                        style={{ cursor: "pointer" }}
+                        checked={status === "2"}
+                        value="2"
+                        onChange={(e) => statusHandler(e)}
+                        id="companies"
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ cursor: "pointer" }} htmlFor="companies">
+                        Компании
+                      </label>
+                    </li>
 
-                <li>
-                  <input
-                    style={{ cursor: "pointer" }}
-                    checked={status === "1"}
-                    value="1"
-                    onChange={(e) => statusHandler(e)}
-                    id="individual"
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ cursor: "pointer" }} htmlFor="individual">
-                    {" "}
-                    Частные лица{" "}
-                  </label>
-                </li>
+                    <li>
+                      <input
+                        style={{ cursor: "pointer" }}
+                        checked={status === "1"}
+                        value="1"
+                        onChange={(e) => statusHandler(e)}
+                        id="individual"
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ cursor: "pointer" }} htmlFor="individual">
+                        {" "}
+                        Частные лица{" "}
+                      </label>
+                    </li>
 
-                <li>
-                  <input
-                    style={{ cursor: "pointer" }}
-                    checked={delivery}
-                    onChange={deliveryHandler}
-                    id="delivery"
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ cursor: "pointer" }} htmlFor="delivery">
-                    {" "}
-                    Доставка{" "}
-                  </label>
-                </li>
+                    <li>
+                      <input
+                        style={{ cursor: "pointer" }}
+                        checked={delivery}
+                        onChange={deliveryHandler}
+                        id="delivery"
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ cursor: "pointer" }} htmlFor="delivery">
+                        {" "}
+                        Доставка{" "}
+                      </label>
+                    </li>
 
-                <li>
-                  <input
-                    style={{ cursor: "pointer" }}
-                    checked={insurance}
-                    onChange={insuranceHandler}
-                    id="insurance"
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ cursor: "pointer" }} htmlFor="insurance">
-                    {" "}
-                    Страховка{" "}
-                  </label>
-                </li>
+                    <li>
+                      <input
+                        style={{ cursor: "pointer" }}
+                        checked={insurance}
+                        onChange={insuranceHandler}
+                        id="insurance"
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ cursor: "pointer" }} htmlFor="insurance">
+                        {" "}
+                        Страховка{" "}
+                      </label>
+                    </li>
                   </div>
 
-                <div className="search_option_left_right">
-                <li>
-                  <input
-                    style={{ cursor: "pointer" }}
-                    checked={contract}
-                    onChange={contractHandler}
-                    id="contract"
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ cursor: "pointer" }} htmlFor="contract">
-                    {" "}
-                    По договору{" "}
-                  </label>
-                </li>
+                  <div className="search_option_left_right">
+                    <li>
+                      <input
+                        style={{ cursor: "pointer" }}
+                        checked={contract}
+                        onChange={contractHandler}
+                        id="contract"
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ cursor: "pointer" }} htmlFor="contract">
+                        {" "}
+                        По договору{" "}
+                      </label>
+                    </li>
 
-                <li>
-                  <input
-                    style={{ cursor: "pointer" }}
-                    checked={pledge}
-                    onChange={pledgeHandler}
-                    id="pledge"
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ cursor: "pointer" }} htmlFor="pledge">
-                    {" "}
-                    Без залога{" "}
-                  </label>
-                </li>
+                    <li>
+                      <input
+                        style={{ cursor: "pointer" }}
+                        checked={pledge}
+                        onChange={pledgeHandler}
+                        id="pledge"
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ cursor: "pointer" }} htmlFor="pledge">
+                        {" "}
+                        Без залога{" "}
+                      </label>
+                    </li>
 
-                <li>
-                  <input
-                    disabled
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label style={{ opacity: "0.6" }}> Акции </label>
-                </li>
-                <li>
-                  <input
-                    id="minPrice"
-                    disabled
-                    type="checkbox"
-                    className="input_left_checkbox"
-                  />
-                  <label htmlFor="minPrice" style={{ opacity: "0.6" }}>
-                    Скоро освободится
-                  </label>
-                </li>
+                    <li>
+                      <input
+                        disabled
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label style={{ opacity: "0.6" }}> Акции </label>
+                    </li>
+                    <li>
+                      <input
+                        id="minPrice"
+                        disabled
+                        type="checkbox"
+                        className="input_left_checkbox"
+                      />
+                      <label htmlFor="minPrice" style={{ opacity: "0.6" }}>
+                        Скоро освободится
+                      </label>
+                    </li>
+                  </div>
                 </div>
-
-                </div>
-
               </ul>
             </div>
 
@@ -1085,14 +1085,13 @@ const SearchPage = () => {
               </div>
             )}
 
-
             {/* планшет версия левой стороны */}
-              {/* АДАПТИВ ЛЕВОЙ СТОРОНЫ */}
-              {filter && (
+            {/* АДАПТИВ ЛЕВОЙ СТОРОНЫ */}
+            {filter && (
               <div
                 className="SearchPage_container_content_left"
                 id="search_ipad"
-                style={{display:'flex', flexDirection:'row'}}
+                style={{ display: "flex", flexDirection: "row" }}
               >
                 <ul>
                   <li>
@@ -1384,144 +1383,178 @@ const SearchPage = () => {
                 )}
               </div>
 
-
               {/*  ПРАВАЯ СТОРОНА ДЛЯ ПЛАНШЕТОВ */}
-            <div className="SearchPage_container_content_right" id="search_ipad">
-              {/* ШАПКА */}
-              <div className="content_right_shapka" id="search_ipad">
-                <div className="shapka_top">
-                  <p
-                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={
-                      distance === "200" ? "distance_p active" : "distance_p"
-                    }
-                    onClick={() => distanceHandler("200")}
-                  >
-                    До 200 м
-                  </p>
-                  <p
-                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={
-                      distance === "1000" ? "distance_p active" : "distance_p"
-                    }
-                    onClick={() => distanceHandler("1000")}
-                  >
-                    До 1 км
-                  </p>
-                  <p
-                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={
-                      distance === "5000" ? "distance_p active" : "distance_p"
-                    }
-                    onClick={() => distanceHandler("5000")}
-                  >
-                    До 5 км
-                  </p>
-                  <p
-                    onClick={() => distanceHandler(false)}
-                    className={
-                      distance === false ? "distance_p active" : "distance_p"
-                    }
-                  >
-                    Показать все
-                  </p>
-                </div>
-              </div>
-
-              {/* КОНТЕНТ ПОД ШАПКОЙ */}
-              <div className="content_right_all_content" id="search_ipad">
-                {searchItems.length > 0 && (
-                  <div className="all_content_blocks">
-                    {searchItems.map((item, index) => {
-                      if (index <= 2) {
-                        return <div style={{width:'33%' , marginBottom:'25px', justifyContent:'center', display:"flex"}}> <ItemCard key={index} item={item} /> </div>;
+              <div
+                className="SearchPage_container_content_right"
+                id="search_ipad"
+              >
+                {/* ШАПКА */}
+                <div className="content_right_shapka" id="search_ipad">
+                  <div className="shapka_top">
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={
+                        distance === "200" ? "distance_p active" : "distance_p"
                       }
-                    })}
+                      onClick={() => distanceHandler("200")}
+                    >
+                      До 200 м
+                    </p>
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={
+                        distance === "1000" ? "distance_p active" : "distance_p"
+                      }
+                      onClick={() => distanceHandler("1000")}
+                    >
+                      До 1 км
+                    </p>
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={
+                        distance === "5000" ? "distance_p active" : "distance_p"
+                      }
+                      onClick={() => distanceHandler("5000")}
+                    >
+                      До 5 км
+                    </p>
+                    <p
+                      onClick={() => distanceHandler(false)}
+                      className={
+                        distance === false ? "distance_p active" : "distance_p"
+                      }
+                    >
+                      Показать все
+                    </p>
+                  </div>
+                </div>
 
-                    {searchItems && (
-                      <div style={{ marginBottom: "30px", marginLeft: "15px", width:"100%" }}>
-                        <YMaps>
-                          <Map
-                            state={mapData}
-                            width={"auto"}
-                            height={500}
-                            modules={["package.full"]}
-                          >
-                            <Clusterer
-                              options={{
-                                preset: "islands#invertedBlueClusterIcons",
-                                groupByCoordinates: false,
-                                clusterDisableClickZoom: true,
-                                clusterHideIconOnBalloonOpen: true,
-                                geoObjectHideIconOnBalloonOpen: true,
-                                hasBalloon: true,
-                                clusterBalloonContentLayout:
-                                  "cluster#balloonCarousel",
-                                clusterBalloonContentLayoutWidth: 200,
-                                clusterBalloonContentLayoutHeight: 130,
-                                clusterBalloonPagerSize: 5,
-                                clusterBalloonContentLayoutHeight: 270,
-                                clusterBalloonContentLayoutWidth: 200,
-                                clusterBalloonPanelMaxMapArea: 0,
+                {/* КОНТЕНТ ПОД ШАПКОЙ */}
+                <div className="content_right_all_content" id="search_ipad">
+                  {searchItems.length > 0 && (
+                    <div className="all_content_blocks">
+                      {searchItems.map((item, index) => {
+                        if (index <= 2) {
+                          return (
+                            <div
+                              style={{
+                                width: "33%",
+                                marginBottom: "25px",
+                                justifyContent: "center",
+                                display: "flex",
                               }}
                             >
-                              {marks &&
-                                marks.map((mark, index) => (
-                                  <Placemark
-                                    key={index}
-                                    geometry={mark[0]}
-                                    modules={[
-                                      "geoObject.addon.balloon",
-                                      "geoObject.addon.hint",
-                                    ]}
-                                    properties={getPointData(index)}
-                                    options={getPointOptions(index)}
-                                  />
-                                ))}
-                            </Clusterer>
-                            {userCoordinates && (
-                              <Placemark
-                                key={"own_geo"}
-                                geometry={userCoordinates.split(" ").reverse()}
-                                modules={[
-                                  "geoObject.addon.balloon",
-                                  "geoObject.addon.hint",
-                                ]}
-                                options={{ preset: `islands#redDotIcon` }}
-                                properties={{
-                                  iconCaption: "Я тут!",
+                              {" "}
+                              <ItemCard key={index} item={item} />{" "}
+                            </div>
+                          );
+                        }
+                      })}
+
+                      {searchItems && (
+                        <div
+                          style={{
+                            marginBottom: "30px",
+                            marginLeft: "15px",
+                            width: "100%",
+                          }}
+                        >
+                          <YMaps>
+                            <Map
+                              state={mapData}
+                              width={"auto"}
+                              height={500}
+                              modules={["package.full"]}
+                            >
+                              <Clusterer
+                                options={{
+                                  preset: "islands#invertedBlueClusterIcons",
+                                  groupByCoordinates: false,
+                                  clusterDisableClickZoom: true,
+                                  clusterHideIconOnBalloonOpen: true,
+                                  geoObjectHideIconOnBalloonOpen: true,
+                                  hasBalloon: true,
+                                  clusterBalloonContentLayout:
+                                    "cluster#balloonCarousel",
+                                  clusterBalloonContentLayoutWidth: 200,
+                                  clusterBalloonContentLayoutHeight: 130,
+                                  clusterBalloonPagerSize: 5,
+                                  clusterBalloonContentLayoutHeight: 270,
+                                  clusterBalloonContentLayoutWidth: 200,
+                                  clusterBalloonPanelMaxMapArea: 0,
                                 }}
-                              />
-                            )}
-                          </Map>
-                        </YMaps>
-                      </div>
-                    )}
-                    {searchItems.map((item, index) => {
-                      if (index > 2) {
-                        return <div style={{width:'33%', marginBottom:'15px', justifyContent:'center', display:"flex"}}> <ItemCard key={index} item={item} /> </div>;
-                      }
-                    })}
-                  </div>
-                )}
-                {searchItems.length === 0 && (
-                  <div className="all_content_blocks">
-                    <div className="search_not_found">
-                      <p>Сегодня ничего не найдено по заданным параметрам.</p>
-                      <p style={{ marginBottom: "20px" }}>
-                        Вы можете предложить свою вещь, услугу или иное
-                        имущество, либо зайти завтра...
-                      </p>
-                      <input
-                        onClick={addSubjectHandler}
-                        type="button"
-                        value="Предложить вещь"
-                        className="header-button add-subject"
-                      />
+                              >
+                                {marks &&
+                                  marks.map((mark, index) => (
+                                    <Placemark
+                                      key={index}
+                                      geometry={mark[0]}
+                                      modules={[
+                                        "geoObject.addon.balloon",
+                                        "geoObject.addon.hint",
+                                      ]}
+                                      properties={getPointData(index)}
+                                      options={getPointOptions(index)}
+                                    />
+                                  ))}
+                              </Clusterer>
+                              {userCoordinates && (
+                                <Placemark
+                                  key={"own_geo"}
+                                  geometry={userCoordinates
+                                    .split(" ")
+                                    .reverse()}
+                                  modules={[
+                                    "geoObject.addon.balloon",
+                                    "geoObject.addon.hint",
+                                  ]}
+                                  options={{ preset: `islands#redDotIcon` }}
+                                  properties={{
+                                    iconCaption: "Я тут!",
+                                  }}
+                                />
+                              )}
+                            </Map>
+                          </YMaps>
+                        </div>
+                      )}
+                      {searchItems.map((item, index) => {
+                        if (index > 2) {
+                          return (
+                            <div
+                              style={{
+                                width: "33%",
+                                marginBottom: "15px",
+                                justifyContent: "center",
+                                display: "flex",
+                              }}
+                            >
+                              {" "}
+                              <ItemCard key={index} item={item} />{" "}
+                            </div>
+                          );
+                        }
+                      })}
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                  {searchItems.length === 0 && (
+                    <div className="all_content_blocks">
+                      <div className="search_not_found">
+                        <p>Сегодня ничего не найдено по заданным параметрам.</p>
+                        <p style={{ marginBottom: "20px" }}>
+                          Вы можете предложить свою вещь, услугу или иное
+                          имущество, либо зайти завтра...
+                        </p>
+                        <input
+                          onClick={addSubjectHandler}
+                          type="button"
+                          value="Предложить вещь"
+                          className="header-button add-subject"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* МОБИЛЬНЫЙ ВИД */}

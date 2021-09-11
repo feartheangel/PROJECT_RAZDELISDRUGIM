@@ -83,7 +83,7 @@ const MapBlock = () => {
     });
 
     Requests.getLastNearestItems(
-      userCoordinates ? userCoordinates.split(" ").join(" ") : ``
+      userCoordinates ? userCoordinates.split(" ").join(" ") : `27.55 53.91`
     ).then((response) => {
       setMarks(
         response.data.map((item) => {
@@ -104,16 +104,24 @@ const MapBlock = () => {
         })
       );
     });
-  }, []);
+  }, [userCoordinates]);
 
   return (
     <section className="map">
-      <div id="map_komp">
+      <div
+        style={
+          window.screen.width > 1024
+            ? { width: 1150 }
+            : window.screen.width < 1024 && window.screen.width > 480
+            ? { width: 1150 }
+            : { width: "100%" }
+        }
+      >
         <YMaps>
           <Map
             state={mapData}
-            width={1150}
-            height={500}
+            width={window.screen.width > 1024 ? 1150 : "auto"}
+            height={window.screen.width > 480 ? 500 : 300}
             modules={["package.full"]}
           >
             <Clusterer
@@ -160,125 +168,6 @@ const MapBlock = () => {
             )}
           </Map>
         </YMaps>
-      </div>
-
-      {/* МОБИЛЬНЫЙ ДИЗАЙН */}
-      {marks && (
-        <div id="map_adaptiv">
-          <div style={{ width: "100%" }}>
-            <YMaps>
-              <Map
-                state={mapData}
-                width={"auto"}
-                height={300}
-                modules={["package.full"]}
-              >
-                <Clusterer
-                  options={{
-                    preset: "islands#invertedBlueClusterIcons",
-                    groupByCoordinates: false,
-                    clusterDisableClickZoom: true,
-                    clusterHideIconOnBalloonOpen: true,
-                    geoObjectHideIconOnBalloonOpen: true,
-                    hasBalloon: true,
-                    clusterBalloonContentLayout: "cluster#balloonCarousel",
-                    clusterBalloonContentLayoutWidth: 200,
-                    clusterBalloonContentLayoutHeight: 130,
-                    clusterBalloonPagerSize: 5,
-                    clusterBalloonContentLayoutHeight: 270,
-                    clusterBalloonContentLayoutWidth: 200,
-                    clusterBalloonPanelMaxMapArea: 0,
-                  }}
-                >
-                  {marks &&
-                    marks.map((mark, index) => (
-                      <Placemark
-                        key={index}
-                        geometry={mark[0]}
-                        modules={[
-                          "geoObject.addon.balloon",
-                          "geoObject.addon.hint",
-                        ]}
-                        properties={getPointData(index)}
-                        options={getPointOptions(index)}
-                      />
-                    ))}
-                </Clusterer>
-                {userCoordinates && (
-                  <Placemark
-                    key={"own_geo"}
-                    geometry={userCoordinates.split(" ").reverse()}
-                    modules={[
-                      "geoObject.addon.balloon",
-                      "geoObject.addon.hint",
-                    ]}
-                    options={{ preset: `islands#redDotIcon` }}
-                    properties={{
-                      iconCaption: "Я тут!",
-                    }}
-                  />
-                )}
-              </Map>
-            </YMaps>
-          </div>
-        </div>
-      )}
-
-      {/* планшеты */}
-      <div id="swiper_mobile_800">
-        <div style={{ width: "100%" }}>
-          <YMaps>
-            <Map
-              state={mapData}
-              width={"auto"}
-              height={500}
-              modules={["package.full"]}
-            >
-              <Clusterer
-                options={{
-                  preset: "islands#invertedBlueClusterIcons",
-                  groupByCoordinates: false,
-                  clusterDisableClickZoom: true,
-                  clusterHideIconOnBalloonOpen: true,
-                  geoObjectHideIconOnBalloonOpen: true,
-                  hasBalloon: true,
-                  clusterBalloonContentLayout: "cluster#balloonCarousel",
-                  clusterBalloonContentLayoutWidth: 200,
-                  clusterBalloonContentLayoutHeight: 130,
-                  clusterBalloonPagerSize: 5,
-                  clusterBalloonContentLayoutHeight: 270,
-                  clusterBalloonContentLayoutWidth: 200,
-                  clusterBalloonPanelMaxMapArea: 0,
-                }}
-              >
-                {marks &&
-                  marks.map((mark, index) => (
-                    <Placemark
-                      key={index}
-                      geometry={mark[0]}
-                      modules={[
-                        "geoObject.addon.balloon",
-                        "geoObject.addon.hint",
-                      ]}
-                      properties={getPointData(index)}
-                      options={getPointOptions(index)}
-                    />
-                  ))}
-              </Clusterer>
-              {userCoordinates && (
-                <Placemark
-                  key={"own_geo"}
-                  geometry={userCoordinates.split(" ").reverse()}
-                  modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
-                  options={{ preset: `islands#redDotIcon` }}
-                  properties={{
-                    iconCaption: "Я тут!",
-                  }}
-                />
-              )}
-            </Map>
-          </YMaps>
-        </div>
       </div>
     </section>
   );

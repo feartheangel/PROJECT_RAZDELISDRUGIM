@@ -79,6 +79,10 @@ const Header = () => {
     category_id,
   } = useSelector(({ search }) => search);
 
+  const { language, maxItemsToPlaceFree } = useSelector(
+    ({ settings }) => settings
+  );
+
   const logout = () => {
     setProfilePopUpActive(false);
     localStorage.removeItem("key");
@@ -90,11 +94,11 @@ const Header = () => {
   };
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length >= 10) {
-      alert("Лимит вещей достигнут (10)");
+    if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
+      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
       return;
-    } else if (isLoggedIn && subjects.length >= 10) {
-      alert("Лимит вещей достигнут (10)");
+    } else if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
+      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
       return;
     } else if (!isLoggedIn) {
       alert("Сначала авторизуйтесь!");
@@ -211,7 +215,7 @@ const Header = () => {
             </div>
             <div className="laguage-selector-wrapper">
               <img src={Planet2} alt="" className="language-planet-img" />
-              <p className="language-selector">RU</p>
+              <p className="language-selector">{language}</p>
             </div>
           </div>
           {!isLoggedIn && (
