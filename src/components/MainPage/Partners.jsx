@@ -23,15 +23,15 @@ const Partners = () => {
         <p className="partners-main-title">С нами сотрудничают</p>
         <div className="partners-slider-container">
           <Swiper
-            spaceBetween={0}
+            spaceBetween={20}
             slidesPerView={4}
             pagination={{ clickable: true }}
             id="swiper_comp"
-            style={{
-              display: "flex",
-              width:'100%',
-              justifyContent: "center",
-            }}
+            // style={{
+            //   display: "flex",
+            //   width:'100%',
+            //   justifyContent: "center",
+            // }}
           >
             {partners &&
               partners.map((item, index) => (
@@ -80,7 +80,7 @@ const Partners = () => {
           </div>
 
                     {/* планшеты */}
-                    <div id="global_ipad">
+                    <div id="global_ipad" style={{width:'100%'}}>
             <Swiper
               style={{
                 display: "flex",

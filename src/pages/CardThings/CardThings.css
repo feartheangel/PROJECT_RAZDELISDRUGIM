@@ -613,6 +613,9 @@
 #card_thing_mobile {
   display: none;
 }
+#card_thing_ipad{
+  display: none;
+}
 
 /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
 @media only screen and (max-width: 480px) {
@@ -859,16 +862,71 @@
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+/*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
+
+@media only screen and (max-width: 1024px) and (min-width:481px) {
+
+  #card_thing_ipad{
+    display: flex;
+  }
+  #card_thing_pc{
+    display: none;
+  }
+
+  .card_shapka{
+    margin: 20px;
+    width: -webkit-fill-available;
+  }
+  .card_content_left{
+    padding: 0;
+    width: -webkit-fill-available;
+  }
+  .card_content_right{
+    padding: 0;
+    margin-top: 40px;
+    width: -webkit-fill-available;
+  }
+
+  .CardThings_Wrapper{
+    padding: 0;
+    width: -webkit-fill-available;
+  }
+  .card_content{
+    width: -webkit-fill-available;
+    padding: 25px 25px 0 25px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .information_description{
+    margin-bottom: 20px;
+  }
+
+
+
+
+
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1341,10 +1341,17 @@ button {
 #global_ipad {
   display: none;
 }
+/* #swiper_comp{
+  display: flex;
+  justify-content: center;
+} */
 
 /* МЕДИА ЗАПРОСЫ  */
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
+  #swiper_comp_partners{
+    display: none;
+  }
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
   .wrapper {
     display: flex;
@@ -2433,7 +2440,7 @@ button {
   #map_komp {
     display: none;
   }
-  #swiper_comp {
+  #swiper_comp_partners {
     display: none;
   }
   #info_block {
