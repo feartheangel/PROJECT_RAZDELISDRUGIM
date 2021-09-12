@@ -3,9 +3,10 @@ import facebookLogo from "../../img/Facebook.png";
 import vkLogo from "../../img/vk.png";
 import googleLogo from "../../img/Google.png";
 import { Redirect } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 import Requests from "../../http/axios-requests";
 import { loginAction } from "../../redux/actions/userData";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { vkAuth, googleAuth, facebookAuth } from "../../http/social-auth";
 import "../../css/regAuth.css";
 import Shape from "../../img/Shape.png";
@@ -53,16 +54,23 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   const [agree, setAgree] = React.useState(false);
   const [formValid, setFormValid] = React.useState(false);
   const [successLogin, setSuccessLogin] = React.useState(false);
+  const [captchaPassed, setCaptchaPassed] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
 
   //проврека формы на валидность
   React.useEffect(() => {
-    if (contactError || passwordError || passwordSubmitError || !agree) {
+    if (
+      contactError ||
+      passwordError ||
+      passwordSubmitError ||
+      !agree ||
+      !captchaPassed
+    ) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-  }, [contactError, passwordError, passwordSubmitError, agree]);
+  }, [contactError, passwordError, passwordSubmitError, agree, captchaPassed]);
 
   React.useEffect(() => {
     //проверка на строку авторизации через соц. сети
@@ -394,6 +402,15 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
               </p>
             </div>
           </div>
+          <ReCAPTCHA
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+            sitekey="6Lf5el4cAAAAAB-XdWip6AY2UiMzEekLzdUJN3ur"
+            onChange={() => setCaptchaPassed(true)}
+          />
           <input
             style={!formValid ? { opacity: "0.6", pointerEvents: "none" } : {}}
             onClick={onClickSubmit}

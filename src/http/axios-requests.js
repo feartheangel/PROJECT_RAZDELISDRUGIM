@@ -675,20 +675,18 @@ class Requests {
         items_address: items_address,
       },
       url: `https://razdelisdrugim.by/api/items/update/${id}/`,
-    }).then((response) => {
-      if (response.status === 200 || response.status === 201) {
-        return axios({
-          method: "POST",
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${localStorage.getItem("key")}`,
-          },
-          data: formData,
-          url: `https://razdelisdrugim.by/api/items/update/${id}/`,
-        }).then((response) => {
-          return response;
-        });
-      }
+    }).then(() => {
+      return axios({
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("key")}`,
+        },
+        data: formData,
+        url: `https://razdelisdrugim.by/api/items/update/${id}/`,
+      }).then((response) => {
+        return response;
+      });
     });
   }
 

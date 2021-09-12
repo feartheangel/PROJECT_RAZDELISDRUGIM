@@ -15,6 +15,8 @@
   transition: 0.2s;
   pointer-events: none;
   z-index: 11;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .reg-auth-wrapper.active {
@@ -454,13 +456,14 @@
   display: flex;
   flex-direction: column;
   width: 540px;
-  height: 600px;
+  height: auto;
   left: 450px;
   top: 155px;
   background: #ffffff;
   border-radius: 30px;
   margin-top: 30px;
   transform: scale(0.9);
+  padding-bottom: 40px;
 }
 
 .reg-form-wrapper-email-verification {
@@ -564,6 +567,7 @@
   }
   .reg-auth-wrapper {
     height: 100%;
+    align-items: center;
   }
   .reg-form-wrapper {
     display: flex;
@@ -630,23 +634,11 @@
   }
 }
 
-
-
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
-@media only screen and (max-width: 1024px) and (min-width:481px) {
-  .reg-content{
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
+  .reg-content {
     width: 100%;
     height: 100%;
   }
 }
-
-
-
-
-
-
-
-
-
-

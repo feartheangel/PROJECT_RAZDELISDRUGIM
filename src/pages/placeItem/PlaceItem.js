@@ -2355,7 +2355,7 @@ const PlaceItem = () => {
                 justifyContent: "center",
                 marginTop: "20px",
               }}
-              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              sitekey="6Lf5el4cAAAAAB-XdWip6AY2UiMzEekLzdUJN3ur"
               onChange={() => setCaptchaPassed(true)}
             />
             ,{/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
