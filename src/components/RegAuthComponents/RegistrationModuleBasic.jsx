@@ -200,14 +200,14 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
           onClick={() => setModalActive(false)}
           src={Shape}
           className="img_krestik"
-          style={{ marginRight: "15px" }}
+          style={{ marginRight: "15px", justifyContent:'center', display:'flex' }}
         />
       </div>
       <ul className="reg-form-action-type-list">
         <li
           href="#"
           className="reg-form-action-type-link reg-form-action-type-link__active"
-          style={{ fontSize: "25px" }}
+          style={{width:'50%',  justifyContent:'center', display:'flex' }}
         >
           Регистрация
         </li>
@@ -215,7 +215,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
           onClick={() => setActiveForm("login")}
           href="#"
           className="reg-form-action-type-link"
-          style={{ fontSize: "25px" }}
+          style={{width:'50%', justifyContent:'center', display:'flex' }}
         >
           Вход
         </li>
@@ -244,7 +244,9 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
         style={localStorage.getItem("ref") ? { display: "none" } : {}}
         className="reg-form-text-label-p"
       >
-        <p>или</p>
+        <p id ="regform_pk">или</p>
+        <p id ="regform_mobile" style={{display:'none'}}>или</p>
+        <p id ="regform_ipad">или</p>
       </div>
       <div className="reg-form-input-area">
         <form>

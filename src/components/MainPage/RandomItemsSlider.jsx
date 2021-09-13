@@ -59,13 +59,35 @@ const RandomItemsSlider = () => {
             pagination={{ clickable: true }}
             
             // scrollbar={{ draggable: true }}
-            id ="swiper_mobile_800"
+            id ="swiper_mobile_768"
             >
             {randomItems &&
               randomItems.map((item, index) => (
-                <SwiperSlide style={{ display: 'flex', width: '150px' }}>
+                <SwiperSlide style={{ display: 'flex', width: '25%' }}>
                   {' '}
-                  <ItemCard key={index} item={item} />
+                  <ItemCard key={index} item={item} 
+
+                   />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+
+                              {/* копия для адаптива  1024*/}
+            <Swiper
+            spaceBetween={0}
+            slidesPerView={4}
+            pagination={{ clickable: true }}
+            
+            // scrollbar={{ draggable: true }}
+            id ="swiper_mobile_1024"
+            >
+            {randomItems &&
+              randomItems.map((item, index) => (
+                <SwiperSlide style={{ display: 'flex', width: '25%' }}>
+                  {' '}
+                  <ItemCard key={index} item={item} 
+
+                   />
                 </SwiperSlide>
               ))}
           </Swiper>

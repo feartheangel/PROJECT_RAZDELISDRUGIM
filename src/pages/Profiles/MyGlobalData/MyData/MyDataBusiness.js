@@ -1403,64 +1403,57 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
         {/* ШАПКА С ПРОФИЛЕМ*/}
         {/*верхняя часть*/}
         <div className="content_block1">
-          <div className="content_block1">
-            {/* ФОТО */}
-            <div className="content_block2_image">
-              <input
-                style={{ display: "none" }}
-                type="file"
-                accept="image/*,image/jpeg"
-                id="photo_input"
-                onChange={(e) => photoHandler(e)}
+          {/* ФОТО */}
+          <div className="content_block2_image">
+            <input
+              style={{ display: "none" }}
+              type="file"
+              accept="image/*,image/jpeg"
+              id="photo_input"
+              onChange={(e) => photoHandler(e)}
+            />
+            <label className="profile-photo-wrapper" for="photo_input">
+              <img
+                className="profile-photo"
+                src={`https://razdelisdrugim.by${userData.image_profile}`}
+                alt=""
               />
-              <label className="profile-photo-wrapper" for="photo_input">
-                <img
-                  className="profile-photo"
-                  src={`https://razdelisdrugim.by${userData.image_profile}`}
-                  alt=""
-                />
-                <div className="profile-photo-overlay">Изменить</div>
-              </label>
-            </div>
-            <div className="content_block1_left">
-              <p className="block1_left_name">
-                {userData.company_name
-                  ? userData.company_name
-                  : "Название организации не указано"}{" "}
-              </p>
-              <p className="block1_left_privateFace"> Компания </p>
-              {/*ОТЗЫВЫ ОЦЕНКИ*/}
-              <div
-                style={{ display: "none" }}
-                className="content_block2_reviews"
-              >
-                <div className="block2_reviews_stars">
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                </div>
-                <div className="block2_reviews_stars">
-                  <p className="block2_reviews_text">Пока нет оценок</p>
-                </div>
-                <p className="block2_reviews_text"> 0 отзывов </p>
+              <div className="profile-photo-overlay">Изменить</div>
+            </label>
+          </div>
+          <div className="content_block1_left">
+            <p className="block1_left_name">
+              {userData.first_name ? userData.first_name : "Имя не указано"}
+            </p>
+            <p className="block1_left_privateFace"> Частное лицо </p>
+            {/*ОТЗЫВЫ ОЦЕНКИ*/}
+            <div className="content_block2_reviews">
+              <div style={{ display: "none" }} className="block2_reviews_stars">
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
               </div>
+              <div className="block2_reviews_stars">
+                <p className="block2_reviews_text">Пока нет оценок</p>
+              </div>
+              <p className="block2_reviews_text"> 0 отзывов </p>
             </div>
-            {redirect}
+          </div>
+          {redirect}
 
-            <div className="content_block1_right">
-              <a
-                style={{ textDecoration: "none" }}
-                target="_blank"
-                href={`/public-profile?id=${userData && userData.id}`}
-              >
-                <p className="block1_right_watchProfile">
-                  {" "}
-                  Посмотреть мой профиль
-                </p>
-              </a>
-            </div>
+          <div className="content_block1_right">
+            <a
+              style={{ textDecoration: "none" }}
+              target="_blank"
+              href={`/public-profile?id=${userData && userData.id}`}
+            >
+              <p className="block1_right_watchProfile" style={{display:'none'}}>
+                {" "}
+                Посмотреть мой профиль
+              </p>
+            </a>
           </div>
         </div>
 
@@ -1495,8 +1488,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               </div>
             </div>
 
-            {/*НА САЙТЕ*/}
-
+            {/*НА САЙТЕ  - ВРЕМЯ ОТВЕТА*/}
             <div className="content_block2_online">
               <div className="content_block2_online_website">
                 <p className="online_website_text"> На сайте </p>
@@ -1512,22 +1504,12 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               </div>
             </div>
 
-            {/*Я СДАЮ / БЕРУ*/}
-
-            <div className="content_block2_rent_take">
-              <div className="rent_take_content1">
-                <p className="rent_take_content1_rent"> Я сдаю </p>
-                <p className="rent_take_content1_number"> {subjects.length} </p>
-              </div>
-
-              <div className="rent_take_content2">
-                <p className="rent_take_content2_take"> Я беру </p>
-                <p className="rent_take_content2_number"> - </p>
-              </div>
-            </div>
           </div>
-          {/* СОЦ СЕТИ  */}
-          <div className="content_setting_right">
+        </div>
+
+
+                  {/* соц сети */}
+        <div className="content_setting_right">
             <div className="setting_right_socialNetworks">
               <p className="setting_right_socialNetworks-p">
                 Социальные сети и месседжеры
@@ -1630,7 +1612,6 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
             )}
           </div>
-        </div>
 
         {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
         <div className="mydata-settings-main-content">
@@ -1933,8 +1914,52 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     </div>
                   </div>
                 )}
+
+                
               </div>
             )}
+
+
+        {/* рефералки и кнопка */}
+
+        <div className="privateprofile_footer_ref">
+              {/* рефералки */}
+               <div className="referral_code_wrapper_profile">
+              <p>Ваш реферальный код:</p>
+              <input
+                disabled
+                className="referral_code_input_profile"
+                type="text"
+                value={userData && userData.referral_code}
+              />
+            </div>
+            <div className="referral_code_wrapper_profile">
+              <p>Ваша реф-ая ссылка:</p>
+              <input
+                disabled
+                className="referral_code_input_profile"
+                type="text"
+                value={`https://razdelisdrugim.by/?referral=${
+                  userData && userData.referral_code
+                }`}
+              />
+              <div className="toShare_button_wrapper">
+                <label
+                  onClick={() => {
+                    window.navigator.clipboard.writeText(
+                      `${`https://razdelisdrugim.by/?referral=${
+                        userData && userData.referral_code
+                      }`}`
+                    );
+                  }}
+                  style={{ cursor: "pointer" }}
+                  className="item-card-profile-button__optional"
+                >
+                  Копировать
+                </label>
+              </div>
+            </div>
+        </div>
 
             {/*КНОПКА СОХРАНЕНИЯ*/}
 
