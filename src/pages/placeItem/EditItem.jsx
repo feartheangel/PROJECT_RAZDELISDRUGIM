@@ -33,6 +33,10 @@ const EditItem = () => {
     return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const dispatch = useDispatch();
 
   //обработчик удаления фотографии
@@ -367,8 +371,8 @@ const EditItem = () => {
 
     Requests.updateItem(
       Number(viborCategory),
-      String(nameItem),
-      String(description),
+      String(capitalizeFirstLetter(nameItem)),
+      String(capitalizeFirstLetter(description)),
       String(timeArends),
       Number(costArends),
       String(yourKeyWord),
@@ -394,11 +398,11 @@ const EditItem = () => {
       Number(insuranceSumma),
       Boolean(readySell),
       Boolean(contract),
-      String(naznacheniye),
-      String(sostav),
+      String(capitalizeFirstLetter(naznacheniye)),
+      String(capitalizeFirstLetter(sostav)),
       Boolean(giveFree),
       Boolean(yourCost),
-      String(yourColor),
+      String(capitalizeFirstLetter(yourColor)),
       Boolean(franchise),
       Number(franchiseSumma),
       String(artikul),
@@ -429,7 +433,9 @@ const EditItem = () => {
   const { addresses, requestActive, userData, reload, subjects } = useSelector(
     ({ userData }) => userData
   );
-  const { maxAddressesCount } = useSelector(({ settings }) => settings);
+  const { maxAddressesCount, serviceIds } = useSelector(
+    ({ settings }) => settings
+  );
 
   React.useEffect(() => {
     currentSubject = subjects.filter(
@@ -453,6 +459,10 @@ const EditItem = () => {
             ? "WEEK"
             : currentSubject[0] && currentSubject[0].rent === "Месяц"
             ? "MONTH"
+            : currentSubject[0] && currentSubject[0].rent === "1шт."
+            ? "PIECE"
+            : currentSubject[0] && currentSubject[0].rent === "1кв.м."
+            ? "SQUARE"
             : ""
         );
         setGiveFree(currentSubject[0] && currentSubject[0].free_rent);
@@ -923,6 +933,12 @@ const EditItem = () => {
       ]);
     });
 
+  React.useEffect(() => {
+    if (!localStorage.getItem("key")) {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <div className="place-item-wrapper">
       <Header />
@@ -934,7 +950,8 @@ const EditItem = () => {
             {/*  НАИМЕНОВАНИЕ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Название вещи <span className="add-item-span-zvezda">*</span>
+                Название вещи/услуги{" "}
+                <span className="add-item-span-zvezda">*</span>
               </label>
               {redirect}
               <input
@@ -993,7 +1010,10 @@ const EditItem = () => {
 
             {/*  Я ПРЕДЛАГАЮ  */}
             <div className="add-item-input-wrapper">
-              <label className="add-item-input-label">Описание вещи</label>
+              <label className="add-item-input-label">
+                {" "}
+                Описание вещи/услуги
+              </label>
               <div>
                 <textarea
                   placeholder="Например: процессор Intel core i5, видеокарта GeForce GTX 1050ti"
@@ -1056,7 +1076,8 @@ const EditItem = () => {
                 className="add-item-input-wrapper"
               >
                 <label className="add-item-input-label">
-                  Стоимость вещи <span className="add-item-span-zvezda">*</span>
+                  Стоимость вещи/услуги{" "}
+                  <span className="add-item-span-zvezda">*</span>
                 </label>
                 <div>
                   <input
@@ -1074,7 +1095,7 @@ const EditItem = () => {
               <span className="span-valuts">BYN</span>
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
-                  Срок <span className="add-item-span-zvezda">*</span>
+                  Цена за <span className="add-item-span-zvezda">*</span>
                 </label>
                 <select
                   className="add-item-select-input__time"
@@ -1092,6 +1113,12 @@ const EditItem = () => {
                   <option value="MONTH" selected={timeArends === "MONTH"}>
                     Месяц
                   </option>
+                  <option value="PIECE" selected={timeArends === "PIECE"}>
+                    1 шт.
+                  </option>
+                  <option selected={timeArends === "SQUARE"} value="SQUARE">
+                    1кв.м.
+                  </option>
                 </select>
               </div>
               <span className="add-item-cost-or">или</span>
@@ -1102,7 +1129,12 @@ const EditItem = () => {
                   checked={yourCost}
                   disabled={giveFree}
                 />
-                <span>Предлагать цену</span>
+                <span>
+                  {" "}
+                  {serviceIds && serviceIds.includes(viborCategory)
+                    ? "Договорная"
+                    : "Предлагать цену"}
+                </span>
               </label>
               <span className="add-item-cost-or">или</span>
               <label class="checkbox-btn">
@@ -1128,7 +1160,7 @@ const EditItem = () => {
                   className="add-item-input-wrapper"
                 >
                   <label className="add-item-input-label">
-                    Стоимость вещи{" "}
+                    Стоимость вещи/услуги{" "}
                     <span className="add-item-span-zvezda">*</span>
                   </label>
                   <div>
@@ -1147,7 +1179,7 @@ const EditItem = () => {
                 <span className="span-valuts">BYN</span>
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">
-                    Срок <span className="add-item-span-zvezda">*</span>
+                    Цена за <span className="add-item-span-zvezda">*</span>
                   </label>
                   <select
                     className="add-item-select-input__time"
@@ -1165,6 +1197,12 @@ const EditItem = () => {
                     <option value="MONTH" selected={timeArends === "MONTH"}>
                       Месяц
                     </option>
+                    <option value="PIECE" selected={timeArends === "PIECE"}>
+                      1 шт.
+                    </option>
+                    <option selected={timeArends === "SQUARE"} value="SQUARE">
+                      1кв.м.
+                    </option>
                   </select>
                 </div>
               </div>
@@ -1178,7 +1216,9 @@ const EditItem = () => {
                     disabled={giveFree}
                   />
                   <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                    Предлагать цену{" "}
+                    {serviceIds && serviceIds.includes(viborCategory)
+                      ? "Договорная"
+                      : "Предлагать цену"}
                   </span>
                 </label>
                 <span className="add-item-cost-or">или</span>
@@ -1207,7 +1247,8 @@ const EditItem = () => {
 
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Адрес вещи <span className="add-item-span-zvezda">*</span>
+                Адрес местонахождения{" "}
+                <span className="add-item-span-zvezda">*</span>
               </label>
               <select
                 className="add-item-select-input"

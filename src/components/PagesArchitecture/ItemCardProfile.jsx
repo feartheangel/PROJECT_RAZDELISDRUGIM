@@ -4,7 +4,6 @@ import { reloadData } from "../../redux/actions/userData";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import car from "../../img/MainPage/car.png";
-import cardFire from "../../img/MainPage/card-fire.png";
 import cardMoney from "../../img/MainPage/card-money.png";
 import cardVerify from "../../img/MainPage/card-verify.png";
 import Union from "../../img/MainPage/Union.png";
@@ -237,13 +236,17 @@ const ItemCardProfile = ({
               <p className="recent-cost-p">{price_rent} BYN</p>
               <p className="recent-time-p">
                 {rent === "Час"
-                  ? "Час"
+                  ? "час"
                   : rent === "День"
-                  ? "Сутки"
+                  ? "день"
                   : rent === "Неделя"
-                  ? "Неделя"
+                  ? "неделю"
                   : rent === "Месяц"
-                  ? "Месяц"
+                  ? "месяц"
+                  : rent === "1шт."
+                  ? "штуку"
+                  : rent === "1кв.м."
+                  ? "1кв.м."
                   : ""}
               </p>
             </div>
@@ -449,13 +452,17 @@ const ItemCardProfile = ({
               <p className="recent-cost-p">{price_rent} BYN</p>
               <p className="recent-time-p">
                 {rent === "Час"
-                  ? "Час"
+                  ? "час"
                   : rent === "День"
-                  ? "Сутки"
+                  ? "день"
                   : rent === "Неделя"
-                  ? "Неделя"
+                  ? "неделю"
                   : rent === "Месяц"
-                  ? "Месяц"
+                  ? "месяц"
+                  : rent === "1шт."
+                  ? "штуку"
+                  : rent === "1кв.м."
+                  ? "1кв.м."
                   : ""}
               </p>
             </div>
@@ -657,13 +664,17 @@ const ItemCardProfile = ({
               <p className="recent-cost-p">{price_rent} BYN</p>
               <p className="recent-time-p">
                 {rent === "Час"
-                  ? "Час"
+                  ? "час"
                   : rent === "День"
-                  ? "Сутки"
+                  ? "день"
                   : rent === "Неделя"
-                  ? "Неделя"
+                  ? "неделю"
                   : rent === "Месяц"
-                  ? "Месяц"
+                  ? "месяц"
+                  : rent === "1шт."
+                  ? "штуку"
+                  : rent === "1кв.м."
+                  ? "1кв.м."
                   : ""}
               </p>
             </div>

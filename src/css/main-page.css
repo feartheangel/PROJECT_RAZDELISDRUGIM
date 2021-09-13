@@ -740,8 +740,8 @@ button {
   font-weight: 500;
   font-size: 36px;
   line-height: 42px;
-  color: #123940;
   margin-bottom: 40px;
+  display: flex;
 }
 
 .about-middle-part {
@@ -1349,10 +1349,15 @@ button {
 }
 
 
+.main_page_first_block_left_bottons {
+  display: flex;
+  justify-content: center;
+}
+
 /* МЕДИА ЗАПРОСЫ  */
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
-  #swiper_comp_partners{
+  #swiper_comp_partners {
     display: none;
   }
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
@@ -1853,13 +1858,11 @@ button {
 
   /* ВОЗМОЖНОСТИ С ПЛАТФОРМОЙ ТЕКСТ */
   .abilities-mail-title {
-    display: flex;
-    justify-content: center;
     text-align: center;
-    margin: 0 15px 0 15px;
+    margin: 5px 15px 0 15px;
     font-style: normal;
     font-weight: 500;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 28px;
   }
 
@@ -1997,7 +2000,7 @@ button {
   /* О нашем сервисе */
   .about-content {
     padding: 0 15px;
-    align-items: flex-start;
+    align-items: center;
   }
   .main-about-title {
     font-weight: 500;

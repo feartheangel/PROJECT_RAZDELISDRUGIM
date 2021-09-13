@@ -21,6 +21,12 @@ const MyFavorites = () => {
     document.title = "Избранное: #разделисдругим";
   }, []);
 
+  React.useEffect(() => {
+    if (!localStorage.getItem("key")) {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <div>
       <Header />
@@ -117,9 +123,8 @@ const MyFavorites = () => {
         </div>
       </div>
 
-
-       {/* ПЛАНШЕТ ВЕРСИИ */}
-       <div className="privateProfile" id="globaldata_ipad">
+      {/* ПЛАНШЕТ ВЕРСИИ */}
+      <div className="privateProfile" id="globaldata_ipad">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <Link

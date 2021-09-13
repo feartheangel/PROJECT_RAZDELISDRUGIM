@@ -16,6 +16,12 @@ const MyItems = () => {
     document.title = "Я сдаю: #разделисдругим";
   }, []);
 
+  React.useEffect(() => {
+    if (!localStorage.getItem("key")) {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <div>
       <Header />
@@ -215,7 +221,6 @@ const MyItems = () => {
           </div>
         </div>
       </div>
-
 
       {/* ПЛАНШЕТ ВЕРСИЯ */}
       <div className="privateProfile" id="globaldata_ipad">
