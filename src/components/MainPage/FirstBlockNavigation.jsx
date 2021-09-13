@@ -40,7 +40,10 @@ const FirstBlockNavigation = () => {
             только...
           </p>
           <img src={FirstImage} className="FirstImage2" />
-          <div className="main_page_first_block_left_bottons">
+          <div
+            style={{ justifyContent: "flex-start" }}
+            className="main_page_first_block_left_bottons"
+          >
             <Link style={{ textDecoration: "none" }} to="/search">
               <input
                 type="button"

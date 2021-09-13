@@ -46,6 +46,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
       : `${Math.round((x1 - x0) / msPerDay)} д.`;
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const dispatch = useDispatch();
   const { userData, subjects } = useSelector(({ userData }) => userData);
   const { reload } = useSelector(({ userData }) => userData);
@@ -147,9 +151,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
       return;
     }
     Requests.updateProfileMain(
-      name,
-      surname,
-      companyName,
+      capitalizeFirstLetter(name),
+      capitalizeFirstLetter(surname),
+      capitalizeFirstLetter(companyName),
       unpUnn,
       address,
       iban,
@@ -159,7 +163,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
       number,
       "NONE",
       null,
-      about,
+      capitalizeFirstLetter(about),
       address
     )
       .then((response) => {

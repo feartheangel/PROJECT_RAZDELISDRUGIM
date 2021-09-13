@@ -181,6 +181,8 @@ const CardThings = () => {
     zoom: 12,
   };
 
+  const { serviceIds } = useSelector(({ settings }) => settings);
+
   return (
     <div className="CardThings">
       <Header />
@@ -390,9 +392,7 @@ const CardThings = () => {
                   {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
                   <div className="left_block_conditions">
-                    <p className="left_block_conditions-p">
-                      Условия получения в аренду
-                    </p>
+                    <p className="left_block_conditions-p">Условия получения</p>
 
                     {/* ДОГОВОР*/}
                     {itemData && itemData.contract && (
@@ -646,7 +646,12 @@ const CardThings = () => {
                   <div className="right_block_up">
                     {/*название вещи*/}
                     <div className="block_up_notebook">
-                      <p>{itemData && itemData.name_item} в аренду</p>
+                      <p>
+                        {itemData && itemData.name_item}{" "}
+                        {!serviceIds.includes(
+                          itemData && itemData.category_id.id
+                        ) && "в аренду"}
+                      </p>
                     </div>
 
                     {/*предложи стоимость вещи*/}
@@ -659,7 +664,11 @@ const CardThings = () => {
                             alt=""
                           />
                           <p className="block_up_yourCost-p1">
-                            Предложить свою цену
+                            {serviceIds.includes(
+                              itemData && itemData.category_id.id
+                            )
+                              ? "Договорная"
+                              : "Предложить свою цену"}
                           </p>
                         </div>
                       )}
@@ -690,7 +699,7 @@ const CardThings = () => {
                               style={{ marginRight: "10px" }}
                               className="block_up_yourCost-p1"
                             >
-                              в
+                              за
                             </p>
                             <p
                               style={{ fontWeight: "500" }}
@@ -704,6 +713,10 @@ const CardThings = () => {
                                 ? "неделю"
                                 : itemData && itemData.rent === "Месяц"
                                 ? "месяц"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штуку"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
                                 : ""}
                             </p>
                           </div>
@@ -720,7 +733,7 @@ const CardThings = () => {
                       </div>
                       {isLoggedIn ? (
                         <p className="block_up_address-p">
-                          {itemData && itemData.items_address.split(",")[0]},{" "}
+                          {itemData && itemData.items_address.split(",")[0]},
                           {itemData && itemData.items_address.split(",")[1]}
                         </p>
                       ) : (
@@ -1191,10 +1204,6 @@ const CardThings = () => {
         </div>
       </div>
 
-
-
-
-
       {/* МОБИЛЬНЫЙ АДАПТИВ */}
       <div id="card_thing_mobile">
         <div className="CardThings_Wrapper">
@@ -1359,7 +1368,12 @@ const CardThings = () => {
                       </div>
                     </div>
                     <div className="block_up_notebook">
-                      <p>{itemData && itemData.name_item} в аренду</p>
+                      <p>
+                        {itemData && itemData.name_item}{" "}
+                        {!serviceIds.includes(
+                          window.location.href.split("?id=")[1]
+                        ) && "в аренду"}
+                      </p>
                     </div>
                     <div className="block_up_yourCost">
                       {itemData && itemData.offer_price_rent && (
@@ -1370,7 +1384,11 @@ const CardThings = () => {
                             alt=""
                           />
                           <p className="block_up_yourCost-p1">
-                            Предложить свою цену
+                            {serviceIds.includes(
+                              itemData && itemData.category_id.id
+                            )
+                              ? "Договорная"
+                              : "Предложить свою цену"}
                           </p>
                         </div>
                       )}
@@ -1415,6 +1433,10 @@ const CardThings = () => {
                                 ? "неделю"
                                 : itemData && itemData.rent === "Месяц"
                                 ? "месяц"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штуку"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
                                 : ""}
                             </p>
                           </div>
@@ -1488,9 +1510,7 @@ const CardThings = () => {
                   {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
                   <div className="left_block_conditions">
-                    <p className="left_block_conditions-p">
-                      Условия получения в аренду
-                    </p>
+                    <p className="left_block_conditions-p">Условия получения</p>
 
                     <div className="block_up_delivery">
                       <div className="conditions_row">
@@ -2175,9 +2195,8 @@ const CardThings = () => {
         </div>
       </div>
 
-
-                        {/* ПЛАНШЕТ АДАПТИВ */}
-        <div id="card_thing_ipad">
+      {/* ПЛАНШЕТ АДАПТИВ */}
+      <div id="card_thing_ipad">
         <div className="CardThings_Wrapper" id="card_thing_ipad">
           <div className="CardThings_Wrapper_container">
             {/* КОНТЕНТ РАСШИРЕННОЙ КАРТОЧКИ*/}
@@ -2383,9 +2402,7 @@ const CardThings = () => {
                   {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
                   <div className="left_block_conditions">
-                    <p className="left_block_conditions-p">
-                      Условия получения в аренду
-                    </p>
+                    <p className="left_block_conditions-p">Условия получения</p>
 
                     {/* ДОГОВОР*/}
                     {itemData && itemData.contract && (
@@ -2639,7 +2656,12 @@ const CardThings = () => {
                   <div className="right_block_up">
                     {/*название вещи*/}
                     <div className="block_up_notebook">
-                      <p>{itemData && itemData.name_item} в аренду</p>
+                      <p>
+                        {itemData && itemData.name_item}{" "}
+                        {!serviceIds.includes(
+                          window.location.href.split("?id=")[1]
+                        ) && "в аренду"}
+                      </p>
                     </div>
 
                     {/*предложи стоимость вещи*/}
@@ -2652,7 +2674,11 @@ const CardThings = () => {
                             alt=""
                           />
                           <p className="block_up_yourCost-p1">
-                            Предложить свою цену
+                            {serviceIds.includes(
+                              itemData && itemData.category_id.id
+                            )
+                              ? "Договорная"
+                              : "Предложить свою цену"}
                           </p>
                         </div>
                       )}
@@ -2818,7 +2844,7 @@ const CardThings = () => {
                     </div>
 
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
-                    <div >
+                    <div>
                       <div className="block_up_contactOwner">
                         <input
                           onClick={showContactHandler}
@@ -2847,9 +2873,7 @@ const CardThings = () => {
                         )}
                       </div>
                       {contactVisible && (
-                        <div
-                          className={"item_share_link"}
-                        >
+                        <div className={"item_share_link"}>
                           <label
                             onClick={window.navigator.clipboard.writeText(
                               `${window.location.href}`
@@ -2870,7 +2894,7 @@ const CardThings = () => {
                   </div>
 
                   {/* НИЗ ПРАВОЙ СТОРОНЫ*/}
-                  <div  className="right_block_down">
+                  <div className="right_block_down">
                     <div className="block_down_owner">
                       <p>Владелец</p>
                     </div>
@@ -3171,7 +3195,6 @@ const CardThings = () => {
           </div>
         </div>
       </div>
-
 
       <Footer />
     </div>

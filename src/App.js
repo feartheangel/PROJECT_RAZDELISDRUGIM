@@ -50,27 +50,6 @@ import {
 import { setUserCoords } from "./redux/actions/search";
 
 function App() {
-  const YMetric = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L066HXCMFD');
-</script><noscript><div><img src="https://mc.yandex.ru/watch/83058148" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
-
-  const GMetric = `<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(83058148, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>`;
-
   const { isLoggedIn, reload } = useSelector(({ userData }) => userData);
   const dispatch = useDispatch();
 
@@ -91,7 +70,7 @@ function App() {
       dispatch(setmaxItemsToPlaceFree(res.data[0].free_placement_items_count));
       dispatch(setLanguage(res.data[0].language));
       dispatch(setMaxAddressesCount(res.data[0].address_count_max));
-      dispatch(setServiceIds(res.data[0].serviceIds));
+      dispatch(setServiceIds(res.data[0].service_ids));
       dispatch(setEmailSettings(res.data[0].email));
       dispatch(setEmailSupport(res.data[0].email_support));
     });
@@ -166,8 +145,6 @@ function App() {
         <Route path="/account-deletion" component={AccountDeletion} exact />
         <Route path="/contacts" component={Contacts} exact />
         <Route path="/users-agreement" component={UsersAgreement} exact />
-        <div dangerouslySetInnerHTML={{ __html: YMetric }}></div>
-        <div dangerouslySetInnerHTML={{ __html: GMetric }}></div>
       </div>
     </div>
   );

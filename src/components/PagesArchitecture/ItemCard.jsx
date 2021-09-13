@@ -23,6 +23,7 @@ const ItemCard = ({ item }) => {
   const { favorites, isLoggedIn, subjects } = useSelector(
     ({ userData }) => userData
   );
+
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [isOwn, setIsOwn] = React.useState(false);
 
@@ -173,14 +174,18 @@ const ItemCard = ({ item }) => {
               >
                 <p className="recent-cost-p">{item.price_rent} BYN</p>
                 <p className="recent-time-p">
-                  {item.rent === "Час"
-                    ? "Час"
-                    : item.rent === "День"
-                    ? "День"
-                    : item.rent === "Неделя"
-                    ? "Неделя"
-                    : item.rent === "Месяц"
-                    ? "Месяц"
+                  {item && item.rent === "Час"
+                    ? "час"
+                    : item && item.rent === "День"
+                    ? "день"
+                    : item && item.rent === "Неделя"
+                    ? "неделю"
+                    : item && item.rent === "Месяц"
+                    ? "месяц"
+                    : item && item.rent === "1шт."
+                    ? "штука"
+                    : item && item.rent === "1кв.м."
+                    ? "1кв.м."
                     : ""}
                 </p>
               </div>
@@ -349,14 +354,18 @@ const ItemCard = ({ item }) => {
               >
                 <p className="recent-cost-p">{item.price_rent} BYN</p>
                 <p className="recent-time-p">
-                  {item.rent === "Час"
-                    ? "Час"
-                    : item.rent === "День"
-                    ? "День"
-                    : item.rent === "Неделя"
-                    ? "Неделя"
-                    : item.rent === "Месяц"
-                    ? "Месяц"
+                  {item && item.rent === "Час"
+                    ? "час"
+                    : item && item.rent === "День"
+                    ? "день"
+                    : item && item.rent === "Неделя"
+                    ? "неделю"
+                    : item && item.rent === "Месяц"
+                    ? "месяц"
+                    : item && item.rent === "1шт."
+                    ? "штука"
+                    : item && item.rent === "1кв.м."
+                    ? "1кв.м."
                     : ""}
                 </p>
               </div>
@@ -531,14 +540,18 @@ const ItemCard = ({ item }) => {
               >
                 <p className="recent-cost-p">{item.price_rent} BYN</p>
                 <p className="recent-time-p">
-                  {item.rent === "Час"
-                    ? "Час"
-                    : item.rent === "День"
-                    ? "День"
-                    : item.rent === "Неделя"
-                    ? "Неделя"
-                    : item.rent === "Месяц"
-                    ? "Месяц"
+                  {item && item.rent === "Час"
+                    ? "час"
+                    : item && item.rent === "День"
+                    ? "день"
+                    : item && item.rent === "Неделя"
+                    ? "неделю"
+                    : item && item.rent === "Месяц"
+                    ? "месяц"
+                    : item && item.rent === "1шт."
+                    ? "штуку"
+                    : item && item.rent === "1кв.м."
+                    ? "1кв.м."
                     : ""}
                 </p>
               </div>

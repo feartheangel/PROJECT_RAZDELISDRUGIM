@@ -2,7 +2,7 @@ const initialState = {
   maxItemsToPlaceFree: "",
   language: "",
   maxAddressesCount: "",
-  serviseIds: [],
+  serviceIds: [],
   emailSupport: "",
   email: "",
 };
@@ -33,7 +33,7 @@ const search = (state = initialState, action) => {
     case "SET_SERVICE_IDS":
       return {
         ...state,
-        serviseIds: action.payload,
+        serviceIds: action.payload,
       };
       break;
 

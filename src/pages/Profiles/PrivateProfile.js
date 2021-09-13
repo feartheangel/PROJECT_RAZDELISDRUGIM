@@ -40,6 +40,12 @@ const PrivateProfile = () => {
     document.title = "Мой профиль: #разделисдругим";
   }, []);
 
+  React.useEffect(() => {
+    if (!localStorage.getItem("key")) {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <div>
       <Header />

@@ -13,11 +13,6 @@ import Requests from "../../http/axios-requests";
 import "./PlaseItem.css";
 import Vector2 from "../../img/CardThings/LeftContent/Vector2.png";
 
-// import Logo from "../../img/MainPage/Logo.png";
-// import mark from "../../img/MainPage/Mark.png";
-// import LanguagePlanet from "../../img/MainPage/Language-planet.png";
-// import {Link} from "react-router-dom";
-// import Burger from "../../img/MainPage/Burger.png";
 let files = [];
 let resultList = [];
 let parsedFiles = [];
@@ -29,6 +24,10 @@ const PlaceItem = () => {
     if (bytes == 0) return "0 Byte";
     var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
     return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
+  }
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   const dispatch = useDispatch();
@@ -373,8 +372,8 @@ const PlaceItem = () => {
 
     Requests.createItem(
       Number(viborCategory),
-      String(nameItem),
-      String(description),
+      String(capitalizeFirstLetter(nameItem)),
+      String(capitalizeFirstLetter(description)),
       String(timeArends),
       Number(costArends),
       String(yourKeyWord),
@@ -400,11 +399,11 @@ const PlaceItem = () => {
       Number(insuranceSumma),
       Boolean(readySell),
       Boolean(contract),
-      String(naznacheniye),
-      String(sostav),
+      String(capitalizeFirstLetter(naznacheniye)),
+      String(capitalizeFirstLetter(sostav)),
       Boolean(giveFree),
       Boolean(yourCost),
-      String(yourColor),
+      String(capitalizeFirstLetter(yourColor)),
       Boolean(franchise),
       Number(franchiseSumma),
       String(artikul),
@@ -565,13 +564,11 @@ const PlaceItem = () => {
   const [captchaPassed, setCaptchaPassed] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
-  /*   //проврека на верификацию почты и телефона
   React.useEffect(() => {
-    if (!requestActive && (!userData.email_verify || !userData.phone_verify)) {
-      alert('У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле.');
-      setRedirect(<Redirect to="/private-profile" />);
+    if (!localStorage.getItem("key")) {
+      window.location.href = "/";
     }
-  }, [requestActive]); */
+  }, []);
 
   //очистка полей при отмене выбора
   React.useEffect(() => {
@@ -674,7 +671,9 @@ const PlaceItem = () => {
     ({ userData }) => userData
   );
 
-  const { maxAddressesCount } = useSelector(({ settings }) => settings);
+  const { maxAddressesCount, serviceIds } = useSelector(
+    ({ settings }) => settings
+  );
 
   //выделяем разделы
   const chapters = {};
@@ -716,7 +715,8 @@ const PlaceItem = () => {
             {/*  НАИМЕНОВАНИЕ  */}
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Название вещи <span className="add-item-span-zvezda">*</span>{" "}
+                Название вещи/услуги{" "}
+                <span className="add-item-span-zvezda">*</span>{" "}
                 <img
                   title="Назовите свое имущество так, чтобы пользователям было легко ее найти"
                   src={Vector2}
@@ -783,7 +783,9 @@ const PlaceItem = () => {
             </div>
             {/*  Я ПРЕДЛАГАЮ  */}
             <div className="add-item-input-wrapper">
-              <label className="add-item-input-label">Описание вещи</label>
+              <label className="add-item-input-label">
+                Описание вещи/услуги
+              </label>
               <div>
                 <textarea
                   placeholder="Например: процессор Intel core i5, видеокарта GeForce GTX 1050ti"
@@ -847,7 +849,8 @@ const PlaceItem = () => {
                 className="add-item-input-wrapper"
               >
                 <label className="add-item-input-label">
-                  Стоимость вещи <span className="add-item-span-zvezda">*</span>
+                  Стоимость вещи/услуги{" "}
+                  <span className="add-item-span-zvezda">*</span>
                 </label>
                 <div>
                   <input
@@ -865,7 +868,7 @@ const PlaceItem = () => {
               <span className="span-valuts">BYN</span>
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
-                  Срок <span className="add-item-span-zvezda">*</span>
+                  Цена за <span className="add-item-span-zvezda">*</span>
                 </label>
                 <select
                   className="add-item-select-input__time"
@@ -877,6 +880,8 @@ const PlaceItem = () => {
                   </option>
                   <option value="WEEK">Неделя</option>
                   <option value="MONTH">Месяц</option>
+                  <option value="PIECE">1 шт.</option>
+                  <option value="SQUARE">1кв.м.</option>
                 </select>
               </div>
               <span className="add-item-cost-or">или</span>
@@ -888,7 +893,7 @@ const PlaceItem = () => {
                   disabled={giveFree}
                 />
                 <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                  Предлагать цену{" "}
+                  Предлагать цену
                 </span>
               </label>
               <span className="add-item-cost-or">или</span>
@@ -899,7 +904,12 @@ const PlaceItem = () => {
                   checked={giveFree}
                   disabled={yourCost}
                 />
-                <span id="checkbox-btn1">Бесплатно</span>
+                <span id="checkbox-btn1">
+                  {" "}
+                  {serviceIds && serviceIds.includes(viborCategory)
+                    ? "Договорная"
+                    : "Предлагать цену"}
+                </span>
               </label>
             </div>
             {/* БЛОК АРЕНДА ДЛЯ ПЛАНШЕТА */}
@@ -941,6 +951,8 @@ const PlaceItem = () => {
                     </option>
                     <option value="WEEK">Неделя</option>
                     <option value="MONTH">Месяц</option>
+                    <option value="PIECE">1 шт.</option>
+                    <option value="SQUARE">1кв.м.</option>
                   </select>
                 </div>
               </div>
@@ -954,7 +966,9 @@ const PlaceItem = () => {
                     disabled={giveFree}
                   />
                   <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                    Предлагать цену{" "}
+                    {serviceIds && serviceIds.includes(viborCategory)
+                      ? "Договорная"
+                      : "Предлагать цену"}
                   </span>
                 </label>
                 <span className="add-item-cost-or">или</span>
@@ -986,7 +1000,7 @@ const PlaceItem = () => {
             </div>
             <div className="add-item-input-wrapper">
               <label className="add-item-input-label">
-                Адрес вещи{" "}
+                Адрес местонахождения{" "}
                 <img
                   title="Введите и выберите адрес местоположения имущества, чтобы пользователям было легче найти его на карте или рядом с собой"
                   src={Vector2}

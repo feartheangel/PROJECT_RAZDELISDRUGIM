@@ -27,6 +27,24 @@ const Home = () => {
     }
   }, []);
 
+  const YMetric = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L066HXCMFD');
+</script><noscript><div><img src="https://mc.yandex.ru/watch/83058148" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
+
+  const GMetric = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L066HXCMFD');
+</script>`;
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Главная: #разделисдругим";
@@ -50,6 +68,8 @@ const Home = () => {
         {false && <MediaAbout />}
         <Footer />
       </div>
+      <div dangerouslySetInnerHTML={{ __html: YMetric }}></div>
+      <div dangerouslySetInnerHTML={{ __html: GMetric }}></div>
     </div>
   );
 };
