@@ -627,6 +627,9 @@
   .reg-form-text-label-p{
     margin:0;
   }
+  .reg-form-checkbox-button + label::before{
+    border-radius: 100%;
+  }
   .log-form-text-label-l{
     margin-top: 20px;
     font-weight: normal;

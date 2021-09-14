@@ -23,7 +23,7 @@ const Partners = () => {
         <p className="partners-main-title">С нами сотрудничают</p>
         <div className="partners-slider-container">
           <Swiper
-            spaceBetween={20}
+            spaceBetween={0}
             slidesPerView={4}
             pagination={{ clickable: true }}
             id="swiper_comp"

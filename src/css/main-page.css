@@ -871,7 +871,10 @@ button {
   justify-content: center;
   font-size: 20px;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 .main-sections-second {
   width: 100%;
@@ -1044,25 +1047,28 @@ button {
   padding: 20px 165px 0 165px;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .footer-first-col {
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
+  margin-right: 90px;
 }
 
 .footer-second-col {
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
+  margin-right: 90px;
 }
 
 .footer-third-col {
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
+  margin-right: 90px;
 }
 
 .footer-fourth-col {
@@ -1070,6 +1076,7 @@ button {
   font-size: 14px;
   line-height: 16px;
   margin-top: 40px;
+  margin-right: 90px;
 }
 
 .main-footer-li {
@@ -1140,6 +1147,7 @@ button {
   margin-top: 30px;
   margin-left: 20px;
   margin-bottom: 30px;
+  justify-content: center;
 }
 
 .footer-img-logo-wrapper {
@@ -1300,7 +1308,7 @@ button {
 
 @media (min-width: 2160px) {
   .main-sections-second-ul {
-    margin-right: 150px;
+    margin-right: 0;
   }
 }
 #popular-button2 {
