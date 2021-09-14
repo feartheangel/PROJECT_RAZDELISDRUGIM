@@ -10,6 +10,7 @@
   height: auto;
   width: auto;
   padding: 0 165px;
+  align-items: center;
 }
 
 /* КОНТЕЙНЕР С КОНТЕНТОМ*/
@@ -63,6 +64,7 @@
   border-radius: 30px;
   margin: 20px 0;
   padding-bottom: 30px;
+  width: 1190px;
 }
 
 .card_content_footer_pages {
@@ -902,6 +904,11 @@
   }
   .information_description{
     margin-bottom: 20px;
+  }
+  .telephone_row2_time{
+    display: flex;
+    justify-content: space-between;
+
   }
 
 

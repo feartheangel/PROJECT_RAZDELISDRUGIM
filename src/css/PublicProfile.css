@@ -10,6 +10,7 @@
   height: auto;
   width: auto;
   padding: 0 165px;
+  align-items: center;
 }
 /* КОНТЕЙНЕР С КОНТЕНТОМ*/
 .PublicProfile_Wrapper_container {
@@ -24,6 +25,7 @@
   background: #ffffff;
   font-size: 18px;
   font-weight: 400;
+  width: 1150px;
 }
 /* { ВЕРХНЯЯ ЧАСТЬ КОНТЕЙНЕРА } */
 .container_up {
@@ -194,6 +196,7 @@
     padding: 10px 0 15px;
     margin: 0;
     border-radius: 0;
+    width: -webkit-fill-available;
   }
   .up_content{
     flex-direction: column;
@@ -406,7 +409,7 @@
 }
 
 
-
+/*  IPAD */
 
 @media only screen and (max-width: 1024px) and (min-width:481px) {
 
@@ -417,6 +420,9 @@
   .list_span_right{
     text-align: inherit;
     margin-left: 20px;
+  }
+  .PublicProfile_Wrapper_container{
+    width: -webkit-fill-available;
   }
 
 
@@ -449,6 +455,7 @@
     width: 100px;
     height: 100px;
     margin-right: 10px;
+    margin-bottom: 15px
   }
   .conditions_row{
     display: none;
@@ -478,9 +485,9 @@
     justify-content: space-between;
     flex-direction: column;
   }
-  .telephone_row1{
+  /* .telephone_row1{
     justify-content: space-between;
-  }
+  } */
   .block_down_online{
     margin-bottom: 0;
   }

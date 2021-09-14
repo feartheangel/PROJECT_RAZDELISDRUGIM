@@ -1203,6 +1203,7 @@ button {
   width: 100%;
   overflow-x: hidden;
   padding: 20px;
+  justify-content: center;
 }
 .burger-button {
   margin-right: 371px;
@@ -1355,6 +1356,13 @@ button {
 #global_ipad {
   display: none;
 }
+#global_1024 {
+  display: none;
+}
+#global_ipad_1024{
+  display: none;
+}
+
 
 
 .main_page_first_block_left_bottons {
@@ -1368,6 +1376,13 @@ button {
   #swiper_comp_partners {
     display: none;
   }
+  #global_ipad_1024{
+    display: none;
+  }
+  #global_ipad{
+    display: none;
+  }
+
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
   .wrapper {
     display: flex;
@@ -2253,6 +2268,7 @@ button {
     font-size: 14px;
     line-height: 16px;
     color: #123940;
+    margin-right: 0;
   }
   .footer-first-li.main-footer-li {
     font-size: 16px;
@@ -2262,15 +2278,21 @@ button {
   .footer-second-ul-first {
     width: 140px;
     margin-bottom: 10px;
+    margin-right: 0;
   }
   .footer-second-ul-second {
     margin-bottom: 10px;
+    margin-right: 0;
+  }
+  .footer-second-col{
+    margin-right: 0;
   }
 
   /* блок 3 */
   .footer-third-col {
     width: 140px;
     margin-top: 10px;
+    margin-right: 0;
   }
 
   /* блок 4 */
@@ -2278,6 +2300,7 @@ button {
     width: 140px;
     margin-top: 40px;
     margin-bottom: 20px;
+    margin-right: 0;
   }
 
   /* Кнопка под блоками */
@@ -2462,6 +2485,9 @@ button {
     display: none;
   }
   #main-sections-pk {
+    display: none;
+  }
+  #global_ipad_1024{
     display: none;
   }
 
@@ -3063,6 +3089,33 @@ button {
     display: none;
   }
   }
+
+
+  /* ipad 1024 only */
+  @media only screen and (width: 1024px){
+
+    #swiper_comp{
+      display: none;
+    }
+    #global_ipad{
+      display: none;
+    }
+
+    #global_ipad_1024{
+      display: flex;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 
