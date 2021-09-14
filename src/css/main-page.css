@@ -871,7 +871,10 @@ button {
   justify-content: center;
   font-size: 20px;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 .main-sections-second {
   width: 100%;
@@ -1044,25 +1047,28 @@ button {
   padding: 20px 165px 0 165px;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .footer-first-col {
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
+  margin-right: 90px;
 }
 
 .footer-second-col {
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
+  margin-right: 90px;
 }
 
 .footer-third-col {
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
+  margin-right: 90px;
 }
 
 .footer-fourth-col {
@@ -1070,6 +1076,7 @@ button {
   font-size: 14px;
   line-height: 16px;
   margin-top: 40px;
+  margin-right: 90px;
 }
 
 .main-footer-li {
@@ -1140,6 +1147,7 @@ button {
   margin-top: 30px;
   margin-left: 20px;
   margin-bottom: 30px;
+  justify-content: center;
 }
 
 .footer-img-logo-wrapper {
@@ -1195,6 +1203,7 @@ button {
   width: 100%;
   overflow-x: hidden;
   padding: 20px;
+  justify-content: center;
 }
 .burger-button {
   margin-right: 371px;
@@ -1300,7 +1309,7 @@ button {
 
 @media (min-width: 2160px) {
   .main-sections-second-ul {
-    margin-right: 150px;
+    margin-right: 0;
   }
 }
 #popular-button2 {
@@ -1347,6 +1356,13 @@ button {
 #global_ipad {
   display: none;
 }
+#global_1024 {
+  display: none;
+}
+#global_ipad_1024{
+  display: none;
+}
+
 
 
 .main_page_first_block_left_bottons {
@@ -1360,6 +1376,13 @@ button {
   #swiper_comp_partners {
     display: none;
   }
+  #global_ipad_1024{
+    display: none;
+  }
+  #global_ipad{
+    display: none;
+  }
+
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
   .wrapper {
     display: flex;
@@ -2245,6 +2268,7 @@ button {
     font-size: 14px;
     line-height: 16px;
     color: #123940;
+    margin-right: 0;
   }
   .footer-first-li.main-footer-li {
     font-size: 16px;
@@ -2254,15 +2278,21 @@ button {
   .footer-second-ul-first {
     width: 140px;
     margin-bottom: 10px;
+    margin-right: 0;
   }
   .footer-second-ul-second {
     margin-bottom: 10px;
+    margin-right: 0;
+  }
+  .footer-second-col{
+    margin-right: 0;
   }
 
   /* блок 3 */
   .footer-third-col {
     width: 140px;
     margin-top: 10px;
+    margin-right: 0;
   }
 
   /* блок 4 */
@@ -2270,6 +2300,7 @@ button {
     width: 140px;
     margin-top: 40px;
     margin-bottom: 20px;
+    margin-right: 0;
   }
 
   /* Кнопка под блоками */
@@ -2454,6 +2485,9 @@ button {
     display: none;
   }
   #main-sections-pk {
+    display: none;
+  }
+  #global_ipad_1024{
     display: none;
   }
 
@@ -3055,6 +3089,33 @@ button {
     display: none;
   }
   }
+
+
+  /* ipad 1024 only */
+  @media only screen and (width: 1024px){
+
+    #swiper_comp{
+      display: none;
+    }
+    #global_ipad{
+      display: none;
+    }
+
+    #global_ipad_1024{
+      display: flex;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 
