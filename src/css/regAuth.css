@@ -68,7 +68,7 @@
 .reg-form-action-type-list {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 38px;
+  margin-top: 25px;
 }
 
 .reg-form-action-type-link {
@@ -91,7 +91,7 @@
 .reg-form-socials img {
   width: 42px;
   height: 42px;
-  margin: 47px 30px 0px 30px;
+  margin: 30px 30px 0px 30px;
   transition: 0.2s;
 }
 
@@ -239,12 +239,19 @@
   text-align: center;
   font-size: 12px;
 }
-
+.reg-form-action-type-link {
+  color: rgba(9, 29, 32, 0.4);
+  border-bottom: 2px solid rgba(9, 29, 32, 0.4);
+  padding-bottom: 6px;
+  font-size: 25px;
+}
 .reg-form-action-type-link__active {
   color: #2f80ed;
-  border-bottom: 5px solid #2f80ed;
+  border-bottom: 2px solid #2f80ed;
   padding-bottom: 6px;
+  font-size: 25px;
 }
+
 
 .log-form-text-label-p__upper {
   display: flex;
@@ -526,18 +533,22 @@
 #regform_mobile {
   display: none;
 }
+#regform_ipad{
+  display: none;
+}
 
 .reg_form_link {
   text-decoration: none;
   color: #2d9cdb;
 }
 
-/* АДАПТАЦИЯ */
+/* АДАПТАЦИЯ  480*/
 
 /* МЕДИА ЗАПРОСЫ */
 @media (max-width: 480px) {
   #regform_mobile {
     display: flex;
+    width: -webkit-fill-available;
   }
   #regform_pk {
     display: none;
@@ -545,15 +556,14 @@
 
   /* форма входа */
   .reg-form {
-    /* width: auto; */
     height: auto;
     margin: 0;
-    /* border-radius: 0px 0px 15px 15px; */
     border-radius: 0;
+    padding-bottom: 0;
     transform: none;
   }
-  .reg-form-annotation-wrapper {
-    margin-bottom: 20px;
+  .password-control{
+    bottom: 28px;
   }
 
   .img_krestik {
@@ -576,6 +586,18 @@
     overflow-x: hidden;
     width: 100%;
   }
+  .reg-form-submit-button{
+    margin-top: 15px;
+    margin-bottom: 20px;
+    max-width: 345px;
+    width: -webkit-fill-available;
+  }
+  .log-form-text-label-l__recover{
+    margin-top: 0;
+  }
+  .log-form-text-label-p-email__upper{
+    margin-top: 0;
+  }
   .log-form {
     max-width: 480px;
     height: auto;
@@ -586,7 +608,7 @@
     transform: none;
   }
   .reg-form-input-area form {
-    margin-bottom: 30px;
+    margin-bottom: 0;
   }
   .reg-form-email-verification {
     height: 100%;
@@ -602,9 +624,50 @@
     padding: 0 5px;
     margin-top: 30px;
   }
+  .reg-form-text-label-p{
+    margin:0;
+  }
+  .log-form-text-label-l{
+    margin-top: 20px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #091D20;
+  }
+  .reg-form-text-label-l__moved{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #091D20;
+  }
+  .reg-form-radio-button + label{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .reg-form-radio-button:checked + label::before{
+    border-radius: 100%;
+  }
+  .reg-form-radio-button + label::before{
+    border-radius: 100%;
+  }
+  .reg-form-annotation{
+    margin-top: 10px;
+  }
+  .reg-form-contact-input{
+    margin-top: 5px;
+    height: 30px;
+  }
+  .reg-form-text-label-l{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #091D20;
+    margin-top: 15px;
+  }
   .reg-form-input-area {
     padding: 0 10px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
   .div_for_krestik {
     display: flex;
@@ -612,22 +675,39 @@
     width: 100%;
   }
   .img_krestik {
-    margin-top: 25px;
+    margin-top: 15px;
     height: 14px;
     width: 14px;
     cursor: pointer;
+  }
+  .reg-form-action-type-link {
+    color: rgba(9, 29, 32, 0.4);
+    border-bottom: 2px solid rgba(9, 29, 32, 0.4);
+    padding-bottom: 6px;
+    font-size: 16px;
+  }
+  .reg-form-action-type-link__active {
+    color: #2f80ed;
+    border-bottom: 2px solid #2f80ed;
+    padding-bottom: 6px;
+    font-size: 16px;
   }
   #reg-cont {
     height: 100%;
   }
   .reg-form-action-type-list {
-    margin-top: 20px;
+    margin: 5px 15px;
+  }
+  .reg-form-reg-type-choice{
+    margin-top: 15px;
   }
   .reg-form-text-label-l__radio {
     margin-left: 12px;
   }
   .reg-form-socials img {
-    margin-top: 20px;
+    margin-top: 0;
+    width: 32px;
+    height: 32px;
   }
   .log-form-text-label-p__lower {
     margin-top: 20px;
@@ -637,6 +717,11 @@
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
 @media only screen and (max-width: 1024px) and (min-width: 481px) {
+
+  #regform_ipad{
+    display: none;
+  }
+
   .reg-content {
     width: 100%;
     height: 100%;

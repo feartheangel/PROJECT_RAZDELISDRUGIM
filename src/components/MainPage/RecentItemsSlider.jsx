@@ -60,7 +60,25 @@ const RecentItemsSlider = () => {
               pagination={{ clickable: true }}
               
               // scrollbar={{ draggable: true }}
-              id ="swiper_mobile_800"
+              id ="swiper_mobile_768"
+              >
+              {recentItems &&
+                recentItems.map((item, index) => (
+                  <SwiperSlide style={{ display: 'flex', width:'auto' }}>
+                    {' '}
+                    <ItemCard key={index} item={item} />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+
+                        {/* копия для планшета 800 */}
+              <Swiper
+              spaceBetween={0}
+              slidesPerView={4}
+              pagination={{ clickable: true }}
+              
+              // scrollbar={{ draggable: true }}
+              id ="swiper_mobile_1024"
               >
               {recentItems &&
                 recentItems.map((item, index) => (

@@ -46,7 +46,6 @@ const ItemDeleteSubmit = ({
         <div onClick={(e) => e.stopPropagation()} className="reg-form-wrapper">
           <div
             style={{
-              height: "200px",
               display: "flex",
               width: "100%",
               borderRadius: "10px",

@@ -410,10 +410,107 @@
 
 @media only screen and (max-width: 1024px) and (min-width:481px) {
 
+  #globaldata_ipad{
+    display: flex;
+  }
+
   .list_span_right{
     text-align: inherit;
     margin-left: 20px;
   }
+
+
+  .PublicProfile_Wrapper{
+    padding: 0;
+  }
+  .PublicProfile_up_right{
+    display: flex;
+  }
+  .header_up{
+    margin-right: 15px;
+  }
+  .up_content{
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(76, 201, 240, 0.77);
+  }
+  .up_content_rowstyle{
+    display: flex;
+    flex-direction: row;
+    margin-right: 40px;
+  }
+  .up_global_margin:not(:last-child){
+    margin-right: 50px;
+  }
+  .block_down_owner_photo{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  .conditions_row{
+    display: none;
+  }
+  .container_up_header{
+    margin-bottom: 0;
+  }
+  .header_up-p1{
+    margin-bottom: 0;
+  }
+  .header_down{
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .up_global_alight{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .up_content_rowstyle_telephone{
+    display: flex;
+    flex-direction: row;
+  }
+  .block_down_telephone{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .telephone_row1{
+    justify-content: space-between;
+  }
+  .block_down_online{
+    margin-bottom: 0;
+  }
+  .block_down_telephone{
+    margin-bottom: 0;
+  }
+  .telephone_row2{
+    margin-bottom: 5px;
+  }
+
+  /* контент под шапкой */
+  .down_content_cards{
+    justify-content: space-around;
+  }
+  .down_content{
+    margin-bottom: 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

@@ -218,7 +218,8 @@ const Footer = () => {
         <div className="footer-img-logo-wrapper">
           <img src={Logo2} alt="" className="footer-img-logo" />
         </div>
-        <div className="footer-lower-labels">
+        <div className="footer-lower-labels"
+        >
           <Link
             style={{ textDecoration: "none", cursor: "pointer" }}
             to="/users-agreement"
@@ -239,7 +240,8 @@ const Footer = () => {
       </div>
 
       <div className="footer-lower-part" id="footer-lower2">
-        <div className="footer-lower-labels">
+        <div className="footer-lower-labels"
+        >
           <Link
             style={{ textDecoration: "none", cursor: "pointer" }}
             to="/users-agreement"

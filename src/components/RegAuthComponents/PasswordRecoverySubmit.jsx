@@ -103,6 +103,7 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                     href="#"
                     className="reg-form-action-type-link"
                     style={{ fontSize: "25px" }}
+                    style={{width:'50%',  justifyContent:'center', display:'flex' }}
                   >
                     Регистрация{redirect}
                   </li>
@@ -111,6 +112,7 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                   href="#"
                   className="reg-form-action-type-link reg-form-action-type-link__active"
                   style={{ fontSize: "25px" }}
+                  style={{width:'50%',  justifyContent:'center', display:'flex' }}
                 >
                   Вход
                 </li>
@@ -206,7 +208,8 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                   <li
                     href="#"
                     className="reg-form-action-type-link"
-                    style={{ fontSize: "25px" }}
+                    style={{ fontSize: "16px" }}
+                    style={{width:'50%',  justifyContent:'center', display:'flex' }}
                   >
                     Регистрация{redirect}
                   </li>
@@ -214,7 +217,8 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                 <li
                   href="#"
                   className="reg-form-action-type-link reg-form-action-type-link__active"
-                  style={{ fontSize: "25px" }}
+                  style={{ fontSize: "16px" }}
+                  style={{width:'50%',  justifyContent:'center', display:'flex' }}
                 >
                   Вход
                 </li>

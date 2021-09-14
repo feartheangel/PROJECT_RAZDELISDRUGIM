@@ -1408,64 +1408,60 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
         {/* ШАПКА С ПРОФИЛЕМ*/}
         {/*верхняя часть*/}
         <div className="content_block1">
-          <div className="content_block1">
-            {/* ФОТО */}
-            <div className="content_block2_image">
-              <input
-                style={{ display: "none" }}
-                type="file"
-                accept="image/*,image/jpeg"
-                id="photo_input"
-                onChange={(e) => photoHandler(e)}
+          {/* ФОТО */}
+          <div className="content_block2_image">
+            <input
+              style={{ display: "none" }}
+              type="file"
+              accept="image/*,image/jpeg"
+              id="photo_input"
+              onChange={(e) => photoHandler(e)}
+            />
+            <label className="profile-photo-wrapper" for="photo_input">
+              <img
+                className="profile-photo"
+                src={`https://razdelisdrugim.by${userData.image_profile}`}
+                alt=""
               />
-              <label className="profile-photo-wrapper" for="photo_input">
-                <img
-                  className="profile-photo"
-                  src={`${rootAddress}${userData.image_profile}`}
-                  alt=""
-                />
-                <div className="profile-photo-overlay">Изменить</div>
-              </label>
-            </div>
-            <div className="content_block1_left">
-              <p className="block1_left_name">
-                {userData.company_name
-                  ? userData.company_name
-                  : "Название организации не указано"}{" "}
-              </p>
-              <p className="block1_left_privateFace"> Компания </p>
-              {/*ОТЗЫВЫ ОЦЕНКИ*/}
-              <div
-                style={{ display: "none" }}
-                className="content_block2_reviews"
-              >
-                <div className="block2_reviews_stars">
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                </div>
-                <div className="block2_reviews_stars">
-                  <p className="block2_reviews_text">Пока нет оценок</p>
-                </div>
-                <p className="block2_reviews_text"> 0 отзывов </p>
+              <div className="profile-photo-overlay">Изменить</div>
+            </label>
+          </div>
+          <div className="content_block1_left">
+            <p className="block1_left_name">
+              {userData.first_name ? userData.first_name : "Имя не указано"}
+            </p>
+            <p className="block1_left_privateFace"> Частное лицо </p>
+            {/*ОТЗЫВЫ ОЦЕНКИ*/}
+            <div className="content_block2_reviews">
+              <div style={{ display: "none" }} className="block2_reviews_stars">
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
+                <img src={Star5} alt="" />
               </div>
+              <div className="block2_reviews_stars">
+                <p className="block2_reviews_text">Пока нет оценок</p>
+              </div>
+              <p className="block2_reviews_text"> 0 отзывов </p>
             </div>
-            {redirect}
+          </div>
+          {redirect}
 
-            <div className="content_block1_right">
-              <a
-                style={{ textDecoration: "none" }}
-                target="_blank"
-                href={`/public-profile?id=${userData && userData.id}`}
+          <div className="content_block1_right">
+            <a
+              style={{ textDecoration: "none" }}
+              target="_blank"
+              href={`/public-profile?id=${userData && userData.id}`}
+            >
+              <p
+                className="block1_right_watchProfile"
+                style={{ display: "none" }}
               >
-                <p className="block1_right_watchProfile">
-                  {" "}
-                  Посмотреть мой профиль
-                </p>
-              </a>
-            </div>
+                {" "}
+                Посмотреть мой профиль
+              </p>
+            </a>
           </div>
         </div>
 
@@ -1500,8 +1496,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               </div>
             </div>
 
-            {/*НА САЙТЕ*/}
-
+            {/*НА САЙТЕ  - ВРЕМЯ ОТВЕТА*/}
             <div className="content_block2_online">
               <div className="content_block2_online_website">
                 <p className="online_website_text"> На сайте </p>
@@ -1516,125 +1511,112 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 <p className="online_time_text2"> - </p>
               </div>
             </div>
-
-            {/*Я СДАЮ / БЕРУ*/}
-
-            <div className="content_block2_rent_take">
-              <div className="rent_take_content1">
-                <p className="rent_take_content1_rent"> Я сдаю </p>
-                <p className="rent_take_content1_number"> {subjects.length} </p>
-              </div>
-
-              <div className="rent_take_content2">
-                <p className="rent_take_content2_take"> Я беру </p>
-                <p className="rent_take_content2_number"> - </p>
-              </div>
-            </div>
           </div>
-          {/* СОЦ СЕТИ  */}
-          <div className="content_setting_right">
-            <div className="setting_right_socialNetworks">
-              <p className="setting_right_socialNetworks-p">
-                Социальные сети и месседжеры
-              </p>
-              <img
-                title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
-                src={Vector2}
-                className="img_vector2"
-                alt=""
-              />
-            </div>
-            <div className="social_icons">
-              <img
-                onClick={() => socialClickHandler("tg")}
-                className={
-                  activeSocial === "tg"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.telegram_account ? Telegram : TelegramNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("viber")}
-                className={
-                  activeSocial === "viber"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.viber_account ? Viber : ViberNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("wa")}
-                className={
-                  activeSocial === "wa"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("google")}
-                className={
-                  activeSocial === "google"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.google_account ? Google : GoogleNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("fb")}
-                className={
-                  activeSocial === "fb"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.link_facebook ? Facebook : FacebookNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("vk")}
-                className={
-                  activeSocial === "vk"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.vk_account ? Vk : VkNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("inst")}
-                className={
-                  activeSocial === "inst"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.link_instagram ? Instagram : InstagramNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("ok")}
-                className={
-                  activeSocial === "ok"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.ok_account ? Ok : OkNone}
-                alt=""
-              />
-            </div>
+        </div>
 
-            {socialPopUpActive && (
-              <SocialContactEnter
-                activeSocial={activeSocial}
-                setSocialPopUpActive={setSocialPopUpActive}
-                setActiveSocial={setActiveSocial}
-              />
-            )}
+        {/* соц сети */}
+        <div className="content_setting_right">
+          <div className="setting_right_socialNetworks">
+            <p className="setting_right_socialNetworks-p">
+              Социальные сети и месседжеры
+            </p>
+            <img
+              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
+              src={Vector2}
+              className="img_vector2"
+              alt=""
+            />
           </div>
+          <div className="social_icons">
+            <img
+              onClick={() => socialClickHandler("tg")}
+              className={
+                activeSocial === "tg"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.telegram_account ? Telegram : TelegramNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("viber")}
+              className={
+                activeSocial === "viber"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.viber_account ? Viber : ViberNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("wa")}
+              className={
+                activeSocial === "wa"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("google")}
+              className={
+                activeSocial === "google"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.google_account ? Google : GoogleNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("fb")}
+              className={
+                activeSocial === "fb"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.link_facebook ? Facebook : FacebookNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("vk")}
+              className={
+                activeSocial === "vk"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.vk_account ? Vk : VkNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("inst")}
+              className={
+                activeSocial === "inst"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.link_instagram ? Instagram : InstagramNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("ok")}
+              className={
+                activeSocial === "ok"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.ok_account ? Ok : OkNone}
+              alt=""
+            />
+          </div>
+
+          {socialPopUpActive && (
+            <SocialContactEnter
+              activeSocial={activeSocial}
+              setSocialPopUpActive={setSocialPopUpActive}
+              setActiveSocial={setActiveSocial}
+            />
+          )}
         </div>
 
         {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
@@ -1940,6 +1922,47 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 )}
               </div>
             )}
+
+            {/* рефералки и кнопка */}
+
+            <div className="privateprofile_footer_ref">
+              {/* рефералки */}
+              <div className="referral_code_wrapper_profile">
+                <p>Ваш реферальный код:</p>
+                <input
+                  disabled
+                  className="referral_code_input_profile"
+                  type="text"
+                  value={userData && userData.referral_code}
+                />
+              </div>
+              <div className="referral_code_wrapper_profile">
+                <p>Ваша реф-ая ссылка:</p>
+                <input
+                  disabled
+                  className="referral_code_input_profile"
+                  type="text"
+                  value={`https://razdelisdrugim.by/?referral=${
+                    userData && userData.referral_code
+                  }`}
+                />
+                <div className="toShare_button_wrapper">
+                  <label
+                    onClick={() => {
+                      window.navigator.clipboard.writeText(
+                        `${`https://razdelisdrugim.by/?referral=${
+                          userData && userData.referral_code
+                        }`}`
+                      );
+                    }}
+                    style={{ cursor: "pointer" }}
+                    className="item-card-profile-button__optional"
+                  >
+                    Копировать
+                  </label>
+                </div>
+              </div>
+            </div>
 
             {/*КНОПКА СОХРАНЕНИЯ*/}
 
