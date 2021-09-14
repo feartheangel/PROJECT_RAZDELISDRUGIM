@@ -23,15 +23,14 @@ const Partners = () => {
         <p className="partners-main-title">С нами сотрудничают</p>
         <div className="partners-slider-container">
           <Swiper
-            spaceBetween={0}
+            spaceBetween={50}
             slidesPerView={4}
             pagination={{ clickable: true }}
             id="swiper_comp"
-            // style={{
-            //   display: "flex",
-            //   width:'100%',
-            //   justifyContent: "center",
-            // }}
+            style={{
+              display: "flex",
+              width:'1150px',
+            }}
           >
             {partners &&
               partners.map((item, index) => (

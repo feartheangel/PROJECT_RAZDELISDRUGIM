@@ -703,9 +703,11 @@
   }
   .reg-form-reg-type-choice{
     margin-top: 15px;
+    justify-content: space-evenly;
+    width: -webkit-fill-available;
   }
   .reg-form-text-label-l__radio {
-    margin-left: 12px;
+    margin-left: 0;
   }
   .reg-form-socials img {
     margin-top: 0;
