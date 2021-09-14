@@ -19,57 +19,23 @@ import freePrice from "../../img/MainPage/freePrice.png";
 import copy from "../../img/MainPage/copy.png";
 import Delete from "../../img/MainPage/delete.png";
 import hide from "../../img/MainPage/hide.png";
+import { rootAddress } from "../../http/axios-requests";
 
 const ItemCardProfile = ({
   setDeleteId,
   setModalActiveSubmit,
-  key,
   title,
-  category_id,
-  description,
   image_1,
-  image_2,
-  image_3,
-  image_4,
-  image_5,
   rent,
   price_rent,
-  key_words,
-  year_release,
-  mileage,
-  price_item,
-  receive_time,
-  return_time,
-  prepare_time,
   delivery,
-  delivery_free,
-  self_delivery_price,
-  will_send,
-  will_send_choice,
-  send_payer,
   servicefee,
-  servicefee_choice,
-  servicefee_price,
   pledge,
-  pledge_price,
   insurance,
-  insurance_choice,
-  insurance_price,
-  sell,
   contract,
-  appointment,
-  structure,
   free_rent,
   offer_price_rent,
-  color,
-  franchise,
-  franchise_price,
-  article,
-  inventory_number,
-  coords,
-  prepare_time_choice,
   is_hidden,
-  items_address,
   id,
 }) => {
   const dispatch = useDispatch();
@@ -124,7 +90,7 @@ const ItemCardProfile = ({
           <img
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`https://razdelisdrugim.by${image_1}`}
+            src={`${rootAddress}${image_1}`}
             alt=""
             className="block-image"
           />
@@ -343,7 +309,7 @@ const ItemCardProfile = ({
           <img
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`https://razdelisdrugim.by${image_1}`}
+            src={`${rootAddress}${image_1}`}
             alt=""
             className="block-image"
           />
@@ -555,7 +521,7 @@ const ItemCardProfile = ({
           <img
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`https://razdelisdrugim.by${image_1}`}
+            src={`${rootAddress}${image_1}`}
             alt=""
             className="block-image"
           />
