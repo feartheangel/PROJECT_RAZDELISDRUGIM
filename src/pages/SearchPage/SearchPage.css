@@ -60,11 +60,9 @@
   cursor: pointer;
   color: #12a3c9;
 }
-
-.container_shapka_result {
-  margin-left: 50px;
+.distance_p {
+  display: flex;
 }
-
 /*КОНТЕЙНЕР С ОБЩИМ КОНТЕНТОМ  */
 .SearchPage_container_content {
   display: flex;
@@ -134,10 +132,6 @@
   cursor: pointer;
 }
 
-/* СЛОВО ЦЕНА */
-.content_left_cost {
-  margin-bottom: 10px;
-}
 /*Цена от и до*/
 .content_left_priceRange {
   display: flex;
@@ -170,8 +164,6 @@
   flex-direction: row;
 }
 .shapka_top {
-  display: flex;
-  flex-direction: row;
   margin-bottom: 22px;
 }
 
@@ -179,6 +171,7 @@
   margin-right: 40px;
   font-size: 16px;
 }
+
 .content_right_shapka_watchMap {
   color: #4cc9f0;
 }
@@ -262,12 +255,13 @@
 #search_mobile {
   display: none;
 }
-#search_ipad{
+#search_ipad {
   display: none;
 }
 
-
-
+.content_left_cost {
+  display: flex;
+}
 
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
@@ -344,8 +338,8 @@
   }
   .SearchPage_container_content_left ul li:not(:last-child) {
     margin-bottom: 15px;
-  }  
-  .SearchPage_container_content_left ul li{
+  }
+  .SearchPage_container_content_left ul li {
     width: fit-content;
   }
   .content_left_cost {
@@ -356,7 +350,7 @@
     width: 100%;
     height: 45px;
   }
-  .SearchPage_container_content_left ul li:active{
+  .SearchPage_container_content_left ul li:active {
     color: black;
   }
 
@@ -410,143 +404,117 @@
   }
 
   /* ВЫКЛЮЧЕНИЕ ПОДСВЕТОК БЛОКОВ ПРИ КЛИКЕ */
-  .SearchPage_container_content_left ul li{
-    -webkit-tap-highlight-color:transparent;
+  .SearchPage_container_content_left ul li {
+    -webkit-tap-highlight-color: transparent;
   }
-
-
-
 }
-
 
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
-@media only screen and (max-width: 1024px) and (min-width:481px) {
-  #search_ipad{
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
+  #search_ipad {
     display: flex;
     width: 100%;
   }
-  #search_pk{
+  #search_pk {
     display: none;
   }
 
- /* сама карточка */
- .recent-block {
-
-  max-height: 450px;
-  min-height: 450px;
-  margin: 10px;
-}
-.all_content_blocks_up {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-.all_content_blocks_down {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.recent-marks {
-  display: flex;
-  justify-content: space-between;
-}
-.card-mark:not(:last-child) {
-  margin-right: 0;
-}
-.block-image {
-  height: auto;
-}
-.card_div {
-  width: 50%;
-}
-/* NOT FOUND - если карточка не найдена */
-.search_not_found {
-  height: auto;
-  padding: 0 15px;
-  width: initial;
-}
+  /* сама карточка */
+  .recent-block {
+    max-height: 450px;
+    min-height: 450px;
+    margin: 10px;
+  }
+  .all_content_blocks_up {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .all_content_blocks_down {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .recent-marks {
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-mark:not(:last-child) {
+    margin-right: 0;
+  }
+  .block-image {
+    height: auto;
+  }
+  .card_div {
+    width: 50%;
+  }
+  /* NOT FOUND - если карточка не найдена */
+  .search_not_found {
+    height: auto;
+    padding: 0 15px;
+    width: initial;
+  }
   /* ВЫКЛЮЧЕНИЕ ПОДСВЕТОК БЛОКОВ ПРИ КЛИКЕ */
-  .SearchPage_container_content_left ul li{
-    -webkit-tap-highlight-color:transparent;
+  .SearchPage_container_content_left ul li {
+    -webkit-tap-highlight-color: transparent;
   }
 
-/* контент правая старона в основном */
-.SearchPage{
-  justify-content: flex-start;
-  width: 100%;
-  min-width: auto;
+  /* контент правая старона в основном */
+  .SearchPage {
+    justify-content: flex-start;
+    width: 100%;
+    min-width: auto;
+  }
+  .SearchPage_container_content_left {
+    padding: 0 20px;
+  }
+  .SearchPage_container {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+  }
+  .SearchPage_container_content {
+    display: flex;
+    flex-direction: column;
+  }
+  .SearchPage_container_content_right {
+    display: flex;
+    flex-direction: column;
+  }
+  .search_option_left {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .search_option_left_left {
+    display: flex;
+    flex-direction: column;
+  }
+  .search_option_left_right {
+    display: flex;
+    flex-direction: column;
+  }
+  .SearchPage_container_content_left ul {
+    width: 100%;
+    /* flex-direction: row; */
+  }
+  .all_content_blocks {
+    min-width: auto;
+    margin-bottom: 0;
+  }
+  .content_right_shapka {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  .SearchPage_container_content_left ul li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  .distance_p.active {
+    margin-left: 10px;
+  }
 }
-.SearchPage_container_content_left{
-  padding: 0 20px;
-}
-.SearchPage_container{
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  width: -webkit-fill-available;
-}
-.SearchPage_container_content{
-  display: flex;
-  flex-direction: column;
-}
-.SearchPage_container_content_right{
-  display: flex;
-  flex-direction: column;
-}
-.search_option_left{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-evenly;
-}
-.search_option_left_left{
-  display: flex;
-  flex-direction: column;
-}
-.search_option_left_right{
-  display: flex;
-  flex-direction: column;
-}
-.SearchPage_container_content_left ul{
-  width: 100%;
-  /* flex-direction: row; */
-}
-.all_content_blocks{
-  min-width: auto;
-  margin-bottom: 0;
-}
-.content_right_shapka{
-  margin-top: 20px;
-  padding: 0 20px;
-}
-.SearchPage_container_content_left ul li:not(:last-child) {
-  margin-bottom: 10px;
-}
-.distance_p.active{
-  margin-left: 10px;
-}
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

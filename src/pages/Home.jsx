@@ -17,7 +17,6 @@ import {
   Adverts,
   MediaAbout,
 } from "../components/index";
-import { YMInitializer } from "react-yandex-metrika";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -27,15 +26,6 @@ const Home = () => {
       localStorage.setItem("ref", window.location.href.split("?referral=")[1]);
     }
   }, []);
-
-  const GMetric = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L066HXCMFD');
-</script>`;
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,10 +50,6 @@ const Home = () => {
         {false && <MediaAbout />}
         <Footer />
       </div>
-      <div>
-        <YMInitializer accounts={[83058148]} />
-      </div>
-      <div dangerouslySetInnerHTML={{ __html: GMetric }}></div>
     </div>
   );
 };

@@ -117,20 +117,31 @@ const CardThings = () => {
     }
   };
 
+  function isNumeric(str) {
+    if (typeof str != "string" || Number(str) <= 0) return false; // we only process strings!
+    return (
+      !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+      !isNaN(parseFloat(str))
+    ); // ...and ensure strings of whitespace fail
+  }
+
   React.useEffect(() => {
     let isMounted = true;
-    Requests.getSingleItem(
-      window.location.href.split("?id=")[1].split("&")[0]
-    ).then((response) => {
-      if (isMounted) {
-        setItemData(response.data);
-        setSelectedImage(response.data.image_1);
-      }
-    });
-
-    Requests.search().then((response) => {
-      setSimillarSubjects(response.data);
-    });
+    Requests.getSingleItem(window.location.href.split("?id=")[1].split("&")[0])
+      .then((response) => {
+        if (
+          isMounted &&
+          isNumeric(window.location.href.split("?id=")[1].split("&")[0])
+        ) {
+          setItemData(response.data);
+          setSelectedImage(response.data.image_1);
+        } else {
+          window.location.href = "/";
+        }
+      })
+      .catch(() => {
+        window.location.href = "/";
+      });
 
     return () => {
       isMounted = false;
@@ -254,7 +265,11 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_1)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_1}`}
+                          src={
+                            itemData &&
+                            `${rootAddress}${itemData.image_1}?random=` +
+                              Math.random()
+                          }
                           alt=""
                         />
                       )}
@@ -268,7 +283,11 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_2)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_2}`}
+                          src={
+                            itemData &&
+                            `${rootAddress}${itemData.image_2}?random=` +
+                              Math.random()
+                          }
                           alt=""
                         />
                       )}
@@ -282,7 +301,11 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_3)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_3}`}
+                          src={
+                            itemData &&
+                            `${rootAddress}${itemData.image_3}?random=` +
+                              Math.random()
+                          }
                           alt=""
                         />
                       )}
@@ -296,7 +319,11 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_4)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_4}`}
+                          src={
+                            itemData &&
+                            `${rootAddress}${itemData.image_4}?random=` +
+                              Math.random()
+                          }
                           alt=""
                         />
                       )}
@@ -310,7 +337,11 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_5)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_5}`}
+                          src={
+                            itemData &&
+                            `${rootAddress}${itemData.image_5}?random=` +
+                              Math.random()
+                          }
                           alt=""
                         />
                       )}
@@ -324,7 +355,9 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${selectedImage && selectedImage}`
+                            `${rootAddress}${
+                              selectedImage && selectedImage
+                            }?random=` + Math.random()
                           }
                           alt=""
                         />
@@ -804,21 +837,6 @@ const CardThings = () => {
                         )}
                     </div>
 
-                    <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-                      <YMaps>
-                        <Map
-                          width={300}
-                          height={200}
-                          defaultState={itemData && mapData}
-                        >
-                          <Placemark
-                            geometry={itemData && mapData.center}
-                            options={{ preset: "islands#blueDotIcon" }}
-                          />
-                        </Map>
-                      </YMaps>
-                    </div>
-
                     {/* Свободно*/}
                     <div style={{ display: "none" }} className="block_up_free">
                       <img src={Clock2} alt="" className="img_clock2" />
@@ -826,7 +844,7 @@ const CardThings = () => {
                     </div>
 
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
-                    <div style={{ height: "185px", width: "310px" }}>
+                    <div style={{ width: "310px", height: "180px" }}>
                       <div className="block_up_contactOwner">
                         <input
                           onClick={showContactHandler}
@@ -891,6 +909,20 @@ const CardThings = () => {
 
                   {/* НИЗ ПРАВОЙ СТОРОНЫ*/}
                   <div style={{ width: "365px" }} className="right_block_down">
+                    <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+                      <YMaps>
+                        <Map
+                          width={300}
+                          height={200}
+                          defaultState={itemData && mapData}
+                        >
+                          <Placemark
+                            geometry={itemData && mapData.center}
+                            options={{ preset: "islands#blueDotIcon" }}
+                          />
+                        </Map>
+                      </YMaps>
+                    </div>
                     <div className="block_down_owner">
                       <p>Владелец</p>
                     </div>
@@ -1262,7 +1294,9 @@ const CardThings = () => {
                               setSelectedImage(itemData && itemData.image_1)
                             }
                             src={
-                              itemData && `${rootAddress}${itemData.image_1}`
+                              itemData &&
+                              `${rootAddress}${itemData.image_1}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1294,7 +1328,9 @@ const CardThings = () => {
                               setSelectedImage(itemData && itemData.image_3)
                             }
                             src={
-                              itemData && `${rootAddress}${itemData.image_3}`
+                              itemData &&
+                              `${rootAddress}${itemData.image_3}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1310,7 +1346,9 @@ const CardThings = () => {
                               setSelectedImage(itemData && itemData.image_4)
                             }
                             src={
-                              itemData && `${rootAddress}${itemData.image_4}`
+                              itemData &&
+                              `${rootAddress}${itemData.image_4}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1326,7 +1364,9 @@ const CardThings = () => {
                               setSelectedImage(itemData && itemData.image_5)
                             }
                             src={
-                              itemData && `${rootAddress}${itemData.image_5}`
+                              itemData &&
+                              `${rootAddress}${itemData.image_5}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1341,7 +1381,9 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `${rootAddress}${selectedImage && selectedImage}`
+                              `${rootAddress}${
+                                selectedImage && selectedImage
+                              }?random=` + Math.random()
                             }
                             alt=""
                           />
