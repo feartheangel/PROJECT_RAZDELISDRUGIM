@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Requests from "../../http/axios-requests";
@@ -196,6 +196,21 @@ const Header = () => {
       }
     });
 
+  const burgerRef = useRef(null);
+  const burgerButtonRef = useRef(null);
+
+  React.useEffect(() => {
+    const onClick = (e) => {
+      if (burgerRef.current && burgerButtonRef.current) {
+        burgerButtonRef.current.contains(e.target) ||
+          burgerRef.current.contains(e.target) ||
+          setBurgerActive(false);
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   return (
     <header className="header" onKeyDown={(e) => keyDownHandler(e)}>
       <div className="news-alert-block">
@@ -353,62 +368,64 @@ const Header = () => {
             alt=""
             className="burger-button"
             id="header-lower-table-left1"
+            ref={burgerButtonRef}
           />
         </div>
-
-        {burgerActive && (
-          <div className={"burger_dropdown_menu"}>
-            <div className="SearchPage_container_content_left">
-              <ul>
-                {isLoaded &&
-                  [].concat
-                    .apply(Object.entries(chapters))
-                    .map((chapter, index) => {
-                      return (
-                        <li
-                          style={{ display: "flex", flexDirection: "column" }}
-                          className="content_left_optional_li"
-                        >
-                          <p onClick={() => openChapterHandler(chapter[1])}>
-                            {chapter[0]}
-                            <span>
-                              <img src={vector2} alt="" />
-                            </span>
-                          </p>
-                          {isLoaded &&
-                            [].concat
-                              .apply(Object.entries(categories))
-                              .map((category, index) => {
-                                if (
-                                  category[1][0][1] === chapter[1] &&
-                                  openedCategories === category[1][0][1]
-                                ) {
-                                  return (
-                                    <p
-                                      onClick={() =>
-                                        categorySetHandler(
-                                          category[0],
-                                          category[1][0][0]
-                                        )
-                                      }
-                                      className={
-                                        category_id === category[0]
-                                          ? "content_left_optional_li__sub active"
-                                          : "content_left_optional_li__sub"
-                                      }
-                                    >
-                                      {category[1][0][0]}
-                                    </p>
-                                  );
-                                }
-                              })}
-                        </li>
-                      );
-                    })}
-              </ul>
+        <div ref={burgerRef}>
+          {burgerActive && (
+            <div className={"burger_dropdown_menu"}>
+              <div className="SearchPage_container_content_left">
+                <ul>
+                  {isLoaded &&
+                    [].concat
+                      .apply(Object.entries(chapters))
+                      .map((chapter, index) => {
+                        return (
+                          <li
+                            style={{ display: "flex", flexDirection: "column" }}
+                            className="content_left_optional_li"
+                          >
+                            <p onClick={() => openChapterHandler(chapter[1])}>
+                              {chapter[0]}
+                              <span>
+                                <img src={vector2} alt="" />
+                              </span>
+                            </p>
+                            {isLoaded &&
+                              [].concat
+                                .apply(Object.entries(categories))
+                                .map((category, index) => {
+                                  if (
+                                    category[1][0][1] === chapter[1] &&
+                                    openedCategories === category[1][0][1]
+                                  ) {
+                                    return (
+                                      <p
+                                        onClick={() =>
+                                          categorySetHandler(
+                                            category[0],
+                                            category[1][0][0]
+                                          )
+                                        }
+                                        className={
+                                          category_id === category[0]
+                                            ? "content_left_optional_li__sub active"
+                                            : "content_left_optional_li__sub"
+                                        }
+                                      >
+                                        {category[1][0][0]}
+                                      </p>
+                                    );
+                                  }
+                                })}
+                          </li>
+                        );
+                      })}
+                </ul>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
         <div className="header-lower-table-right">
           <div className="search-wrapper">
             <input

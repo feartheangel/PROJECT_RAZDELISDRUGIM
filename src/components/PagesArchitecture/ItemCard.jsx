@@ -73,7 +73,7 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
-              src={`${rootAddress}${item.image_1}`}
+              src={`${rootAddress}${item.image_1}?random=` + Math.random()}
               alt=""
               className="block-image"
             />
@@ -253,7 +253,7 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
-              src={`${rootAddress}${item.image_1}`}
+              src={`${rootAddress}${item.image_1}?random=` + Math.random()}
               alt=""
               className="block-image"
             />
@@ -436,7 +436,7 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
-              src={`${rootAddress}${item.image_1}`}
+              src={`${rootAddress}${item.image_1}?random=` + Math.random()}
               alt=""
               className="block-image"
             />
