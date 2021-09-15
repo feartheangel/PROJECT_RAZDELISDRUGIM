@@ -609,13 +609,13 @@
 }
 
 .card_views_icon {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 #card_thing_mobile {
   display: none;
 }
-#card_thing_ipad{
+#card_thing_ipad {
   display: none;
 }
 
@@ -647,9 +647,9 @@
     width: 100%;
     margin-top: 0;
   }
-  .left_block_information{
+  .left_block_information {
     padding: 15px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 15px;
     margin-top: 30px;
@@ -660,7 +660,7 @@
     width: auto;
     overflow-x: auto;
   }
-  .card_shapka::-webkit-scrollbar{
+  .card_shapka::-webkit-scrollbar {
     width: 0;
   }
 
@@ -710,7 +710,7 @@
 
   .left_block_conditions {
     padding: 15px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 15px;
     margin-top: 30px;
@@ -783,13 +783,13 @@
   .card_content_right {
     padding: 0;
   }
-  .right_block_up{
+  .right_block_up {
     width: 100%;
   }
-  .right_block_down{
+  .right_block_down {
     width: auto;
     padding: 15px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 15px;
   }
@@ -818,122 +818,91 @@
     border: none;
   }
 
-  .background_blocks{
+  .background_blocks {
     padding: 15px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 15px;
   }
-  .information-p{
+  .information-p {
     margin-bottom: 15px;
   }
-  .information_description-p1{
+  .information_description-p1 {
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
   }
-  .information_description-p2{
+  .information_description-p2 {
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    color: rgba(18, 57, 64, 0.8); 
+    color: rgba(18, 57, 64, 0.8);
   }
-  .list_span_left{
+  .list_span_left {
     display: flex;
     width: 60%;
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
   }
-  .list_span_right{
+  .list_span_right {
     width: 30%;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
     color: rgba(18, 57, 64, 0.8);
   }
-  .list_span{
+  .list_span {
     margin-bottom: 10px;
   }
-  .left_block_toShare{
+  .left_block_toShare {
     width: fit-content;
   }
-  .card_content_footer_pages{
+  .card_content_footer_pages {
     margin: 0;
     border-radius: 0;
   }
-
-
 }
-
 
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
-@media only screen and (max-width: 1024px) and (min-width:481px) {
-
-  #card_thing_ipad{
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
+  #card_thing_ipad {
     display: flex;
   }
-  #card_thing_pc{
+  #card_thing_pc {
     display: none;
   }
 
-  .card_shapka{
+  .card_shapka {
     margin: 20px;
     width: -webkit-fill-available;
   }
-  .card_content_left{
+  .card_content_left {
     padding: 0;
     width: -webkit-fill-available;
   }
-  .card_content_right{
+  .card_content_right {
     padding: 0;
     margin-top: 40px;
     width: -webkit-fill-available;
   }
 
-  .CardThings_Wrapper{
+  .CardThings_Wrapper {
     padding: 0;
     width: -webkit-fill-available;
   }
-  .card_content{
+  .card_content {
     width: -webkit-fill-available;
     padding: 25px 25px 0 25px;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .information_description{
+  .information_description {
     margin-bottom: 20px;
   }
-  .telephone_row2_time{
+  .telephone_row2_time {
     display: flex;
     justify-content: space-between;
-
   }
-
-
-
-
-
-
-
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -804,21 +804,6 @@ const CardThings = () => {
                         )}
                     </div>
 
-                    <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-                      <YMaps>
-                        <Map
-                          width={300}
-                          height={200}
-                          defaultState={itemData && mapData}
-                        >
-                          <Placemark
-                            geometry={itemData && mapData.center}
-                            options={{ preset: "islands#blueDotIcon" }}
-                          />
-                        </Map>
-                      </YMaps>
-                    </div>
-
                     {/* Свободно*/}
                     <div style={{ display: "none" }} className="block_up_free">
                       <img src={Clock2} alt="" className="img_clock2" />
@@ -826,7 +811,7 @@ const CardThings = () => {
                     </div>
 
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
-                    <div style={{ height: "185px", width: "310px" }}>
+                    <div style={{ height: "130x", width: "310px" }}>
                       <div className="block_up_contactOwner">
                         <input
                           onClick={showContactHandler}
@@ -891,6 +876,20 @@ const CardThings = () => {
 
                   {/* НИЗ ПРАВОЙ СТОРОНЫ*/}
                   <div style={{ width: "365px" }} className="right_block_down">
+                    <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+                      <YMaps>
+                        <Map
+                          width={300}
+                          height={200}
+                          defaultState={itemData && mapData}
+                        >
+                          <Placemark
+                            geometry={itemData && mapData.center}
+                            options={{ preset: "islands#blueDotIcon" }}
+                          />
+                        </Map>
+                      </YMaps>
+                    </div>
                     <div className="block_down_owner">
                       <p>Владелец</p>
                     </div>

@@ -490,28 +490,6 @@ const SearchPage = () => {
             <div>
               <p style={{ color: "black" }}> {category} </p>
             </div>
-
-            <p className="container_shapka_result">
-              Найдено предложений: {searchItems.length}
-              {category ? (
-                <p>
-                  В категории: {category}
-                  <span
-                    onClick={categoryResetHandler}
-                    style={{
-                      color: "red",
-                      fontSize: "14px",
-                      marginLeft: "10px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Сбросить категорию
-                  </span>
-                </p>
-              ) : (
-                ""
-              )}
-            </p>
           </div>
 
           {/* МОБИЛЬНАЯ ВЕРСИЯ */}
@@ -1251,40 +1229,66 @@ const SearchPage = () => {
               <div className="content_right_shapka" id="search_pk">
                 <div className="shapka_top">
                   <p
-                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={
-                      distance === "200" ? "distance_p active" : "distance_p"
-                    }
-                    onClick={() => distanceHandler("200")}
+                    style={{ height: "55px" }}
+                    className="container_shapka_result"
                   >
-                    До 200 м
+                    Найдено предложений: {searchItems.length}
+                    {category ? (
+                      <p>
+                        В категории: {category}
+                        <span
+                          onClick={categoryResetHandler}
+                          style={{
+                            color: "red",
+                            fontSize: "14px",
+                            marginLeft: "10px",
+                            cursor: "pointer",
+                          }}
+                        >
+                          Сбросить категорию
+                        </span>
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </p>
-                  <p
-                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={
-                      distance === "1000" ? "distance_p active" : "distance_p"
-                    }
-                    onClick={() => distanceHandler("1000")}
-                  >
-                    До 1 км
-                  </p>
-                  <p
-                    title="Кликните повторно, чтобы выключить фильтр по дистанции"
-                    className={
-                      distance === "5000" ? "distance_p active" : "distance_p"
-                    }
-                    onClick={() => distanceHandler("5000")}
-                  >
-                    До 5 км
-                  </p>
-                  <p
-                    onClick={() => distanceHandler(false)}
-                    className={
-                      distance === false ? "distance_p active" : "distance_p"
-                    }
-                  >
-                    Показать все
-                  </p>
+                  <div className="distance_wrapper">
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={
+                        distance === "200" ? "distance_p active" : "distance_p"
+                      }
+                      onClick={() => distanceHandler("200")}
+                    >
+                      До 200 м
+                    </p>
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={
+                        distance === "1000" ? "distance_p active" : "distance_p"
+                      }
+                      onClick={() => distanceHandler("1000")}
+                    >
+                      До 1 км
+                    </p>
+                    <p
+                      title="Кликните повторно, чтобы выключить фильтр по дистанции"
+                      className={
+                        distance === "5000" ? "distance_p active" : "distance_p"
+                      }
+                      onClick={() => distanceHandler("5000")}
+                    >
+                      До 5 км
+                    </p>
+                    <p
+                      onClick={() => distanceHandler(false)}
+                      className={
+                        distance === false ? "distance_p active" : "distance_p"
+                      }
+                    >
+                      Показать все
+                    </p>
+                  </div>
                 </div>
               </div>
 

@@ -343,8 +343,8 @@ const ItemCard = ({ item }) => {
             </div>
             <div className="recent-block-up">
               <p className="recent-block-title-name">
-                {item.name_item && item.name_item.length > 35
-                  ? `${item.name_item.split("").splice(0, 35).join("")}...`
+                {item.name_item && item.name_item.length > 25
+                  ? `${item.name_item.split("").splice(0, 25).join("")}...`
                   : item.name_item}
               </p>
             </div>
