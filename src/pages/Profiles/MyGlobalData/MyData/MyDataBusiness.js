@@ -27,6 +27,7 @@ import FacebookNone from "../../../../img/ProfilePage/facebook2None.png";
 import VkNone from "../../../../img/ProfilePage/vkNone.png";
 import InstagramNone from "../../../../img/ProfilePage/instagramNone.png";
 import OkNone from "../../../../img/ProfilePage/okNone.png";
+import { rootAddress } from "../../../../http/axios-requests";
 
 const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
   //расчет времени на платформе
@@ -290,7 +291,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     cursor: "pointer",
                   }}
                   className="profile-photo"
-                  src={`https://razdelisdrugim.by${userData.image_profile}`}
+                  src={`${rootAddress}${userData.image_profile}`}
                   alt=""
                 />
                 <div className="profile-photo-overlay">Изменить</div>
@@ -789,7 +790,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 disabled
                 className="referral_code_input_profile"
                 type="text"
-                value={`https://razdelisdrugim.by/?referral=${
+                value={`${rootAddress}/?referral=${
                   userData && userData.referral_code
                 }`}
               />
@@ -797,7 +798,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 <label
                   onClick={() => {
                     window.navigator.clipboard.writeText(
-                      `${`https://razdelisdrugim.by/?referral=${
+                      `${`${rootAddress}/?referral=${
                         userData && userData.referral_code
                       }`}`
                     );
@@ -831,7 +832,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               <label className="profile-photo-wrapper" for="photo_input">
                 <img
                   className="profile-photo"
-                  src={`https://razdelisdrugim.by${userData.image_profile}`}
+                  src={`${rootAddress}${userData.image_profile}`}
                   alt=""
                 />
                 <div className="profile-photo-overlay">Изменить</div>
@@ -1366,7 +1367,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 disabled
                 className="referral_code_input_profile"
                 type="text"
-                value={`https://razdelisdrugim.by/?referral=${
+                value={`${rootAddress}/?referral=${
                   userData && userData.referral_code
                 }`}
               />
@@ -1374,7 +1375,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 <label
                   onClick={() => {
                     window.navigator.clipboard.writeText(
-                      `${`https://razdelisdrugim.by/?referral=${
+                      `${`${rootAddress}/?referral=${
                         userData && userData.referral_code
                       }`}`
                     );
@@ -1453,7 +1454,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               target="_blank"
               href={`/public-profile?id=${userData && userData.id}`}
             >
-              <p className="block1_right_watchProfile" style={{display:'none'}}>
+              <p
+                className="block1_right_watchProfile"
+                style={{ display: "none" }}
+              >
                 {" "}
                 Посмотреть мой профиль
               </p>
@@ -1507,115 +1511,113 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 <p className="online_time_text2"> - </p>
               </div>
             </div>
-
           </div>
         </div>
 
-
-                  {/* соц сети */}
+        {/* соц сети */}
         <div className="content_setting_right">
-            <div className="setting_right_socialNetworks">
-              <p className="setting_right_socialNetworks-p">
-                Социальные сети и месседжеры
-              </p>
-              <img
-                title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
-                src={Vector2}
-                className="img_vector2"
-                alt=""
-              />
-            </div>
-            <div className="social_icons">
-              <img
-                onClick={() => socialClickHandler("tg")}
-                className={
-                  activeSocial === "tg"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.telegram_account ? Telegram : TelegramNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("viber")}
-                className={
-                  activeSocial === "viber"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.viber_account ? Viber : ViberNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("wa")}
-                className={
-                  activeSocial === "wa"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("google")}
-                className={
-                  activeSocial === "google"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.google_account ? Google : GoogleNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("fb")}
-                className={
-                  activeSocial === "fb"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.link_facebook ? Facebook : FacebookNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("vk")}
-                className={
-                  activeSocial === "vk"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.vk_account ? Vk : VkNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("inst")}
-                className={
-                  activeSocial === "inst"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.link_instagram ? Instagram : InstagramNone}
-                alt=""
-              />
-              <img
-                onClick={() => socialClickHandler("ok")}
-                className={
-                  activeSocial === "ok"
-                    ? "setting_right_socialNetworks_img active"
-                    : "setting_right_socialNetworks_img"
-                }
-                src={userData.ok_account ? Ok : OkNone}
-                alt=""
-              />
-            </div>
-
-            {socialPopUpActive && (
-              <SocialContactEnter
-                activeSocial={activeSocial}
-                setSocialPopUpActive={setSocialPopUpActive}
-                setActiveSocial={setActiveSocial}
-              />
-            )}
+          <div className="setting_right_socialNetworks">
+            <p className="setting_right_socialNetworks-p">
+              Социальные сети и месседжеры
+            </p>
+            <img
+              title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
+              src={Vector2}
+              className="img_vector2"
+              alt=""
+            />
           </div>
+          <div className="social_icons">
+            <img
+              onClick={() => socialClickHandler("tg")}
+              className={
+                activeSocial === "tg"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.telegram_account ? Telegram : TelegramNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("viber")}
+              className={
+                activeSocial === "viber"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.viber_account ? Viber : ViberNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("wa")}
+              className={
+                activeSocial === "wa"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("google")}
+              className={
+                activeSocial === "google"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.google_account ? Google : GoogleNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("fb")}
+              className={
+                activeSocial === "fb"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.link_facebook ? Facebook : FacebookNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("vk")}
+              className={
+                activeSocial === "vk"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.vk_account ? Vk : VkNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("inst")}
+              className={
+                activeSocial === "inst"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.link_instagram ? Instagram : InstagramNone}
+              alt=""
+            />
+            <img
+              onClick={() => socialClickHandler("ok")}
+              className={
+                activeSocial === "ok"
+                  ? "setting_right_socialNetworks_img active"
+                  : "setting_right_socialNetworks_img"
+              }
+              src={userData.ok_account ? Ok : OkNone}
+              alt=""
+            />
+          </div>
+
+          {socialPopUpActive && (
+            <SocialContactEnter
+              activeSocial={activeSocial}
+              setSocialPopUpActive={setSocialPopUpActive}
+              setActiveSocial={setActiveSocial}
+            />
+          )}
+        </div>
 
         {/*КОНТЕНТ ПОД ПРОФИЛЕМ*/}
         <div className="mydata-settings-main-content">
@@ -1918,52 +1920,49 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     </div>
                   </div>
                 )}
-
-                
               </div>
             )}
 
+            {/* рефералки и кнопка */}
 
-        {/* рефералки и кнопка */}
-
-        <div className="privateprofile_footer_ref">
+            <div className="privateprofile_footer_ref">
               {/* рефералки */}
-               <div className="referral_code_wrapper_profile">
-              <p>Ваш реферальный код:</p>
-              <input
-                disabled
-                className="referral_code_input_profile"
-                type="text"
-                value={userData && userData.referral_code}
-              />
-            </div>
-            <div className="referral_code_wrapper_profile">
-              <p>Ваша реф-ая ссылка:</p>
-              <input
-                disabled
-                className="referral_code_input_profile"
-                type="text"
-                value={`https://razdelisdrugim.by/?referral=${
-                  userData && userData.referral_code
-                }`}
-              />
-              <div className="toShare_button_wrapper">
-                <label
-                  onClick={() => {
-                    window.navigator.clipboard.writeText(
-                      `${`https://razdelisdrugim.by/?referral=${
-                        userData && userData.referral_code
-                      }`}`
-                    );
-                  }}
-                  style={{ cursor: "pointer" }}
-                  className="item-card-profile-button__optional"
-                >
-                  Копировать
-                </label>
+              <div className="referral_code_wrapper_profile">
+                <p>Ваш реферальный код:</p>
+                <input
+                  disabled
+                  className="referral_code_input_profile"
+                  type="text"
+                  value={userData && userData.referral_code}
+                />
+              </div>
+              <div className="referral_code_wrapper_profile">
+                <p>Ваша реф-ая ссылка:</p>
+                <input
+                  disabled
+                  className="referral_code_input_profile"
+                  type="text"
+                  value={`https://razdelisdrugim.by/?referral=${
+                    userData && userData.referral_code
+                  }`}
+                />
+                <div className="toShare_button_wrapper">
+                  <label
+                    onClick={() => {
+                      window.navigator.clipboard.writeText(
+                        `${`https://razdelisdrugim.by/?referral=${
+                          userData && userData.referral_code
+                        }`}`
+                      );
+                    }}
+                    style={{ cursor: "pointer" }}
+                    className="item-card-profile-button__optional"
+                  >
+                    Копировать
+                  </label>
+                </div>
               </div>
             </div>
-        </div>
 
             {/*КНОПКА СОХРАНЕНИЯ*/}
 

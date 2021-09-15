@@ -17,6 +17,7 @@ import freePrice from "../../img/MainPage/freePrice.png";
 import Favorites from "../../img/MainPage/Favorites.png";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.png";
 import EditItemImage from "../../img/MainPage/editicon.png";
+import { rootAddress } from "../../http/axios-requests";
 
 const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
-              src={`https://razdelisdrugim.by${item.image_1}`}
+              src={`${rootAddress}${item.image_1}`}
               alt=""
               className="block-image"
             />
@@ -252,7 +253,7 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
-              src={`https://razdelisdrugim.by${item.image_1}`}
+              src={`${rootAddress}${item.image_1}`}
               alt=""
               className="block-image"
             />
@@ -435,7 +436,7 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
-              src={`https://razdelisdrugim.by${item.image_1}`}
+              src={`${rootAddress}${item.image_1}`}
               alt=""
               className="block-image"
             />

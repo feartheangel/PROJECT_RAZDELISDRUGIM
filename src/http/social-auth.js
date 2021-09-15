@@ -1,6 +1,6 @@
 export const vkAuth = () => {
   window.location.href =
-    "https://oauth.vk.com/authorize?client_id=7880665&display=page&redirect_uri=https://razdelisdrugim.by&scope=email&response_type=code&v=5.52&state=vk";
+    "https://oauth.vk.com/authorize?client_id=7951191&display=page&redirect_uri=https://razdelisdrugim.by&scope=email&response_type=code&v=5.52&state=vk";
 };
 
 export const googleAuth = () => {

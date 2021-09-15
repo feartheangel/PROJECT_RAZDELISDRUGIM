@@ -17,6 +17,7 @@ import {
   Adverts,
   MediaAbout,
 } from "../components/index";
+import { YMInitializer } from "react-yandex-metrika";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,15 +27,6 @@ const Home = () => {
       localStorage.setItem("ref", window.location.href.split("?referral=")[1]);
     }
   }, []);
-
-  const YMetric = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L066HXCMFD');
-</script><noscript><div><img src="https://mc.yandex.ru/watch/83058148" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
 
   const GMetric = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"></script>
 <script>
@@ -68,7 +60,9 @@ const Home = () => {
         {false && <MediaAbout />}
         <Footer />
       </div>
-      <div dangerouslySetInnerHTML={{ __html: YMetric }}></div>
+      <div>
+        <YMInitializer accounts={[83058148]} />
+      </div>
       <div dangerouslySetInnerHTML={{ __html: GMetric }}></div>
     </div>
   );
