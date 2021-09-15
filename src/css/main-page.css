@@ -1773,10 +1773,10 @@ button {
     width: auto;
     overflow: visible;
   }
-
-  /* карточки(сами дивы для размещения )  */
-  .swiper-wrapper {
-    height: 260px;
+/* 
+  карточки(сами дивы для размещения )   */
+    .swiper-wrapper {
+    height: -webkit-fill-available;
   }
   .recent-content {
     margin-bottom: 0;

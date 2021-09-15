@@ -67,6 +67,7 @@ const Partners = () => {
                    style={{
                     display: "flex",
                     width: "250px",
+                    minHeight:'150px',
                     justifyContent: "center",
                   }}
                    >
