@@ -3,7 +3,7 @@ import { logoutAction } from "../redux/actions/userData";
 import { useDispatch } from "react-redux";
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom";
 
-export const rootAddress = "https://razdelisdrugim.by:444";
+export const rootAddress = "https://razdelisdrugim.by";
 
 //регулярные выражения для проверки телефона и почты
 const contactEmailRegExp =
