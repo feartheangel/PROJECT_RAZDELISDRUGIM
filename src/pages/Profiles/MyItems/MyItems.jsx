@@ -34,9 +34,9 @@ const MyItems = () => {
             <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Я беру <span> - </span>
             </p>
-            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Мои сообщения <span> - </span>
-            </p>
+            <Link style={{ textDecoration: "none" }} to="/messages">
+              <p>Мои сообщения</p>
+            </Link>
             <Link
               style={{
                 textDecoration: "none",
