@@ -90,7 +90,7 @@ const ItemCardProfile = ({
           <img
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`${rootAddress}${image_1}`}
+            src={`${rootAddress}${image_1}?random=` + Math.random()}
             alt=""
             className="block-image"
           />
@@ -309,7 +309,7 @@ const ItemCardProfile = ({
           <img
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`${rootAddress}${image_1}`}
+            src={`${rootAddress}${image_1}?random=` + Math.random()}
             alt=""
             className="block-image"
           />
@@ -521,7 +521,7 @@ const ItemCardProfile = ({
           <img
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`${rootAddress}${image_1}`}
+            src={`${rootAddress}${image_1}?random=` + Math.random()}
             alt=""
             className="block-image"
           />
