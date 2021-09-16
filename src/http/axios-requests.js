@@ -1165,6 +1165,23 @@ class Requests {
       return response;
     });
   }
+
+  static createNewChatRoom(sender, receiver) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        receiver_id: receiver,
+        sender_id: sender,
+      },
+
+      url: `${rootAddress}api/chat/create/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

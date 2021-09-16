@@ -26,3 +26,4 @@ export { default as ConfidencePolicy } from "./FooterPages/ConfidencePolicy";
 export { default as AccountDeletion } from "./FooterPages/AccountDeletion";
 export { default as Contacts } from "./FooterPages/Contacts";
 export { default as UsersAgreement } from "./FooterPages/UsersAgreement";
+export { default as MyMessages } from "./Profiles/MyMessages/MyMessages";

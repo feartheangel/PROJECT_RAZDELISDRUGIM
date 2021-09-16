@@ -44,7 +44,7 @@
 }
 
 .container_profile_content__myItems {
-  width: 1109px;
+  width: 1125px;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -92,22 +92,12 @@ textarea {
 #globaldata_mobile {
   display: none;
 }
-#swiper_mobile_800{
+#swiper_mobile_800 {
   display: none;
 }
-#globaldata_ipad{
+#globaldata_ipad {
   display: none;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
@@ -176,40 +166,29 @@ textarea {
   }
 }
 
-
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
-@media only screen and (max-width: 1024px) and (min-width:481px) {
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
   #globaldata_pk {
     display: none;
   }
-  
-  #swiper_mobile_800{
+
+  #swiper_mobile_800 {
     display: flex;
     width: 100%;
   }
 
-  #globaldata_ipad{
+  #globaldata_ipad {
     display: flex;
   }
 
-  .container_profile{
+  .container_profile {
     width: -webkit-fill-available;
   }
 
-  .container_profile_content__myItems{
+  .container_profile_content__myItems {
     width: -webkit-fill-available;
     padding: 20px;
     justify-content: space-evenly;
   }
-
-
 }
-
-
-
-
-
-
-
-

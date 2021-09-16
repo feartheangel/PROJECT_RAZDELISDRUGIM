@@ -25,6 +25,7 @@ import {
   AccountDeletion,
   Contacts,
   UsersAgreement,
+  MyMessages,
 } from "./pages/index";
 import { PasswordRecoverySubmit, Testfile } from "./components/index";
 import "./css/main-page.css";
@@ -120,6 +121,7 @@ function App() {
         <Route path="/place-item" component={PlaceItem} exact />
         <Route path="/private-profile" component={PrivateProfile} exact />
         <Route path="/i-rent-out" component={MyItems} exact />
+        <Route path="/messages" component={MyMessages} exact />
         <Route path="/search" component={SearchPage} exact />
         <Route path="/item-card" component={CardThings} exact />
         <Route path="/edit-item" component={EditItem} exact />
