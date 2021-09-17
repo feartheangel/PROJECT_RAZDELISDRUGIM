@@ -9,17 +9,7 @@ import { SingleChat } from "../../../components/index";
 const MyMessages = () => {
   const { subjects } = useSelector(({ userData }) => userData);
 
-  const chatSocket = new WebSocket(`ws://razdelisdrugim.by:444/ws/chat/123/`);
-
-  chatSocket.onopen = function () {
-    alert("Соединение установлено.");
-  };
-
-  const createChatHandler = () => {
-    Requests.createNewChatRoom(69, 1).then((res) => {
-      console.log(res.data);
-    });
-  };
+  const chatSocket = new WebSocket(`wss://razdelisdrugim.by:444/ws/chat/123/`);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
