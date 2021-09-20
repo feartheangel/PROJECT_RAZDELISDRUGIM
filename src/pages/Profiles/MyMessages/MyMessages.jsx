@@ -9,8 +9,6 @@ import { SingleChat } from "../../../components/index";
 const MyMessages = () => {
   const { subjects } = useSelector(({ userData }) => userData);
 
-  const chatSocket = new WebSocket(`wss://razdelisdrugim.by:444/ws/chat/123/`);
-
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Шерсенджер: #разделисдругим";

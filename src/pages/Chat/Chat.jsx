@@ -10,6 +10,38 @@ import Actions from "../../img/Chat/actions.png";
 import { MessageBlock } from "../../components/index";
 
 const Chat = () => {
+  const chatSocket = React.useRef();
+
+  const chatId = window.location.href.split("?id=")[1];
+
+  React.useEffect(() => {
+    chatSocket.current = new WebSocket(
+      `wss://razdelisdrugim.by:444/ws/chat/${chatId}/`
+    );
+
+    chatSocket.current.onopen = function () {
+      chatSocket.current.send(
+        JSON.stringify({
+          command: "fetch_messages",
+          chat_id: chatId,
+        })
+      );
+    };
+
+    chatSocket.current.onmessage = function (e) {
+      const data = JSON.parse(e.data);
+      if (data.hasOwnProperty("messages")) {
+        setMessages(data.messages);
+        console.log(data.messages);
+      }
+
+      if (data.command === "new_message") {
+        setMessages((prev) => [...prev, data.message]);
+      }
+      console.log(data);
+    };
+  }, []);
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Шерсенджер: #разделисдругим";
@@ -21,13 +53,32 @@ const Chat = () => {
     }
   }, []);
 
-  const { subjects } = useSelector(({ userData }) => userData);
+  const keyDownHandler = (event) => {
+    if (event.keyCode === 13) {
+      chatSocket.current.send(
+        JSON.stringify({
+          message: chatPhrase,
+          command: "new_message",
+          chat_id: chatId,
+          author_id: userData.id,
+        })
+      );
+    }
+  };
+
+  const { subjects, userData } = useSelector(({ userData }) => userData);
   const [selectedChats, setSelectedChats] = React.useState();
+  const [chatPhrase, setChatPhrase] = React.useState();
+  const [messages, setMessages] = React.useState();
 
   return (
     <div>
       <Header />
-      <div className="privateProfile" id="globaldata_pk">
+      <div
+        onKeyDown={(e) => keyDownHandler(e)}
+        className="privateProfile"
+        id="globaldata_pk"
+      >
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
@@ -100,18 +151,14 @@ const Chat = () => {
                 </div>
                 <div className="chat_messages_part_wrapper">
                   <div className="chat_messages_left_block">
-                    <MessageBlock />
-                    <MessageBlock />
-                    <MessageBlock />
-                    <MessageBlock />
-                    <MessageBlock />
-                    <MessageBlock />
-                    <MessageBlock />
-                    <MessageBlock />
+                    {messages &&
+                      messages.map((item) => <MessageBlock item={item} />)}
                   </div>
                 </div>
                 <div className="chat_lower_table_wrapper">
                   <input
+                    value={chatPhrase}
+                    onChange={(e) => setChatPhrase(e.target.value)}
                     className="chat_lower_table_input"
                     type="text"
                     placeholder="Ваше сообщение..."

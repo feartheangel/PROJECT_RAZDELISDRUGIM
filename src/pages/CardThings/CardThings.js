@@ -1,6 +1,6 @@
 import React from "react";
 import "./CardThings.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Header, Footer, ItemCard } from "../../components/index";
 import {
   setSearchCategory,
@@ -49,6 +49,8 @@ const CardThings = () => {
   const { isLoggedIn, favorites, subjects, userData } = useSelector(
     ({ userData }) => userData
   );
+
+  const [redirect, setRedirect] = React.useState();
   //расчет времени на платформе
   function getDaysBetweenDates(d0, d1) {
     var msPerDay = 8.64e7;
@@ -123,9 +125,11 @@ const CardThings = () => {
       userData && userData.id,
       itemData && itemData.profile.id,
       itemData && itemData.id
-    ).then((res) => {
-      console.log(res);
-    });
+    )
+      .then((res) => {
+        setRedirect(<Redirect to={`/messages`} />);
+      })
+      .catch((err) => Object.values(err.response.data));
   };
 
   function isNumeric(str) {
@@ -226,6 +230,7 @@ const CardThings = () => {
                     <p className="card_shapka_hover"> Каталог </p>
                   </Link>
                   <img src={Vector1} alt="" />
+                  {redirect}
                 </div>
                 <div>
                   <Link

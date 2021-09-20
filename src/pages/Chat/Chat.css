@@ -136,6 +136,7 @@
   border-radius: 5px;
   background: #f7faff;
   padding: 5px;
+  min-width: 150px;
 }
 
 .chat_message_block_first_row {
@@ -169,4 +170,8 @@
   font-size: 16px;
   line-height: 19px;
   color: #123940;
+}
+
+.chat_message_block_wrapper.own {
+  margin-left: 60%;
 }
