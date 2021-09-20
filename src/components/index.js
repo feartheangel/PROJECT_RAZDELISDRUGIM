@@ -27,3 +27,4 @@ export { default as Partners } from "./MainPage/Partners";
 export { default as Adverts } from "./MainPage/Adverts";
 export { default as MediaAbout } from "./MainPage/MediaAboutBlock";
 export { default as SingleChat } from "./Chat/SingleChat";
+export { default as MessageBlock } from "./Chat/MessageBlock";

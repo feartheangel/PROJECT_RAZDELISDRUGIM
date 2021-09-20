@@ -1111,6 +1111,37 @@ class Requests {
     });
   }
 
+  static createNewChatRoom(sender, receiver, item) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      data: {
+        receiver_id: receiver,
+        sender_id: sender,
+        item: item,
+      },
+      url: `${rootAddress}/api/chat/create/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getUsersChats() {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/chat/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
   static getLastNearestItems(coords) {
     return axios({
       method: "GET",
@@ -1161,23 +1192,6 @@ class Requests {
         "Content-Type": "application/json",
       },
       url: `${rootAddress}/api/site_settings/settings/`,
-    }).then((response) => {
-      return response;
-    });
-  }
-
-  static createNewChatRoom(sender, receiver) {
-    return axios({
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        receiver_id: receiver,
-        sender_id: sender,
-      },
-
-      url: `${rootAddress}api/chat/create/`,
     }).then((response) => {
       return response;
     });

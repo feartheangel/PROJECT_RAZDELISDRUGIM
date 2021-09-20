@@ -46,7 +46,7 @@ import Booking from "../../components/PagesArchitecture/Booking";
 
 const CardThings = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, favorites, subjects } = useSelector(
+  const { isLoggedIn, favorites, subjects, userData } = useSelector(
     ({ userData }) => userData
   );
   //расчет времени на платформе
@@ -118,6 +118,16 @@ const CardThings = () => {
     }
   };
 
+  const goToChatHandler = () => {
+    Requests.createNewChatRoom(
+      userData && userData.id,
+      itemData && itemData.profile.id,
+      itemData && itemData.id
+    ).then((res) => {
+      console.log(res);
+    });
+  };
+
   function isNumeric(str) {
     if (typeof str != "string" || Number(str) <= 0) return false; // we only process strings!
     return (
@@ -179,7 +189,7 @@ const CardThings = () => {
   const [booking, setBooking] = React.useState(false);
   const BookingHandler = () => {
     setBooking(!booking);
-  }
+  };
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -852,6 +862,14 @@ const CardThings = () => {
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ  - NEW BOOKING !!!*/}
                     <div style={{ width: "310px", height: "180px" }}>
                       <div className="block_up_contactOwner">
+                        <input
+                          onClick={goToChatHandler}
+                          href="#booking_page"
+                          type="button"
+                          value="Перейти в чат"
+                          style={{ cursor: "pointer" }}
+                          className="contactOwner_btn"
+                        />
                         <input
                           onClick={BookingHandler}
                           href="#booking_page"

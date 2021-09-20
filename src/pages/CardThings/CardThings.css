@@ -418,6 +418,7 @@
   margin-right: 10px;
   font-size: 16px;
   border: none;
+  padding: 0 20px;
 }
 
 /*     НИЖНИЙ БЛОК ПРАВОЙ СТОРОНЫ               */
@@ -614,147 +615,147 @@
 }
 
 /* БЛОК БРОНИРОВАНИЯ ПК */
-.card_content_booking{
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
-    box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
-    border-radius: 30px;
-    margin: 20px 0;
-    padding: 30px;
-    max-width: 1190px;
-    width: -webkit-fill-available;
-    height: auto;
+.card_content_booking {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+  border-radius: 30px;
+  margin: 20px 0;
+  padding: 30px;
+  max-width: 1190px;
+  width: -webkit-fill-available;
+  height: auto;
 }
-.content_booking_shapka_up{
+.content_booking_shapka_up {
   width: 100%;
   border-bottom: 1px solid rgba(76, 201, 240, 0.77);
   height: fit-content;
 }
-.content_booking_shapka_up_p{
+.content_booking_shapka_up_p {
   width: fit-content;
   font-weight: 500;
   font-size: 24px;
   line-height: 28px;
-  color: #091D20;
+  color: #091d20;
   margin-bottom: 20px;
 }
 /* контентная часть - верхний блок */
-.content_booking_up_header{
+.content_booking_up_header {
   display: flex;
   flex-wrap: wrap;
   margin: 20px 0;
   width: -webkit-fill-available;
   height: auto;
 }
-.booking_up_header_info_item{
+.booking_up_header_info_item {
   display: flex;
   flex-direction: row;
   width: 350px;
   height: auto;
   margin-right: 40px;
 }
-.header_info_item_name{
+.header_info_item_name {
   display: flex;
   flex-direction: column;
   width: fit-content;
   height: auto;
 }
-.header_info_item_photo{
+.header_info_item_photo {
   width: 80px;
   height: 72px;
   left: 0px;
   top: 0.5px;
   margin-right: 10px;
 }
-.card_thing_image_booking{
+.card_thing_image_booking {
   width: 80px;
   height: 72px;
   border-radius: 5px;
 }
-.header_info_item_name_p1{
+.header_info_item_name_p1 {
   margin-bottom: 10px;
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
   color: #000000;
 }
-.header_info_item_name_yourCost{
+.header_info_item_name_yourCost {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.booking_up_header_info_user_p{
+.booking_up_header_info_user_p {
   font-size: 18px;
   line-height: 21px;
   width: fit-content;
   height: fit-content;
 }
-.booking_up_header_info_user_name{
+.booking_up_header_info_user_name {
   display: flex;
   flex-direction: column;
   margin-top: 5px;
 }
-.header_info_user_name-p1{
+.header_info_user_name-p1 {
   margin-bottom: 5px;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
 }
-.header_info_user_name-p2{
+.header_info_user_name-p2 {
   font-size: 16px;
   line-height: 19px;
-  color: #EECC36;
+  color: #eecc36;
 }
 
 /* контентная часть - нижний блок */
-.content_booking_up_information{
+.content_booking_up_information {
   display: flex;
   flex-direction: column;
 }
-.information_all_down{
+.information_all_down {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid rgba(76, 201, 240, 0.77);
 }
-.information_all_up{
+.information_all_up {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
   margin-bottom: 15px;
 }
 
-.information_all_down_left{
+.information_all_down_left {
   display: flex;
   flex-direction: column;
   margin-right: 60px;
 }
-.information_all_down_left_date{
+.information_all_down_left_date {
   display: flex;
   flex-direction: row;
 }
-.information_all_down_left_date-p{
+.information_all_down_left_date-p {
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-  color: #4CC9F0;
+  color: #4cc9f0;
 }
-.booking_calendar{
+.booking_calendar {
   width: 17px;
   height: 16px;
   margin-right: 12px;
 }
-.information_all_down_left_alldate{
+.information_all_down_left_alldate {
   font-size: 16px;
-  line-height: 19px;  
-  color: rgba(9, 29, 32, 0.4)
+  line-height: 19px;
+  color: rgba(9, 29, 32, 0.4);
 }
-.conditions_return_row-p1{
+.conditions_return_row-p1 {
   font-size: 16px;
   line-height: 19px;
   max-width: 135px;
 }
-.conditions_timeItem-p1{
+.conditions_timeItem-p1 {
   display: flex;
   flex-direction: row;
   font-size: 14px;
@@ -762,7 +763,7 @@
   color: rgba(9, 29, 32, 0.4);
   align-items: baseline;
 }
-.timeItem-p1-input{
+.timeItem-p1-input {
   border: 1px solid rgba(9, 29, 32, 0.4);
   box-sizing: border-box;
   border-radius: 7px;
@@ -770,33 +771,33 @@
   margin-left: 5px;
 }
 /* контентная часть  - центральный блок */
-.card_content_booking_center{
+.card_content_booking_center {
   display: flex;
   flex-direction: column;
   margin: 20px 0;
 }
-.booking_center_up_block_left{
+.booking_center_up_block_left {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 15px;
 }
-.img_car_booking{
+.img_car_booking {
   margin-right: 10px;
   width: 20px;
   height: 13px;
 }
-.booking_center_up_block_left-p{
+.booking_center_up_block_left-p {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
 }
 
-.booking_center_up_block_right{
+.booking_center_up_block_right {
   display: flex;
   flex-direction: row;
 }
-.up_block_right_input_block{
+.up_block_right_input_block {
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -804,58 +805,46 @@
   height: fit-content;
   align-items: center;
 }
-.up_block_right_input_block2{
+.up_block_right_input_block2 {
   display: flex;
   flex-direction: column;
   margin-right: 60px;
   height: fit-content;
 }
-.up_block_right_input_block2-2{
+.up_block_right_input_block2-2 {
   display: flex;
   flex-direction: row;
   align-items: baseline;
   align-items: center;
 }
-.up_block_right_input_block3{
+.up_block_right_input_block3 {
   display: flex;
   flex-direction: column;
   height: fit-content;
 }
-.up_block_right_input_block3-3{
+.up_block_right_input_block3-3 {
   display: flex;
   flex-direction: row;
   align-items: baseline;
   align-items: center;
 }
-.input_setting{
+.input_setting {
   border-radius: 100%;
   width: 20px;
   height: 20px;
 }
-.up_block_right_input_block-text{
+.up_block_right_input_block-text {
   margin-left: 5px;
   font-size: 16px;
   line-height: 19px;
 }
-.up_block_right_input_block3_text{
+.up_block_right_input_block3_text {
   font-weight: normal;
   font-size: 16px;
   line-height: 19px;
   color: rgba(9, 29, 32, 0.4);
   margin-top: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 #card_thing_mobile {
   display: none;

@@ -1,16 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./MyMessages.css";
+import "./Chat.css";
 import { Link } from "react-router-dom";
-import { Header, Footer } from "../../../components/index";
-import Requests from "../../../http/axios-requests";
-import { SingleChat } from "../../../components/index";
+import { Header, Footer } from "../../components/index";
+import Requests from "../../http/axios-requests";
+import Avatar from "../../img/CardThings/LeftContent/Rectangle 7.png";
+import VectorLeft from "../../img/Chat/vector-back.png";
+import Actions from "../../img/Chat/actions.png";
+import { MessageBlock } from "../../components/index";
 
-const MyMessages = () => {
-  const { subjects } = useSelector(({ userData }) => userData);
-
-  const chatSocket = new WebSocket(`wss://razdelisdrugim.by:444/ws/chat/123/`);
-
+const Chat = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Шерсенджер: #разделисдругим";
@@ -22,14 +21,8 @@ const MyMessages = () => {
     }
   }, []);
 
-  React.useEffect(() => {
-    Requests.getUsersChats().then((res) => {
-      setUsersChats(res.data);
-    });
-  }, []);
-
-  const [selectedChats, setSelectedChats] = React.useState("all");
-  const [usersChats, setUsersChats] = React.useState();
+  const { subjects } = useSelector(({ userData }) => userData);
+  const [selectedChats, setSelectedChats] = React.useState();
 
   return (
     <div>
@@ -45,9 +38,7 @@ const MyMessages = () => {
             <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Я беру <span> - </span>
             </p>
-            <Link to="/messages" style={{ textDecoration: "none" }}>
-              <p className="conteiner_shapka_myProfile">Мои сообщения</p>
-            </Link>
+            <p className="conteiner_shapka_myProfile">Мои сообщения</p>
             <Link
               style={{
                 textDecoration: "none",
@@ -85,9 +76,47 @@ const MyMessages = () => {
                   Бронирования
                 </p>
               </div>
-              <div className="container_profile_content__messages">
-                {usersChats &&
-                  usersChats.map((item) => <SingleChat item={item} />)}
+              <div className="container_profile_content__chat">
+                <div className="chat_header_wrapper">
+                  <div className="chat_hearder_left_side">
+                    <div className="chat_header_left_side_vertical">
+                      <img
+                        className="chat_header_stroke_image"
+                        src={VectorLeft}
+                      />
+                      <img className="chat_header_avatar_image" src={Avatar} />
+                    </div>
+
+                    <div className="chat_header_left_side_horizontal">
+                      <p className="chat_header_name_p">Пупкин Василий</p>
+                      <p className="chat_header_last_seen_p">
+                        был в сети сегодня в 21:30
+                      </p>
+                    </div>
+                  </div>
+                  <div className="chat_header_right_side">
+                    <img className="single_chat_actions_image" src={Actions} />
+                  </div>
+                </div>
+                <div className="chat_messages_part_wrapper">
+                  <div className="chat_messages_left_block">
+                    <MessageBlock />
+                    <MessageBlock />
+                    <MessageBlock />
+                    <MessageBlock />
+                    <MessageBlock />
+                    <MessageBlock />
+                    <MessageBlock />
+                    <MessageBlock />
+                  </div>
+                </div>
+                <div className="chat_lower_table_wrapper">
+                  <input
+                    className="chat_lower_table_input"
+                    type="text"
+                    placeholder="Ваше сообщение..."
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -184,4 +213,4 @@ const MyMessages = () => {
   );
 };
 
-export default MyMessages;
+export default Chat;
