@@ -27,7 +27,7 @@ import {
   UsersAgreement,
   MyMessages,
 } from "./pages/index";
-import { PasswordRecoverySubmit } from "./components/index";
+import { PasswordRecoverySubmit, Testfile } from "./components/index";
 import "./css/main-page.css";
 import React from "react";
 import Requests from "./http/axios-requests";

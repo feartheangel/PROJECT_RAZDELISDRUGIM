@@ -42,6 +42,7 @@ import Favorites from "../../img/MainPage/Favorites.png";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.png";
 import EditItemImage from "../../img/MainPage/editicon.png";
 import { rootAddress } from "../../http/axios-requests";
+import Booking from "../../components/PagesArchitecture/Booking";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -174,6 +175,11 @@ const CardThings = () => {
   const [shareVisible, setShareVisible] = React.useState();
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [isOwn, setIsOwn] = React.useState(false);
+  // бронирование
+  const [booking, setBooking] = React.useState(false);
+  const BookingHandler = () => {
+    setBooking(!booking);
+  }
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -843,13 +849,15 @@ const CardThings = () => {
                       <span className="block_up_free-p">Свободно</span>
                     </div>
 
-                    {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
+                    {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ  - NEW BOOKING !!!*/}
                     <div style={{ width: "310px", height: "180px" }}>
                       <div className="block_up_contactOwner">
                         <input
-                          onClick={showContactHandler}
+                          onClick={BookingHandler}
+                          href="#booking_page"
+                          scrollTop="500px"
                           type="button"
-                          value="Связаться с владельцем"
+                          value="Забронировать"
                           style={{ cursor: "pointer" }}
                           className="contactOwner_btn"
                         />
@@ -1203,6 +1211,9 @@ const CardThings = () => {
                   </div>
                 </div>
               </div>
+
+              {/* блок бронирование */}
+              {booking && <Booking />}
             </div>
 
             {/* КАРТОЧКИ С ДРУГИМИ ОБЬЯВЛЕНИЯМИ*/}
