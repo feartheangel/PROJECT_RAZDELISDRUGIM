@@ -16,7 +16,9 @@ const Chat = () => {
 
   React.useEffect(() => {
     chatSocket.current = new WebSocket(
-      `wss://razdelisdrugim.by:444/ws/chat/${chatId}/`
+      `wss://razdelisdrugim.by:444/ws/chat/${chatId}/?token=${localStorage.getItem(
+        "key"
+      )}`
     );
 
     chatSocket.current.onopen = function () {
