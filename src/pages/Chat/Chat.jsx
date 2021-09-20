@@ -38,7 +38,6 @@ const Chat = () => {
       if (data.command === "new_message") {
         setMessages((prev) => [...prev, data.message]);
       }
-      console.log(data);
     };
   }, []);
 
@@ -63,6 +62,7 @@ const Chat = () => {
           author_id: userData.id,
         })
       );
+      setChatPhrase("");
     }
   };
 
