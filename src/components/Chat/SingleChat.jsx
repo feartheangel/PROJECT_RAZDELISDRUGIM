@@ -11,7 +11,7 @@ const SingleChat = ({ item }) => {
       <div className="single_chat_wrapper">
         <img
           className="single_chat_item_image"
-          src={`${item.get_item_photo}`}
+          src={`https://razdelisdrugim.by:444${item.get_item_photo}`}
         />
         <div className="single_chat_right_side">
           <div className="single_chat_left_block_first_row">

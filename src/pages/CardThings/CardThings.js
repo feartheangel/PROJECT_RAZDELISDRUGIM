@@ -127,7 +127,7 @@ const CardThings = () => {
       itemData && itemData.id
     )
       .then((res) => {
-        setRedirect(<Redirect to={`/messages`} />);
+        setRedirect(<Redirect to={`/chat?id=${res.data.id}`} />);
       })
       .catch((err) => Object.values(err.response.data));
   };

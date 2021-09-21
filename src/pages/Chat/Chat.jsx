@@ -39,12 +39,13 @@ const Chat = () => {
       const data = JSON.parse(e.data);
       if (data.hasOwnProperty("messages")) {
         setMessages(data.messages);
-        console.log(data.messages);
       }
 
       if (data.command === "new_message") {
         setMessages((prev) => [...prev, data.message]);
       }
+
+      console.log(data);
     };
 
     chatSocket.current.onclose = function (event) {
@@ -88,7 +89,7 @@ const Chat = () => {
   const { subjects, userData } = useSelector(({ userData }) => userData);
   const [selectedChats, setSelectedChats] = React.useState();
   const [chatPhrase, setChatPhrase] = React.useState();
-  const [messages, setMessages] = React.useState();
+  const [messages, setMessages] = React.useState([]);
 
   return (
     <div>
@@ -108,7 +109,9 @@ const Chat = () => {
             <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Я беру <span> - </span>
             </p>
-            <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+            <Link to="/messages" style={{ textDecoration: "none" }}>
+              <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+            </Link>
             <Link
               style={{
                 textDecoration: "none",
@@ -150,17 +153,19 @@ const Chat = () => {
                 <div className="chat_header_wrapper">
                   <div className="chat_hearder_left_side">
                     <div className="chat_header_left_side_vertical">
-                      <img
-                        className="chat_header_stroke_image"
-                        src={VectorLeft}
-                      />
+                      <Link to="/messages" style={{ textDecoration: "none" }}>
+                        <img
+                          className="chat_header_stroke_image"
+                          src={VectorLeft}
+                        />
+                      </Link>
                       <img className="chat_header_avatar_image" src={Avatar} />
                     </div>
 
                     <div className="chat_header_left_side_horizontal">
-                      <p className="chat_header_name_p">Пупкин Василий</p>
+                      <p className="chat_header_name_p">В разработке</p>
                       <p className="chat_header_last_seen_p">
-                        был в сети сегодня в 21:30
+                        был в сети недавно
                       </p>
                     </div>
                   </div>
