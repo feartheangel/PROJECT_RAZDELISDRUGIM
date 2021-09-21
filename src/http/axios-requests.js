@@ -101,30 +101,6 @@ class Requests {
     });
   }
 
-  static sendVKCode(code) {
-    return axios({
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: `${rootAddress}/api/jwt/access-token-vk/${code}/`,
-    }).then((response) => {
-      return response;
-    });
-  }
-
-  static sendGoogleCode(code) {
-    return axios({
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: `${rootAddress}/api/jwt/access-token-vk/${code}/`,
-    }).then((response) => {
-      return response;
-    });
-  }
-
   static fetchItems() {
     return axios({
       method: "GET",
@@ -1053,8 +1029,9 @@ class Requests {
       headers: {
         "Content-Type": "application/json",
       },
-      url: `${rootAddress}/api/jwt/access-token-vk/?code=${code}/`,
+      url: `${rootAddress}/api/jwt/access-token-vk/?code=${code}`,
     }).then((response) => {
+      console.log(code);
       return response;
     });
   }
@@ -1195,9 +1172,7 @@ axios.interceptors.response.use(
           localStorage.removeItem("refresh");
           localStorage.removeItem("social");
           localStorage.removeItem("ref");
-          setTimeout(() => {
-            window.location.href = `${rootAddress}`;
-          }, 2000);
+          setTimeout(() => {}, 2000);
           return;
         });
     }
@@ -1211,9 +1186,7 @@ axios.interceptors.response.use(
       localStorage.removeItem("refresh");
       localStorage.removeItem("social");
       localStorage.removeItem("ref");
-      setTimeout(() => {
-        window.location.href = `${rootAddress}`;
-      }, 2000);
+      setTimeout(() => {}, 2000);
       return;
     }
 
