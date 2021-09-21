@@ -1172,7 +1172,9 @@ axios.interceptors.response.use(
           localStorage.removeItem("refresh");
           localStorage.removeItem("social");
           localStorage.removeItem("ref");
-          setTimeout(() => {}, 2000);
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2000);
           return;
         });
     }
@@ -1186,7 +1188,9 @@ axios.interceptors.response.use(
       localStorage.removeItem("refresh");
       localStorage.removeItem("social");
       localStorage.removeItem("ref");
-      setTimeout(() => {}, 2000);
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
       return;
     }
 
