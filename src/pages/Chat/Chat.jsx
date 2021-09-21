@@ -28,6 +28,11 @@ const Chat = () => {
           chat_id: chatId,
         })
       );
+      console.log("opened");
+    };
+
+    chatSocket.current.onerror = function (error) {
+      alert(`[error] ${error.message}`);
     };
 
     chatSocket.current.onmessage = function (e) {
@@ -39,6 +44,18 @@ const Chat = () => {
 
       if (data.command === "new_message") {
         setMessages((prev) => [...prev, data.message]);
+      }
+    };
+
+    chatSocket.current.onclose = function (event) {
+      if (event.wasClean) {
+        alert(
+          `[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`
+        );
+      } else {
+        // например, сервер убил процесс или сеть недоступна
+        // обычно в этом случае event.code 1006
+        alert(`[close] Соединение прервано, код=${event.code}`);
       }
     };
   }, []);
