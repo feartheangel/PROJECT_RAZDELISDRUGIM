@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./CardThings.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Header, Footer, ItemCard } from "../../components/index";
 import {
   setSearchCategory,
@@ -43,6 +43,7 @@ import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.png";
 import EditItemImage from "../../img/MainPage/editicon.png";
 import { rootAddress } from "../../http/axios-requests";
 import Booking from "../../components/PagesArchitecture/Booking";
+import { animateScroll as scroll } from "react-scroll";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -177,8 +178,12 @@ const CardThings = () => {
   const [isOwn, setIsOwn] = React.useState(false);
   // бронирование
   const [booking, setBooking] = React.useState(false);
-  const BookingHandler = () => {
-    setBooking(!booking);
+
+  const div = useRef(null);
+
+  function ScrollHandler() {
+    setBooking(true);
+    div.current.scrollIntoView();
   }
 
   React.useEffect(() => {
@@ -852,15 +857,15 @@ const CardThings = () => {
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ  - NEW BOOKING !!!*/}
                     <div style={{ width: "310px", height: "180px" }}>
                       <div className="block_up_contactOwner">
-                        <input
-                          onClick={BookingHandler}
-                          href="#booking_page"
-                          scrollTop="500px"
+                        <button
+                          onClick={ScrollHandler}
                           type="button"
                           value="Забронировать"
                           style={{ cursor: "pointer" }}
                           className="contactOwner_btn"
-                        />
+                        >
+                          Забронировать
+                        </button>
 
                         {favorites && !isFavorite && !isOwn && (
                           <img
@@ -1105,6 +1110,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 rel="noreferrer"
@@ -1192,6 +1198,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{
@@ -1213,7 +1220,18 @@ const CardThings = () => {
               </div>
 
               {/* блок бронирование */}
-              {booking && <Booking />}
+
+              <div ref={div}>
+                {" "}
+                {booking && (
+                  <Booking
+                    component={"span"}
+                    itemData={itemData}
+                    selectedImage={selectedImage}
+                    setSelectedImage={setSelectedImage}
+                  />
+                )}
+              </div>
             </div>
 
             {/* КАРТОЧКИ С ДРУГИМИ ОБЬЯВЛЕНИЯМИ*/}
@@ -2062,6 +2080,7 @@ const CardThings = () => {
                                 itemData && itemData.profile.telegram_account
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{ cursor: "pointer" }}
@@ -2077,6 +2096,7 @@ const CardThings = () => {
                               href={`viber://chat?number=+${
                                 itemData && itemData.profile.viber_account
                               }`}
+                              rel="noreferrer"
                             >
                               <img
                                 style={{ cursor: "pointer" }}
@@ -2096,6 +2116,7 @@ const CardThings = () => {
                                 itemData && itemData.name_item
                               }' на платформе "Разделисдругим".`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{ cursor: "pointer" }}
@@ -2119,6 +2140,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{ cursor: "pointer" }}
@@ -2139,6 +2161,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{ cursor: "pointer" }}
@@ -2162,6 +2185,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{ cursor: "pointer" }}
@@ -2182,6 +2206,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{ cursor: "pointer" }}
@@ -2202,6 +2227,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img src={Ok} className="img_social" alt="" />
                             </a>
@@ -3094,6 +3120,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 rel="noreferrer"
@@ -3181,6 +3208,7 @@ const CardThings = () => {
                                     }`
                               }`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 style={{
