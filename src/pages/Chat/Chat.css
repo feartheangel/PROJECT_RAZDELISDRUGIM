@@ -43,7 +43,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 15px;
   border-bottom: 1px solid rgba(76, 201, 240, 0.77);
 }
 
@@ -81,7 +80,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   overflow-y: scroll;
 }
 
@@ -99,7 +97,6 @@
   background: #ffffff;
   box-sizing: border-box;
   border-radius: 6.5861px;
-  color: rgba(9, 29, 32, 0.4);
   padding: 0 10px;
   transition: 0.3s;
   font-family: Raleway;

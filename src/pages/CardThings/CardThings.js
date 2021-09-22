@@ -129,7 +129,13 @@ const CardThings = () => {
       .then((res) => {
         setRedirect(<Redirect to={`/chat?id=${res.data.id}`} />);
       })
-      .catch((err) => Object.values(err.response.data));
+      .catch((err) => {
+        if (err.response.data.includes("id=")) {
+          setRedirect(
+            <Redirect to={`/chat?id=${err.response.data.split("id=")[1]}`} />
+          );
+        }
+      });
   };
 
   function isNumeric(str) {
@@ -868,20 +874,24 @@ const CardThings = () => {
                     <div style={{ width: "310px", height: "180px" }}>
                       <div className="block_up_contactOwner">
                         <input
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
                           onClick={goToChatHandler}
                           href="#booking_page"
                           type="button"
                           value="Перейти в чат"
-                          style={{ cursor: "pointer" }}
                           className="contactOwner_btn"
                         />
                         <input
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
                           onClick={BookingHandler}
                           href="#booking_page"
                           scrollTop="500px"
                           type="button"
                           value="Забронировать"
-                          style={{ cursor: "pointer" }}
                           className="contactOwner_btn"
                         />
 

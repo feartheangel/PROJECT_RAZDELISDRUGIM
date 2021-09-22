@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import "./Chat.css";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import Avatar from "../../img/CardThings/LeftContent/Rectangle 7.png";
 import VectorLeft from "../../img/Chat/vector-back.png";
 import Actions from "../../img/Chat/actions.png";
 import { MessageBlock } from "../../components/index";
+import { rootAddress } from "../../http/axios-requests";
 
 const Chat = () => {
   const chatSocket = React.useRef();
@@ -39,6 +40,9 @@ const Chat = () => {
       const data = JSON.parse(e.data);
       if (data.hasOwnProperty("messages")) {
         setMessages(data.messages);
+        setCompanionName(data.name);
+        setCompanionphoto(data.photo);
+        setCompanionId(data.user_id);
       }
 
       if (data.command === "new_message") {
@@ -90,6 +94,18 @@ const Chat = () => {
   const [selectedChats, setSelectedChats] = React.useState();
   const [chatPhrase, setChatPhrase] = React.useState();
   const [messages, setMessages] = React.useState([]);
+  const [companionName, setCompanionName] = React.useState();
+  const [companionPhoto, setCompanionphoto] = React.useState();
+  const [companionId, setCompanionId] = React.useState();
+
+  const chatBlock = React.useRef();
+
+  React.useEffect(() => {
+    chatBlock.current.scrollTo({
+      top: chatBlock.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [messages]);
 
   return (
     <div>
@@ -159,11 +175,24 @@ const Chat = () => {
                           src={VectorLeft}
                         />
                       </Link>
-                      <img className="chat_header_avatar_image" src={Avatar} />
+                      <Link
+                        to={`/public-profile?id=${companionId}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <img
+                          className="chat_header_avatar_image"
+                          src={`${rootAddress}${companionPhoto}`}
+                        />
+                      </Link>
                     </div>
 
                     <div className="chat_header_left_side_horizontal">
-                      <p className="chat_header_name_p">В разработке</p>
+                      <Link
+                        to={`/public-profile?id=${companionId}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <p className="chat_header_name_p">{companionName}</p>
+                      </Link>
                       <p className="chat_header_last_seen_p">
                         был в сети недавно
                       </p>
@@ -174,7 +203,7 @@ const Chat = () => {
                   </div>
                 </div>
                 <div className="chat_messages_part_wrapper">
-                  <div className="chat_messages_left_block">
+                  <div ref={chatBlock} className="chat_messages_left_block">
                     {messages &&
                       messages.map((item) => <MessageBlock item={item} />)}
                   </div>
