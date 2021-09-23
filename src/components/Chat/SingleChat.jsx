@@ -75,7 +75,7 @@ const SingleChat = ({ item }) => {
                       : item.date_last_message
                           .split("")
                           .splice(5, 2)
-                          .join("") === "01"
+                          .join("") === "12"
                       ? "Декабря"
                       : ""
                   }, ${item.date_last_message.split("").splice(11, 5).join("")}`

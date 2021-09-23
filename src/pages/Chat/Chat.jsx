@@ -43,6 +43,7 @@ const Chat = () => {
         setCompanionName(data.name);
         setCompanionphoto(data.photo);
         setCompanionId(data.user_id);
+        setCompanionLastSeen(data.last_user_visit);
       }
 
       if (data.command === "new_message") {
@@ -97,6 +98,7 @@ const Chat = () => {
   const [companionName, setCompanionName] = React.useState();
   const [companionPhoto, setCompanionphoto] = React.useState();
   const [companionId, setCompanionId] = React.useState();
+  const [companionLastSeen, setCompanionLastSeen] = React.useState();
 
   const chatBlock = React.useRef();
 
@@ -194,7 +196,9 @@ const Chat = () => {
                         <p className="chat_header_name_p">{companionName}</p>
                       </Link>
                       <p className="chat_header_last_seen_p">
-                        был в сети недавно
+                        {companionLastSeen === "None"
+                          ? "Был в сети недавно"
+                          : `Был в сети недвано`}
                       </p>
                     </div>
                   </div>
