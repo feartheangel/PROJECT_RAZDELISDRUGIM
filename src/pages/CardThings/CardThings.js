@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./CardThings.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Redirect } from "react-router-dom";
 import { Header, Footer, ItemCard } from "../../components/index";
 import {
   setSearchCategory,
@@ -47,9 +47,11 @@ import { animateScroll as scroll } from "react-scroll";
 
 const CardThings = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, favorites, subjects } = useSelector(
+  const { isLoggedIn, favorites, subjects, userData } = useSelector(
     ({ userData }) => userData
   );
+
+  const [redirect, setRedirect] = React.useState();
   //расчет времени на платформе
   function getDaysBetweenDates(d0, d1) {
     var msPerDay = 8.64e7;
@@ -117,6 +119,24 @@ const CardThings = () => {
       e.preventDefault();
       alert("Доступно только авторизованным пользователям.");
     }
+  };
+
+  const goToChatHandler = () => {
+    Requests.createNewChatRoom(
+      userData && userData.id,
+      itemData && itemData.profile.id,
+      itemData && itemData.id
+    )
+      .then((res) => {
+        setRedirect(<Redirect to={`/chat?id=${res.data.id}`} />);
+      })
+      .catch((err) => {
+        if (err.response.data.includes("id=")) {
+          setRedirect(
+            <Redirect to={`/chat?id=${err.response.data.split("id=")[1]}`} />
+          );
+        }
+      });
   };
 
   function isNumeric(str) {
@@ -221,6 +241,7 @@ const CardThings = () => {
                     <p className="card_shapka_hover"> Каталог </p>
                   </Link>
                   <img src={Vector1} alt="" />
+                  {redirect}
                 </div>
                 <div>
                   <Link
@@ -859,13 +880,27 @@ const CardThings = () => {
                       <div className="block_up_contactOwner">
                         <button
                           onClick={ScrollHandler}
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
+                          href="#booking_page"
+                          scrollTop="500px"
                           type="button"
                           value="Забронировать"
-                          style={{ cursor: "pointer" }}
                           className="contactOwner_btn"
                         >
                           Забронировать
                         </button>
+                        <input
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
+                          onClick={goToChatHandler}
+                          href="#booking_page"
+                          type="button"
+                          value="Перейти в чат"
+                          className="contactOwner_btn"
+                        />
 
                         {favorites && !isFavorite && !isOwn && (
                           <img

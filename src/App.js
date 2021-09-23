@@ -26,6 +26,7 @@ import {
   Contacts,
   UsersAgreement,
   MyMessages,
+  Chat,
 } from "./pages/index";
 import { Booking, PasswordRecoverySubmit, Testfile } from "./components/index";
 import "./css/main-page.css";
@@ -147,6 +148,7 @@ function App() {
         <Route path="/account-deletion" component={AccountDeletion} exact />
         <Route path="/contacts" component={Contacts} exact />
         <Route path="/users-agreement" component={UsersAgreement} exact />
+        <Route path="/chat" component={Chat} exact />
       </div>
     </div>
   );
