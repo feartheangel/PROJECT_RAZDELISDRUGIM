@@ -28,7 +28,7 @@ import {
   MyMessages,
   Chat,
 } from "./pages/index";
-import { PasswordRecoverySubmit, Testfile } from "./components/index";
+import { Booking, PasswordRecoverySubmit, Testfile } from "./components/index";
 import "./css/main-page.css";
 import React from "react";
 import Requests from "./http/axios-requests";
