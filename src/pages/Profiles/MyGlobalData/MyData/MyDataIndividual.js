@@ -26,6 +26,7 @@ import InstagramNone from "../../../../img/ProfilePage/instagramNone.png";
 import OkNone from "../../../../img/ProfilePage/okNone.png";
 import Vector2 from "../../../../img/CardThings/LeftContent/Vector2.png";
 import copy from "../../../../img/MainPage/copy.png";
+import { rootAddress } from "../../../../http/axios-requests";
 
 const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
   //расчет времени на платформе
@@ -271,7 +272,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     cursor: "pointer",
                   }}
                   className="profile-photo"
-                  src={`https://razdelisdrugim.by${userData.image_profile}`}
+                  src={`${rootAddress}${userData.image_profile}`}
                   alt=""
                 />
                 <div className="profile-photo-overlay">Изменить</div>
@@ -729,7 +730,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 disabled
                 className="referral_code_input_profile"
                 type="text"
-                value={`https://razdelisdrugim.by/?referral=${
+                value={`${rootAddress}/?referral=${
                   userData && userData.referral_code
                 }`}
               />
@@ -737,7 +738,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 <label
                   onClick={() => {
                     window.navigator.clipboard.writeText(
-                      `${`https://razdelisdrugim.by/?referral=${
+                      `${`${rootAddress}/?referral=${
                         userData && userData.referral_code
                       }`}`
                     );
@@ -769,7 +770,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
             <label className="profile-photo-wrapper" for="photo_input">
               <img
                 className="profile-photo"
-                src={`https://razdelisdrugim.by${userData.image_profile}`}
+                src={`${rootAddress}${userData.image_profile}`}
                 alt=""
               />
               <div className="profile-photo-overlay">Изменить</div>
@@ -1241,7 +1242,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 disabled
                 className="referral_code_input_profile"
                 type="text"
-                value={`https://razdelisdrugim.by/?referral=${
+                value={`${rootAddress}/?referral=${
                   userData && userData.referral_code
                 }`}
               />
@@ -1249,7 +1250,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 <label
                   onClick={() => {
                     window.navigator.clipboard.writeText(
-                      `${`https://razdelisdrugim.by/?referral=${
+                      `${`${rootAddress}/?referral=${
                         userData && userData.referral_code
                       }`}`
                     );
@@ -1293,7 +1294,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
             <label className="profile-photo-wrapper" for="photo_input">
               <img
                 className="profile-photo"
-                src={`https://razdelisdrugim.by${userData.image_profile}`}
+                src={`${rootAddress}${userData.image_profile}`}
                 alt=""
               />
               <div className="profile-photo-overlay">Изменить</div>
@@ -1762,7 +1763,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               disabled
               className="referral_code_input_profile"
               type="text"
-              value={`https://razdelisdrugim.by/?referral=${
+              value={`${rootAddress}/?referral=${
                 userData && userData.referral_code
               }`}
             />
@@ -1770,7 +1771,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               <label
                 onClick={() => {
                   window.navigator.clipboard.writeText(
-                    `${`https://razdelisdrugim.by/?referral=${
+                    `${`${rootAddress}/?referral=${
                       userData && userData.referral_code
                     }`}`
                   );

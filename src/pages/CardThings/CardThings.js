@@ -41,6 +41,7 @@ import copy from "../../img/MainPage/copy.png";
 import Favorites from "../../img/MainPage/Favorites.png";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.png";
 import EditItemImage from "../../img/MainPage/editicon.png";
+import { rootAddress } from "../../http/axios-requests";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -118,18 +119,21 @@ const CardThings = () => {
 
   React.useEffect(() => {
     let isMounted = true;
-    Requests.getSingleItem(
-      window.location.href.split("?id=")[1].split("&")[0]
-    ).then((response) => {
-      if (isMounted) {
-        setItemData(response.data);
-        setSelectedImage(response.data.image_1);
-      }
-    });
-
-    Requests.search().then((response) => {
-      setSimillarSubjects(response.data);
-    });
+    Requests.getSingleItem(window.location.href.split("?id=")[1].split("&")[0])
+      .then((response) => {
+        if (
+          isMounted &&
+          isNumeric(window.location.href.split("?id=")[1].split("&")[0])
+        ) {
+          setItemData(response.data);
+          setSelectedImage(response.data.image_1);
+        } else {
+          window.location.href = "/";
+        }
+      })
+      .catch(() => {
+        window.location.href = "/";
+      });
 
     return () => {
       isMounted = false;
@@ -154,6 +158,14 @@ const CardThings = () => {
         }
       });
   }, [subjects]);
+
+  function isNumeric(str) {
+    if (typeof str != "string" || Number(str) <= 0) return false; // we only process strings!
+    return (
+      !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+      !isNaN(parseFloat(str))
+    ); // ...and ensure strings of whitespace fail
+  }
 
   const [itemData, setItemData] = React.useState();
   const [simillarSubjects, setSimillarSubjects] = React.useState();
@@ -255,7 +267,8 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `https://razdelisdrugim.by${itemData.image_1}`
+                            `${rootAddress}${itemData.image_1}?random=` +
+                              Math.random()
                           }
                           alt=""
                         />
@@ -272,7 +285,8 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `https://razdelisdrugim.by${itemData.image_2}`
+                            `${rootAddress}${itemData.image_2}?random=` +
+                              Math.random()
                           }
                           alt=""
                         />
@@ -287,10 +301,7 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_3)
                           }
-                          src={
-                            itemData &&
-                            `https://razdelisdrugim.by${itemData.image_3}`
-                          }
+                          src={itemData && `${rootAddress}${itemData.image_3}`}
                           alt=""
                         />
                       )}
@@ -306,7 +317,8 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `https://razdelisdrugim.by${itemData.image_4}`
+                            `${rootAddress}${itemData.image_4}?random=` +
+                              Math.random()
                           }
                           alt=""
                         />
@@ -323,7 +335,8 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `https://razdelisdrugim.by${itemData.image_5}`
+                            `${rootAddress}${itemData.image_5}?random=` +
+                              Math.random()
                           }
                           alt=""
                         />
@@ -338,9 +351,9 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `https://razdelisdrugim.by${
+                            `${rootAddress}${
                               selectedImage && selectedImage
-                            }`
+                            }?random=` + Math.random()
                           }
                           alt=""
                         />
@@ -486,41 +499,45 @@ const CardThings = () => {
                     )}
 
                     {/* Время получения и возврата*/}
-                    <div className="conditions_return">
-                      <div className="conditions_return_block1">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p">
-                            Время получения
+                    {!serviceIds.includes(
+                      itemData && itemData.category_id.id
+                    ) && (
+                      <div className="conditions_return">
+                        <div className="conditions_return_block1">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p">
+                              Время получения
+                            </p>
+                            <img
+                              title="Тут указано, после какого времени можно получить имущество в аренду"
+                              src={Vector2}
+                              className="img_vector2"
+                              alt=""
+                            />
+                          </div>
+                          <p className="conditions_timeItem-p">
+                            — не ранее {itemData && itemData.receive_time}
                           </p>
-                          <img
-                            title="Тут указано, после какого времени можно получить имущество в аренду"
-                            src={Vector2}
-                            className="img_vector2"
-                            alt=""
-                          />
                         </div>
-                        <p className="conditions_timeItem-p">
-                          — не ранее {itemData && itemData.receive_time}
-                        </p>
-                      </div>
 
-                      <div className="conditions_return_block2">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p">
-                            Время возврата
+                        <div className="conditions_return_block2">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p">
+                              Время возврата
+                            </p>
+                            <img
+                              title="Тут указано, до какого времени необходимо возвратить имущество владельцу"
+                              src={Vector2}
+                              className="img_vector2"
+                              alt=""
+                            />
+                          </div>
+                          <p className="conditions_timeItem-p">
+                            — не позднее {itemData && itemData.return_time}
                           </p>
-                          <img
-                            title="Тут указано, до какого времени необходимо возвратить имущество владельцу"
-                            src={Vector2}
-                            className="img_vector2"
-                            alt=""
-                          />
                         </div>
-                        <p className="conditions_timeItem-p">
-                          — не позднее {itemData && itemData.return_time}
-                        </p>
                       </div>
-                    </div>
+                    )}
 
                     {/* ГОТОВ ПРОДАТЬ*/}
                     {itemData && itemData.sell && (
@@ -921,7 +938,7 @@ const CardThings = () => {
                             width: "70px",
                             height: "70px",
                           }}
-                          src={`https://razdelisdrugim.by${
+                          src={`${rootAddress}${
                             itemData && itemData.profile.image_profile
                           }`}
                           alt=""
@@ -1275,7 +1292,8 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `https://razdelisdrugim.by${itemData.image_1}`
+                              `${rootAddress}${itemData.image_1}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1292,7 +1310,8 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `https://razdelisdrugim.by${itemData.image_2}`
+                              `${rootAddress}${itemData.image_2}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1309,7 +1328,8 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `https://razdelisdrugim.by${itemData.image_3}`
+                              `${rootAddress}${itemData.image_3}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1326,7 +1346,8 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `https://razdelisdrugim.by${itemData.image_4}`
+                              `${rootAddress}${itemData.image_4}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1343,7 +1364,8 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `https://razdelisdrugim.by${itemData.image_5}`
+                              `${rootAddress}${itemData.image_5}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
@@ -1358,9 +1380,9 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `https://razdelisdrugim.by${
+                              `${rootAddress}${
                                 selectedImage && selectedImage
-                              }`
+                              }?random=` + Math.random()
                             }
                             alt=""
                           />
@@ -1673,29 +1695,33 @@ const CardThings = () => {
                     )}
 
                     {/* Время получения и возврата*/}
-                    <div className="conditions_return">
-                      <div className="conditions_return_block1">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p">
-                            Время получения
+                    {!serviceIds.includes(
+                      itemData && itemData.category_id.id
+                    ) && (
+                      <div className="conditions_return">
+                        <div className="conditions_return_block1">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p">
+                              Время получения
+                            </p>
+                          </div>
+                          <p className="conditions_timeItem-p">
+                            — не ранее {itemData && itemData.receive_time}
                           </p>
                         </div>
-                        <p className="conditions_timeItem-p">
-                          — не ранее {itemData && itemData.receive_time}
-                        </p>
-                      </div>
 
-                      <div className="conditions_return_block2">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p">
-                            Время возврата
+                        <div className="conditions_return_block2">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p">
+                              Время возврата
+                            </p>
+                          </div>
+                          <p className="conditions_timeItem-p">
+                            — не позднее {itemData && itemData.return_time}
                           </p>
                         </div>
-                        <p className="conditions_timeItem-p">
-                          — не позднее {itemData && itemData.return_time}
-                        </p>
                       </div>
-                    </div>
+                    )}
 
                     {/* ГОТОВ ПРОДАТЬ*/}
                     {itemData && itemData.sell && (
@@ -1928,7 +1954,7 @@ const CardThings = () => {
                             width: "70px",
                             height: "70px",
                           }}
-                          src={`https://razdelisdrugim.by${
+                          src={`${rootAddress}${
                             itemData && itemData.profile.image_profile
                           }`}
                           alt=""
@@ -2263,10 +2289,7 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_1)
                           }
-                          src={
-                            itemData &&
-                            `https://razdelisdrugim.by${itemData.image_1}`
-                          }
+                          src={itemData && `${rootAddress}${itemData.image_1}`}
                           alt=""
                         />
                       )}
@@ -2280,10 +2303,7 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_2)
                           }
-                          src={
-                            itemData &&
-                            `https://razdelisdrugim.by${itemData.image_2}`
-                          }
+                          src={itemData && `${rootAddress}${itemData.image_2}`}
                           alt=""
                         />
                       )}
@@ -2297,10 +2317,7 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_3)
                           }
-                          src={
-                            itemData &&
-                            `https://razdelisdrugim.by${itemData.image_3}`
-                          }
+                          src={itemData && `${rootAddress}${itemData.image_3}`}
                           alt=""
                         />
                       )}
@@ -2314,10 +2331,7 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_4)
                           }
-                          src={
-                            itemData &&
-                            `https://razdelisdrugim.by${itemData.image_4}`
-                          }
+                          src={itemData && `${rootAddress}${itemData.image_4}`}
                           alt=""
                         />
                       )}
@@ -2331,10 +2345,7 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_5)
                           }
-                          src={
-                            itemData &&
-                            `https://razdelisdrugim.by${itemData.image_5}`
-                          }
+                          src={itemData && `${rootAddress}${itemData.image_5}`}
                           alt=""
                         />
                       )}
@@ -2348,9 +2359,7 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `https://razdelisdrugim.by${
-                              selectedImage && selectedImage
-                            }`
+                            `${rootAddress}${selectedImage && selectedImage}`
                           }
                           alt=""
                         />
@@ -2496,41 +2505,45 @@ const CardThings = () => {
                     )}
 
                     {/* Время получения и возврата*/}
-                    <div className="conditions_return">
-                      <div className="conditions_return_block1">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p">
-                            Время получения
+                    {!serviceIds.includes(
+                      itemData && itemData.category_id.id
+                    ) && (
+                      <div className="conditions_return">
+                        <div className="conditions_return_block1">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p">
+                              Время получения
+                            </p>
+                            <img
+                              title="Тут указано, после какого времени можно получить имущество в аренду"
+                              src={Vector2}
+                              className="img_vector2"
+                              alt=""
+                            />
+                          </div>
+                          <p className="conditions_timeItem-p">
+                            — не ранее {itemData && itemData.receive_time}
                           </p>
-                          <img
-                            title="Тут указано, после какого времени можно получить имущество в аренду"
-                            src={Vector2}
-                            className="img_vector2"
-                            alt=""
-                          />
                         </div>
-                        <p className="conditions_timeItem-p">
-                          — не ранее {itemData && itemData.receive_time}
-                        </p>
-                      </div>
 
-                      <div className="conditions_return_block2">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p">
-                            Время возврата
+                        <div className="conditions_return_block2">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p">
+                              Время возврата
+                            </p>
+                            <img
+                              title="Тут указано, до какого времени необходимо возвратить имущество владельцу"
+                              src={Vector2}
+                              className="img_vector2"
+                              alt=""
+                            />
+                          </div>
+                          <p className="conditions_timeItem-p">
+                            — не позднее {itemData && itemData.return_time}
                           </p>
-                          <img
-                            title="Тут указано, до какого времени необходимо возвратить имущество владельцу"
-                            src={Vector2}
-                            className="img_vector2"
-                            alt=""
-                          />
                         </div>
-                        <p className="conditions_timeItem-p">
-                          — не позднее {itemData && itemData.return_time}
-                        </p>
                       </div>
-                    </div>
+                    )}
 
                     {/* ГОТОВ ПРОДАТЬ*/}
                     {itemData && itemData.sell && (
@@ -2913,7 +2926,7 @@ const CardThings = () => {
                             width: "70px",
                             height: "70px",
                           }}
-                          src={`https://razdelisdrugim.by${
+                          src={`${rootAddress}${
                             itemData && itemData.profile.image_profile
                           }`}
                           alt=""

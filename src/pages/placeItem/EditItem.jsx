@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { Header, Footer } from "../../components/index";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setItems,
-  setItemsLoaded,
-  setItemsLoading,
-} from "../../redux/actions/items";
-import {
   setAdresses,
   setQueryStarted,
   setQueryDone,
@@ -15,6 +10,7 @@ import {
 import { Redirect } from "react-router-dom";
 import Requests from "../../http/axios-requests";
 import "./PlaseItem.css";
+import { rootAddress } from "../../http/axios-requests";
 // import Logo from "../../img/MainPage/Logo.png";
 // import mark from "../../img/MainPage/Mark.png";
 // import LanguagePlanet from "../../img/MainPage/Language-planet.png";
@@ -578,7 +574,7 @@ const EditItem = () => {
         );
         currentSubject[0] &&
           currentSubject[0].image_1 &&
-          fetch(`https://razdelisdrugim.by${currentSubject[0].image_1}`)
+          fetch(`${rootAddress}${currentSubject[0].image_1}`)
             .then((response) => {
               return response.blob();
             })
@@ -595,7 +591,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_2 &&
-          fetch(`https://razdelisdrugim.by${currentSubject[0].image_2}`)
+          fetch(`${rootAddress}${currentSubject[0].image_2}`)
             .then((response) => {
               return response.blob();
             })
@@ -612,7 +608,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_3 &&
-          fetch(`https://razdelisdrugim.by${currentSubject[0].image_3}`)
+          fetch(`${rootAddress}${currentSubject[0].image_3}`)
             .then((response) => {
               return response.blob();
             })
@@ -629,7 +625,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_4 &&
-          fetch(`https://razdelisdrugim.by${currentSubject[0].image_4}`)
+          fetch(`${rootAddress}${currentSubject[0].image_4}`)
             .then((response) => {
               return response.blob();
             })
@@ -646,7 +642,7 @@ const EditItem = () => {
 
         currentSubject[0] &&
           currentSubject[0].image_5 &&
-          fetch(`https://razdelisdrugim.by${currentSubject[0].image_5}`)
+          fetch(`${rootAddress}${currentSubject[0].image_5}`)
             .then((response) => {
               return response.blob();
             })

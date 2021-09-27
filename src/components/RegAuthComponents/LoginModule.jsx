@@ -42,7 +42,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
     //проверка на строку авторизации через соц. сети
     if (window.location.href.split("?code=")[1]) {
       if (window.location.href.includes("state=vk")) {
-        code = window.location.href.split("?code=")[1].split("state")[0];
+        code = window.location.href.split("?code=")[1].split("&")[0];
         Requests.vkAuth(code).then((res) => {
           localStorage.setItem("key", res.data.access_token);
           localStorage.setItem("social", "vk");
@@ -110,296 +110,303 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
   return (
     <div className="log-form">
       <div className="log-form" id="regform_pk">
-      <div className="div_for_krestik">
-        <img
-          onClick={() => setModalActive(false)}
-          src={Shape}
-          className="img_krestik"
-          style={{ marginRight: "15px" }}
-        />
-      </div>
-      <ul className="reg-form-action-type-list">
-        <li
-          onClick={() => setActiveForm("register")}
-          href="#"
-          style={{ fontSize: "25px" }}
-          style={{width:'50%',  justifyContent:'center', display:'flex' }}
-          className="reg-form-action-type-link"
-        >
-          Регистрация{successLogin}
-        </li>
-        <li
-          href="#"
-          className="reg-form-action-type-link reg-form-action-type-link__active"
-          style={{ fontSize: "25px" }}
-          style={{width:'50%',  justifyContent:'center', display:'flex' }}
-        >
-          Вход
-        </li>
-      </ul>
-      <div className="log-form-text-label-p__upper">
-        <p>Войти через соцсети</p>
-      </div>
-      <div className="reg-form-socials">
-        <img onClick={vkAuth} src={vkLogo} alt="VK" />
-        <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-        <img onClick={googleAuth} src={googleLogo} alt="Google" />
-      </div>
-      <div className="log-form-text-label-p__lower">
-        <p>или</p>
-      </div>
-      <div className="reg-form-input-area">
-        <form>
-          <label htmlFor="login" className="log-form-text-label-l">
-            Номер телефона или Email
-          </label>
-          <input
-            name="login"
-            id="login"
-            type="text"
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={login}
-            onChange={(e) => {
-              loginHandler(e);
-            }}
+        <div className="div_for_krestik">
+          <img
+            onClick={() => setModalActive(false)}
+            src={Shape}
+            className="img_krestik"
+            style={{ marginRight: "15px" }}
           />
-          {loginDirty && loginError && (
-            <label className="reg-form-text-label-l__alert">{loginError}</label>
-          )}
-          <label htmlFor="password" className="log-form-text-label-l">
-            Пароль
-          </label>
-          <input
-            name="password"
-            id="password"
-            type={showPass ? "text" : "password"}
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={password}
-            onChange={(e) => passwordHandler(e)}
+        </div>
+        <ul className="reg-form-action-type-list">
+          <li
+            onClick={() => setActiveForm("register")}
+            href="#"
+            style={{ fontSize: "25px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            className="reg-form-action-type-link"
+          >
+            Регистрация{successLogin}
+          </li>
+          <li
+            href="#"
+            className="reg-form-action-type-link reg-form-action-type-link__active"
+            style={{ fontSize: "25px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+          >
+            Вход
+          </li>
+        </ul>
+        <div className="log-form-text-label-p__upper">
+          <p>Войти через соцсети</p>
+        </div>
+        <div className="reg-form-socials">
+          <img
+            style={{ display: "none" }}
+            onClick={vkAuth}
+            src={vkLogo}
+            alt="VK"
           />
-          <a
-            onClick={() => setShowPass(!showPass)}
-            class="password-control"
-          ></a>
-          {passwordDirty && passwordError && (
-            <label className="reg-form-text-label-l__alert">
-              {passwordError}
+          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+          <img onClick={googleAuth} src={googleLogo} alt="Google" />
+        </div>
+        <div className="log-form-text-label-p__lower">
+          <p>или</p>
+        </div>
+        <div className="reg-form-input-area">
+          <form>
+            <label htmlFor="login" className="log-form-text-label-l">
+              Номер телефона или Email
             </label>
-          )}
-          <div className="log-form-text-label-l__recover">
-            <label
-              className="reg_form_link"
-              onClick={() => setActiveForm("passwordRecoveryEntry")}
-            >
-              Забыли пароль?
+            <input
+              name="login"
+              id="login"
+              type="text"
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={login}
+              onChange={(e) => {
+                loginHandler(e);
+              }}
+            />
+            {loginDirty && loginError && (
+              <label className="reg-form-text-label-l__alert">
+                {loginError}
+              </label>
+            )}
+            <label htmlFor="password" className="log-form-text-label-l">
+              Пароль
             </label>
-          </div>
-          <input
-            onClick={onClickSubmit}
-            type="button"
-            value="Войти"
-            className="reg-form-submit-button"
-            disabled={!formValid}
-          />
-        </form>
-      </div>
-
+            <input
+              name="password"
+              id="password"
+              type={showPass ? "text" : "password"}
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={password}
+              onChange={(e) => passwordHandler(e)}
+            />
+            <a
+              onClick={() => setShowPass(!showPass)}
+              class="password-control"
+            ></a>
+            {passwordDirty && passwordError && (
+              <label className="reg-form-text-label-l__alert">
+                {passwordError}
+              </label>
+            )}
+            <div className="log-form-text-label-l__recover">
+              <label
+                className="reg_form_link"
+                onClick={() => setActiveForm("passwordRecoveryEntry")}
+              >
+                Забыли пароль?
+              </label>
+            </div>
+            <input
+              onClick={onClickSubmit}
+              type="button"
+              value="Войти"
+              className="reg-form-submit-button"
+              disabled={!formValid}
+            />
+          </form>
+        </div>
       </div>
 
       {/* mobile */}
       <div className="log-form" id="regform_mobile">
-      <div className="div_for_krestik">
-        <img
-          onClick={() => setModalActive(false)}
-          src={Shape}
-          className="img_krestik"
-          style={{ marginRight: "15px" }}
-        />
-      </div>
-      <ul className="reg-form-action-type-list">
-        <li
-          onClick={() => setActiveForm("register")}
-          href="#"
-          style={{ fontSize: "16px" }}
-          style={{width:'50%',  justifyContent:'center', display:'flex' }}
-          className="reg-form-action-type-link"
-        >
-          Регистрация{successLogin}
-        </li>
-        <li
-          href="#"
-          className="reg-form-action-type-link reg-form-action-type-link__active"
-          style={{ fontSize: "16px" }}
-          style={{width:'50%', justifyContent:'center', display:'flex' }}
-        >
-          Вход
-        </li>
-      </ul>
-      <div className="reg-form-socials">
-        <img onClick={vkAuth} src={vkLogo} alt="VK" />
-        <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-        <img onClick={googleAuth} src={googleLogo} alt="Google" />
-      </div>
-      <div className="reg-form-input-area">
-        <form>
-          <label htmlFor="login" className="log-form-text-label-l">
-            Номер телефона или Email
-          </label>
-          <input
-            name="login"
-            id="login"
-            type="text"
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={login}
-            onChange={(e) => {
-              loginHandler(e);
-            }}
+        <div className="div_for_krestik">
+          <img
+            onClick={() => setModalActive(false)}
+            src={Shape}
+            className="img_krestik"
+            style={{ marginRight: "15px" }}
           />
-          {loginDirty && loginError && (
-            <label className="reg-form-text-label-l__alert">{loginError}</label>
-          )}
-          <label htmlFor="password" className="log-form-text-label-l">
-            Пароль
-          </label>
-          <input
-            name="password"
-            id="password"
-            type={showPass ? "text" : "password"}
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={password}
-            onChange={(e) => passwordHandler(e)}
-          />
-          <a
-            onClick={() => setShowPass(!showPass)}
-            class="password-control"
-          ></a>
-          {passwordDirty && passwordError && (
-            <label className="reg-form-text-label-l__alert">
-              {passwordError}
+        </div>
+        <ul className="reg-form-action-type-list">
+          <li
+            onClick={() => setActiveForm("register")}
+            href="#"
+            style={{ fontSize: "16px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            className="reg-form-action-type-link"
+          >
+            Регистрация{successLogin}
+          </li>
+          <li
+            href="#"
+            className="reg-form-action-type-link reg-form-action-type-link__active"
+            style={{ fontSize: "16px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+          >
+            Вход
+          </li>
+        </ul>
+        <div className="reg-form-socials">
+          <img onClick={vkAuth} src={vkLogo} alt="VK" />
+          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+          <img onClick={googleAuth} src={googleLogo} alt="Google" />
+        </div>
+        <div className="reg-form-input-area">
+          <form>
+            <label htmlFor="login" className="log-form-text-label-l">
+              Номер телефона или Email
             </label>
-          )}
-          <div className="log-form-text-label-l__recover">
-            <label
-              className="reg_form_link"
-              onClick={() => setActiveForm("passwordRecoveryEntry")}
-            >
-              Забыли пароль?
+            <input
+              name="login"
+              id="login"
+              type="text"
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={login}
+              onChange={(e) => {
+                loginHandler(e);
+              }}
+            />
+            {loginDirty && loginError && (
+              <label className="reg-form-text-label-l__alert">
+                {loginError}
+              </label>
+            )}
+            <label htmlFor="password" className="log-form-text-label-l">
+              Пароль
             </label>
-          </div>
-          <input
-            onClick={onClickSubmit}
-            type="button"
-            value="Войти"
-            className="reg-form-submit-button"
-            disabled={!formValid}
-          />
-        </form>
-      </div>
-
+            <input
+              name="password"
+              id="password"
+              type={showPass ? "text" : "password"}
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={password}
+              onChange={(e) => passwordHandler(e)}
+            />
+            <a
+              onClick={() => setShowPass(!showPass)}
+              class="password-control"
+            ></a>
+            {passwordDirty && passwordError && (
+              <label className="reg-form-text-label-l__alert">
+                {passwordError}
+              </label>
+            )}
+            <div className="log-form-text-label-l__recover">
+              <label
+                className="reg_form_link"
+                onClick={() => setActiveForm("passwordRecoveryEntry")}
+              >
+                Забыли пароль?
+              </label>
+            </div>
+            <input
+              onClick={onClickSubmit}
+              type="button"
+              value="Войти"
+              className="reg-form-submit-button"
+              disabled={!formValid}
+            />
+          </form>
+        </div>
       </div>
 
       {/* planshet  */}
       <div className="log-form" id="regform_ipad">
-      <div className="div_for_krestik">
-        <img
-          onClick={() => setModalActive(false)}
-          src={Shape}
-          className="img_krestik"
-          style={{ marginRight: "15px" }}
-        />
-      </div>
-      <ul className="reg-form-action-type-list">
-        <li
-          onClick={() => setActiveForm("register")}
-          href="#"
-          style={{ fontSize: "25px" }}
-          className="reg-form-action-type-link"
-        >
-          Регистрация{successLogin}
-        </li>
-        <li
-          href="#"
-          className="reg-form-action-type-link reg-form-action-type-link__active"
-          style={{ fontSize: "25px" }}
-        >
-          Вход
-        </li>
-      </ul>
-      <div className="log-form-text-label-p__upper">
-        <p>Войти через соцсети</p>
-      </div>
-      <div className="reg-form-socials">
-        <img onClick={vkAuth} src={vkLogo} alt="VK" />
-        <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-        <img onClick={googleAuth} src={googleLogo} alt="Google" />
-      </div>
-      <div className="log-form-text-label-p__lower">
-        <p>или</p>
-      </div>
-      <div className="reg-form-input-area">
-        <form>
-          <label htmlFor="login" className="log-form-text-label-l">
-            Номер телефона или Email
-          </label>
-          <input
-            name="login"
-            id="login"
-            type="text"
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={login}
-            onChange={(e) => {
-              loginHandler(e);
-            }}
+        <div className="div_for_krestik">
+          <img
+            onClick={() => setModalActive(false)}
+            src={Shape}
+            className="img_krestik"
+            style={{ marginRight: "15px" }}
           />
-          {loginDirty && loginError && (
-            <label className="reg-form-text-label-l__alert">{loginError}</label>
-          )}
-          <label htmlFor="password" className="log-form-text-label-l">
-            Пароль
-          </label>
-          <input
-            name="password"
-            id="password"
-            type={showPass ? "text" : "password"}
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={password}
-            onChange={(e) => passwordHandler(e)}
-          />
-          <a
-            onClick={() => setShowPass(!showPass)}
-            class="password-control"
-          ></a>
-          {passwordDirty && passwordError && (
-            <label className="reg-form-text-label-l__alert">
-              {passwordError}
+        </div>
+        <ul className="reg-form-action-type-list">
+          <li
+            onClick={() => setActiveForm("register")}
+            href="#"
+            style={{ fontSize: "25px" }}
+            className="reg-form-action-type-link"
+          >
+            Регистрация{successLogin}
+          </li>
+          <li
+            href="#"
+            className="reg-form-action-type-link reg-form-action-type-link__active"
+            style={{ fontSize: "25px" }}
+          >
+            Вход
+          </li>
+        </ul>
+        <div className="log-form-text-label-p__upper">
+          <p>Войти через соцсети</p>
+        </div>
+        <div className="reg-form-socials">
+          <img onClick={vkAuth} src={vkLogo} alt="VK" />
+          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+          <img onClick={googleAuth} src={googleLogo} alt="Google" />
+        </div>
+        <div className="log-form-text-label-p__lower">
+          <p>или</p>
+        </div>
+        <div className="reg-form-input-area">
+          <form>
+            <label htmlFor="login" className="log-form-text-label-l">
+              Номер телефона или Email
             </label>
-          )}
-          <div className="log-form-text-label-l__recover">
-            <label
-              className="reg_form_link"
-              onClick={() => setActiveForm("passwordRecoveryEntry")}
-            >
-              Забыли пароль?
+            <input
+              name="login"
+              id="login"
+              type="text"
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={login}
+              onChange={(e) => {
+                loginHandler(e);
+              }}
+            />
+            {loginDirty && loginError && (
+              <label className="reg-form-text-label-l__alert">
+                {loginError}
+              </label>
+            )}
+            <label htmlFor="password" className="log-form-text-label-l">
+              Пароль
             </label>
-          </div>
-          <input
-            onClick={onClickSubmit}
-            type="button"
-            value="Войти"
-            className="reg-form-submit-button"
-            disabled={!formValid}
-          />
-        </form>
+            <input
+              name="password"
+              id="password"
+              type={showPass ? "text" : "password"}
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={password}
+              onChange={(e) => passwordHandler(e)}
+            />
+            <a
+              onClick={() => setShowPass(!showPass)}
+              class="password-control"
+            ></a>
+            {passwordDirty && passwordError && (
+              <label className="reg-form-text-label-l__alert">
+                {passwordError}
+              </label>
+            )}
+            <div className="log-form-text-label-l__recover">
+              <label
+                className="reg_form_link"
+                onClick={() => setActiveForm("passwordRecoveryEntry")}
+              >
+                Забыли пароль?
+              </label>
+            </div>
+            <input
+              onClick={onClickSubmit}
+              type="button"
+              value="Войти"
+              className="reg-form-submit-button"
+              disabled={!formValid}
+            />
+          </form>
+        </div>
       </div>
-
-      </div>
-
     </div>
   );
 };
