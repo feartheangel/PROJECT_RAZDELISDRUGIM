@@ -1,6 +1,6 @@
 /*ГЛАВНАЯ СТРАНИЦА*/
 * {
-  font-family: 'Raleway', 'sans-serif';
+  font-family: "Raleway", "sans-serif";
   color: #091d20;
 }
 
@@ -34,7 +34,7 @@ select {
   user-select: none;
 }
 
-.checkbox-btn input[type='checkbox'] {
+.checkbox-btn input[type="checkbox"] {
   z-index: -1;
   opacity: 0;
   display: block;
@@ -61,7 +61,7 @@ select {
 }
 
 /* Checked */
-.checkbox-btn input[type='checkbox']:checked + span {
+.checkbox-btn input[type="checkbox"]:checked + span {
   background: rgba(76, 201, 240, 0.44);
   border: 3px solid #4cc9f0;
   box-sizing: border-box;
@@ -75,18 +75,18 @@ select {
 }
 
 /* Active */
-.checkbox-btn input[type='checkbox']:active:not(:disabled) + span {
+.checkbox-btn input[type="checkbox"]:active:not(:disabled) + span {
   background: #d2c5ac;
   color: #000;
 }
 
 /* Disabled */
-.checkbox-btn input[type='checkbox']:disabled + span {
+.checkbox-btn input[type="checkbox"]:disabled + span {
   background: #efefef;
   color: #666;
   cursor: default;
 }
-.checkbox-btn input[type='checkbox']:checked:disabled + span {
+.checkbox-btn input[type="checkbox"]:checked:disabled + span {
   background: #f7efdc;
 }
 
@@ -101,7 +101,7 @@ select {
   user-select: none;
 }
 .add-item-input-checkbox__2 + label::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 0.9em;
   height: 0.9em;
@@ -138,7 +138,7 @@ select {
 }
 
 .add-item-input-checkbox__3 + label {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -152,7 +152,7 @@ select {
   display: inline-block;
   margin-right: 10px;
 }
-.form_radio_btn input[type='radio'] {
+.form_radio_btn input[type="radio"] {
   display: none;
 }
 .form_radio_btn label {
@@ -175,7 +175,7 @@ select {
 }
 
 /* Checked */
-.form_radio_btn input[type='radio']:checked + label {
+.form_radio_btn input[type="radio"]:checked + label {
   background: rgba(76, 201, 240, 0.44);
   border: 3px solid #4cc9f0;
   box-sizing: border-box;
@@ -189,7 +189,7 @@ select {
 }
 
 /* Disabled */
-.form_radio_btn input[type='radio']:disabled + label {
+.form_radio_btn input[type="radio"]:disabled + label {
   background: #efefef;
   color: #666;
 }
@@ -205,7 +205,7 @@ select {
   box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.24);
   padding: 30px 0px 30px 30px;
   margin: 20px 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   border-radius: 30px;
 }
 
@@ -596,7 +596,7 @@ select {
   font-weight: normal;
   font-size: 20px;
   line-height: 23px;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   color: #091d20;
 }
 
@@ -699,336 +699,285 @@ select {
 .add-item-input-text__address__house:disabled {
   opacity: 0.4;
 }
-.add-item-input-number{
+.add-item-input-number {
   width: 240px;
   margin-right: 5px;
 }
-.span-valuts{
+.span-valuts {
   margin-right: 30px;
   margin-bottom: 15px;
   font-size: 16px;
   align-self: flex-end;
 }
-#take_Away_adaptive{
+#take_Away_adaptive {
   display: none;
 }
-#br_gl{
+#br_gl {
   display: none;
 }
-#item_ipad{
+#item_ipad {
   display: none;
 }
-#take_Away_ipad{
+#take_Away_ipad {
   display: none;
 }
-
-
-
-
-
-
-
-
-
 
 /* МЕДИА ЗАПРОСЫ  */
-@media only screen and (max-width: 480px){
-
-  #take_Away_komp{
+@media only screen and (max-width: 480px) {
+  #take_Away_komp {
     display: none;
   }
-  #take_Away_adaptive{
+  #take_Away_adaptive {
     display: flex;
   }
-  #br_gl{
+  #br_gl {
     display: flex;
   }
-  
-  .PlaseItem{
+  #item_pk {
+    display: none;
+  }
+
+  .PlaseItem {
     max-width: 480px;
     min-width: 320px;
     width: 100%;
     height: auto;
   }
 
-  .conteiner{
+  .conteiner {
     max-width: 480px;
     width: 100%;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 0px 0px 15px 15px;
     padding: 0;
     margin: 0;
   }
 
-  .conteiner_form{
+  .conteiner_form {
     margin: 10px 15px 30px;
   }
-  .add-item-input-wrapper{
+  .add-item-input-wrapper {
     margin-right: 0;
     /* width: 100%; */
   }
-  #add_item_gl_margin{
+  #add_item_gl_margin {
     margin-right: 10px;
   }
-  .add-item-input-text{
+  .add-item-input-text {
     font-size: 16px;
     width: 100%;
   }
-  .add-item-select-input{
+  .add-item-select-input {
     width: 100%;
     font-size: 16px;
   }
-  .add-item-textarea{
+  .add-item-textarea {
     width: 100%;
     margin-bottom: 0;
     font-size: 16px;
   }
-/* КНОПКА ДОБАВИТЬ ФОТО */
-  .input_photo{
+  /* КНОПКА ДОБАВИТЬ ФОТО */
+  .input_photo {
     margin-bottom: 10px;
   }
-/* СТОИМОСТЬ ВЕЩИ В АРЕНДУ */
-  .item-add-cost-choice-wrapper{
+  /* СТОИМОСТЬ ВЕЩИ В АРЕНДУ */
+  .item-add-cost-choice-wrapper {
     flex-wrap: wrap;
     margin-bottom: 15px;
   }
-  .add-item-input-label{
+  .add-item-input-label {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
   }
-  .add-item-input-number{
-    max-width: 146px;
+  .add-item-input-number {
+    max-width: 120px;
     height: 45px;
     margin-bottom: 15px;
   }
-  .span-valuts{
+  .span-valuts {
     margin-right: 10px;
     margin-bottom: 0;
     align-self: center;
     font-weight: normal;
     font-size: 16px;
   }
-  .add-item-select-input__time{
-    max-width: 146px;
+  .add-item-select-input__time {
+    max-width: 120px;
     height: 45px;
     margin-bottom: 15px;
     margin-right: 0;
     font-size: 16px;
   }
-  .add-item-cost-or{
+  .add-item-cost-or {
     font-size: 14px;
     margin-right: 10px;
     align-self: flex-start;
   }
 
-/* КНОПКИ ПРЕДЛАГАТЬ ЦЕНУ И БЕСПЛАТНО */
-  .checkbox-btn span{
+  /* КНОПКИ ПРЕДЛАГАТЬ ЦЕНУ И БЕСПЛАТНО */
+  .checkbox-btn span {
     font-weight: 500;
     font-size: 14px;
     padding: 10px;
   }
-  .checkbox-btn{
+  .checkbox-btn {
     height: 45px;
     margin-right: 10px;
   }
-  #checkbox-btn1{
+  #checkbox-btn1 {
     max-width: 93px;
     height: 45px;
     padding: 10px;
     margin-right: 0;
   }
-  #checkbox-btn2{
+  #checkbox-btn2 {
     margin-right: 0;
   }
   /* ГОТОВ ПРОДАТЬ */
-  .add-item-ready-sell-wrapper{
+  .add-item-ready-sell-wrapper {
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
     color: #000000;
   }
   /* ДОБАВИТЬ ДРУГОЙ АДРЕСС И СТРОЧКА ПОД НИМ */
-  .add-item-input-checkbox__3 + label{
+  .add-item-input-checkbox__3 + label {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
     margin-bottom: 15px;
   }
   /* КНОПКА ОТПРАВИТЬ */
-  .button_loading{
+  .button_loading {
     margin-top: 15px;
   }
-/* НАСТРОЙКИ РАЗМЕРА ОПЦИЙ */
-  .content_setting_left option{
+  /* НАСТРОЙКИ РАЗМЕРА ОПЦИЙ */
+  .content_setting_left option {
     width: 200px;
   }
 
   /* СТРОКА ДОБАВИТЬ АДРЕС И ФУНКЦИОНАЛ В НЕЙ */
 
   /* область район пункт */
-.take-away-secondary-wrapper-column{
-  width: 100%;
-}
-.take-away-secondary-wrapper{
-  width: 100%;
-  flex-direction: column;
-  align-items: unset;
-}
-.add-item-input-text__address{
-  max-width: 480px;
-  width: 100%;
-  font-size: 16px;
-}
-.add-item-input-text__address__street{
-  width: 100%;
-  font-size: 16px;
-}
-/* квартира строение */
-#take-away-secondary-wrapper{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.add-item-input-text__address__house:last-child{
-  margin-right: 0;
-}
-.add-item-input-text__address__house{
-  width: 108px;
-  margin-right: 10px;
-}
+  .take-away-secondary-wrapper-column {
+    width: 100%;
+  }
+  .take-away-secondary-wrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: unset;
+  }
+  .add-item-input-text__address {
+    max-width: 480px;
+    width: 100%;
+    font-size: 16px;
+  }
+  .add-item-input-text__address__street {
+    width: 100%;
+    font-size: 16px;
+  }
+  /* квартира строение */
+  #take-away-secondary-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .add-item-input-text__address__house:last-child {
+    margin-right: 0;
+  }
+  .add-item-input-text__address__house {
+    width: 108px;
+    margin-right: 10px;
+  }
 
-/* ДОПОЛНИТЕЛЬНЫЙ ПАРАМЕТРЫ РАЗДЕЛ */
-/* время получения возврата */
-.add-item-select-clock{
-  width: 167px;
+  /* ДОПОЛНИТЕЛЬНЫЙ ПАРАМЕТРЫ РАЗДЕЛ */
+  /* время получения возврата */
+  .add-item-select-clock {
+    width: 167px;
+  }
+  .add-item-time-block-wrapper {
+    justify-content: space-between;
+  }
+  .checkbox-btn.secondary {
+    margin: 20px 0 0 0;
+  }
+  .add-item-delivery-type-wrapper {
+    flex-wrap: wrap;
+  }
+  .add-item-input-label__lower {
+    display: none;
+  }
+  #checkbox-btn-margin {
+    margin-right: 15px;
+  }
+  .form_radio_btn input[type="radio"]:checked + label {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .form_radio_btn label {
+    padding: 10px;
+  }
+  .add-item-photo-remove {
+    right: -10px;
+  }
 }
-.add-item-time-block-wrapper{
-  justify-content: space-between;
-}
-.checkbox-btn.secondary{
-  margin: 20px 0 0 0;
-}
-.add-item-delivery-type-wrapper{
-  flex-wrap: wrap;
-}
-.add-item-input-label__lower{
-  display: none;
-}
-#checkbox-btn-margin{
-  margin-right: 15px;
-}
-.form_radio_btn input[type='radio']:checked + label{
-  padding: 10px;
-  font-size: 14px;
-}
-.form_radio_btn label{
-  padding: 10px;
-}
-.add-item-photo-remove{
-  right: -10px;
-}
-
-
-}
-
-
-
-
 
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
 @media only screen and (max-width: 1024px) and (min-width: 481px) {
-
-  #item_ipad{
+  #item_ipad {
     display: flex;
   }
-  #item_pk{
+  #item_pk {
     display: none;
   }
-  #take_Away_komp{
+  #take_Away_komp {
     display: none;
   }
-  #take_Away_ipad{
+  #take_Away_ipad {
     display: flex;
     flex-direction: column;
   }
 
-  .PlaseItem{
+  .PlaseItem {
     width: 100%;
     min-width: auto;
   }
 
-  .conteiner{
+  .conteiner {
     padding: 20px;
     width: -webkit-fill-available;
   }
 
-  .item-add-cost-choice-wrapper{
+  .item-add-cost-choice-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
   }
-  .item_arend_block{
+  .item_arend_block {
     display: flex;
     flex-direction: row;
     margin-bottom: 15px;
   }
-  .upload-file__label{
+  .upload-file__label {
     left: 0;
     margin-left: 20px;
   }
 
   /* опции из ДОБАВИТЬ ДРУГОЙ АДРЕС */
-  .add-item-input-text__address{
+  .add-item-input-text__address {
     min-width: 230px;
     max-width: 255px;
     width: auto;
   }
-  .add-item-cost-or__secondary{
+  .add-item-cost-or__secondary {
     margin: 0 20px 15px 20px;
   }
-  .add-item-delivery-type-wrapper{
+  .add-item-delivery-type-wrapper {
     flex-wrap: wrap;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

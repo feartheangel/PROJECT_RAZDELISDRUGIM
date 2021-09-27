@@ -43,6 +43,7 @@ import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.png";
 import EditItemImage from "../../img/MainPage/editicon.png";
 import { rootAddress } from "../../http/axios-requests";
 import Booking from "../../components/PagesArchitecture/Booking";
+import { animateScroll as scroll } from "react-scroll";
 
 const CardThings = () => {
   const dispatch = useDispatch();
