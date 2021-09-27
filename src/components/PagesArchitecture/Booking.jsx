@@ -1,10 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-<<<<<<< HEAD
 import "../../pages/CardThings/CardThings.css";
-=======
 import { DateRangePicker } from "react-date-range";
->>>>>>> 455412dcc4219a6ee2ce671b22f22eb637af089d
 import {
   setSearchCategory,
   setCategoryId,
@@ -365,84 +362,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
               <p className="information_all_up"> Даты аренды </p>
               <div className="information_all_down">
                 <div className="information_all_down_left">
-<<<<<<< HEAD
-                  <div className="information_all_down_left_date">
-                    <img className="booking_calendar" src={Calendar} />
-                    <label
-                      className="information_all_down_left_date-p"
-                      htmlFor="booking_date_input"
-                    >
-                      <input
-                        id="booking_date_input"
-                        type="datetime-local"
-                        min={dateminbooking}
-                        className="booking_input_date"
-                        onChange={(e) => SetReservationTime(e.target.value)}
-                      />
-                    </label>
-                    <span className="information_all_down_left_date-p">
-                      {" "}
-                      -{" "}
-                    </span>
-                    <label
-                      className="information_all_down_left_date-p"
-                      htmlFor="booking_date_end_input"
-                    >
-                      <input
-                        id="booking_date_end_input"
-                        type="datetime-local"
-                        min={dateminbooking}
-                        disabled={reservationtime === undefined}
-                        className="booking_input_date"
-                        onChange={(e) => SetReservationEndTime(e.target.value)}
-                      />
-                    </label>
-                  </div>
-                  {Number.isNaN(resultdate) ? (
-                    ""
-                  ) : (
-                    <p className="information_all_down_left_alldate">
-                      {resultdate === Number(0) ? (
-                        <p className="information_all_down_left_alldate">
-                          {resulthours}
-                          час(-ов)
-                        </p>
-                      ) : (
-                        <p className="information_all_down_left_alldate">
-                          {resultdate}сутки(-ок)
-                        </p>
-                      )}
-                    </p>
-                  )}
-                </div>
-                <div className="information_all_down_right">
-                  {/* Время получения и возврата*/}
-                  {!serviceIds.includes(
-                    itemData && itemData.category_id.id
-                  ) && (
-                    <div className="conditions_return">
-                      <div className="conditions_return_block1">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p1">
-                            Примерное время получения
-                          </p>
-                        </div>
-                        <p className="conditions_timeItem-p1">
-                          не ранее{" "}
-                          <p className="timeItem-p1-input">
-                            {itemData && itemData.receive_time}
-                          </p>
-                        </p>
-                      </div>
-
-                      <div className="conditions_return_block2">
-                        <div className="conditions_row">
-                          <p className="conditions_return_row-p1">
-                            Примерное время возврата
-                          </p>
-                        </div>
-                        <p className="conditions_timeItem-p1">
-=======
                   <div
                     className="information_all_down_left_date"
                     id="datetimepicker1"
@@ -532,7 +451,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           </p>
                         </div>
                         <p className="conditions_timeItem-p1">
->>>>>>> 455412dcc4219a6ee2ce671b22f22eb637af089d
                           не позднее{" "}
                           <p className="timeItem-p1-input">
                             {itemData && itemData.return_time}
@@ -858,7 +776,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                                 onChange={(e) => setRoom(e.target.value)}
                               />
                             </div>
-<<<<<<< HEAD
 
                             <div
                               className="take-away-secondary-wrapper"
@@ -995,222 +912,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </p>
             <p
               className="content_booking_down_block1-p"
-              style={{ marginLeft: "5px" }}
-            >
-              {" "}
-              аренда{" "}
-            </p>
-            <p
-              className="content_booking_down_block1-p"
-              style={{ margin: "0 5px" }}
-            >
-              {" "}
-              (
-              <span className="content_booking_down_block1-p">
-                {itemData.price_rent} BYN{" "}
-                <span
-                  className="content_booking_down_block1-p"
-                  style={{ margin: "0 2px" }}
-                >
-                  {" "}
-                  /{" "}
-                </span>
-                {itemData.rent === "День"
-                  ? isNaN(resultdate)
-                    ? 0 + "сутки(-ок)"
-                    : resultdate + "сутки(-ок)"
-                  : itemData.rent === "Час"
-                  ? isNaN(resulthours)
-                    ? 0 + "час(-ов)"
-                    : resultdate + "час(-ов)"
-                  : ""}
-              </span>
-              )
-            </p>
-          </div>
-
-          <div className="content_booking_down_block1">
-            <p className="content_booking_down_block1-p">
-              {itemData.self_delivery_price === undefined
-                ? 0
-                : itemData.self_delivery_price === null
-                ? 0
-                : delivery_Сhoice === "2"
-                ? itemData.self_delivery_price
-                : 0}{" "}
-              BYN
-            </p>
-            <p
-              className="content_booking_down_block1-p"
-              style={{ margin: "0 5px" }}
-            >
-              доставка
-            </p>
-          </div>
-
-          <div className="content_booking_down_block2">
-            <p className="content_booking_down_block1-p">
-              {" "}
-              {itemData.pledge_price === undefined
-                ? 0
-                : itemData.pledge_price === null
-                ? 0
-                : itemData.pledge_price}{" "}
-=======
-
-                            <div
-                              className="take-away-secondary-wrapper"
-                              id="take-away-secondary-wrapper"
-                            >
-                              <div className="add-item-input-wrapper">
-                                <label className="add-item-input-label">
-                                  Офис
-                                </label>
-                                <input
-                                  disabled={house || body || flat}
-                                  type="text"
-                                  className="add-item-input-text__address__house"
-                                  value={office}
-                                  onChange={(e) => setOffice(e.target.value)}
-                                />
-                              </div>
-
-                              <div className="add-item-input-wrapper">
-                                <label className="add-item-input-label">
-                                  Строение
-                                </label>
-                                <input
-                                  disabled={house || body || flat}
-                                  type="text"
-                                  className="add-item-input-text__address__house"
-                                  value={building}
-                                  onChange={(e) => setBuilding(e.target.value)}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <input
-                        disabled={requestActive}
-                        id="save_address"
-                        className={
-                          requestActive
-                            ? "add-item-save-new-address-button disabled"
-                            : "add-item-save-new-address-button"
-                        }
-                        type="button"
-                        value={
-                          requestActive ? "ОТПРАВКА..." : "Сохранить адрес"
-                        }
-                        onClick={saveNewAddress}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="card_content_booking_center_down">
-            <div className="booking_center_down_block1">
-              <img src={People} className="booking_body" />
-              <p className="booking_center_down_block1-p">Ваши данные</p>
-            </div>
-            <div className="booking_center_down_block2">
-              <p className="booking_center_down_block2-p">
-                Имя <span className="red_star">*</span>
-              </p>
-              <input
-                type="text"
-                className="add-item-select-input"
-                onChange={(e) => renterBookingNameHandler(e)}
-              />
-            </div>
-            <div className="booking_center_down_block2">
-              <p className="booking_center_down_block2-p">
-                Номер телефона <span className="red_star">*</span>
-              </p>
-              <input
-                type="number"
-                className="add-item-select-input"
-                onChange={(e) => renterBookingNumberHandler(e)}
-              />
-            </div>
-            <div className="booking_center_down_block3">
-              <p className="booking_center_down_block2-p">
-                Сообщение владельцу
-              </p>
-              <textarea
-                className="booking_center_down_block2-textarea"
-                onChange={(e) => renterBookingSmsHandler(e)}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* нижний блок  */}
-        <div className="card_content_booking_down">
-          <div className="content_booking_down_block1">
-            <p
-              className="content_booking_down_block1-p"
-              style={{ marginRight: "5px" }}
-            >
-              Итоговая стоимость:{" "}
-            </p>
-            <p className="content_booking_down_block1-p">
-              {" "}
-              {reservationtime === undefined ? (
-                "- BYN"
-              ) : resultSummaArends === 0 ? (
-                <span style={{ color: "red" }}>
-                  {" "}
-                  Ошибка условия аренды! Проверьте в чём указана аренда.
-                </span>
-              ) : reservationendtime <= reservationtime ? (
-                <span style={{ color: "red" }}>
-                  {" "}
-                  Ошибка условия аренды! Проверьте время выбора аренды.
-                </span>
-              ) : isNaN(totalAmount) ? (
-                <span style={{ color: "red" }}>
-                  {" "}
-                  Ошибка условия аренды! Проверьте в чём указана аренда.
-                </span>
-              ) : (
-                totalAmount + "  BYN"
-              )}{" "}
-            </p>
-          </div>
-
-          <div className="content_booking_down_block1">
-            <p className="content_booking_down_block1-p">
-              {isNaN(resultSummaArends)
-                ? "--"
-                : resultSummaArends === 0
-                ? "--"
-                : resultSummaArends}{" "}
->>>>>>> 455412dcc4219a6ee2ce671b22f22eb637af089d
-              BYN{" "}
-            </p>
-            <p
-              className="content_booking_down_block1-p"
-<<<<<<< HEAD
-              style={{ margin: "0 5px" }}
-            >
-              залог
-            </p>
-          </div>
-        </div>
-      </div>
-      {/* кнопка бронированиия */}
-      <div className="card_content_booking_btn">
-        <button className="booking_btn">Оформить бронирование</button>
-      </div>
-    </div>
-  );
-};
-
-=======
               style={{ marginLeft: "5px" }}
             >
               {" "}
@@ -1291,5 +992,4 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   );
 };
 
->>>>>>> 455412dcc4219a6ee2ce671b22f22eb637af089d
 export default Booking;
