@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import "../../pages/CardThings/CardThings.css";
+import { DateRangePicker } from "react-date-range";
 import {
   setSearchCategory,
   setCategoryId,
@@ -361,37 +361,50 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
               <p className="information_all_up"> Даты аренды </p>
               <div className="information_all_down">
                 <div className="information_all_down_left">
-                  <div className="information_all_down_left_date">
+                  <div
+                    className="information_all_down_left_date"
+                    id="datetimepicker1"
+                  >
                     <img className="booking_calendar" src={Calendar} />
-                    <label
-                      className="information_all_down_left_date-p"
-                      htmlFor="booking_date_input"
-                    >
-                      <input
-                        id="booking_date_input"
-                        type="datetime-local"
-                        min={dateminbooking}
-                        className="booking_input_date"
-                        onChange={(e) => SetReservationTime(e.target.value)}
-                      />
-                    </label>
-                    <span className="information_all_down_left_date-p">
-                      {" "}
-                      -{" "}
-                    </span>
-                    <label
-                      className="information_all_down_left_date-p"
-                      htmlFor="booking_date_end_input"
-                    >
-                      <input
-                        id="booking_date_end_input"
-                        type="datetime-local"
-                        min={dateminbooking}
-                        disabled={reservationtime === undefined}
-                        className="booking_input_date"
-                        onChange={(e) => SetReservationEndTime(e.target.value)}
-                      />
-                    </label>
+                    <div className="form-group" id="datetimepicker1">
+                      <label
+                        className="information_all_down_left_date-p"
+                        htmlFor="booking_date_input"
+                      >
+                        <input
+                          id="booking_date_input"
+                          type="datetime-local"
+                          class="form-control"
+                          min={dateminbooking}
+                          startTime="10"
+                          step="900"
+                          className="booking_input_date"
+                          onChange={(e) => SetReservationTime(e.target.value)}
+                        />
+                      </label>
+
+                      <span className="information_all_down_left_date-p">
+                        {" "}
+                        -{" "}
+                      </span>
+
+                      <label
+                        className="information_all_down_left_date-p"
+                        htmlFor="booking_date_end_input"
+                      >
+                        <input
+                          id="booking_date_end_input"
+                          type="datetime-local"
+                          min={dateminbooking}
+                          step="900"
+                          disabled={reservationtime === undefined}
+                          className="booking_input_date"
+                          onChange={(e) =>
+                            SetReservationEndTime(e.target.value)
+                          }
+                        />
+                      </label>
+                    </div>
                   </div>
                   {Number.isNaN(resultdate) ? (
                     ""
@@ -920,11 +933,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 </span>
                 {itemData.rent === "День"
                   ? isNaN(resultdate)
-                    ? 0 + "сутки(-ок)"
+                    ? 0 + "  сутки(-ок)"
                     : resultdate + "сутки(-ок)"
                   : itemData.rent === "Час"
                   ? isNaN(resulthours)
-                    ? 0 + "час(-ов)"
+                    ? 0 + "  час(-ов)"
                     : resultdate + "час(-ов)"
                   : ""}
               </span>
