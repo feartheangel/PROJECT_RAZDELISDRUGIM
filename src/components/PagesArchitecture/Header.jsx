@@ -12,7 +12,7 @@ import {
   setSearchCategory,
   setCategoryId,
 } from "../../redux/actions/search";
-import { ProfilePopUp, BaseModal } from "../index";
+import { ProfilePopUp, BaseModal, NotifyPopUp } from "../index";
 import Favorites from "../../img/MainPage/FavoritesDisabled.png";
 import Notifications from "../../img/MainPage/Notifications.png";
 import { setNews } from "../../redux/actions/items";
@@ -44,6 +44,7 @@ const Header = () => {
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
   const [burgerActive, setBurgerActive] = React.useState(false);
   const [openedCategories, setOpenedCategories] = React.useState([]);
+  const [notifyPopUpActive, setNotifyPopUpActive] = React.useState()
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const keyDownHandler = React.useCallback((event) => {
@@ -259,7 +260,10 @@ const Header = () => {
                   className="header-right-content-logged-img"
                   src={Bell2}
                   id="notifications"
+                  onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
+                  style={{cursor: 'pointer'}}
                 />
+              
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group"
@@ -281,6 +285,12 @@ const Header = () => {
                   setProfilePopUpActive={setProfilePopUpActive}
                   profilePopUpActive={profilePopUpActive}
                   logout={logout}
+                />
+              )}
+              {notifyPopUpActive && (
+                <NotifyPopUp
+                  notifyPopUpActive={notifyPopUpActive}
+                  setNotifyPopUpActive={setNotifyPopUpActive}
                 />
               )}
             </div>
@@ -332,6 +342,8 @@ const Header = () => {
                 <img
                   className="header-right-content-logged-img"
                   src={Notifications}
+                  onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
+                  style={{cursor:'pointer'}}
                 />
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
@@ -354,6 +366,12 @@ const Header = () => {
                   setProfilePopUpActive={setProfilePopUpActive}
                   profilePopUpActive={profilePopUpActive}
                   logout={logout}
+                />
+              )}
+               {notifyPopUpActive && (
+                <NotifyPopUp
+                  notifyPopUpActive={notifyPopUpActive}
+                  setNotifyPopUpActive={setNotifyPopUpActive}
                 />
               )}
             </div>

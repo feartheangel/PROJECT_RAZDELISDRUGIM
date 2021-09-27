@@ -20,14 +20,37 @@ const MyMessages = () => {
     }
   }, []);
 
-  React.useEffect(() => {
-    Requests.getUsersChats().then((res) => {
-      setUsersChats(res.data);
-    });
-  }, []);
-
   const [selectedChats, setSelectedChats] = React.useState("all");
   const [usersChats, setUsersChats] = React.useState();
+
+  const chatSocket = React.useRef();
+
+  React.useEffect(() => {
+     chatSocket.current = new WebSocket(
+      `wss://razdelisdrugim.by:444/ws/?token=${localStorage.getItem(
+        "key"
+      )}`
+    );
+
+    chatSocket.current.onopen = function () {
+      chatSocket.current.send(
+        JSON.stringify({
+          command: "history_chat",
+        })
+      );
+      console.log("opened");
+    };
+
+
+    chatSocket.current.onmessage = function (e) {
+      const data = JSON.parse(e.data);
+        if(data.chat_info){
+          setUsersChats(data.chat_info)
+        }
+
+        console.log(data)
+    };
+  }, [])
 
   return (
     <div>

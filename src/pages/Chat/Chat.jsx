@@ -32,9 +32,6 @@ const Chat = () => {
       console.log("opened");
     };
 
-    chatSocket.current.onerror = function (error) {
-      alert(`[error] ${error.message}`);
-    };
 
     chatSocket.current.onmessage = function (e) {
       const data = JSON.parse(e.data);
@@ -53,17 +50,6 @@ const Chat = () => {
       console.log(data);
     };
 
-    chatSocket.current.onclose = function (event) {
-      if (event.wasClean) {
-        alert(
-          `[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`
-        );
-      } else {
-        // например, сервер убил процесс или сеть недоступна
-        // обычно в этом случае event.code 1006
-        alert(`[close] Соединение прервано, код=${event.code}`);
-      }
-    };
   }, []);
 
   React.useEffect(() => {
