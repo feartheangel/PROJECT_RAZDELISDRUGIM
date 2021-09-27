@@ -44,7 +44,7 @@ const Header = () => {
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
   const [burgerActive, setBurgerActive] = React.useState(false);
   const [openedCategories, setOpenedCategories] = React.useState([]);
-  const [notifyPopUpActive, setNotifyPopUpActive] = React.useState()
+  const [notifyPopUpActive, setNotifyPopUpActive] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const keyDownHandler = React.useCallback((event) => {
@@ -171,10 +171,37 @@ const Header = () => {
     }
   };
 
+  const chatSocket = React.useRef();
+  const [notifications, setNotifications] = React.useState();
+
   React.useEffect(() => {
     Requests.fetchNews().then((res) => {
       dispatch(setNews(res.data));
     });
+  }, []);
+
+  React.useEffect(() => {
+    chatSocket.current = new WebSocket(
+      `wss://razdelisdrugim.by:444/ws/?token=${localStorage.getItem("key")}`
+    );
+
+    chatSocket.current.onopen = function () {
+      chatSocket.current.send(
+        JSON.stringify({
+          command: "list_notifications",
+        })
+      );
+      console.log("opened");
+    };
+
+    chatSocket.current.onmessage = function (e) {
+      const data = JSON.parse(e.data);
+      if (data.notifications) {
+        setNotifications(data.notifications);
+      }
+
+      console.log(data);
+    };
   }, []);
 
   //выделяем разделы
@@ -261,9 +288,9 @@ const Header = () => {
                   src={Bell2}
                   id="notifications"
                   onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
-                  style={{cursor: 'pointer'}}
+                  style={{ cursor: "pointer" }}
                 />
-              
+
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group"
@@ -291,6 +318,8 @@ const Header = () => {
                 <NotifyPopUp
                   notifyPopUpActive={notifyPopUpActive}
                   setNotifyPopUpActive={setNotifyPopUpActive}
+                  notifications={notifications}
+                  chatSocket={chatSocket.current}
                 />
               )}
             </div>
@@ -343,7 +372,7 @@ const Header = () => {
                   className="header-right-content-logged-img"
                   src={Notifications}
                   onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
-                  style={{cursor:'pointer'}}
+                  style={{ cursor: "pointer" }}
                 />
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
@@ -368,10 +397,12 @@ const Header = () => {
                   logout={logout}
                 />
               )}
-               {notifyPopUpActive && (
+              {notifyPopUpActive && (
                 <NotifyPopUp
                   notifyPopUpActive={notifyPopUpActive}
                   setNotifyPopUpActive={setNotifyPopUpActive}
+                  notifications={notifications}
+                  chatSocket={chatSocket.current}
                 />
               )}
             </div>

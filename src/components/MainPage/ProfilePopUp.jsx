@@ -35,6 +35,15 @@ const ProfilePopUp = ({
               Я сдаю
             </p>
           </Link>
+
+          <Link to="/messages">
+            <p
+              onClick={() => setProfilePopUpActive(false)}
+              className="dropdown-profile-menu-p"
+            >
+              Мои сообщения
+            </p>
+          </Link>
           <Link to="/favorites">
             <p
               onClick={() => setProfilePopUpActive(false)}

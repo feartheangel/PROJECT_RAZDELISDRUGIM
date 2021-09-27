@@ -162,7 +162,7 @@ button {
   z-index: 5;
   box-sizing: border-box;
   width: 160px;
-  height: 140px;
+  height: 160px;
   background: #ffffff;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
@@ -1338,6 +1338,7 @@ button {
   background: #ffffff;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
+  overflow-y: scroll;
 }
 
 .dropdown_notify_menu_notification_wrapper {
@@ -1346,8 +1347,8 @@ button {
   cursor: pointer;
 }
 
-.dropdown_notify_menu_notification_wrapper:hover{
-background-color: #fbfbfb;
+.dropdown_notify_menu_notification_wrapper:hover {
+  background-color: #fbfbfb;
 }
 
 .dropdown_notify_menu_notification_wrapper {
@@ -1363,7 +1364,18 @@ background-color: #fbfbfb;
   justify-content: space-between;
 }
 
+.last_message_notification_wrapper {
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #f7fff7;
+  box-sizing: border-box;
+}
 
+.dropdown_notify_item_p {
+  margin-top: 5px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
 
 @media (min-width: 2160px) {
   .main-sections-second-ul {

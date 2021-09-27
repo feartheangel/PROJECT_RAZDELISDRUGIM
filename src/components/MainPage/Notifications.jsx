@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import Shape from "../../img/Shape.png";
+import { NotificationBlock } from "../index";
 
 const NotifyPopUp = ({
-    notifyPopUpActive,
-    setNotifyPopUpActive
+  notifyPopUpActive,
+  setNotifyPopUpActive,
+  notifications,
+  chatSocket,
 }) => {
   React.useEffect(() => {
     const onClick = (e) => {
@@ -27,20 +29,14 @@ const NotifyPopUp = ({
         }
       >
         <div className="dropdown-notify-menu-content">
-          <div className='dropdown_notify_menu_notification_wrapper'>
-              <div className='dropdown_notify_menu_notification_content'>
-                  <div className='notification_upper_row'>
-                  <p className='dropdown_notify_main_p'>У вас новое сообщение от Алексей!</p>
-                    <img
-                src={Shape}
-                style={{width: '10px', height: '10px'}}
+          {notifications &&
+            notifications.map((item) => (
+              <NotificationBlock
+                notification={item}
+                chatSocket={chatSocket}
+                notifications={notifications}
               />
-                  </div>
-                  <div className='last_message_notification_wrapper'>
-                      <p>Последнее сообщение</p>
-                  </div>
-              </div>
-          </div>
+            ))}
         </div>
       </div>
     </div>
