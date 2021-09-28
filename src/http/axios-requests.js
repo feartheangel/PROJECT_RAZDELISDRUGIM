@@ -3,7 +3,7 @@ import { logoutAction } from "../redux/actions/userData";
 import { useDispatch } from "react-redux";
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom";
 
-export const rootAddress = "https://razdelisdrugim.by:444";
+export const rootAddress = "https://razdelisdrugim.by";
 
 //регулярные выражения для проверки телефона и почты
 const contactEmailRegExp =
@@ -96,30 +96,6 @@ class Requests {
         username: phone,
       },
       url: `${rootAddress}/api/jwt/reset-password-phone/`,
-    }).then((response) => {
-      return response;
-    });
-  }
-
-  static sendVKCode(code) {
-    return axios({
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: `${rootAddress}/api/jwt/access-token-vk/${code}/`,
-    }).then((response) => {
-      return response;
-    });
-  }
-
-  static sendGoogleCode(code) {
-    return axios({
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: `${rootAddress}/api/jwt/access-token-vk/${code}/`,
     }).then((response) => {
       return response;
     });
@@ -1053,8 +1029,9 @@ class Requests {
       headers: {
         "Content-Type": "application/json",
       },
-      url: `${rootAddress}/api/jwt/access-token-vk/?code=${code}/`,
+      url: `${rootAddress}/api/jwt/access-token-vk/?code=${code}`,
     }).then((response) => {
+      console.log(code);
       return response;
     });
   }
@@ -1227,7 +1204,7 @@ axios.interceptors.response.use(
           localStorage.removeItem("social");
           localStorage.removeItem("ref");
           setTimeout(() => {
-            window.location.href = `${rootAddress}`;
+            window.location.href = "/";
           }, 2000);
           return;
         });
@@ -1243,7 +1220,7 @@ axios.interceptors.response.use(
       localStorage.removeItem("social");
       localStorage.removeItem("ref");
       setTimeout(() => {
-        window.location.href = `${rootAddress}`;
+        window.location.href = "/";
       }, 2000);
       return;
     }

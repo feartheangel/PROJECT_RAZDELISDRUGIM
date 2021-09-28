@@ -189,6 +189,14 @@ const CardThings = () => {
       });
   }, [subjects]);
 
+  function isNumeric(str) {
+    if (typeof str != "string" || Number(str) <= 0) return false; // we only process strings!
+    return (
+      !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+      !isNaN(parseFloat(str))
+    ); // ...and ensure strings of whitespace fail
+  }
+
   const [itemData, setItemData] = React.useState();
   const [simillarSubjects, setSimillarSubjects] = React.useState();
   const [selectedImage, setSelectedImage] = React.useState();
@@ -1376,7 +1384,9 @@ const CardThings = () => {
                               setSelectedImage(itemData && itemData.image_2)
                             }
                             src={
-                              itemData && `${rootAddress}${itemData.image_2}`
+                              itemData &&
+                              `${rootAddress}${itemData.image_2}?random=` +
+                                Math.random()
                             }
                             alt=""
                           />
