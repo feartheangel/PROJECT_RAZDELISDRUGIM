@@ -707,7 +707,7 @@ const CardThings = () => {
                       </p>
                     </div>
 
-                    {/*предложи стоимость вещи*/}
+                    {/* стоимость вещи*/}
                     <div className="block_up_yourCost">
                       {itemData && itemData.offer_price_rent && (
                         <div style={{ display: "flex" }}>
