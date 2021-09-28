@@ -45,6 +45,7 @@ const Header = () => {
   const [burgerActive, setBurgerActive] = React.useState(false);
   const [openedCategories, setOpenedCategories] = React.useState([]);
   const [notifyPopUpActive, setNotifyPopUpActive] = React.useState();
+  const [notReadNotes, setNotReadNotes] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const keyDownHandler = React.useCallback((event) => {
@@ -198,6 +199,7 @@ const Header = () => {
       const data = JSON.parse(e.data);
       if (data.notifications) {
         setNotifications(data.notifications);
+        setNotReadNotes(data.count_not_read_note);
       }
 
       console.log(data);
@@ -290,6 +292,9 @@ const Header = () => {
                   onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
                   style={{ cursor: "pointer" }}
                 />
+                <div className="notifications_counter_wrapper">
+                  <p>{notReadNotes >= 9 ? "9+" : notReadNotes}</p>
+                </div>
 
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
