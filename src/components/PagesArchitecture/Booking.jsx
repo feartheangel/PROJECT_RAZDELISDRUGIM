@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import "../../pages/CardThings/CardThings.css";
-import { DateRangePicker } from "react-date-range";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from "react-datepicker";
+import ru from "date-fns/locale/ru";
 import {
   setSearchCategory,
   setCategoryId,
@@ -23,6 +25,8 @@ import Calendar from "../../img/CardThings/Booking/Union.png";
 import { rootAddress } from "../../http/axios-requests";
 import metka from "../../img/CardThings/Booking/Union1.png";
 import People from "../../img/CardThings/Booking/body.png";
+
+registerLocale("ru", ru);
 
 const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const dispatch = useDispatch();
@@ -58,32 +62,66 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [renterBookingName, setRenterBookingName] = React.useState();
   const [renterBookingNumber, setRenterBookingNumber] = React.useState();
   const [renterBookingSms, setRenterBookingSms] = React.useState();
-  const [reservationtime, SetReservationTime] = React.useState();
-  const [reservationendtime, SetReservationEndTime] = React.useState();
+
   const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
 
-  // минимальное время бронирования(дата сейчас)
-  var dateminbooking = new Date().toJSON().slice(0, 16);
+  // минимальное время бронирования(дата и время сейчас)
+  var datetimeminbooking = new Date().toJSON().slice(0, 16);
+  // для дней мин время
+  var dateminbooking = new Date().toJSON().slice(0, 10);
 
-  // стартовое время бронирования
-  var dateObjStart = new Date(reservationtime);
-  var yearStart = dateObjStart.getFullYear();
-  var monthStart = dateObjStart.getMonth();
-  var dateStart = dateObjStart.getDate();
-  var hoursStart = dateObjStart.getHours();
-  var minutesStart = dateObjStart.getMinutes();
+  const time = new Date();
+  const [startDate, setStartDate] = React.useState();
+  const [endDate, setEndDate] = React.useState();
 
-  // финальное время бронирования
-  var dateObjEnd = new Date(reservationendtime);
-  var yearEnd = dateObjEnd.getFullYear();
-  var monthEnd = dateObjEnd.getMonth();
-  var dateEnd = dateObjEnd.getDate();
-  var hoursEnd = dateObjEnd.getHours();
-  var minutesEnd = dateObjEnd.getMinutes();
+  const filterPassedTime = (date) => {
+    // Disable no works hours
+    if (
+      date.getHours() === 22 ||
+      date.getHours() === 23 ||
+      date.getHours() === 0 ||
+      date.getHours() === 1 ||
+      date.getHours() === 2 ||
+      date.getHours() === 3 ||
+      date.getHours() === 4 ||
+      date.getHours() === 5 ||
+      date.getHours() === 6 ||
+      date.getHours() === 7
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  // дни
+  var diffday = Math.floor(
+    (Date.parse(endDate) - Date.parse(startDate)) / 86400000
+  );
+  // hours
+  var diffhours = Math.floor(
+    (Date.parse(endDate) - Date.parse(startDate)) / 3600000
+  );
+  // week
+  var diffweek = Math.floor(
+    (Date.parse(endDate) - Date.parse(startDate)) / 604800000
+  );
+
+  // months
+  var diffmonths = Math.floor(
+    (Date.parse(endDate) - Date.parse(startDate)) / 2592000000
+  );
+  // years
+  var diffyears = Math.floor(
+    (Date.parse(endDate) - Date.parse(startDate)) / 31104000000
+  );
 
   // расчёт времени бронирования
-  var resultdate = dateEnd - dateStart;
-  var resulthours = hoursEnd - hoursStart;
+  var resulthours = diffhours;
+  var resultdate = diffday;
+  var resultweek = diffweek;
+  var resultmonths = diffmonths;
+  var resultyears = diffyears;
 
   // расчёт суммы бронирования если день/час аренды
   const resultSummaArends = Math.round(
@@ -91,6 +129,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       ? resultdate * itemData.price_rent
       : itemData.rent === "Час"
       ? resulthours * itemData.price_rent
+      : itemData.rent === "Неделя"
+      ? resultweek * itemData.price_rent
+      : itemData.rent === "Месяц"
+      ? resultmonths * itemData.price_rent
       : null
   );
   //  расчёт итоговой суммы
@@ -99,7 +141,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     (itemData.pledge_price !== null ? itemData.pledge_price : 0) +
     (itemData.self_delivery_price !== null ? itemData.self_delivery_price : 0);
 
-  // console.log(typeof delivery_Сhoice);
+  console.log(startDate);
 
   // отправка за счет
   const radioBookingHandler = (e) => {
@@ -152,8 +194,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     Requests.refresh(localStorage.getItem("refresh")).then((res) => {
       localStorage.setItem("key", res.data.access);
     });
-
-    // console.log(itemData.self_delivery_price);
 
     dispatch(setQueryStarted());
     Requests.getCords(
@@ -362,63 +402,120 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
               <p className="information_all_up"> Даты аренды </p>
               <div className="information_all_down">
                 <div className="information_all_down_left">
-                  <div
-                    className="information_all_down_left_date"
-                    id="datetimepicker1"
-                  >
+                  <div className="information_all_down_left_date">
                     <img className="booking_calendar" src={Calendar} />
-                    <div className="form-group" id="datetimepicker1">
-                      <label
-                        className="information_all_down_left_date-p"
-                        htmlFor="booking_date_input"
-                      >
-                        <input
-                          id="booking_date_input"
-                          type="datetime-local"
-                          class="form-control"
-                          min={dateminbooking}
-                          startTime="10"
-                          step="900"
-                          className="booking_input_date"
-                          onChange={(e) => SetReservationTime(e.target.value)}
-                        />
-                      </label>
+                    {((itemData && itemData.rent === "День") ||
+                      (itemData && itemData.rent === "Неделя") ||
+                      (itemData && itemData.rent === "Месяц")) && (
+                      <div className="form-group">
+                        <label
+                          className="information_all_down_left_date-p"
+                          htmlFor="booking_date_input"
+                        >
+                          <input
+                            id="booking_date_input"
+                            type="date"
+                            min={dateminbooking}
+                            className="booking_input_date"
+                            onChange={(e) => setStartDate(e.target.value)}
+                          />
+                        </label>
 
-                      <span className="information_all_down_left_date-p">
-                        {" "}
-                        -{" "}
-                      </span>
+                        <span className="information_all_down_left_date-p">
+                          {" "}
+                          -{" "}
+                        </span>
 
-                      <label
-                        className="information_all_down_left_date-p"
-                        htmlFor="booking_date_end_input"
-                      >
-                        <input
-                          id="booking_date_end_input"
-                          type="datetime-local"
-                          min={dateminbooking}
-                          step="900"
-                          disabled={reservationtime === undefined}
-                          className="booking_input_date"
-                          onChange={(e) =>
-                            SetReservationEndTime(e.target.value)
-                          }
-                        />
-                      </label>
-                    </div>
+                        <label
+                          className="information_all_down_left_date-p"
+                          htmlFor="booking_date_end_input"
+                        >
+                          <input
+                            id="booking_date_end_input"
+                            type="date"
+                            min={dateminbooking}
+                            disabled={startDate === undefined}
+                            className="booking_input_date"
+                            onChange={(e) => setEndDate(e.target.value)}
+                          />
+                        </label>
+                      </div>
+                    )}
+                    {itemData && itemData.rent === "Час" && (
+                      <div className="form-group" style={{ display: "flex" }}>
+                        <label
+                          className="information_all_down_left_date-p"
+                          htmlFor="booking_date_input"
+                        >
+                          <DatePicker
+                            id="booking_date_input"
+                            className="booking_input_date"
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            showTimeSelect
+                            locale="ru"
+                            dateFormat="Pp"
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            minDate={new Date()}
+                            timeInputLabel="Time:"
+                            filterTime={filterPassedTime}
+                          />
+                        </label>
+
+                        <span className="information_all_down_left_date-p">
+                          {" "}
+                          -{" "}
+                        </span>
+
+                        <label
+                          className="information_all_down_left_date-p"
+                          htmlFor="booking_date_end_input"
+                        >
+                          <DatePicker
+                            id="booking_date_end_input"
+                            className="booking_input_date"
+                            selected={endDate}
+                            onChange={(date) => setEndDate(date)}
+                            disabled={startDate === undefined}
+                            showTimeSelect
+                            locale="ru"
+                            dateFormat="Pp"
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            minDate={new Date()}
+                            timeInputLabel="Time:"
+                            filterTime={filterPassedTime}
+                          />
+                        </label>
+                      </div>
+                    )}
                   </div>
                   {Number.isNaN(resultdate) ? (
                     ""
                   ) : (
                     <p className="information_all_down_left_alldate">
-                      {resultdate === Number(0) ? (
+                      {itemData && itemData.rent === "День" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultdate}сутки(-ок)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Час" && (
                         <p className="information_all_down_left_alldate">
                           {resulthours}
                           час(-ов)
                         </p>
-                      ) : (
+                      )}
+                      {itemData && itemData.rent === "Неделя" && (
                         <p className="information_all_down_left_alldate">
-                          {resultdate}сутки(-ок)
+                          {resultweek}
+                          Неделя(-ли)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Месяц" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultmonths}
+                          Месяц(-ев)
                         </p>
                       )}
                     </p>
@@ -878,18 +975,38 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </p>
             <p className="content_booking_down_block1-p">
               {" "}
-              {reservationtime === undefined ? (
+              {startDate === undefined ? (
                 "- BYN"
-              ) : resultSummaArends === 0 ? (
+              ) : startDate <= time ? (
                 <span style={{ color: "red" }}>
                   {" "}
-                  Ошибка условия аренды! Проверьте в чём указана аренда.
+                  Ошибка! (Стартовое время ввода либо меньше настоящего времени
+                  либо равное времени завершения аренды...){" "}
                 </span>
-              ) : reservationendtime <= reservationtime ? (
-                <span style={{ color: "red" }}>
-                  {" "}
-                  Ошибка условия аренды! Проверьте время выбора аренды.
-                </span>
+              ) : (resulthours <= 0 || resulthours > 23) &&
+                itemData.rent === "Час" ? (
+                <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+              ) : (resulthours !== 0 || resulthours <= 23) &&
+                itemData.rent === "Час" ? (
+                totalAmount
+              ) : (resultdate <= 0 || resultdate > 30) &&
+                itemData.rent === "День" ? (
+                <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+              ) : (resultdate !== 0 || resultdate <= 30) &&
+                itemData.rent === "День" ? (
+                totalAmount
+              ) : (resultweek <= 0 || resultweek > 4) &&
+                itemData.rent === "Неделя" ? (
+                <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+              ) : (resultweek !== 0 || resultweek <= 4) &&
+                itemData.rent === "Неделя" ? (
+                totalAmount
+              ) : (resultmonths <= 0 || resultmonths > 12) &&
+                itemData.rent === "Месяц" ? (
+                <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+              ) : (resultmonths !== 0 || resultmonths <= 12) &&
+                itemData.rent === "Месяц" ? (
+                totalAmount
               ) : isNaN(totalAmount) ? (
                 <span style={{ color: "red" }}>
                   {" "}
@@ -905,7 +1022,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <p className="content_booking_down_block1-p">
               {isNaN(resultSummaArends)
                 ? "--"
-                : resultSummaArends === 0
+                : resultSummaArends <= 0
                 ? "--"
                 : resultSummaArends}{" "}
               BYN{" "}
@@ -946,42 +1063,46 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </p>
           </div>
 
-          <div className="content_booking_down_block1">
-            <p className="content_booking_down_block1-p">
-              {itemData.self_delivery_price === undefined
-                ? 0
-                : itemData.self_delivery_price === null
-                ? 0
-                : delivery_Сhoice === "2"
-                ? itemData.self_delivery_price
-                : 0}{" "}
-              BYN
-            </p>
-            <p
-              className="content_booking_down_block1-p"
-              style={{ margin: "0 5px" }}
-            >
-              доставка
-            </p>
-          </div>
+          {delivery_Сhoice === "2" && (
+            <div className="content_booking_down_block1">
+              <p className="content_booking_down_block1-p">
+                {itemData.self_delivery_price === undefined
+                  ? 0
+                  : itemData.self_delivery_price === null
+                  ? 0
+                  : delivery_Сhoice === "2"
+                  ? itemData.self_delivery_price
+                  : 0}{" "}
+                BYN
+              </p>
+              <p
+                className="content_booking_down_block1-p"
+                style={{ margin: "0 5px" }}
+              >
+                доставка
+              </p>
+            </div>
+          )}
 
-          <div className="content_booking_down_block2">
-            <p className="content_booking_down_block1-p">
-              {" "}
-              {itemData.pledge_price === undefined
-                ? 0
-                : itemData.pledge_price === null
-                ? 0
-                : itemData.pledge_price}{" "}
-              BYN{" "}
-            </p>
-            <p
-              className="content_booking_down_block1-p"
-              style={{ margin: "0 5px" }}
-            >
-              залог
-            </p>
-          </div>
+          {itemData.pledge_price > 0 && (
+            <div className="content_booking_down_block2">
+              <p className="content_booking_down_block1-p">
+                {" "}
+                {itemData.pledge_price === undefined
+                  ? 0
+                  : itemData.pledge_price === null
+                  ? 0
+                  : itemData.pledge_price}{" "}
+                BYN{" "}
+              </p>
+              <p
+                className="content_booking_down_block1-p"
+                style={{ margin: "0 5px" }}
+              >
+                залог
+              </p>
+            </div>
+          )}
         </div>
       </div>
       {/* кнопка бронированиия */}
