@@ -62,8 +62,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [coords, setCoords] = React.useState();
 
   const [addressAdded, setAddressAdded] = React.useState(false);
-  const [captchaPassed, setCaptchaPassed] = React.useState(false);
-  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
   const [radioBooking, setRadioBooking] = React.useState();
   const [renterBookingName, setRenterBookingName] = React.useState(
     userData.first_name
@@ -167,8 +165,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const renterBookingSmsHandler = (e) => {
     setRenterBookingSms(e.target.value);
   };
-
-  // console.log(renterBookingNumber, renterBookingName);
 
   //выделяем адреса
   const addressesFormatted = [];
@@ -276,6 +272,19 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
         dispatch(setQueryDone());
         alert("Ошибка сохранения адреса!");
       });
+  };
+
+  const handleBooking = () => {
+    Requests.createBooking(
+      renterBookingName,
+      renterBookingNumber,
+      renterBookingSms,
+      startDate,
+      endDate,
+      itemData.id,
+      itemData.profile.id,
+      userData.id
+    );
   };
 
   return (
@@ -1127,7 +1136,12 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       </div>
       {/* кнопка бронированиия */}
       <div className="card_content_booking_btn">
-        <button className="booking_btn">Запросить бронирование</button>
+        <input
+          type="button"
+          value="Запросить бронирование"
+          className="booking_btn"
+          onClick={handleBooking}
+        />
       </div>
     </div>
   );

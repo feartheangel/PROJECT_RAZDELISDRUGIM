@@ -1170,6 +1170,40 @@ class Requests {
       return response;
     });
   }
+
+  static createBooking(
+    reservation_user_name,
+    reservation_user_phone,
+    reservation_text_sender,
+    reservation_start_time,
+    reservation_end_time,
+    item_id,
+    owner_id,
+    renter_id,
+    delivery_choice
+  ) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        reservation_user_name: reservation_user_name,
+        reservation_user_phone: reservation_user_phone,
+        reservation_text_sender: reservation_text_sender,
+        reservation_start_time: reservation_start_time,
+        reservation_end_time: reservation_end_time,
+        item_id: item_id,
+        owner_id: owner_id,
+        renter_id: renter_id,
+        delivery_choice: delivery_choice,
+      },
+
+      url: `${rootAddress}/api/jwt/change-login/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

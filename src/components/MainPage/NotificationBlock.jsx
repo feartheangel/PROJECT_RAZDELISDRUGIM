@@ -3,7 +3,8 @@ import Shape from "../../img/Shape.png";
 import { Link } from "react-router-dom";
 
 const NotificationBlock = ({ notification, chatSocket, notifications }) => {
-  const deleteNotifyHandler = (e) => {
+  const deleteNotifyHandler = () => {
+    console.log(chatSocket);
     chatSocket.send(
       JSON.stringify({
         command: "update_status_notifications",
@@ -24,7 +25,8 @@ const NotificationBlock = ({ notification, chatSocket, notifications }) => {
               У вас новое сообщение в чате:
             </p>
             <img
-              onClick={(e) => deleteNotifyHandler(e)}
+              className="delete_notification_stroke"
+              onClick={deleteNotifyHandler}
               src={Shape}
               style={{ width: "10px", height: "10px" }}
             />
