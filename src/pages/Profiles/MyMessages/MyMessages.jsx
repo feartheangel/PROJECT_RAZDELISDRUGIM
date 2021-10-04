@@ -40,9 +40,11 @@ const MyMessages = () => {
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Я беру <span> - </span>
-            </p>
+            <Link style={{ textDecoration: "none" }} to="/i-take">
+              <p>
+                Я беру <span> - </span>
+              </p>
+            </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
               <p className="conteiner_shapka_myProfile">Мои сообщения</p>
             </Link>
