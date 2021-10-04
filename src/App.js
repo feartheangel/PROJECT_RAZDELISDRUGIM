@@ -7,6 +7,7 @@ import {
   CardThings,
   EditItem,
   MyItems,
+  ITake,
   PublicProfile,
   Catalog,
   MyFavorites,
@@ -122,6 +123,7 @@ function App() {
         <Route path="/place-item" component={PlaceItem} exact />
         <Route path="/private-profile" component={PrivateProfile} exact />
         <Route path="/i-rent-out" component={MyItems} exact />
+        <Route path="/i-take" component={ITake} exact />
         <Route path="/messages" component={MyMessages} exact />
         <Route path="/search" component={SearchPage} exact />
         <Route path="/item-card" component={CardThings} exact />
