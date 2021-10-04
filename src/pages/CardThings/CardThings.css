@@ -951,7 +951,8 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: rgba(9, 29, 32, 0.4);
+  /* color: rgba(9, 29, 32, 0.4); */
+  color: #000000;
 }
 /* кнопка бронирования */
 .card_content_booking_btn {

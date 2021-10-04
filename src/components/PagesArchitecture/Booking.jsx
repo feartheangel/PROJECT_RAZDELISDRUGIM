@@ -30,8 +30,14 @@ registerLocale("ru", ru);
 
 const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const dispatch = useDispatch();
-  const { isLoggedIn, favorites, subjects, addresses, requestActive } =
-    useSelector(({ userData }) => userData);
+  const {
+    isLoggedIn,
+    favorites,
+    subjects,
+    addresses,
+    requestActive,
+    userData,
+  } = useSelector(({ userData }) => userData);
   const { isLoaded } = useSelector(({ items }) => items);
 
   const { serviceIds, maxAddressesCount } = useSelector(
@@ -59,8 +65,12 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [captchaPassed, setCaptchaPassed] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
   const [radioBooking, setRadioBooking] = React.useState();
-  const [renterBookingName, setRenterBookingName] = React.useState();
-  const [renterBookingNumber, setRenterBookingNumber] = React.useState();
+  const [renterBookingName, setRenterBookingName] = React.useState(
+    userData.first_name
+  );
+  const [renterBookingNumber, setRenterBookingNumber] = React.useState(
+    Number(userData.phone)
+  );
   const [renterBookingSms, setRenterBookingSms] = React.useState();
 
   const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
@@ -141,8 +151,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     (itemData.pledge_price !== null ? itemData.pledge_price : 0) +
     (itemData.self_delivery_price !== null ? itemData.self_delivery_price : 0);
 
-  console.log(startDate);
-
   // отправка за счет
   const radioBookingHandler = (e) => {
     setRadioBooking(e.target.value);
@@ -159,6 +167,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const renterBookingSmsHandler = (e) => {
     setRenterBookingSms(e.target.value);
   };
+
+  // console.log(renterBookingNumber, renterBookingName);
 
   //выделяем адреса
   const addressesFormatted = [];
@@ -497,25 +507,22 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <p className="information_all_down_left_alldate">
                       {itemData && itemData.rent === "День" && (
                         <p className="information_all_down_left_alldate">
-                          {resultdate}сутки(-ок)
+                          {resultdate} сутки(-ок)
                         </p>
                       )}
                       {itemData && itemData.rent === "Час" && (
                         <p className="information_all_down_left_alldate">
-                          {resulthours}
-                          час(-ов)
+                          {resulthours} час(-ов)
                         </p>
                       )}
                       {itemData && itemData.rent === "Неделя" && (
                         <p className="information_all_down_left_alldate">
-                          {resultweek}
-                          Неделя(-ли)
+                          {resultweek} Неделя(-ли)
                         </p>
                       )}
                       {itemData && itemData.rent === "Месяц" && (
                         <p className="information_all_down_left_alldate">
-                          {resultmonths}
-                          Месяц(-ев)
+                          {resultmonths} Месяц(-ев)
                         </p>
                       )}
                     </p>
@@ -530,7 +537,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       <div className="conditions_return_block1">
                         <div className="conditions_row">
                           <p className="conditions_return_row-p1">
-                            Примерное время получения
+                            Время получения
                           </p>
                         </div>
                         <p className="conditions_timeItem-p1">
@@ -544,7 +551,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       <div className="conditions_return_block2">
                         <div className="conditions_row">
                           <p className="conditions_return_row-p1">
-                            Примерное время возврата
+                            Время возврата
                           </p>
                         </div>
                         <p className="conditions_timeItem-p1">
@@ -940,6 +947,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 type="text"
                 className="add-item-select-input"
                 onChange={(e) => renterBookingNameHandler(e)}
+                defaultValue={userData.first_name}
               />
             </div>
             <div className="booking_center_down_block2">
@@ -950,6 +958,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 type="number"
                 className="add-item-select-input"
                 onChange={(e) => renterBookingNumberHandler(e)}
+                defaultValue={Number(userData.phone)}
               />
             </div>
             <div className="booking_center_down_block3">
@@ -976,7 +985,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <p className="content_booking_down_block1-p">
               {" "}
               {startDate === undefined ? (
-                "- BYN"
+                "-- BYN"
               ) : startDate <= time ? (
                 <span style={{ color: "red" }}>
                   {" "}
@@ -988,25 +997,25 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 <span style={{ color: "red" }}> Ошибка времени аренды! </span>
               ) : (resulthours !== 0 || resulthours <= 23) &&
                 itemData.rent === "Час" ? (
-                totalAmount
+                totalAmount + "  BYN"
               ) : (resultdate <= 0 || resultdate > 30) &&
                 itemData.rent === "День" ? (
                 <span style={{ color: "red" }}> Ошибка времени аренды! </span>
               ) : (resultdate !== 0 || resultdate <= 30) &&
                 itemData.rent === "День" ? (
-                totalAmount
+                totalAmount + "  BYN"
               ) : (resultweek <= 0 || resultweek > 4) &&
                 itemData.rent === "Неделя" ? (
                 <span style={{ color: "red" }}> Ошибка времени аренды! </span>
               ) : (resultweek !== 0 || resultweek <= 4) &&
                 itemData.rent === "Неделя" ? (
-                totalAmount
+                totalAmount + "  BYN"
               ) : (resultmonths <= 0 || resultmonths > 12) &&
                 itemData.rent === "Месяц" ? (
                 <span style={{ color: "red" }}> Ошибка времени аренды! </span>
               ) : (resultmonths !== 0 || resultmonths <= 12) &&
                 itemData.rent === "Месяц" ? (
-                totalAmount
+                totalAmount + "  BYN"
               ) : isNaN(totalAmount) ? (
                 <span style={{ color: "red" }}>
                   {" "}
@@ -1047,16 +1056,27 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   style={{ margin: "0 2px" }}
                 >
                   {" "}
-                  /{" "}
+                  x{" "}
                 </span>
                 {itemData.rent === "День"
                   ? isNaN(resultdate)
-                    ? 0 + "  сутки(-ок)"
-                    : resultdate + "сутки(-ок)"
-                  : itemData.rent === "Час"
+                    ? 0 + " сут"
+                    : resultdate + " сут"
+                  : ""}
+                {itemData.rent === "Час"
                   ? isNaN(resulthours)
-                    ? 0 + "  час(-ов)"
-                    : resultdate + "час(-ов)"
+                    ? 0 + " час"
+                    : resultdate + " час"
+                  : ""}
+                {itemData.rent === "Неделя"
+                  ? isNaN(resultweek)
+                    ? 0 + " нед"
+                    : resultweek + " нед"
+                  : ""}
+                {itemData.rent === "Месяц"
+                  ? isNaN(resultmonths)
+                    ? 0 + " мес"
+                    : resultmonths + " мес"
                   : ""}
               </span>
               )
@@ -1099,7 +1119,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 className="content_booking_down_block1-p"
                 style={{ margin: "0 5px" }}
               >
-                залог
+                возвратный залог
               </p>
             </div>
           )}
@@ -1107,7 +1127,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       </div>
       {/* кнопка бронированиия */}
       <div className="card_content_booking_btn">
-        <button className="booking_btn">Оформить бронирование</button>
+        <button className="booking_btn">Запросить бронирование</button>
       </div>
     </div>
   );
