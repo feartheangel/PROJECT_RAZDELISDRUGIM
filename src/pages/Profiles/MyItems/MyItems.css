@@ -50,6 +50,35 @@
   flex-direction: column;
 }
 
+/* таблица для Я СДАЮ */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+.table .thead-dark th {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #454d55;
+  line-height: 1.5;
+}
+.table thead th {
+  vertical-align: top;
+  border-bottom: 2px solid #dee2e6;
+}
+.table td, .table th {
+  padding: .75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+th {
+  text-align: inherit;
+}
+tr:hover{
+  background-color: #ebebeb;
+}
+
 /* АДАПТИВНЫЙ ДИЗАЙН */
 
 @media only screen and (max-width:480px){
