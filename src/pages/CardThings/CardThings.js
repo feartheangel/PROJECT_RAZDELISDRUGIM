@@ -208,10 +208,12 @@ const CardThings = () => {
   const [booking, setBooking] = React.useState(false);
 
   const div = useRef(null);
+  const div2 = useRef(null);
 
   function ScrollHandler() {
     setBooking(true);
     div.current.scrollIntoView();
+    div2.current.scrollIntoView();
   }
 
   React.useEffect(() => {
@@ -892,7 +894,7 @@ const CardThings = () => {
                             isOwn ? { display: "none" } : { cursor: "pointer" }
                           }
                           href="#booking_page"
-                          scrollTop="500px"
+                          // scrollTop="500px"
                           type="button"
                           value="Забронировать"
                           className="contactOwner_btn"
@@ -1968,14 +1970,29 @@ const CardThings = () => {
                       }}
                     >
                       <div className="block_up_contactOwner">
-                        <a
-                          onClick={(e) => mobileContactHandler(e)}
-                          href={`tel:${itemData && itemData.profile.phone}`}
-                          style={{ cursor: "pointer" }}
+                        <button
+                          onClick={ScrollHandler}
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
+                          href="#booking_page"
+                          // scrollTop="500px"
+                          type="button"
+                          value="Забронировать"
                           className="contactOwner_btn"
                         >
-                          Связаться с владельцем
-                        </a>
+                          Забронировать
+                        </button>
+                        {/* <input
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
+                          onClick={goToChatHandler}
+                          href="#booking_page"
+                          type="button"
+                          value="Перейти в чат"
+                          className="contactOwner_btn"
+                        /> */}
 
                         {favorites && !isFavorite && !isOwn && (
                           <img
@@ -2283,6 +2300,20 @@ const CardThings = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* блок бронирование */}
+
+            <div ref={div2}>
+              {" "}
+              {booking && (
+                <Booking
+                  component={"span"}
+                  itemData={itemData}
+                  selectedImage={selectedImage}
+                  setSelectedImage={setSelectedImage}
+                />
+              )}
             </div>
 
             {/* КАРТОЧКИ С ДРУГИМИ ОБЬЯВЛЕНИЯМИ*/}

@@ -1009,6 +1009,7 @@
     padding-bottom: 10px;
     width: 100%;
     margin-top: 0;
+    margin-bottom: 0;
   }
   .left_block_information {
     padding: 15px;
@@ -1225,6 +1226,83 @@
     margin: 0;
     border-radius: 0;
   }
+
+  /* booking */
+  .card_content_booking{
+    padding: 10px 15px 15px 15px;
+  }
+  .content_booking_shapka_up_p{
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  .booking_up_header_info_item{
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .header_info_item_name_p1{
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .block_up_yourCost-p1{
+    font-size: 18px;
+  }
+  .booking_up_header_info_user_p{
+    font-weight: 500;
+  }
+  .booking_up_header_info_user_name{
+    flex-direction: row;
+    margin-bottom: 15px;
+    align-items: baseline;
+  }
+  .header_info_user_name-p1{
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .content_booking_up_header{
+    border-bottom: 1px solid rgba(76, 201, 240, 0.77);
+    margin-bottom: 15px;
+  }
+  .information_all_down{
+    flex-direction: column;}
+
+  .form-group{
+      display: flex;
+    }
+  .information_all_down_left_date{
+      margin-bottom: 10px;
+  }
+  .information_all_down_left{
+    margin: 0 0 10px 0;
+  }
+  .conditions_return{
+    margin-bottom: 20px;
+  }
+  .card_content_booking_center{
+    margin: 15px 0 15px 0;
+  }
+  .booking_center_down_block2-textarea{
+    max-width: 400px;
+    width: -webkit-fill-available;
+  }
+  .booking_center_down_block3{
+    margin-bottom: 15px;
+  }
+  .booking_btn{
+    width: 100%;
+  }
+  .card_content_booking_btn{
+    margin-top: 15px;
+  }
+  .booking_center_up_block_right{
+    flex-direction: column;
+  }
+  .up_block_right_input_block2{
+    margin: 15px 0;
+  }
+
+
+
 }
 
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
