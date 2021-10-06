@@ -198,7 +198,7 @@ const Header = () => {
     chatSocket.current.onmessage = function (e) {
       const data = JSON.parse(e.data);
       if (data.notifications) {
-        setNotifications(data.notifications);
+        setNotifications(data.notifications.reverse());
         setNotReadNotes(data.count_not_read_note);
       }
 
@@ -373,12 +373,17 @@ const Header = () => {
                     src={Favorites}
                   />
                 </Link>
-                <img
-                  className="header-right-content-logged-img"
-                  src={Notifications}
-                  onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
-                  style={{ cursor: "pointer" }}
-                />
+                <div style={{ position: "relative" }}>
+                  <img
+                    className="header-right-content-logged-img"
+                    src={Notifications}
+                    onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <div className="notifications_counter_wrapper">
+                    <p>{notReadNotes >= 9 ? "9+" : notReadNotes}</p>
+                  </div>
+                </div>
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group"

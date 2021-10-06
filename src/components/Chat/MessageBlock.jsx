@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "../../img/CardThings/LeftContent/Rectangle 7.png";
 import { useSelector } from "react-redux";
 
 const MessageBlock = ({ item }) => {
@@ -22,7 +21,35 @@ const MessageBlock = ({ item }) => {
             {item && item.author_name}
           </p>
           <p className="chat_message_block_time_p">
-            {item && item.timestamp.split("").splice(11, 5).join("")}
+            {item.timestamp
+              ? `${item.timestamp.split("").splice(8, 2).join("")} ${
+                  item.timestamp.split("").splice(5, 2).join("") === "01"
+                    ? "Января"
+                    : item.timestamp.split("").splice(5, 2).join("") === "02"
+                    ? "Февраля"
+                    : item.timestamp.split("").splice(5, 2).join("") === "03"
+                    ? "Марта"
+                    : item.timestamp.split("").splice(5, 2).join("") === "04"
+                    ? "Апреля"
+                    : item.timestamp.split("").splice(5, 2).join("") === "05"
+                    ? "Мая"
+                    : item.timestamp.split("").splice(5, 2).join("") === "06"
+                    ? "Июня"
+                    : item.timestamp.split("").splice(5, 2).join("") === "07"
+                    ? "Июля"
+                    : item.timestamp.split("").splice(5, 2).join("") === "08"
+                    ? "Авугста"
+                    : item.timestamp.split("").splice(5, 2).join("") === "09"
+                    ? "Сентября"
+                    : item.timestamp.split("").splice(5, 2).join("") === "10"
+                    ? "Октября"
+                    : item.timestamp.split("").splice(5, 2).join("") === "11"
+                    ? "Ноября"
+                    : item.timestamp.split("").splice(5, 2).join("") === "12"
+                    ? "Декабря"
+                    : ""
+                }, ${item.timestamp.split("").splice(11, 5).join("")}`
+              : "Нет сообщений"}
           </p>
         </div>
         <div className="chat_message_block_second_row">

@@ -1186,6 +1186,7 @@ class Requests {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       data: {
         reservation_user_name: reservation_user_name,
@@ -1199,7 +1200,7 @@ class Requests {
         delivery_choice: delivery_choice,
       },
 
-      url: `${rootAddress}/api/jwt/change-login/`,
+      url: `${rootAddress}api/items/reservation/create/`,
     }).then((response) => {
       return response;
     });

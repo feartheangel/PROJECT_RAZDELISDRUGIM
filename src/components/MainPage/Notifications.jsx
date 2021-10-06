@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
 import { NotificationBlock } from "../index";
 
 const NotifyPopUp = ({
@@ -8,7 +7,7 @@ const NotifyPopUp = ({
   notifications,
   chatSocket,
 }) => {
-  React.useEffect(() => {
+  /*   React.useEffect(() => {
     const onClick = (e) => {
       if (notifyRef.current) {
         notifyRef.current.contains(e.target) || setNotifyPopUpActive(false);
@@ -16,7 +15,7 @@ const NotifyPopUp = ({
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
-  }, []);
+  }, []); */
 
   const notifyRef = useRef(null);
   return (
@@ -29,9 +28,13 @@ const NotifyPopUp = ({
         }
       >
         <div className="dropdown-notify-menu-content">
+          {(!notifications || notifications.length === 0) && (
+            <p className="notifications_empty_p">Нет новых уведомелний.</p>
+          )}
           {notifications &&
-            notifications.map((item) => (
+            notifications.map((item, index) => (
               <NotificationBlock
+                key={index}
                 notification={item}
                 chatSocket={chatSocket}
                 notifications={notifications}

@@ -1,10 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import "./Chat.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../components/index";
-import Requests from "../../http/axios-requests";
-import Avatar from "../../img/CardThings/LeftContent/Rectangle 7.png";
 import VectorLeft from "../../img/Chat/vector-back.png";
 import Actions from "../../img/Chat/actions.png";
 import { MessageBlock } from "../../components/index";
@@ -32,7 +30,6 @@ const Chat = () => {
       console.log("opened");
     };
 
-
     chatSocket.current.onmessage = function (e) {
       const data = JSON.parse(e.data);
       if (data.hasOwnProperty("messages")) {
@@ -49,11 +46,12 @@ const Chat = () => {
 
       console.log(data);
     };
-
   }, []);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    chatInputRef.current.scrollIntoView({
+      block: "start",
+    });
     document.title = "Шерсенджер: #разделисдругим";
   }, []);
 
@@ -76,6 +74,8 @@ const Chat = () => {
       setChatPhrase("");
     }
   };
+
+  const chatInputRef = React.useRef(null);
 
   const { subjects, userData } = useSelector(({ userData }) => userData);
   const [selectedChats, setSelectedChats] = React.useState();
@@ -153,7 +153,10 @@ const Chat = () => {
                   Бронирования
                 </p>
               </div>
-              <div className="container_profile_content__chat">
+              <div
+                ref={chatInputRef}
+                className="container_profile_content__chat"
+              >
                 <div className="chat_header_wrapper">
                   <div className="chat_hearder_left_side">
                     <div className="chat_header_left_side_vertical">
@@ -195,7 +198,9 @@ const Chat = () => {
                 <div className="chat_messages_part_wrapper">
                   <div ref={chatBlock} className="chat_messages_left_block">
                     {messages &&
-                      messages.map((item) => <MessageBlock item={item} />)}
+                      messages.map((item, index) => (
+                        <MessageBlock item={item} key={index} />
+                      ))}
                   </div>
                 </div>
                 <div className="chat_lower_table_wrapper">

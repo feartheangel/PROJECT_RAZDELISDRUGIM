@@ -3,14 +3,12 @@ import { useSelector } from "react-redux";
 import "./MyMessages.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
-import Requests from "../../../http/axios-requests";
 import { SingleChat } from "../../../components/index";
 
 const MyMessages = () => {
   const { subjects } = useSelector(({ userData }) => userData);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
     document.title = "Шерсенджер: #разделисдругим";
   }, []);
 
@@ -26,10 +24,8 @@ const MyMessages = () => {
   const chatSocket = React.useRef();
 
   React.useEffect(() => {
-     chatSocket.current = new WebSocket(
-      `wss://razdelisdrugim.by:444/ws/?token=${localStorage.getItem(
-        "key"
-      )}`
+    chatSocket.current = new WebSocket(
+      `wss://razdelisdrugim.by:444/ws/?token=${localStorage.getItem("key")}`
     );
 
     chatSocket.current.onopen = function () {
@@ -41,16 +37,15 @@ const MyMessages = () => {
       console.log("opened");
     };
 
-
     chatSocket.current.onmessage = function (e) {
       const data = JSON.parse(e.data);
-        if(data.chat_info){
-          setUsersChats(data.chat_info)
-        }
+      if (data.chat_info) {
+        setUsersChats(data.chat_info);
+      }
 
-        console.log(data)
+      console.log(data);
     };
-  }, [])
+  }, []);
 
   return (
     <div>
