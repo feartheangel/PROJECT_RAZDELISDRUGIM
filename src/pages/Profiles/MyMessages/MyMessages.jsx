@@ -32,7 +32,7 @@ const MyMessages = () => {
   return (
     <div>
       <Header />
-      <div className="privateProfile" id="globaldata_pk">
+      <div className="privateProfile" id="messager_pk">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
@@ -94,7 +94,7 @@ const MyMessages = () => {
         </div>
       </div>
       {/* МОБИЛЬНАЯ ВЕРСИЯ */}
-      <div className="privateProfile" id="globaldata_mobile">
+      <div className="privateProfile" id="messager_mobile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <p className="conteiner_shapka_myProfile">

@@ -12,10 +12,10 @@ const MessageBlock = ({ item }) => {
           : "chat_message_block_wrapper"
       }
     >
-      <img
+      {/* <img
         src={`https://razdelisdrugim.by:444/${item.avatar}`}
         className="chat_message_block_avatar"
-      />
+      /> */}
       <div className="chat_message_block_content_part">
         <div className="chat_message_block_first_row">
           <p className="chat_message_block_name_p">

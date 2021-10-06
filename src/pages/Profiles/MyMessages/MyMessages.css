@@ -134,3 +134,27 @@
   height: 21px;
   cursor: pointer;
 }
+#messager_mobile{
+  display: none;
+}
+
+/* MOBILE */
+@media only screen and (max-width:480px){
+
+  #messager_pk{
+    display: none;
+  }
+  #messager_mobile{
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+
+
+
