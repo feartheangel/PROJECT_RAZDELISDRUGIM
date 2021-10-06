@@ -1,7 +1,4 @@
 import axios from "axios";
-import { logoutAction } from "../redux/actions/userData";
-import { useDispatch } from "react-redux";
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom";
 
 export const rootAddress = "https://razdelisdrugim.by:444";
 
@@ -96,30 +93,6 @@ class Requests {
         username: phone,
       },
       url: `${rootAddress}/api/jwt/reset-password-phone/`,
-    }).then((response) => {
-      return response;
-    });
-  }
-
-  static sendVKCode(code) {
-    return axios({
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: `${rootAddress}/api/jwt/access-token-vk/${code}/`,
-    }).then((response) => {
-      return response;
-    });
-  }
-
-  static sendGoogleCode(code) {
-    return axios({
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: `${rootAddress}/api/jwt/access-token-vk/${code}/`,
     }).then((response) => {
       return response;
     });
@@ -1053,8 +1026,9 @@ class Requests {
       headers: {
         "Content-Type": "application/json",
       },
-      url: `${rootAddress}/api/jwt/access-token-vk/?code=${code}/`,
+      url: `${rootAddress}/api/jwt/access-token-vk/?code=${code}`,
     }).then((response) => {
+      console.log(code);
       return response;
     });
   }
@@ -1196,6 +1170,41 @@ class Requests {
       return response;
     });
   }
+
+  static createBooking(
+    reservation_user_name,
+    reservation_user_phone,
+    reservation_text_sender,
+    reservation_start_time,
+    reservation_end_time,
+    item_id,
+    owner_id,
+    renter_id,
+    delivery_choice
+  ) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      data: {
+        reservation_user_name: reservation_user_name,
+        reservation_user_phone: reservation_user_phone,
+        reservation_text_sender: reservation_text_sender,
+        reservation_start_time: reservation_start_time,
+        reservation_end_time: reservation_end_time,
+        item_id: item_id,
+        owner_id: owner_id,
+        renter_id: renter_id,
+        delivery_choice: delivery_choice,
+      },
+
+      url: `${rootAddress}api/items/reservation/create/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(
@@ -1227,7 +1236,7 @@ axios.interceptors.response.use(
           localStorage.removeItem("social");
           localStorage.removeItem("ref");
           setTimeout(() => {
-            window.location.href = `${rootAddress}`;
+            window.location.href = "/";
           }, 2000);
           return;
         });
@@ -1243,7 +1252,7 @@ axios.interceptors.response.use(
       localStorage.removeItem("social");
       localStorage.removeItem("ref");
       setTimeout(() => {
-        window.location.href = `${rootAddress}`;
+        window.location.href = "/";
       }, 2000);
       return;
     }

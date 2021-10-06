@@ -99,7 +99,11 @@ const PrivateProfile = () => {
           </div>
 
           {/* MOBILE */}
-          <div className="conteiner_shapka" id="globaldata_mobile">
+          <div
+            className="conteiner_shapka"
+            id="globaldata_mobile"
+            style={{ display: "none" }}
+          >
             <Link
               style={
                 subjects.length === 0
@@ -120,18 +124,18 @@ const PrivateProfile = () => {
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              style={{ display: "none" }}
+            <Link style={{ textDecoration: "none" }} to="/i-take">
+              <p>
+                Я беру <span> - </span>
+              </p>
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              className="conteiner_shapka_myProfile"
+              to="/messages"
             >
-              Я беру <span> - </span>
-            </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              style={{ display: "none" }}
-            >
-              Мои сообщения <span> - </span>
-            </p>
+              <p>Мои сообщения</p>
+            </Link>
             <Link
               style={
                 subjects.length === 0
@@ -171,39 +175,32 @@ const PrivateProfile = () => {
               className="conteiner_shapka_myProfile"
               to="/i-rent-out"
             >
-              <p>
+              <p className="favorites">
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Я беру <span> - </span>
-            </p>
-            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Мои сообщения <span> - </span>
-            </p>
+            <Link style={{ textDecoration: "none" }} to="/i-take">
+              <p>
+                Я беру <span> - </span>
+              </p>
+            </Link>
+
+            <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+
             <Link
-              style={{ textDecoration: "none" }}
+              style={
+                subjects.length === 0
+                  ? { pointerEvents: "none", textDecoration: "none" }
+                  : { textDecoration: "none" }
+              }
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >
-              <p
-                className={
-                  activeForm === "favorites" &&
-                  "privateProfile_container_favorites"
-                }
-              >
-                Избранное
-              </p>
+              <p>Избранное</p>
             </Link>
-            <p
-              className={
-                activeForm === "myProfile" && "conteiner_shapka_myProfile"
-              }
-              onClick={() => setActiveForm("myProfile")}
-            >
-              {" "}
-              Мой профиль
-            </p>
+            <Link style={{ textDecoration: "none" }} to="/private-profile">
+              <p> Мой профиль</p>
+            </Link>
           </div>
 
           {activeForm === "myProfile" && (

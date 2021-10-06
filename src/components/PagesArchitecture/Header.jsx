@@ -12,7 +12,7 @@ import {
   setSearchCategory,
   setCategoryId,
 } from "../../redux/actions/search";
-import { ProfilePopUp, BaseModal } from "../index";
+import { ProfilePopUp, BaseModal, NotifyPopUp } from "../index";
 import Favorites from "../../img/MainPage/FavoritesDisabled.png";
 import Notifications from "../../img/MainPage/Notifications.png";
 import { setNews } from "../../redux/actions/items";
@@ -44,6 +44,8 @@ const Header = () => {
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
   const [burgerActive, setBurgerActive] = React.useState(false);
   const [openedCategories, setOpenedCategories] = React.useState([]);
+  const [notifyPopUpActive, setNotifyPopUpActive] = React.useState();
+  const [notReadNotes, setNotReadNotes] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const keyDownHandler = React.useCallback((event) => {
@@ -170,10 +172,38 @@ const Header = () => {
     }
   };
 
+  const chatSocket = React.useRef();
+  const [notifications, setNotifications] = React.useState();
+
   React.useEffect(() => {
     Requests.fetchNews().then((res) => {
       dispatch(setNews(res.data));
     });
+  }, []);
+
+  React.useEffect(() => {
+    chatSocket.current = new WebSocket(
+      `wss://razdelisdrugim.by:444/ws/?token=${localStorage.getItem("key")}`
+    );
+
+    chatSocket.current.onopen = function () {
+      chatSocket.current.send(
+        JSON.stringify({
+          command: "list_notifications",
+        })
+      );
+      console.log("opened");
+    };
+
+    chatSocket.current.onmessage = function (e) {
+      const data = JSON.parse(e.data);
+      if (data.notifications) {
+        setNotifications(data.notifications.reverse());
+        setNotReadNotes(data.count_not_read_note);
+      }
+
+      console.log(data);
+    };
   }, []);
 
   //выделяем разделы
@@ -259,7 +289,13 @@ const Header = () => {
                   className="header-right-content-logged-img"
                   src={Bell2}
                   id="notifications"
+                  onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
+                  style={{ cursor: "pointer" }}
                 />
+                <div className="notifications_counter_wrapper">
+                  <p>{notReadNotes >= 9 ? "9+" : notReadNotes}</p>
+                </div>
+
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group"
@@ -281,6 +317,14 @@ const Header = () => {
                   setProfilePopUpActive={setProfilePopUpActive}
                   profilePopUpActive={profilePopUpActive}
                   logout={logout}
+                />
+              )}
+              {notifyPopUpActive && (
+                <NotifyPopUp
+                  notifyPopUpActive={notifyPopUpActive}
+                  setNotifyPopUpActive={setNotifyPopUpActive}
+                  notifications={notifications}
+                  chatSocket={chatSocket.current}
                 />
               )}
             </div>
@@ -329,10 +373,17 @@ const Header = () => {
                     src={Favorites}
                   />
                 </Link>
-                <img
-                  className="header-right-content-logged-img"
-                  src={Notifications}
-                />
+                <div style={{ position: "relative" }}>
+                  <img
+                    className="header-right-content-logged-img"
+                    src={Notifications}
+                    onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <div className="notifications_counter_wrapper">
+                    <p>{notReadNotes >= 9 ? "9+" : notReadNotes}</p>
+                  </div>
+                </div>
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group"
@@ -354,6 +405,14 @@ const Header = () => {
                   setProfilePopUpActive={setProfilePopUpActive}
                   profilePopUpActive={profilePopUpActive}
                   logout={logout}
+                />
+              )}
+              {notifyPopUpActive && (
+                <NotifyPopUp
+                  notifyPopUpActive={notifyPopUpActive}
+                  setNotifyPopUpActive={setNotifyPopUpActive}
+                  notifications={notifications}
+                  chatSocket={chatSocket.current}
                 />
               )}
             </div>

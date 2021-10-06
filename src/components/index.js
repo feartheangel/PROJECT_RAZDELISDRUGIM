@@ -28,3 +28,5 @@ export { default as Adverts } from "./MainPage/Adverts";
 export { default as MediaAbout } from "./MainPage/MediaAboutBlock";
 export { default as SingleChat } from "./Chat/SingleChat";
 export { default as MessageBlock } from "./Chat/MessageBlock";
+export { default as NotifyPopUp } from "./MainPage/Notifications";
+export { default as NotificationBlock } from "./MainPage/NotificationBlock";

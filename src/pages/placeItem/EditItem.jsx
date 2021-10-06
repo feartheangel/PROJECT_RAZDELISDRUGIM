@@ -1233,7 +1233,93 @@ const EditItem = () => {
               </div>
             </div>
 
-            {/*  СТОИМОСТЬ АРЕНДЫ для планшет версии */}
+            {/*  СТОИМОСТЬ АРЕНДЫ  МОБИЛЬНАЯ ВЕРСИЯ */}
+            <div
+              className="item-add-cost-choice-wrapper"
+              id="take_Away_adaptive"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "flex-start",
+              }}
+            >
+              <div
+                style={{ marginRight: "20px" }}
+                className="add-item-input-wrapper"
+              >
+                <label className="add-item-input-label">
+                  Стоимость вещи/услуги{" "}
+                  <span className="add-item-span-zvezda">*</span>
+                </label>
+                <div>
+                  <input
+                    className="add-item-input-number"
+                    type="number"
+                    max="9999"
+                    step="any"
+                    placeholder="0.00"
+                    value={costArends}
+                    disabled={giveFree || yourCost}
+                    onChange={(e) => setCostArendsHandler(e)}
+                  />
+                  <span className="span-valuts">BYN</span>
+                </div>
+              </div>
+              <div className="add-item-input-wrapper">
+                <label className="add-item-input-label">
+                  Цена за <span className="add-item-span-zvezda">*</span>
+                </label>
+                <select
+                  className="add-item-select-input__time"
+                  onChange={(e) => timeArendsHandler(e)}
+                >
+                  <option value="HOUR">Час</option>
+                  <option value="DAY" selected>
+                    Сутки
+                  </option>
+                  <option value="WEEK">Неделя</option>
+                  <option value="MONTH">Месяц</option>
+                  <option value="PIECE">1 шт.</option>
+                  <option value="SQUARE">1кв.м.</option>
+                </select>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  alignItems: "flex-start",
+                }}
+              >
+                <label class="checkbox-btn">
+                  <input
+                    onChange={() => setYourCost(!yourCost)}
+                    type="checkbox"
+                    checked={yourCost}
+                    disabled={giveFree}
+                  />
+                  <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
+                    Предлагать цену
+                  </span>
+                </label>
+                <span className="add-item-cost-or">или</span>
+                <label class="checkbox-btn" id="checkbox-btn2">
+                  <input
+                    onChange={() => setGiveFree(!giveFree)}
+                    type="checkbox"
+                    checked={giveFree}
+                    disabled={yourCost}
+                  />
+                  <span id="checkbox-btn1">
+                    {" "}
+                    {serviceIds && serviceIds.includes(viborCategory)
+                      ? "Договорная"
+                      : "Предлагать цену"}
+                  </span>
+                </label>
+              </div>
+            </div>
 
             {/* БЛОК АРЕНДА ДЛЯ ПЛАНШЕТА */}
             <div className="item-add-cost-choice-wrapper" id="globaldata_ipad">

@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
+
 import { useSelector, useDispatch } from "react-redux";
 import Requests from "../../http/axios-requests";
 import { reloadData } from "../../redux/actions/userData";

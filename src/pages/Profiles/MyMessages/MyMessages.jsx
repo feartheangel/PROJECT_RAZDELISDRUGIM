@@ -3,14 +3,12 @@ import { useSelector } from "react-redux";
 import "./MyMessages.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
-import Requests from "../../../http/axios-requests";
 import { SingleChat } from "../../../components/index";
 
 const MyMessages = () => {
   const { subjects } = useSelector(({ userData }) => userData);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
     document.title = "Шерсенджер: #разделисдругим";
   }, []);
 
@@ -20,19 +18,39 @@ const MyMessages = () => {
     }
   }, []);
 
-  React.useEffect(() => {
-    Requests.getUsersChats().then((res) => {
-      setUsersChats(res.data);
-    });
-  }, []);
-
   const [selectedChats, setSelectedChats] = React.useState("all");
   const [usersChats, setUsersChats] = React.useState();
+
+  const chatSocket = React.useRef();
+
+  React.useEffect(() => {
+    chatSocket.current = new WebSocket(
+      `wss://razdelisdrugim.by:444/ws/?token=${localStorage.getItem("key")}`
+    );
+
+    chatSocket.current.onopen = function () {
+      chatSocket.current.send(
+        JSON.stringify({
+          command: "history_chat",
+        })
+      );
+      console.log("opened");
+    };
+
+    chatSocket.current.onmessage = function (e) {
+      const data = JSON.parse(e.data);
+      if (data.chat_info) {
+        setUsersChats(data.chat_info);
+      }
+
+      console.log(data);
+    };
+  }, []);
 
   return (
     <div>
       <Header />
-      <div className="privateProfile" id="messager_pk">
+      <div className="privateProfile" id="globaldata_pk">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
@@ -94,10 +112,13 @@ const MyMessages = () => {
         </div>
       </div>
       {/* МОБИЛЬНАЯ ВЕРСИЯ */}
-      <div className="privateProfile" id="messager_mobile">
+      <div className="privateProfile" id="globaldata_mobile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile">
+            <p
+              className="conteiner_shapka_myProfile"
+              style={{ display: "none" }}
+            >
               Я сдаю <span> {subjects.length} </span>
             </p>
             <p
@@ -132,7 +153,36 @@ const MyMessages = () => {
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{ marginRight: "0" }}></div>
+          <div className="container_profile" style={{ marginRight: "0" }}>
+            <div className="messanger_wrapper">
+              <div className="messanger_optional_wrapper">
+                <p
+                  onClick={() => setSelectedChats("all")}
+                  className={
+                    selectedChats === "all"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Все чаты
+                </p>
+                <p
+                  onClick={() => setSelectedChats("rent")}
+                  className={
+                    selectedChats === "rent"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Бронирования
+                </p>
+              </div>
+              <div className="container_profile_content__messages">
+                {usersChats &&
+                  usersChats.map((item) => <SingleChat item={item} />)}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -175,7 +225,36 @@ const MyMessages = () => {
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{ marginRight: "0" }}></div>
+          <div className="container_profile" style={{ marginRight: "0" }}>
+            <div className="messanger_wrapper">
+              <div className="messanger_optional_wrapper">
+                <p
+                  onClick={() => setSelectedChats("all")}
+                  className={
+                    selectedChats === "all"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Все чаты
+                </p>
+                <p
+                  onClick={() => setSelectedChats("rent")}
+                  className={
+                    selectedChats === "rent"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Бронирования
+                </p>
+              </div>
+              <div className="container_profile_content__messages">
+                {usersChats &&
+                  usersChats.map((item) => <SingleChat item={item} />)}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

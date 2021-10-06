@@ -5,18 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import ru from "date-fns/locale/ru";
 import {
-  setSearchCategory,
-  setCategoryId,
-  setSearchItems,
-} from "../../redux/actions/search";
-import {
   setAdresses,
   setQueryStarted,
   setQueryDone,
   reloadData,
 } from "../../redux/actions/userData";
 import { useSelector, useDispatch } from "react-redux";
-import { YMaps, Map, Placemark } from "react-yandex-maps";
 import HandShake from "../../img/CardThings/RightContent/handShake1.png";
 import Car from "../../img/CardThings/RightContent/Vector3.png";
 import freePrice from "../../img/MainPage/freePrice.png";
@@ -30,14 +24,9 @@ registerLocale("ru", ru);
 
 const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const dispatch = useDispatch();
-  const {
-    isLoggedIn,
-    favorites,
-    subjects,
-    addresses,
-    requestActive,
-    userData,
-  } = useSelector(({ userData }) => userData);
+  const { isLoggedIn, addresses, requestActive, userData } = useSelector(
+    ({ userData }) => userData
+  );
   const { isLoaded } = useSelector(({ items }) => items);
 
   const { serviceIds, maxAddressesCount } = useSelector(
@@ -62,8 +51,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [coords, setCoords] = React.useState();
 
   const [addressAdded, setAddressAdded] = React.useState(false);
-  const [captchaPassed, setCaptchaPassed] = React.useState(false);
-  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
   const [radioBooking, setRadioBooking] = React.useState();
   const [renterBookingName, setRenterBookingName] = React.useState(
     userData.first_name
@@ -149,7 +136,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const totalAmount =
     resultSummaArends +
     (itemData.pledge_price !== null ? itemData.pledge_price : 0) +
-    (itemData.self_delivery_price !== null ? itemData.self_delivery_price : 0);
+    (itemData.self_delivery_price !== null && radioBooking === "2"
+      ? itemData.self_delivery_price
+      : 0);
 
   // отправка за счет
   const radioBookingHandler = (e) => {
@@ -167,8 +156,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const renterBookingSmsHandler = (e) => {
     setRenterBookingSms(e.target.value);
   };
-
-  // console.log(renterBookingNumber, renterBookingName);
 
   //выделяем адреса
   const addressesFormatted = [];
@@ -276,6 +263,20 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
         dispatch(setQueryDone());
         alert("Ошибка сохранения адреса!");
       });
+  };
+
+  const handleBooking = () => {
+    Requests.createBooking(
+      renterBookingName,
+      renterBookingNumber,
+      renterBookingSms,
+      startDate,
+      endDate,
+      itemData.id,
+      itemData.profile.id,
+      userData.id,
+      radioBooking
+    );
   };
 
   return (

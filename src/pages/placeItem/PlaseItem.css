@@ -710,7 +710,7 @@ select {
   align-self: flex-end;
 }
 #take_Away_adaptive {
-  display: none;
+  display: none !important;
 }
 #br_gl {
   display: none;
@@ -725,10 +725,10 @@ select {
 /* МЕДИА ЗАПРОСЫ  */
 @media only screen and (max-width: 480px) {
   #take_Away_komp {
-    display: none;
+    display: none !;
   }
   #take_Away_adaptive {
-    display: flex;
+    display: flex !important;
   }
   #br_gl {
     display: flex;
@@ -736,7 +736,6 @@ select {
   #item_pk {
     display: none;
   }
-
   .PlaseItem {
     max-width: 480px;
     min-width: 320px;

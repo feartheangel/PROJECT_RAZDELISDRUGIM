@@ -42,7 +42,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
     //проверка на строку авторизации через соц. сети
     if (window.location.href.split("?code=")[1]) {
       if (window.location.href.includes("state=vk")) {
-        code = window.location.href.split("?code=")[1].split("state")[0];
+        code = window.location.href.split("?code=")[1].split("&")[0];
         Requests.vkAuth(code).then((res) => {
           localStorage.setItem("key", res.data.access_token);
           localStorage.setItem("social", "vk");
@@ -141,7 +141,12 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <p>Войти через соцсети</p>
         </div>
         <div className="reg-form-socials">
-          <img onClick={vkAuth} src={vkLogo} alt="VK" />
+          <img
+            style={{ display: "none" }}
+            onClick={vkAuth}
+            src={vkLogo}
+            alt="VK"
+          />
           <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
           <img onClick={googleAuth} src={googleLogo} alt="Google" />
         </div>

@@ -1310,6 +1310,73 @@ button {
   cursor: pointer;
 }
 
+.dropdown-notify-menu-wrapper {
+  z-index: 5;
+  position: absolute;
+  display: inline-block;
+  opacity: 0;
+  pointer-events: none;
+  right: 50px;
+}
+
+.dropdown-notify-menu-wrapper.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.dropdown-notify-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 10px;
+  z-index: 5;
+  box-sizing: border-box;
+  width: 400px;
+  min-height: 140px;
+  max-height: 600px;
+  background: #ffffff;
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+
+.dropdown_notify_menu_notification_wrapper {
+  padding: 5px;
+  border-bottom: 1px solid rgba(76, 201, 240, 0.77);
+  cursor: pointer;
+}
+
+.dropdown_notify_menu_notification_wrapper:hover {
+  background-color: #fbfbfb;
+}
+
+.dropdown_notify_menu_notification_wrapper {
+  width: 100%;
+}
+
+.dropdown_notify_menu_notification_content {
+  width: 100%;
+}
+
+.notification_upper_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.last_message_notification_wrapper {
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #f7fff7;
+  box-sizing: border-box;
+}
+
+.dropdown_notify_item_p {
+  margin-top: 5px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
 @media (min-width: 2160px) {
   .main-sections-second-ul {
     margin-right: 0;
@@ -1371,6 +1438,29 @@ button {
   justify-content: center;
 }
 
+.notifications_counter_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 6px;
+  height: 6px;
+  background: #f36868;
+  border-radius: 139px;
+  font-size: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+}
+
+.notifications_empty_p {
+  font-size: 16px;
+  color: rgba(9, 29, 32, 0.4);
+  align-self: center;
+  justify-self: center;
+  margin-top: 35px;
+}
+
 /* МЕДИА ЗАПРОСЫ  */
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
@@ -1382,6 +1472,11 @@ button {
   }
   #global_ipad {
     display: none;
+  }
+
+  .notifications_counter_wrapper{
+    bottom: 605px;
+    left: 310px;
   }
 
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
@@ -2458,7 +2553,7 @@ button {
     max-width: 480px;
     width: 100%;
     min-height: 150px;
-    height: auto;
+    height: 150px;
     padding: 10px 0 5px 0;
     margin-top: 0;
   }

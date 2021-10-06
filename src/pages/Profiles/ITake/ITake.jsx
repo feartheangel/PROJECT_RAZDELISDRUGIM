@@ -259,7 +259,6 @@ const ITake = () => {
                   ? { pointerEvents: "none", textDecoration: "none" }
                   : { textDecoration: "none" }
               }
-              // style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >
@@ -275,7 +274,7 @@ const ITake = () => {
           </div>
           <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="container_profile_content__myItems">
-              <div>
+              <div style={{ width: "100%" }}>
                 <table class="table table-hover">
                   <thead class="thead-dark">
                     <tr>

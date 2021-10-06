@@ -150,6 +150,7 @@
   font-size: 16px;
   line-height: 19px;
   color: #4cc9f0;
+  margin-right: 13px;
 }
 
 .chat_message_block_time_p {
@@ -173,3 +174,58 @@
 .chat_message_block_wrapper.own {
   align-self: flex-end;
 }
+
+.single_chat_count_not_read_messages_circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+  background: rgba(76, 201, 240, 0.14);
+  border-radius: 139px;
+}
+
+.single_chat_count_not_read_messages {
+  font-size: 16px;
+}
+
+
+/* MOBILE */
+@media only screen and (max-width:480px){
+
+  .container_profile_content__chat{
+    padding: 15px;
+    width: -webkit-fill-available;
+    margin: 0 0 15px 0;
+    border-radius: 0;
+  }
+  .chat_message_block_content_part{
+    flex: 1 0 auto;
+    width: min-content;
+  }
+  .chat_message_block_wrapper.own{
+    align-self: flex-start;
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
