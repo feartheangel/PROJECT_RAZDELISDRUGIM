@@ -51,6 +51,14 @@ const ProfilePopUp = ({
               Мой профиль
             </p>
           </Link>
+          <Link to="/messages">
+            <p
+              onClick={() => setProfilePopUpActive(false)}
+              className="dropdown-profile-menu-p"
+            >
+              Мои сообщения
+            </p>
+          </Link>
           <hr className="profile_popup_line" />
           <p onClick={logout} className="dropdown-profile-menu-p logout">
             Выйти
