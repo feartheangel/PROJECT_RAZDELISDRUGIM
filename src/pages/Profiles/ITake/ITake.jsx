@@ -134,11 +134,8 @@ const ITake = () => {
       <div className="privateProfile" id="globaldata_mobile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile">
-              Я сдаю <span> {subjects.length} </span>
-            </p>
             <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
+              className="conteiner_shapka_myProfile"
               style={{ display: "none" }}
             >
               Я беру {reservations && reservations.length}
@@ -171,7 +168,7 @@ const ITake = () => {
           </div>
           <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="container_profile_content__myItems">
-              <div>
+              <div style={{ width: "100%", height: "-webkit-fill-available" }}>
                 <table class="table table-hover">
                   <thead class="thead-dark">
                     <tr>
@@ -246,25 +243,26 @@ const ITake = () => {
             <p className="conteiner_shapka_myProfile">
               Я сдаю <span> {subjects.length} </span>
             </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              // style={{ display: "none" }}
+            <Link
+              style={{
+                textDecoration: "none",
+              }}
+              className="conteiner_shapka_myProfile"
+              to="/i-take"
             >
-              Я беру <span> - </span>
-            </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              // style={{ display: "none" }}
-            >
-              Мои сообщения <span> - </span>
-            </p>
+              <p>
+                Я беру <span> 3 </span>
+              </p>
+            </Link>
+            <Link to="/messages" style={{ textDecoration: "none" }}>
+              <p>Мои сообщения</p>
+            </Link>
             <Link
               style={
                 subjects.length === 0
                   ? { pointerEvents: "none", textDecoration: "none" }
                   : { textDecoration: "none" }
               }
-              // style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >
@@ -280,7 +278,7 @@ const ITake = () => {
           </div>
           <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="container_profile_content__myItems">
-              <div>
+              <div style={{ width: "100%" }}>
                 <table class="table table-hover">
                   <thead class="thead-dark">
                     <tr>

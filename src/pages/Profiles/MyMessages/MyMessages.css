@@ -134,3 +134,104 @@
   height: 21px;
   cursor: pointer;
 }
+#messager_mobile{
+  display: none;
+}
+
+/* MOBILE */
+@media only screen and (max-width:480px){
+
+  .messanger_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .messanger_optional_wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 15px 0;
+    background-color: rgba(99, 212, 248, 0.1);
+  }
+  .messanger_left_optional_p{
+    margin-bottom: 15px;
+    margin-left: 15px;
+    font-size: 18px;
+  }
+  .container_profile_content__messages{
+    border-radius: 0;
+    margin-top: 0;
+    padding: 15px;
+    width: -webkit-fill-available;
+  }
+  .single_chat_item_image{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
+
+  .single_chat_left_block_first_row p:first-child{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+  }
+  .single_chat_receiver_name{
+    font-size: 16px;
+  }
+
+  .single_chat_message_text_wrapper{
+    width: -webkit-fill-available;
+    height: auto;
+  }
+  .single_chat_actions_image2{
+    display: none;
+  }
+  .single_chat_message_date{
+    font-size: 12px;
+  }
+  .single_chat_message_text{
+    height: auto;
+    max-width: 150px;
+    width: 100%;
+  }
+
+}
+
+
+/* IPAD */
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
+
+  .messanger_wrapper{
+    width: 100%;
+  }
+  .container_profile_content__messages{
+    width: 100%;
+    padding: 15px;
+  }
+  .single_chat_item_image{
+    width: 70px;
+    height: 70px;
+  }
+  .single_chat_message_text_wrapper{
+    width: -webkit-fill-available;
+    height: auto;
+  }
+
+  .single_chat_message_text {
+    height: auto;
+    max-width: 250px;
+    width: 100%;
+}
+.single_chat_actions_image2{
+  display: none;
+}
+
+
+}
+
+
+
+
+
+

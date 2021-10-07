@@ -4,6 +4,7 @@ import "./Chat.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../components/index";
 import VectorLeft from "../../img/Chat/vector-back.png";
+import Vector_button from "../../img/Chat/knopka.PNG";
 import Actions from "../../img/Chat/actions.png";
 import { MessageBlock } from "../../components/index";
 import { rootAddress } from "../../http/axios-requests";
@@ -85,6 +86,18 @@ const Chat = () => {
     }
   };
 
+    const keyDownHandlerButton = () => {
+      chatSocket.current.send(
+        JSON.stringify({
+          message: chatPhrase,
+          command: "new_message",
+          chat_id: chatId,
+          author_id: userData.id,
+        })
+      );
+      setChatPhrase("");
+    };
+
   const chatInputRef = React.useRef(null);
 
   const { subjects, userData } = useSelector(({ userData }) => userData);
@@ -121,9 +134,17 @@ const Chat = () => {
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Я беру <span> - </span>
-            </p>
+            <Link
+              style={{
+                textDecoration: "none",
+              }}
+              className="conteiner_shapka_myProfile"
+              to="/i-take"
+            >
+              <p>
+                Я беру <span> 3 </span>
+              </p>
+            </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
               <p className="conteiner_shapka_myProfile">Мои сообщения</p>
             </Link>
@@ -222,6 +243,12 @@ const Chat = () => {
                     type="text"
                     placeholder="Ваше сообщение..."
                   />
+                  <img
+                    src={Vector_button}
+                    alt=""
+                    className="button_chat"
+                    onClick={keyDownHandlerButton}
+                  />
                 </div>
               </div>
             </div>
@@ -232,7 +259,10 @@ const Chat = () => {
       <div className="privateProfile" id="globaldata_mobile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile">
+            <p
+              className="conteiner_shapka_myProfile"
+              style={{ display: "none" }}
+            >
               Я сдаю <span> {subjects.length} </span>
             </p>
             <p
@@ -267,7 +297,98 @@ const Chat = () => {
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{ marginRight: "0" }}></div>
+          <div className="container_profile" style={{ marginRight: "0" }}>
+            <div className="messanger_wrapper">
+              <div className="messanger_optional_wrapper">
+                <p
+                  onClick={() => setSelectedChats("all")}
+                  className={
+                    selectedChats === "all"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Все чаты
+                </p>
+                <p
+                  onClick={() => setSelectedChats("rent")}
+                  className={
+                    selectedChats === "rent"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Бронирования
+                </p>
+              </div>
+              <div
+                ref={chatInputRef}
+                className="container_profile_content__chat"
+              >
+                <div className="chat_header_wrapper">
+                  <div className="chat_hearder_left_side">
+                    <div className="chat_header_left_side_vertical">
+                      <Link to="/messages" style={{ textDecoration: "none" }}>
+                        <img
+                          className="chat_header_stroke_image"
+                          src={VectorLeft}
+                        />
+                      </Link>
+                      <Link
+                        to={`/public-profile?id=${companionId}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <img
+                          className="chat_header_avatar_image"
+                          src={`${rootAddress}${companionPhoto}`}
+                        />
+                      </Link>
+                    </div>
+
+                    <div className="chat_header_left_side_horizontal">
+                      <Link
+                        to={`/public-profile?id=${companionId}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <p className="chat_header_name_p">{companionName}</p>
+                      </Link>
+                      <p className="chat_header_last_seen_p">
+                        {companionLastSeen === "None"
+                          ? "Был в сети недавно"
+                          : `Был в сети недвано`}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="chat_header_right_side">
+                    <img className="single_chat_actions_image" src={Actions} />
+                  </div>
+                </div>
+                <div className="chat_messages_part_wrapper">
+                  <div ref={chatBlock} className="chat_messages_left_block">
+                    {messages &&
+                      messages.map((item, index) => (
+                        <MessageBlock item={item} key={index} />
+                      ))}
+                  </div>
+                </div>
+                <div className="chat_lower_table_wrapper">
+                  <input
+                    value={chatPhrase}
+                    onChange={(e) => setChatPhrase(e.target.value)}
+                    className="chat_lower_table_input"
+                    type="text"
+                    placeholder="Ваше сообщение..."
+                  />
+                  <img
+                    src={Vector_button}
+                    alt=""
+                    className="button_chat"
+                    onClick={keyDownHandlerButton}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -275,21 +396,29 @@ const Chat = () => {
       <div className="privateProfile" id="globaldata_ipad">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile">
-              Я сдаю <span> {subjects.length} </span>
-            </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              // style={{ display: "none" }}
+            <Link
+              to="/i-rent-out"
+              style={{ textDecoration: "none" }}
+              className="conteiner_shapka_myProfile"
             >
-              Я беру <span> - </span>
-            </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              // style={{ display: "none" }}
+              <p>
+                Я сдаю <span> {subjects.length} </span>
+              </p>
+            </Link>
+            <Link
+              style={{
+                textDecoration: "none",
+              }}
+              className="conteiner_shapka_myProfile"
+              to="/i-take"
             >
-              Мои сообщения <span> - </span>
-            </p>
+              <p>
+                Я беру <span> 3 </span>
+              </p>
+            </Link>
+            <Link to="/messages" style={{ textDecoration: "none" }}>
+              <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+            </Link>
             <Link
               style={
                 subjects.length === 0
@@ -302,6 +431,47 @@ const Chat = () => {
             >
               <p>Избранное</p>
             </Link>
+              <Link style={{ textDecoration: "none" }} to="/private-profile">
+              <p> Мой профиль</p>
+            </Link>
+          </div>
+          <div className="container_profile" style={{ marginRight: "0" }}>
+            <div className="messanger_wrapper">
+              <div className="messanger_optional_wrapper">
+                <p
+                  onClick={() => setSelectedChats("all")}
+                  className={
+                    selectedChats === "all"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Все чаты
+                </p>
+                <p
+                  onClick={() => setSelectedChats("rent")}
+                  className={
+                    selectedChats === "rent"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Бронирования
+                </p>
+              </div>
+              <div
+                ref={chatInputRef}
+                className="container_profile_content__chat"
+              >
+                <div className="chat_header_wrapper">
+                  <div className="chat_hearder_left_side">
+                    <div className="chat_header_left_side_vertical">
+                      <Link to="/messages" style={{ textDecoration: "none" }}>
+                        <img
+                          className="chat_header_stroke_image"
+                          src={VectorLeft}
+                        />
+                      </Link>
             <Link
               style={{ textDecoration: "none" }}
               // style={{ display: "none" }}

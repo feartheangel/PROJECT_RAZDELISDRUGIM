@@ -115,7 +115,10 @@ const MyMessages = () => {
       <div className="privateProfile" id="globaldata_mobile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile">
+            <p
+              className="conteiner_shapka_myProfile"
+              style={{ display: "none" }}
+            >
               Я сдаю <span> {subjects.length} </span>
             </p>
             <p
@@ -150,7 +153,36 @@ const MyMessages = () => {
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{ marginRight: "0" }}></div>
+          <div className="container_profile" style={{ marginRight: "0" }}>
+            <div className="messanger_wrapper">
+              <div className="messanger_optional_wrapper">
+                <p
+                  onClick={() => setSelectedChats("all")}
+                  className={
+                    selectedChats === "all"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Все чаты
+                </p>
+                <p
+                  onClick={() => setSelectedChats("rent")}
+                  className={
+                    selectedChats === "rent"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Бронирования
+                </p>
+              </div>
+              <div className="container_profile_content__messages">
+                {usersChats &&
+                  usersChats.map((item) => <SingleChat item={item} />)}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -193,7 +225,36 @@ const MyMessages = () => {
               <p> Мой профиль</p>
             </Link>
           </div>
-          <div className="container_profile" style={{ marginRight: "0" }}></div>
+          <div className="container_profile" style={{ marginRight: "0" }}>
+            <div className="messanger_wrapper">
+              <div className="messanger_optional_wrapper">
+                <p
+                  onClick={() => setSelectedChats("all")}
+                  className={
+                    selectedChats === "all"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Все чаты
+                </p>
+                <p
+                  onClick={() => setSelectedChats("rent")}
+                  className={
+                    selectedChats === "rent"
+                      ? "messanger_left_optional_p active"
+                      : "messanger_left_optional_p"
+                  }
+                >
+                  Бронирования
+                </p>
+              </div>
+              <div className="container_profile_content__messages">
+                {usersChats &&
+                  usersChats.map((item) => <SingleChat item={item} />)}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
