@@ -162,7 +162,7 @@ button {
   z-index: 5;
   box-sizing: border-box;
   width: 160px;
-  height: 160px;
+  height: 190px;
   background: #ffffff;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
@@ -2559,6 +2559,13 @@ button {
   }
   .partners-content {
     margin-bottom: 0;
+  }
+  .dropdown-notify-menu-content{
+    max-width: 260px;
+    width: 100%;
+  }
+  .dropdown_notify_main_p{
+    font-size: 14px;
   }
 }
 

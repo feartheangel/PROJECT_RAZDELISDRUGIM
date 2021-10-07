@@ -4,6 +4,7 @@ import "./Chat.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../components/index";
 import VectorLeft from "../../img/Chat/vector-back.png";
+import Vector_button from "../../img/Chat/knopka.PNG";
 import Actions from "../../img/Chat/actions.png";
 import { MessageBlock } from "../../components/index";
 import { rootAddress } from "../../http/axios-requests";
@@ -75,6 +76,18 @@ const Chat = () => {
     }
   };
 
+  const keyDownHandlerButton = () => {
+    chatSocket.current.send(
+      JSON.stringify({
+        message: chatPhrase,
+        command: "new_message",
+        chat_id: chatId,
+        author_id: userData.id,
+      })
+    );
+    setChatPhrase("");
+  };
+
   const chatInputRef = React.useRef(null);
 
   const { subjects, userData } = useSelector(({ userData }) => userData);
@@ -110,9 +123,17 @@ const Chat = () => {
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Я беру <span> - </span>
-            </p>
+            <Link
+              style={{
+                textDecoration: "none",
+              }}
+              className="conteiner_shapka_myProfile"
+              to="/i-take"
+            >
+              <p>
+                Я беру <span> 3 </span>
+              </p>
+            </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
               <p className="conteiner_shapka_myProfile">Мои сообщения</p>
             </Link>
@@ -210,6 +231,12 @@ const Chat = () => {
                     className="chat_lower_table_input"
                     type="text"
                     placeholder="Ваше сообщение..."
+                  />
+                  <img
+                    src={Vector_button}
+                    alt=""
+                    className="button_chat"
+                    onClick={keyDownHandlerButton}
                   />
                 </div>
               </div>
@@ -341,6 +368,12 @@ const Chat = () => {
                     type="text"
                     placeholder="Ваше сообщение..."
                   />
+                  <img
+                    src={Vector_button}
+                    alt=""
+                    className="button_chat"
+                    onClick={keyDownHandlerButton}
+                  />
                 </div>
               </div>
             </div>
@@ -352,18 +385,29 @@ const Chat = () => {
       <div className="privateProfile" id="globaldata_ipad">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
+            <Link
+              to="/i-rent-out"
+              style={{ textDecoration: "none" }}
+              className="conteiner_shapka_myProfile"
+            >
               <p>
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
-            <Link style={{ textDecoration: "none" }} to="/i-take">
+            <Link
+              style={{
+                textDecoration: "none",
+              }}
+              className="conteiner_shapka_myProfile"
+              to="/i-take"
+            >
               <p>
-                Я беру <span> - </span>
+                Я беру <span> 3 </span>
               </p>
             </Link>
-
-            <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+            <Link to="/messages" style={{ textDecoration: "none" }}>
+              <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+            </Link>
 
             <Link
               style={
@@ -461,6 +505,12 @@ const Chat = () => {
                     className="chat_lower_table_input"
                     type="text"
                     placeholder="Ваше сообщение..."
+                  />
+                  <img
+                    src={Vector_button}
+                    alt=""
+                    className="button_chat"
+                    onClick={keyDownHandlerButton}
                   />
                 </div>
               </div>

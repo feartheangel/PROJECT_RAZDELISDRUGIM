@@ -46,7 +46,7 @@
 .container_profile_content__myItems {
   width: 1125px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
   box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
@@ -189,6 +189,6 @@ textarea {
   .container_profile_content__myItems {
     width: -webkit-fill-available;
     padding: 20px;
-    justify-content: space-evenly;
+    justify-content: space-around;
   }
 }

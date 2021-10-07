@@ -175,7 +175,7 @@ const PrivateProfile = () => {
               className="conteiner_shapka_myProfile"
               to="/i-rent-out"
             >
-              <p className="favorites">
+              <p>
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
@@ -185,7 +185,7 @@ const PrivateProfile = () => {
               </p>
             </Link>
 
-            <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+            <p>Мои сообщения</p>
 
             <Link
               style={
@@ -199,7 +199,7 @@ const PrivateProfile = () => {
               <p>Избранное</p>
             </Link>
             <Link style={{ textDecoration: "none" }} to="/private-profile">
-              <p> Мой профиль</p>
+              <p className="conteiner_shapka_myProfile"> Мой профиль</p>
             </Link>
           </div>
 
