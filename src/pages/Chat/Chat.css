@@ -70,7 +70,7 @@
 
 .chat_messages_part_wrapper {
   display: flex;
-  height: 450px;
+  height: 445px;
   width: 100%;
   justify-content: space-between;
 }

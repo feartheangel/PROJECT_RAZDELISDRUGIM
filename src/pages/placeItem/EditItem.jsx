@@ -923,7 +923,7 @@ const EditItem = () => {
     addresses.map((item, index) => {
       addressesFormatted.push([
         `${item.city}, ${item.street}, ${
-          item.house ? item.house : item.apartment
+          item.house ? item.house : item.apartment ? item.apartment : ""
         }`,
         item.coordinates,
       ]);
@@ -1030,7 +1030,7 @@ const EditItem = () => {
                   id="photo_input"
                   className="input_photo"
                   type="file"
-                  accept="image/*,image/jpeg"
+                  accept="image/jpg, image/jpeg, image/png,"
                   multiple
                   onChange={(e) => photoHandler(e)}
                 />

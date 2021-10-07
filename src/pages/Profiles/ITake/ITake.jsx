@@ -4,12 +4,20 @@ import { useSelector } from "react-redux";
 import "../MyItems/MyItems.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
+import Requests from "../../../http/axios-requests";
 
 const ITake = () => {
   const { subjects } = useSelector(({ userData }) => userData);
 
   const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState();
+  const [reservations, setReservations] = React.useState();
+
+  React.useEffect(() => {
+    Requests.getOutgoingReservations().then((res) => {
+      setReservations(res.data);
+    });
+  }, []);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,7 +46,7 @@ const ITake = () => {
               </p>
             </Link>
             <p className="conteiner_shapka_myProfile">
-              Я беру <span> 3 </span>
+              Я беру <span> {reservations && reservations.length} </span>
             </p>
             <Link style={{ textDecoration: "none" }} to="/messages">
               <p>Мои сообщения</p>
@@ -83,36 +91,33 @@ const ITake = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">1</th>
-                      <td>Ноутбук</td>
-                      <td>04/10/2021</td>
-                      <td>06/10/2021</td>
-                      <td>Сутки</td>
-                      <td>3 Суток</td>
-                      <td style={{ color: "green" }}>Подтверждено</td>
-                      <td>Эдуард</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">2</th>
-                      <td>Велосипед "Аист"</td>
-                      <td>04/10/2021</td>
-                      <td>05/10/2021</td>
-                      <td>Сутки</td>
-                      <td>1 Сутки</td>
-                      <td style={{ color: "orange" }}>Завершено</td>
-                      <td>Максим</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">3</th>
-                      <td>Книга "Batman"</td>
-                      <td>04/10/2021 14:30</td>
-                      <td>04/10/2021 17:30</td>
-                      <td>Часы</td>
-                      <td> - </td>
-                      <td style={{ color: "red" }}>Отклонено</td>
-                      <td>Иван</td>
-                    </tr>
+                    {reservations &&
+                      reservations.map((item, index) => {
+                        return (
+                          <tr style={{ cursor: "pointer" }}>
+                            <th scope="row">{index + 1}</th>
+                            <td>{item.name_item}</td>
+                            <td>{`${item.reservation_start_time
+                              .split("")
+                              .splice(0, 10)
+                              .join("")} ${item.reservation_start_time
+                              .split("")
+                              .splice(11, 5)
+                              .join("")}`}</td>
+                            <td>{`${item.reservation_end_time
+                              .split("")
+                              .splice(0, 10)
+                              .join("")} ${item.reservation_end_time
+                              .split("")
+                              .splice(11, 5)
+                              .join("")}`}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td style={{ color: "orange" }}>Ожидает</td>
+                            <td>{item.owner_name}</td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>
@@ -136,7 +141,7 @@ const ITake = () => {
               style={{ opacity: "0.4", pointerEvents: "none" }}
               style={{ display: "none" }}
             >
-              Я беру <span> - </span>
+              Я беру {reservations && reservations.length}
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}

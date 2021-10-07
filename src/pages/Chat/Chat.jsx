@@ -38,6 +38,16 @@ const Chat = () => {
         setCompanionphoto(data.photo);
         setCompanionId(data.user_id);
         setCompanionLastSeen(data.last_user_visit);
+        setUnreadMessagesIds(data.list_ids_unread_messages);
+        chatSocket.current.send(
+          JSON.stringify({
+            command: "update_chat_status",
+            message_ids: data.list_ids_unread_messagess,
+            chat_id: chatId,
+          })
+        );
+        console.log(data.list_ids_unread_messages);
+        console.log(chatId);
       }
 
       if (data.command === "new_message") {
@@ -85,6 +95,7 @@ const Chat = () => {
   const [companionPhoto, setCompanionphoto] = React.useState();
   const [companionId, setCompanionId] = React.useState();
   const [companionLastSeen, setCompanionLastSeen] = React.useState();
+  const [unreadMessagesIds, setUnreadMessagesIds] = React.useState();
 
   const chatBlock = React.useRef();
 

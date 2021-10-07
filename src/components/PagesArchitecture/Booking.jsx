@@ -276,7 +276,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       itemData.profile.id,
       userData.id,
       radioBooking
-    );
+    )
+      .then(() => alert("Запрос на подтверждение бронирования отправлен!"))
+      .catch(() => alert("Ошибка бронирования!"));
   };
 
   return (
@@ -1139,7 +1141,13 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
         </div>
         {/* кнопка бронированиия */}
         <div className="card_content_booking_btn">
-          <button className="booking_btn">Запросить бронирование</button>
+          <input
+            style={{ cursor: "pointer" }}
+            onClick={handleBooking}
+            type="button"
+            value="Запросить бронирование"
+            className="booking_btn"
+          />
         </div>
       </div>
 

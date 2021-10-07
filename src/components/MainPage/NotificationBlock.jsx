@@ -3,14 +3,13 @@ import Shape from "../../img/Shape.png";
 import { Link } from "react-router-dom";
 
 const NotificationBlock = ({ notification, chatSocket }) => {
-  const [deletedNotification, setDeletedNotification] = React.useState(false);
   const deleteNotifyHandler = (e) => {
     e.preventDefault();
     console.log(notification.id_note);
     chatSocket.send(
       JSON.stringify({
         command: "delete_notifications",
-        note_id: notification.id_note,
+        note_id: [notification.id_note],
       })
     );
   };

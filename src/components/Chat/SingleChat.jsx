@@ -96,11 +96,13 @@ const SingleChat = ({ item }) => {
                   : item.last_message}
               </p>
             </div>
-            <div className="single_chat_count_not_read_messages_circle">
-              <p className="single_chat_count_not_read_messages">
-                {item.not_read_messages}
-              </p>
-            </div>
+            {item.not_read_messages !== 0 && (
+              <div className="single_chat_count_not_read_messages_circle">
+                <p className="single_chat_count_not_read_messages">
+                  {item.not_read_messages}
+                </p>
+              </div>
+            )}
             <img className="single_chat_actions_image" src={Actions} />
           </div>
         </div>

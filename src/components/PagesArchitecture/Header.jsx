@@ -292,9 +292,13 @@ const Header = () => {
                   onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
                   style={{ cursor: "pointer" }}
                 />
-                <div className="notifications_counter_wrapper">
-                  <p>{notReadNotes >= 9 ? "9+" : notReadNotes}</p>
-                </div>
+                {notifications && notifications.length !== 0 && (
+                  <div className="notifications_counter_wrapper">
+                    <p>
+                      {notifications.length >= 9 ? "9+" : notifications.length}
+                    </p>
+                  </div>
+                )}
 
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
@@ -380,9 +384,15 @@ const Header = () => {
                     onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
                     style={{ cursor: "pointer" }}
                   />
-                  <div className="notifications_counter_wrapper">
-                    <p>{notReadNotes >= 9 ? "9+" : notReadNotes}</p>
-                  </div>
+                  {notifications && notifications.length !== 0 && (
+                    <div className="notifications_counter_wrapper">
+                      <p>
+                        {notifications.length >= 9
+                          ? "9+"
+                          : notifications.length}
+                      </p>
+                    </div>
+                  )}
                 </div>
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
