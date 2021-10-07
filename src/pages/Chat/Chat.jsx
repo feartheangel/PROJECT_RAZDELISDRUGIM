@@ -39,16 +39,6 @@ const Chat = () => {
         setCompanionphoto(data.photo);
         setCompanionId(data.user_id);
         setCompanionLastSeen(data.last_user_visit);
-        setUnreadMessagesIds(data.list_ids_unread_messages);
-        chatSocket.current.send(
-          JSON.stringify({
-            command: "update_chat_status",
-            message_ids: data.list_ids_unread_messagess,
-            chat_id: chatId,
-          })
-        );
-        console.log(data.list_ids_unread_messages);
-        console.log(chatId);
       }
 
       if (data.command === "new_message") {
@@ -86,17 +76,17 @@ const Chat = () => {
     }
   };
 
-    const keyDownHandlerButton = () => {
-      chatSocket.current.send(
-        JSON.stringify({
-          message: chatPhrase,
-          command: "new_message",
-          chat_id: chatId,
-          author_id: userData.id,
-        })
-      );
-      setChatPhrase("");
-    };
+  const keyDownHandlerButton = () => {
+    chatSocket.current.send(
+      JSON.stringify({
+        message: chatPhrase,
+        command: "new_message",
+        chat_id: chatId,
+        author_id: userData.id,
+      })
+    );
+    setChatPhrase("");
+  };
 
   const chatInputRef = React.useRef(null);
 
@@ -108,13 +98,24 @@ const Chat = () => {
   const [companionPhoto, setCompanionphoto] = React.useState();
   const [companionId, setCompanionId] = React.useState();
   const [companionLastSeen, setCompanionLastSeen] = React.useState();
-  const [unreadMessagesIds, setUnreadMessagesIds] = React.useState();
 
   const chatBlock = React.useRef();
+  const chatBlockMobile = React.useRef();
+  const chatBlockTablet = React.useRef();
 
   React.useEffect(() => {
     chatBlock.current.scrollTo({
       top: chatBlock.current.scrollHeight,
+      behavior: "smooth",
+    });
+
+    chatBlockMobile.current.scrollTo({
+      top: chatBlockMobile.current.scrollHeight,
+      behavior: "smooth",
+    });
+
+    chatBlockTablet.current.scrollTo({
+      top: chatBlockTablet.current.scrollHeight,
       behavior: "smooth",
     });
   }, [messages]);
@@ -364,7 +365,10 @@ const Chat = () => {
                   </div>
                 </div>
                 <div className="chat_messages_part_wrapper">
-                  <div ref={chatBlock} className="chat_messages_left_block">
+                  <div
+                    ref={chatBlockMobile}
+                    className="chat_messages_left_block"
+                  >
                     {messages &&
                       messages.map((item, index) => (
                         <MessageBlock item={item} key={index} />
@@ -419,19 +423,19 @@ const Chat = () => {
             <Link to="/messages" style={{ textDecoration: "none" }}>
               <p className="conteiner_shapka_myProfile">Мои сообщения</p>
             </Link>
+
             <Link
               style={
                 subjects.length === 0
                   ? { pointerEvents: "none", textDecoration: "none" }
                   : { textDecoration: "none" }
               }
-              // style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >
               <p>Избранное</p>
             </Link>
-              <Link style={{ textDecoration: "none" }} to="/private-profile">
+            <Link style={{ textDecoration: "none" }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>
           </div>
@@ -472,15 +476,64 @@ const Chat = () => {
                           src={VectorLeft}
                         />
                       </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              // style={{ display: "none" }}
-              to="/private-profile"
-            >
-              <p> Мой профиль</p>
-            </Link>
+                      <Link
+                        to={`/public-profile?id=${companionId}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <img
+                          className="chat_header_avatar_image"
+                          src={`${rootAddress}${companionPhoto}`}
+                        />
+                      </Link>
+                    </div>
+
+                    <div className="chat_header_left_side_horizontal">
+                      <Link
+                        to={`/public-profile?id=${companionId}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <p className="chat_header_name_p">{companionName}</p>
+                      </Link>
+                      <p className="chat_header_last_seen_p">
+                        {companionLastSeen === "None"
+                          ? "Был в сети недавно"
+                          : `Был в сети недвано`}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="chat_header_right_side">
+                    <img className="single_chat_actions_image" src={Actions} />
+                  </div>
+                </div>
+                <div className="chat_messages_part_wrapper">
+                  <div
+                    ref={chatBlockTablet}
+                    className="chat_messages_left_block"
+                  >
+                    {messages &&
+                      messages.map((item, index) => (
+                        <MessageBlock item={item} key={index} />
+                      ))}
+                  </div>
+                </div>
+                <div className="chat_lower_table_wrapper">
+                  <input
+                    value={chatPhrase}
+                    onChange={(e) => setChatPhrase(e.target.value)}
+                    className="chat_lower_table_input"
+                    type="text"
+                    placeholder="Ваше сообщение..."
+                  />
+                  <img
+                    src={Vector_button}
+                    alt=""
+                    className="button_chat"
+                    onClick={keyDownHandlerButton}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="container_profile" style={{ marginRight: "0" }}></div>
         </div>
       </div>
 
