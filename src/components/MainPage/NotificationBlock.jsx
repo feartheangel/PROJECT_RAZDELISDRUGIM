@@ -22,9 +22,17 @@ const NotificationBlock = ({ notification, chatSocket }) => {
       <div className="dropdown_notify_menu_notification_wrapper">
         <div className="dropdown_notify_menu_notification_content">
           <div className="notification_upper_row">
-            <p className="dropdown_notify_main_p">
-              У вас новое сообщение от {notification.name_sender}:
-            </p>
+            {notification.type_note === "MESSAGE" && (
+              <p className="dropdown_notify_main_p">
+                У Вас новое сообщение от {notification.name_sender}:
+              </p>
+            )}
+            {notification.type_note === "RESERVE" && (
+              <p className="dropdown_notify_main_p">
+                У Вас новый запрос на бронирование от {notification.name_sender}{" "}
+                на:
+              </p>
+            )}
             <img
               className="delete_notification_stroke"
               onClick={(e) => deleteNotifyHandler(e)}
@@ -33,9 +41,11 @@ const NotificationBlock = ({ notification, chatSocket }) => {
             />
           </div>
           <p className="dropdown_notify_item_p">{notification.name_item}</p>
-          <div className="last_message_notification_wrapper">
-            <p>{notification.text_message}</p>
-          </div>
+          {notification.type_note === "MESSAGE" && (
+            <div className="last_message_notification_wrapper">
+              <p>{notification.text_message}</p>
+            </div>
+          )}
         </div>
       </div>
     </a>

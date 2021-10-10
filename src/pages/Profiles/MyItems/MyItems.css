@@ -67,23 +67,57 @@
   vertical-align: top;
   border-bottom: 2px solid #dee2e6;
 }
-.table td, .table th {
-  padding: .75rem;
+.table td,
+.table th {
+  padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 th {
   text-align: inherit;
 }
-tr:hover{
-  background-color: #ebebeb;
+
+.reservation_submit_choice_wrapper {
+  display: flex;
 }
 
+.reservation_submit_choice_yes {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../../img/yes.png");
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 60%;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5%;
+}
+
+.reservation_submit_choice_no {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-image: url("../../../img/no.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5%;
+}
+
+.reservation_submit_choice_yes:hover {
+  transform: scale(1.2);
+}
+
+.reservation_submit_choice_no:hover {
+  transform: scale(1.2);
+}
 /* АДАПТИВНЫЙ ДИЗАЙН */
 
-@media only screen and (max-width:480px){
-
-  .container_profile_content__myItems{
+@media only screen and (max-width: 480px) {
+  .container_profile_content__myItems {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -97,57 +131,35 @@ tr:hover{
     margin: 15px 15px 10px;
     padding: 0;
   }
-  .container_profile{
+  .container_profile {
     margin-right: 0;
   }
-  .item-card-profile-button__edit{
+  .item-card-profile-button__edit {
     width: auto;
     font-size: 14px;
   }
-  .favorites_empty{
+  .favorites_empty {
     height: auto;
     margin-bottom: 20px;
     font-size: 16px;
   }
-  .table td, .table th{
+  .table td,
+  .table th {
     padding: 0.35em;
     width: 4px;
   }
-  .table{
+  .table {
     font-size: 8px;
   }
-  .thead-dark{
+  .thead-dark {
     font-size: 7px;
   }
-
-
-
 }
-
 
 /* IPAD */
 @media only screen and (max-width: 1024px) and (min-width: 481px) {
-
   .table {
     width: -webkit-fill-available;
     font-size: 13px;
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

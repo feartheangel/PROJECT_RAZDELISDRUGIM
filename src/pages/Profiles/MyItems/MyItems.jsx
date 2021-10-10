@@ -4,10 +4,12 @@ import { useSelector } from "react-redux";
 import "./MyItems.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
+import Requests from "../../../http/axios-requests";
 
 const MyItems = () => {
   const { subjects } = useSelector(({ userData }) => userData);
 
+  const [reservations, setReservations] = React.useState();
   const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
   const [deleteId, setDeleteId] = React.useState();
 
@@ -21,6 +23,20 @@ const MyItems = () => {
       window.location.href = "/";
     }
   }, []);
+
+  React.useEffect(() => {
+    Requests.getIncomingReservations().then((res) => {
+      setReservations(res.data);
+    });
+  }, []);
+
+  const handleReservationSubmit = () => {
+    alert("Тут должно сработать подтверждение");
+  };
+
+  const handleReservationAbort = () => {
+    alert("Тут должен сработать отказ");
+  };
 
   return (
     <div>
@@ -54,64 +70,111 @@ const MyItems = () => {
           </div>
           <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="container_profile_content__myItems">
-              <div>
-                <table class="table table-hover">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Название вещи</th>
-                      <th scope="col">
-                        Аренда <br />
-                        ОТ
-                      </th>
-                      <th scope="col">
-                        Аренда
-                        <br /> ДО
-                      </th>
-                      <th scope="col">Тип аренды</th>
-                      <th scope="col">Время аренды</th>
-                      <th scope="col" style={{ verticalAlign: "top" }}>
-                        Статус
-                      </th>
-                      <th scope="col" style={{ verticalAlign: "top" }}>
-                        Владелец
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">1</th>
-                      <td>Ноутбук</td>
-                      <td>04/10/2021</td>
-                      <td>06/10/2021</td>
-                      <td>Сутки</td>
-                      <td>3 Суток</td>
-                      <td style={{ color: "green" }}>Подтверждено</td>
-                      <td>Эдуард</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">2</th>
-                      <td>Велосипед "Аист"</td>
-                      <td>04/10/2021</td>
-                      <td>05/10/2021</td>
-                      <td>Сутки</td>
-                      <td>1 Сутки</td>
-                      <td style={{ color: "orange" }}>Завершено</td>
-                      <td>Максим</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">3</th>
-                      <td>Книга "Batman"</td>
-                      <td>04/10/2021 14:30</td>
-                      <td>04/10/2021 17:30</td>
-                      <td>Часы</td>
-                      <td> - </td>
-                      <td style={{ color: "red" }}>Отклонено</td>
-                      <td>Иван</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              {reservations && reservations.length >= 1 && (
+                <div>
+                  <table class="table table-hover">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название вещи</th>
+                        <th scope="col">
+                          Аренда <br />
+                          ОТ
+                        </th>
+                        <th scope="col">
+                          Аренда
+                          <br /> ДО
+                        </th>
+                        <th scope="col">Тип аренды</th>
+                        <th scope="col">Время аренды</th>
+                        <th scope="col" style={{ verticalAlign: "top" }}>
+                          Статус
+                        </th>
+                        <th scope="col" style={{ verticalAlign: "top" }}>
+                          Рентер
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {reservations &&
+                        reservations.map((item, index) => {
+                          return (
+                            <tr style={{ cursor: "pointer" }}>
+                              <th scope="row">{index + 1}</th>
+                              <td>{item.name_item}</td>
+                              <td>{`${item.reservation_start_time
+                                .split("")
+                                .splice(0, 10)
+                                .join("")} ${item.reservation_start_time
+                                .split("")
+                                .splice(11, 5)
+                                .join("")}`}</td>
+                              <td>{`${item.reservation_end_time
+                                .split("")
+                                .splice(0, 10)
+                                .join("")} ${item.reservation_end_time
+                                .split("")
+                                .splice(11, 5)
+                                .join("")}`}</td>
+                              <td>
+                                {" "}
+                                {item.rent === "HOUR"
+                                  ? "Час"
+                                  : item.rent === "DAY"
+                                  ? "День"
+                                  : item.rent === "WEEK"
+                                  ? "Неделя"
+                                  : item.rent === "MONTH"
+                                  ? "Месяц"
+                                  : item.rent === "PIECE"
+                                  ? "Штука"
+                                  : item.rent === "SQUARE"
+                                  ? "1кв. м."
+                                  : ""}
+                              </td>
+                              <td>{item.reservation_time}</td>
+                              <td
+                                style={
+                                  item.reservation_status === null
+                                    ? { color: "orange" }
+                                    : item.reservation_status === true
+                                    ? { color: "green" }
+                                    : item.reservation_status === false
+                                    ? { color: "red" }
+                                    : ""
+                                }
+                              >
+                                {item.reservation_status === null ? (
+                                  <div className="reservation_submit_choice_wrapper">
+                                    <input
+                                      type="button"
+                                      className="reservation_submit_choice_yes"
+                                      title=" Подтвердить бронирование"
+                                      onClick={handleReservationSubmit}
+                                    />
+                                    <input
+                                      type="button"
+                                      className="reservation_submit_choice_no"
+                                      title="Отклонить бронирование"
+                                      onClick={handleReservationAbort}
+                                    />
+                                  </div>
+                                ) : item.reservation_status === false ? (
+                                  " Отказано"
+                                ) : item.reservation_status === true ? (
+                                  "Подтверждено"
+                                ) : (
+                                  ""
+                                )}
+                              </td>
+                              <td>{item.owner_name}</td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
               {subjects &&
                 subjects.map((subject, index) => (
                   <ItemCardProfile

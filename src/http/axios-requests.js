@@ -1179,7 +1179,9 @@ class Requests {
     reservation_end_time,
     item_id,
     owner_id,
-    delivery_choice
+    delivery_choice,
+    reservation_time,
+    reservation_address_delivery
   ) {
     return axios({
       method: "POST",
@@ -1193,11 +1195,13 @@ class Requests {
           : "",
         reservation_user_phone: reservation_user_phone,
         reservation_text_sender: reservation_text_sender,
-        reservation_start_time: `${reservation_start_time}T00:00:00.132Z`,
-        reservation_end_time: `${reservation_end_time}T00:00:00.132Z`,
+        reservation_start_time: `${reservation_start_time}`,
+        reservation_end_time: `${reservation_end_time}`,
         item_id: item_id,
         owner_id: owner_id,
         delivery_choice: delivery_choice,
+        reservation_time: reservation_time,
+        reservation_address_delivery: reservation_address_delivery,
       },
 
       url: `${rootAddress}/api/items/reservation/create/`,
@@ -1214,6 +1218,19 @@ class Requests {
         Authorization: `Bearer ${localStorage.getItem("key")}`,
       },
       url: `${rootAddress}/api/items/outgoing_reservation/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getIncomingReservations() {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/items/incoming_reservation/`,
     }).then((response) => {
       return response;
     });

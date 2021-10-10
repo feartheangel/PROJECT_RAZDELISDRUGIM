@@ -232,7 +232,13 @@ const Chat = () => {
                   <div ref={chatBlock} className="chat_messages_left_block">
                     {messages &&
                       messages.map((item, index) => (
-                        <MessageBlock item={item} key={index} />
+                        <MessageBlock
+                          messages={messages}
+                          item={item}
+                          key={index}
+                          chatSocket={chatSocket}
+                          chatId={chatId}
+                        />
                       ))}
                   </div>
                 </div>
@@ -371,7 +377,12 @@ const Chat = () => {
                   >
                     {messages &&
                       messages.map((item, index) => (
-                        <MessageBlock item={item} key={index} />
+                        <MessageBlock
+                          item={item}
+                          key={index}
+                          chatSocket={chatSocket}
+                          chatId={chatId}
+                        />
                       ))}
                   </div>
                 </div>
@@ -512,7 +523,12 @@ const Chat = () => {
                   >
                     {messages &&
                       messages.map((item, index) => (
-                        <MessageBlock item={item} key={index} />
+                        <MessageBlock
+                          item={item}
+                          key={index}
+                          chatSocket={chatSocket}
+                          chatId={chatId}
+                        />
                       ))}
                   </div>
                 </div>

@@ -111,9 +111,41 @@ const ITake = () => {
                               .split("")
                               .splice(11, 5)
                               .join("")}`}</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td style={{ color: "orange" }}>Ожидает</td>
+                            <td>
+                              {item.rent === "HOUR"
+                                ? "Час"
+                                : item.rent === "DAY"
+                                ? "День"
+                                : item.rent === "WEEK"
+                                ? "Неделя"
+                                : item.rent === "MONTH"
+                                ? "Месяц"
+                                : item.rent === "PIECE"
+                                ? "Штука"
+                                : item.rent === "SQUARE"
+                                ? "1кв. м."
+                                : ""}
+                            </td>
+                            <td>{item.reservation_time}</td>
+                            <td
+                              style={
+                                item.reservation_status === null
+                                  ? { color: "orange" }
+                                  : item.reservation_status === true
+                                  ? { color: "green" }
+                                  : item.reservation_status === false
+                                  ? { color: "red" }
+                                  : ""
+                              }
+                            >
+                              {item.reservation_status === null
+                                ? "Ожидает"
+                                : item.reservation_status === false
+                                ? " Отказано"
+                                : item.reservation_status === true
+                                ? "Подтверждено"
+                                : ""}
+                            </td>
                             <td>{item.owner_name}</td>
                           </tr>
                         );
@@ -121,7 +153,7 @@ const ITake = () => {
                   </tbody>
                 </table>
               </div>
-              {subjects && subjects.length === 0 && (
+              {reservations && reservations.length === 0 && (
                 <div className="favorites_empty">
                   <p>Вы ничего не берёте.</p>
                 </div>

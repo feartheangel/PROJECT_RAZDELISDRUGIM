@@ -151,7 +151,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
       number,
       gender,
       birth,
-      capitalizeFirstLetter(about)
+      about
     )
       .then((response) => {
         if (

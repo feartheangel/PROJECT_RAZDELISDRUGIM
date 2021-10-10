@@ -56,7 +56,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     userData.first_name
   );
   const [renterBookingNumber, setRenterBookingNumber] = React.useState(
-    Number(userData.phone)
+    userData.phone
   );
   const [renterBookingSms, setRenterBookingSms] = React.useState();
 
@@ -270,15 +270,46 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       renterBookingName,
       renterBookingNumber,
       renterBookingSms,
-      startDate,
-      endDate,
+      itemData.rent === "Час"
+        ? `${convertDate(startDate)}`
+        : `${startDate}T00:00:00`,
+      itemData.rent === "Час" ? convertDate(endDate) : `${endDate}T00:00:00`,
       itemData.id,
       itemData.profile.id,
-      userData.id,
-      radioBooking
+      radioBooking,
+      itemData.rent === "Час"
+        ? `${resulthours} час(-ов)`
+        : itemData.rent === "День"
+        ? `${resultdate} сутки(-ок)`
+        : itemData.rent === "Неделя"
+        ? `${resultweek} неделя(-ль)`
+        : itemData.rent === "Месяц"
+        ? `${resultmonths} месяц(-ев)`
+        : "",
+      coords[1]
     )
       .then(() => alert("Запрос на подтверждение бронирования отправлен!"))
       .catch(() => alert("Ошибка бронирования!"));
+  };
+
+  const convertDate = (str) => {
+    str = str.toString();
+    let parts = str.split(" ");
+    let months = {
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12",
+    };
+    return parts[3] + "-" + months[parts[1]] + "-" + parts[2] + "T" + parts[4];
   };
 
   return (

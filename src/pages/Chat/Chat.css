@@ -188,12 +188,12 @@
   background: rgba(76, 201, 240, 0.14);
   border-radius: 139px;
 }
-.button_chat{
+.button_chat {
   max-width: 40px;
-    max-height: 50px;
-    margin-left: 5px;
+  max-height: 50px;
+  margin-left: 5px;
 }
-.button_chat:hover{
+.button_chat:hover {
   cursor: pointer;
 }
 
@@ -201,42 +201,91 @@
   font-size: 16px;
 }
 
+.chat_message_block_content_part__reservation {
+  border: 1px solid rgba(76, 201, 240, 0.14);
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #f7faff;
+  padding: 5px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
 
+.reservation_request_title {
+  color: #4cc9f0;
+  margin-bottom: 10px;
+}
+
+.reservation_request_image {
+  height: 270px;
+  border-radius: 5%;
+  margin-bottom: 10px;
+}
+
+.reservation_request_item_name {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.reservation_request_delivery {
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.reservation_request_dates_wrapper {
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.reservation_request_time_rent {
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.reservation_request_submit_choice {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.reservation_request_choice_yes {
+  width: 100px;
+  height: 40px;
+  background-color: rgb(43, 165, 43);
+  border: none;
+  border-radius: 5%;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.reservation_request_choice_no {
+  width: 100px;
+  height: 40px;
+  background-color: rgb(230, 55, 55);
+  border: none;
+  border-radius: 5%;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 20px;
+  font-weight: 500;
+}
 /* MOBILE */
-@media only screen and (max-width:480px){
-
-  .container_profile_content__chat{
+@media only screen and (max-width: 480px) {
+  .container_profile_content__chat {
     padding: 15px;
     width: -webkit-fill-available;
     margin: 0 0 15px 0;
     border-radius: 0;
   }
-  .chat_message_block_content_part{
+  .chat_message_block_content_part {
     flex: 1 0 auto;
     width: min-content;
   }
-  .chat_message_block_wrapper.own{
+  .chat_message_block_wrapper.own {
     align-self: flex-start;
     width: 100%;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

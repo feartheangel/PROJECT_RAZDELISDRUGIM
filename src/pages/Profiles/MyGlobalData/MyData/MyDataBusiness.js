@@ -164,7 +164,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
       number,
       "NONE",
       null,
-      capitalizeFirstLetter(about),
+      about,
       address
     )
       .then((response) => {
