@@ -1451,6 +1451,7 @@ button {
   position: absolute;
   bottom: 20px;
   left: 10px;
+  cursor: pointer;
 }
 
 .notifications_empty_p {
@@ -1474,9 +1475,10 @@ button {
     display: none;
   }
 
-  .notifications_counter_wrapper{
+  .notifications_counter_wrapper {
     bottom: 605px;
     left: 310px;
+    cursor: pointer;
   }
 
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
@@ -2560,11 +2562,11 @@ button {
   .partners-content {
     margin-bottom: 0;
   }
-  .dropdown-notify-menu-content{
+  .dropdown-notify-menu-content {
     max-width: 260px;
     width: 100%;
   }
-  .dropdown_notify_main_p{
+  .dropdown_notify_main_p {
     font-size: 14px;
   }
 }

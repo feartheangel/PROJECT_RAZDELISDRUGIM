@@ -83,7 +83,14 @@ const SingleChat = ({ item }) => {
             </p>
           </div>
           <div className="single_chat_left_block_second_row">
-            <div className="single_chat_message_text_wrapper">
+            <div
+              style={
+                item.last_message === "Вам поступило новое бронирование"
+                  ? { backgroundColor: "rgba(76, 201, 240, 0.14)" }
+                  : {}
+              }
+              className="single_chat_message_text_wrapper"
+            >
               {item.avatar_last_user_message && (
                 <img
                   className="single_chat_sender_image"

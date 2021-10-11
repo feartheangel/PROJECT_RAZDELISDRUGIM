@@ -11,6 +11,7 @@ import { rootAddress } from "../../http/axios-requests";
 
 const Chat = () => {
   const chatSocket = React.useRef();
+  const [socketReconnect, setSocketReconnect] = React.useState(false);
 
   const chatId = window.location.href.split("?id=")[1];
 
@@ -39,6 +40,14 @@ const Chat = () => {
         setCompanionphoto(data.photo);
         setCompanionId(data.user_id);
         setCompanionLastSeen(data.last_user_visit);
+
+        chatSocket.current.send(
+          JSON.stringify({
+            command: "update_chat_status",
+            message_ids: data.list_ids_unread_messages,
+            chat_id: chatId,
+          })
+        );
       }
 
       if (data.command === "new_message") {
@@ -47,7 +56,19 @@ const Chat = () => {
 
       console.log(data);
     };
-  }, []);
+
+    chatSocket.current.onclose = function (e) {
+      setTimeout(function () {
+        setSocketReconnect(!socketReconnect);
+      }, 1000);
+    };
+
+    chatSocket.current.onerror = function (e) {
+      setTimeout(function () {
+        setSocketReconnect(!socketReconnect);
+      }, 1000);
+    };
+  }, [socketReconnect]);
 
   React.useEffect(() => {
     chatInputRef.current.scrollIntoView({
@@ -63,6 +84,10 @@ const Chat = () => {
   }, []);
 
   const keyDownHandler = (event) => {
+    if (/^\s+$/.test(chatPhrase) || !chatPhrase) {
+      return;
+    }
+
     if (event.keyCode === 13) {
       chatSocket.current.send(
         JSON.stringify({
@@ -77,6 +102,9 @@ const Chat = () => {
   };
 
   const keyDownHandlerButton = () => {
+    if (!chatPhrase) {
+      return;
+    }
     chatSocket.current.send(
       JSON.stringify({
         message: chatPhrase,
@@ -165,26 +193,17 @@ const Chat = () => {
           <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="messanger_wrapper">
               <div className="messanger_optional_wrapper">
-                <p
-                  onClick={() => setSelectedChats("all")}
-                  className={
-                    selectedChats === "all"
-                      ? "messanger_left_optional_p active"
-                      : "messanger_left_optional_p"
-                  }
-                >
-                  Все чаты
-                </p>
-                <p
-                  onClick={() => setSelectedChats("rent")}
-                  className={
-                    selectedChats === "rent"
-                      ? "messanger_left_optional_p active"
-                      : "messanger_left_optional_p"
-                  }
-                >
-                  Бронирования
-                </p>
+                <Link to="/messages" style={{ textDecoration: "none" }}>
+                  <p
+                    className={
+                      selectedChats === "all"
+                        ? "messanger_left_optional_p active"
+                        : "messanger_left_optional_p"
+                    }
+                  >
+                    Все чаты
+                  </p>
+                </Link>
               </div>
               <div
                 ref={chatInputRef}
@@ -552,8 +571,6 @@ const Chat = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

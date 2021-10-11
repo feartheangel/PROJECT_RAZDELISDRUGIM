@@ -1235,6 +1235,23 @@ class Requests {
       return response;
     });
   }
+
+  static updateReservationStatus(id, bool) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      data: {
+        reservation_status: bool,
+      },
+
+      url: `${rootAddress}/api/items/update_reservation_status/${id}/ `,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

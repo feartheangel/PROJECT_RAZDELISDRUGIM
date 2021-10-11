@@ -45,6 +45,7 @@ const Header = () => {
   const [burgerActive, setBurgerActive] = React.useState(false);
   const [openedCategories, setOpenedCategories] = React.useState([]);
   const [notifyPopUpActive, setNotifyPopUpActive] = React.useState();
+  const [socketReconnect, setSocketReconnect] = React.useState(false);
   const [notReadNotes, setNotReadNotes] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
@@ -204,7 +205,19 @@ const Header = () => {
 
       console.log(data);
     };
-  }, []);
+
+    chatSocket.current.onclose = function (e) {
+      setTimeout(function () {
+        setSocketReconnect(!socketReconnect);
+      }, 1000);
+    };
+
+    chatSocket.current.onerror = function (e) {
+      setTimeout(function () {
+        setSocketReconnect(!socketReconnect);
+      }, 1000);
+    };
+  }, [isLoggedIn]);
 
   //выделяем разделы
   const chapters = {};
@@ -385,8 +398,17 @@ const Header = () => {
                     style={{ cursor: "pointer" }}
                   />
                   {notifications && notifications.length !== 0 && (
-                    <div className="notifications_counter_wrapper">
-                      <p>
+                    <div
+                      onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
+                      className="notifications_counter_wrapper"
+                    >
+                      <p
+                        style={{
+                          color: "white",
+                          fontSize: "12px",
+                          cursor: "pointer",
+                        }}
+                      >
                         {notifications.length >= 9
                           ? "9+"
                           : notifications.length}

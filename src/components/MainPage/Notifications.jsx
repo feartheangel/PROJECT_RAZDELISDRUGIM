@@ -29,7 +29,7 @@ const NotifyPopUp = ({
       >
         <div className="dropdown-notify-menu-content">
           {(!notifications || notifications.length === 0) && (
-            <p className="notifications_empty_p">Нет новых уведомелний.</p>
+            <p className="notifications_empty_p">Нет новых уведомлений.</p>
           )}
           {notifications &&
             notifications.map((item, index) => (
