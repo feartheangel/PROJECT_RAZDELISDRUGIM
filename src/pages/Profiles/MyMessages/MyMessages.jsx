@@ -18,8 +18,9 @@ const MyMessages = () => {
     }
   }, []);
 
-  const [selectedChats, setSelectedChats] = React.useState("all");
+  const [selectedChats, setSelectedChats] = React.useState();
   const [usersChats, setUsersChats] = React.useState();
+  const [socketReconnect, setSocketReconnect] = React.useState(false);
 
   const chatSocket = React.useRef();
 
@@ -44,6 +45,18 @@ const MyMessages = () => {
       }
 
       console.log(data);
+    };
+
+    chatSocket.current.onerror = function (e) {
+      setTimeout(function () {
+        setSocketReconnect(!socketReconnect);
+      }, 1000);
+    };
+
+    chatSocket.current.onclose = function (e) {
+      setTimeout(function () {
+        setSocketReconnect(!socketReconnect);
+      }, 1000);
     };
   }, []);
 
@@ -83,7 +96,6 @@ const MyMessages = () => {
             <div className="messanger_wrapper">
               <div className="messanger_optional_wrapper">
                 <p
-                  onClick={() => setSelectedChats("all")}
                   className={
                     selectedChats === "all"
                       ? "messanger_left_optional_p active"
@@ -91,16 +103,6 @@ const MyMessages = () => {
                   }
                 >
                   Все чаты
-                </p>
-                <p
-                  onClick={() => setSelectedChats("rent")}
-                  className={
-                    selectedChats === "rent"
-                      ? "messanger_left_optional_p active"
-                      : "messanger_left_optional_p"
-                  }
-                >
-                  Бронирования
                 </p>
               </div>
               <div className="container_profile_content__messages">

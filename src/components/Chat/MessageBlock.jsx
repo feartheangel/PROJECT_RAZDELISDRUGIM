@@ -112,6 +112,12 @@ const MessageBlock = ({ item, chatSocket, chatId }) => {
               ? "Отправка"
               : ""}
           </p>
+          <p className="reservation_request_delivery">
+            {item.reserve_address_delivery}
+          </p>
+          <p className="reservation_request_delivery">
+            {item.reserve_user_phone}
+          </p>
           <div className="reservation_request_dates_wrapper">
             <p className="reservation_request_date_start">
               Аренда с:{" "}
@@ -137,7 +143,12 @@ const MessageBlock = ({ item, chatSocket, chatId }) => {
           <p className="reservation_request_time_rent">
             Срок аренды: {item.reservation_time}
           </p>
-          {item.reservation_status === null && (
+          {item.reserve_text_sender && (
+            <p className="reservation_request_delivery">
+              {`Сообщение от рентера: ${item.reserve_text_sender}`}
+            </p>
+          )}
+          {item.reservation_status === null && item.owner_id === userData.id && (
             <div className="reservation_request_submit_choice">
               <input
                 onClick={handleReservationAbort}
@@ -153,6 +164,11 @@ const MessageBlock = ({ item, chatSocket, chatId }) => {
               />
             </div>
           )}
+
+          {item.reservation_status === null &&
+            item.owner_id !== userData.id && (
+              <p style={{ color: "orange" }}>Ожидает </p>
+            )}
 
           {item.reservation_status === true && (
             <p style={{ color: "green" }}> Подтверждено</p>

@@ -30,12 +30,20 @@ const MyItems = () => {
     });
   }, []);
 
-  const handleReservationSubmit = () => {
-    alert("Тут должно сработать подтверждение");
+  const handleReservationSubmit = (id) => {
+    Requests.updateReservationStatus(id, true).then(() => {
+      Requests.getIncomingReservations().then((res) => {
+        setReservations(res.data);
+      });
+    });
   };
 
-  const handleReservationAbort = () => {
-    alert("Тут должен сработать отказ");
+  const handleReservationAbort = (id) => {
+    Requests.updateReservationStatus(id, false).then(() => {
+      Requests.getIncomingReservations().then((res) => {
+        setReservations(res.data);
+      });
+    });
   };
 
   return (
@@ -150,13 +158,17 @@ const MyItems = () => {
                                       type="button"
                                       className="reservation_submit_choice_yes"
                                       title=" Подтвердить бронирование"
-                                      onClick={handleReservationSubmit}
+                                      onClick={() =>
+                                        handleReservationSubmit(item.id)
+                                      }
                                     />
                                     <input
                                       type="button"
                                       className="reservation_submit_choice_no"
                                       title="Отклонить бронирование"
-                                      onClick={handleReservationAbort}
+                                      onClick={() =>
+                                        handleReservationAbort(item.id)
+                                      }
                                     />
                                   </div>
                                 ) : item.reservation_status === false ? (
@@ -167,7 +179,7 @@ const MyItems = () => {
                                   ""
                                 )}
                               </td>
-                              <td>{item.owner_name}</td>
+                              <td>{item.renter_name}</td>
                             </tr>
                           );
                         })}
