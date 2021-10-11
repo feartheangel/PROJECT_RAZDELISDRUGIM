@@ -30,6 +30,8 @@ const ITake = () => {
     }
   }, []);
 
+  // console.log(item.reservation_start_time);
+
   return (
     <div>
       <Header />
@@ -71,17 +73,11 @@ const ITake = () => {
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Название вещи</th>
-                      <th scope="col">
-                        Аренда <br />
-                        ОТ
-                      </th>
-                      <th scope="col">
-                        Аренда
-                        <br /> ДО
-                      </th>
-                      <th scope="col">Тип аренды</th>
-                      <th scope="col">Время аренды</th>
+                      <th scope="col">Наименование</th>
+                      <th scope="col">Начало</th>
+                      <th scope="col">Окончание</th>
+                      <th scope="col">Срок</th>
+                      <th scope="col">Длительность</th>
                       <th scope="col" style={{ verticalAlign: "top" }}>
                         Статус
                       </th>
@@ -97,20 +93,61 @@ const ITake = () => {
                           <tr style={{ cursor: "pointer" }}>
                             <th scope="row">{index + 1}</th>
                             <td>{item.name_item}</td>
-                            <td>{`${item.reservation_start_time
-                              .split("")
-                              .splice(0, 10)
-                              .join("")} ${item.reservation_start_time
-                              .split("")
-                              .splice(11, 5)
-                              .join("")}`}</td>
-                            <td>{`${item.reservation_end_time
-                              .split("")
-                              .splice(0, 10)
-                              .join("")} ${item.reservation_end_time
-                              .split("")
-                              .splice(11, 5)
-                              .join("")}`}</td>
+                            <td>
+                              {item.rent === "HOUR"
+                                ? `${item.reservation_start_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}                                
+                               ${item.reservation_start_time
+                                 .split("")
+                                 .splice(11, 5)
+                                 .join("")}`
+                                : `${item.reservation_start_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}`}
+                            </td>
+                            <td>
+                              {" "}
+                              {item.rent === "HOUR"
+                                ? `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}                                
+                               ${item.reservation_end_time
+                                 .split("")
+                                 .splice(11, 5)
+                                 .join("")}`
+                                : `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}`}
+                            </td>
                             <td>
                               {item.rent === "HOUR"
                                 ? "Час"
@@ -141,7 +178,7 @@ const ITake = () => {
                               {item.reservation_status === null
                                 ? "Ожидает"
                                 : item.reservation_status === false
-                                ? " Отказано"
+                                ? "Отклонено"
                                 : item.reservation_status === true
                                 ? "Подтверждено"
                                 : ""}
