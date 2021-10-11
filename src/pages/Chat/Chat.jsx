@@ -37,10 +37,11 @@ const Chat = () => {
       if (data.hasOwnProperty("messages")) {
         setMessages(data.messages);
         setCompanionName(data.name);
-        setCompanionphoto(data.photo);
+        setCompanionphoto(data.item_image);
         setCompanionId(data.user_id);
         setCompanionLastSeen(data.last_user_visit);
-
+        setItemId(data.item_id);
+        setItemName(data.name_item);
         chatSocket.current.send(
           JSON.stringify({
             command: "update_chat_status",
@@ -71,10 +72,7 @@ const Chat = () => {
   }, [socketReconnect]);
 
   React.useEffect(() => {
-    chatInputRef.current.scrollIntoView({
-      block: "start",
-    });
-    document.title = "Шерсенджер: #разделисдругим";
+    window.scrollTo(0, document.body.scrollHeight);
   }, []);
 
   React.useEffect(() => {
@@ -126,6 +124,8 @@ const Chat = () => {
   const [companionPhoto, setCompanionphoto] = React.useState();
   const [companionId, setCompanionId] = React.useState();
   const [companionLastSeen, setCompanionLastSeen] = React.useState();
+  const [itemId, setItemId] = React.useState();
+  const [itemName, setItemName] = React.useState();
 
   const chatBlock = React.useRef();
   const chatBlockMobile = React.useRef();
@@ -219,7 +219,7 @@ const Chat = () => {
                         />
                       </Link>
                       <Link
-                        to={`/public-profile?id=${companionId}`}
+                        to={`/item-card?id=${itemId}`}
                         style={{ textDecoration: "none" }}
                       >
                         <img
@@ -230,12 +230,19 @@ const Chat = () => {
                     </div>
 
                     <div className="chat_header_left_side_horizontal">
-                      <Link
-                        to={`/public-profile?id=${companionId}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <p className="chat_header_name_p">{companionName}</p>
-                      </Link>
+                      <p className="chat_header_name_p">
+                        <Link
+                          to={`/public-profile?id=${companionId}`}
+                          style={{ textDecoration: "none", color: "#4cc9f0" }}
+                        >
+                          {`${companionName} `}
+                        </Link>
+                        <Link
+                          to={`/item-card?id=${itemId}`}
+                          style={{ textDecoration: "none", color: "#4cc9f0" }}
+                        >{`(${itemName})`}</Link>
+                      </p>
+
                       <p className="chat_header_last_seen_p">
                         {companionLastSeen === "None"
                           ? "Был в сети недавно"

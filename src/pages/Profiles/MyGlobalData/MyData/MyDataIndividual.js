@@ -58,6 +58,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
     /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
   const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
 
+  //обновление фото профиля
   const photoHandler = (e) => {
     const formData = new FormData();
     delete formData.image_profile;
@@ -70,6 +71,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
     });
   };
 
+  //открытие окошек редактирования соц сетей
   const socialClickHandler = (social) => {
     if (!socialPopUpActive) {
       setActiveSocial(social);
@@ -80,6 +82,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
     }
   };
 
+  //подьтверждение телефона
   const numberVerifyHandler = () => {
     if (!userData.phone) {
       alert("Сначала сохраните номер телефона в профиле!");
@@ -96,6 +99,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
     setSendCountNumber(sendCountNumber + 1);
   };
 
+  //подтверждение мэйла
   const emailVerifyHandler = () => {
     if (!userData.email) {
       alert("Сначала сохраните адрес почты в профиле!");

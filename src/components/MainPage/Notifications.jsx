@@ -38,6 +38,7 @@ const NotifyPopUp = ({
                 notification={item}
                 chatSocket={chatSocket}
                 notifications={notifications}
+                setNotifyPopUpActive={setNotifyPopUpActive}
               />
             ))}
         </div>
