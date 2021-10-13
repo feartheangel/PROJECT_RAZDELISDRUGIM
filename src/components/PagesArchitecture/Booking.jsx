@@ -48,6 +48,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [office, setOffice] = React.useState();
   const [building, setBuilding] = React.useState();
   const [checked, setChecked] = React.useState(true);
+  const [timechecked, setTimeChecked] = React.useState(0);
 
   const [coords, setCoords] = React.useState();
 
@@ -71,8 +72,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const time = new Date().toLocaleString();
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
-
-  console.log(delivery_Сhoice);
 
   const filterPassedTime = (date) => {
     // Disable no works hours
@@ -117,13 +116,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   );
 
   // расчёт времени бронирования
-  var resulthours = diffhours;
+  var resulthours = +timechecked;
   var resultdate = diffday;
   var resultweek = diffweek;
   var resultmonths = diffmonths;
   var resultyears = diffyears;
-
-  console.log(filterPassedTime);
 
   // расчёт суммы бронирования если день/час аренды
   const resultSummaArends = Math.round(
@@ -137,6 +134,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       ? resultmonths * itemData.price_rent
       : null
   );
+
+  console.log(isNaN(resulthours));
+  console.log(isNaN(resultweek));
   //  расчёт итоговой суммы
   const totalAmount =
     resultSummaArends +
@@ -160,6 +160,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   // сообщение рентера
   const renterBookingSmsHandler = (e) => {
     setRenterBookingSms(e.target.value);
+  };
+  // длительность аренды
+  const inputTimeCheked = (e) => {
+    setTimeChecked(e.target.value);
   };
 
   //выделяем адреса
@@ -496,10 +500,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         <div className="form-group" style={{ display: "flex" }}>
                           <label
                             className="information_all_down_left_date-p"
-                            htmlFor="booking_date_input"
+                            htmlFor="booking_date_input_time"
                           >
                             <DatePicker
-                              id="booking_date_input"
+                              id="booking_date_input_time"
                               className="booking_input_date"
                               selected={startDate}
                               onChange={(date) => setStartDate(date)}
@@ -514,30 +518,22 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                             />
                           </label>
 
-                          <span className="information_all_down_left_date-p">
-                            {" "}
-                            -{" "}
-                          </span>
+                          <span> на </span>
 
                           <label
                             className="information_all_down_left_date-p"
-                            htmlFor="booking_date_end_input"
+                            htmlFor="booking_date_end_input_time"
                           >
-                            <DatePicker
-                              id="booking_date_end_input"
-                              className="booking_input_date"
-                              selected={endDate}
-                              onChange={(date) => setEndDate(date)}
+                            <input
+                              type="number"
+                              id="booking_date_end_input_time"
+                              onChange={(e) => inputTimeCheked(e)}
                               disabled={startDate === undefined}
-                              showTimeSelect
-                              locale="ru"
-                              timeFormat="HH:mm"
-                              dateFormat="Pp"
-                              timeIntervals={15}
-                              minDate={new Date()}
-                              timeInputLabel="Time:"
-                              filterTime={filterPassedTime}
+                              className="booking_input_date_end"
+                              required
+                              min="1"
                             />
+                            <span> час</span>
                           </label>
                         </div>
                       )}
@@ -634,6 +630,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         className="input_setting"
                         value="1"
                         onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                        checked={checked}
                       />
                       <label
                         for="radio-1"
@@ -1114,9 +1111,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       : resultdate + " сут"
                     : ""}
                   {itemData.rent === "Час"
-                    ? isNaN(resulthours)
-                      ? 0 + " час"
-                      : resultdate + " час"
+                    ? isNaN(Number.resulthours)
+                      ? resulthours + " час"
+                      : 0 + " час"
                     : ""}
                   {itemData.rent === "Неделя"
                     ? isNaN(resultweek)
@@ -1990,7 +1987,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   {itemData.rent === "Час"
                     ? isNaN(resulthours)
                       ? 0 + " час"
-                      : resultdate + " час"
+                      : resulthours + " час"
                     : ""}
                   {itemData.rent === "Неделя"
                     ? isNaN(resultweek)
