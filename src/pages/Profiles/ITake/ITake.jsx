@@ -1,12 +1,12 @@
 import React from "react";
 import { ItemCardProfile, ItemDeleteSubmit } from "../../../components/index";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "../MyItems/MyItems.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 
-const ITake = () => {
+const ITake = ({ itemData }) => {
   const { subjects } = useSelector(({ userData }) => userData);
 
   const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);

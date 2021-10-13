@@ -47,6 +47,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [room, setRoom] = React.useState();
   const [office, setOffice] = React.useState();
   const [building, setBuilding] = React.useState();
+  const [checked, setChecked] = React.useState(true);
 
   const [coords, setCoords] = React.useState();
 
@@ -70,6 +71,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const time = new Date().toLocaleString();
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
+
+  console.log(delivery_Сhoice);
 
   const filterPassedTime = (date) => {
     // Disable no works hours
@@ -119,6 +122,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   var resultweek = diffweek;
   var resultmonths = diffmonths;
   var resultyears = diffyears;
+
+  console.log(filterPassedTime);
 
   // расчёт суммы бронирования если день/час аренды
   const resultSummaArends = Math.round(
@@ -1497,6 +1502,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         name="delivery"
                         className="input_setting"
                         value="1"
+                        checked={delivery_Сhoice === "undefined" ? true : false}
                         onChange={(e) => setDelivery_Сhoice(e.target.value)}
                       />
                       <label
@@ -1570,7 +1576,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 <div className="up_block_second_block_up">
                   <img src={metka} className="booking_metka" />
                   <p className="up_block_second_block_up-p">
-                    Адрес местонахождения вещи
+                    Адрес местонахождения
                   </p>
                 </div>
                 <div className="up_block_second_block_center">
@@ -1915,35 +1921,30 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     Ошибка! (Стартовое время ввода либо меньше настоящего
                     времени либо равное времени завершения аренды...){" "}
                   </span>
-                ) : (resulthours <= 0 || resulthours > 23) &&
-                  itemData.rent === "Час" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
-                ) : (resulthours !== 0 || resulthours <= 23) &&
-                  itemData.rent === "Час" ? (
+                ) : resulthours <= 0 && itemData.rent === "Час" ? (
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                ) : resulthours !== 0 && itemData.rent === "Час" ? (
                   totalAmount + "  BYN"
                 ) : (resultdate <= 0 || resultdate > 30) &&
                   itemData.rent === "День" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
                 ) : (resultdate !== 0 || resultdate <= 30) &&
                   itemData.rent === "День" ? (
                   totalAmount + "  BYN"
                 ) : (resultweek <= 0 || resultweek > 4) &&
                   itemData.rent === "Неделя" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
                 ) : (resultweek !== 0 || resultweek <= 4) &&
                   itemData.rent === "Неделя" ? (
                   totalAmount + "  BYN"
                 ) : (resultmonths <= 0 || resultmonths > 12) &&
                   itemData.rent === "Месяц" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
                 ) : (resultmonths !== 0 || resultmonths <= 12) &&
                   itemData.rent === "Месяц" ? (
                   totalAmount + "  BYN"
                 ) : isNaN(totalAmount) ? (
-                  <span style={{ color: "red" }}>
-                    {" "}
-                    Ошибка условия аренды! Проверьте в чём указана аренда.
-                  </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды!</span>
                 ) : (
                   totalAmount + "  BYN"
                 )}{" "}
