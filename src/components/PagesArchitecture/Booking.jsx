@@ -508,6 +508,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               onChange={(date) => setStartDate(date)}
                               locale="ru"
                               dateFormat="Pp"
+                              timeFormat="HH:mm"
+                              // dateFormat="YYYY-MM-DDTHH:MM"
                               minDate={new Date()}
                             />
                           </label>
@@ -576,8 +578,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               showTimeSelect
                               locale="ru"
                               timeFormat="HH:mm"
-                              // dateFormat="Pp"
-                              dateFormat="YYYY-MM-DDTHH:MM"
+                              dateFormat="Pp"
                               timeIntervals={15}
                               minDate={new Date()}
                               timeInputLabel="Time:"
