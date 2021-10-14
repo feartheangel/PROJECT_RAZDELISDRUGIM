@@ -99,6 +99,7 @@ textarea {
   display: none;
 }
 
+
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
   #globaldata_mobile {
