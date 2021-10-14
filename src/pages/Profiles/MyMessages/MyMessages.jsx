@@ -107,7 +107,9 @@ const MyMessages = () => {
               </div>
               <div className="container_profile_content__messages">
                 {usersChats &&
-                  usersChats.map((item) => <SingleChat item={item} />)}
+                  usersChats.map((item) => (
+                    <SingleChat item={item} с chatSocket={chatSocket} />
+                  ))}
               </div>
             </div>
           </div>
@@ -181,7 +183,9 @@ const MyMessages = () => {
               </div>
               <div className="container_profile_content__messages">
                 {usersChats &&
-                  usersChats.map((item) => <SingleChat item={item} />)}
+                  usersChats.map((item) => (
+                    <SingleChat item={item} chatSocket={chatSocket} />
+                  ))}
               </div>
             </div>
           </div>
@@ -253,7 +257,9 @@ const MyMessages = () => {
               </div>
               <div className="container_profile_content__messages">
                 {usersChats &&
-                  usersChats.map((item) => <SingleChat item={item} />)}
+                  usersChats.map((item) => (
+                    <SingleChat item={item} chatSocket={chatSocket} />
+                  ))}
               </div>
             </div>
           </div>

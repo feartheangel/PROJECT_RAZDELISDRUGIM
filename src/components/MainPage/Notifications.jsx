@@ -18,6 +18,23 @@ const NotifyPopUp = ({
   }, []); */
 
   const notifyRef = useRef(null);
+  const notifyBlockRef = useRef(null);
+  const [viewedNotifications, setViewedNotifications] = React.useState();
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
+
+  const scrollHandler = () => {
+    if (
+      window.pageYOffset + window.innerHeight >=
+      notifyBlockRef.current.offsetTop
+    )
+      console.log(`Hidden element is now visible`);
+  };
+
   return (
     <div ref={notifyRef}>
       <div

@@ -536,6 +536,9 @@
 #regform_ipad{
   display: none;
 }
+#globaldata_ipad{
+  display: none;
+}
 
 .reg_form_link {
   text-decoration: none;
@@ -725,6 +728,12 @@
 
   #regform_ipad{
     display: none;
+  }
+  #globaldata_ipad{
+    display: flex;
+  }
+  #profile_ipad{
+    display: flex;
   }
 
   .reg-content {

@@ -11,6 +11,7 @@ import Yandex from "../../img/MainPage/Method=Yandex.png";
 import Planet from "../../img/MainPage/Planet.png";
 import VK from "../../img/MainPage/VK.png";
 import mark from "../../img/MainPage/Mark.png";
+import viber from "../../img/MainPage/viber-logo.jpeg";
 
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -202,6 +203,21 @@ const Footer = () => {
               <img src={Instagram} alt="" className="footer-social" />
               <img src={Facebook} alt="" className="footer-social" />
               <img src={VK} alt="" className="footer-social" />
+              <a
+                href={
+                  window.screen.width > 1024
+                    ? "viber://pa?chatURI=bynewbotforgsp"
+                    : "viber://pa/info?uri=bynewbotforgsp"
+                }
+                target="_blank"
+              >
+                <img
+                  style={{ width: "25px", height: "25px" }}
+                  src={viber}
+                  alt=""
+                  className="footer-social"
+                />
+              </a>
             </div>
             <p className="footer-fifth-p">Все сделки защищены</p>
             <div className="footer-payments">
@@ -218,8 +234,7 @@ const Footer = () => {
         <div className="footer-img-logo-wrapper">
           <img src={Logo2} alt="" className="footer-img-logo" />
         </div>
-        <div className="footer-lower-labels"
-        >
+        <div className="footer-lower-labels">
           <Link
             style={{ textDecoration: "none", cursor: "pointer" }}
             to="/users-agreement"
@@ -240,8 +255,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-lower-part" id="footer-lower2">
-        <div className="footer-lower-labels"
-        >
+        <div className="footer-lower-labels">
           <Link
             style={{ textDecoration: "none", cursor: "pointer" }}
             to="/users-agreement"

@@ -300,6 +300,7 @@ const Header = () => {
                     className="header-right-content-logged-img"
                     src={Like_vector}
                     id="favorites"
+                    alt=""
                   />
                 </Link>
                 <img
@@ -308,6 +309,7 @@ const Header = () => {
                   id="notifications"
                   onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
                   style={{ cursor: "pointer" }}
+                  alt=""
                 />
                 {notifications && notifications.length !== 0 && (
                   <div className="notifications_counter_wrapper">
@@ -325,11 +327,13 @@ const Header = () => {
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                     id="logged-img_last_item"
+                    alt=""
                   />
                   <img
                     className="header-right-content-logged-img"
                     src={MenuStroke}
                     id="menuStroke"
+                    alt=""
                   />
                 </div>
               </div>
