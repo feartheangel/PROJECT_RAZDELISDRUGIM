@@ -67,7 +67,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   // для дней мин время
   var dateminbooking = new Date().toJSON().slice(0, 10);
 
-  const time = new Date();
+  const time = new Date().toLocaleString();
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
 
@@ -278,13 +278,13 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       itemData.profile.id,
       radioBooking,
       itemData.rent === "Час"
-        ? `${resulthours} час(-ов)`
+        ? `${resulthours} час`
         : itemData.rent === "День"
-        ? `${resultdate} сутки(-ок)`
+        ? `${resultdate} сут`
         : itemData.rent === "Неделя"
-        ? `${resultweek} неделя(-ль)`
+        ? `${resultweek} нед`
         : itemData.rent === "Месяц"
-        ? `${resultmonths} месяц(-ев)`
+        ? `${resultmonths} мес`
         : "",
       coords[1]
     )
@@ -500,8 +500,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               onChange={(date) => setStartDate(date)}
                               showTimeSelect
                               locale="ru"
-                              dateFormat="Pp"
                               timeFormat="HH:mm"
+                              dateFormat="Pp"
                               timeIntervals={15}
                               minDate={new Date()}
                               timeInputLabel="Time:"
@@ -526,8 +526,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               disabled={startDate === undefined}
                               showTimeSelect
                               locale="ru"
-                              dateFormat="Pp"
                               timeFormat="HH:mm"
+                              dateFormat="Pp"
                               timeIntervals={15}
                               minDate={new Date()}
                               timeInputLabel="Time:"

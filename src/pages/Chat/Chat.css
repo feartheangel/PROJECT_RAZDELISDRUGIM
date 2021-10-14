@@ -272,6 +272,16 @@
   margin-right: 20px;
   font-weight: 500;
 }
+
+.message_block_read_p {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(9, 29, 32, 0.4);
+}
+
 /* MOBILE */
 @media only screen and (max-width: 480px) {
   .container_profile_content__chat {

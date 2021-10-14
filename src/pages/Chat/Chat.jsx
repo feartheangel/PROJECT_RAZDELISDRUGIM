@@ -42,6 +42,7 @@ const Chat = () => {
         setCompanionLastSeen(data.last_user_visit);
         setItemId(data.item_id);
         setItemName(data.name_item);
+        setMessageIsRead(data.is_last_message);
         chatSocket.current.send(
           JSON.stringify({
             command: "update_chat_status",
@@ -126,6 +127,7 @@ const Chat = () => {
   const [companionLastSeen, setCompanionLastSeen] = React.useState();
   const [itemId, setItemId] = React.useState();
   const [itemName, setItemName] = React.useState();
+  const [messageIsRead, setMessageIsRead] = React.useState();
 
   const chatBlock = React.useRef();
   const chatBlockMobile = React.useRef();
@@ -264,6 +266,8 @@ const Chat = () => {
                           key={index}
                           chatSocket={chatSocket}
                           chatId={chatId}
+                          messageIsRead={messageIsRead}
+                          index={index}
                         />
                       ))}
                   </div>

@@ -203,6 +203,10 @@ const Header = () => {
         setNotReadNotes(data.count_not_read_note);
       }
 
+      if (data.notification_list) {
+        setNotifications(data.notification_list.reverse());
+      }
+
       console.log(data);
     };
 
