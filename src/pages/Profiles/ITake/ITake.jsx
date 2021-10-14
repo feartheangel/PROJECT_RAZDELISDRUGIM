@@ -30,7 +30,7 @@ const ITake = ({ itemData }) => {
     }
   }, []);
 
-  // console.log(item.reservation_start_time);
+  // console.log(reservation_start_time);
 
   return (
     <div>
@@ -122,7 +122,7 @@ const ITake = ({ itemData }) => {
                             </td>
                             <td>
                               {" "}
-                              {item.rent === "HOUR"
+                              {/* {item.rent === "HOUR"
                                 ? `${item.reservation_end_time
                                     .split("")
                                     .slice(8, 10)
@@ -146,7 +146,7 @@ const ITake = ({ itemData }) => {
                                     .join("")}${item.reservation_end_time
                                     .split("")
                                     .slice(0, 4)
-                                    .join("")}`}
+                                    .join("")}`} */}
                             </td>
                             <td>
                               {item.rent === "HOUR"
