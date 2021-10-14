@@ -843,6 +843,17 @@
   box-sizing: border-box;
   border-radius: 7px;
   padding: 2px;
+  height: 35px;
+    padding-left: 10px;
+}
+.booking_input_date_end{
+  max-width: 80px;
+  border: 1.31722px solid rgba(9, 29, 32, 0.4);
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 2px;
+  height: 35px;
+    padding-left: 10px;
 }
 .up_block_right_input_block-text {
   margin-left: 5px;
