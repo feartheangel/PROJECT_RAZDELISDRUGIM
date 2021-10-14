@@ -156,16 +156,6 @@ const MessageBlock = ({
                 .splice(11, 5)
                 .join("")}`}
             </p>
-            <p className="reservation_request_date_end">
-              по:{" "}
-              {`${item.time_end_reserve
-                .split("")
-                .splice(0, 10)
-                .join("")} ${item.time_end_reserve
-                .split("")
-                .splice(11, 5)
-                .join("")}`}
-            </p>
           </div>
           <p className="reservation_request_time_rent">
             Срок аренды: {item.reservation_time}

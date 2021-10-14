@@ -280,8 +280,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       renterBookingSms,
       itemData.rent === "Час"
         ? `${convertDate(startDate)}`
-        : `${startDate}T00:00:00`,
-      itemData.rent === "Час" ? convertDate(endDate) : `${endDate}T00:00:00`,
+        : `${convertDate(startDate)}`,
       itemData.id,
       itemData.profile.id,
       radioBooking,
@@ -297,7 +296,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       coords[1]
     )
       .then(() => alert("Запрос на подтверждение бронирования отправлен!"))
-      .catch(() => alert("Ошибка бронирования!"));
+      .catch(() => alert("Ошибка бронирования!" + startDate));
   };
 
   const convertDate = (str) => {
@@ -508,6 +507,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               onChange={(date) => setStartDate(date)}
                               locale="ru"
                               dateFormat="Pp"
+                              timeFormat="HH:mm"
+                              // dateFormat="YYYY-MM-DDTHH:MM"
                               minDate={new Date()}
                             />
                           </label>
@@ -576,8 +577,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               showTimeSelect
                               locale="ru"
                               timeFormat="HH:mm"
-                              // dateFormat="Pp"
-                              dateFormat="YYYY-MM-DDTHH:MM"
+                              dateFormat="Pp"
                               timeIntervals={15}
                               minDate={new Date()}
                               timeInputLabel="Time:"

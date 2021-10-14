@@ -223,6 +223,28 @@ const Header = () => {
     };
   }, [isLoggedIn]);
 
+  const [notificationsOpened, setNotificationsOpened] = React.useState();
+
+  const readNotifications = [];
+
+  notifications &&
+    notifications.map((item) => readNotifications.push(item.id_note));
+
+  React.useEffect(() => {
+    if (!notifyPopUpActive && notificationsOpened) {
+      chatSocket.current.send(
+        JSON.stringify({
+          command: "delete_notifications",
+          note_id: readNotifications,
+        })
+      );
+    }
+
+    if (notifyPopUpActive) {
+      setNotificationsOpened(true);
+    }
+  }, [notifyPopUpActive]);
+
   //выделяем разделы
   const chapters = {};
   isLoaded &&

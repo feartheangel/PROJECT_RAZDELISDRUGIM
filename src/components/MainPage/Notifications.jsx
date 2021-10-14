@@ -7,7 +7,7 @@ const NotifyPopUp = ({
   notifications,
   chatSocket,
 }) => {
-  /*   React.useEffect(() => {
+  React.useEffect(() => {
     const onClick = (e) => {
       if (notifyRef.current) {
         notifyRef.current.contains(e.target) || setNotifyPopUpActive(false);
@@ -15,25 +15,11 @@ const NotifyPopUp = ({
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
-  }, []); */
+  }, []);
 
   const notifyRef = useRef(null);
   const notifyBlockRef = useRef(null);
   const [viewedNotifications, setViewedNotifications] = React.useState();
-
-  React.useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
-
-    return () => window.removeEventListener("scroll", scrollHandler);
-  }, []);
-
-  const scrollHandler = () => {
-    if (
-      window.pageYOffset + window.innerHeight >=
-      notifyBlockRef.current.offsetTop
-    )
-      console.log(`Hidden element is now visible`);
-  };
 
   return (
     <div ref={notifyRef}>

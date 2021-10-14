@@ -1,7 +1,5 @@
 import React from "react";
-import Avatar from "../../img/CardThings/LeftContent/Rectangle 7.png";
 import Dot from "../../img/Chat/dot.png";
-import Actions from "../../img/Chat/actions.png";
 import { rootAddress } from "../../http/axios-requests";
 import { Link } from "react-router-dom";
 import Shape from "../../img/Shape.png";
