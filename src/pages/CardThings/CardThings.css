@@ -1155,6 +1155,25 @@
     margin-right: 25px;
   }
 
+  .booking_input_date {
+    max-width: 150px;
+    border: 1.31722px solid rgba(9, 29, 32, 0.4);
+    box-sizing: border-box;
+    border-radius: 7px;
+    padding: 2px;
+    height: 35px;
+      padding-left: 10px;
+  }
+  .booking_input_date_end {
+    max-width: 50px;
+    border: 1.31722px solid rgba(9, 29, 32, 0.4);
+    box-sizing: border-box;
+    border-radius: 7px;
+    padding: 2px;
+    height: 35px;
+    padding-left: 10px;
+}
+
   .card_content_right {
     padding: 0;
   }

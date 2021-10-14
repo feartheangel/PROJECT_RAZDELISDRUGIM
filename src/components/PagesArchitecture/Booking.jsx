@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -117,10 +116,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
   // расчёт времени бронирования
   var resulthours = +timechecked;
-  var resultdate = diffday;
-  var resultweek = diffweek;
-  var resultmonths = diffmonths;
-  var resultyears = diffyears;
+  var resultdate = +timechecked;
+  var resultweek = +timechecked;
+  var resultmonths = +timechecked;
+  var resultyears = +timechecked;
 
   // расчёт суммы бронирования если день/час аренды
   const resultSummaArends = Math.round(
@@ -459,9 +458,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
                       <img className="booking_calendar" src={Calendar} />
-                      {((itemData && itemData.rent === "День") ||
-                        (itemData && itemData.rent === "Неделя") ||
-                        (itemData && itemData.rent === "Месяц")) && (
+                      {itemData && itemData.rent === "nonegl" && (
                         <div className="form-group">
                           <label
                             className="information_all_down_left_date-p"
@@ -496,6 +493,75 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           </label>
                         </div>
                       )}
+                      {((itemData && itemData.rent === "День") ||
+                        (itemData && itemData.rent === "Неделя") ||
+                        (itemData && itemData.rent === "Месяц")) && (
+                        <div className="form-group" style={{ display: "flex" }}>
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_input_time"
+                          >
+                            <DatePicker
+                              id="booking_date_input_time"
+                              className="booking_input_date"
+                              selected={startDate}
+                              onChange={(date) => setStartDate(date)}
+                              locale="ru"
+                              dateFormat="dd/M/yyyy"
+                              minDate={new Date()}
+                            />
+                          </label>
+
+                          <div
+                            style={{
+                              display: "flex",
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                              className="information_all_down_left_alldate"
+                            >
+                              {" "}
+                              на{" "}
+                            </span>
+                          </div>
+
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_end_input_time"
+                          >
+                            <input
+                              type="number"
+                              id="booking_date_end_input_time"
+                              onChange={(e) => inputTimeCheked(e)}
+                              disabled={startDate === undefined}
+                              className="booking_input_date_end"
+                              required
+                              min="1"
+                            />
+                            <span className="information_all_down_left_alldate">
+                              {" "}
+                              {itemData && itemData.rent === "Час"
+                                ? "час"
+                                : itemData && itemData.rent === "День"
+                                ? "сут"
+                                : itemData && itemData.rent === "Неделя"
+                                ? "нед"
+                                : itemData && itemData.rent === "Месяц"
+                                ? "мес"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штук"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
+                                : ""}
+                            </span>
+                          </label>
+                        </div>
+                      )}
+
                       {itemData && itemData.rent === "Час" && (
                         <div className="form-group" style={{ display: "flex" }}>
                           <label
@@ -518,7 +584,22 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                             />
                           </label>
 
-                          <span> на </span>
+                          <div
+                            style={{
+                              display: "flex",
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                              className="information_all_down_left_alldate"
+                            >
+                              {" "}
+                              на{" "}
+                            </span>
+                          </div>
 
                           <label
                             className="information_all_down_left_date-p"
@@ -533,37 +614,49 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               required
                               min="1"
                             />
-                            <span> час</span>
+                            <span className="information_all_down_left_alldate">
+                              {" "}
+                              {itemData && itemData.rent === "Час"
+                                ? "час"
+                                : itemData && itemData.rent === "День"
+                                ? "сут"
+                                : itemData && itemData.rent === "Неделя"
+                                ? "нед"
+                                : itemData && itemData.rent === "Месяц"
+                                ? "мес"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штук"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
+                                : ""}
+                            </span>
                           </label>
                         </div>
                       )}
                     </div>
-                    {Number.isNaN(resultdate) ? (
-                      ""
-                    ) : (
-                      <p className="information_all_down_left_alldate">
-                        {itemData && itemData.rent === "День" && (
-                          <p className="information_all_down_left_alldate">
-                            {resultdate} сутки(-ок)
-                          </p>
-                        )}
-                        {itemData && itemData.rent === "Час" && (
-                          <p className="information_all_down_left_alldate">
-                            {resulthours} час(-ов)
-                          </p>
-                        )}
-                        {itemData && itemData.rent === "Неделя" && (
-                          <p className="information_all_down_left_alldate">
-                            {resultweek} Неделя(-ли)
-                          </p>
-                        )}
-                        {itemData && itemData.rent === "Месяц" && (
-                          <p className="information_all_down_left_alldate">
-                            {resultmonths} Месяц(-ев)
-                          </p>
-                        )}
-                      </p>
-                    )}
+
+                    <p className="information_all_down_left_alldate">
+                      {itemData && itemData.rent === "День" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultdate} сутки(-ок)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Час" && (
+                        <p className="information_all_down_left_alldate">
+                          {resulthours} час(-ов)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Неделя" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultweek} Неделя(-ли)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Месяц" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultmonths} Месяц(-ев)
+                        </p>
+                      )}
+                    </p>
                   </div>
                   <div className="information_all_down_right">
                     {/* Время получения и возврата*/}
@@ -720,209 +813,158 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       Адрес доступен после регистрации
                     </p>
                   )}
-                  {/* <p className="up_block_second_block_center-p">
-                  Показать на карте
-                </p> */}
                 </div>
 
-                <div className="up_block_second_block_down">
-                  <div className="up_block_second_block_up">
-                    <img src={metka} className="booking_metka" />
-                    <p className="up_block_second_block_up-p">Адрес доставки</p>
-                  </div>
-                  <div>
-                    <div className="add-item-input-wrapper">
-                      <select
-                        className="add-item-select-input"
-                        onChange={(e) => setCoords(e.target.value.split(",,"))}
-                      >
-                        <option>Не выбран</option>
-                        {isLoaded &&
-                          addressesFormatted.map((item, index) => (
-                            <option
-                              selected={
-                                addressAdded &&
-                                index + 1 === addressesFormatted.length
-                              }
-                              value={`${item[1]},,${item[0]}`}
-                              key={index}
-                            >
-                              {item[0]}
-                            </option>
-                          ))}
-                      </select>
+                {(itemData.delivery.includes("Привезу и заберу сам") ||
+                  itemData.delivery.includes("Доставка курьером")) && (
+                  <div className="up_block_second_block_down">
+                    <div className="up_block_second_block_up">
+                      <img src={metka} className="booking_metka" />
+                      <p className="up_block_second_block_up-p">
+                        Адрес доставки
+                      </p>
                     </div>
-                    {addresses.length < maxAddressesCount && (
-                      <div
-                        style={{ marginBottom: "20px" }}
-                        id="dop_parametr_wrapper"
-                      >
-                        <input
-                          id="dop_parametr"
-                          className="add-item-input-checkbox__3"
-                          type="checkbox"
-                        />
-                        <label
-                          onClick={() =>
-                            setShowAddressAddTable(!showAddressAddTable)
+                    <div>
+                      <div className="add-item-input-wrapper">
+                        <select
+                          className="add-item-select-input"
+                          onChange={(e) =>
+                            setCoords(e.target.value.split(",,"))
                           }
-                          htmlFor="dop_parametr"
                         >
-                          + Добавить другой адрес
-                        </label>
+                          <option>Не выбран</option>
+                          {isLoaded &&
+                            addressesFormatted.map((item, index) => (
+                              <option
+                                selected={
+                                  addressAdded &&
+                                  index + 1 === addressesFormatted.length
+                                }
+                                value={`${item[1]},,${item[0]}`}
+                                key={index}
+                              >
+                                {item[0]}
+                              </option>
+                            ))}
+                        </select>
                       </div>
-                    )}
-
-                    {showAddressAddTable && (
-                      <div className="take-away-secondary-wrapper-column">
-                        <div className="take-away-secondary-wrapper">
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Область{" "}
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: Минская"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={area}
-                              onChange={(e) => setArea(e.target.value)}
-                            />
-                          </div>
-
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Населенный пункт{" "}
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: Минск"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={locality}
-                              onChange={(e) => setLocality(e.target.value)}
-                            />
-                          </div>
-
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Район
-                            </label>
-                            <input
-                              placeholder="Например: Советский"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={district}
-                              onChange={(e) => setDistrict(e.target.value)}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="take-away-secondary-wrapper">
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Улица/Проспект/Переулок{" "}
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
-                              type="text"
-                              className="add-item-input-text__address__street"
-                              value={street}
-                              onChange={(e) => setStreet(e.target.value)}
-                            />
-                          </div>
-
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Индекс
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: 225417"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={index}
-                              onChange={(e) => setIndex(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                        {/* дом строение */}
+                      {addresses.length < maxAddressesCount && (
                         <div
-                          className="take-away-secondary-wrapper"
-                          id="take_Away_komp"
+                          style={{ marginBottom: "20px" }}
+                          id="dop_parametr_wrapper"
                         >
-                          <div
-                            className="take-away-secondary-wrapper"
-                            id="take-away-secondary-wrapper"
+                          <input
+                            id="dop_parametr"
+                            className="add-item-input-checkbox__3"
+                            type="checkbox"
+                          />
+                          <label
+                            onClick={() =>
+                              setShowAddressAddTable(!showAddressAddTable)
+                            }
+                            htmlFor="dop_parametr"
                           >
+                            + Добавить другой адрес
+                          </label>
+                        </div>
+                      )}
+
+                      {showAddressAddTable && (
+                        <div className="take-away-secondary-wrapper-column">
+                          <div className="take-away-secondary-wrapper">
                             <div className="add-item-input-wrapper">
                               <label className="add-item-input-label">
-                                Дом{" "}
+                                Область{" "}
                                 <span className="add-item-span-zvezda">*</span>
                               </label>
                               <input
-                                disabled={room || office || building}
+                                placeholder="Например: Минская"
                                 type="text"
-                                className="add-item-input-text__address__house"
-                                value={house}
-                                onChange={(e) => setHouse(e.target.value)}
+                                className="add-item-input-text__address"
+                                value={area}
+                                onChange={(e) => setArea(e.target.value)}
                               />
                             </div>
 
-                            <div
-                              className="take-away-secondary-wrapper"
-                              id="take-away-secondary-wrapper"
-                            >
-                              <div className="add-item-input-wrapper">
-                                <label className="add-item-input-label">
-                                  Корпус
-                                </label>
-                                <input
-                                  disabled={room || office || building}
-                                  type="text"
-                                  className="add-item-input-text__address__house"
-                                  value={body}
-                                  onChange={(e) => setBody(e.target.value)}
-                                />
-                              </div>
-
-                              <div className="add-item-input-wrapper">
-                                <label className="add-item-input-label">
-                                  Квартира
-                                </label>
-                                <input
-                                  disabled={room || office || building}
-                                  type="text"
-                                  className="add-item-input-text__address__house"
-                                  value={flat}
-                                  onChange={(e) => setFlat(e.target.value)}
-                                />
-                              </div>
+                            <div className="add-item-input-wrapper">
+                              <label className="add-item-input-label">
+                                Населенный пункт{" "}
+                                <span className="add-item-span-zvezda">*</span>
+                              </label>
+                              <input
+                                placeholder="Например: Минск"
+                                type="text"
+                                className="add-item-input-text__address"
+                                value={locality}
+                                onChange={(e) => setLocality(e.target.value)}
+                              />
                             </div>
-                            <span
-                              style={{ marginRight: "30px" }}
-                              className="add-item-cost-or__secondary"
-                            >
-                              или
-                            </span>
+
+                            <div className="add-item-input-wrapper">
+                              <label className="add-item-input-label">
+                                Район
+                              </label>
+                              <input
+                                placeholder="Например: Советский"
+                                type="text"
+                                className="add-item-input-text__address"
+                                value={district}
+                                onChange={(e) => setDistrict(e.target.value)}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="take-away-secondary-wrapper">
+                            <div className="add-item-input-wrapper">
+                              <label className="add-item-input-label">
+                                Улица/Проспект/Переулок{" "}
+                                <span className="add-item-span-zvezda">*</span>
+                              </label>
+                              <input
+                                placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
+                                type="text"
+                                className="add-item-input-text__address__street"
+                                value={street}
+                                onChange={(e) => setStreet(e.target.value)}
+                              />
+                            </div>
+
+                            <div className="add-item-input-wrapper">
+                              <label className="add-item-input-label">
+                                Индекс
+                                <span className="add-item-span-zvezda">*</span>
+                              </label>
+                              <input
+                                placeholder="Например: 225417"
+                                type="text"
+                                className="add-item-input-text__address"
+                                value={index}
+                                onChange={(e) => setIndex(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          {/* дом строение */}
+                          <div
+                            className="take-away-secondary-wrapper"
+                            id="take_Away_komp"
+                          >
                             <div
                               className="take-away-secondary-wrapper"
                               id="take-away-secondary-wrapper"
                             >
                               <div className="add-item-input-wrapper">
                                 <label className="add-item-input-label">
-                                  Помещение{" "}
+                                  Дом{" "}
                                   <span className="add-item-span-zvezda">
                                     *
                                   </span>
                                 </label>
                                 <input
-                                  disabled={house || body || flat}
+                                  disabled={room || office || building}
                                   type="text"
                                   className="add-item-input-text__address__house"
-                                  value={room}
-                                  onChange={(e) => setRoom(e.target.value)}
+                                  value={house}
+                                  onChange={(e) => setHouse(e.target.value)}
                                 />
                               </div>
 
@@ -932,53 +974,112 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               >
                                 <div className="add-item-input-wrapper">
                                   <label className="add-item-input-label">
-                                    Офис
+                                    Корпус
                                   </label>
                                   <input
-                                    disabled={house || body || flat}
+                                    disabled={room || office || building}
                                     type="text"
                                     className="add-item-input-text__address__house"
-                                    value={office}
-                                    onChange={(e) => setOffice(e.target.value)}
+                                    value={body}
+                                    onChange={(e) => setBody(e.target.value)}
                                   />
                                 </div>
 
                                 <div className="add-item-input-wrapper">
                                   <label className="add-item-input-label">
-                                    Строение
+                                    Квартира
+                                  </label>
+                                  <input
+                                    disabled={room || office || building}
+                                    type="text"
+                                    className="add-item-input-text__address__house"
+                                    value={flat}
+                                    onChange={(e) => setFlat(e.target.value)}
+                                  />
+                                </div>
+                              </div>
+                              <span
+                                style={{ marginRight: "30px" }}
+                                className="add-item-cost-or__secondary"
+                              >
+                                или
+                              </span>
+                              <div
+                                className="take-away-secondary-wrapper"
+                                id="take-away-secondary-wrapper"
+                              >
+                                <div className="add-item-input-wrapper">
+                                  <label className="add-item-input-label">
+                                    Помещение{" "}
+                                    <span className="add-item-span-zvezda">
+                                      *
+                                    </span>
                                   </label>
                                   <input
                                     disabled={house || body || flat}
                                     type="text"
                                     className="add-item-input-text__address__house"
-                                    value={building}
-                                    onChange={(e) =>
-                                      setBuilding(e.target.value)
-                                    }
+                                    value={room}
+                                    onChange={(e) => setRoom(e.target.value)}
                                   />
+                                </div>
+
+                                <div
+                                  className="take-away-secondary-wrapper"
+                                  id="take-away-secondary-wrapper"
+                                >
+                                  <div className="add-item-input-wrapper">
+                                    <label className="add-item-input-label">
+                                      Офис
+                                    </label>
+                                    <input
+                                      disabled={house || body || flat}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={office}
+                                      onChange={(e) =>
+                                        setOffice(e.target.value)
+                                      }
+                                    />
+                                  </div>
+
+                                  <div className="add-item-input-wrapper">
+                                    <label className="add-item-input-label">
+                                      Строение
+                                    </label>
+                                    <input
+                                      disabled={house || body || flat}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={building}
+                                      onChange={(e) =>
+                                        setBuilding(e.target.value)
+                                      }
+                                    />
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
+                          <input
+                            disabled={requestActive}
+                            id="save_address"
+                            className={
+                              requestActive
+                                ? "add-item-save-new-address-button disabled"
+                                : "add-item-save-new-address-button"
+                            }
+                            type="button"
+                            value={
+                              requestActive ? "ОТПРАВКА..." : "Сохранить адрес"
+                            }
+                            onClick={saveNewAddress}
+                          />
                         </div>
-                        <input
-                          disabled={requestActive}
-                          id="save_address"
-                          className={
-                            requestActive
-                              ? "add-item-save-new-address-button disabled"
-                              : "add-item-save-new-address-button"
-                          }
-                          type="button"
-                          value={
-                            requestActive ? "ОТПРАВКА..." : "Сохранить адрес"
-                          }
-                          onClick={saveNewAddress}
-                        />
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <div className="card_content_booking_center_down">
@@ -1321,9 +1422,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
                       <img className="booking_calendar" src={Calendar} />
-                      {((itemData && itemData.rent === "День") ||
-                        (itemData && itemData.rent === "Неделя") ||
-                        (itemData && itemData.rent === "Месяц")) && (
+                      {itemData && itemData.rent === "nonegl" && (
                         <div className="form-group">
                           <label
                             className="information_all_down_left_date-p"
@@ -1358,21 +1457,90 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           </label>
                         </div>
                       )}
+                      {((itemData && itemData.rent === "День") ||
+                        (itemData && itemData.rent === "Неделя") ||
+                        (itemData && itemData.rent === "Месяц")) && (
+                        <div className="form-group" style={{ display: "flex" }}>
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_input_time"
+                          >
+                            <DatePicker
+                              id="booking_date_input_time"
+                              className="booking_input_date"
+                              selected={startDate}
+                              onChange={(date) => setStartDate(date)}
+                              locale="ru"
+                              dateFormat="dd/M/yyyy"
+                              minDate={new Date()}
+                            />
+                          </label>
+
+                          <div
+                            style={{
+                              display: "flex",
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                              className="information_all_down_left_alldate"
+                            >
+                              {" "}
+                              на{" "}
+                            </span>
+                          </div>
+
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_end_input_time"
+                          >
+                            <input
+                              type="number"
+                              id="booking_date_end_input_time"
+                              onChange={(e) => inputTimeCheked(e)}
+                              disabled={startDate === undefined}
+                              className="booking_input_date_end"
+                              required
+                              min="1"
+                            />
+                            <span className="information_all_down_left_alldate">
+                              {" "}
+                              {itemData && itemData.rent === "Час"
+                                ? "час"
+                                : itemData && itemData.rent === "День"
+                                ? "сут"
+                                : itemData && itemData.rent === "Неделя"
+                                ? "нед"
+                                : itemData && itemData.rent === "Месяц"
+                                ? "мес"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штук"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
+                                : ""}
+                            </span>
+                          </label>
+                        </div>
+                      )}
+
                       {itemData && itemData.rent === "Час" && (
                         <div className="form-group" style={{ display: "flex" }}>
                           <label
                             className="information_all_down_left_date-p"
-                            htmlFor="booking_date_input"
+                            htmlFor="booking_date_input_time"
                           >
                             <DatePicker
-                              id="booking_date_input"
+                              id="booking_date_input_time"
                               className="booking_input_date"
                               selected={startDate}
                               onChange={(date) => setStartDate(date)}
                               showTimeSelect
                               locale="ru"
-                              dateFormat="Pp"
                               timeFormat="HH:mm"
+                              dateFormat="Pp"
                               timeIntervals={15}
                               minDate={new Date()}
                               timeInputLabel="Time:"
@@ -1380,60 +1548,78 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                             />
                           </label>
 
-                          <span className="information_all_down_left_date-p">
-                            {" "}
-                            -{" "}
-                          </span>
+                          <div
+                            style={{
+                              display: "flex",
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                            >
+                              {" "}
+                              на{" "}
+                            </span>
+                          </div>
 
                           <label
                             className="information_all_down_left_date-p"
-                            htmlFor="booking_date_end_input"
+                            htmlFor="booking_date_end_input_time"
                           >
-                            <DatePicker
-                              id="booking_date_end_input"
-                              className="booking_input_date"
-                              selected={endDate}
-                              onChange={(date) => setEndDate(date)}
+                            <input
+                              type="number"
+                              id="booking_date_end_input_time"
+                              onChange={(e) => inputTimeCheked(e)}
                               disabled={startDate === undefined}
-                              showTimeSelect
-                              locale="ru"
-                              dateFormat="Pp"
-                              timeFormat="HH:mm"
-                              timeIntervals={15}
-                              minDate={new Date()}
-                              timeInputLabel="Time:"
-                              filterTime={filterPassedTime}
+                              className="booking_input_date_end"
+                              required
+                              min="1"
                             />
+                            <span>
+                              {" "}
+                              {itemData && itemData.rent === "Час"
+                                ? "час"
+                                : itemData && itemData.rent === "День"
+                                ? "сут"
+                                : itemData && itemData.rent === "Неделя"
+                                ? "нед"
+                                : itemData && itemData.rent === "Месяц"
+                                ? "мес"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штук"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
+                                : ""}
+                            </span>
                           </label>
                         </div>
                       )}
                     </div>
-                    {Number.isNaN(resultdate) ? (
-                      ""
-                    ) : (
-                      <p className="information_all_down_left_alldate">
-                        {itemData && itemData.rent === "День" && (
-                          <p className="information_all_down_left_alldate">
-                            {resultdate} сутки(-ок)
-                          </p>
-                        )}
-                        {itemData && itemData.rent === "Час" && (
-                          <p className="information_all_down_left_alldate">
-                            {resulthours} час(-ов)
-                          </p>
-                        )}
-                        {itemData && itemData.rent === "Неделя" && (
-                          <p className="information_all_down_left_alldate">
-                            {resultweek} Неделя(-ли)
-                          </p>
-                        )}
-                        {itemData && itemData.rent === "Месяц" && (
-                          <p className="information_all_down_left_alldate">
-                            {resultmonths} Месяц(-ев)
-                          </p>
-                        )}
-                      </p>
-                    )}
+
+                    <p className="information_all_down_left_alldate">
+                      {itemData && itemData.rent === "День" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultdate} сутки(-ок)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Час" && (
+                        <p className="information_all_down_left_alldate">
+                          {resulthours} час(-ов)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Неделя" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultweek} Неделя(-ли)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Месяц" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultmonths} Месяц(-ев)
+                        </p>
+                      )}
+                    </p>
                   </div>
                   <div className="information_all_down_right">
                     {/* Время получения и возврата*/}
@@ -1499,7 +1685,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         name="delivery"
                         className="input_setting"
                         value="1"
-                        checked={delivery_Сhoice === "undefined" ? true : false}
+                        checked={checked}
                         onChange={(e) => setDelivery_Сhoice(e.target.value)}
                       />
                       <label
