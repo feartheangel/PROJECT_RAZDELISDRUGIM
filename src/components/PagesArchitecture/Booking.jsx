@@ -47,7 +47,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [office, setOffice] = React.useState();
   const [building, setBuilding] = React.useState();
   const [checked, setChecked] = React.useState(true);
-  const [timechecked, setTimeChecked] = React.useState(0);
+  const [timechecked, setTimeChecked] = React.useState(1);
 
   const [coords, setCoords] = React.useState();
 
@@ -63,6 +63,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
   const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
 
+  console.log(delivery_Сhoice);
+
   // минимальное время бронирования(дата и время сейчас)
   var datetimeminbooking = new Date().toJSON().slice(0, 16);
   // для дней мин время
@@ -72,11 +74,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
 
+  // фильтр времени в пикере
+  const filterPassedTime3 = (time) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+
+    return currentDate.getTime() < selectedDate.getTime();
+  };
+
   const filterPassedTime = (date) => {
-    // Disable no works hours
     if (
-      date.getHours() === 22 ||
-      date.getHours() === 23 ||
       date.getHours() === 0 ||
       date.getHours() === 1 ||
       date.getHours() === 2 ||
@@ -84,7 +91,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       date.getHours() === 4 ||
       date.getHours() === 5 ||
       date.getHours() === 6 ||
-      date.getHours() === 7
+      date.getHours() === 7 ||
+      date.getHours() === 23
     ) {
       return false;
     } else {
@@ -134,8 +142,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       : null
   );
 
-  console.log(isNaN(resulthours));
-  console.log(isNaN(resultweek));
   //  расчёт итоговой суммы
   const totalAmount =
     resultSummaArends +
@@ -162,7 +168,18 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   };
   // длительность аренды
   const inputTimeCheked = (e) => {
-    setTimeChecked(e.target.value);
+    if (e.target.value < 1 || e.target.value > 365) {
+      return;
+    }
+
+    if (
+      !e.target.value.includes("-") ||
+      !e.target.value.includes("--") ||
+      !e.target.value.includes("+") ||
+      !e.target.value.includes("++")
+    ) {
+      setTimeChecked(e.target.value);
+    }
   };
 
   //выделяем адреса
@@ -579,10 +596,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               locale="ru"
                               timeFormat="HH:mm"
                               dateFormat="Pp"
-                              timeIntervals={15}
+                              timeIntervals={60}
                               minDate={new Date()}
                               timeInputLabel="Time:"
-                              filterTime={filterPassedTime}
+                              filterTime={filterPassedTime3}
                             />
                           </label>
 
@@ -611,10 +628,13 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               type="number"
                               id="booking_date_end_input_time"
                               onChange={(e) => inputTimeCheked(e)}
+                              value={timechecked}
                               disabled={startDate === undefined}
                               className="booking_input_date_end"
                               required
                               min="1"
+                              max="365"
+                              placeholder="1"
                             />
                             <span className="information_all_down_left_alldate">
                               {" "}
@@ -723,13 +743,15 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         type="radio"
                         name="delivery"
                         className="input_setting"
+                        defaultChecked
                         value="1"
-                        onChange={(e) => setDelivery_Сhoice(e.target.value)}
-                        checked={checked}
+                        // onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                        id="radio_booking"
                       />
                       <label
-                        for="radio-1"
+                        // for="radio-1"
                         className="up_block_right_input_block-text"
+                        htmlFor="radio_booking"
                       >
                         Cамовывоз
                       </label>
@@ -744,11 +766,13 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="delivery"
                           className="input_setting"
                           value="2"
-                          onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          id="radio_booking2"
+                          // onChange={(e) => setDelivery_Сhoice(e.target.value)}
                         />
                         <label
-                          for="radio-2"
+                          // for="radio-2"
                           className="up_block_right_input_block-text"
+                          htmlFor="radio_booking2"
                         >
                           Привезет и заберет владелец
                         </label>
@@ -767,17 +791,19 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="delivery"
                           className="input_setting"
                           value="3"
-                          onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          id="radio_booking3"
+                          // onChange={(e) => setDelivery_Сhoice(e.target.value)}
                         />
                         <label
-                          for="radio-3"
+                          // for="radio-3"
                           className="up_block_right_input_block-text"
+                          htmlFor="radio_booking3"
                         >
                           Отправить
                         </label>
                       </div>
                       <label
-                        for="radio-1"
+                        // for="radio-1"
                         className="up_block_right_input_block3_text"
                       >
                         — {itemData.will_send_choice}:
@@ -1546,7 +1572,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               timeIntervals={15}
                               minDate={new Date()}
                               timeInputLabel="Time:"
-                              filterTime={filterPassedTime}
+                              // filterTime={filterPassedTime}
                             />
                           </label>
 
