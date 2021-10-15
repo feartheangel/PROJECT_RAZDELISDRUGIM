@@ -6,7 +6,7 @@ import { Header, Footer } from "../../../components/index";
 import { SingleChat } from "../../../components/index";
 
 const MyMessages = () => {
-  const { subjects } = useSelector(({ userData }) => userData);
+  const { subjects, iTakeSubjects } = useSelector(({ userData }) => userData);
 
   React.useEffect(() => {
     document.title = "Шерсенджер: #разделисдругим";
@@ -73,7 +73,7 @@ const MyMessages = () => {
             </Link>
             <Link style={{ textDecoration: "none" }} to="/i-take">
               <p>
-                Я беру <span> - </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
             </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
@@ -129,13 +129,13 @@ const MyMessages = () => {
               style={{ opacity: "0.4", pointerEvents: "none" }}
               style={{ display: "none" }}
             >
-              Я беру <span> - </span>
+              Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}
               style={{ display: "none" }}
             >
-              Мои сообщения <span> - </span>
+              Мои сообщения
             </p>
             <Link
               style={
@@ -169,16 +169,6 @@ const MyMessages = () => {
                   }
                 >
                   Все чаты
-                </p>
-                <p
-                  onClick={() => setSelectedChats("rent")}
-                  className={
-                    selectedChats === "rent"
-                      ? "messanger_left_optional_p active"
-                      : "messanger_left_optional_p"
-                  }
-                >
-                  Бронирования
                 </p>
               </div>
               <div className="container_profile_content__messages">
@@ -203,13 +193,13 @@ const MyMessages = () => {
               style={{ opacity: "0.4", pointerEvents: "none" }}
               // style={{ display: "none" }}
             >
-              Я беру <span> - </span>
+              Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}
               // style={{ display: "none" }}
             >
-              Мои сообщения <span> - </span>
+              Мои сообщения
             </p>
             <Link
               style={
@@ -243,16 +233,6 @@ const MyMessages = () => {
                   }
                 >
                   Все чаты
-                </p>
-                <p
-                  onClick={() => setSelectedChats("rent")}
-                  className={
-                    selectedChats === "rent"
-                      ? "messanger_left_optional_p active"
-                      : "messanger_left_optional_p"
-                  }
-                >
-                  Бронирования
                 </p>
               </div>
               <div className="container_profile_content__messages">

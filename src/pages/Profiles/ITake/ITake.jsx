@@ -323,7 +323,7 @@ const ITake = ({ itemData }) => {
               to="/i-take"
             >
               <p>
-                Я беру <span> 3 </span>
+                Я беру <span> {reservations && reservations.length} </span>
               </p>
             </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>

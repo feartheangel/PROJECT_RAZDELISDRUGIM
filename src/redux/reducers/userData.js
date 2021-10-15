@@ -6,6 +6,7 @@ const initialState = {
   userData: {},
   subjects: [],
   favorites: [],
+  iTakeSubjects: [],
   reload: false,
 };
 
@@ -70,6 +71,13 @@ const userData = (state = initialState, action) => {
       return {
         ...state,
         favorites: action.payload,
+      };
+      break;
+
+    case "SET_I_TAKE_SUBJECTS":
+      return {
+        ...state,
+        iTakeSubjects: action.payload,
       };
       break;
   }

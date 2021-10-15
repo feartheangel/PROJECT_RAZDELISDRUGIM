@@ -24,7 +24,7 @@ import {
 
 const PrivateProfile = () => {
   const dispatch = useDispatch();
-  const { subjects } = useSelector(({ userData }) => userData);
+  const { subjects, iTakeSubjects } = useSelector(({ userData }) => userData);
 
   // ХРАНЕНИЕ ДАННЫХ ИЗ ПОЛЕЙ
 
@@ -63,7 +63,7 @@ const PrivateProfile = () => {
             </Link>
             <Link style={{ textDecoration: "none" }} to="/i-take">
               <p>
-                Я беру <span> - </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
             </Link>
             <Link
@@ -126,7 +126,7 @@ const PrivateProfile = () => {
             </Link>
             <Link style={{ textDecoration: "none" }} to="/i-take">
               <p>
-                Я беру <span> - </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
             </Link>
             <Link
@@ -181,7 +181,7 @@ const PrivateProfile = () => {
             </Link>
             <Link style={{ textDecoration: "none" }} to="/i-take">
               <p>
-                Я беру <span> - </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
             </Link>
 

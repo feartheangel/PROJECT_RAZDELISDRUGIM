@@ -7,7 +7,7 @@ import { Header, Footer } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 
 const MyItems = () => {
-  const { subjects } = useSelector(({ userData }) => userData);
+  const { subjects, iTakeSubjects } = useSelector(({ userData }) => userData);
 
   const [reservations, setReservations] = React.useState();
   const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
@@ -57,7 +57,7 @@ const MyItems = () => {
             </p>
             <Link style={{ textDecoration: "none" }} to="/i-take">
               <p>
-                Я беру <span> - </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
             </Link>
             <Link style={{ textDecoration: "none" }} to="/messages">
@@ -297,7 +297,7 @@ const MyItems = () => {
               style={{ opacity: "0.4", pointerEvents: "none" }}
               style={{ display: "none" }}
             >
-              Я беру <span> - </span>
+              Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}
@@ -465,7 +465,7 @@ const MyItems = () => {
               to="/i-take"
             >
               <p>
-                Я беру <span> 3 </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
             </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
