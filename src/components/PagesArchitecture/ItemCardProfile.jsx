@@ -183,7 +183,10 @@ const ItemCardProfile = ({
             className="recent_block_title_div"
           >
             <p
-              style={{ cursor: "pointer" }}
+              style={{
+                cursor: "pointer",
+                lineBreak: "anywhere",
+              }}
               onClick={() =>
                 setRedirect(<Redirect to={`/item-card?id=${id}`} />)
               }

@@ -67,7 +67,10 @@ const ITake = ({ itemData }) => {
             </Link>
           </div>
           <div className="container_profile" style={{ marginRight: "0" }}>
-            <div className="container_profile_content__myItems">
+            <div
+              style={{ flexDirection: "column" }}
+              className="container_profile_content__myItems"
+            >
               <div>
                 <table class="table table-hover">
                   <thead class="thead-dark">
