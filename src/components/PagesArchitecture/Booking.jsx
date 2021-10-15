@@ -297,8 +297,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       renterBookingSms,
       itemData.rent === "Час"
         ? `${convertDate(startDate)}`
-        : `${startDate}T00:00:00`,
-      itemData.rent === "Час" ? convertDate(endDate) : `${endDate}T00:00:00`,
+        : `${convertDate(startDate)}`,
       itemData.id,
       itemData.profile.id,
       radioBooking,
@@ -314,7 +313,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       coords[1]
     )
       .then(() => alert("Запрос на подтверждение бронирования отправлен!"))
-      .catch(() => alert("Ошибка бронирования!"));
+      .catch(() => alert("Ошибка бронирования!" + startDate));
   };
 
   const convertDate = (str) => {

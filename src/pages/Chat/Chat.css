@@ -272,6 +272,32 @@
   margin-right: 20px;
   font-weight: 500;
 }
+
+.message_block_read_p {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(9, 29, 32, 0.4);
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+.chat_cooldown_timer {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 16px;
+  color: rgba(9, 29, 32, 0.4);
+  justify-self: flex-start;
+}
+
+.single_chat_actions_image {
+  width: 10px;
+  height: auto;
+}
 /* MOBILE */
 @media only screen and (max-width: 480px) {
   .container_profile_content__chat {

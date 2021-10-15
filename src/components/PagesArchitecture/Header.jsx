@@ -203,6 +203,10 @@ const Header = () => {
         setNotReadNotes(data.count_not_read_note);
       }
 
+      if (data.notification_list) {
+        setNotifications(data.notification_list.reverse());
+      }
+
       console.log(data);
     };
 
@@ -218,6 +222,28 @@ const Header = () => {
       }, 1000);
     };
   }, [isLoggedIn]);
+
+  const [notificationsOpened, setNotificationsOpened] = React.useState();
+
+  const readNotifications = [];
+
+  notifications &&
+    notifications.map((item) => readNotifications.push(item.id_note));
+
+  React.useEffect(() => {
+    if (!notifyPopUpActive && notificationsOpened) {
+      chatSocket.current.send(
+        JSON.stringify({
+          command: "delete_notifications",
+          note_id: readNotifications,
+        })
+      );
+    }
+
+    if (notifyPopUpActive) {
+      setNotificationsOpened(true);
+    }
+  }, [notifyPopUpActive]);
 
   //выделяем разделы
   const chapters = {};

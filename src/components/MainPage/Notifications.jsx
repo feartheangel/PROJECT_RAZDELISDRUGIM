@@ -7,7 +7,7 @@ const NotifyPopUp = ({
   notifications,
   chatSocket,
 }) => {
-  /*   React.useEffect(() => {
+  React.useEffect(() => {
     const onClick = (e) => {
       if (notifyRef.current) {
         notifyRef.current.contains(e.target) || setNotifyPopUpActive(false);
@@ -15,9 +15,12 @@ const NotifyPopUp = ({
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
-  }, []); */
+  }, []);
 
   const notifyRef = useRef(null);
+  const notifyBlockRef = useRef(null);
+  const [viewedNotifications, setViewedNotifications] = React.useState();
+
   return (
     <div ref={notifyRef}>
       <div
@@ -38,6 +41,7 @@ const NotifyPopUp = ({
                 notification={item}
                 chatSocket={chatSocket}
                 notifications={notifications}
+                setNotifyPopUpActive={setNotifyPopUpActive}
               />
             ))}
         </div>

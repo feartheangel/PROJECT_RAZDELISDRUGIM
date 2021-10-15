@@ -2,7 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { rootAddress } from "../../http/axios-requests";
 
-const MessageBlock = ({ item, chatSocket, chatId }) => {
+const MessageBlock = ({
+  item,
+  chatSocket,
+  chatId,
+  messageIsRead,
+  writtenNewMessage,
+}) => {
   const { userData } = useSelector(({ userData }) => userData);
 
   const handleReservationSubmit = () => {
@@ -53,46 +59,67 @@ const MessageBlock = ({ item, chatSocket, chatId }) => {
         className="chat_message_block_avatar"
       />
       {!item.rent && (
-        <div className="chat_message_block_content_part">
-          <div className="chat_message_block_first_row">
-            <p className="chat_message_block_name_p">
-              {item && item.author_name}
-            </p>
-            <p className="chat_message_block_time_p">
-              {item.timestamp
-                ? `${item.timestamp.split("").splice(8, 2).join("")} ${
-                    item.timestamp.split("").splice(5, 2).join("") === "01"
-                      ? "Января"
-                      : item.timestamp.split("").splice(5, 2).join("") === "02"
-                      ? "Февраля"
-                      : item.timestamp.split("").splice(5, 2).join("") === "03"
-                      ? "Марта"
-                      : item.timestamp.split("").splice(5, 2).join("") === "04"
-                      ? "Апреля"
-                      : item.timestamp.split("").splice(5, 2).join("") === "05"
-                      ? "Мая"
-                      : item.timestamp.split("").splice(5, 2).join("") === "06"
-                      ? "Июня"
-                      : item.timestamp.split("").splice(5, 2).join("") === "07"
-                      ? "Июля"
-                      : item.timestamp.split("").splice(5, 2).join("") === "08"
-                      ? "Авугста"
-                      : item.timestamp.split("").splice(5, 2).join("") === "09"
-                      ? "Сентября"
-                      : item.timestamp.split("").splice(5, 2).join("") === "10"
-                      ? "Октября"
-                      : item.timestamp.split("").splice(5, 2).join("") === "11"
-                      ? "Ноября"
-                      : item.timestamp.split("").splice(5, 2).join("") === "12"
-                      ? "Декабря"
-                      : ""
-                  }, ${item.timestamp.split("").splice(11, 5).join("")}`
-                : "Нет сообщений"}
-            </p>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div className="chat_message_block_content_part">
+            <div className="chat_message_block_first_row">
+              <p className="chat_message_block_name_p">
+                {item && item.author_name}
+              </p>
+              <p className="chat_message_block_time_p">
+                {item.timestamp
+                  ? `${item.timestamp.split("").splice(8, 2).join("")} ${
+                      item.timestamp.split("").splice(5, 2).join("") === "01"
+                        ? "Января"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "02"
+                        ? "Февраля"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "03"
+                        ? "Марта"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "04"
+                        ? "Апреля"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "05"
+                        ? "Мая"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "06"
+                        ? "Июня"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "07"
+                        ? "Июля"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "08"
+                        ? "Авугста"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "09"
+                        ? "Сентября"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "10"
+                        ? "Октября"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "11"
+                        ? "Ноября"
+                        : item.timestamp.split("").splice(5, 2).join("") ===
+                          "12"
+                        ? "Декабря"
+                        : ""
+                    }, ${item.timestamp.split("").splice(11, 5).join("")}`
+                  : "Нет сообщений"}
+              </p>
+            </div>
+            <div className="chat_message_block_second_row">
+              <p className="chat_message_block_text_p">
+                {item && item.content}
+              </p>
+            </div>
           </div>
-          <div className="chat_message_block_second_row">
-            <p className="chat_message_block_text_p">{item && item.content}</p>
-          </div>
+          {messageIsRead &&
+            messageIsRead[0] &&
+            messageIsRead[1] === item.id &&
+            !writtenNewMessage && (
+              <p className="message_block_read_p">Прочитано</p>
+            )}
         </div>
       )}
       {item.rent && (
@@ -125,16 +152,6 @@ const MessageBlock = ({ item, chatSocket, chatId }) => {
                 .split("")
                 .splice(0, 10)
                 .join("")} ${item.time_start_reserve
-                .split("")
-                .splice(11, 5)
-                .join("")}`}
-            </p>
-            <p className="reservation_request_date_end">
-              по:{" "}
-              {`${item.time_end_reserve
-                .split("")
-                .splice(0, 10)
-                .join("")} ${item.time_end_reserve
                 .split("")
                 .splice(11, 5)
                 .join("")}`}

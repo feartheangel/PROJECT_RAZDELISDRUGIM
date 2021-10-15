@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Header, Footer } from "../../components/index";
 import VectorLeft from "../../img/Chat/vector-back.png";
 import Vector_button from "../../img/Chat/knopka.PNG";
-import Actions from "../../img/Chat/actions.png";
+import Shape from "../../img/Shape.png";
 import { MessageBlock } from "../../components/index";
 import { rootAddress } from "../../http/axios-requests";
 
@@ -37,10 +37,12 @@ const Chat = () => {
       if (data.hasOwnProperty("messages")) {
         setMessages(data.messages);
         setCompanionName(data.name);
-        setCompanionphoto(data.photo);
+        setCompanionphoto(data.item_image);
         setCompanionId(data.user_id);
         setCompanionLastSeen(data.last_user_visit);
-
+        setItemId(data.item_id);
+        setItemName(data.name_item);
+        setMessageIsRead(data.is_last_message);
         chatSocket.current.send(
           JSON.stringify({
             command: "update_chat_status",
@@ -52,6 +54,19 @@ const Chat = () => {
 
       if (data.command === "new_message") {
         setMessages((prev) => [...prev, data.message]);
+        setWrittenNewMessage(true);
+        if (
+          data.message.author_id !== userData.id &&
+          window.location.href.includes(`chat?id=${chatId}`)
+        ) {
+          chatSocket.current.send(
+            JSON.stringify({
+              command: "update_chat_status",
+              message_ids: [data.message.message_id],
+              chat_id: chatId,
+            })
+          );
+        }
       }
 
       console.log(data);
@@ -71,10 +86,7 @@ const Chat = () => {
   }, [socketReconnect]);
 
   React.useEffect(() => {
-    chatInputRef.current.scrollIntoView({
-      block: "start",
-    });
-    document.title = "Шерсенджер: #разделисдругим";
+    window.scrollTo(0, document.body.scrollHeight);
   }, []);
 
   React.useEffect(() => {
@@ -98,6 +110,7 @@ const Chat = () => {
         })
       );
       setChatPhrase("");
+      setCooldownTimer(5);
     }
   };
 
@@ -114,6 +127,7 @@ const Chat = () => {
       })
     );
     setChatPhrase("");
+    setCooldownTimer(5);
   };
 
   const chatInputRef = React.useRef(null);
@@ -126,10 +140,23 @@ const Chat = () => {
   const [companionPhoto, setCompanionphoto] = React.useState();
   const [companionId, setCompanionId] = React.useState();
   const [companionLastSeen, setCompanionLastSeen] = React.useState();
+  const [itemId, setItemId] = React.useState();
+  const [itemName, setItemName] = React.useState();
+  const [messageIsRead, setMessageIsRead] = React.useState();
+  const [writtenNewMessage, setWrittenNewMessage] = React.useState();
+  const [cooldownTimer, setCooldownTimer] = React.useState(0);
 
   const chatBlock = React.useRef();
   const chatBlockMobile = React.useRef();
   const chatBlockTablet = React.useRef();
+
+  React.useEffect(() => {
+    if (cooldownTimer > 0) {
+      setTimeout(() => {
+        setCooldownTimer(cooldownTimer - 1);
+      }, 1000);
+    }
+  }, [cooldownTimer]);
 
   React.useEffect(() => {
     chatBlock.current.scrollTo({
@@ -146,7 +173,7 @@ const Chat = () => {
       top: chatBlockTablet.current.scrollHeight,
       behavior: "smooth",
     });
-  }, [messages]);
+  }, [messages, messageIsRead]);
 
   return (
     <div>
@@ -219,7 +246,7 @@ const Chat = () => {
                         />
                       </Link>
                       <Link
-                        to={`/public-profile?id=${companionId}`}
+                        to={`/item-card?id=${itemId}`}
                         style={{ textDecoration: "none" }}
                       >
                         <img
@@ -230,12 +257,19 @@ const Chat = () => {
                     </div>
 
                     <div className="chat_header_left_side_horizontal">
-                      <Link
-                        to={`/public-profile?id=${companionId}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <p className="chat_header_name_p">{companionName}</p>
-                      </Link>
+                      <p className="chat_header_name_p">
+                        <Link
+                          to={`/public-profile?id=${companionId}`}
+                          style={{ textDecoration: "none", color: "#4cc9f0" }}
+                        >
+                          {`${companionName} `}
+                        </Link>
+                        <Link
+                          to={`/item-card?id=${itemId}`}
+                          style={{ textDecoration: "none", color: "#4cc9f0" }}
+                        >{`(${itemName})`}</Link>
+                      </p>
+
                       <p className="chat_header_last_seen_p">
                         {companionLastSeen === "None"
                           ? "Был в сети недавно"
@@ -243,9 +277,7 @@ const Chat = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="chat_header_right_side">
-                    <img className="single_chat_actions_image" src={Actions} />
-                  </div>
+                  <div className="chat_header_right_side"></div>
                 </div>
                 <div className="chat_messages_part_wrapper">
                   <div ref={chatBlock} className="chat_messages_left_block">
@@ -257,6 +289,9 @@ const Chat = () => {
                           key={index}
                           chatSocket={chatSocket}
                           chatId={chatId}
+                          messageIsRead={messageIsRead}
+                          index={index}
+                          writtenNewMessage={writtenNewMessage}
                         />
                       ))}
                   </div>
@@ -267,7 +302,12 @@ const Chat = () => {
                     onChange={(e) => setChatPhrase(e.target.value)}
                     className="chat_lower_table_input"
                     type="text"
-                    placeholder="Ваше сообщение..."
+                    placeholder={
+                      cooldownTimer === 0
+                        ? "Ваше сообщение..."
+                        : `Подождите: 00:0${cooldownTimer}`
+                    }
+                    disabled={cooldownTimer !== 0}
                   />
                   <img
                     src={Vector_button}
@@ -385,9 +425,7 @@ const Chat = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="chat_header_right_side">
-                    <img className="single_chat_actions_image" src={Actions} />
-                  </div>
+                  <div className="chat_header_right_side"></div>
                 </div>
                 <div className="chat_messages_part_wrapper">
                   <div
@@ -401,6 +439,7 @@ const Chat = () => {
                           key={index}
                           chatSocket={chatSocket}
                           chatId={chatId}
+                          writtenNewMessage={writtenNewMessage}
                         />
                       ))}
                   </div>
@@ -411,7 +450,12 @@ const Chat = () => {
                     onChange={(e) => setChatPhrase(e.target.value)}
                     className="chat_lower_table_input"
                     type="text"
-                    placeholder="Ваше сообщение..."
+                    disabled={cooldownTimer !== 0}
+                    placeholder={
+                      cooldownTimer === 0
+                        ? "Ваше сообщение..."
+                        : `Подождите: 00:0${cooldownTimer}`
+                    }
                   />
                   <img
                     src={Vector_button}
@@ -531,9 +575,7 @@ const Chat = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="chat_header_right_side">
-                    <img className="single_chat_actions_image" src={Actions} />
-                  </div>
+                  <div className="chat_header_right_side"></div>
                 </div>
                 <div className="chat_messages_part_wrapper">
                   <div
@@ -547,6 +589,7 @@ const Chat = () => {
                           key={index}
                           chatSocket={chatSocket}
                           chatId={chatId}
+                          writtenNewMessage={writtenNewMessage}
                         />
                       ))}
                   </div>
@@ -557,7 +600,12 @@ const Chat = () => {
                     onChange={(e) => setChatPhrase(e.target.value)}
                     className="chat_lower_table_input"
                     type="text"
-                    placeholder="Ваше сообщение..."
+                    placeholder={
+                      cooldownTimer === 0
+                        ? "Ваше сообщение..."
+                        : `Подождите: 00:0${cooldownTimer}`
+                    }
+                    disabled={cooldownTimer !== 0}
                   />
                   <img
                     src={Vector_button}
