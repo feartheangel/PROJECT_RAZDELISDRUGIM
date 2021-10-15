@@ -61,7 +61,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   );
   const [renterBookingSms, setRenterBookingSms] = React.useState();
 
-  const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
+  const [delivery_Сhoice, setDelivery_Сhoice] = React.useState(1);
 
   // минимальное время бронирования(дата и время сейчас)
   var datetimeminbooking = new Date().toJSON().slice(0, 16);
@@ -278,12 +278,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       renterBookingName,
       renterBookingNumber,
       renterBookingSms,
-      itemData.rent === "Час"
-        ? `${convertDate(startDate)}`
-        : `${convertDate(startDate)}`,
+      convertDate(startDate),
       itemData.id,
       itemData.profile.id,
-      radioBooking,
+      Number(delivery_Сhoice),
       itemData.rent === "Час"
         ? `${resulthours} час`
         : itemData.rent === "День"
@@ -293,7 +291,18 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
         : itemData.rent === "Месяц"
         ? `${resultmonths} мес`
         : "",
-      coords[1]
+      itemData.rent === "Час"
+        ? resulthours
+        : itemData.rent === "День"
+        ? resultdate
+        : itemData.rent === "Неделя"
+        ? resultweek
+        : itemData.rent === "Месяц"
+        ? resultmonths
+        : "",
+      !itemData.delivery.includes("Привезу и заберу сам") &&
+        itemData.delivery.includes("Доставка курьером") &&
+        coords[1]
     )
       .then(() => alert("Запрос на подтверждение бронирования отправлен!"))
       .catch(() => alert("Ошибка бронирования!" + startDate));
@@ -714,17 +723,20 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 {/* СПОСОБЫ ДОСТАВКИ  */}
                 <div
                   className="booking_center_up_block_right"
-                  onChange={(e) => radioBookingHandler(e)}
+                  onChange={(e) => {
+                    radioBookingHandler(e);
+                    setDelivery_Сhoice(e.target.value);
+                  }}
                 >
                   {itemData.delivery.includes("Самовывоз") && (
                     <div className="up_block_right_input_block">
                       <input
+                        id="radio-1"
                         type="radio"
                         name="delivery"
                         className="input_setting"
                         value="1"
-                        onChange={(e) => setDelivery_Сhoice(e.target.value)}
-                        checked={checked}
+                        checked={delivery_Сhoice === "1"}
                       />
                       <label
                         for="radio-1"
@@ -739,11 +751,12 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_right_input_block2">
                       <div className="up_block_right_input_block2-2">
                         <input
+                          id="radio-2"
                           type="radio"
                           name="delivery"
                           className="input_setting"
                           value="2"
-                          onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          checked={delivery_Сhoice === 2}
                         />
                         <label
                           for="radio-2"
@@ -762,11 +775,12 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_right_input_block3">
                       <div className="up_block_right_input_block3-3">
                         <input
+                          id="radio-3"
                           type="radio"
                           name="delivery"
                           className="input_setting"
                           value="3"
-                          onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          checked={delivery_Сhoice === 3}
                         />
                         <label
                           for="radio-3"
@@ -1682,15 +1696,17 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   {itemData.delivery.includes("Самовывоз") && (
                     <div className="up_block_right_input_block">
                       <input
+                        id="radio-1M"
                         type="radio"
                         name="delivery"
                         className="input_setting"
                         value="1"
-                        checked={checked}
+                        defaultChecked
                         onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                        checked={delivery_Сhoice === 1}
                       />
                       <label
-                        for="radio-1"
+                        for="radio-1M"
                         className="up_block_right_input_block-text"
                       >
                         Cамовывоз
@@ -1702,14 +1718,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_right_input_block2">
                       <div className="up_block_right_input_block2-2">
                         <input
+                          id="radio-2M"
                           type="radio"
                           name="delivery"
                           className="input_setting"
                           value="2"
                           onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          checked={delivery_Сhoice === 2}
                         />
                         <label
-                          for="radio-2"
+                          for="radio-2M"
                           className="up_block_right_input_block-text"
                         >
                           Привезет и заберет владелец
@@ -1725,14 +1743,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_right_input_block3">
                       <div className="up_block_right_input_block3-3">
                         <input
+                          id="radio-3M"
                           type="radio"
                           name="delivery"
                           className="input_setting"
                           value="3"
                           onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          checked={delivery_Сhoice === 3}
                         />
                         <label
-                          for="radio-3"
+                          for="radio-3M"
                           className="up_block_right_input_block-text"
                         >
                           Отправить

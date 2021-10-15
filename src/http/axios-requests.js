@@ -1180,6 +1180,7 @@ class Requests {
     owner_id,
     delivery_choice,
     reservation_time,
+    count_date_object,
     reservation_address_delivery
   ) {
     return axios({
@@ -1199,7 +1200,10 @@ class Requests {
         owner_id: owner_id,
         delivery_choice: delivery_choice,
         reservation_time: reservation_time,
-        reservation_address_delivery: reservation_address_delivery,
+        count_date_object: count_date_object,
+        reservation_address_delivery: reservation_address_delivery
+          ? reservation_address_delivery
+          : "",
       },
 
       url: `${rootAddress}/api/items/reservation/create/`,
