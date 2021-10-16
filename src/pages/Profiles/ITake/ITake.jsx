@@ -188,21 +188,7 @@ const ITake = ({ itemData }) => {
                                     .slice(0, 4)
                                     .join("")}`}
                             </td>
-                            <td>
-                              {item.rent === "HOUR"
-                                ? "Час"
-                                : item.rent === "DAY"
-                                ? "День"
-                                : item.rent === "WEEK"
-                                ? "Неделя"
-                                : item.rent === "MONTH"
-                                ? "Месяц"
-                                : item.rent === "PIECE"
-                                ? "Штука"
-                                : item.rent === "SQUARE"
-                                ? "1кв. м."
-                                : ""}
-                            </td>
+                            <td>{item.item_id.rent}</td>
                             <td>{item.reservation_time}</td>
                             <td
                               style={
@@ -302,36 +288,129 @@ const ITake = ({ itemData }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">1</th>
-                      <td>Ноутбук</td>
-                      <td>04/10/2021</td>
-                      <td>06/10/2021</td>
-                      <td>Сутки</td>
-                      <td>3 Суток</td>
-                      <td style={{ color: "green" }}>Подтверждено</td>
-                      <td>Эдуард</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">2</th>
-                      <td>Велосипед "Аист"</td>
-                      <td>04/10/2021</td>
-                      <td>05/10/2021</td>
-                      <td>Сутки</td>
-                      <td>1 Сутки</td>
-                      <td style={{ color: "orange" }}>Завершено</td>
-                      <td>Максим</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">3</th>
-                      <td>Книга "Batman"</td>
-                      <td>04/10/2021 14:30</td>
-                      <td>04/10/2021 17:30</td>
-                      <td>Часы</td>
-                      <td> - </td>
-                      <td style={{ color: "red" }}>Отклонено</td>
-                      <td>Иван</td>
-                    </tr>
+                    {reservations &&
+                      reservations.map((item, index) => {
+                        return (
+                          <tr style={{ cursor: "pointer" }}>
+                            <th scope="row">{index + 1}</th>
+                            <td>
+                              <p>{item.item_id.name_item}</p>
+                              <p>
+                                (
+                                {`${
+                                  item.item_id.free_rent
+                                    ? "Бесплатно"
+                                    : item.item_id.offer_price_rent
+                                    ? "Договорная"
+                                    : `${item.item_id.price_rent}BYN/${item.item_id.rent}`
+                                }${
+                                  item.item_id.pledge_price &&
+                                  item.item_id.pledge_price > 0
+                                    ? ","
+                                    : ""
+                                } ${
+                                  item.item_id.pledge_price &&
+                                  item.item_id.pledge_price > 0
+                                    ? `залог: ${item.item_id.pledge_price} BYN`
+                                    : ""
+                                }${item.item_id.insurance_price ? "," : ""} ${
+                                  item.item_id.insurance_price
+                                    ? `страхование: ${item.item_id.insurance_price}BYN`
+                                    : ""
+                                }${
+                                  item.item_id.self_delivery_price ? "," : ""
+                                } ${
+                                  item.item_id.self_delivery_price
+                                    ? `доставка: ${item.item_id.self_delivery_price}BYN`
+                                    : ""
+                                }${item.item_id.servicefee_price ? "," : ""} ${
+                                  item.item_id.servicefee_price
+                                    ? `сервисный сбор: ${item.item_id.servicefee_price}BYN`
+                                    : ""
+                                }`}
+                                )
+                              </p>
+                            </td>
+                            <td>
+                              {item.rent === "HOUR"
+                                ? `${item.reservation_start_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}                                
+                               ${item.reservation_start_time
+                                 .split("")
+                                 .splice(11, 5)
+                                 .join("")}`
+                                : `${item.reservation_start_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}`}
+                            </td>
+                            <td>
+                              {" "}
+                              {item.rent === "HOUR"
+                                ? `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}                                
+                               ${item.reservation_end_time
+                                 .split("")
+                                 .splice(11, 5)
+                                 .join("")}`
+                                : `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}`}
+                            </td>
+                            <td>{item.item_id.rent}</td>
+                            <td>{item.reservation_time}</td>
+                            <td
+                              style={
+                                item.reservation_status === null
+                                  ? { color: "orange" }
+                                  : item.reservation_status === true
+                                  ? { color: "green" }
+                                  : item.reservation_status === false
+                                  ? { color: "red" }
+                                  : ""
+                              }
+                            >
+                              {item.reservation_status === null
+                                ? "Ожидает"
+                                : item.reservation_status === false
+                                ? "Отклонено"
+                                : item.reservation_status === true
+                                ? "Подтверждено"
+                                : ""}
+                            </td>
+                            <td>{item.owner_name}</td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>
@@ -412,36 +491,129 @@ const ITake = ({ itemData }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">1</th>
-                      <td>Ноутбук</td>
-                      <td>04/10/2021</td>
-                      <td>06/10/2021</td>
-                      <td>Сутки</td>
-                      <td>3 Суток</td>
-                      <td style={{ color: "green" }}>Подтверждено</td>
-                      <td>Эдуард</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">2</th>
-                      <td>Велосипед "Аист"</td>
-                      <td>04/10/2021</td>
-                      <td>05/10/2021</td>
-                      <td>Сутки</td>
-                      <td>1 Сутки</td>
-                      <td style={{ color: "orange" }}>Завершено</td>
-                      <td>Максим</td>
-                    </tr>
-                    <tr style={{ cursor: "pointer" }}>
-                      <th scope="row">3</th>
-                      <td>Книга "Batman"</td>
-                      <td>04/10/2021 14:30</td>
-                      <td>04/10/2021 17:30</td>
-                      <td>Часы</td>
-                      <td> - </td>
-                      <td style={{ color: "red" }}>Отклонено</td>
-                      <td>Иван</td>
-                    </tr>
+                    {reservations &&
+                      reservations.map((item, index) => {
+                        return (
+                          <tr style={{ cursor: "pointer" }}>
+                            <th scope="row">{index + 1}</th>
+                            <td>
+                              <p>{item.item_id.name_item}</p>
+                              <p>
+                                (
+                                {`${
+                                  item.item_id.free_rent
+                                    ? "Бесплатно"
+                                    : item.item_id.offer_price_rent
+                                    ? "Договорная"
+                                    : `${item.item_id.price_rent}BYN/${item.item_id.rent}`
+                                }${
+                                  item.item_id.pledge_price &&
+                                  item.item_id.pledge_price > 0
+                                    ? ","
+                                    : ""
+                                } ${
+                                  item.item_id.pledge_price &&
+                                  item.item_id.pledge_price > 0
+                                    ? `залог: ${item.item_id.pledge_price} BYN`
+                                    : ""
+                                }${item.item_id.insurance_price ? "," : ""} ${
+                                  item.item_id.insurance_price
+                                    ? `страхование: ${item.item_id.insurance_price}BYN`
+                                    : ""
+                                }${
+                                  item.item_id.self_delivery_price ? "," : ""
+                                } ${
+                                  item.item_id.self_delivery_price
+                                    ? `доставка: ${item.item_id.self_delivery_price}BYN`
+                                    : ""
+                                }${item.item_id.servicefee_price ? "," : ""} ${
+                                  item.item_id.servicefee_price
+                                    ? `сервисный сбор: ${item.item_id.servicefee_price}BYN`
+                                    : ""
+                                }`}
+                                )
+                              </p>
+                            </td>
+                            <td>
+                              {item.rent === "HOUR"
+                                ? `${item.reservation_start_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}                                
+                               ${item.reservation_start_time
+                                 .split("")
+                                 .splice(11, 5)
+                                 .join("")}`
+                                : `${item.reservation_start_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_start_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}`}
+                            </td>
+                            <td>
+                              {" "}
+                              {item.rent === "HOUR"
+                                ? `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}                                
+                               ${item.reservation_end_time
+                                 .split("")
+                                 .splice(11, 5)
+                                 .join("")}`
+                                : `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}`}
+                            </td>
+                            <td>{item.item_id.rent}</td>
+                            <td>{item.reservation_time}</td>
+                            <td
+                              style={
+                                item.reservation_status === null
+                                  ? { color: "orange" }
+                                  : item.reservation_status === true
+                                  ? { color: "green" }
+                                  : item.reservation_status === false
+                                  ? { color: "red" }
+                                  : ""
+                              }
+                            >
+                              {item.reservation_status === null
+                                ? "Ожидает"
+                                : item.reservation_status === false
+                                ? "Отклонено"
+                                : item.reservation_status === true
+                                ? "Подтверждено"
+                                : ""}
+                            </td>
+                            <td>{item.owner_name}</td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>

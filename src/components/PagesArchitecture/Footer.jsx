@@ -206,8 +206,8 @@ const Footer = () => {
               <a
                 href={
                   window.screen.width > 1024
-                    ? "viber://pa?chatURI=bynewbotforgsp"
-                    : "viber://pa/info?uri=bynewbotforgsp"
+                    ? "viber://pa?chatURI=razdelisdrugim"
+                    : "viber://pa/info?uri=razdelisdrugim"
                 }
                 target="_blank"
               >
