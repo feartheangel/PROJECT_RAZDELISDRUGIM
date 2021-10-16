@@ -42,3 +42,8 @@ export const setFavorites = (arr) => ({
   type: "SET_FAVORITES",
   payload: arr,
 });
+
+export const setITakeSubjects = (arr) => ({
+  type: "SET_I_TAKE_SUBJECTS",
+  payload: arr,
+});

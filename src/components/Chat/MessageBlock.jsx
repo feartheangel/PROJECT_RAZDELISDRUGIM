@@ -139,9 +139,11 @@ const MessageBlock = ({
               ? "Отправка"
               : ""}
           </p>
-          <p className="reservation_request_delivery">
-            {item.reserve_address_delivery}
-          </p>
+          {item.reserve_address_delivery && (
+            <p className="reservation_request_delivery">
+              {item.reserve_address_delivery}
+            </p>
+          )}
           <p className="reservation_request_delivery">
             {item.reserve_user_phone}
           </p>

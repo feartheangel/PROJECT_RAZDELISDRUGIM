@@ -8,7 +8,9 @@ import { setFavorites } from "../../../redux/actions/userData";
 
 const MyFavorites = () => {
   const dispatch = useDispatch();
-  const { favorites, subjects } = useSelector(({ userData }) => userData);
+  const { favorites, subjects, iTakeSubjects } = useSelector(
+    ({ userData }) => userData
+  );
 
   React.useEffect(() => {
     Requests.fetchFavorites().then((res) => {
@@ -44,7 +46,7 @@ const MyFavorites = () => {
             </Link>
             <Link style={{ textDecoration: "none" }} to="/i-take">
               <p>
-                Я беру <span> - </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
             </Link>
             <Link style={{ textDecoration: "none" }} to="/messages">
@@ -92,7 +94,7 @@ const MyFavorites = () => {
               </p>
             </Link>
             <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Я беру <span> - </span>
+              Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
             </p>
             <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Мои сообщения <span> - </span>
@@ -140,7 +142,7 @@ const MyFavorites = () => {
             </Link>
             <Link style={{ textDecoration: "none" }} to="/i-take">
               <p>
-                Я беру <span> - </span>
+                Я беру <span> {iTakeSubjects && iTakeSubjects.length}</span>
               </p>
             </Link>
             <Link style={{ textDecoration: "none" }} to="/messages">

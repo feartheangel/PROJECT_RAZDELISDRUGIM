@@ -70,7 +70,7 @@ const SearchPage = () => {
 
   const getPointData = (index) => {
     return {
-      balloonContentHeader: `<div style=display:flex;justify-content:center><strong><p style=font-size:18px;margin-top:0 class="recent-block-title-p">${marks[index][2]}</p></strong></div>`,
+      balloonContentHeader: `<div style=display:flex;justify-content:center;overflow:hidden><strong><p style=font-size:18px;margin-top:0 class="recent-block-title-p">${marks[index][2]}</p></strong></div>`,
       balloonContentBody: [
         `
         <div style=display:flex;flex-direction:column;align-items:center class="recent-block-wrapper">

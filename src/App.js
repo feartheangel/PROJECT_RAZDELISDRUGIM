@@ -33,7 +33,7 @@ import { Booking, PasswordRecoverySubmit, Testfile } from "./components/index";
 import "./css/main-page.css";
 import React from "react";
 import Requests from "./http/axios-requests";
-import { setUserData } from "./redux/actions/userData";
+import { setITakeSubjects, setUserData } from "./redux/actions/userData";
 import { useDispatch, useSelector } from "react-redux";
 import { setItems, setItemsLoaded } from "./redux/actions/items";
 import {
@@ -92,6 +92,11 @@ function App() {
           .then(() => {
             Requests.fetchFavorites().then((response) => {
               dispatch(setFavorites(response.data));
+            });
+          })
+          .then(() => {
+            Requests.getOutgoingReservations().then((res) => {
+              dispatch(setITakeSubjects(res.data));
             });
           })
 
