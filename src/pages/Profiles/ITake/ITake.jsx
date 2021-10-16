@@ -95,7 +95,44 @@ const ITake = ({ itemData }) => {
                         return (
                           <tr style={{ cursor: "pointer" }}>
                             <th scope="row">{index + 1}</th>
-                            <td>{item.name_item}</td>
+                            <td>
+                              <p>{item.item_id.name_item}</p>
+                              <p>
+                                (
+                                {`${
+                                  item.item_id.free_rent
+                                    ? "Бесплатно"
+                                    : item.item_id.offer_price_rent
+                                    ? "Договорная"
+                                    : `${item.item_id.price_rent}BYN/${item.item_id.rent}`
+                                }${
+                                  item.item_id.pledge_price &&
+                                  item.item_id.pledge_price > 0
+                                    ? ","
+                                    : ""
+                                } ${
+                                  item.item_id.pledge_price &&
+                                  item.item_id.pledge_price > 0
+                                    ? `залог: ${item.item_id.pledge_price} BYN`
+                                    : ""
+                                }${item.item_id.insurance_price ? "," : ""} ${
+                                  item.item_id.insurance_price
+                                    ? `страхование: ${item.item_id.insurance_price}BYN`
+                                    : ""
+                                }${
+                                  item.item_id.self_delivery_price ? "," : ""
+                                } ${
+                                  item.item_id.self_delivery_price
+                                    ? `доставка: ${item.item_id.self_delivery_price}BYN`
+                                    : ""
+                                }${item.item_id.servicefee_price ? "," : ""} ${
+                                  item.item_id.servicefee_price
+                                    ? `сервисный сбор: ${item.item_id.servicefee_price}BYN`
+                                    : ""
+                                }`}
+                                )
+                              </p>
+                            </td>
                             <td>
                               {item.rent === "HOUR"
                                 ? `${item.reservation_start_time
