@@ -521,9 +521,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               selected={startDate}
                               onChange={(date) => setStartDate(date)}
                               locale="ru"
-                              dateFormat="Pp"
-                              timeFormat="HH:mm"
-                              // dateFormat="YYYY-MM-DDTHH:MM"
+                              dateFormat="P"
                               minDate={new Date()}
                             />
                           </label>
@@ -553,10 +551,13 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               type="number"
                               id="booking_date_end_input_time"
                               onChange={(e) => inputTimeCheked(e)}
+                              value={timechecked}
                               disabled={startDate === undefined}
                               className="booking_input_date_end"
                               required
                               min="1"
+                              max="365"
+                              placeholder="1"
                             />
                             <span className="information_all_down_left_alldate">
                               {" "}
@@ -1168,35 +1169,30 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     Ошибка! (Стартовое время ввода либо меньше настоящего
                     времени либо равное времени завершения аренды...){" "}
                   </span>
-                ) : (resulthours <= 0 || resulthours > 23) &&
-                  itemData.rent === "Час" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
-                ) : (resulthours !== 0 || resulthours <= 23) &&
-                  itemData.rent === "Час" ? (
+                ) : resulthours <= 0 && itemData.rent === "Час" ? (
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                ) : resulthours !== 0 && itemData.rent === "Час" ? (
                   totalAmount + "  BYN"
                 ) : (resultdate <= 0 || resultdate > 30) &&
                   itemData.rent === "День" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
                 ) : (resultdate !== 0 || resultdate <= 30) &&
                   itemData.rent === "День" ? (
                   totalAmount + "  BYN"
                 ) : (resultweek <= 0 || resultweek > 4) &&
                   itemData.rent === "Неделя" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
                 ) : (resultweek !== 0 || resultweek <= 4) &&
                   itemData.rent === "Неделя" ? (
                   totalAmount + "  BYN"
                 ) : (resultmonths <= 0 || resultmonths > 12) &&
                   itemData.rent === "Месяц" ? (
-                  <span style={{ color: "red" }}> Ошибка времени аренды! </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
                 ) : (resultmonths !== 0 || resultmonths <= 12) &&
                   itemData.rent === "Месяц" ? (
                   totalAmount + "  BYN"
                 ) : isNaN(totalAmount) ? (
-                  <span style={{ color: "red" }}>
-                    {" "}
-                    Ошибка условия аренды! Проверьте в чём указана аренда.
-                  </span>
+                  <span style={{ color: "red" }}> Ошибка срока аренды!</span>
                 ) : (
                   totalAmount + "  BYN"
                 )}{" "}

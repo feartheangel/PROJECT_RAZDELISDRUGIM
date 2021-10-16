@@ -77,6 +77,7 @@ const ITake = ({ itemData }) => {
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Наименование</th>
+                      <th scope="col">Инфо</th>
                       <th scope="col">Начало</th>
                       <th scope="col">Окончание</th>
                       <th scope="col">Срок</th>
@@ -93,9 +94,11 @@ const ITake = ({ itemData }) => {
                       reservations.map((item, index) => {
                         return (
                           <tr style={{ cursor: "pointer" }}>
-                            <th scope="row">{index + 1}</th>
+                            <th>{index + 1}</th>
                             <td>
                               <p>{item.item_id.name_item}</p>
+                            </td>
+                            <td>
                               <p>
                                 (
                                 {`${

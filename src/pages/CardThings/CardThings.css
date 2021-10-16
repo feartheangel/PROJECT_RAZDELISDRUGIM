@@ -772,6 +772,7 @@
   border-radius: 7px;
   padding: 7px 15px;
   margin-left: 5px;
+  font-size: 18px;
 }
 /* контентная часть  - центральный блок */
 .card_content_booking_center {
@@ -844,16 +845,18 @@
   border-radius: 7px;
   padding: 2px;
   height: 35px;
-    padding-left: 10px;
+  padding-left: 10px;
+  font-size: 18px;
 }
 .booking_input_date_end{
-  max-width: 80px;
+  max-width: 60px;
   border: 1.31722px solid rgba(9, 29, 32, 0.4);
   box-sizing: border-box;
   border-radius: 7px;
   padding: 2px;
   height: 35px;
-    padding-left: 10px;
+  padding-left: 10px;
+  font-size: 18px;
 }
 .up_block_right_input_block-text {
   margin-left: 5px;
