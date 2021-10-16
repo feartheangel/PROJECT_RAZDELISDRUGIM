@@ -80,7 +80,6 @@ const ITake = ({ itemData }) => {
                       <th scope="col">Начало</th>
                       <th scope="col">Окончание</th>
                       <th scope="col">Срок</th>
-                      <th scope="col">Длительность</th>
                       <th scope="col" style={{ verticalAlign: "top" }}>
                         Статус
                       </th>
@@ -188,7 +187,6 @@ const ITake = ({ itemData }) => {
                                     .slice(0, 4)
                                     .join("")}`}
                             </td>
-                            <td>{item.item_id.rent}</td>
                             <td>{item.reservation_time}</td>
                             <td
                               style={
