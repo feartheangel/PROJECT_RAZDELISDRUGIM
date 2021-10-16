@@ -85,9 +85,10 @@ const MyItems = () => {
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Наименование</th>
+                        <th scope="col">Инфо</th>
                         <th scope="col">Начало {"   "}</th>
                         <th scope="col">Окончание</th>
-                        <th scope="col">Длительность</th>
+                        <th scope="col">Срок</th>
                         <th scope="col" style={{ verticalAlign: "top" }}>
                           Статус
                         </th>
@@ -102,52 +103,47 @@ const MyItems = () => {
                           return (
                             <tr style={{ cursor: "pointer" }}>
                               <th scope="row">{index + 1}</th>
-                              <td>
-                                {" "}
-                                <td>
-                                  <p>{item.item_id.name_item}</p>
-                                  <p>
-                                    (
-                                    {`${
-                                      item.item_id.free_rent
-                                        ? "Бесплатно"
-                                        : item.item_id.offer_price_rent
-                                        ? "Договорная"
-                                        : `${item.item_id.price_rent}BYN/${item.item_id.rent}`
-                                    }${
-                                      item.item_id.pledge_price &&
-                                      item.item_id.pledge_price > 0
-                                        ? ","
-                                        : ""
-                                    } ${
-                                      item.item_id.pledge_price &&
-                                      item.item_id.pledge_price > 0
-                                        ? `залог: ${item.item_id.pledge_price} BYN`
-                                        : ""
-                                    }${
-                                      item.item_id.insurance_price ? "," : ""
-                                    } ${
-                                      item.item_id.insurance_price
-                                        ? `страхование: ${item.item_id.insurance_price}BYN`
-                                        : ""
-                                    }${
-                                      item.item_id.self_delivery_price
-                                        ? ","
-                                        : ""
-                                    } ${
-                                      item.item_id.self_delivery_price
-                                        ? `доставка: ${item.item_id.self_delivery_price}BYN`
-                                        : ""
-                                    }${
-                                      item.item_id.servicefee_price ? "," : ""
-                                    } ${
-                                      item.item_id.servicefee_price
-                                        ? `сервисный сбор: ${item.item_id.servicefee_price}BYN`
-                                        : ""
-                                    }`}
-                                    )
-                                  </p>
-                                </td>
+                              <td style={{ maxWidth: "150px" }}>
+                                <p>{item.item_id.name_item}</p>
+                              </td>
+                              <td style={{ maxWidth: "150px" }}>
+                                <p>
+                                  (
+                                  {`${
+                                    item.item_id.free_rent
+                                      ? "Бесплатно"
+                                      : item.item_id.offer_price_rent
+                                      ? "Договорная"
+                                      : `${item.item_id.price_rent}BYN/${item.item_id.rent}`
+                                  }${
+                                    item.item_id.pledge_price &&
+                                    item.item_id.pledge_price > 0
+                                      ? ","
+                                      : ""
+                                  } ${
+                                    item.item_id.pledge_price &&
+                                    item.item_id.pledge_price > 0
+                                      ? `залог: ${item.item_id.pledge_price} BYN`
+                                      : ""
+                                  }${item.item_id.insurance_price ? "," : ""} ${
+                                    item.item_id.insurance_price
+                                      ? `страхование: ${item.item_id.insurance_price}BYN`
+                                      : ""
+                                  }${
+                                    item.item_id.self_delivery_price ? "," : ""
+                                  } ${
+                                    item.item_id.self_delivery_price
+                                      ? `доставка: ${item.item_id.self_delivery_price}BYN`
+                                      : ""
+                                  }${
+                                    item.item_id.servicefee_price ? "," : ""
+                                  } ${
+                                    item.item_id.servicefee_price
+                                      ? `сервисный сбор: ${item.item_id.servicefee_price}BYN`
+                                      : ""
+                                  }`}
+                                  )
+                                </p>
                               </td>
                               <td>
                                 {item.item_id.rent === "Час"
@@ -204,7 +200,9 @@ const MyItems = () => {
                                       .slice(0, 4)
                                       .join("")}`}
                               </td>
-                              <td>{item.reservation_time}</td>
+                              <td style={{ textAlign: "center" }}>
+                                {item.reservation_time}
+                              </td>
                               <td
                                 style={
                                   item.reservation_status === null
@@ -243,7 +241,9 @@ const MyItems = () => {
                                   ""
                                 )}
                               </td>
-                              <td>{item.renter_name}</td>
+                              <td style={{ textAlign: "center" }}>
+                                {item.renter_name}
+                              </td>
                             </tr>
                           );
                         })}

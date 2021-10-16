@@ -95,10 +95,10 @@ const ITake = ({ itemData }) => {
                         return (
                           <tr style={{ cursor: "pointer" }}>
                             <th>{index + 1}</th>
-                            <td>
+                            <td style={{ maxWidth: "150px" }}>
                               <p>{item.item_id.name_item}</p>
                             </td>
-                            <td>
+                            <td style={{ maxWidth: "150px" }}>
                               <p>
                                 (
                                 {`${
