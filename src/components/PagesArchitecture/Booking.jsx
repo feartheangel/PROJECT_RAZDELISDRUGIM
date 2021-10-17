@@ -50,7 +50,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [timechecked, setTimeChecked] = React.useState(1);
   const [coords, setCoords] = React.useState();
   const [addressAdded, setAddressAdded] = React.useState(false);
-  const [radioBooking, setRadioBooking] = React.useState("1");
+  const [radioBooking, setRadioBooking] = React.useState();
+
+  const bbbb = itemData.delivery.includes("Самовывоз");
   const [renterBookingName, setRenterBookingName] = React.useState(
     userData.first_name
   );
@@ -61,7 +63,13 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
   const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
 
-  console.log(radioBooking);
+  // const radioselection = (radioBooking) => {
+  //   if (itemData.delivery.includes("Самовывоз")) {
+  //     return (radioBooking = "2");
+  //   } else y
+  //     return (radioBooking = "3");
+  //   }
+  // };
 
   // минимальное время бронирования(дата и время сейчас)
   var datetimeminbooking = new Date().toJSON().slice(0, 16);
@@ -152,6 +160,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const radioBookingHandler = (e) => {
     setRadioBooking(e.target.value);
   };
+  console.log(radioBooking);
   // имя рентера
   const renterBookingNameHandler = (e) => {
     setRenterBookingName(e.target.value);
@@ -521,7 +530,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               selected={startDate}
                               onChange={(date) => setStartDate(date)}
                               locale="ru"
-                              dateFormat="P"
+                              dateFormat="dd.M.yyyy"
                               minDate={new Date()}
                             />
                           </label>
@@ -593,7 +602,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               showTimeSelect
                               locale="ru"
                               timeFormat="HH:mm"
-                              dateFormat="Pp"
+                              dateFormat="dd.M.yyyy HH:mm"
                               timeIntervals={60}
                               minDate={new Date()}
                               timeInputLabel="Time:"

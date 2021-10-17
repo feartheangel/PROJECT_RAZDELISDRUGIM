@@ -136,7 +136,7 @@ const ITake = ({ itemData }) => {
                               </p>
                             </td>
                             <td>
-                              {item.rent === "HOUR"
+                              {item.item_id.rent === "Час"
                                 ? `${item.reservation_start_time
                                     .split("")
                                     .slice(8, 10)
@@ -164,7 +164,7 @@ const ITake = ({ itemData }) => {
                             </td>
                             <td>
                               {" "}
-                              {item.rent === "HOUR"
+                              {item.item_id.rent === "Час"
                                 ? `${item.reservation_end_time
                                     .split("")
                                     .slice(8, 10)
