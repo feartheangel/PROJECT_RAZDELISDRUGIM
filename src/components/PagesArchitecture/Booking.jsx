@@ -63,14 +63,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
   const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
 
-  // const radioselection = (radioBooking) => {
-  //   if (itemData.delivery.includes("Самовывоз")) {
-  //     return (radioBooking = "2");
-  //   } else y
-  //     return (radioBooking = "3");
-  //   }
-  // };
-
   // минимальное время бронирования(дата и время сейчас)
   var datetimeminbooking = new Date().toJSON().slice(0, 16);
   // для дней мин время
@@ -79,6 +71,28 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const time = new Date().toLocaleString();
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
+
+  // автоматический начальный выбор способа доставки
+  React.useEffect((radioBooking) => {
+    if (itemData.delivery.includes("Самовывоз")) {
+      setRadioBooking((radioBooking = "1"));
+    } else if (itemData.delivery.includes("Доставка курьером")) {
+      setRadioBooking((radioBooking = "3"));
+    } else {
+      setRadioBooking((radioBooking = "2"));
+    }
+  }, []);
+
+  // увеличение начальной даты букинга в зависимости от полудня
+  React.useEffect(() => {
+    if (new Date().getTime() > 12) {
+      setStartDate(new Date().setDate(new Date().getDate() + 1));
+    } else {
+      setStartDate(new Date());
+    }
+  }, []);
+
+  console.log(radioBooking);
 
   // фильтр времени в пикере
   const filterPassedTime3 = (time) => {
@@ -160,7 +174,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const radioBookingHandler = (e) => {
     setRadioBooking(e.target.value);
   };
-  console.log(radioBooking);
   // имя рентера
   const renterBookingNameHandler = (e) => {
     setRenterBookingName(e.target.value);
@@ -748,6 +761,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         name="radio"
                         className="input_setting"
                         value="1"
+                        checked={radioBooking === "1" ? true : false}
                         onChange={(e) => setRadioBooking(e.target.value)}
                         id="radio_booking1"
                       />
@@ -767,6 +781,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="radio"
                           className="input_setting"
                           value="2"
+                          checked={radioBooking === "2" ? true : false}
                           onChange={(e) => setRadioBooking(e.target.value)}
                           id="radio_booking2"
                         />
@@ -790,6 +805,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="radio"
                           className="input_setting"
                           value="3"
+                          checked={radioBooking === "3" ? true : false}
                           id="radio_booking3"
                           onChange={(e) => setRadioBooking(e.target.value)}
                         />
