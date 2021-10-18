@@ -289,6 +289,25 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   };
 
   const handleBooking = () => {
+    if (!radioBooking) {
+      alert("Не выбран тип доставки!");
+      return;
+    } else if (!startDate) {
+      alert("Не указана дата начала бронирования!");
+      return;
+    } else if (!resulthours && !resultdate && !resultweek && !resultmonths) {
+      alert("Не указан срок броинрвания!");
+      return;
+    } else if ((radioBooking === "2" || radioBooking === "3") && !coords) {
+      alert("Не указан  адрес доставки!");
+      return;
+    } else if (!renterBookingName) {
+      alert("Не указано имя арендатора!");
+      return;
+    } else if (!renterBookingNumber) {
+      alert("Не указано номер телефона арендатора!");
+      return;
+    }
     Requests.createBooking(
       renterBookingName,
       renterBookingNumber,
@@ -298,7 +317,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
         : `${convertDate(startDate)}`,
       itemData.id,
       itemData.profile.id,
-      radioBooking,
+      Number(radioBooking),
       itemData.rent === "Час"
         ? `${resulthours} час`
         : itemData.rent === "День"
@@ -308,7 +327,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
         : itemData.rent === "Месяц"
         ? `${resultmonths} мес`
         : "",
-      coords[1]
+      itemData.rent === "Час"
+        ? resulthours
+        : itemData.rent === "День"
+        ? resultdate
+        : itemData.rent === "Неделя"
+        ? resultweek
+        : itemData.rent === "Месяц"
+        ? resultmonths
+        : "",
+      radioBooking !== "1" ? coords[1] : ""
     )
       .then(() => alert("Запрос на подтверждение бронирования отправлен!"))
       .catch(() => alert("Ошибка бронирования!" + startDate));

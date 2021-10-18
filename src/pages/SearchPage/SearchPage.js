@@ -1380,7 +1380,7 @@ const SearchPage = () => {
                       <input
                         onClick={addSubjectHandler}
                         type="button"
-                        value="Предложить вещь"
+                        value="Предложить своё"
                         className="header-button add-subject"
                       />
                     </div>
@@ -1553,7 +1553,7 @@ const SearchPage = () => {
                         <input
                           onClick={addSubjectHandler}
                           type="button"
-                          value="Предложить вещь"
+                          value="Предложить своё"
                           className="header-button add-subject"
                         />
                       </div>
@@ -1673,7 +1673,7 @@ const SearchPage = () => {
                       <input
                         onClick={addSubjectHandler}
                         type="button"
-                        value="Предложить вещь"
+                        value="Предложить своё"
                         className="header-button add-subject"
                       />
                     </div>

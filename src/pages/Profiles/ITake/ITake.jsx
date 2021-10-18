@@ -140,7 +140,11 @@ const ITake = ({ itemData }) => {
                                 ? `${item.reservation_start_time
                                     .split("")
                                     .slice(8, 10)
-                                    .join("")}${item.reservation_start_time
+                                    .join("")
+                                    .replace(
+                                      "-",
+                                      ","
+                                    )}${item.reservation_start_time
                                     .split("")
                                     .slice(4, 8)
                                     .join("")}${item.reservation_start_time

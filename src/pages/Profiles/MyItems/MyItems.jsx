@@ -104,7 +104,13 @@ const MyItems = () => {
                             <tr style={{ cursor: "pointer" }}>
                               <th scope="row">{index + 1}</th>
                               <td style={{ maxWidth: "150px" }}>
-                                <p>{item.item_id.name_item}</p>
+                                <Link
+                                  to={`/item-card?id=${item.item_id.id}`}
+                                  style={{ textDecoration: "none" }}
+                                >
+                                  {" "}
+                                  <p>{item.item_id.name_item}</p>
+                                </Link>
                               </td>
                               <td style={{ maxWidth: "150px" }}>
                                 <p>
@@ -382,7 +388,12 @@ const MyItems = () => {
                             <td>
                               {" "}
                               <td>
-                                <p>{item.item_id.name_item}</p>
+                                <Link
+                                  to={`/item-card?id=${item.item_id.id}`}
+                                  style={{ textDecoration: "none" }}
+                                >
+                                  <p>{item.item_id.name_item}</p>
+                                </Link>
                                 <p>
                                   (
                                   {`${

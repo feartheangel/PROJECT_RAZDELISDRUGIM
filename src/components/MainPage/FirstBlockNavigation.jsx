@@ -55,7 +55,7 @@ const FirstBlockNavigation = () => {
             <input
               onClick={addSubjectHandler}
               type="button"
-              value="Предложить вещь"
+              value="Предложить своё"
               className="header-button add-subject"
               id="add-subject2"
             />

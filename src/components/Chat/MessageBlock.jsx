@@ -152,15 +152,22 @@ const MessageBlock = ({
               Аренда с:{" "}
               {`${item.time_start_reserve
                 .split("")
-                .splice(0, 10)
-                .join("")} ${item.time_start_reserve
+                .splice(8, 2)
+                .join("")}.${item.time_start_reserve
                 .split("")
-                .splice(11, 5)
-                .join("")}`}
+                .splice(5, 2)
+                .join("")}.${item.time_start_reserve
+                .split("")
+                .splice(0, 4)
+                .join("")} ${
+                item.rent === "HOUR"
+                  ? item.time_start_reserve.split("").splice(11, 5).join("")
+                  : ""
+              }`}
             </p>
           </div>
           <p className="reservation_request_time_rent">
-            Срок аренды: {item.reservation_time}
+            Срок аренды: {item.reservation_time}.
           </p>
           {item.reserve_text_sender && (
             <p className="reservation_request_delivery">
