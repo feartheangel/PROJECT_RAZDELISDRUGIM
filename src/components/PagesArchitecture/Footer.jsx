@@ -1,16 +1,16 @@
 import React from "react";
 
-import Facebook from "../../img/MainPage/Facebook.png";
-import Instagram from "../../img/MainPage/Instagram.png";
-import Logo2 from "../../img/MainPage/Logo2.png";
-import ApplePay from "../../img/MainPage/Method=ApplePay.png";
-import Mastercard from "../../img/MainPage/Method=Mastercard.png";
-import Visa from "../../img/MainPage/Method=Visa.png";
-import Webmoney from "../../img/MainPage/Method=Webmoney.png";
-import Yandex from "../../img/MainPage/Method=Yandex.png";
-import Planet from "../../img/MainPage/Planet.png";
-import VK from "../../img/MainPage/VK.png";
-import mark from "../../img/MainPage/Mark.png";
+import Facebook from "../../img/MainPage/Facebook.webp";
+import Instagram from "../../img/MainPage/Instagram.webp";
+import Logo2 from "../../img/MainPage/Logo2.webp";
+import ApplePay from "../../img/MainPage/Method=ApplePay.webp";
+import Mastercard from "../../img/MainPage/Method=Mastercard.webp";
+import Visa from "../../img/MainPage/Method=Visa.webp";
+import Webmoney from "../../img/MainPage/Method=Webmoney.webp";
+import Yandex from "../../img/MainPage/Method=Yandex.webp";
+import Planet from "../../img/MainPage/Planet.webp";
+import VK from "../../img/MainPage/VK.webp";
+import mark from "../../img/MainPage/Mark.webp";
 import viber from "../../img/MainPage/viber-logo.jpeg";
 
 import { useSelector } from "react-redux";

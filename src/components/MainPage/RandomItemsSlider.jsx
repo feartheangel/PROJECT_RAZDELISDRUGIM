@@ -52,46 +52,39 @@ const RandomItemsSlider = () => {
               ))}
           </Swiper>
 
-                    {/* копия для адаптива  800*/}
-                    <Swiper
+          {/* копия для адаптива  800*/}
+          <Swiper
             spaceBetween={0}
             slidesPerView={3}
             pagination={{ clickable: true }}
-            
             // scrollbar={{ draggable: true }}
-            id ="swiper_mobile_768"
-            >
+            id="swiper_mobile_768"
+          >
             {randomItems &&
               randomItems.map((item, index) => (
-                <SwiperSlide style={{ display: 'flex', width: '25%' }}>
-                  {' '}
-                  <ItemCard key={index} item={item} 
-
-                   />
+                <SwiperSlide style={{ display: "flex", width: "25%" }}>
+                  {" "}
+                  <ItemCard key={index} item={item} />
                 </SwiperSlide>
               ))}
           </Swiper>
 
-                              {/* копия для адаптива  1024*/}
-            <Swiper
+          {/* копия для адаптива  1024*/}
+          <Swiper
             spaceBetween={0}
             slidesPerView={4}
             pagination={{ clickable: true }}
-            
             // scrollbar={{ draggable: true }}
-            id ="swiper_mobile_1024"
-            >
+            id="swiper_mobile_1024"
+          >
             {randomItems &&
               randomItems.map((item, index) => (
-                <SwiperSlide style={{ display: 'flex', width: '25%' }}>
-                  {' '}
-                  <ItemCard key={index} item={item} 
-
-                   />
+                <SwiperSlide style={{ display: "flex", width: "25%" }}>
+                  {" "}
+                  <ItemCard key={index} item={item} />
                 </SwiperSlide>
               ))}
           </Swiper>
-
         </div>
       </div>
       <Link

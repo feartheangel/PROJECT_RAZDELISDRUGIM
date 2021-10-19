@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect">
     <meta name="yandex-verification" content="e9edb2f509a6d76d" />
     <meta charset="utf-8" />
     <link rel="icon" href="./media/favicon.ico" />
-    <link
-      href="/examples/libs/bootstrap-3/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="/examples/vendors/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"
-      rel="stylesheet"
-    />
 
     <meta
       name="viewport"
@@ -35,50 +24,6 @@
     <meta property="og:image" content="./media/link_image.png" />
     <meta property="og:url" content="https://razdelisdrugim.by" />
     <meta name="robots" content="noindex" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"
-    ></script>
-    <script>
-      async
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-L066HXCMFD");
-    </script>
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        m[i].l = 1 * new Date();
-        (k = e.createElement(t)),
-          (a = e.getElementsByTagName(t)[0]),
-          (k.async = 1),
-          (k.src = r),
-          a.parentNode.insertBefore(k, a);
-      })(
-        window,
-        document,
-        "script",
-        "https://mc.yandex.ru/metrika/tag.js",
-        "ym"
-      );
-
-      ym(83058148, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-      });
-    </script>
     <noscript>
       <div>
         <img
@@ -106,10 +51,6 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>#разделисдругим</title>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=YOUR_PROJECT_ID"
-    ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -124,5 +65,48 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.0.0-alpha-930c9e7ee-20211015/umd/react.production.min.js"
+      integrity="sha512-s/yZOimQ2Ud2xH+hgJW8QvQ0LDe8OMltm3+SHEJ9D75avxUYw4n173Vp/H+uFcUqDvWVu8wtlzvY3SacF7KV7A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-L066HXCMFD"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+
+          gtag("config", "G-L066HXCMFD");
+        </script>
+        
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript" defer>
+          (function (m, e, t, r, i, k, a) {
+            m[i] =
+              m[i] ||
+              function () {
+                (m[i].a = m[i].a || []).push(arguments);
+              };
+            m[i].l = 1 * new Date();
+            (k = e.createElement(t)),
+              (a = e.getElementsByTagName(t)[0]),
+              (k.async = 1),
+              (k.src = r),
+              a.parentNode.insertBefore(k, a);
+          })(
+            window,
+            document,
+            "script",
+            "https://mc.yandex.ru/metrika/tag.js",
+            "ym"
+          );
+
+          ym(83058148, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+          });
+        </script>
   </body>
 </html>

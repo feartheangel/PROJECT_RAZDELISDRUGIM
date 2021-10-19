@@ -296,7 +296,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       alert("Не указана дата начала бронирования!");
       return;
     } else if (!resulthours && !resultdate && !resultweek && !resultmonths) {
-      alert("Не указан срок броинрвания!");
+      alert("Не указан срок бронирвания!");
       return;
     } else if ((radioBooking === "2" || radioBooking === "3") && !coords) {
       alert("Не указан  адрес доставки!");
@@ -308,6 +308,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       alert("Не указано номер телефона арендатора!");
       return;
     }
+
     Requests.createBooking(
       renterBookingName,
       renterBookingNumber,

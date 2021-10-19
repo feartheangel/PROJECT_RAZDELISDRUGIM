@@ -17,6 +17,7 @@ import {
   Adverts,
   MediaAbout,
 } from "../components/index";
+import LazyLoad from "react-lazyload";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -35,20 +36,48 @@ const Home = () => {
   return (
     <div className="Main_page">
       <div class="content">
-        <Header />
-        <FirstBlockNavigation />
-        <RecentItemsSlider />
-        <MapBlock />
-        <RandomItemsSlider />
-        <AbilitiesBlock />
-        {false && <ReviewsBlock />}
-        <AboutBlock />
-        <Partners />
-        <News />
-        <Categories />
-        {false && <Adverts />}
-        {false && <MediaAbout />}
-        <Footer />
+        <LazyLoad once>
+          <Header />
+        </LazyLoad>
+        <LazyLoad once>
+          <FirstBlockNavigation />
+        </LazyLoad>
+        <LazyLoad once>
+          <RecentItemsSlider />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <MapBlock />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <RandomItemsSlider />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <AbilitiesBlock />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          {false && <ReviewsBlock />}
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <AboutBlock />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <Partners />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <News />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <Categories />
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          {false && <Adverts />}
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          {false && <MediaAbout />}
+        </LazyLoad>
+        <LazyLoad once offset={100}>
+          <Footer />
+        </LazyLoad>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Requests from "../../http/axios-requests";
-import Burger from "../../img/MainPage/Burger.png";
-import Logo from "../../img/MainPage/Logo.png";
+import Burger from "../../img/MainPage/Burger.webp";
+import Logo from "../../img/MainPage/Logo.webp";
 import vector2 from "../../img/SearchPage/Vector2.png";
 import { logoutAction, loginAction } from "../../redux/actions/userData";
 import {
@@ -13,14 +13,14 @@ import {
   setCategoryId,
 } from "../../redux/actions/search";
 import { ProfilePopUp, BaseModal, NotifyPopUp } from "../index";
-import Favorites from "../../img/MainPage/FavoritesDisabled.png";
-import Notifications from "../../img/MainPage/Notifications.png";
+import Favorites from "../../img/MainPage/FavoritesDisabled.webp";
+import Notifications from "../../img/MainPage/Notifications.webp";
 import { setNews } from "../../redux/actions/items";
-import MenuStroke from "../../img/MainPage/MenuStroke.png";
-import Planet2 from "../../img/MainPage/Vector (Stroke2).png";
-import Local2 from "../../img/MainPage/local2.png";
-import Like_vector from "../../img/MainPage/like_vector.png";
-import Bell2 from "../../img/MainPage/bell2.png";
+import MenuStroke from "../../img/MainPage/MenuStroke.webp";
+import Planet2 from "../../img/MainPage/Vector (Stroke2).webp";
+import Local2 from "../../img/MainPage/local2.webp";
+import Like_vector from "../../img/MainPage/like_vector.webp";
+import Bell2 from "../../img/MainPage/bell2.webp";
 
 const Header = () => {
   const searchButton = React.useRef(null);

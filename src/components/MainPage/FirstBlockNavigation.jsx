@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import FirstImage from "../../img/MainPage/first_block_image.png";
+import FirstImage from "../../img/MainPage/first_block_image.webp";
 import { useSelector } from "react-redux";
 
 const FirstBlockNavigation = () => {
@@ -39,7 +39,7 @@ const FirstBlockNavigation = () => {
             Платформа, где делятся вещами<br></br> друг с другом в аренду, и не
             только...
           </p>
-          <img src={FirstImage} className="FirstImage2" />
+          <img loading="lazy" src={FirstImage} className="FirstImage2" />
           <div
             style={{ justifyContent: "flex-start" }}
             className="main_page_first_block_left_bottons"
@@ -62,7 +62,7 @@ const FirstBlockNavigation = () => {
           </div>
           {redirect}
         </div>
-        <img src={FirstImage} className="FirstImage1" />
+        <img loading="lazy" src={FirstImage} className="FirstImage1" />
       </div>
     </section>
   );

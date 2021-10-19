@@ -1,6 +1,5 @@
 import React from "react";
-import jacket from "../../img/MainPage/jacket.png";
-import MenuStroke from "../../img/MainPage/MenuStroke.png";
+import jacket from "../../img/MainPage/jacket.webp";
 
 const AboutBlock = () => {
   const [showContent, setShowContent] = React.useState();
@@ -25,11 +24,21 @@ const AboutBlock = () => {
           <div>
             <div className="about-middle-part">
               <div className="about-middle-left">
-                <img src={jacket} alt="" className="about-jacket" />
+                <img
+                  loading="lazy"
+                  src={jacket}
+                  alt=""
+                  className="about-jacket"
+                />
               </div>
               <div className="about-middle-right">
                 <p className="about-main-p">
-                  <img src={jacket} alt="" className="about-jacket2" />
+                  <img
+                    loading="lazy"
+                    src={jacket}
+                    alt=""
+                    className="about-jacket2"
+                  />
                   Все началось с моего смокинга. Это такая часть гардероба,
                   которая в шкафу обычного современного человека если 
                   и присутствует, то используется крайне редко, может быть
@@ -76,7 +85,12 @@ const AboutBlock = () => {
           <div>
             <div className="about-middle-part">
               <div className="about-middle-left">
-                <img src={jacket} alt="" className="about-jacket" />
+                <img
+                  loading="lazy"
+                  src={jacket}
+                  alt=""
+                  className="about-jacket"
+                />
               </div>
               <div className="about-middle-right">
                 <p className="about-main-p">
