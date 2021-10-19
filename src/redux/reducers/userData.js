@@ -17,14 +17,12 @@ const userData = (state = initialState, action) => {
         ...state,
         isLoggedIn: action.payload,
       };
-      break;
 
     case "LOGOUT":
       return {
         ...state,
         isLoggedIn: action.payload,
       };
-      break;
 
     case "SET_ADDRESSES":
       return {
@@ -37,49 +35,45 @@ const userData = (state = initialState, action) => {
         ...state,
         requestActive: action.payload,
       };
-      break;
 
     case "SET_REQUEST_END":
       return {
         ...state,
         requestActive: action.payload,
       };
-      break;
 
     case "SET_USER_DATA":
       return {
         ...state,
         userData: action.payload,
       };
-      break;
 
     case "SET_USER_SUBJECTS":
       return {
         ...state,
         subjects: action.payload,
       };
-      break;
 
     case "RELOAD":
       return {
         ...state,
         reload: action.payload,
       };
-      break;
 
     case "SET_FAVORITES":
       return {
         ...state,
         favorites: action.payload,
       };
-      break;
 
     case "SET_I_TAKE_SUBJECTS":
       return {
         ...state,
         iTakeSubjects: action.payload,
       };
-      break;
+
+    default:
+    //nothing
   }
   return state;
 };

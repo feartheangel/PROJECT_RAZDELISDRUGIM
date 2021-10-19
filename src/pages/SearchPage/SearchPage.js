@@ -76,7 +76,7 @@ const SearchPage = () => {
         <div style=display:flex;flex-direction:column;align-items:center class="recent-block-wrapper">
         <a style=display:flex;flex-direction:column;align-items:center target="_blank">
           <div style=display:flex;flex-direction:column;align-items:center className="recent-block">
-           <img style=width:108px src=${`${rootAddress}${marks[index][1]}`} alt="" class="block-image" />
+           <img alt="picture1"  style=width:108px src=${`${rootAddress}${marks[index][1]}`}  class="block-image" />
               ${
                 !marks[index][6] && !marks[index][7]
                   ? `<div style=justify-content:flex-start;margin-top:7px class="recent-time-cost-wrapper">
@@ -168,6 +168,8 @@ const SearchPage = () => {
     ) {
       Requests.search().then((res) => {
         dispatch(setSearchItems(res.data));
+        setCountFilteredItems(res.headers["Count-Filter-Items"]);
+        console.log(res.headers["Count-Filter-Items"]);
       });
     } else {
       Requests.search(
@@ -185,9 +187,58 @@ const SearchPage = () => {
         distance
       ).then((res) => {
         dispatch(setSearchItems(res.data));
+        setCountFilteredItems(res.headers["Count-Filter-Items"]);
       });
     }
   }, []);
+
+  const [currentPage, setCurrentPage] = React.useState(2);
+  const [fetching, setFetching] = React.useState();
+  const [countFilteredItems, setCountFilteredItems] = React.useState();
+
+  React.useEffect(() => {
+    if (fetching) {
+      Requests.search(
+        words,
+        category,
+        min_price,
+        max_price,
+        free,
+        status,
+        delivery,
+        insurance,
+        contract,
+        pledge,
+        userCoordinates,
+        distance,
+        currentPage
+      )
+        .then((res) => {
+          setCountFilteredItems(res.headers["Count-Filter-Items"]);
+          dispatch(setSearchItems([...searchItems, ...res.data]));
+          setCurrentPage((prevState) => prevState + 1);
+        })
+        .finally(() => setFetching(false));
+    }
+  }, [fetching]);
+
+  React.useEffect(() => {
+    document.addEventListener("scroll", scrollHandler);
+
+    return function () {
+      document.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+      1000
+    ) {
+      setFetching(true);
+    }
+  };
 
   const addSubjectHandler = () => {
     if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
@@ -238,6 +289,7 @@ const SearchPage = () => {
       distance
     ).then((res) => {
       dispatch(setSearchItems(res.data));
+      setCountFilteredItems(res.headers["Count-Filter-Items"]);
     });
   };
 
@@ -477,14 +529,14 @@ const SearchPage = () => {
               <Link style={{ textDecoration: "none" }} to="/">
                 <p className="SearchPage_container_shapka_hover"> Главная </p>
               </Link>
-              <img src={vector1} alt="" />
+              <img alt="picture1" src={vector1} />
             </div>
 
             <div>
               <Link style={{ textDecoration: "none" }} to="/catalog">
                 <p className="SearchPage_container_shapka_hover"> Каталог </p>
               </Link>
-              {category && <img src={vector1} alt="" />}
+              {category && <img alt="picture1" src={vector1} />}
             </div>
             {redirect}
 
@@ -500,14 +552,14 @@ const SearchPage = () => {
                 <Link style={{ textDecoration: "none" }} to="/">
                   <p className="SearchPage_container_shapka_hover"> Главная </p>
                 </Link>
-                <img src={vector1} alt="" />
+                <img alt="picture1" src={vector1} />
               </div>
 
               <div>
                 <Link style={{ textDecoration: "none" }} to="/catalog">
                   <p className="SearchPage_container_shapka_hover"> Каталог </p>
                 </Link>
-                {category && <img src={vector1} alt="" />}
+                {category && <img alt="picture1" src={vector1} />}
               </div>
 
               <div>
@@ -516,7 +568,7 @@ const SearchPage = () => {
             </div>
 
             <p className="container_shapka_result">
-              Найдено предложений: {searchItems.length}
+              Найдено предложений: {countFilteredItems}
               {category ? (
                 <p>
                   В категории: {category}
@@ -1233,7 +1285,7 @@ const SearchPage = () => {
                     style={{ height: "55px" }}
                     className="container_shapka_result"
                   >
-                    Найдено предложений: {searchItems.length}
+                    Найдено предложений: {countFilteredItems}
                     {category ? (
                       <p>
                         В категории: {category}

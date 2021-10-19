@@ -250,7 +250,7 @@ const CardThings = () => {
                   <Link style={{ textDecoration: "none" }} to="/catalog">
                     <p className="card_shapka_hover"> Каталог </p>
                   </Link>
-                  <img src={Vector1} alt="" />
+                  <img alt="picture1" src={Vector1} />
                   {redirect}
                 </div>
                 <div>
@@ -264,7 +264,7 @@ const CardThings = () => {
                       {itemData && itemData.category_id.chapter_id.name_chapter}
                     </p>
                   </Link>
-                  <img src={Vector1} alt="" />
+                  <img alt="picture1" src={Vector1} />
                 </div>
                 <Link style={{ textDecoration: "none" }} to="/search">
                   <div>
@@ -279,7 +279,7 @@ const CardThings = () => {
                     >
                       {itemData && itemData.category_id.name_category}{" "}
                     </p>
-                    <img src={Vector1} alt="" />
+                    <img alt="picture1" src={Vector1} />
                   </div>
                 </Link>
 
@@ -299,6 +299,7 @@ const CardThings = () => {
                     <div className="left_block_photo_small">
                       {itemData && itemData.image_1 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_1
                               ? "card_thing_image active"
@@ -312,11 +313,11 @@ const CardThings = () => {
                             `${rootAddress}${itemData.image_1}?random=` +
                               Math.random()
                           }
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_2 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_2
                               ? "card_thing_image active"
@@ -330,11 +331,11 @@ const CardThings = () => {
                             `${rootAddress}${itemData.image_2}?random=` +
                               Math.random()
                           }
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_3 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_3
                               ? "card_thing_image active"
@@ -348,11 +349,11 @@ const CardThings = () => {
                             `${rootAddress}${itemData.image_3}?random=` +
                               Math.random()
                           }
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_4 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_4
                               ? "card_thing_image active"
@@ -366,11 +367,11 @@ const CardThings = () => {
                             `${rootAddress}${itemData.image_4}?random=` +
                               Math.random()
                           }
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_5 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_5
                               ? "card_thing_image active"
@@ -384,7 +385,6 @@ const CardThings = () => {
                             `${rootAddress}${itemData.image_5}?random=` +
                               Math.random()
                           }
-                          alt=""
                         />
                       )}
                     </div>
@@ -392,6 +392,7 @@ const CardThings = () => {
                     <div className="left_block_photo_big">
                       {itemData && itemData.image_1 && (
                         <img
+                          alt="picture1"
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_1)
                           }
@@ -401,7 +402,6 @@ const CardThings = () => {
                               selectedImage && selectedImage
                             }?random=` + Math.random()
                           }
-                          alt=""
                         />
                       )}
                     </div>
@@ -412,11 +412,15 @@ const CardThings = () => {
                       onClick={() => setShareVisible(!shareVisible)}
                       className="left_block_toShare"
                     >
-                      <img src={Share} alt="" />
+                      <img alt="picture1" src={Share} />
                       <p> Поделиться</p>
                     </div>
                     <div className="card_views_wrapper">
-                      <img alt="" src={Views} className="card_views_icon" />
+                      <img
+                        alt="picture1"
+                        src={Views}
+                        className="card_views_icon"
+                      />
                       <p>{itemData && itemData.item_views} просмотра(-ов)</p>
                     </div>
                   </div>
@@ -425,7 +429,7 @@ const CardThings = () => {
                     <div className={"item_share_link"}>
                       <input type="text" value={window.location.href} />
                       <img
-                        alt=""
+                        alt="picture1"
                         onClick={window.navigator.clipboard.writeText(
                           `${window.location.href}`
                         )}
@@ -456,13 +460,13 @@ const CardThings = () => {
                     {/* ДОГОВОР*/}
                     {itemData && itemData.contract && (
                       <div className="conditions_contract">
-                        <img src={Union} className="img_union" alt="" />
+                        <img alt="picture1" src={Union} className="img_union" />
                         <p>Договор или расписка</p>
                         <img
+                          alt="picture1"
                           title="Указано, что владелец желает заключить письменный договор аренды или составить расписку"
                           src={Vector2}
                           className="img_vector2"
-                          alt=""
                         />
                       </div>
                     )}
@@ -472,16 +476,16 @@ const CardThings = () => {
                       <div className="conditions_pledge">
                         <div className="conditions_row">
                           <img
+                            alt="picture1"
                             src={CombinedShare}
                             className="img_combinedShare"
-                            alt=""
                           />
                           <p className="conditions_pledge_row-p">Залог</p>
                           <img
+                            alt="picture1"
                             title="Владелец желает получить от Арендатора денежный залог, который будет возвращен после возврата имущества в надлежащем виде"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         {
@@ -496,15 +500,19 @@ const CardThings = () => {
                     {itemData && itemData.servicefee && (
                       <div className="conditions_service">
                         <div className="conditions_row">
-                          <img src={Service} className="img_service" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Service}
+                            className="img_service"
+                          />
                           <p className="conditions_service_row-p">
                             Сервисный сбор
                           </p>
                           <img
+                            alt="picture1"
                             title="Владелец указывает, что к стоимости аренды будет добавлена стоимость работ, по приведению имущества в надлежащий вид перед следующей арендой"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         <p className="conditions_service-p">
@@ -519,15 +527,19 @@ const CardThings = () => {
                     {itemData && itemData.insurance && (
                       <div className="conditions_insurance">
                         <div className="conditions_row">
-                          <img src={Vector3} className="img_vector3" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector3}
+                            className="img_vector3"
+                          />
                           <p className="conditions_insurance_row-p">
                             Страхование
                           </p>
                           <img
+                            alt="picture1"
                             title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости залога"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         <p className="conditions_insurance-p">
@@ -555,10 +567,10 @@ const CardThings = () => {
                               Время получения
                             </p>
                             <img
+                              alt="picture1"
                               title="Тут указано, после какого времени можно получить имущество в аренду"
                               src={Vector2}
                               className="img_vector2"
-                              alt=""
                             />
                           </div>
                           <p className="conditions_timeItem-p">
@@ -572,10 +584,10 @@ const CardThings = () => {
                               Время возврата
                             </p>
                             <img
+                              alt="picture1"
                               title="Тут указано, до какого времени необходимо возвратить имущество владельцу"
                               src={Vector2}
                               className="img_vector2"
-                              alt=""
                             />
                           </div>
                           <p className="conditions_timeItem-p">
@@ -589,7 +601,11 @@ const CardThings = () => {
                     {itemData && itemData.sell && (
                       <div className="conditions_readySell">
                         <div className="conditions_row">
-                          <img src={Sell1} className="img_sell1" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Sell1}
+                            className="img_sell1"
+                          />
                           <p className="conditions_readySell_row-p">
                             Готов продать
                           </p>
@@ -722,9 +738,9 @@ const CardThings = () => {
                       {itemData && itemData.offer_price_rent && (
                         <div style={{ display: "flex" }}>
                           <img
+                            alt="picture1"
                             src={HandShake}
                             className="yourCost_handShake"
-                            alt=""
                           />
                           <p className="block_up_yourCost-p1">
                             {serviceIds.includes(
@@ -738,9 +754,9 @@ const CardThings = () => {
                       {itemData && itemData.free_rent && (
                         <div style={{ display: "flex" }}>
                           <img
+                            alt="picture1"
                             src={freePrice}
                             className="yourCost_handShake"
-                            alt=""
                           />
                           <p className="block_up_yourCost-p1">Бесплатно</p>
                         </div>
@@ -789,7 +805,11 @@ const CardThings = () => {
                     {/* Адрес местонахождения*/}
                     <div className="block_up_address">
                       <div className="conditions_row">
-                        <img src={Address} className="img_address" alt="" />
+                        <img
+                          alt="picture1"
+                          src={Address}
+                          className="img_address"
+                        />
                         <p className="block_up_address_row-p">
                           Адрес местонахождения:
                         </p>
@@ -812,13 +832,13 @@ const CardThings = () => {
                     {/* Доставка */}
                     <div className="block_up_delivery">
                       <div className="conditions_row">
-                        <img src={Car} className="img_car" alt="" />
+                        <img alt="picture1" src={Car} className="img_car" />
                         <p className="block_up_delivery_row-p">Доставка:</p>
                         <img
+                          alt="picture1"
                           title="Тут указаны возможные варианты получения имущества, его доставки или отправки"
                           src={Vector2}
                           className="img_vector2"
-                          alt=""
                         />
                       </div>
                       {itemData && itemData.delivery.includes("Самовывоз") && (
@@ -881,7 +901,7 @@ const CardThings = () => {
 
                     {/* Свободно*/}
                     <div style={{ display: "none" }} className="block_up_free">
-                      <img src={Clock2} alt="" className="img_clock2" />
+                      <img alt="picture1" src={Clock2} className="img_clock2" />
                       <span className="block_up_free-p">Свободно</span>
                     </div>
 
@@ -914,7 +934,7 @@ const CardThings = () => {
 
                         {favorites && !isFavorite && !isOwn && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) => addFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={FavoritesDisabled}
@@ -923,7 +943,7 @@ const CardThings = () => {
 
                         {favorites && isFavorite && !isOwn && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) => deleteFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={Favorites}
@@ -932,7 +952,7 @@ const CardThings = () => {
 
                         {isOwn && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) =>
                               (window.location.href = `/edit-item?id=${itemData.id}`)
                             }
@@ -994,6 +1014,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
+                          alt="picture1"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -1002,7 +1023,6 @@ const CardThings = () => {
                           src={`${rootAddress}${
                             itemData && itemData.profile.image_profile
                           }`}
-                          alt=""
                         />
                         <div className="block_down_owner_photo-p">
                           <p className="block_down_owner_photo-p1">
@@ -1025,11 +1045,11 @@ const CardThings = () => {
                         style={{ display: "none" }}
                         className="conditions_row"
                       >
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
                       </div>
                       <div className="block2_reviews_stars">
                         <p className="block2_reviews_text">Пока нет оценок</p>
@@ -1044,14 +1064,22 @@ const CardThings = () => {
                           <p className="block_down_telephone-p2">
                             Телефон подтвержден
                           </p>
-                          <img src={Vector7} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector7}
+                            className="img_vector"
+                          />
                         </div>
                       ) : (
                         <div className="telephone_row1">
                           <p className="block_down_telephone-p1">
                             Телефон не подтвержден
                           </p>
-                          <img src={Vector6} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector6}
+                            className="img_vector"
+                          />
                         </div>
                       )}
 
@@ -1060,14 +1088,22 @@ const CardThings = () => {
                           <p className="block_down_telephone-p2">
                             Почта подтверждена
                           </p>
-                          <img src={Vector7} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector7}
+                            className="img_vector"
+                          />
                         </div>
                       ) : (
                         <div className="telephone_row1">
                           <p className="block_down_telephone-p1">
                             Почта не подтверждена
                           </p>
-                          <img src={Vector6} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector6}
+                            className="img_vector"
+                          />
                         </div>
                       )}
                     </div>
@@ -1098,10 +1134,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Telegram}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -1114,10 +1150,10 @@ const CardThings = () => {
                               }`}
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Viber}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -1134,10 +1170,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Whatsapp}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -1158,11 +1194,11 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 rel="noreferrer"
                                 style={{ cursor: "pointer" }}
                                 src={Google}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -1180,10 +1216,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Facebook}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -1204,10 +1240,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Instagram}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -1225,10 +1261,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Vk}
                                 className="img_social"
-                                alt=""
                               />{" "}
                             </a>
                           )}
@@ -1246,6 +1282,7 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{
                                   height: "30px",
                                   width: "30px",
@@ -1253,7 +1290,6 @@ const CardThings = () => {
                                 }}
                                 src={Ok}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -1284,14 +1320,22 @@ const CardThings = () => {
               <p className="container_content_ads-p"> Похожие объявления </p>
 
               <div className="content_ads_card">
-                <img src={ArrowLeft} alt="" className="ads_card_img_left" />
+                <img
+                  alt="picture1"
+                  src={ArrowLeft}
+                  className="ads_card_img_left"
+                />
                 {simillarSubjects &&
                   simillarSubjects.map((item, index) => {
                     if (index <= 3) {
                       return <ItemCard item={item} key={index} />;
                     }
                   })}
-                <img src={ArrowRight} alt="" className="ads_card_img_right" />
+                <img
+                  alt="picture1"
+                  src={ArrowRight}
+                  className="ads_card_img_right"
+                />
               </div>
             </div>
           </div>
@@ -1310,7 +1354,7 @@ const CardThings = () => {
                   <Link style={{ textDecoration: "none" }} to="/catalog">
                     <p className="card_shapka_hover"> Каталог </p>
                   </Link>
-                  <img src={Vector1} alt="" />
+                  <img alt="picture1" src={Vector1} />
                 </div>
                 <div>
                   <Link
@@ -1323,7 +1367,7 @@ const CardThings = () => {
                       {itemData && itemData.category_id.chapter_id.name_chapter}
                     </p>
                   </Link>
-                  <img src={Vector1} alt="" />
+                  <img alt="picture1" src={Vector1} />
                 </div>
                 <Link style={{ textDecoration: "none" }} to="/search">
                   <div>
@@ -1338,7 +1382,7 @@ const CardThings = () => {
                     >
                       {itemData && itemData.category_id.name_category}{" "}
                     </p>
-                    <img src={Vector1} alt="" />
+                    <img alt="picture1" src={Vector1} />
                   </div>
                 </Link>
 
@@ -1359,6 +1403,7 @@ const CardThings = () => {
                       <div className="left_block_photo_small">
                         {itemData && itemData.image_1 && (
                           <img
+                            alt="picture1"
                             className={
                               selectedImage === itemData.image_1
                                 ? "card_thing_image active"
@@ -1372,11 +1417,11 @@ const CardThings = () => {
                               `${rootAddress}${itemData.image_1}?random=` +
                                 Math.random()
                             }
-                            alt=""
                           />
                         )}
                         {itemData && itemData.image_2 && (
                           <img
+                            alt="picture1"
                             className={
                               selectedImage === itemData.image_2
                                 ? "card_thing_image active"
@@ -1390,11 +1435,11 @@ const CardThings = () => {
                               `${rootAddress}${itemData.image_2}?random=` +
                                 Math.random()
                             }
-                            alt=""
                           />
                         )}
                         {itemData && itemData.image_3 && (
                           <img
+                            alt="picture1"
                             className={
                               selectedImage === itemData.image_3
                                 ? "card_thing_image active"
@@ -1408,11 +1453,11 @@ const CardThings = () => {
                               `${rootAddress}${itemData.image_3}?random=` +
                                 Math.random()
                             }
-                            alt=""
                           />
                         )}
                         {itemData && itemData.image_4 && (
                           <img
+                            alt="picture1"
                             className={
                               selectedImage === itemData.image_4
                                 ? "card_thing_image active"
@@ -1426,11 +1471,11 @@ const CardThings = () => {
                               `${rootAddress}${itemData.image_4}?random=` +
                                 Math.random()
                             }
-                            alt=""
                           />
                         )}
                         {itemData && itemData.image_5 && (
                           <img
+                            alt="picture1"
                             className={
                               selectedImage === itemData.image_5
                                 ? "card_thing_image active"
@@ -1444,7 +1489,6 @@ const CardThings = () => {
                               `${rootAddress}${itemData.image_5}?random=` +
                                 Math.random()
                             }
-                            alt=""
                           />
                         )}
                       </div>
@@ -1452,6 +1496,7 @@ const CardThings = () => {
                       <div className="left_block_photo_big">
                         {itemData && itemData.image_1 && (
                           <img
+                            alt="picture1"
                             onClick={() =>
                               setSelectedImage(itemData && itemData.image_1)
                             }
@@ -1461,7 +1506,6 @@ const CardThings = () => {
                                 selectedImage && selectedImage
                               }?random=` + Math.random()
                             }
-                            alt=""
                           />
                         )}
                       </div>
@@ -1478,9 +1522,9 @@ const CardThings = () => {
                       {itemData && itemData.offer_price_rent && (
                         <div style={{ display: "flex" }}>
                           <img
+                            alt="picture1"
                             src={HandShake}
                             className="yourCost_handShake"
-                            alt=""
                           />
                           <p className="block_up_yourCost-p1">
                             {serviceIds.includes(
@@ -1494,9 +1538,9 @@ const CardThings = () => {
                       {itemData && itemData.free_rent && (
                         <div style={{ display: "flex" }}>
                           <img
+                            alt="picture1"
                             src={freePrice}
                             className="yourCost_handShake"
-                            alt=""
                           />
                           <p className="block_up_yourCost-p1">Бесплатно</p>
                         </div>
@@ -1544,7 +1588,11 @@ const CardThings = () => {
                     {/* Адрес местонахождения*/}
                     <div className="block_up_address">
                       <div className="conditions_row">
-                        <img src={Address} className="img_address" alt="" />
+                        <img
+                          alt="picture1"
+                          src={Address}
+                          className="img_address"
+                        />
                         <p className="block_up_address_row-p">
                           Адрес местонахождения:
                         </p>
@@ -1569,7 +1617,7 @@ const CardThings = () => {
                         onClick={() => setShareVisible(!shareVisible)}
                         className="left_block_toShare"
                       >
-                        <img src={Share} alt="" />
+                        <img alt="picture1" src={Share} />
                         <p> Поделиться</p>
                       </div>
                       {shareVisible && (
@@ -1577,6 +1625,7 @@ const CardThings = () => {
                           <input type="text" value={window.location.href} />
                           <div className="toShare_button_wrapper">
                             <img
+                              alt="picture1"
                               onClick={window.navigator.clipboard.writeText(
                                 `${window.location.href}`
                               )}
@@ -1600,7 +1649,11 @@ const CardThings = () => {
                         </div>
                       )}
                       <div className="card_views_wrapper">
-                        <img src={Views} className="card_views_icon" />
+                        <img
+                          alt="picture1"
+                          src={Views}
+                          className="card_views_icon"
+                        />
                         <p>{itemData && itemData.item_views} просмотра(-ов)</p>
                       </div>
                     </div>
@@ -1613,13 +1666,13 @@ const CardThings = () => {
 
                     <div className="block_up_delivery">
                       <div className="conditions_row">
-                        <img src={Car} className="img_car" alt="" />
+                        <img alt="picture1" src={Car} className="img_car" />
                         <p className="block_up_delivery_row-p">Доставка:</p>
                         <img
+                          alt="picture1"
                           title="Тут указаны возможные варианты получения имущества, его доставки или отправки"
                           src={Vector2}
                           className="img_vector2"
-                          alt=""
                         />
                       </div>
                       {itemData && itemData.delivery.includes("Самовывоз") && (
@@ -1683,13 +1736,13 @@ const CardThings = () => {
                     {/* ДОГОВОР*/}
                     {itemData && itemData.contract && (
                       <div className="conditions_contract">
-                        <img src={Union} className="img_union" alt="" />
+                        <img alt="picture1" src={Union} className="img_union" />
                         <p>Договор или расписка</p>
                         <img
+                          alt="picture1"
                           title="Указано, что владелец желает заключить письменный договор аренды или составить расписку"
                           src={Vector2}
                           className="img_vector2"
-                          alt=""
                         />
                       </div>
                     )}
@@ -1699,16 +1752,16 @@ const CardThings = () => {
                       <div className="conditions_pledge">
                         <div className="conditions_row">
                           <img
+                            alt="picture1"
                             src={CombinedShare}
                             className="img_combinedShare"
-                            alt=""
                           />
                           <p className="conditions_pledge_row-p">Залог</p>
                           <img
+                            alt="picture1"
                             title="Владелец желает получить от Арендатора денежный залог, который будет возвращен после возврата имущества в надлежащем виде"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         {
@@ -1723,15 +1776,19 @@ const CardThings = () => {
                     {itemData && itemData.servicefee && (
                       <div className="conditions_service">
                         <div className="conditions_row">
-                          <img src={Service} className="img_service" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Service}
+                            className="img_service"
+                          />
                           <p className="conditions_service_row-p">
                             Сервисный сбор
                           </p>
                           <img
+                            alt="picture1"
                             title="Владелец указывает, что к стоимости аренды будет добавлена стоимость работ, по приведению имущества в надлежащий вид перед следующей арендой"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         <p className="conditions_service-p">
@@ -1746,15 +1803,19 @@ const CardThings = () => {
                     {itemData && itemData.insurance && (
                       <div className="conditions_insurance">
                         <div className="conditions_row">
-                          <img src={Vector3} className="img_vector3" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector3}
+                            className="img_vector3"
+                          />
                           <p className="conditions_insurance_row-p">
                             Страхование
                           </p>
                           <img
+                            alt="picture1"
                             title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости залога"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         <p className="conditions_insurance-p">
@@ -1804,7 +1865,11 @@ const CardThings = () => {
                     {itemData && itemData.sell && (
                       <div className="conditions_readySell">
                         <div className="conditions_row">
-                          <img src={Sell1} className="img_sell1" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Sell1}
+                            className="img_sell1"
+                          />
                           <p className="conditions_readySell_row-p">
                             Готов продать
                           </p>
@@ -1955,7 +2020,7 @@ const CardThings = () => {
 
                     {/* Свободно*/}
                     <div style={{ display: "none" }} className="block_up_free">
-                      <img src={Clock2} alt="" className="img_clock2" />
+                      <img alt="picture1" src={Clock2} className="img_clock2" />
                       <span className="block_up_free-p">Свободно</span>
                     </div>
 
@@ -1996,7 +2061,7 @@ const CardThings = () => {
 
                         {favorites && !isFavorite && !isOwn && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) => addFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={FavoritesDisabled}
@@ -2005,7 +2070,7 @@ const CardThings = () => {
 
                         {favorites && isFavorite && !isOwn && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) => deleteFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={Favorites}
@@ -2014,7 +2079,7 @@ const CardThings = () => {
 
                         {isOwn && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) =>
                               (window.location.href = `/edit-item?id=${itemData.id}`)
                             }
@@ -2041,6 +2106,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
+                          alt="picture1"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -2049,7 +2115,6 @@ const CardThings = () => {
                           src={`${rootAddress}${
                             itemData && itemData.profile.image_profile
                           }`}
-                          alt=""
                         />
                         <div className="block_down_owner_photo-p">
                           <p className="block_down_owner_photo-p1">
@@ -2072,11 +2137,11 @@ const CardThings = () => {
                         style={{ display: "none" }}
                         className="conditions_row"
                       >
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
                       </div>
                       <div className="block2_reviews_stars">
                         <p className="block2_reviews_text">Пока нет оценок</p>
@@ -2091,14 +2156,22 @@ const CardThings = () => {
                           <p className="block_down_telephone-p2">
                             Телефон подтвержден
                           </p>
-                          <img src={Vector7} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector7}
+                            className="img_vector"
+                          />
                         </div>
                       ) : (
                         <div className="telephone_row1">
                           <p className="block_down_telephone-p1">
                             Телефон не подтвержден
                           </p>
-                          <img src={Vector6} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector6}
+                            className="img_vector"
+                          />
                         </div>
                       )}
 
@@ -2107,14 +2180,22 @@ const CardThings = () => {
                           <p className="block_down_telephone-p2">
                             Почта подтверждена
                           </p>
-                          <img src={Vector7} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector7}
+                            className="img_vector"
+                          />
                         </div>
                       ) : (
                         <div className="telephone_row1">
                           <p className="block_down_telephone-p1">
                             Почта не подтверждена
                           </p>
-                          <img src={Vector6} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector6}
+                            className="img_vector"
+                          />
                         </div>
                       )}
                     </div>
@@ -2145,10 +2226,10 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Telegram}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -2161,10 +2242,10 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Viber}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -2181,10 +2262,10 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Whatsapp}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -2205,10 +2286,10 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Google}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -2226,10 +2307,10 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Facebook}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -2250,10 +2331,10 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Instagram}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -2271,10 +2352,10 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Vk}
                                 className="img_social"
-                                alt=""
                               />{" "}
                             </a>
                           )}
@@ -2291,7 +2372,11 @@ const CardThings = () => {
                               target="_blank"
                               rel="noreferrer"
                             >
-                              <img src={Ok} className="img_social" alt="" />
+                              <img
+                                alt="picture1"
+                                src={Ok}
+                                className="img_social"
+                              />
                             </a>
                           )}
                         </div>
@@ -2321,14 +2406,22 @@ const CardThings = () => {
               <p className="container_content_ads-p"> Похожие объявления </p>
 
               <div className="content_ads_card">
-                <img src={ArrowLeft} alt="" className="ads_card_img_left" />
+                <img
+                  alt="picture1"
+                  src={ArrowLeft}
+                  className="ads_card_img_left"
+                />
                 {simillarSubjects &&
                   simillarSubjects.map((item, index) => {
                     if (index <= 3) {
                       return <ItemCard item={item} key={index} />;
                     }
                   })}
-                <img src={ArrowRight} alt="" className="ads_card_img_right" />
+                <img
+                  alt="picture1"
+                  src={ArrowRight}
+                  className="ads_card_img_right"
+                />
               </div>
             </div>
           </div>
@@ -2347,7 +2440,7 @@ const CardThings = () => {
                   <Link style={{ textDecoration: "none" }} to="/catalog">
                     <p className="card_shapka_hover"> Каталог </p>
                   </Link>
-                  <img src={Vector1} alt="" />
+                  <img alt="picture1" src={Vector1} />
                 </div>
                 <div>
                   <Link
@@ -2360,7 +2453,7 @@ const CardThings = () => {
                       {itemData && itemData.category_id.chapter_id.name_chapter}
                     </p>
                   </Link>
-                  <img src={Vector1} alt="" />
+                  <img alt="picture1" src={Vector1} />
                 </div>
                 <Link style={{ textDecoration: "none" }} to="/search">
                   <div>
@@ -2375,7 +2468,7 @@ const CardThings = () => {
                     >
                       {itemData && itemData.category_id.name_category}{" "}
                     </p>
-                    <img src={Vector1} alt="" />
+                    <img alt="picture1" src={Vector1} />
                   </div>
                 </Link>
 
@@ -2395,6 +2488,7 @@ const CardThings = () => {
                     <div className="left_block_photo_small">
                       {itemData && itemData.image_1 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_1
                               ? "card_thing_image active"
@@ -2404,11 +2498,11 @@ const CardThings = () => {
                             setSelectedImage(itemData && itemData.image_1)
                           }
                           src={itemData && `${rootAddress}${itemData.image_1}`}
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_2 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_2
                               ? "card_thing_image active"
@@ -2418,11 +2512,11 @@ const CardThings = () => {
                             setSelectedImage(itemData && itemData.image_2)
                           }
                           src={itemData && `${rootAddress}${itemData.image_2}`}
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_3 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_3
                               ? "card_thing_image active"
@@ -2432,11 +2526,11 @@ const CardThings = () => {
                             setSelectedImage(itemData && itemData.image_3)
                           }
                           src={itemData && `${rootAddress}${itemData.image_3}`}
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_4 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_4
                               ? "card_thing_image active"
@@ -2446,11 +2540,11 @@ const CardThings = () => {
                             setSelectedImage(itemData && itemData.image_4)
                           }
                           src={itemData && `${rootAddress}${itemData.image_4}`}
-                          alt=""
                         />
                       )}
                       {itemData && itemData.image_5 && (
                         <img
+                          alt="picture1"
                           className={
                             selectedImage === itemData.image_5
                               ? "card_thing_image active"
@@ -2460,7 +2554,6 @@ const CardThings = () => {
                             setSelectedImage(itemData && itemData.image_5)
                           }
                           src={itemData && `${rootAddress}${itemData.image_5}`}
-                          alt=""
                         />
                       )}
                     </div>
@@ -2468,6 +2561,7 @@ const CardThings = () => {
                     <div className="left_block_photo_big">
                       {itemData && itemData.image_1 && (
                         <img
+                          alt="picture1"
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_1)
                           }
@@ -2475,7 +2569,6 @@ const CardThings = () => {
                             itemData &&
                             `${rootAddress}${selectedImage && selectedImage}`
                           }
-                          alt=""
                         />
                       )}
                     </div>
@@ -2486,11 +2579,15 @@ const CardThings = () => {
                       onClick={() => setShareVisible(!shareVisible)}
                       className="left_block_toShare"
                     >
-                      <img src={Share} alt="" />
+                      <img alt="picture1" src={Share} />
                       <p> Поделиться</p>
                     </div>
                     <div className="card_views_wrapper">
-                      <img alt="" src={Views} className="card_views_icon" />
+                      <img
+                        alt="picture1"
+                        src={Views}
+                        className="card_views_icon"
+                      />
                       <p>{itemData && itemData.item_views} просмотра(-ов)</p>
                     </div>
                   </div>
@@ -2499,7 +2596,7 @@ const CardThings = () => {
                     <div className={"item_share_link"}>
                       <input type="text" value={window.location.href} />
                       <img
-                        alt=""
+                        alt="picture1"
                         onClick={window.navigator.clipboard.writeText(
                           `${window.location.href}`
                         )}
@@ -2530,13 +2627,13 @@ const CardThings = () => {
                     {/* ДОГОВОР*/}
                     {itemData && itemData.contract && (
                       <div className="conditions_contract">
-                        <img src={Union} className="img_union" alt="" />
+                        <img alt="picture1" src={Union} className="img_union" />
                         <p>Договор или расписка</p>
                         <img
+                          alt="picture1"
                           title="Указано, что владелец желает заключить письменный договор аренды или составить расписку"
                           src={Vector2}
                           className="img_vector2"
-                          alt=""
                         />
                       </div>
                     )}
@@ -2546,16 +2643,16 @@ const CardThings = () => {
                       <div className="conditions_pledge">
                         <div className="conditions_row">
                           <img
+                            alt="picture1"
                             src={CombinedShare}
                             className="img_combinedShare"
-                            alt=""
                           />
                           <p className="conditions_pledge_row-p">Залог</p>
                           <img
+                            alt="picture1"
                             title="Владелец желает получить от Арендатора денежный залог, который будет возвращен после возврата имущества в надлежащем виде"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         {
@@ -2570,15 +2667,19 @@ const CardThings = () => {
                     {itemData && itemData.servicefee && (
                       <div className="conditions_service">
                         <div className="conditions_row">
-                          <img src={Service} className="img_service" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Service}
+                            className="img_service"
+                          />
                           <p className="conditions_service_row-p">
                             Сервисный сбор
                           </p>
                           <img
+                            alt="picture1"
                             title="Владелец указывает, что к стоимости аренды будет добавлена стоимость работ, по приведению имущества в надлежащий вид перед следующей арендой"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         <p className="conditions_service-p">
@@ -2593,15 +2694,19 @@ const CardThings = () => {
                     {itemData && itemData.insurance && (
                       <div className="conditions_insurance">
                         <div className="conditions_row">
-                          <img src={Vector3} className="img_vector3" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector3}
+                            className="img_vector3"
+                          />
                           <p className="conditions_insurance_row-p">
                             Страхование
                           </p>
                           <img
+                            alt="picture1"
                             title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости залога"
                             src={Vector2}
                             className="img_vector2"
-                            alt=""
                           />
                         </div>
                         <p className="conditions_insurance-p">
@@ -2629,10 +2734,10 @@ const CardThings = () => {
                               Время получения
                             </p>
                             <img
+                              alt="picture1"
                               title="Тут указано, после какого времени можно получить имущество в аренду"
                               src={Vector2}
                               className="img_vector2"
-                              alt=""
                             />
                           </div>
                           <p className="conditions_timeItem-p">
@@ -2646,10 +2751,10 @@ const CardThings = () => {
                               Время возврата
                             </p>
                             <img
+                              alt="picture1"
                               title="Тут указано, до какого времени необходимо возвратить имущество владельцу"
                               src={Vector2}
                               className="img_vector2"
-                              alt=""
                             />
                           </div>
                           <p className="conditions_timeItem-p">
@@ -2663,7 +2768,11 @@ const CardThings = () => {
                     {itemData && itemData.sell && (
                       <div className="conditions_readySell">
                         <div className="conditions_row">
-                          <img src={Sell1} className="img_sell1" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Sell1}
+                            className="img_sell1"
+                          />
                           <p className="conditions_readySell_row-p">
                             Готов продать
                           </p>
@@ -2796,9 +2905,9 @@ const CardThings = () => {
                       {itemData && itemData.offer_price_rent && (
                         <div style={{ display: "flex" }}>
                           <img
+                            alt="picture1"
                             src={HandShake}
                             className="yourCost_handShake"
-                            alt=""
                           />
                           <p className="block_up_yourCost-p1">
                             {serviceIds.includes(
@@ -2812,9 +2921,9 @@ const CardThings = () => {
                       {itemData && itemData.free_rent && (
                         <div style={{ display: "flex" }}>
                           <img
+                            alt="picture1"
                             src={freePrice}
                             className="yourCost_handShake"
-                            alt=""
                           />
                           <p className="block_up_yourCost-p1">Бесплатно</p>
                         </div>
@@ -2859,7 +2968,11 @@ const CardThings = () => {
                     {/* Адрес местонахождения*/}
                     <div className="block_up_address">
                       <div className="conditions_row">
-                        <img src={Address} className="img_address" alt="" />
+                        <img
+                          alt="picture1"
+                          src={Address}
+                          className="img_address"
+                        />
                         <p className="block_up_address_row-p">
                           Адрес местонахождения:
                         </p>
@@ -2882,13 +2995,13 @@ const CardThings = () => {
                     {/* Доставка */}
                     <div className="block_up_delivery">
                       <div className="conditions_row">
-                        <img src={Car} className="img_car" alt="" />
+                        <img alt="picture1" src={Car} className="img_car" />
                         <p className="block_up_delivery_row-p">Доставка:</p>
                         <img
+                          alt="picture1"
                           title="Тут указаны возможные варианты получения имущества, его доставки или отправки"
                           src={Vector2}
                           className="img_vector2"
-                          alt=""
                         />
                       </div>
                       {itemData && itemData.delivery.includes("Самовывоз") && (
@@ -2966,7 +3079,7 @@ const CardThings = () => {
 
                     {/* Свободно*/}
                     <div style={{ display: "none" }} className="block_up_free">
-                      <img src={Clock2} alt="" className="img_clock2" />
+                      <img alt="picture1" src={Clock2} className="img_clock2" />
                       <span className="block_up_free-p">Свободно</span>
                     </div>
 
@@ -2983,7 +3096,7 @@ const CardThings = () => {
 
                         {favorites && !isFavorite && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) => addFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={FavoritesDisabled}
@@ -2992,7 +3105,7 @@ const CardThings = () => {
 
                         {favorites && isFavorite && (
                           <img
-                            alt=""
+                            alt="picture1"
                             onClick={(e) => deleteFavoriteHandler(e)}
                             className="img_contactOwner"
                             src={Favorites}
@@ -3035,6 +3148,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
+                          alt="picture1"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -3043,7 +3157,6 @@ const CardThings = () => {
                           src={`${rootAddress}${
                             itemData && itemData.profile.image_profile
                           }`}
-                          alt=""
                         />
                         <div className="block_down_owner_photo-p">
                           <p className="block_down_owner_photo-p1">
@@ -3066,11 +3179,11 @@ const CardThings = () => {
                         style={{ display: "none" }}
                         className="conditions_row"
                       >
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
-                        <img src={Star2} className="img_star" alt="" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img alt="picture1" src={Star2} className="img_star" />
                       </div>
                       <div className="block2_reviews_stars">
                         <p className="block2_reviews_text">Пока нет оценок</p>
@@ -3085,14 +3198,22 @@ const CardThings = () => {
                           <p className="block_down_telephone-p2">
                             Телефон подтвержден
                           </p>
-                          <img src={Vector7} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector7}
+                            className="img_vector"
+                          />
                         </div>
                       ) : (
                         <div className="telephone_row1">
                           <p className="block_down_telephone-p1">
                             Телефон не подтвержден
                           </p>
-                          <img src={Vector6} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector6}
+                            className="img_vector"
+                          />
                         </div>
                       )}
 
@@ -3101,14 +3222,22 @@ const CardThings = () => {
                           <p className="block_down_telephone-p2">
                             Почта подтверждена
                           </p>
-                          <img src={Vector7} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector7}
+                            className="img_vector"
+                          />
                         </div>
                       ) : (
                         <div className="telephone_row1">
                           <p className="block_down_telephone-p1">
                             Почта не подтверждена
                           </p>
-                          <img src={Vector6} className="img_vector" alt="" />
+                          <img
+                            alt="picture1"
+                            src={Vector6}
+                            className="img_vector"
+                          />
                         </div>
                       )}
                     </div>
@@ -3139,10 +3268,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Telegram}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -3155,10 +3284,10 @@ const CardThings = () => {
                               }`}
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Viber}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -3175,10 +3304,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Whatsapp}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -3199,11 +3328,11 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 rel="noreferrer"
                                 style={{ cursor: "pointer" }}
                                 src={Google}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -3221,10 +3350,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Facebook}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -3245,10 +3374,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Instagram}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -3266,10 +3395,10 @@ const CardThings = () => {
                               target="_blank"
                             >
                               <img
+                                alt="picture1"
                                 style={{ cursor: "pointer" }}
                                 src={Vk}
                                 className="img_social"
-                                alt=""
                               />{" "}
                             </a>
                           )}
@@ -3287,6 +3416,7 @@ const CardThings = () => {
                               rel="noreferrer"
                             >
                               <img
+                                alt="picture1"
                                 style={{
                                   height: "30px",
                                   width: "30px",
@@ -3294,7 +3424,6 @@ const CardThings = () => {
                                 }}
                                 src={Ok}
                                 className="img_social"
-                                alt=""
                               />
                             </a>
                           )}
@@ -3311,14 +3440,22 @@ const CardThings = () => {
               <p className="container_content_ads-p"> Похожие объявления </p>
 
               <div className="content_ads_card">
-                <img src={ArrowLeft} alt="" className="ads_card_img_left" />
+                <img
+                  alt="picture1"
+                  src={ArrowLeft}
+                  className="ads_card_img_left"
+                />
                 {simillarSubjects &&
                   simillarSubjects.map((item, index) => {
                     if (index <= 3) {
                       return <ItemCard item={item} key={index} />;
                     }
                   })}
-                <img src={ArrowRight} alt="" className="ads_card_img_right" />
+                <img
+                  alt="picture1"
+                  src={ArrowRight}
+                  className="ads_card_img_right"
+                />
               </div>
             </div>
           </div>

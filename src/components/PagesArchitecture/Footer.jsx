@@ -200,9 +200,9 @@ const Footer = () => {
 
           <div className="footer-fifth-col">
             <div className="footer-socials">
-              <img src={Instagram} alt="" className="footer-social" />
-              <img src={Facebook} alt="" className="footer-social" />
-              <img src={VK} alt="" className="footer-social" />
+              <img alt="picture1" src={Instagram} className="footer-social" />
+              <img alt="picture1" src={Facebook} className="footer-social" />
+              <img alt="picture1" src={VK} className="footer-social" />
               <a
                 href={
                   window.screen.width > 1024
@@ -212,27 +212,27 @@ const Footer = () => {
                 target="_blank"
               >
                 <img
+                  alt="picture1"
                   style={{ width: "25px", height: "25px" }}
                   src={viber}
-                  alt=""
                   className="footer-social"
                 />
               </a>
             </div>
             <p className="footer-fifth-p">Все сделки защищены</p>
             <div className="footer-payments">
-              <img src={ApplePay} alt="" className="footer-payment" />
-              <img src={Visa} alt="" className="footer-payment" />
-              <img src={Mastercard} alt="" className="footer-payment" />
-              <img src={Yandex} alt="" className="footer-payment" />
-              <img src={Webmoney} alt="" className="footer-payment" />
+              <img alt="picture1" src={ApplePay} className="footer-payment" />
+              <img alt="picture1" src={Visa} className="footer-payment" />
+              <img alt="picture1" src={Mastercard} className="footer-payment" />
+              <img alt="picture1" src={Yandex} className="footer-payment" />
+              <img alt="picture1" src={Webmoney} className="footer-payment" />
             </div>
           </div>
         </div>
       </section>
       <div className="footer-lower-part" id="footer-lower1">
         <div className="footer-img-logo-wrapper">
-          <img src={Logo2} alt="" className="footer-img-logo" />
+          <img alt="picture1" src={Logo2} className="footer-img-logo" />
         </div>
         <div className="footer-lower-labels">
           <Link
@@ -249,7 +249,7 @@ const Footer = () => {
           </Link>
         </div>
         <div className="footer-localization-wrapper">
-          <img src={Planet} alt="" className="footer-planet-img" />
+          <img alt="picture1" src={Planet} className="footer-planet-img" />
           <p className="footer-localization-p">RU</p>
         </div>
       </div>
@@ -271,15 +271,15 @@ const Footer = () => {
         </div>
         <div className="footer-img-logo-wrapper_gl">
           <div className="footer-img-logo-wrapper">
-            <img src={Logo2} alt="" className="footer-img-logo" />
+            <img alt="picture1" src={Logo2} className="footer-img-logo" />
           </div>
           <div className="foooter-right_item">
             <div className="location-selector" id="location-selector2">
-              <img src={mark} alt="" className="location-img" />
+              <img alt="picture1" src={mark} className="location-img" />
               <p className="location-p">Минск</p>
             </div>
             <div className="footer-localization-wrapper">
-              <img src={Planet} alt="" className="footer-planet-img" />
+              <img alt="picture1" src={Planet} className="footer-planet-img" />
               <p className="footer-localization-p">RU</p>
             </div>
           </div>

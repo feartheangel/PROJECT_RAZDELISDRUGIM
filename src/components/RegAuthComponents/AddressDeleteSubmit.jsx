@@ -50,6 +50,7 @@ const AddressDeleteSubmit = ({
           >
             <div className="reg-form-email-verification">
               <img
+                alt="picture1"
                 onClick={() => setModalActiveSubmit(false)}
                 style={{
                   marginTop: "25px",
@@ -121,6 +122,7 @@ const AddressDeleteSubmit = ({
             >
               <div className="div_for_krestik">
                 <img
+                  alt="picture1"
                   onClick={() => setModalActiveSubmit(false)}
                   src={Shape}
                   className="img_krestik"

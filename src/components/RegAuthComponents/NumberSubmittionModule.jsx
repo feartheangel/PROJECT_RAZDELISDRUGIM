@@ -98,6 +98,7 @@ const NumberSubmittionModule = ({
               className="reg-form-email-verification"
             >
               <img
+                alt="picture1"
                 onClick={() => setModalActiveNumber(false)}
                 style={{
                   marginTop: "25px",
@@ -189,6 +190,7 @@ const NumberSubmittionModule = ({
               className="reg-form-email-verification"
             >
               <img
+                alt="picture1"
                 onClick={() => setModalActiveNumber(false)}
                 style={{
                   marginTop: "25px",
@@ -281,6 +283,7 @@ const NumberSubmittionModule = ({
             >
               <div className="div_for_krestik">
                 <img
+                  alt="picture1"
                   onClick={() => setModalActiveNumber(false)}
                   className="img_krestik"
                   src={Shape}

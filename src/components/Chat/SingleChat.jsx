@@ -23,6 +23,7 @@ const SingleChat = ({ item, chatSocket }) => {
     <Link to={`/chat?id=${item && item.id}`} style={{ textDecoration: "none" }}>
       <div className="single_chat_wrapper">
         <img
+          alt="picture1"
           className="single_chat_item_image"
           src={`https://razdelisdrugim.by:444${item.get_item_photo}`}
         />
@@ -106,6 +107,7 @@ const SingleChat = ({ item, chatSocket }) => {
             >
               {item.avatar_last_user_message && (
                 <img
+                  alt="picture1"
                   className="single_chat_sender_image"
                   src={`${rootAddress}${item.avatar_last_user_message}`}
                 />
@@ -118,6 +120,7 @@ const SingleChat = ({ item, chatSocket }) => {
             </div>
             {item.is_last_message === false && (
               <img
+                alt="picture1"
                 className="single_chat_unread_image"
                 title="Не прочитано собеседником"
                 src={Dot}
@@ -131,6 +134,7 @@ const SingleChat = ({ item, chatSocket }) => {
               </div>
             )}
             <img
+              alt="picture1"
               className="single_chat_actions_image"
               title="Удалить чат"
               src={Shape}

@@ -40,8 +40,13 @@ const Partners = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <a href={item.link_partner} target="_blank">
+                    <a
+                      href={item.link_partner}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
+                        alt="picture1"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>
@@ -68,8 +73,13 @@ const Partners = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <a href={item.link_partner} target="_blank">
+                    <a
+                      href={item.link_partner}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
+                        alt="picture1"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>
@@ -94,8 +104,13 @@ const Partners = () => {
               {partners &&
                 partners.map((item, index) => (
                   <SwiperSlide key={index} style={{ width: "25%" }}>
-                    <a href={item.link_partner} target="_blank">
+                    <a
+                      href={item.link_partner}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
+                        alt="picture1"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>
@@ -120,8 +135,13 @@ const Partners = () => {
               {partners &&
                 partners.map((item, index) => (
                   <SwiperSlide key={index} style={{ width: "25%" }}>
-                    <a href={item.link_partner} target="_blank">
+                    <a
+                      href={item.link_partner}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
+                        alt="picture1"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>

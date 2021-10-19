@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MyData.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { reloadData } from "../../../../redux/actions/userData";
 import { SocialContactEnter } from "../../../../components/index";
 import Requests from "../../../../http/axios-requests";
-import Ellipse5 from "../../../../img/ProfilePage/Ellipse 5.png";
-import Star1 from "../../../../img/ProfilePage/Star 1.png";
 import Star5 from "../../../../img/ProfilePage/Star 5.png";
 import Vector from "../../../../img/ProfilePage/Vector.png";
 import VectorDisabled from "../../../../img/ProfilePage/VectorDisabled.png";
@@ -56,7 +54,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
   const { reload } = useSelector(({ userData }) => userData);
 
   const contactEmailRegExp =
-    /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
+    /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
   const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
 
   const photoHandler = (e) => {
@@ -261,6 +259,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               style={{ textDecoration: "none" }}
               target="_blank"
               href={`/public-profile?id=${userData && userData.id}`}
+              rel="noreferrer"
             >
               <p className="block1_right_watchProfile">
                 {" "}
@@ -284,6 +283,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               <label className="profile-photo-wrapper" for="photo_input">
                 <img
+                  alt="picture1"
                   style={{
                     marginRight: "30px",
                     borderRadius: "100%",
@@ -292,7 +292,6 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   }}
                   className="profile-photo"
                   src={`${rootAddress}${userData.image_profile}`}
-                  alt=""
                 />
                 <div className="profile-photo-overlay">Изменить</div>
               </label>
@@ -301,11 +300,11 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             {/*ОТЗЫВЫ ОЦЕНКИ*/}
             <div style={{ display: "none" }} className="content_block2_reviews">
               <div className="block2_reviews_stars">
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
               </div>
               <div className="block2_reviews_stars">
                 <p className="block2_reviews_text">Пока нет оценок</p>
@@ -324,6 +323,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Телефон не подтвержден"}
                 </p>
                 <img
+                  alt="picture1"
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
                 />
@@ -336,6 +336,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Почта не подтверждена"}
                 </p>
                 <img
+                  alt="picture1"
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
                 />
@@ -605,10 +606,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     className="setting_left_input__password"
                     type={showOldPass ? "text" : "password"}
                   />
-                  <a
+                  <span
                     onClick={() => setShowOldPass(!showOldPass)}
                     class="password-control__profile"
-                  ></a>
+                  ></span>
                 </div>
                 <div className="setting_left_input_wrapper">
                   <label className="setting_left_input-label">
@@ -620,10 +621,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     className="setting_left_input__password"
                     type={showNewPass1 ? "text" : "password"}
                   />
-                  <a
+                  <span
                     onClick={() => setShowNewPass1(!showNewPass1)}
                     class="password-control__profile"
-                  ></a>
+                  ></span>
                 </div>
                 <div className="setting_left_input_wrapper">
                   <label className="setting_left_input-label">
@@ -635,10 +636,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     className="setting_left_input__password"
                     type={showNewPass2 ? "text" : "password"}
                   />
-                  <a
+                  <span
                     onClick={() => setShowNewPass2(!showNewPass2)}
                     class="password-control__profile"
-                  ></a>
+                  ></span>
                 </div>
                 <div className=" button_save">
                   <input
@@ -679,14 +680,15 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               {" "}
               Социальные сети и месседжеры{" "}
               <img
+                alt="picture1"
                 title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
                 src={Vector2}
                 className="img_vector2"
-                alt=""
               />
             </p>
             <span>
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("tg")}
                 className={
                   activeSocial === "tg"
@@ -694,9 +696,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.telegram_account ? Telegram : TelegramNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("viber")}
                 className={
                   activeSocial === "viber"
@@ -704,9 +706,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.viber_account ? Viber : ViberNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("wa")}
                 className={
                   activeSocial === "wa"
@@ -714,9 +716,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("google")}
                 className={
                   activeSocial === "google"
@@ -724,9 +726,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.google_account ? Google : GoogleNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("fb")}
                 className={
                   activeSocial === "fb"
@@ -734,9 +736,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.link_facebook ? Facebook : FacebookNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("vk")}
                 className={
                   activeSocial === "vk"
@@ -744,9 +746,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.vk_account ? Vk : VkNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("inst")}
                 className={
                   activeSocial === "inst"
@@ -754,9 +756,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.link_instagram ? Instagram : InstagramNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("ok")}
                 className={
                   activeSocial === "ok"
@@ -764,7 +766,6 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.ok_account ? Ok : OkNone}
-                alt=""
               />
             </span>
 
@@ -831,9 +832,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               <label className="profile-photo-wrapper" for="photo_input">
                 <img
+                  alt="picture1"
                   className="profile-photo"
                   src={`${rootAddress}${userData.image_profile}`}
-                  alt=""
                 />
                 <div className="profile-photo-overlay">Изменить</div>
               </label>
@@ -851,11 +852,11 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 className="content_block2_reviews"
               >
                 <div className="block2_reviews_stars">
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
-                  <img src={Star5} alt="" />
+                  <img alt="picture1" src={Star5} />
+                  <img alt="picture1" src={Star5} />
+                  <img alt="picture1" src={Star5} />
+                  <img alt="picture1" src={Star5} />
+                  <img alt="picture1" src={Star5} />
                 </div>
                 <div className="block2_reviews_stars">
                   <p className="block2_reviews_text">Пока нет оценок</p>
@@ -870,6 +871,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 style={{ textDecoration: "none" }}
                 target="_blank"
                 href={`/public-profile?id=${userData && userData.id}`}
+                rel="noreferrer"
               >
                 <p className="block1_right_watchProfile">
                   {" "}
@@ -893,6 +895,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Телефон не подтвержден"}
                 </p>
                 <img
+                  alt="picture1"
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
                 />
@@ -905,6 +908,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Почта не подтверждена"}
                 </p>
                 <img
+                  alt="picture1"
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
                 />
@@ -949,14 +953,15 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 Социальные сети и месседжеры
               </p>
               <img
+                alt="picture1"
                 title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
                 src={Vector2}
                 className="img_vector2"
-                alt=""
               />
             </div>
             <div className="social_icons">
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("tg")}
                 className={
                   activeSocial === "tg"
@@ -964,9 +969,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.telegram_account ? Telegram : TelegramNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("viber")}
                 className={
                   activeSocial === "viber"
@@ -974,9 +979,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.viber_account ? Viber : ViberNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("wa")}
                 className={
                   activeSocial === "wa"
@@ -984,9 +989,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("google")}
                 className={
                   activeSocial === "google"
@@ -994,9 +999,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.google_account ? Google : GoogleNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("fb")}
                 className={
                   activeSocial === "fb"
@@ -1004,9 +1009,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.link_facebook ? Facebook : FacebookNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("vk")}
                 className={
                   activeSocial === "vk"
@@ -1014,9 +1019,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.vk_account ? Vk : VkNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("inst")}
                 className={
                   activeSocial === "inst"
@@ -1024,9 +1029,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.link_instagram ? Instagram : InstagramNone}
-                alt=""
               />
               <img
+                alt="picture1"
                 onClick={() => socialClickHandler("ok")}
                 className={
                   activeSocial === "ok"
@@ -1034,7 +1039,6 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "setting_right_socialNetworks_img"
                 }
                 src={userData.ok_account ? Ok : OkNone}
-                alt=""
               />
             </div>
 
@@ -1262,10 +1266,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 {" "}
                 О себе:{" "}
                 <img
+                  alt="picture1"
                   title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
                   src={Vector2}
                   className="img_vector2"
-                  alt=""
                 />
               </label>
               <textarea
@@ -1303,10 +1307,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                           className="setting_left_input__password"
                           type={showOldPass ? "text" : "password"}
                         />
-                        <a
+                        <span
                           onClick={() => setShowOldPass(!showOldPass)}
                           class="password-control__profile"
-                        ></a>
+                        ></span>
                       </div>
                     </div>
                     <div className="setting_left_input_wrapper">
@@ -1319,10 +1323,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                         className="setting_left_input__password"
                         type={showNewPass1 ? "text" : "password"}
                       />
-                      <a
+                      <span
                         onClick={() => setShowNewPass1(!showNewPass1)}
                         class="password-control__profile"
-                      ></a>
+                      ></span>
                     </div>
                     <div className="setting_left_input_wrapper">
                       <label className="setting_left_input-label">
@@ -1334,10 +1338,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                         className="setting_left_input__password"
                         type={showNewPass2 ? "text" : "password"}
                       />
-                      <a
+                      <span
                         onClick={() => setShowNewPass2(!showNewPass2)}
                         class="password-control__profile"
-                      ></a>
+                      ></span>
                     </div>
                     <div className=" button_password_profile">
                       <input
@@ -1419,9 +1423,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             />
             <label className="profile-photo-wrapper" for="photo_input">
               <img
+                alt="picture1"
                 className="profile-photo"
                 src={`https://razdelisdrugim.by${userData.image_profile}`}
-                alt=""
               />
               <div className="profile-photo-overlay">Изменить</div>
             </label>
@@ -1434,11 +1438,11 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             {/*ОТЗЫВЫ ОЦЕНКИ*/}
             <div className="content_block2_reviews">
               <div style={{ display: "none" }} className="block2_reviews_stars">
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
-                <img src={Star5} alt="" />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
+                <img alt="picture1" src={Star5} />
               </div>
               <div className="block2_reviews_stars">
                 <p className="block2_reviews_text">Пока нет оценок</p>
@@ -1453,6 +1457,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               style={{ textDecoration: "none" }}
               target="_blank"
               href={`/public-profile?id=${userData && userData.id}`}
+              rel="noreferrer"
             >
               <p
                 className="block1_right_watchProfile"
@@ -1478,6 +1483,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Телефон не подтвержден"}
                 </p>
                 <img
+                  alt="picture1"
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
                 />
@@ -1490,6 +1496,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Почта не подтверждена"}
                 </p>
                 <img
+                  alt="picture1"
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
                 />
@@ -1521,14 +1528,15 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               Социальные сети и месседжеры
             </p>
             <img
+              alt="picture1"
               title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
               src={Vector2}
               className="img_vector2"
-              alt=""
             />
           </div>
           <div className="social_icons">
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("tg")}
               className={
                 activeSocial === "tg"
@@ -1536,9 +1544,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.telegram_account ? Telegram : TelegramNone}
-              alt=""
             />
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("viber")}
               className={
                 activeSocial === "viber"
@@ -1546,9 +1554,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.viber_account ? Viber : ViberNone}
-              alt=""
             />
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("wa")}
               className={
                 activeSocial === "wa"
@@ -1556,9 +1564,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
-              alt=""
             />
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("google")}
               className={
                 activeSocial === "google"
@@ -1566,9 +1574,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.google_account ? Google : GoogleNone}
-              alt=""
             />
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("fb")}
               className={
                 activeSocial === "fb"
@@ -1576,9 +1584,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.link_facebook ? Facebook : FacebookNone}
-              alt=""
             />
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("vk")}
               className={
                 activeSocial === "vk"
@@ -1586,9 +1594,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.vk_account ? Vk : VkNone}
-              alt=""
             />
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("inst")}
               className={
                 activeSocial === "inst"
@@ -1596,9 +1604,9 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.link_instagram ? Instagram : InstagramNone}
-              alt=""
             />
             <img
+              alt="picture1"
               onClick={() => socialClickHandler("ok")}
               className={
                 activeSocial === "ok"
@@ -1606,7 +1614,6 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   : "setting_right_socialNetworks_img"
               }
               src={userData.ok_account ? Ok : OkNone}
-              alt=""
             />
           </div>
 
@@ -1833,10 +1840,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 {" "}
                 О себе:{" "}
                 <img
+                  alt="picture1"
                   title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
                   src={Vector2}
                   className="img_vector2"
-                  alt=""
                 />
               </label>
               <textarea
@@ -1874,10 +1881,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                           className="setting_left_input__password"
                           type={showOldPass ? "text" : "password"}
                         />
-                        <a
+                        <span
                           onClick={() => setShowOldPass(!showOldPass)}
                           class="password-control__profile"
-                        ></a>
+                        ></span>
                       </div>
                     </div>
                     <div className="setting_left_input_wrapper">
@@ -1890,10 +1897,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                         className="setting_left_input__password"
                         type={showNewPass1 ? "text" : "password"}
                       />
-                      <a
+                      <span
                         onClick={() => setShowNewPass1(!showNewPass1)}
                         class="password-control__profile"
-                      ></a>
+                      ></span>
                     </div>
                     <div className="setting_left_input_wrapper">
                       <label className="setting_left_input-label">
@@ -1905,10 +1912,10 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                         className="setting_left_input__password"
                         type={showNewPass2 ? "text" : "password"}
                       />
-                      <a
+                      <span
                         onClick={() => setShowNewPass2(!showNewPass2)}
                         class="password-control__profile"
-                      ></a>
+                      ></span>
                     </div>
                     <div className=" button_password_profile">
                       <input

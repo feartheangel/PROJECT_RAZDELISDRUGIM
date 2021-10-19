@@ -37,6 +37,11 @@ const MediaAbout = () => {
             alt=""
             className="writting-about-us-img"
           />
+          <img alt="picture1" src={Press} className="writting-about-us-img" />
+          <img alt="picture1" src={Press} className="writting-about-us-img" />
+          <img alt="picture1" src={Press} className="writting-about-us-img" />
+          <img alt="picture1" src={Press} className="writting-about-us-img" />
+          <img alt="picture1" src={Press} className="writting-about-us-img" />
         </div>
         <input
           type="button"

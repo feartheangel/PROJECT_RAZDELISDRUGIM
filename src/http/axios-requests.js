@@ -846,7 +846,8 @@ class Requests {
     contract,
     pledge,
     coordinates,
-    distance
+    distance,
+    page
   ) {
     return axios({
       method: "GET",
@@ -863,7 +864,7 @@ class Requests {
         insurance ? `insurance=1&` : ""
       }${contract ? `contract=1&` : ""}${pledge ? `pledge=1&` : ""}${
         coordinates ? `coordinates=${coordinates}&` : ""
-      }${distance ? `distance=${distance}&` : ""}
+      }${distance ? `distance=${distance}&` : ""}${page ? `page=${page}&` : ""}
       `,
     }).then((response) => {
       return response;
@@ -1171,7 +1172,7 @@ class Requests {
     });
   }
 
-  static createBooking(
+  static createBooking({
     reservation_user_name,
     reservation_user_phone,
     reservation_text_sender,
@@ -1181,8 +1182,15 @@ class Requests {
     delivery_choice,
     reservation_time,
     count_date_object,
-    reservation_address_delivery
-  ) {
+    reserve_rent,
+    reserve_price_rent,
+    reserve_self_delivery_price,
+    reserve_servicefee_price,
+    reserve_pledge_price,
+    reserve_insurance_price,
+    reserve_franchise_price,
+    reservation_address_delivery,
+  }) {
     return axios({
       method: "POST",
       headers: {
@@ -1201,6 +1209,21 @@ class Requests {
         delivery_choice: delivery_choice,
         reservation_time: reservation_time,
         count_date_object: count_date_object,
+        reserve_rent: reserve_rent ? reserve_rent : 0.0,
+        reserve_price_rent: reserve_price_rent ? reserve_price_rent : 0.0,
+        reserve_self_delivery_price: reserve_self_delivery_price
+          ? reserve_self_delivery_price
+          : 0.0,
+        reserve_servicefee_price: reserve_servicefee_price
+          ? reserve_servicefee_price
+          : 0.0,
+        reserve_pledge_price: reserve_pledge_price ? reserve_pledge_price : 0.0,
+        reserve_insurance_price: reserve_insurance_price
+          ? reserve_insurance_price
+          : 0.0,
+        reserve_franchise_price: reserve_franchise_price
+          ? reserve_franchise_price
+          : 0.0,
         reservation_address_delivery: reservation_address_delivery
           ? reservation_address_delivery
           : "",

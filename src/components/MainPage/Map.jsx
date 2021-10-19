@@ -25,7 +25,7 @@ const MapBlock = () => {
         <div style=display:flex;flex-direction:column;align-items:center class="recent-block-wrapper">
         <a style=display:flex;flex-direction:column;align-items:center target="_blank">
           <div style=display:flex;flex-direction:column;align-items:center className="recent-block">
-           <img style=width:108px src=${`${rootAddress}${marks[index][1]}`} alt="" class="block-image" />
+           <img alt="picture1"  style=width:108px src=${`${rootAddress}${marks[index][1]}`}  class="block-image" />
               ${
                 !marks[index][6] && !marks[index][7]
                   ? `<div style=justify-content:flex-start;margin-top:7px class="recent-time-cost-wrapper">
@@ -136,8 +136,6 @@ const MapBlock = () => {
                 geoObjectHideIconOnBalloonOpen: true,
                 hasBalloon: true,
                 clusterBalloonContentLayout: "cluster#balloonCarousel",
-                clusterBalloonContentLayoutWidth: 200,
-                clusterBalloonContentLayoutHeight: 130,
                 clusterBalloonPagerSize: 5,
                 clusterBalloonContentLayoutHeight: 270,
                 clusterBalloonContentLayoutWidth: 200,

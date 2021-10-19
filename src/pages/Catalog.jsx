@@ -50,12 +50,12 @@ const Catalog = () => {
             <div style={{ display: "none" }} className="card_shapka">
               <div>
                 <p className="card_shapka_hover"> Главная </p>
-                <img src={Vector1} alt="" />
+                <img alt="picture1" src={Vector1} />
               </div>
 
               <div>
                 <p className="card_shapka_hover"> Каталог </p>
-                <img src={Vector1} alt="" />
+                <img alt="picture1" src={Vector1} />
               </div>
 
               <div>
@@ -85,8 +85,8 @@ const Catalog = () => {
                           className="left_category_global_div"
                         >
                           <img
+                            alt="picture1"
                             src={`https://razdelisdrugim.by${chapter[1][2]}`}
-                            alt=""
                             className="category_img"
                           />
                           <p
@@ -117,7 +117,12 @@ const Catalog = () => {
             id="globaldata_mobile"
           >
             <p className="container_down_left-p">Каталог</p>
-            <img src={Vector2} alt="vector" className="vector2_img" />
+            <img
+              alt="picture1"
+              src={Vector2}
+              alt="vector"
+              className="vector2_img"
+            />
           </div>
 
           <div className="Catalog_wrapper_container_down" id="catalog_mobile">
@@ -139,8 +144,8 @@ const Catalog = () => {
                             className="left_category_global_div"
                           >
                             <img
+                              alt="picture1"
                               src={`https://razdelisdrugim.by${chapter[1][2]}`}
-                              alt=""
                               className="category_img"
                             />
                             <p

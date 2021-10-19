@@ -197,6 +197,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
     <div className="reg-form">
       <div className="div_for_krestik">
         <img
+          alt="picture1"
           onClick={() => setModalActive(false)}
           src={Shape}
           className="img_krestik"
@@ -226,6 +227,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       </ul>
       <div className="reg-form-socials">
         <img
+          alt="picture1"
           style={localStorage.getItem("ref") ? { display: "none" } : {}}
           onClick={vkAuth}
           src={vkLogo}
@@ -233,12 +235,14 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
           style={{ display: "none" }}
         />
         <img
+          alt="picture1"
           style={localStorage.getItem("ref") ? { display: "none" } : {}}
           onClick={facebookAuth}
           src={facebookLogo}
           alt="Facebook"
         />
         <img
+          alt="picture1"
           style={localStorage.getItem("ref") ? { display: "none" } : {}}
           onClick={googleAuth}
           src={googleLogo}

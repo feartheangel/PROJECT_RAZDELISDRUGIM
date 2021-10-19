@@ -1049,6 +1049,7 @@ const EditItem = () => {
                               &times;
                             </div>
                             <img
+                              alt="picture1"
                               className="add-item-photo"
                               key={index}
                               src={photo}

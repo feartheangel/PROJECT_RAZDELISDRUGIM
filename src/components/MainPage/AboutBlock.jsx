@@ -24,21 +24,11 @@ const AboutBlock = () => {
           <div>
             <div className="about-middle-part">
               <div className="about-middle-left">
-                <img
-                  loading="lazy"
-                  src={jacket}
-                  alt=""
-                  className="about-jacket"
-                />
+                <img alt="picture1" src={jacket} className="about-jacket" />
               </div>
               <div className="about-middle-right">
                 <p className="about-main-p">
-                  <img
-                    loading="lazy"
-                    src={jacket}
-                    alt=""
-                    className="about-jacket2"
-                  />
+                  <img alt="picture1" src={jacket} className="about-jacket2" />
                   Все началось с моего смокинга. Это такая часть гардероба,
                   которая в шкафу обычного современного человека если 
                   и присутствует, то используется крайне редко, может быть
@@ -63,7 +53,11 @@ const AboutBlock = () => {
               </div>
             </div>
             <div className="main_page_first_block_left_bottons">
-              <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://forms.gle/p3LjbTYphj1QCLK5A"
+              >
                 <input
                   type="button"
                   value="Связаться с нами"
@@ -71,7 +65,11 @@ const AboutBlock = () => {
                   id="abilities_button"
                 />
               </a>
-              <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://forms.gle/p3LjbTYphj1QCLK5A"
+              >
                 <input
                   type="button"
                   value="Оставить отзыв"
@@ -85,16 +83,11 @@ const AboutBlock = () => {
           <div>
             <div className="about-middle-part">
               <div className="about-middle-left">
-                <img
-                  loading="lazy"
-                  src={jacket}
-                  alt=""
-                  className="about-jacket"
-                />
+                <img alt="picture1" src={jacket} className="about-jacket" />
               </div>
               <div className="about-middle-right">
                 <p className="about-main-p">
-                  <img src={jacket} alt="" className="about-jacket2" />
+                  <img alt="picture1" src={jacket} className="about-jacket2" />
                   Все началось с моего смокинга. Это такая часть гардероба,
                   которая в шкафу обычного современного человека если 
                   и присутствует, то используется крайне редко, может быть
@@ -119,7 +112,11 @@ const AboutBlock = () => {
               </div>
             </div>
             <div className="main_page_first_block_left_bottons">
-              <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://forms.gle/p3LjbTYphj1QCLK5A"
+              >
                 <input
                   type="button"
                   value="Связаться с нами"
@@ -127,7 +124,11 @@ const AboutBlock = () => {
                   id="abilities_button"
                 />
               </a>
-              <a target="_blank" href="https://forms.gle/p3LjbTYphj1QCLK5A">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://forms.gle/p3LjbTYphj1QCLK5A"
+              >
                 <input
                   type="button"
                   value="Оставить отзыв"

@@ -20,6 +20,7 @@ import copy from "../../img/MainPage/copy.webp";
 import Delete from "../../img/MainPage/delete.webp";
 import hide from "../../img/MainPage/hide.webp";
 import { rootAddress } from "../../http/axios-requests";
+import Loading from "../../img/loading.gif";
 
 const ItemCardProfile = ({
   setDeleteId,
@@ -83,97 +84,104 @@ const ItemCardProfile = ({
       });
   };
 
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
   return (
     <div className="recent-block-wrapper recent-block-wrapper-gl">
       <div className="recent-block-wrapper" id="globaldata_pk">
         <div className="recent-block__profile">
           <img
+            alt="picture1"
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`${rootAddress}${image_1}?random=` + Math.random()}
-            alt=""
+            src={
+              imageLoaded
+                ? `${rootAddress}${image_1}?random=` + Math.random()
+                : Loading
+            }
+            onLoad={() => setImageLoaded(true)}
             className="block-image"
           />
           <div className="recent-marks">
             {delivery.includes("Привезу и заберу сам") ||
             delivery.includes("Доставка курьером") ? (
               <img
+                alt="picture1"
                 src={car}
-                alt=""
                 title="Доставка возможна"
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={carDisabled}
                 title="Доставка не предусмотрена"
-                alt=""
                 className="card-mark"
               />
             )}
             {pledge ? (
               <img
+                alt="picture1"
                 src={moneyTime}
-                alt=""
                 title="Предусмотрен залог"
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={moneyTimeDisabled}
                 title="Залога нет"
-                alt=""
                 className="card-mark"
               />
             )}
             {contract ? (
               <img
+                alt="picture1"
                 src={Union}
                 title="Составляется договор"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={UnionDisabled}
                 title="Без лишних бумаг"
-                alt=""
                 className="card-mark"
               />
             )}
             {insurance ? (
               <img
+                alt="picture1"
                 src={cardVerify}
                 title="Предусмотрена страховка"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={cardVerifyDisabled}
                 title="Без страховки"
-                alt=""
                 className="card-mark"
               />
             )}
             <img
+              alt="picture1"
               src={cardFireDisabled}
               title="Акций не предусмотрено"
-              alt=""
               className="card-mark"
             />
             {servicefee ? (
               <img
+                alt="picture1"
                 src={cardMoney}
                 title="Предусмотрен сервисный сбор"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={cardMoneyDisabled}
                 title="Сервисного сбора нет"
-                alt=""
                 className="card-mark"
               />
             )}
@@ -226,7 +234,11 @@ const ItemCardProfile = ({
               style={{ marginTop: "10px" }}
               className="recent-time-cost-wrapper"
             >
-              <img style={{ width: "20px", height: "20px" }} src={yourCost} />
+              <img
+                alt="picture1"
+                style={{ width: "20px", height: "20px" }}
+                src={yourCost}
+              />
               <p
                 style={{ fontSize: "16px", marginLeft: "5px" }}
                 className="recent-time-p"
@@ -240,7 +252,7 @@ const ItemCardProfile = ({
               style={{ justifyContent: "flex-start", marginTop: "10px" }}
               className="recent-time-cost-wrapper"
             >
-              <img src={freePrice} />
+              <img alt="picture1" src={freePrice} />
               <p style={{ marginLeft: "5px" }} className="recent-time-p">
                 Бесплатно
               </p>
@@ -257,7 +269,11 @@ const ItemCardProfile = ({
               <p>Редактировать</p>
             </a>
             <div className={"item-card-profile-button-wrapper"}>
-              <img src={copy} className={"item-card-profile-button-image"} />
+              <img
+                alt="picture1"
+                src={copy}
+                className={"item-card-profile-button-image"}
+              />
               <p
                 onClick={copyHandler}
                 value="Копировать"
@@ -269,7 +285,11 @@ const ItemCardProfile = ({
             </div>
             {is_hidden ? (
               <div className={"item-card-profile-button-wrapper"}>
-                <img src={hide} className={"item-card-profile-button-image"} />
+                <img
+                  alt="picture1"
+                  src={hide}
+                  className={"item-card-profile-button-image"}
+                />
                 <p
                   onClick={showHandler}
                   value="Показать"
@@ -281,7 +301,11 @@ const ItemCardProfile = ({
               </div>
             ) : (
               <div className={"item-card-profile-button-wrapper"}>
-                <img src={hide} className={"item-card-profile-button-image"} />
+                <img
+                  alt="picture1"
+                  src={hide}
+                  className={"item-card-profile-button-image"}
+                />
                 <p
                   onClick={hideHandler}
                   value="Скрыть"
@@ -293,7 +317,11 @@ const ItemCardProfile = ({
               </div>
             )}
             <div className={"item-card-profile-button-wrapper"}>
-              <img src={Delete} className={"item-card-profile-button-image"} />
+              <img
+                alt="picture1"
+                src={Delete}
+                className={"item-card-profile-button-image"}
+              />
               <p
                 onClick={removeSubjectHandler}
                 value="Удалить"
@@ -310,92 +338,92 @@ const ItemCardProfile = ({
       <div className="recent-block-wrapper" id="globaldata_mobile">
         <div className="recent-block__profile">
           <img
+            alt="picture1"
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
             src={`${rootAddress}${image_1}?random=` + Math.random()}
-            alt=""
             className="block-image"
           />
           <div className="recent-marks">
             {delivery.includes("Привезу и заберу сам") ||
             delivery.includes("Доставка курьером") ? (
               <img
+                alt="picture1"
                 src={car}
-                alt=""
                 title="Доставка возможна"
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={carDisabled}
                 title="Доставка не предусмотрена"
-                alt=""
                 className="card-mark"
               />
             )}
             {pledge ? (
               <img
+                alt="picture1"
                 src={moneyTime}
-                alt=""
                 title="Предусмотрен залог"
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={moneyTimeDisabled}
                 title="Залога нет"
-                alt=""
                 className="card-mark"
               />
             )}
             {contract ? (
               <img
+                alt="picture1"
                 src={Union}
                 title="Составляется договор"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={UnionDisabled}
                 title="Без лишних бумаг"
-                alt=""
                 className="card-mark"
               />
             )}
             {insurance ? (
               <img
+                alt="picture1"
                 src={cardVerify}
                 title="Предусмотрена страховка"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={cardVerifyDisabled}
                 title="Без страховки"
-                alt=""
                 className="card-mark"
               />
             )}
             <img
+              alt="picture1"
               src={cardFireDisabled}
               title="Акций не предусмотрено"
-              alt=""
               className="card-mark"
             />
             {servicefee ? (
               <img
+                alt="picture1"
                 src={cardMoney}
                 title="Предусмотрен сервисный сбор"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={cardMoneyDisabled}
                 title="Сервисного сбора нет"
-                alt=""
                 className="card-mark"
               />
             )}
@@ -442,7 +470,11 @@ const ItemCardProfile = ({
               style={{ marginTop: "10px" }}
               className="recent-time-cost-wrapper"
             >
-              <img style={{ width: "20px", height: "20px" }} src={yourCost} />
+              <img
+                alt="picture1"
+                style={{ width: "20px", height: "20px" }}
+                src={yourCost}
+              />
               <p className="recent-time-p">Предложить свою цену</p>
             </div>
           )}
@@ -451,7 +483,7 @@ const ItemCardProfile = ({
               style={{ justifyContent: "flex-start", marginTop: "10px" }}
               className="recent-time-cost-wrapper"
             >
-              <img src={freePrice} />
+              <img alt="picture1" src={freePrice} />
               <p style={{ marginLeft: "5px" }} className="recent-time-p">
                 Бесплатно
               </p>
@@ -468,7 +500,11 @@ const ItemCardProfile = ({
               <p>Редактировать</p>
             </a>
             <div className={"item-card-profile-button-wrapper"}>
-              <img src={copy} className={"item-card-profile-button-image"} />
+              <img
+                alt="picture1"
+                src={copy}
+                className={"item-card-profile-button-image"}
+              />
               <p
                 onClick={copyHandler}
                 value="Копировать"
@@ -480,7 +516,11 @@ const ItemCardProfile = ({
             </div>
             {is_hidden ? (
               <div className={"item-card-profile-button-wrapper"}>
-                <img src={hide} className={"item-card-profile-button-image"} />
+                <img
+                  alt="picture1"
+                  src={hide}
+                  className={"item-card-profile-button-image"}
+                />
                 <p
                   onClick={showHandler}
                   value="Показать"
@@ -492,7 +532,11 @@ const ItemCardProfile = ({
               </div>
             ) : (
               <div className={"item-card-profile-button-wrapper"}>
-                <img src={hide} className={"item-card-profile-button-image"} />
+                <img
+                  alt="picture1"
+                  src={hide}
+                  className={"item-card-profile-button-image"}
+                />
                 <p
                   onClick={hideHandler}
                   value="Скрыть"
@@ -504,7 +548,11 @@ const ItemCardProfile = ({
               </div>
             )}
             <div className={"item-card-profile-button-wrapper"}>
-              <img src={Delete} className={"item-card-profile-button-image"} />
+              <img
+                alt="picture1"
+                src={Delete}
+                className={"item-card-profile-button-image"}
+              />
               <p
                 onClick={removeSubjectHandler}
                 value="Удалить"
@@ -522,92 +570,97 @@ const ItemCardProfile = ({
       <div className="recent-block-wrapper" id="swiper_mobile_800">
         <div className="recent-block__profile">
           <img
+            alt="picture1"
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`${rootAddress}${image_1}?random=` + Math.random()}
-            alt=""
+            src={
+              imageLoaded
+                ? `${rootAddress}${image_1}?random=` + Math.random()
+                : Loading
+            }
+            onLoad={() => setImageLoaded(true)}
             className="block-image"
           />
           <div className="recent-marks">
             {delivery.includes("Привезу и заберу сам") ||
             delivery.includes("Доставка курьером") ? (
               <img
+                alt="picture1"
                 src={car}
-                alt=""
                 title="Доставка возможна"
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={carDisabled}
                 title="Доставка не предусмотрена"
-                alt=""
                 className="card-mark"
               />
             )}
             {pledge ? (
               <img
+                alt="picture1"
                 src={moneyTime}
-                alt=""
                 title="Предусмотрен залог"
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={moneyTimeDisabled}
                 title="Залога нет"
-                alt=""
                 className="card-mark"
               />
             )}
             {contract ? (
               <img
+                alt="picture1"
                 src={Union}
                 title="Составляется договор"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={UnionDisabled}
                 title="Без лишних бумаг"
-                alt=""
                 className="card-mark"
               />
             )}
             {insurance ? (
               <img
+                alt="picture1"
                 src={cardVerify}
                 title="Предусмотрена страховка"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={cardVerifyDisabled}
                 title="Без страховки"
-                alt=""
                 className="card-mark"
               />
             )}
             <img
+              alt="picture1"
               src={cardFireDisabled}
               title="Акций не предусмотрено"
-              alt=""
               className="card-mark"
             />
             {servicefee ? (
               <img
+                alt="picture1"
                 src={cardMoney}
                 title="Предусмотрен сервисный сбор"
-                alt=""
                 className="card-mark"
               />
             ) : (
               <img
+                alt="picture1"
                 src={cardMoneyDisabled}
                 title="Сервисного сбора нет"
-                alt=""
                 className="card-mark"
               />
             )}
@@ -654,7 +707,11 @@ const ItemCardProfile = ({
               style={{ marginTop: "10px" }}
               className="recent-time-cost-wrapper"
             >
-              <img style={{ width: "20px", height: "20px" }} src={yourCost} />
+              <img
+                alt="picture1"
+                style={{ width: "20px", height: "20px" }}
+                src={yourCost}
+              />
               <p className="recent-time-p">Предложить свою цену</p>
             </div>
           )}
@@ -663,7 +720,7 @@ const ItemCardProfile = ({
               style={{ justifyContent: "flex-start", marginTop: "10px" }}
               className="recent-time-cost-wrapper"
             >
-              <img src={freePrice} />
+              <img alt="picture1" src={freePrice} />
               <p style={{ marginLeft: "5px" }} className="recent-time-p">
                 Бесплатно
               </p>
@@ -680,7 +737,11 @@ const ItemCardProfile = ({
               <p>Редактировать</p>
             </a>
             <div className={"item-card-profile-button-wrapper"}>
-              <img src={copy} className={"item-card-profile-button-image"} />
+              <img
+                alt="picture1"
+                src={copy}
+                className={"item-card-profile-button-image"}
+              />
               <p
                 onClick={copyHandler}
                 value="Копировать"
@@ -692,7 +753,11 @@ const ItemCardProfile = ({
             </div>
             {is_hidden ? (
               <div className={"item-card-profile-button-wrapper"}>
-                <img src={hide} className={"item-card-profile-button-image"} />
+                <img
+                  alt="picture1"
+                  src={hide}
+                  className={"item-card-profile-button-image"}
+                />
                 <p
                   onClick={showHandler}
                   value="Показать"
@@ -704,7 +769,11 @@ const ItemCardProfile = ({
               </div>
             ) : (
               <div className={"item-card-profile-button-wrapper"}>
-                <img src={hide} className={"item-card-profile-button-image"} />
+                <img
+                  alt="picture1"
+                  src={hide}
+                  className={"item-card-profile-button-image"}
+                />
                 <p
                   onClick={hideHandler}
                   value="Скрыть"
@@ -716,7 +785,11 @@ const ItemCardProfile = ({
               </div>
             )}
             <div className={"item-card-profile-button-wrapper"}>
-              <img src={Delete} className={"item-card-profile-button-image"} />
+              <img
+                alt="picture1"
+                src={Delete}
+                className={"item-card-profile-button-image"}
+              />
               <p
                 onClick={removeSubjectHandler}
                 value="Удалить"

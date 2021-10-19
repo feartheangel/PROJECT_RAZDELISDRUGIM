@@ -87,11 +87,7 @@ const RandomItemsSlider = () => {
           </Swiper>
         </div>
       </div>
-      <Link
-        style={{ textDecoration: "none" }}
-        to="/catalog"
-        style={{ marginTop: "5px" }}
-      >
+      <Link style={{ textDecoration: "none", marginTop: "5px" }} to="/catalog">
         <input
           type="button"
           value="Смотреть каталог"

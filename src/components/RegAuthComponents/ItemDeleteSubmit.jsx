@@ -53,6 +53,7 @@ const ItemDeleteSubmit = ({
           >
             <div className="div_for_krestik">
               <img
+                alt="picture1"
                 onClick={() => setModalActiveSubmit(false)}
                 src={Shape}
                 className="img_krestik"

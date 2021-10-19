@@ -60,7 +60,11 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 {redirect}
                 <p className="main-abilities-card-title">Делитесь с другими</p>
-                <img src={abil1} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil1}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   У каждого из нас есть такие вещи, которые нам жалко продать,
                   но мы могли бы поделиться ими с другими, оказав им услугу,
@@ -73,9 +77,8 @@ const AbilitiesBlock = () => {
                   Арендуйте что хотите
                 </p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil2}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -89,9 +92,8 @@ const AbilitiesBlock = () => {
                   Расширяйте свой бизнес
                 </p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil3}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -106,9 +108,8 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Экономьте время</p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil4}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -120,9 +121,8 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Будьте спокойны</p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil5}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -157,9 +157,8 @@ const AbilitiesBlock = () => {
                 {redirect}
                 <p className="main-abilities-card-title">Делитесь с другими</p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil1}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -174,9 +173,8 @@ const AbilitiesBlock = () => {
                   Арендуйте что хотите
                 </p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil2}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -190,9 +188,8 @@ const AbilitiesBlock = () => {
                   Расширяйте свой бизнес
                 </p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil3}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -207,9 +204,8 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Экономьте время</p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil4}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -221,9 +217,8 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Будьте спокойны</p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil5}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p">
@@ -265,9 +260,8 @@ const AbilitiesBlock = () => {
               <div className="abilities-card" id="abilities_upper">
                 <p className="main-abilities-card-title">Делитесь с другими</p>
                 <img
-                  loading="lazy"
+                  alt="picture1"
                   src={abil1}
-                  alt=""
                   className="abilities-card-img"
                 />
                 <p className="abilities-card-p" id="abilities_upper">

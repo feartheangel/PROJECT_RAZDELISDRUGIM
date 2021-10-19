@@ -1,6 +1,5 @@
 import React from "react";
 import Shape from "../../img/Shape.png";
-import { Link } from "react-router-dom";
 
 const NotificationBlock = ({
   notification,
@@ -37,6 +36,7 @@ const NotificationBlock = ({
               </p>
             )}
             <img
+              alt="picture1"
               className="delete_notification_stroke"
               onClick={(e) => deleteNotifyHandler(e)}
               src={Shape}

@@ -1,38 +1,37 @@
 const initialState = {
-  items: '',
+  items: "",
   isLoaded: false,
-  news: '',
+  news: "",
 };
 
 const items = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_ITEMS':
+    case "SET_ITEMS":
       return {
         ...state,
         items: action.payload,
       };
-      break;
 
-    case 'SET_ITEMS_LOADED':
+    case "SET_ITEMS_LOADED":
       return {
         ...state,
         isLoaded: action.payload,
       };
-      break;
 
-    case 'SET_ITEMS_LOADING':
+    case "SET_ITEMS_LOADING":
       return {
         ...state,
         isLoaded: action.payload,
       };
-      break;
 
-    case 'SET_NEWS':
+    case "SET_NEWS":
       return {
         ...state,
         news: action.payload,
       };
-      break;
+
+    default:
+    //nothing
   }
   return state;
 };

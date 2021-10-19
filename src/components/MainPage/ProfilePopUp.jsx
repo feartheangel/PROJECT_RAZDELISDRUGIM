@@ -14,7 +14,7 @@ const ProfilePopUp = ({
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
-  }, []);
+  }, [setProfilePopUpActive]);
 
   const profileRef = useRef(null);
   return (

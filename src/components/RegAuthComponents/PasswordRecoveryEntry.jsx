@@ -60,222 +60,224 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
   return (
     <div className="reg-form-email-verification">
       <div className="reg-form-email-verification" id="regform_pk">
-      <div className="div_for_krestik">
-        <img
-          onClick={() => setModalActive(false)}
-          src={Shape}
-          className="img_krestik"
-          style={{ marginRight: "15px" }}
-        />
-      </div>
-      <ul className="reg-form-action-type-list">
-        <li
-          onClick={() => setActiveForm("register")}
-          href="#"
-          style={{ fontSize: "25px" }}
-          style={{width:'50%',  justifyContent:'center', display:'flex' }}
-          className="reg-form-action-type-link"
-        >
-          Регистрация
-        </li>
-        <li
-          onClick={() => setActiveForm("login")}
-          href="#"
-          style={{ fontSize: "25px" }}
-          style={{width:'50%',  justifyContent:'center', display:'flex' }}
-          className="reg-form-action-type-link reg-form-action-type-link__active"
-        >
-          Вход
-        </li>
-      </ul>
-      <div className="log-form-text-label-p-email__upper">
-        <p>Укажите свой логин</p>
-      </div>
-      <div className="reg-form-annotation-wrapper">
-        <div className="reg-form-annotation__email">
-          <p>
-            (На указанный логин (почта или телефон) будет отправлен Ваш новый
-            пароль)
-          </p>
+        <div className="div_for_krestik">
+          <img
+            alt="picture1"
+            onClick={() => setModalActive(false)}
+            src={Shape}
+            className="img_krestik"
+            style={{ marginRight: "15px" }}
+          />
         </div>
-      </div>
-      <div className="reg-form-input-area">
-        <form>
-          <label htmlFor="login" className="log-form-text-label-l">
-            Введите логин
-          </label>
-          <input
-            name="code"
-            id="code"
-            type="text"
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={contact}
-            onChange={(e) => {
-              contactHandler(e);
-            }}
-          />
-          {contactDirty && contactError && (
-            <label className="reg-form-text-label-l__alert">
-              {contactError}
+        <ul className="reg-form-action-type-list">
+          <li
+            onClick={() => setActiveForm("register")}
+            href="#"
+            style={{ fontSize: "25px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            className="reg-form-action-type-link"
+          >
+            Регистрация
+          </li>
+          <li
+            onClick={() => setActiveForm("login")}
+            href="#"
+            style={{ fontSize: "25px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            className="reg-form-action-type-link reg-form-action-type-link__active"
+          >
+            Вход
+          </li>
+        </ul>
+        <div className="log-form-text-label-p-email__upper">
+          <p>Укажите свой логин</p>
+        </div>
+        <div className="reg-form-annotation-wrapper">
+          <div className="reg-form-annotation__email">
+            <p>
+              (На указанный логин (почта или телефон) будет отправлен Ваш новый
+              пароль)
+            </p>
+          </div>
+        </div>
+        <div className="reg-form-input-area">
+          <form>
+            <label htmlFor="login" className="log-form-text-label-l">
+              Введите логин
             </label>
-          )}
-          <input
-            onClick={onClickSubmit}
-            type="button"
-            value="Продолжить"
-            className="reg-form-submit-button"
-            disabled={!formValid}
-          />
-        </form>
-      </div>
+            <input
+              name="code"
+              id="code"
+              type="text"
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={contact}
+              onChange={(e) => {
+                contactHandler(e);
+              }}
+            />
+            {contactDirty && contactError && (
+              <label className="reg-form-text-label-l__alert">
+                {contactError}
+              </label>
+            )}
+            <input
+              onClick={onClickSubmit}
+              type="button"
+              value="Продолжить"
+              className="reg-form-submit-button"
+              disabled={!formValid}
+            />
+          </form>
+        </div>
       </div>
 
       {/* mobile */}
       <div className="reg-form-email-verification" id="regform_mobile">
-      <div className="div_for_krestik">
-        <img
-          onClick={() => setModalActive(false)}
-          src={Shape}
-          className="img_krestik"
-          style={{ marginRight: "15px" }}
-        />
-      </div>
-      <ul className="reg-form-action-type-list">
-        <li
-          onClick={() => setActiveForm("register")}
-          href="#"
-          style={{ fontSize: "16px" }}
-          style={{width:'50%',  justifyContent:'center', display:'flex' }}
-          className="reg-form-action-type-link"
-        >
-          Регистрация
-        </li>
-        <li
-          onClick={() => setActiveForm("login")}
-          href="#"
-          style={{ fontSize: "16px" }}
-          style={{width:'50%',  justifyContent:'center', display:'flex' }}
-          className="reg-form-action-type-link reg-form-action-type-link__active"
-        >
-          Вход
-        </li>
-      </ul>
-      <div className="log-form-text-label-p-email__upper">
-        <p>Укажите свой логин</p>
-      </div>
-      <div className="reg-form-annotation-wrapper">
-        <div className="reg-form-annotation__email">
-          <p>
-            (На указанный логин (почта или телефон) будет отправлен Ваш новый
-            пароль)
-          </p>
+        <div className="div_for_krestik">
+          <img
+            alt="picture1"
+            onClick={() => setModalActive(false)}
+            src={Shape}
+            className="img_krestik"
+            style={{ marginRight: "15px" }}
+          />
         </div>
-      </div>
-      <div className="reg-form-input-area">
-        <form>
-          <label htmlFor="login" className="log-form-text-label-l">
-            Введите логин
-          </label>
-          <input
-            name="code"
-            id="code"
-            type="text"
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={contact}
-            onChange={(e) => {
-              contactHandler(e);
-            }}
-          />
-          {contactDirty && contactError && (
-            <label className="reg-form-text-label-l__alert">
-              {contactError}
+        <ul className="reg-form-action-type-list">
+          <li
+            onClick={() => setActiveForm("register")}
+            href="#"
+            style={{ fontSize: "16px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            className="reg-form-action-type-link"
+          >
+            Регистрация
+          </li>
+          <li
+            onClick={() => setActiveForm("login")}
+            href="#"
+            style={{ fontSize: "16px" }}
+            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            className="reg-form-action-type-link reg-form-action-type-link__active"
+          >
+            Вход
+          </li>
+        </ul>
+        <div className="log-form-text-label-p-email__upper">
+          <p>Укажите свой логин</p>
+        </div>
+        <div className="reg-form-annotation-wrapper">
+          <div className="reg-form-annotation__email">
+            <p>
+              (На указанный логин (почта или телефон) будет отправлен Ваш новый
+              пароль)
+            </p>
+          </div>
+        </div>
+        <div className="reg-form-input-area">
+          <form>
+            <label htmlFor="login" className="log-form-text-label-l">
+              Введите логин
             </label>
-          )}
-          <input
-            onClick={onClickSubmit}
-            type="button"
-            value="Продолжить"
-            className="reg-form-submit-button"
-            disabled={!formValid}
-          />
-        </form>
-      </div>
+            <input
+              name="code"
+              id="code"
+              type="text"
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={contact}
+              onChange={(e) => {
+                contactHandler(e);
+              }}
+            />
+            {contactDirty && contactError && (
+              <label className="reg-form-text-label-l__alert">
+                {contactError}
+              </label>
+            )}
+            <input
+              onClick={onClickSubmit}
+              type="button"
+              value="Продолжить"
+              className="reg-form-submit-button"
+              disabled={!formValid}
+            />
+          </form>
+        </div>
       </div>
 
       {/* ipad */}
 
       <div className="reg-form-email-verification" id="regform_ipad">
-      <div className="div_for_krestik">
-        <img
-          onClick={() => setModalActive(false)}
-          src={Shape}
-          className="img_krestik"
-          style={{ marginRight: "15px" }}
-        />
-      </div>
-      <ul className="reg-form-action-type-list">
-        <li
-          onClick={() => setActiveForm("register")}
-          href="#"
-          style={{ fontSize: "25px" }}
-          className="reg-form-action-type-link"
-        >
-          Регистрация
-        </li>
-        <li
-          onClick={() => setActiveForm("login")}
-          href="#"
-          style={{ fontSize: "25px" }}
-          className="reg-form-action-type-link reg-form-action-type-link__active"
-        >
-          Вход
-        </li>
-      </ul>
-      <div className="log-form-text-label-p-email__upper">
-        <p>Укажите свой логин</p>
-      </div>
-      <div className="reg-form-annotation-wrapper">
-        <div className="reg-form-annotation__email">
-          <p>
-            (На указанный логин (почта или телефон) будет отправлен Ваш новый
-            пароль)
-          </p>
+        <div className="div_for_krestik">
+          <img
+            alt="picture1"
+            onClick={() => setModalActive(false)}
+            src={Shape}
+            className="img_krestik"
+            style={{ marginRight: "15px" }}
+          />
+        </div>
+        <ul className="reg-form-action-type-list">
+          <li
+            onClick={() => setActiveForm("register")}
+            href="#"
+            style={{ fontSize: "25px" }}
+            className="reg-form-action-type-link"
+          >
+            Регистрация
+          </li>
+          <li
+            onClick={() => setActiveForm("login")}
+            href="#"
+            style={{ fontSize: "25px" }}
+            className="reg-form-action-type-link reg-form-action-type-link__active"
+          >
+            Вход
+          </li>
+        </ul>
+        <div className="log-form-text-label-p-email__upper">
+          <p>Укажите свой логин</p>
+        </div>
+        <div className="reg-form-annotation-wrapper">
+          <div className="reg-form-annotation__email">
+            <p>
+              (На указанный логин (почта или телефон) будет отправлен Ваш новый
+              пароль)
+            </p>
+          </div>
+        </div>
+        <div className="reg-form-input-area">
+          <form>
+            <label htmlFor="login" className="log-form-text-label-l">
+              Введите логин
+            </label>
+            <input
+              name="code"
+              id="code"
+              type="text"
+              placeholder="..."
+              className="reg-form-contact-input"
+              value={contact}
+              onChange={(e) => {
+                contactHandler(e);
+              }}
+            />
+            {contactDirty && contactError && (
+              <label className="reg-form-text-label-l__alert">
+                {contactError}
+              </label>
+            )}
+            <input
+              onClick={onClickSubmit}
+              type="button"
+              value="Продолжить"
+              className="reg-form-submit-button"
+              disabled={!formValid}
+            />
+          </form>
         </div>
       </div>
-      <div className="reg-form-input-area">
-        <form>
-          <label htmlFor="login" className="log-form-text-label-l">
-            Введите логин
-          </label>
-          <input
-            name="code"
-            id="code"
-            type="text"
-            placeholder="..."
-            className="reg-form-contact-input"
-            value={contact}
-            onChange={(e) => {
-              contactHandler(e);
-            }}
-          />
-          {contactDirty && contactError && (
-            <label className="reg-form-text-label-l__alert">
-              {contactError}
-            </label>
-          )}
-          <input
-            onClick={onClickSubmit}
-            type="button"
-            value="Продолжить"
-            className="reg-form-submit-button"
-            disabled={!formValid}
-          />
-        </form>
-      </div>
-      </div>
-
     </div>
   );
 };

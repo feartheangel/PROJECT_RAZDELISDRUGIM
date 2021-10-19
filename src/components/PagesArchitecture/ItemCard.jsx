@@ -18,6 +18,7 @@ import Favorites from "../../img/MainPage/Favorites.webp";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.webp";
 import EditItemImage from "../../img/MainPage/editicon.webp";
 import { rootAddress } from "../../http/axios-requests";
+import Loading from "../../img/loading.gif";
 
 const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const ItemCard = ({ item }) => {
 
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [isOwn, setIsOwn] = React.useState(false);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
 
   const addFavoriteHandler = (e) => {
     e.preventDefault();
@@ -73,9 +75,14 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
+              onLoad={() => setImageLoaded(true)}
               loading="lazy"
-              src={`${rootAddress}${item.image_1}`}
-              alt=""
+              src={
+                imageLoaded
+                  ? `${rootAddress}${item.image_1}?random=` + Math.random()
+                  : Loading
+              }
+              alt="picture1"
               className="block-image"
             />
             <div className="recent-marks">
@@ -83,92 +90,92 @@ const ItemCard = ({ item }) => {
               item.delivery.includes("Доствка курьером") ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={car}
-                  alt=""
                   title="Доставка возможна"
                   className="card-mark"
                 />
               ) : (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={carDisabled}
                   title="Доставка не предусмотрена"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.pledge ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={moneyTime}
-                  alt=""
                   title="Предусмотрен залог"
                   className="card-mark"
                 />
               ) : (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={moneyTimeDisabled}
                   title="Залога нет"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.contract ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={Union}
                   title="Составляется договор"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={UnionDisabled}
                   title="Без лишних бумаг"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.insurance ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={cardVerify}
                   title="Предусмотрена страховка"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={cardVerifyDisabled}
                   title="Без страховки"
-                  alt=""
                   className="card-mark"
                 />
               )}
               <img
                 loading="lazy"
+                alt="picture1"
                 src={cardFireDisabled}
                 title="Акций не предусмотрено"
-                alt=""
                 className="card-mark"
               />
               {item.servicefee ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={cardMoney}
                   title="Предусмотрен сервисный сбор"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={cardMoneyDisabled}
                   title="Сервисного сбора нет"
-                  alt=""
                   className="card-mark"
                 />
               )}
@@ -210,6 +217,7 @@ const ItemCard = ({ item }) => {
               >
                 <img
                   loading="lazy"
+                  alt="picture1"
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
@@ -222,6 +230,7 @@ const ItemCard = ({ item }) => {
                 className="recent-time-cost-wrapper"
               >
                 <img loading="lazy" src={freePrice} />
+                <img alt="picture1" src={freePrice} />
                 <p className="recent-time-p">Бесплатно</p>
               </div>
             )}
@@ -233,6 +242,7 @@ const ItemCard = ({ item }) => {
             {favorites && !isFavorite && isLoggedIn && !isOwn && (
               <img
                 loading="lazy"
+                alt="picture1"
                 onClick={(e) => addFavoriteHandler(e)}
                 className="itemcard_favorite_img"
                 src={FavoritesDisabled}
@@ -242,6 +252,7 @@ const ItemCard = ({ item }) => {
             {favorites && isFavorite && isLoggedIn && !isOwn && (
               <img
                 loading="lazy"
+                alt="picture1"
                 onClick={(e) => deleteFavoriteHandler(e)}
                 className="itemcard_favorite_img"
                 src={Favorites}
@@ -251,6 +262,7 @@ const ItemCard = ({ item }) => {
             {isOwn && (
               <img
                 loading="lazy"
+                alt="picture1"
                 onClick={(e) =>
                   (window.location.href = `/edit-item?id=${item.id}`)
                 }
@@ -272,9 +284,13 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
+              onLoad={() => setImageLoaded(true)}
               loading="lazy"
-              src={`${rootAddress}${item.image_1}`}
-              alt=""
+              src={
+                imageLoaded
+                  ? `${rootAddress}${item.image_1}?random=` + Math.random()
+                  : Loading
+              }
               className="block-image"
             />
             <div className="recent-marks">
@@ -282,86 +298,86 @@ const ItemCard = ({ item }) => {
               item.delivery.includes("Доствка курьером") ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={car}
-                  alt=""
                   title="Доставка возможна"
                   className="card-mark"
                 />
               ) : (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={carDisabled}
                   title="Доставка не предусмотрена"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.pledge ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={moneyTime}
-                  alt=""
                   title="Предусмотрен залог"
                   className="card-mark"
                 />
               ) : (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={moneyTimeDisabled}
                   title="Залога нет"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.contract ? (
                 <img
                   loading="lazy"
+                  alt="picture1"
                   src={Union}
                   title="Составляется договор"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={UnionDisabled}
                   title="Без лишних бумаг"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.insurance ? (
                 <img
+                  alt="picture1"
                   src={cardVerify}
                   title="Предусмотрена страховка"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={cardVerifyDisabled}
                   title="Без страховки"
-                  alt=""
                   className="card-mark"
                 />
               )}
               <img
+                alt="picture1"
                 src={cardFireDisabled}
                 title="Акций не предусмотрено"
-                alt=""
                 className="card-mark"
               />
               {item.servicefee ? (
                 <img
+                  alt="picture1"
                   src={cardMoney}
                   title="Предусмотрен сервисный сбор"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={cardMoneyDisabled}
                   title="Сервисного сбора нет"
-                  alt=""
                   className="card-mark"
                 />
               )}
@@ -401,7 +417,11 @@ const ItemCard = ({ item }) => {
                 style={{ marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img style={{ width: "20px", height: "20px" }} src={yourCost} />
+                <img
+                  alt="picture1"
+                  style={{ width: "20px", height: "20px" }}
+                  src={yourCost}
+                />
                 <p className="recent-time-p">Предложить свою цену</p>
               </div>
             )}
@@ -410,7 +430,7 @@ const ItemCard = ({ item }) => {
                 style={{ justifyContent: "flex-start", marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img src={freePrice} />
+                <img alt="picture1" src={freePrice} />
                 <p className="recent-time-p">Бесплатно</p>
               </div>
             )}
@@ -423,6 +443,7 @@ const ItemCard = ({ item }) => {
             <div className="div_favorites">
               {favorites && !isFavorite && isLoggedIn && !isOwn && (
                 <img
+                  alt="picture1"
                   onClick={(e) => addFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={FavoritesDisabled}
@@ -431,6 +452,7 @@ const ItemCard = ({ item }) => {
 
               {favorites && isFavorite && isLoggedIn && !isOwn && (
                 <img
+                  alt="picture1"
                   onClick={(e) => deleteFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={Favorites}
@@ -439,6 +461,7 @@ const ItemCard = ({ item }) => {
 
               {isOwn && (
                 <img
+                  alt="picture1"
                   onClick={(e) =>
                     (window.location.href = `/edit-item?id=${item.id}`)
                   }
@@ -461,90 +484,95 @@ const ItemCard = ({ item }) => {
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
-              src={`${rootAddress}${item.image_1}`}
-              alt=""
+              onLoad={() => setImageLoaded(true)}
+              loading="lazy"
+              src={
+                imageLoaded
+                  ? `${rootAddress}${item.image_1}?random=` + Math.random()
+                  : Loading
+              }
               className="block-image"
             />
             <div className="recent-marks">
               {item.delivery.includes("Привезу и заберу сам") ||
               item.delivery.includes("Доствка курьером") ? (
                 <img
+                  alt="picture1"
                   src={car}
-                  alt=""
                   title="Доставка возможна"
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={carDisabled}
                   title="Доставка не предусмотрена"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.pledge ? (
                 <img
+                  alt="picture1"
                   src={moneyTime}
-                  alt=""
                   title="Предусмотрен залог"
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={moneyTimeDisabled}
                   title="Залога нет"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.contract ? (
                 <img
+                  alt="picture1"
                   src={Union}
                   title="Составляется договор"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={UnionDisabled}
                   title="Без лишних бумаг"
-                  alt=""
                   className="card-mark"
                 />
               )}
               {item.insurance ? (
                 <img
+                  alt="picture1"
                   src={cardVerify}
                   title="Предусмотрена страховка"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={cardVerifyDisabled}
                   title="Без страховки"
-                  alt=""
                   className="card-mark"
                 />
               )}
               <img
+                alt="picture1"
                 src={cardFireDisabled}
                 title="Акций не предусмотрено"
-                alt=""
                 className="card-mark"
               />
               {item.servicefee ? (
                 <img
+                  alt="picture1"
                   src={cardMoney}
                   title="Предусмотрен сервисный сбор"
-                  alt=""
                   className="card-mark"
                 />
               ) : (
                 <img
+                  alt="picture1"
                   src={cardMoneyDisabled}
                   title="Сервисного сбора нет"
-                  alt=""
                   className="card-mark"
                 />
               )}
@@ -587,7 +615,11 @@ const ItemCard = ({ item }) => {
                 style={{ marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img style={{ width: "20px", height: "20px" }} src={yourCost} />
+                <img
+                  alt="picture1"
+                  style={{ width: "20px", height: "20px" }}
+                  src={yourCost}
+                />
                 <p className="recent-time-p">Предложить свою цену</p>
               </div>
             )}
@@ -596,7 +628,7 @@ const ItemCard = ({ item }) => {
                 style={{ justifyContent: "flex-start", marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img src={freePrice} />
+                <img alt="picture1" src={freePrice} />
                 <p className="recent-time-p">Бесплатно</p>
               </div>
             )}
@@ -609,6 +641,7 @@ const ItemCard = ({ item }) => {
             <div className="div_favorites">
               {favorites && !isFavorite && isLoggedIn && !isOwn && (
                 <img
+                  alt="picture1"
                   onClick={(e) => addFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={FavoritesDisabled}
@@ -617,6 +650,7 @@ const ItemCard = ({ item }) => {
 
               {favorites && isFavorite && isLoggedIn && !isOwn && (
                 <img
+                  alt="picture1"
                   onClick={(e) => deleteFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={Favorites}
@@ -625,6 +659,7 @@ const ItemCard = ({ item }) => {
 
               {isOwn && (
                 <img
+                  alt="picture1"
                   onClick={(e) =>
                     (window.location.href = `/edit-item?id=${item.id}`)
                   }
