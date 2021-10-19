@@ -7,7 +7,6 @@ import {
   setAdresses,
   setQueryStarted,
   setQueryDone,
-  reloadData,
 } from "../../redux/actions/userData";
 import { useSelector, useDispatch } from "react-redux";
 import HandShake from "../../img/CardThings/RightContent/handShake1.png";
@@ -46,13 +45,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [room, setRoom] = React.useState();
   const [office, setOffice] = React.useState();
   const [building, setBuilding] = React.useState();
-  const [checked, setChecked] = React.useState(true);
   const [timechecked, setTimeChecked] = React.useState(1);
   const [coords, setCoords] = React.useState();
   const [addressAdded, setAddressAdded] = React.useState(false);
   const [radioBooking, setRadioBooking] = React.useState();
 
-  const bbbb = itemData.delivery.includes("Самовывоз");
   const [renterBookingName, setRenterBookingName] = React.useState(
     userData.first_name
   );
@@ -63,25 +60,25 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
   const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
 
-  // минимальное время бронирования(дата и время сейчас)
-  var datetimeminbooking = new Date().toJSON().slice(0, 16);
   // для дней мин время
   var dateminbooking = new Date().toJSON().slice(0, 10);
 
   const time = new Date().toLocaleString();
   const [startDate, setStartDate] = React.useState();
-  const [endDate, setEndDate] = React.useState();
 
   // автоматический начальный выбор способа доставки
-  React.useEffect((radioBooking) => {
-    if (itemData.delivery.includes("Самовывоз")) {
-      setRadioBooking((radioBooking = "1"));
-    } else if (itemData.delivery.includes("Доставка курьером")) {
-      setRadioBooking((radioBooking = "3"));
-    } else {
-      setRadioBooking((radioBooking = "2"));
-    }
-  }, []);
+  React.useEffect(
+    (radioBooking) => {
+      if (itemData.delivery.includes("Самовывоз")) {
+        setRadioBooking((radioBooking = "1"));
+      } else if (itemData.delivery.includes("Доставка курьером")) {
+        setRadioBooking((radioBooking = "3"));
+      } else {
+        setRadioBooking((radioBooking = "2"));
+      }
+    },
+    [itemData.delivery]
+  );
 
   // увеличение начальной даты букинга в зависимости от полудня
   React.useEffect(() => {
@@ -102,52 +99,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     return currentDate.getTime() < selectedDate.getTime();
   };
 
-  const filterPassedTime = (date) => {
-    if (
-      date.getHours() === 0 ||
-      date.getHours() === 1 ||
-      date.getHours() === 2 ||
-      date.getHours() === 3 ||
-      date.getHours() === 4 ||
-      date.getHours() === 5 ||
-      date.getHours() === 6 ||
-      date.getHours() === 7 ||
-      date.getHours() === 23
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  };
-
-  // дни
-  var diffday = Math.floor(
-    (Date.parse(endDate) - Date.parse(startDate)) / 86400000
-  );
-  // hours
-  var diffhours = Math.floor(
-    (Date.parse(endDate) - Date.parse(startDate)) / 3600000
-  );
-  // week
-  var diffweek = Math.floor(
-    (Date.parse(endDate) - Date.parse(startDate)) / 604800000
-  );
-
-  // months
-  var diffmonths = Math.floor(
-    (Date.parse(endDate) - Date.parse(startDate)) / 2592000000
-  );
-  // years
-  var diffyears = Math.floor(
-    (Date.parse(endDate) - Date.parse(startDate)) / 31104000000
-  );
-
   // расчёт времени бронирования
   var resulthours = +timechecked;
   var resultdate = +timechecked;
   var resultweek = +timechecked;
   var resultmonths = +timechecked;
-  var resultyears = +timechecked;
 
   // расчёт суммы бронирования если день/час аренды
   const resultSummaArends = Math.round(
@@ -206,7 +162,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const addressesFormatted = [];
   isLoaded &&
     addresses.map((item, index) => {
-      addressesFormatted.push([
+      return addressesFormatted.push([
         `${item.city}, ${item.street}, ${
           item.house ? item.house : item.apartment
         }`,
@@ -386,7 +342,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         `${rootAddress}${itemData.image_1}?random=` +
                           Math.random()
                       }
-                      alt=""
+                      alt="picture1"
                     />
                   )}
                 </div>
@@ -404,9 +360,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.offer_price_rent && (
                       <div style={{ display: "flex" }}>
                         <img
+                          alt="picture1"
                           src={HandShake}
                           className="yourCost_handShake"
-                          alt=""
                         />
                         <p className="block_up_yourCost-p1">
                           {serviceIds.includes(
@@ -420,9 +376,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.free_rent && (
                       <div style={{ display: "flex" }}>
                         <img
+                          alt="picture1"
                           src={freePrice}
                           className="yourCost_handShake"
-                          alt=""
                         />
                         <p className="block_up_yourCost-p1">Бесплатно</p>
                       </div>
@@ -493,7 +449,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 <div className="information_all_down">
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
-                      <img className="booking_calendar" src={Calendar} />
+                      <img
+                        alt="picture1"
+                        className="booking_calendar"
+                        src={Calendar}
+                      />
                       {itemData && itemData.rent === "nonegl" && (
                         <div className="form-group">
                           <label
@@ -524,7 +484,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               min={dateminbooking}
                               disabled={startDate === undefined}
                               className="booking_input_date"
-                              onChange={(e) => setEndDate(e.target.value)}
                             />
                           </label>
                         </div>
@@ -746,7 +705,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <div className="card_content_booking_center_up">
               <div className="booking_center_up_block_first">
                 <div className="booking_center_up_block_left">
-                  <img src={Car} className="img_car_booking" alt="" />
+                  <img alt="picture1" src={Car} className="img_car_booking" />
                   <p className="booking_center_up_block_left-p">
                     {" "}
                     Вид доставки
@@ -837,7 +796,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
               <div className="booking_center_up_block_second">
                 <div className="up_block_second_block_up">
-                  <img src={metka} className="booking_metka" />
+                  <img alt="picture1" src={metka} className="booking_metka" />
                   <p className="up_block_second_block_up-p">
                     Адрес местонахождения вещи
                   </p>
@@ -863,7 +822,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   (radioBooking === "2" || radioBooking === "3") && (
                     <div className="up_block_second_block_down">
                       <div className="up_block_second_block_up">
-                        <img src={metka} className="booking_metka" />
+                        <img
+                          alt="picture1"
+                          src={metka}
+                          className="booking_metka"
+                        />
                         <p className="up_block_second_block_up-p">
                           Адрес доставки
                         </p>
@@ -1138,7 +1101,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </div>
             <div className="card_content_booking_center_down">
               <div className="booking_center_down_block1">
-                <img src={People} className="booking_body" />
+                <img alt="picture1" src={People} className="booking_body" />
                 <p className="booking_center_down_block1-p">Ваши данные</p>
               </div>
               <div className="booking_center_down_block2">
@@ -1350,6 +1313,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 <div className="header_info_item_photo">
                   {itemData && itemData.image_1 && (
                     <img
+                      alt="picture1"
                       className={
                         selectedImage === itemData.image_1
                           ? "card_thing_image_booking"
@@ -1363,7 +1327,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         `${rootAddress}${itemData.image_1}?random=` +
                           Math.random()
                       }
-                      alt=""
                     />
                   )}
                 </div>
@@ -1381,9 +1344,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.offer_price_rent && (
                       <div style={{ display: "flex" }}>
                         <img
+                          alt="picture1"
                           src={HandShake}
                           className="yourCost_handShake"
-                          alt=""
                         />
                         <p className="block_up_yourCost-p1">
                           {serviceIds.includes(
@@ -1397,9 +1360,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.free_rent && (
                       <div style={{ display: "flex" }}>
                         <img
+                          alt="picture1"
                           src={freePrice}
                           className="yourCost_handShake"
-                          alt=""
                         />
                         <p className="block_up_yourCost-p1">Бесплатно</p>
                       </div>
@@ -1470,42 +1433,12 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 <div className="information_all_down">
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
-                      <img className="booking_calendar" src={Calendar} />
-                      {itemData && itemData.rent === "nonegl" && (
-                        <div className="form-group">
-                          <label
-                            className="information_all_down_left_date-p"
-                            htmlFor="booking_date_input"
-                          >
-                            <input
-                              id="booking_date_input"
-                              type="date"
-                              min={dateminbooking}
-                              className="booking_input_date"
-                              onChange={(e) => setStartDate(e.target.value)}
-                            />
-                          </label>
+                      <img
+                        alt="picture1"
+                        className="booking_calendar"
+                        src={Calendar}
+                      />
 
-                          <span className="information_all_down_left_date-p">
-                            {" "}
-                            -{" "}
-                          </span>
-
-                          <label
-                            className="information_all_down_left_date-p"
-                            htmlFor="booking_date_end_input"
-                          >
-                            <input
-                              id="booking_date_end_input"
-                              type="date"
-                              min={dateminbooking}
-                              disabled={startDate === undefined}
-                              className="booking_input_date"
-                              onChange={(e) => setEndDate(e.target.value)}
-                            />
-                          </label>
-                        </div>
-                      )}
                       {((itemData && itemData.rent === "День") ||
                         (itemData && itemData.rent === "Неделя") ||
                         (itemData && itemData.rent === "Месяц")) && (
@@ -1716,7 +1649,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <div className="card_content_booking_center_up">
               <div className="booking_center_up_block_first">
                 <div className="booking_center_up_block_left">
-                  <img src={Car} className="img_car_booking" alt="" />
+                  <img alt="picture1" src={Car} className="img_car_booking" />
                   <p className="booking_center_up_block_left-p">
                     {" "}
                     Вид доставки
@@ -1734,7 +1667,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         name="delivery"
                         className="input_setting"
                         value="1"
-                        checked={checked}
                         onChange={(e) => setDelivery_Сhoice(e.target.value)}
                       />
                       <label
@@ -1806,7 +1738,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
               <div className="booking_center_up_block_second">
                 <div className="up_block_second_block_up">
-                  <img src={metka} className="booking_metka" />
+                  <img alt="picture1" src={metka} className="booking_metka" />
                   <p className="up_block_second_block_up-p">
                     Адрес местонахождения
                   </p>
@@ -1832,7 +1764,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
                 <div className="up_block_second_block_down">
                   <div className="up_block_second_block_up">
-                    <img src={metka} className="booking_metka" />
+                    <img alt="picture1" src={metka} className="booking_metka" />
                     <p className="up_block_second_block_up-p">Адрес доставки</p>
                   </div>
                   <div>
@@ -2097,7 +2029,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </div>
             <div className="card_content_booking_center_down">
               <div className="booking_center_down_block1">
-                <img src={People} className="booking_body" />
+                <img alt="picture1" src={People} className="booking_body" />
                 <p className="booking_center_down_block1-p">Ваши данные</p>
               </div>
               <div className="booking_center_down_block2">

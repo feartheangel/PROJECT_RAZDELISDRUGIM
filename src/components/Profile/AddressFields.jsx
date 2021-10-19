@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setAdresses,
@@ -8,7 +8,6 @@ import {
 } from "../../redux/actions/userData";
 import "../../pages/Profiles/MyGlobalData/MyAddresses/MyAddresses.css";
 import Vector1 from "../../img/ProfilePage/Vector2.png";
-import Vector3 from "../../img/ProfilePage/Vector3.png";
 import Requests from "../../http/axios-requests";
 
 const AddressFields = ({
@@ -125,9 +124,7 @@ const AddressFields = ({
   const [showAddressFields, setShowAddressFields] = React.useState(false);
 
   return (
-    <div
-      className="myAddresses_content_addresses_left"
-    >
+    <div className="myAddresses_content_addresses_left">
       {/* пк версия */}
       <div className="addresses_left_address1" id="globaldata_pk">
         <p
@@ -139,6 +136,7 @@ const AddressFields = ({
           }`}
         </p>
         <img
+          alt="picture1"
           onClick={() => setShowAddressFields(!showAddressFields)}
           src={Vector1}
         />
@@ -164,6 +162,7 @@ const AddressFields = ({
             }`}
           </p>
           <img
+            alt="picture1"
             onClick={() => setShowAddressFields(!showAddressFields)}
             src={Vector1}
           />
@@ -179,8 +178,8 @@ const AddressFields = ({
         </div>
       </div>
 
-            {/* ПЛАНШЕТ версия */}
-        <div className="addresses_left_address1" id="globaldata_ipad">
+      {/* ПЛАНШЕТ версия */}
+      <div className="addresses_left_address1" id="globaldata_ipad">
         <div className="address_row_style">
           <p
             onClick={() => setShowAddressFields(!showAddressFields)}
@@ -191,6 +190,7 @@ const AddressFields = ({
             }`}
           </p>
           <img
+            alt="picture1"
             onClick={() => setShowAddressFields(!showAddressFields)}
             src={Vector1}
           />
@@ -365,9 +365,12 @@ const AddressFields = ({
         </div>
       )}
 
-{/* ПЛАНШЕТ ВЕРСИЯ АКТИВАЦИИ ПАРАМЕТРОВ АДРЕСА */}
-{showAddressFields && (
-        <div className="take-away-secondary-wrapper-column" id="globaldata_ipad">
+      {/* ПЛАНШЕТ ВЕРСИЯ АКТИВАЦИИ ПАРАМЕТРОВ АДРЕСА */}
+      {showAddressFields && (
+        <div
+          className="take-away-secondary-wrapper-column"
+          id="globaldata_ipad"
+        >
           <div style={{ marginTop: "20px" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Страна <span className="add-item-span-zvezda">*</span>
@@ -524,7 +527,6 @@ const AddressFields = ({
           />
         </div>
       )}
-
 
       {/* МОБИЛЬНАЯ ВЕРСИЯ */}
       {showAddressFields && (

@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/swiper.scss";
@@ -13,7 +13,6 @@ import "swiper/components/scrollbar/scrollbar.scss";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const News = () => {
-  const dispatch = useDispatch();
   const { news } = useSelector(({ items }) => items);
 
   return (
@@ -86,58 +85,81 @@ const News = () => {
               })}
           </Swiper>
 
-                    {/* планшет адаптив 800*/}
-                    <Swiper
-                    style={{height:'auto'}}
+          {/* планшет адаптив 800*/}
+          <Swiper
+            style={{ height: "auto" }}
             spaceBetween={0}
             slidesPerView={2}
             pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
-            id ="swiper_mobile_768"
-            >
+            id="swiper_mobile_768"
+          >
             {news &&
               news.map((item) => {
                 return (
                   <SwiperSlide
-                    style={{ display: 'flex', width:'350px',  justifyContent: 'center'}}>
+                    style={{
+                      display: "flex",
+                      width: "350px",
+                      justifyContent: "center",
+                    }}
+                  >
                     <div className="news-reviews-block">
-                      <p className="news-reviews-date">{news && item.news_title}</p>
-                      <p style={{ display: 'none' }} className="news-reviews-title">
+                      <p className="news-reviews-date">
+                        {news && item.news_title}
+                      </p>
+                      <p
+                        style={{ display: "none" }}
+                        className="news-reviews-title"
+                      >
                         У нас появилась доставка!
                       </p>
-                      <p className="news-reviews-text">{news && item.news_description}</p>
+                      <p className="news-reviews-text">
+                        {news && item.news_description}
+                      </p>
                     </div>
                   </SwiperSlide>
                 );
               })}
           </Swiper>
 
-                              {/* планшет адаптив 1024*/}
-            <Swiper
-            style={{height:'auto'}}
+          {/* планшет адаптив 1024*/}
+          <Swiper
+            style={{ height: "auto" }}
             spaceBetween={0}
             slidesPerView={3}
             pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
-            id ="swiper_mobile_1024"
-            >
+            id="swiper_mobile_1024"
+          >
             {news &&
               news.map((item) => {
                 return (
                   <SwiperSlide
-                    style={{ display: 'flex', width:'350px',  justifyContent: 'center'}}>
+                    style={{
+                      display: "flex",
+                      width: "350px",
+                      justifyContent: "center",
+                    }}
+                  >
                     <div className="news-reviews-block">
-                      <p className="news-reviews-date">{news && item.news_title}</p>
-                      <p style={{ display: 'none' }} className="news-reviews-title">
+                      <p className="news-reviews-date">
+                        {news && item.news_title}
+                      </p>
+                      <p
+                        style={{ display: "none" }}
+                        className="news-reviews-title"
+                      >
                         У нас появилась доставка!
                       </p>
-                      <p className="news-reviews-text">{news && item.news_description}</p>
+                      <p className="news-reviews-text">
+                        {news && item.news_description}
+                      </p>
                     </div>
                   </SwiperSlide>
                 );
               })}
           </Swiper>
-
         </div>
       </div>
     </section>

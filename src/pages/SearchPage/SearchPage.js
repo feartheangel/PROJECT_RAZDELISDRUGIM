@@ -76,7 +76,7 @@ const SearchPage = () => {
         <div style=display:flex;flex-direction:column;align-items:center class="recent-block-wrapper">
         <a style=display:flex;flex-direction:column;align-items:center target="_blank">
           <div style=display:flex;flex-direction:column;align-items:center className="recent-block">
-           <img style=width:108px src=${`${rootAddress}${marks[index][1]}`} alt="" class="block-image" />
+           <img alt="picture1"  style=width:108px src=${`${rootAddress}${marks[index][1]}`}  class="block-image" />
               ${
                 !marks[index][6] && !marks[index][7]
                   ? `<div style=justify-content:flex-start;margin-top:7px class="recent-time-cost-wrapper">
@@ -477,14 +477,14 @@ const SearchPage = () => {
               <Link style={{ textDecoration: "none" }} to="/">
                 <p className="SearchPage_container_shapka_hover"> Главная </p>
               </Link>
-              <img src={vector1} alt="" />
+              <img alt="picture1" src={vector1} />
             </div>
 
             <div>
               <Link style={{ textDecoration: "none" }} to="/catalog">
                 <p className="SearchPage_container_shapka_hover"> Каталог </p>
               </Link>
-              {category && <img src={vector1} alt="" />}
+              {category && <img alt="picture1" src={vector1} />}
             </div>
             {redirect}
 
@@ -500,14 +500,14 @@ const SearchPage = () => {
                 <Link style={{ textDecoration: "none" }} to="/">
                   <p className="SearchPage_container_shapka_hover"> Главная </p>
                 </Link>
-                <img src={vector1} alt="" />
+                <img alt="picture1" src={vector1} />
               </div>
 
               <div>
                 <Link style={{ textDecoration: "none" }} to="/catalog">
                   <p className="SearchPage_container_shapka_hover"> Каталог </p>
                 </Link>
-                {category && <img src={vector1} alt="" />}
+                {category && <img alt="picture1" src={vector1} />}
               </div>
 
               <div>

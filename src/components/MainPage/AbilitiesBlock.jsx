@@ -4,7 +4,6 @@ import abil2 from "../../img/MainPage/abil2.png";
 import abil3 from "../../img/MainPage/abil3.png";
 import abil4 from "../../img/MainPage/abil4.png";
 import abil5 from "../../img/MainPage/abil5.png";
-import MenuStroke from "../../img/MainPage/MenuStroke.png";
 
 import { useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
@@ -61,7 +60,11 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 {redirect}
                 <p className="main-abilities-card-title">Делитесь с другими</p>
-                <img src={abil1} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil1}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   У каждого из нас есть такие вещи, которые нам жалко продать,
                   но мы могли бы поделиться ими с другими, оказав им услугу,
@@ -73,7 +76,11 @@ const AbilitiesBlock = () => {
                 <p className="main-abilities-card-title">
                   Арендуйте что хотите
                 </p>
-                <img src={abil2} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil2}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вам нужно воспользоваться чем-то, но покупать не имеет смысла?
                   Найдите нужную вещь через поиск или на карте, возможно, вы уже
@@ -84,7 +91,11 @@ const AbilitiesBlock = () => {
                 <p className="main-abilities-card-title">
                   Расширяйте свой бизнес
                 </p>
-                <img src={abil3} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil3}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вы компания или предприниматель, который работает в сфере
                   аренды инструментов, одежды, аксессуаров? Наша платформа
@@ -96,7 +107,11 @@ const AbilitiesBlock = () => {
             <div className="abilities-cards">
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Экономьте время</p>
-                <img src={abil4} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil4}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вам не нужно тратить много времени на поиск нужной вещь – наш
                   интеллектуальный поиск, карта и фильтры в один клик помогут
@@ -105,7 +120,11 @@ const AbilitiesBlock = () => {
               </div>
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Будьте спокойны</p>
-                <img src={abil5} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil5}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Мы сделали все возможное, для проверки и обеспечения
                   конфиденциальности наших пользователей, а также для
@@ -137,7 +156,11 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 {redirect}
                 <p className="main-abilities-card-title">Делитесь с другими</p>
-                <img src={abil1} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil1}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   У каждого из нас есть такие вещи, которые нам жалко продать,
                   но мы могли бы поделиться ими с другими, оказав им услугу,
@@ -149,7 +172,11 @@ const AbilitiesBlock = () => {
                 <p className="main-abilities-card-title">
                   Арендуйте что хотите
                 </p>
-                <img src={abil2} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil2}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вам нужно воспользоваться чем-то, но покупать не имеет смысла?
                   Найдите нужную вещь через поиск или на карте, возможно, вы уже
@@ -160,7 +187,11 @@ const AbilitiesBlock = () => {
                 <p className="main-abilities-card-title">
                   Расширяйте свой бизнес
                 </p>
-                <img src={abil3} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil3}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вы компания или предприниматель, который работает в сфере
                   аренды инструментов, одежды, аксессуаров? Наша платформа
@@ -172,7 +203,11 @@ const AbilitiesBlock = () => {
             <div className="abilities-cards">
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Экономьте время</p>
-                <img src={abil4} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil4}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вам не нужно тратить много времени на поиск нужной вещь – наш
                   интеллектуальный поиск, карта и фильтры в один клик помогут
@@ -181,7 +216,11 @@ const AbilitiesBlock = () => {
               </div>
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Будьте спокойны</p>
-                <img src={abil5} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil5}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Мы сделали все возможное, для проверки и обеспечения
                   конфиденциальности наших пользователей, а также для
@@ -220,7 +259,11 @@ const AbilitiesBlock = () => {
             <div className="abilities-cards-upper" id="abilities_upper">
               <div className="abilities-card" id="abilities_upper">
                 <p className="main-abilities-card-title">Делитесь с другими</p>
-                <img src={abil1} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil1}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p" id="abilities_upper">
                   У каждого из нас есть такие вещи, которые нам жалко продать,
                   но мы могли бы поделиться ими с другими, оказав им услугу,
@@ -235,7 +278,11 @@ const AbilitiesBlock = () => {
                 <p className="main-abilities-card-title">
                   Арендуйте что хотите
                 </p>
-                <img src={abil2} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil2}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вам нужно воспользоваться чем-то, но покупать не имеет смысла?
                   Найдите нужную вещь через поиск или на карте, возможно, вы уже
@@ -246,7 +293,11 @@ const AbilitiesBlock = () => {
                 <p className="main-abilities-card-title">
                   Расширяйте свой бизнес
                 </p>
-                <img src={abil3} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil3}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вы компания или предприниматель, который работает в сфере
                   аренды инструментов, одежды, аксессуаров? Наша платформа
@@ -256,7 +307,11 @@ const AbilitiesBlock = () => {
               </div>
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Экономьте время</p>
-                <img src={abil4} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil4}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Вам не нужно тратить много времени на поиск нужной вещь – наш
                   интеллектуальный поиск, карта и фильтры в один клик помогут
@@ -265,7 +320,11 @@ const AbilitiesBlock = () => {
               </div>
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Будьте спокойны</p>
-                <img src={abil5} alt="" className="abilities-card-img" />
+                <img
+                  alt="picture1"
+                  src={abil5}
+                  className="abilities-card-img"
+                />
                 <p className="abilities-card-p">
                   Мы сделали все возможное, для проверки и обеспечения
                   конфиденциальности наших пользователей, а также для

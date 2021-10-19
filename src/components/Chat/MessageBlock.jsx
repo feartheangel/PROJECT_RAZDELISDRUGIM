@@ -55,6 +55,7 @@ const MessageBlock = ({
       }
     >
       <img
+        alt="picture1"
         src={`https://razdelisdrugim.by:444/${item.avatar}`}
         className="chat_message_block_avatar"
       />
@@ -126,6 +127,7 @@ const MessageBlock = ({
         <div className="chat_message_block_content_part__reservation">
           <p className="reservation_request_title">Запрос на бронирование</p>
           <img
+            alt="picture1"
             className="reservation_request_image"
             src={`${rootAddress}${item.image_1}`}
           />

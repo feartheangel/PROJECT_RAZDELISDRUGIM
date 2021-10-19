@@ -112,6 +112,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       <div className="log-form" id="regform_pk">
         <div className="div_for_krestik">
           <img
+            alt="picture1"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
@@ -142,13 +143,24 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
         </div>
         <div className="reg-form-socials">
           <img
+            alt="picture1"
             style={{ display: "none" }}
             onClick={vkAuth}
             src={vkLogo}
             alt="VK"
           />
-          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-          <img onClick={googleAuth} src={googleLogo} alt="Google" />
+          <img
+            alt="picture1"
+            onClick={facebookAuth}
+            src={facebookLogo}
+            alt="Facebook"
+          />
+          <img
+            alt="picture1"
+            onClick={googleAuth}
+            src={googleLogo}
+            alt="Google"
+          />
         </div>
         <div className="log-form-text-label-p__lower">
           <p>или</p>
@@ -218,6 +230,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       <div className="log-form" id="regform_mobile">
         <div className="div_for_krestik">
           <img
+            alt="picture1"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
@@ -244,9 +257,19 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           </li>
         </ul>
         <div className="reg-form-socials">
-          <img onClick={vkAuth} src={vkLogo} alt="VK" />
-          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-          <img onClick={googleAuth} src={googleLogo} alt="Google" />
+          <img alt="picture1" onClick={vkAuth} src={vkLogo} alt="VK" />
+          <img
+            alt="picture1"
+            onClick={facebookAuth}
+            src={facebookLogo}
+            alt="Facebook"
+          />
+          <img
+            alt="picture1"
+            onClick={googleAuth}
+            src={googleLogo}
+            alt="Google"
+          />
         </div>
         <div className="reg-form-input-area">
           <form>
@@ -313,6 +336,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       <div className="log-form" id="regform_ipad">
         <div className="div_for_krestik">
           <img
+            alt="picture1"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
@@ -340,9 +364,19 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <p>Войти через соцсети</p>
         </div>
         <div className="reg-form-socials">
-          <img onClick={vkAuth} src={vkLogo} alt="VK" />
-          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
-          <img onClick={googleAuth} src={googleLogo} alt="Google" />
+          <img alt="picture1" onClick={vkAuth} src={vkLogo} alt="VK" />
+          <img
+            alt="picture1"
+            onClick={facebookAuth}
+            src={facebookLogo}
+            alt="Facebook"
+          />
+          <img
+            alt="picture1"
+            onClick={googleAuth}
+            src={googleLogo}
+            alt="Google"
+          />
         </div>
         <div className="log-form-text-label-p__lower">
           <p>или</p>

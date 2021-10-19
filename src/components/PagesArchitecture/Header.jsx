@@ -290,15 +290,24 @@ const Header = () => {
       <div className="header__inner">
         <div className="header-left-content">
           <a href="/">
-            <img src={Logo} alt="Global Sharing Platform" className="logo" />
+            <img
+              alt="picture1"
+              src={Logo}
+              alt="Global Sharing Platform"
+              className="logo"
+            />
           </a>
           <div className="selector_header_items">
             <div className="location-selector">
-              <img src={Local2} alt="" className="location-img" />
+              <img alt="picture1" src={Local2} className="location-img" />
               <p className="location-p">{currentLocation && currentLocation}</p>
             </div>
             <div className="laguage-selector-wrapper">
-              <img src={Planet2} alt="" className="language-planet-img" />
+              <img
+                alt="picture1"
+                src={Planet2}
+                className="language-planet-img"
+              />
               <p className="language-selector">{language}</p>
             </div>
           </div>
@@ -319,19 +328,19 @@ const Header = () => {
               <div className="header-right-content-logged-div">
                 <Link to="/favorites" style={{ display: "flex" }}>
                   <img
+                    alt="picture1"
                     className="header-right-content-logged-img"
                     src={Like_vector}
                     id="favorites"
-                    alt=""
                   />
                 </Link>
                 <img
+                  alt="picture1"
                   className="header-right-content-logged-img"
                   src={Bell2}
                   id="notifications"
                   onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
                   style={{ cursor: "pointer" }}
-                  alt=""
                 />
                 {notifications && notifications.length !== 0 && (
                   <div className="notifications_counter_wrapper">
@@ -346,16 +355,16 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
+                    alt="picture1"
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                     id="logged-img_last_item"
-                    alt=""
                   />
                   <img
+                    alt="picture1"
                     className="header-right-content-logged-img"
                     src={MenuStroke}
                     id="menuStroke"
-                    alt=""
                   />
                 </div>
               </div>
@@ -383,9 +392,9 @@ const Header = () => {
             id="header-lower-table-left2"
           >
             <img
+              alt="picture1"
               onClick={() => setBurgerActive(!burgerActive)}
               src={Burger}
-              alt=""
               className="burger-button"
               id="header-lower-table-left2"
             />
@@ -416,12 +425,14 @@ const Header = () => {
               <div className="header-right-content-logged-div">
                 <Link to="/favorites">
                   <img
+                    alt="picture1"
                     className="header-right-content-logged-img"
                     src={Favorites}
                   />
                 </Link>
                 <div style={{ position: "relative" }}>
                   <img
+                    alt="picture1"
                     className="header-right-content-logged-img"
                     src={Notifications}
                     onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
@@ -451,6 +462,7 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
+                    alt="picture1"
                     style={{
                       width: "30px",
                       height: "30px",
@@ -459,7 +471,7 @@ const Header = () => {
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                   />
-                  <img src={MenuStroke} />
+                  <img alt="picture1" src={MenuStroke} />
                 </div>
               </div>
               {profilePopUpActive && (
@@ -484,9 +496,9 @@ const Header = () => {
       <div className="header-lower-table">
         <div className="header-lower-table-left">
           <img
+            alt="picture1"
             onClick={() => setBurgerActive(!burgerActive)}
             src={Burger}
-            alt=""
             className="burger-button"
             id="header-lower-table-left1"
             ref={burgerButtonRef}
@@ -509,7 +521,7 @@ const Header = () => {
                             <p onClick={() => openChapterHandler(chapter[1])}>
                               {chapter[0]}
                               <span>
-                                <img src={vector2} alt="" />
+                                <img alt="picture1" src={vector2} />
                               </span>
                             </p>
                             {isLoaded &&

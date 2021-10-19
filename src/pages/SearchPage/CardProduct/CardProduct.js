@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
-import Requests from '../../../http/axios-requests';
-import './CardProduct.css';
-import photoItem from '../../../img/SearchPage/photoItem.png';
-import socialCar from '../../../img/SearchPage/social_car.png';
-import socialGold from '../../../img/SearchPage/social_gold.png';
-import socialPaper from '../../../img/SearchPage/social_paper.png';
-import socialVector from '../../../img/SearchPage/social_vector.png';
-import socialFire from '../../../img/SearchPage/social_fire.png';
-import socialDollar from '../../../img/SearchPage/social_dollar.png';
-import clock from '../../../img/SearchPage/clock.png';
-import love from '../../../img/SearchPage/love.png';
+import React, { useState } from "react";
+import Requests from "../../../http/axios-requests";
+import "./CardProduct.css";
+import photoItem from "../../../img/SearchPage/photoItem.png";
+import socialCar from "../../../img/SearchPage/social_car.png";
+import socialGold from "../../../img/SearchPage/social_gold.png";
+import socialPaper from "../../../img/SearchPage/social_paper.png";
+import socialVector from "../../../img/SearchPage/social_vector.png";
+import socialFire from "../../../img/SearchPage/social_fire.png";
+import socialDollar from "../../../img/SearchPage/social_dollar.png";
+import clock from "../../../img/SearchPage/clock.png";
+import love from "../../../img/SearchPage/love.png";
 
 const CardProduct = () => {
   React.useEffect(() => {
-    Requests.getSingleItem(window.location.href.split('?id=')[1]).then((response) => {
-      setItemData(response.data);
-    });
+    Requests.getSingleItem(window.location.href.split("?id=")[1]).then(
+      (response) => {
+        setItemData(response.data);
+      }
+    );
   }, [window.location.href]);
 
   const [itemData, setItemData] = React.useState();
@@ -24,16 +26,46 @@ const CardProduct = () => {
     <div className="blocks_card_content">
       <div className="blocks_card_content_inner">
         <div className="blocks_card_content_photo">
-          <img src={photoItem} alt="" />
+          <img alt="picture1" src={photoItem} />
         </div>
 
         <div className="blocks_card_social_img">
-          <img src={socialCar} alt=" " className="img_socialCar" />
-          <img src={socialGold} alt=" " className="img_socialGold" />
-          <img src={socialPaper} alt=" " className="img_socialPaper" />
-          <img src={socialVector} alt=" " className="img_socialVector" />
-          <img src={socialFire} alt=" " className="img_socialFire" />
-          <img src={socialDollar} alt=" " className="img_socialDollar" />
+          <img
+            alt="picture1"
+            src={socialCar}
+            alt=" "
+            className="img_socialCar"
+          />
+          <img
+            alt="picture1"
+            src={socialGold}
+            alt=" "
+            className="img_socialGold"
+          />
+          <img
+            alt="picture1"
+            src={socialPaper}
+            alt=" "
+            className="img_socialPaper"
+          />
+          <img
+            alt="picture1"
+            src={socialVector}
+            alt=" "
+            className="img_socialVector"
+          />
+          <img
+            alt="picture1"
+            src={socialFire}
+            alt=" "
+            className="img_socialFire"
+          />
+          <img
+            alt="picture1"
+            src={socialDollar}
+            alt=" "
+            className="img_socialDollar"
+          />
         </div>
 
         <div className="blocks_card_text">
@@ -50,9 +82,9 @@ const CardProduct = () => {
         </div>
 
         <div className="blocks_card_freeTime">
-          <img src={clock} alt="" className="img_clock_block" />
+          <img alt="picture1" src={clock} className="img_clock_block" />
           <p>Скоро освободится</p>
-          <img src={love} alt="" className="img_love_block" />
+          <img alt="picture1" src={love} className="img_love_block" />
         </div>
       </div>
     </div>

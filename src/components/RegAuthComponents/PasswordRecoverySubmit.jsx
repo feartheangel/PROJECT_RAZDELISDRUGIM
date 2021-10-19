@@ -87,6 +87,7 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
               style={{ height: "400px" }}
             >
               <img
+                alt="picture1"
                 onClick={() => setModalActive(false)}
                 style={{
                   marginTop: "25px",
@@ -103,7 +104,11 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                     href="#"
                     className="reg-form-action-type-link"
                     style={{ fontSize: "25px" }}
-                    style={{width:'50%',  justifyContent:'center', display:'flex' }}
+                    style={{
+                      width: "50%",
+                      justifyContent: "center",
+                      display: "flex",
+                    }}
                   >
                     Регистрация{redirect}
                   </li>
@@ -112,7 +117,11 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                   href="#"
                   className="reg-form-action-type-link reg-form-action-type-link__active"
                   style={{ fontSize: "25px" }}
-                  style={{width:'50%',  justifyContent:'center', display:'flex' }}
+                  style={{
+                    width: "50%",
+                    justifyContent: "center",
+                    display: "flex",
+                  }}
                 >
                   Вход
                 </li>
@@ -197,6 +206,7 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
             <div className="reg-form-email-verification">
               <div className="div_for_krestik">
                 <img
+                  alt="picture1"
                   onClick={() => setModalActive(false)}
                   src={Shape}
                   className="img_krestik"
@@ -209,7 +219,11 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                     href="#"
                     className="reg-form-action-type-link"
                     style={{ fontSize: "16px" }}
-                    style={{width:'50%',  justifyContent:'center', display:'flex' }}
+                    style={{
+                      width: "50%",
+                      justifyContent: "center",
+                      display: "flex",
+                    }}
                   >
                     Регистрация{redirect}
                   </li>
@@ -218,7 +232,11 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                   href="#"
                   className="reg-form-action-type-link reg-form-action-type-link__active"
                   style={{ fontSize: "16px" }}
-                  style={{width:'50%',  justifyContent:'center', display:'flex' }}
+                  style={{
+                    width: "50%",
+                    justifyContent: "center",
+                    display: "flex",
+                  }}
                 >
                   Вход
                 </li>
