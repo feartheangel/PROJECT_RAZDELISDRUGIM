@@ -1,21 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./PrivateProfile.css";
 import { Header, Footer } from "../../components/index";
 import MyData from "./MyGlobalData/MyGlobalData";
 import { Link } from "react-router-dom";
-import MyItems from "./MyItems/MyItems";
-import Requests from "../../http/axios-requests";
-import {
-  setItems,
-  setItemsLoaded,
-  setItemsLoading,
-} from "../../redux/actions/items";
-import {
-  setAdresses,
-  setQueryStarted,
-  setQueryDone,
-} from "../../redux/actions/userData";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   NumberSubmittionModule,
   EmailSubmittionModule,
@@ -23,7 +11,6 @@ import {
 } from "../../components/index";
 
 const PrivateProfile = () => {
-  const dispatch = useDispatch();
   const { subjects, iTakeSubjects } = useSelector(({ userData }) => userData);
 
   // ХРАНЕНИЕ ДАННЫХ ИЗ ПОЛЕЙ
@@ -52,7 +39,7 @@ const PrivateProfile = () => {
       <div className="privateProfile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka" id="globaldata_pk">
-            <Link
+            {/* <Link
               style={{ textDecoration: "none" }}
               className="conteiner_shapka_myProfile"
               to="/i-rent-out"
@@ -65,6 +52,12 @@ const PrivateProfile = () => {
               <p>
                 Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
               </p>
+            </Link> */}
+            <Link style={{ textDecoration: "none" }} to="/">
+              <p>Мои обьявления</p>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to="/booking-page">
+              <p>Бронирование</p>
             </Link>
             <Link
               style={{ textDecoration: "none" }}
@@ -113,14 +106,7 @@ const PrivateProfile = () => {
               className="conteiner_shapka_myProfile"
               to="/i-rent-out"
             >
-              <p
-                style={
-                  subjects.length === 0
-                    ? { opacity: "0.4", pointerEvents: "none" }
-                    : {}
-                }
-                style={{ display: "none" }}
-              >
+              <p style={{ display: "none" }}>
                 Я сдаю <span> {subjects.length} </span>
               </p>
             </Link>
@@ -137,11 +123,6 @@ const PrivateProfile = () => {
               <p>Мои сообщения</p>
             </Link>
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: "none", textDecoration: "none" }
-                  : { textDecoration: "none" }
-              }
               style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
