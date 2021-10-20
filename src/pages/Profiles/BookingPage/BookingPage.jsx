@@ -5,6 +5,10 @@ import "../../../css/BookingPage.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
+import BookingITake from "../../../components/Profile/BookingITAKE";
+
+import Avatar from "../../../img/BookingPage/avatar.png";
+import SearchVector from "../../../img/BookingPage/searchvector.png";
 
 const BookingPage = ({ itemData }) => {
   const { subjects } = useSelector(({ userData }) => userData);
@@ -29,6 +33,8 @@ const BookingPage = ({ itemData }) => {
       window.location.href = "/";
     }
   }, []);
+
+  console.log(activeForm2);
 
   return (
     <div>
@@ -162,9 +168,12 @@ const BookingPage = ({ itemData }) => {
                     </div>
                   </header>
                   {/* body right size */}
-                  <div className="content__booking_right_body">
-                    {" "}
-                    text test test
+                  <div>
+                    {/* компонент  */}
+                    {activeForm2 === "ITake" && <BookingITake />}
+                    {activeForm2 === "ITake" && <BookingITake />}
+                    {activeForm2 === "ITake" && <BookingITake />}
+                    {activeForm2 === "MyItems" && <BookingITake />}
                   </div>
                 </div>
               </div>
