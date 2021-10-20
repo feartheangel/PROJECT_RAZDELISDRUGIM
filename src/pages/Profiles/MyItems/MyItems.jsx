@@ -53,12 +53,10 @@ const MyItems = () => {
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <p className="conteiner_shapka_myProfile">
-              Я сдаю <span> {subjects.length} </span>
+              Мои объявления <span> {subjects.length} </span>
             </p>
-            <Link style={{ textDecoration: "none" }} to="/i-take">
-              <p>
-                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
-              </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
             </Link>
             <Link style={{ textDecoration: "none" }} to="/messages">
               <p>Мои сообщения</p>
@@ -326,13 +324,13 @@ const MyItems = () => {
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <p className="conteiner_shapka_myProfile">
-              Я сдаю <span> {subjects.length} </span>
+              Мои объявления <span> {subjects.length} </span>
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}
               style={{ display: "none" }}
             >
-              Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
+              Бронирования
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}

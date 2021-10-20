@@ -41,13 +41,11 @@ const MyFavorites = () => {
               to="/i-rent-out"
             >
               <p className="favorites">
-                Я сдаю <span> {subjects.length} </span>
+                Мои объявления <span> {subjects.length} </span>
               </p>
             </Link>
-            <Link style={{ textDecoration: "none" }} to="/i-take">
-              <p>
-                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
-              </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
             </Link>
             <Link style={{ textDecoration: "none" }} to="/messages">
               <p>Мои сообщения</p>
@@ -90,12 +88,14 @@ const MyFavorites = () => {
               to="/i-rent-out"
             >
               <p className="favorites">
-                Я сдаю <span> {subjects.length} </span>
+                Мои объявления <span> {subjects.length} </span>
               </p>
             </Link>
-            <p style={{ opacity: "0.4", pointerEvents: "none" }}>
-              Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
-            </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p style={{ opacity: "0.4", pointerEvents: "none" }}>
+                Бронирования
+              </p>
+            </Link>
             <p style={{ opacity: "0.4", pointerEvents: "none" }}>
               Мои сообщения <span> - </span>
             </p>
@@ -137,13 +137,11 @@ const MyFavorites = () => {
               to="/i-rent-out"
             >
               <p className="favorites">
-                Я сдаю <span> {subjects.length} </span>
+                Мои объявления <span> {subjects.length} </span>
               </p>
             </Link>
-            <Link style={{ textDecoration: "none" }} to="/i-take">
-              <p>
-                Я беру <span> {iTakeSubjects && iTakeSubjects.length}</span>
-              </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
             </Link>
             <Link style={{ textDecoration: "none" }} to="/messages">
               <p>Мои сообщения</p>

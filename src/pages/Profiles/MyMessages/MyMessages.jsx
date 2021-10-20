@@ -68,13 +68,11 @@ const MyMessages = () => {
           <div className="conteiner_shapka">
             <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
               <p>
-                Я сдаю <span> {subjects.length} </span>
+                Мои объявления <span> {subjects.length} </span>
               </p>
             </Link>
-            <Link style={{ textDecoration: "none" }} to="/i-take">
-              <p>
-                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
-              </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
             </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
               <p className="conteiner_shapka_myProfile">Мои сообщения</p>
@@ -187,27 +185,18 @@ const MyMessages = () => {
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <p className="conteiner_shapka_myProfile">
-              Я сдаю <span> {subjects.length} </span>
+              Мои объявления <span> {subjects.length} </span>
             </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              // style={{ display: "none" }}
-            >
-              Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
-            </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              // style={{ display: "none" }}
-            >
-              Мои сообщения
-            </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
+            </Link>
+            <p>Мои сообщения</p>
             <Link
               style={
                 subjects.length === 0
                   ? { pointerEvents: "none", textDecoration: "none" }
                   : { textDecoration: "none" }
               }
-              // style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >

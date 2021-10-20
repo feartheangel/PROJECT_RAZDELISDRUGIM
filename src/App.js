@@ -157,7 +157,7 @@ function App() {
         <Route path="/contacts" component={Contacts} exact />
         <Route path="/users-agreement" component={UsersAgreement} exact />
         <Route path="/chat" component={Chat} exact />
-        <Route path="/booking-page" component={BookingPage} exact />
+        <Route path="/booking" component={BookingPage} exact />
       </div>
     </div>
   );

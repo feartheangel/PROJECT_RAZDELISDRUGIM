@@ -43,8 +43,10 @@ const BookingPage = ({ itemData }) => {
         <div className="privateProfile_container">
           {/* header */}
           <div className="conteiner_shapka">
-            <Link style={{ textDecoration: "none" }} to="/">
-              <p>Мои обьявления</p>
+            <Link style={{ textDecoration: "none" }} to="/i-rent-out">
+              <p>
+                Мои обьявления <span> {subjects.length} </span>
+              </p>
             </Link>
 
             <p
@@ -53,7 +55,7 @@ const BookingPage = ({ itemData }) => {
               }
               onClick={() => setActiveForm("myProfile")}
             >
-              Бронирование
+              Бронирования
             </p>
 
             <Link

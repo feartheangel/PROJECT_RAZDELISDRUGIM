@@ -367,28 +367,6 @@ const Chat = () => {
           </div>
           <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="messanger_wrapper">
-              <div className="messanger_optional_wrapper">
-                <p
-                  onClick={() => setSelectedChats("all")}
-                  className={
-                    selectedChats === "all"
-                      ? "messanger_left_optional_p active"
-                      : "messanger_left_optional_p"
-                  }
-                >
-                  Все чаты
-                </p>
-                <p
-                  onClick={() => setSelectedChats("rent")}
-                  className={
-                    selectedChats === "rent"
-                      ? "messanger_left_optional_p active"
-                      : "messanger_left_optional_p"
-                  }
-                >
-                  Бронирования
-                </p>
-              </div>
               <div
                 ref={chatInputRef}
                 className="container_profile_content__chat"

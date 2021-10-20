@@ -54,10 +54,12 @@ const PrivateProfile = () => {
               </p>
             </Link> */}
             <Link style={{ textDecoration: "none" }} to="/">
-              <p>Мои обьявления</p>
+              <p>
+                Мои обьявления <span> {subjects.length} </span>
+              </p>
             </Link>
-            <Link style={{ textDecoration: "none" }} to="/booking-page">
-              <p>Бронирование</p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
             </Link>
             <Link
               style={{ textDecoration: "none" }}
@@ -107,13 +109,11 @@ const PrivateProfile = () => {
               to="/i-rent-out"
             >
               <p style={{ display: "none" }}>
-                Я сдаю <span> {subjects.length} </span>
+                Мои объявления <span> {subjects.length} </span>
               </p>
             </Link>
-            <Link style={{ textDecoration: "none" }} to="/i-take">
-              <p>
-                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
-              </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
             </Link>
             <Link
               style={{ textDecoration: "none" }}

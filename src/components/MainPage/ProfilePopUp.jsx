@@ -32,15 +32,15 @@ const ProfilePopUp = ({
               onClick={() => setProfilePopUpActive(false)}
               className="dropdown-profile-menu-p"
             >
-              Я сдаю
+              Мои объявления
             </p>
           </Link>
-          <Link to="/i-take">
+          <Link to="/booking">
             <p
               onClick={() => setProfilePopUpActive(false)}
               className="dropdown-profile-menu-p"
             >
-              Я беру
+              Бронирования
             </p>
           </Link>
 

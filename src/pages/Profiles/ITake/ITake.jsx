@@ -48,7 +48,7 @@ const ITake = ({ itemData }) => {
               </p>
             </Link>
             <p className="conteiner_shapka_myProfile">
-              Я беру <span> {reservations && reservations.length} </span>
+              Бронирования <span> {reservations && reservations.length} </span>
             </p>
             <Link style={{ textDecoration: "none" }} to="/messages">
               <p>Мои сообщения</p>
@@ -217,7 +217,7 @@ const ITake = ({ itemData }) => {
               className="conteiner_shapka_myProfile"
               style={{ display: "none" }}
             >
-              Я беру {reservations && reservations.length}
+              Бронирования {reservations && reservations.length}
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}
@@ -406,7 +406,8 @@ const ITake = ({ itemData }) => {
               to="/i-take"
             >
               <p>
-                Я беру <span> {reservations && reservations.length} </span>
+                Бронирования{" "}
+                <span> {reservations && reservations.length} </span>
               </p>
             </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
@@ -521,23 +522,32 @@ const ITake = ({ itemData }) => {
                               }`}
                             </td>
                             <td>
-                              {`${item.reservation_end_time
-                                .split("")
-                                .splice(8, 2)
-                                .join("")}.${item.reservation_end_time
-                                .split("")
-                                .splice(5, 2)
-                                .join("")}.${item.reservation_end_time
-                                .split("")
-                                .splice(0, 4)
-                                .join("")} ${
-                                item.item_id.rent === "Час"
-                                  ? item.reservation_end_time
-                                      .split("")
-                                      .splice(11, 5)
-                                      .join("")
-                                  : ""
-                              }`}
+                              {" "}
+                              {item.rent === "HOUR"
+                                ? `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}                                
+                               ${item.reservation_end_time
+                                 .split("")
+                                 .splice(11, 5)
+                                 .join("")}`
+                                : `${item.reservation_end_time
+                                    .split("")
+                                    .slice(8, 10)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(4, 8)
+                                    .join("")}${item.reservation_end_time
+                                    .split("")
+                                    .slice(0, 4)
+                                    .join("")}`}
                             </td>
                             <td>{item.item_id.rent}</td>
                             <td>{item.reservation_time}</td>
