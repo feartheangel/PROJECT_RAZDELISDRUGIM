@@ -271,7 +271,12 @@ const Footer = () => {
         </div>
         <div className="footer-img-logo-wrapper_gl">
           <div className="footer-img-logo-wrapper">
-            <img alt="picture1" src={Logo2} className="footer-img-logo" />
+            <img
+              width="200px"
+              alt="picture1"
+              src={Logo2}
+              className="footer-img-logo"
+            />
           </div>
           <div className="foooter-right_item">
             <div className="location-selector" id="location-selector2">

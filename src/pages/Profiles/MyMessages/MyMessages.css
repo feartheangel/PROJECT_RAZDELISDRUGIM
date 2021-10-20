@@ -181,7 +181,7 @@
   }
 
   .single_chat_message_text_wrapper {
-    width: -webkit-fill-available;
+    width: 85%;
     height: auto;
   }
   .single_chat_actions_image2 {
