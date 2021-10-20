@@ -30,7 +30,7 @@ button {
 
 .footer li {
   list-style-type: none;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .header {
@@ -1085,11 +1085,11 @@ button {
 }
 
 .footer-second-ul-first {
-  margin-bottom: 33px;
+  margin-bottom: 30px;
 }
 
 .footer-second-ul-second {
-  margin-bottom: 33px;
+  margin-bottom: 30px;
 }
 
 .footer-socials {
@@ -1143,10 +1143,10 @@ button {
 .footer-lower-part {
   padding: 0 165px;
   display: flex;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-bottom: 30px;
+  margin-top: -15px;
+  margin-bottom: 20px;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .footer-img-logo-wrapper {
@@ -1159,7 +1159,6 @@ button {
   font-weight: normal;
   font-size: 12px;
   color: #828282;
-  margin-top: 65px;
 }
 
 .footer-lower-label:first-child {
@@ -1174,7 +1173,6 @@ button {
 
 .footer-localization-wrapper {
   display: flex;
-  margin-top: 65px;
 }
 
 .footer-planet-img {
