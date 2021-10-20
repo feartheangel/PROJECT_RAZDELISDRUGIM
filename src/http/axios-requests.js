@@ -1283,6 +1283,19 @@ class Requests {
       return response;
     });
   }
+
+  static deleteReservation(id) {
+    return axios({
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/items/delete_reservation/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

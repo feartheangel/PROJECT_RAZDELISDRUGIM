@@ -17,19 +17,19 @@ const BookingPage = ({ itemData }) => {
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
-      setOutgoingReservations(res.data);
+      setOutgoingReservations(res.data.reverse());
     });
   }, []);
 
   React.useEffect(() => {
     Requests.getIncomingReservations().then((res) => {
-      setIncomingReservations(res.data);
+      setIncomingReservations(res.data.reverse());
     });
   }, []);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Бронирование: #разделисдругим";
+    document.title = "Бронирования: #разделисдругим";
   }, []);
 
   React.useEffect(() => {
@@ -109,6 +109,18 @@ const BookingPage = ({ itemData }) => {
                     <div>
                       <p
                         className={
+                          activeForm3 === "waiting"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("waiting")}
+                      >
+                        В ожидании
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={
                           activeForm3 === "success"
                             ? "container_profile_optional_left_active"
                             : "container_booking_optional-p"
@@ -121,25 +133,13 @@ const BookingPage = ({ itemData }) => {
                     <div>
                       <p
                         className={
-                          activeForm3 === "rejected"
+                          activeForm3 === "completed"
                             ? "container_profile_optional_left_active"
                             : "container_booking_optional-p"
                         }
                         onClick={() => setActiveForm3("rejected")}
                       >
                         Отклонено
-                      </p>
-                    </div>
-                    <div>
-                      <p
-                        className={
-                          activeForm3 === "completed"
-                            ? "container_profile_optional_left_active"
-                            : "container_booking_optional-p"
-                        }
-                        onClick={() => setActiveForm3("completed")}
-                      >
-                        Завершено
                       </p>
                     </div>
                   </div>
@@ -179,7 +179,22 @@ const BookingPage = ({ itemData }) => {
                     {activeForm2 === "ITake" &&
                       outgoingReservations &&
                       outgoingReservations.map((item, index) => (
-                        <BookingITake item={item} />
+                        <BookingITake
+                          item={item}
+                          key={index}
+                          type={1}
+                          setOutgoingReservations={setOutgoingReservations}
+                        />
+                      ))}
+                    {activeForm2 === "MyItems" &&
+                      incomingReservations &&
+                      incomingReservations.map((item, index) => (
+                        <BookingITake
+                          item={item}
+                          key={index}
+                          type={2}
+                          setIncomingReservations={setIncomingReservations}
+                        />
                       ))}
                   </div>
                 </div>

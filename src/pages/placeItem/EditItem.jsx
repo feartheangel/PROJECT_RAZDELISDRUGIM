@@ -417,9 +417,9 @@ const EditItem = () => {
           dispatch(reloadData(!reload));
         }
       })
-      .catch((error) => {
+      .catch((err) => {
         dispatch(setQueryDone());
-        alert("Произошла серверная ошибка редактирования.");
+        alert(Object.values(err.response.data));
       });
   };
 

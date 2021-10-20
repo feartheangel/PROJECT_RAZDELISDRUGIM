@@ -420,9 +420,9 @@ const PlaceItem = () => {
         }
         console.log(response);
       })
-      .catch((response) => {
+      .catch((err) => {
         dispatch(setQueryDone());
-        alert("Ошибка!");
+        alert(Object.values(err.response.data));
       });
   };
 

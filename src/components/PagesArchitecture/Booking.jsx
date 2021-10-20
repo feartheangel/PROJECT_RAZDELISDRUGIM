@@ -331,7 +331,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
           : "",
       reserve_price_rent: itemData.price_rent,
       reserve_self_delivery_price: itemData.self_delivery_price,
-      reserve_servicefee_price: itemData.servicefee_price,
+      reserve_servicefee_price: itemData.servicefee
+        ? itemData.servicefee_price
+        : false,
       reserve_pledge_price: itemData.pledge_price,
       reserve_insurance_price: itemData.insurance_price,
       reserve_franchise_price: itemData.franchise_price,
@@ -1295,14 +1297,14 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
               </p>
             </div>
 
-            {delivery_Сhoice === "2" && (
+            {radioBooking === "2" && (
               <div className="content_booking_down_block1">
                 <p className="content_booking_down_block1-p">
                   {itemData.self_delivery_price === undefined
                     ? 0
                     : itemData.self_delivery_price === null
                     ? 0
-                    : delivery_Сhoice === "2"
+                    : radioBooking === "2"
                     ? itemData.self_delivery_price
                     : 0}{" "}
                   BYN
@@ -2223,14 +2225,14 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
               </p>
             </div>
 
-            {delivery_Сhoice === "2" && (
+            {radioBooking === "2" && (
               <div className="content_booking_down_block1">
                 <p className="content_booking_down_block1-p">
                   {itemData.self_delivery_price === undefined
                     ? 0
                     : itemData.self_delivery_price === null
                     ? 0
-                    : delivery_Сhoice === "2"
+                    : radioBooking === "2"
                     ? itemData.self_delivery_price
                     : 0}{" "}
                   BYN

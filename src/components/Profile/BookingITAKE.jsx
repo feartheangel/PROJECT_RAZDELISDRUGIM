@@ -21,8 +21,46 @@ import moneyTimeDisabled from "../../img/MainPage/money-time-disabled.webp";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { rootAddress } from "../../http/axios-requests";
+import Requests from "../../http/axios-requests";
 
-const BookingITake = ({ item }) => {
+const BookingITake = ({
+  item,
+  type,
+  setOutgoingReservations,
+  setIncomingReservations,
+}) => {
+  const deleteReservetionHandler = () => {
+    if (window.confirm("Вы уверены?")) {
+      Requests.deleteReservation(item.id).then(() => {
+        if (type === 1) {
+          Requests.getOutgoingReservations().then((res) => {
+            setOutgoingReservations(res.data.reverse());
+          });
+        } else if (type === 2) {
+          Requests.getIncomingReservations().then((res) => {
+            setIncomingReservations(res.data.reverse());
+          });
+        }
+      });
+    }
+  };
+
+  const handleReservationSubmit = () => {
+    Requests.updateReservationStatus(item.id, true).then(() => {
+      Requests.getIncomingReservations().then((res) => {
+        setIncomingReservations(res.data.reverse());
+      });
+    });
+  };
+
+  const handleReservationAbort = () => {
+    Requests.updateReservationStatus(item.id, false).then(() => {
+      Requests.getIncomingReservations().then((res) => {
+        setIncomingReservations(res.data.reverse());
+      });
+    });
+  };
+
   return (
     <div className="content__booking_right_body">
       <div className="content__booking_right_body_allblock">
@@ -30,11 +68,16 @@ const BookingITake = ({ item }) => {
         <div className="body_allblock_header">
           <div className="body_allblock_header_left">
             <div className="body_allblock_header_left_photo">
-              <img
-                src={`${rootAddress}${item.item_id.image_1}`}
-                alt="picture1"
-                className="booking_card_image"
-              />
+              <Link
+                to={`/item-card?id=${item.item_id.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <img
+                  src={`${rootAddress}${item.item_id.image_1}`}
+                  alt="picture1"
+                  className="booking_card_image"
+                />
+              </Link>
             </div>
             <div className="body_allblock_header_left_text">
               <img
@@ -353,11 +396,22 @@ const BookingITake = ({ item }) => {
 
             <div className="body_allblock_header_right_center_block2">
               <div className="center_block_rowstyle">
-                {true && <p className="center_block_rowstyle-p1-1">Владелец</p>}
-                {false && (
+                {type === 1 && (
+                  <p className="center_block_rowstyle-p1-1">Владелец</p>
+                )}
+                {type === 2 && (
                   <p className="center_block_rowstyle-p1-1">Арендатор</p>
                 )}
-                <p className="center_block_rowstyle-p1-2">{item.owner_name}</p>
+                <Link
+                  to={`/public-profile?id=${
+                    type === 1 ? item.owner_id : item.renter_id
+                  }`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p className="center_block_rowstyle-p1-2">
+                    {type === 1 ? item.owner_name : item.renter_name}
+                  </p>
+                </Link>
               </div>
             </div>
             <div className="body_allblock_header_right_center_block2">
@@ -422,7 +476,29 @@ const BookingITake = ({ item }) => {
         </div>
         {/* footer block */}
         <div className="body_allblock_footer">
-          {true && (
+          {type === 2 && item.reservation_status === null && (
+            <div className="center_block_rowstyle_3">
+              <p
+                className="body_allblock_header_left_text-p"
+                style={{ cursor: "pointer" }}
+                onClick={handleReservationSubmit}
+              >
+                Подтвердить бронирование
+              </p>
+            </div>
+          )}
+          {type === 2 && item.reservation_status === null && (
+            <div className="center_block_rowstyle_3">
+              <p
+                className="body_allblock_header_left_text-p"
+                style={{ cursor: "pointer" }}
+                onClick={handleReservationAbort}
+              >
+                Отклонить бронирование
+              </p>
+            </div>
+          )}
+          {type === 2 && item.reservation_status === true && (
             <div className="center_block_rowstyle_3">
               <img
                 width="20px"
@@ -434,6 +510,7 @@ const BookingITake = ({ item }) => {
               <p
                 className="body_allblock_header_left_text-p"
                 style={{ cursor: "pointer" }}
+                onClick={deleteReservetionHandler}
               >
                 Отменить бронирование
               </p>
@@ -464,14 +541,19 @@ const BookingITake = ({ item }) => {
               alt="pictute1"
               style={{ cursor: "pointer" }}
             />
-            <p
-              className="body_allblock_header_left_text-p"
-              style={{ cursor: "pointer" }}
+            <Link
+              to={`/chat?id=${item.chat_id}`}
+              style={{ textDecoration: "none" }}
             >
-              Написать владельцу
-            </p>
+              <p
+                className="body_allblock_header_left_text-p"
+                style={{ cursor: "pointer" }}
+              >
+                Написать {type === 1 ? "владельцу" : "арендатору"}
+              </p>
+            </Link>
           </div>
-          {true && (
+          {false && (
             <div className="center_block_rowstyle_3">
               <img
                 width="17px"
