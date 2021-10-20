@@ -1190,6 +1190,9 @@ class Requests {
     reserve_insurance_price,
     reserve_franchise_price,
     reservation_address_delivery,
+    reserve_name_item,
+    reserve_delivery_free,
+    reserve_contract,
   }) {
     return axios({
       method: "POST",
@@ -1224,6 +1227,9 @@ class Requests {
         reserve_franchise_price: reserve_franchise_price
           ? reserve_franchise_price
           : 0.0,
+        reserve_name_item: reserve_name_item,
+        reserve_delivery_free: reserve_delivery_free,
+        reserve_contract: reserve_contract,
         reservation_address_delivery: reservation_address_delivery
           ? reservation_address_delivery
           : "",

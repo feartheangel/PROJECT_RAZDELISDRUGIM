@@ -7,23 +7,41 @@ const FirstBlockNavigation = () => {
   const { userData, subjects, isLoggedIn } = useSelector(
     ({ userData }) => userData
   );
-  const { maxItemsToPlaceFree } = useSelector(({ settings }) => settings);
+  const { maxItemsToPlaceFree, maxItemsToPlaceFreeLegal } = useSelector(
+    ({ settings }) => settings
+  );
   const [redirect, setRedirect] = React.useState();
 
   const addSubjectHandler = () => {
-    if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
-      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
+    if (
+      (isLoggedIn &&
+        subjects.length >= maxItemsToPlaceFree &&
+        userData.status === 1) ||
+      (subjects.length >= maxItemsToPlaceFreeLegal && userData.status === 2)
+    ) {
+      alert(
+        `Лимит вещей достигнут (${
+          userData.status === 1 ? maxItemsToPlaceFree : maxItemsToPlaceFreeLegal
+        })`
+      );
       return;
-    } else if (isLoggedIn && subjects.length >= maxItemsToPlaceFree) {
-      alert(`Лимит вещей достигнут (${maxItemsToPlaceFree})`);
+    } else if (
+      (isLoggedIn &&
+        subjects.length >= maxItemsToPlaceFree &&
+        userData.status === 1) ||
+      (subjects.length >= maxItemsToPlaceFreeLegal && userData.status === 2)
+    ) {
+      alert(
+        `Лимит вещей достигнут (${
+          userData.status === 1 ? maxItemsToPlaceFree : maxItemsToPlaceFreeLegal
+        })`
+      );
       return;
     } else if (!isLoggedIn) {
       alert("Сначала авторизуйтесь!");
       return;
-    } else if (!userData.email_verify || !userData.phone_verify) {
-      alert(
-        "У вас не подтвержден номер телефона либо почта. Подтвердите их в профиле."
-      );
+    } else if (!userData.phone_verify) {
+      alert("У вас не подтвержден номер телефона. Подтвердите его в профиле.");
       setRedirect(<Redirect to="/private-profile" />);
       return;
     }

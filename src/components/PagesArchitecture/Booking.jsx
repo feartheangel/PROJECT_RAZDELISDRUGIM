@@ -126,7 +126,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     (itemData.pledge_price !== null ? itemData.pledge_price : 0) +
     (itemData.self_delivery_price !== null && radioBooking === "2"
       ? itemData.self_delivery_price
-      : 0);
+      : 0) +
+    (itemData.franchise_price ? itemData.franchise_price : 0) +
+    (itemData.servicefee ? itemData.servicefee_price : 0);
 
   // отправка за счет
   const radioBookingHandler = (e) => {
@@ -333,6 +335,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       reserve_pledge_price: itemData.pledge_price,
       reserve_insurance_price: itemData.insurance_price,
       reserve_franchise_price: itemData.franchise_price,
+      reserve_name_item: itemData.name_item,
+      reserve_delivery_free: itemData.delivery_free,
+      reserve_contract: itemData.contract,
       reservation_address_delivery: radioBooking !== "1" ? coords[1] : "",
     })
       .then(() => alert("Запрос на подтверждение бронирования отправлен!"))

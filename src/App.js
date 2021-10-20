@@ -39,6 +39,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setItems, setItemsLoaded } from "./redux/actions/items";
 import {
   setmaxItemsToPlaceFree,
+  setmaxItemsToPlaceFreeLegal,
   setLanguage,
   setMaxAddressesCount,
   setServiceIds,
@@ -72,6 +73,11 @@ function App() {
 
     Requests.getSiteSettings().then((res) => {
       dispatch(setmaxItemsToPlaceFree(res.data[0].free_placement_items_count));
+      dispatch(
+        setmaxItemsToPlaceFreeLegal(
+          res.data[0].free_placement_items_count_legal
+        )
+      );
       dispatch(setLanguage(res.data[0].language));
       dispatch(setMaxAddressesCount(res.data[0].address_count_max));
       dispatch(setServiceIds(res.data[0].service_ids));

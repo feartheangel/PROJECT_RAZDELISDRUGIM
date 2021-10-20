@@ -3,6 +3,11 @@ export const setmaxItemsToPlaceFree = (num) => ({
   payload: num,
 });
 
+export const setmaxItemsToPlaceFreeLegal = (num) => ({
+  type: "SET_MAX_ITEMS_TO_PLACE_FREE_LEGAL",
+  payload: num,
+});
+
 export const setLanguage = (string) => ({
   type: "SET_LANGUAGE",
   payload: string,

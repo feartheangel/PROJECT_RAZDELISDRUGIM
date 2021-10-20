@@ -1,5 +1,6 @@
 const initialState = {
   maxItemsToPlaceFree: "",
+  maxItemsToPlaceFreeLegal: "",
   language: "",
   maxAddressesCount: "",
   serviceIds: [],
@@ -10,6 +11,12 @@ const initialState = {
 const search = (state = initialState, action) => {
   switch (action.type) {
     case "SET_MAX_ITEMS_TO_PLACE_FREE":
+      return {
+        ...state,
+        maxItemsToPlaceFree: action.payload,
+      };
+
+    case "SET_MAX_ITEMS_TO_PLACE_FREE_LEGAL":
       return {
         ...state,
         maxItemsToPlaceFree: action.payload,

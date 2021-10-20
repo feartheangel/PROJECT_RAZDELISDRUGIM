@@ -316,10 +316,8 @@ const PlaceItem = () => {
 
   //обработчик отправки формы
   const sendHandler = () => {
-    if (!userData.phone_verify || !userData.email_verify) {
-      alert(
-        "У вас не подтвержден телефон либо почта. Это можно сделать в профиле!"
-      );
+    if (!userData.phone_verify) {
+      alert("У вас не подтвержден телефон. Это можно сделать в профиле!");
       return;
     } else if (!nameItem) {
       alert("Не указано название вещи!");
@@ -894,7 +892,9 @@ const PlaceItem = () => {
                   disabled={giveFree}
                 />
                 <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                  Предлагать цену
+                  {serviceIds && serviceIds.includes(viborCategory)
+                    ? "Договорная"
+                    : "Предлагать цену"}
                 </span>
               </label>
               <span className="add-item-cost-or">или</span>
@@ -905,12 +905,7 @@ const PlaceItem = () => {
                   checked={giveFree}
                   disabled={yourCost}
                 />
-                <span id="checkbox-btn1">
-                  {" "}
-                  {serviceIds && serviceIds.includes(viborCategory)
-                    ? "Договорная"
-                    : "Предлагать цену"}
-                </span>
+                <span id="checkbox-btn1">Бесплатно</span>
               </label>
             </div>
             {/*  СТОИМОСТЬ АРЕНДЫ  МОБИЛЬНАЯ ВЕРСИЯ */}
@@ -980,7 +975,9 @@ const PlaceItem = () => {
                     disabled={giveFree}
                   />
                   <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                    Предлагать цену
+                    {serviceIds && serviceIds.includes(viborCategory)
+                      ? "Договорная"
+                      : "Предлагать цену"}
                   </span>
                 </label>
                 <span className="add-item-cost-or">или</span>
@@ -991,12 +988,7 @@ const PlaceItem = () => {
                     checked={giveFree}
                     disabled={yourCost}
                   />
-                  <span id="checkbox-btn1">
-                    {" "}
-                    {serviceIds && serviceIds.includes(viborCategory)
-                      ? "Договорная"
-                      : "Предлагать цену"}
-                  </span>
+                  <span id="checkbox-btn1">Бесплатно</span>
                 </label>
               </div>
             </div>

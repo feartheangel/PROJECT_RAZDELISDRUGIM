@@ -7,19 +7,23 @@ import { Header, Footer } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 import BookingITake from "../../../components/Profile/BookingITAKE";
 
-import Avatar from "../../../img/BookingPage/avatar.png";
-import SearchVector from "../../../img/BookingPage/searchvector.png";
-
 const BookingPage = ({ itemData }) => {
   const { subjects } = useSelector(({ userData }) => userData);
-  const [reservations, setReservations] = React.useState();
+  const [outgoingReservations, setOutgoingReservations] = React.useState();
+  const [incomingReservations, setIncomingReservations] = React.useState();
   const [activeForm, setActiveForm] = React.useState("myProfile");
   const [activeForm2, setActiveForm2] = React.useState("ITake");
   const [activeForm3, setActiveForm3] = React.useState("all");
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
-      setReservations(res.data);
+      setOutgoingReservations(res.data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    Requests.getIncomingReservations().then((res) => {
+      setIncomingReservations(res.data);
     });
   }, []);
 
@@ -172,10 +176,11 @@ const BookingPage = ({ itemData }) => {
                   {/* body right size */}
                   <div>
                     {/* компонент  */}
-                    {activeForm2 === "ITake" && <BookingITake />}
-                    {activeForm2 === "ITake" && <BookingITake />}
-                    {activeForm2 === "ITake" && <BookingITake />}
-                    {activeForm2 === "MyItems" && <BookingITake />}
+                    {activeForm2 === "ITake" &&
+                      outgoingReservations &&
+                      outgoingReservations.map((item, index) => (
+                        <BookingITake item={item} />
+                      ))}
                   </div>
                 </div>
               </div>

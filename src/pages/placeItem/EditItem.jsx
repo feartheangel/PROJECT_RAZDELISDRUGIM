@@ -316,10 +316,8 @@ const EditItem = () => {
     files[3] && formData.append("image_4", files[3]);
     files[4] && formData.append("image_5", files[4]);
 
-    if (!userData.phone_verify || !userData.email_verify) {
-      alert(
-        "У вас не подтвержден телефон либо почта. Это можно сделать в профиле!"
-      );
+    if (!userData.phone_verify) {
+      alert("У вас не подтвержден телефон. Это можно сделать в профиле!");
       return;
     } else if (!nameItem) {
       alert("Не указано название вещи!");
@@ -1224,12 +1222,7 @@ const EditItem = () => {
                     checked={giveFree}
                     disabled={yourCost}
                   />
-                  <span id="checkbox-btn1">
-                    {" "}
-                    {serviceIds && serviceIds.includes(viborCategory)
-                      ? "Договорная"
-                      : "Предлагать цену"}
-                  </span>
+                  <span id="checkbox-btn1">Бесплатно</span>
                 </label>
               </div>
             </div>
@@ -1312,12 +1305,7 @@ const EditItem = () => {
                     checked={giveFree}
                     disabled={yourCost}
                   />
-                  <span id="checkbox-btn1">
-                    {" "}
-                    {serviceIds && serviceIds.includes(viborCategory)
-                      ? "Договорная"
-                      : "Предлагать цену"}
-                  </span>
+                  <span id="checkbox-btn1">Бесплатно</span>
                 </label>
               </div>
             </div>
