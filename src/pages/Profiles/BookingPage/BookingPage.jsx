@@ -14,6 +14,7 @@ const BookingPage = ({ itemData }) => {
   const [activeForm, setActiveForm] = React.useState("myProfile");
   const [activeForm2, setActiveForm2] = React.useState("ITake");
   const [activeForm3, setActiveForm3] = React.useState("all");
+  const [countShowedTables, setCountShowedTables] = React.useState(0);
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
@@ -38,7 +39,67 @@ const BookingPage = ({ itemData }) => {
     }
   }, []);
 
-  console.log(activeForm2);
+  React.useEffect(() => {
+    if (activeForm2 === "ITake") {
+      if (activeForm3 === "all") {
+        setCountShowedTables(
+          outgoingReservations &&
+            outgoingReservations.filter((item) => item).length
+        );
+      } else if (activeForm3 === "waiting") {
+        setCountShowedTables(
+          outgoingReservations &&
+            outgoingReservations.filter(
+              (item) => item.reservation_status === null
+            ).length
+        );
+      } else if (activeForm3 === "success") {
+        setCountShowedTables(
+          outgoingReservations &&
+            outgoingReservations.filter(
+              (item) => item.reservation_status === true
+            ).length
+        );
+      } else if (activeForm3 === "rejected") {
+        setCountShowedTables(
+          outgoingReservations &&
+            outgoingReservations.filter(
+              (item) => item.reservation_status === false
+            ).length
+        );
+      }
+    } else if (activeForm2 === "MyItems") {
+      if (activeForm3 === "all") {
+        setCountShowedTables(
+          incomingReservations &&
+            incomingReservations.filter((item) => item).length
+        );
+      } else if (activeForm3 === "waiting") {
+        setCountShowedTables(
+          incomingReservations &&
+            incomingReservations.filter(
+              (item) => item.reservation_status === null
+            ).length
+        );
+      } else if (activeForm3 === "success") {
+        setCountShowedTables(
+          incomingReservations &&
+            incomingReservations.filter(
+              (item) => item.reservation_status === true
+            ).length
+        );
+      } else if (activeForm3 === "rejected") {
+        setCountShowedTables(
+          incomingReservations &&
+            incomingReservations.filter(
+              (item) => item.reservation_status === false
+            ).length
+        );
+      }
+    }
+
+    console.log(countShowedTables);
+  }, [activeForm2, activeForm3]);
 
   return (
     <div>
@@ -133,7 +194,7 @@ const BookingPage = ({ itemData }) => {
                     <div>
                       <p
                         className={
-                          activeForm3 === "completed"
+                          activeForm3 === "rejected"
                             ? "container_profile_optional_left_active"
                             : "container_booking_optional-p"
                         }
@@ -176,26 +237,110 @@ const BookingPage = ({ itemData }) => {
                   {/* body right size */}
                   <div>
                     {/* компонент  */}
-                    {activeForm2 === "ITake" &&
-                      outgoingReservations &&
-                      outgoingReservations.map((item, index) => (
-                        <BookingITake
-                          item={item}
-                          key={index}
-                          type={1}
-                          setOutgoingReservations={setOutgoingReservations}
-                        />
-                      ))}
-                    {activeForm2 === "MyItems" &&
-                      incomingReservations &&
-                      incomingReservations.map((item, index) => (
-                        <BookingITake
-                          item={item}
-                          key={index}
-                          type={2}
-                          setIncomingReservations={setIncomingReservations}
-                        />
-                      ))}
+
+                    {activeForm2 === "ITake" && activeForm3 === "all"
+                      ? outgoingReservations &&
+                        outgoingReservations.map((item, index) => (
+                          <BookingITake
+                            item={item}
+                            key={index}
+                            type={1}
+                            setOutgoingReservations={setOutgoingReservations}
+                          />
+                        ))
+                      : activeForm2 === "ITake" && activeForm3 === "waiting"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter((item) => item.reservation_status === null)
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              setOutgoingReservations={setOutgoingReservations}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "success"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter((item) => item.reservation_status === true)
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              setOutgoingReservations={setOutgoingReservations}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "rejected"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter((item) => item.reservation_status === false)
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              setOutgoingReservations={setOutgoingReservations}
+                            />
+                          ))
+                      : ""}
+
+                    {activeForm2 === "MyItems" && activeForm3 === "all"
+                      ? incomingReservations &&
+                        incomingReservations.map((item, index) => (
+                          <BookingITake
+                            item={item}
+                            key={index}
+                            type={1}
+                            setIncomingReservations={setIncomingReservations}
+                          />
+                        ))
+                      : activeForm2 === "MyItems" && activeForm3 === "waiting"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter((item) => item.reservation_status === null)
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              setIncomingReservations={setIncomingReservations}
+                            />
+                          ))
+                      : activeForm2 === "MyItems" && activeForm3 === "success"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter((item) => item.reservation_status === true)
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              setIncomingReservations={setIncomingReservations}
+                            />
+                          ))
+                      : activeForm2 === "MyItems" && activeForm3 === "rejected"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter((item) => item.reservation_status === false)
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              setIncomingReservations={setOutgoingReservations}
+                            />
+                          ))
+                      : ""}
+
+                    {countShowedTables === 0 && (
+                      <div className="content__booking_empty">
+                        <p className="content__booking_empty__p">
+                          Нет бронирований в этой категории
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
