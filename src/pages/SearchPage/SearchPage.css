@@ -256,7 +256,7 @@
   display: none;
 }
 #search_ipad {
-  display: none;
+  display: none !important;
 }
 
 .content_left_cost {
@@ -413,7 +413,7 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 481px) {
   #search_ipad {
-    display: flex;
+    display: flex !important;
     width: 100%;
   }
   #search_pk {
