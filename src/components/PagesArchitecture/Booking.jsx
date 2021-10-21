@@ -774,7 +774,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         name="radio"
                         className="input_setting"
                         value="1"
-                        defaultChecked={radioBooking == "1" ? true : false}
+                        defaultChecked={radioBooking === "1" ? true : false}
                         onChange={(e) => setRadioBooking(e.target.value)}
                         id="radio_booking1"
                       />
@@ -794,7 +794,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="radio"
                           className="input_setting"
                           value="2"
-                          defaultChecked={radioBooking == "2" ? true : false}
+                          defaultChecked={radioBooking === "2" ? true : false}
                           onChange={(e) => setRadioBooking(e.target.value)}
                           id="radio_booking2"
                         />
@@ -818,7 +818,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="radio"
                           className="input_setting"
                           value="3"
-                          defaultChecked={radioBooking == "3" ? true : false}
+                          defaultChecked={radioBooking === "3" ? true : false}
                           id="radio_booking3"
                           onChange={(e) => setRadioBooking(e.target.value)}
                         />
