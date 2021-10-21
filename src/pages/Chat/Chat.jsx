@@ -2,10 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./Chat.css";
 import { Link } from "react-router-dom";
-import { Header, Footer } from "../../components/index";
+import { Header } from "../../components/index";
 import VectorLeft from "../../img/Chat/vector-back.png";
 import Vector_button from "../../img/Chat/knopka.PNG";
-import Shape from "../../img/Shape.png";
 import { MessageBlock } from "../../components/index";
 import { rootAddress } from "../../http/axios-requests";
 
@@ -187,7 +186,7 @@ const Chat = () => {
           <div className="conteiner_shapka">
             <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
               <p>
-                Я сдаю <span> {subjects.length} </span>
+                Мои обьявления <span> {subjects.length} </span>
               </p>
             </Link>
             <Link
@@ -195,11 +194,9 @@ const Chat = () => {
                 textDecoration: "none",
               }}
               className="conteiner_shapka_myProfile"
-              to="/i-take"
+              to="/booking"
             >
-              <p>
-                Я беру <span> 3 </span>
-              </p>
+              <p>Бронирования</p>
             </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
               <p className="conteiner_shapka_myProfile">Мои сообщения</p>
@@ -331,19 +328,19 @@ const Chat = () => {
               className="conteiner_shapka_myProfile"
               style={{ display: "none" }}
             >
-              Я сдаю <span> {subjects.length} </span>
+              Мои обьявления <span> {subjects.length} </span>
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}
               style={{ display: "none" }}
             >
-              Я беру <span> - </span>
+              Бронирования
             </p>
             <p
               style={{ opacity: "0.4", pointerEvents: "none" }}
               style={{ display: "none" }}
             >
-              Мои сообщения <span> - </span>
+              Мои сообщения
             </p>
             <Link
               style={
