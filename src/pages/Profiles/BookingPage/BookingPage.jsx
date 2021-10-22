@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import "../MyItems/MyItems.css";
 import "../../../css/BookingPage.css";
 import { Link } from "react-router-dom";
-import { Header, Footer } from "../../../components/index";
+import { Header, Footer, MapBooking } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 import BookingITake from "../../../components/Profile/BookingITAKE";
 
-const BookingPage = ({ itemData }) => {
+const BookingPage = () => {
   const { subjects } = useSelector(({ userData }) => userData);
   const [outgoingReservations, setOutgoingReservations] = React.useState();
   const [incomingReservations, setIncomingReservations] = React.useState();
@@ -17,6 +17,7 @@ const BookingPage = ({ itemData }) => {
   const [countShowedTables, setCountShowedTables] = React.useState(0);
   const [countShowedTablesCouples, setCountShowedTablesCouples] =
     React.useState(1);
+  const [coords, setCoords] = React.useState();
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
@@ -49,6 +50,7 @@ const BookingPage = ({ itemData }) => {
             outgoingReservations.filter((item) => item).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "waiting") {
         setCountShowedTables(
           outgoingReservations &&
@@ -57,6 +59,7 @@ const BookingPage = ({ itemData }) => {
             ).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "success") {
         setCountShowedTables(
           outgoingReservations &&
@@ -65,6 +68,7 @@ const BookingPage = ({ itemData }) => {
             ).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "rejected") {
         setCountShowedTables(
           outgoingReservations &&
@@ -73,6 +77,7 @@ const BookingPage = ({ itemData }) => {
             ).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       }
     } else if (activeForm2 === "MyItems") {
       if (activeForm3 === "all") {
@@ -81,6 +86,7 @@ const BookingPage = ({ itemData }) => {
             incomingReservations.filter((item) => item).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "waiting") {
         setCountShowedTables(
           incomingReservations &&
@@ -89,6 +95,7 @@ const BookingPage = ({ itemData }) => {
             ).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "success") {
         setCountShowedTables(
           incomingReservations &&
@@ -97,6 +104,7 @@ const BookingPage = ({ itemData }) => {
             ).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "rejected") {
         setCountShowedTables(
           incomingReservations &&
@@ -105,11 +113,17 @@ const BookingPage = ({ itemData }) => {
             ).length
         );
         setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       }
     }
-
-    console.log(countShowedTables);
   }, [activeForm2, activeForm3]);
+
+  const [modalActiveMap, setModalActiveMap] = React.useState(false);
+
+  const showOnMapHandler = (coords) => {
+    setModalActiveMap(true);
+    setCoords(coords);
+  };
 
   return (
     <div>
@@ -257,6 +271,8 @@ const BookingPage = ({ itemData }) => {
                             type={1}
                             countShowedTablesCouples={countShowedTablesCouples}
                             setOutgoingReservations={setOutgoingReservations}
+                            index={index}
+                            showOnMapHandler={showOnMapHandler}
                           />
                         ))
                       : activeForm2 === "ITake" && activeForm3 === "waiting"
@@ -272,6 +288,8 @@ const BookingPage = ({ itemData }) => {
                                 countShowedTablesCouples
                               }
                               setOutgoingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
                             />
                           ))
                       : activeForm2 === "ITake" && activeForm3 === "success"
@@ -287,6 +305,8 @@ const BookingPage = ({ itemData }) => {
                                 countShowedTablesCouples
                               }
                               setOutgoingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
                             />
                           ))
                       : activeForm2 === "ITake" && activeForm3 === "rejected"
@@ -302,6 +322,8 @@ const BookingPage = ({ itemData }) => {
                                 countShowedTablesCouples
                               }
                               setOutgoingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
                             />
                           ))
                       : ""}
@@ -312,9 +334,11 @@ const BookingPage = ({ itemData }) => {
                           <BookingITake
                             item={item}
                             key={index}
-                            type={1}
+                            type={2}
                             countShowedTablesCouples={countShowedTablesCouples}
                             setIncomingReservations={setIncomingReservations}
+                            index={index}
+                            showOnMapHandler={showOnMapHandler}
                           />
                         ))
                       : activeForm2 === "MyItems" && activeForm3 === "waiting"
@@ -325,11 +349,13 @@ const BookingPage = ({ itemData }) => {
                             <BookingITake
                               item={item}
                               key={index}
-                              type={1}
+                              type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
                               setIncomingReservations={setIncomingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
                             />
                           ))
                       : activeForm2 === "MyItems" && activeForm3 === "success"
@@ -340,11 +366,13 @@ const BookingPage = ({ itemData }) => {
                             <BookingITake
                               item={item}
                               key={index}
-                              type={1}
+                              type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
                               setIncomingReservations={setIncomingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
                             />
                           ))
                       : activeForm2 === "MyItems" && activeForm3 === "rejected"
@@ -355,11 +383,13 @@ const BookingPage = ({ itemData }) => {
                             <BookingITake
                               item={item}
                               key={index}
-                              type={1}
+                              type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
                               setIncomingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
                             />
                           ))
                       : ""}
@@ -393,6 +423,11 @@ const BookingPage = ({ itemData }) => {
             </div>
           </div>
         </div>
+        <MapBooking
+          modalActiveMap={modalActiveMap}
+          setModalActiveMap={setModalActiveMap}
+          coords={coords}
+        />
       </div>
       <Footer />
     </div>

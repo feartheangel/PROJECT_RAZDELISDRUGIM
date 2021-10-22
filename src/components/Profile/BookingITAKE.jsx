@@ -1,13 +1,10 @@
 import React from "react";
-import Avatar from "../../img/BookingPage/avatar.png";
 import SearchVector from "../../img/BookingPage/searchvector.png";
 import Car from "../../img/BookingPage/car.webp";
 import SettingIcon from "../../img/BookingPage/card-money.webp";
 import Union from "../../img/BookingPage/Union.webp";
 import CardVerify from "../../img/BookingPage/card-verify.webp";
 import Moneytime from "../../img/BookingPage/money-time.webp";
-import CardFire from "../../img/BookingPage/card-fire.webp";
-import NoCompleted from "../../img/BookingPage/nocompleted.png";
 import Retakevector from "../../img/BookingPage/retakevector.png";
 import Sms from "../../img/BookingPage/sms.png";
 import Textonpage from "../../img/BookingPage/textonpage.png";
@@ -18,7 +15,6 @@ import cardVerifyDisabled from "../../img/MainPage/card-verify-disabled.webp";
 import UnionDisabled from "../../img/MainPage/Union-disabled.webp";
 import moneyTimeDisabled from "../../img/MainPage/money-time-disabled.webp";
 
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { rootAddress } from "../../http/axios-requests";
 import Requests from "../../http/axios-requests";
@@ -29,24 +25,9 @@ const BookingITake = ({
   setOutgoingReservations,
   setIncomingReservations,
   countShowedTablesCouples,
-  key,
+  index,
+  showOnMapHandler,
 }) => {
-  const deleteReservetionHandler = () => {
-    if (window.confirm("Вы уверены?")) {
-      Requests.deleteReservation(item.id).then(() => {
-        if (type === 1) {
-          Requests.getOutgoingReservations().then((res) => {
-            setOutgoingReservations(res.data.reverse());
-          });
-        } else if (type === 2) {
-          Requests.getIncomingReservations().then((res) => {
-            setIncomingReservations(res.data.reverse());
-          });
-        }
-      });
-    }
-  };
-
   const handleReservationSubmit = () => {
     Requests.updateReservationStatus(item.id, true).then(() => {
       Requests.getIncomingReservations().then((res) => {
@@ -63,12 +44,12 @@ const BookingITake = ({
     });
   };
 
+  const mapButtonRef = React.useRef(null);
+
   return (
     <div
       style={
-        key >= 0 && key <= countShowedTablesCouples * 3 - 1
-          ? { display: "none" }
-          : {}
+        !(index <= countShowedTablesCouples * 3 - 1) ? { display: "none" } : {}
       }
       className="content__booking_right_body"
     >
@@ -96,7 +77,19 @@ const BookingITake = ({
                 width="23px"
                 height="20px"
               />
-              <p className="body_allblock_header_left_text-p">
+              <p
+                onClick={() =>
+                  showOnMapHandler(
+                    item.item_id.items_coordinates
+                      .split("(")[1]
+                      .split(")")[0]
+                      .split(" ")
+                      .reverse()
+                  )
+                }
+                className="body_allblock_header_left_text-p"
+                style={{ cursor: "pointer" }}
+              >
                 Показать на карте
               </p>
             </div>
@@ -247,7 +240,7 @@ const BookingITake = ({
                   {item.reservation_start_time
                     ? `${item.reservation_start_time
                         .split("")
-                        .splice(5, 2)
+                        .splice(8, 2)
                         .join("")} ${
                         item.reservation_start_time
                           .split("")
@@ -327,7 +320,7 @@ const BookingITake = ({
                   {item.reservation_end_time
                     ? `${item.reservation_end_time
                         .split("")
-                        .splice(5, 2)
+                        .splice(8, 2)
                         .join("")} ${
                         item.reservation_end_time
                           .split("")
@@ -496,35 +489,20 @@ const BookingITake = ({
               </p>
             </div>
           )}
-          {type === 2 && item.reservation_status === null && (
-            <div className="center_block_rowstyle_3">
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-                onClick={handleReservationAbort}
-              >
-                Отклонить бронирование
-              </p>
-            </div>
-          )}
-          {type === 2 && item.reservation_status === true && (
-            <div className="center_block_rowstyle_3">
-              <img
-                width="20px"
-                height="20px"
-                src={NoCompleted}
-                alt="pictute1"
-                style={{ cursor: "pointer" }}
-              />
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-                onClick={deleteReservetionHandler}
-              >
-                Отменить бронирование
-              </p>
-            </div>
-          )}
+          {type === 2 &&
+            (item.reservation_status === null ||
+              item.reservation_status === true) && (
+              <div className="center_block_rowstyle_3">
+                <p
+                  className="body_allblock_header_left_text-p"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleReservationAbort}
+                >
+                  Отклонить бронирование
+                </p>
+              </div>
+            )}
+
           {false && (
             <div className="center_block_rowstyle_3">
               <img

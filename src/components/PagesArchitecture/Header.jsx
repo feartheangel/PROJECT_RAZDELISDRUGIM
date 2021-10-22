@@ -61,12 +61,11 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, userData, subjects, reload } = useSelector(
+  const { isLoggedIn, userData, subjects } = useSelector(
     ({ userData }) => userData
   );
   const { items, isLoaded, news } = useSelector(({ items }) => items);
   const {
-    searchItems,
     words,
     category,
     min_price,
@@ -208,7 +207,6 @@ const Header = () => {
           command: "list_notifications",
         })
       );
-      console.log("opened");
     };
 
     chatSocket.current.onmessage = function (e) {
@@ -221,8 +219,6 @@ const Header = () => {
       if (data.notification_list) {
         setNotifications(data.notification_list.reverse());
       }
-
-      console.log(data);
     };
 
     chatSocket.current.onclose = function (e) {
@@ -305,12 +301,7 @@ const Header = () => {
       <div className="header__inner">
         <div className="header-left-content">
           <a href="/">
-            <img
-              alt="picture1"
-              src={Logo}
-              alt="Global Sharing Platform"
-              className="logo"
-            />
+            <img src={Logo} alt="Global Sharing Platform" className="logo" />
           </a>
           <div className="selector_header_items">
             <div className="location-selector">

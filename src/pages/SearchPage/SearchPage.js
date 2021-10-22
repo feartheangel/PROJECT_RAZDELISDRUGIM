@@ -1392,8 +1392,6 @@ const SearchPage = () => {
                                 hasBalloon: true,
                                 clusterBalloonContentLayout:
                                   "cluster#balloonCarousel",
-                                clusterBalloonContentLayoutWidth: 200,
-                                clusterBalloonContentLayoutHeight: 130,
                                 clusterBalloonPagerSize: 5,
                                 clusterBalloonContentLayoutHeight: 270,
                                 clusterBalloonContentLayoutWidth: 200,
@@ -1551,8 +1549,6 @@ const SearchPage = () => {
                                   hasBalloon: true,
                                   clusterBalloonContentLayout:
                                     "cluster#balloonCarousel",
-                                  clusterBalloonContentLayoutWidth: 200,
-                                  clusterBalloonContentLayoutHeight: 130,
                                   clusterBalloonPagerSize: 5,
                                   clusterBalloonContentLayoutHeight: 270,
                                   clusterBalloonContentLayoutWidth: 200,
@@ -1674,8 +1670,6 @@ const SearchPage = () => {
                                 hasBalloon: true,
                                 clusterBalloonContentLayout:
                                   "cluster#balloonCarousel",
-                                clusterBalloonContentLayoutWidth: 200,
-                                clusterBalloonContentLayoutHeight: 130,
                                 clusterBalloonPagerSize: 5,
                                 clusterBalloonContentLayoutHeight: 270,
                                 clusterBalloonContentLayoutWidth: 200,

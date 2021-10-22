@@ -18,7 +18,11 @@ const Contacts = () => {
               <p className="footer_pages_main_p">
                 Вы всегда можете связаться с нами по электронной почте:
                 <strong>
-                  <a href="mailto:admin@razdelisdrugim.by" target="_blank">
+                  <a
+                    href="mailto:admin@razdelisdrugim.by"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {" "}
                     admin@razdelisdrugim.by
                   </a>{" "}
@@ -28,7 +32,11 @@ const Contacts = () => {
                 Вы можете написать или позвонить нам в мессенджере Telegram
                 сюда:{" "}
                 <strong>
-                  <a href="https://telegram.me/razdelisdrugim" target="_blank">
+                  <a
+                    href="https://telegram.me/razdelisdrugim"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {" "}
                     @razdelisdrugim
                   </a>
@@ -37,7 +45,11 @@ const Contacts = () => {
                 <br></br>
                 Приглашаем Вам принять участие в разработке нашего проекта, и
                 внести все свои предложения и пожелания тут:{" "}
-                <a href="https://forms.gle/p3LjbTYphj1QCLK5A" target="_blank">
+                <a
+                  href="https://forms.gle/p3LjbTYphj1QCLK5A"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <strong>https://forms.gle/p3LjbTYphj1QCLK5A</strong>
                 </a>
                 <br></br>
@@ -46,7 +58,11 @@ const Contacts = () => {
               <p className="footer_pages_main_p">
                 По вопросам рекламы и сотрудничества обращайтесь по адресу:
                 <strong>
-                  <a href="mailto:mail@razdelisdrugim.by" target="_blank">
+                  <a
+                    href="mailto:mail@razdelisdrugim.by"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {" "}
                     mail@razdelisdrugim.by.
                   </a>

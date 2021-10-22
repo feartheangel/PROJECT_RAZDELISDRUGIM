@@ -259,7 +259,7 @@ const AbilitiesBlock = () => {
               <input
                 onClick={addSubjectHandler}
                 type="button"
-                value="Предложить сво"
+                value="Предложить своё"
                 className="header-button add-subject"
               />
             </div>

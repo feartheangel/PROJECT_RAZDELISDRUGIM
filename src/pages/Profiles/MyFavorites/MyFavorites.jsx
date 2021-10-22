@@ -8,9 +8,7 @@ import { setFavorites } from "../../../redux/actions/userData";
 
 const MyFavorites = () => {
   const dispatch = useDispatch();
-  const { favorites, subjects, iTakeSubjects } = useSelector(
-    ({ userData }) => userData
-  );
+  const { favorites, subjects } = useSelector(({ userData }) => userData);
 
   React.useEffect(() => {
     Requests.fetchFavorites().then((res) => {

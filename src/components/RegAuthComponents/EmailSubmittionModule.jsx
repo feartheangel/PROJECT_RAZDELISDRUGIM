@@ -1,6 +1,4 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import Requests from "../../http/axios-requests";
 import { reloadData } from "../../redux/actions/userData";
@@ -15,7 +13,6 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
   const [codeDirty, setCodeDirty] = React.useState(false);
   const [codeError, setCodeError] = React.useState("Поле не может быть пустым");
   const [formValid, setFormValid] = React.useState(false);
-  const [redirect, setRedirect] = React.useState("");
   const [timer, setTimer] = React.useState(120);
   const [timerStart, setTimerStart] = React.useState(false);
 

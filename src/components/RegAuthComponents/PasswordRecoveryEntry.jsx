@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
 import Requests from "../../http/axios-requests";
 import Shape from "../../img/Shape.png";
 
 const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
   const inputErrors = ["Поле не может быть пустым", "Некорректный логин"];
   const contactEmailRegExp =
-    /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
+    /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
   const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
 
   //состояния для валидации, хранения данных из полей
@@ -16,7 +15,6 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
     "Поле не может быть пустым"
   );
   const [formValid, setFormValid] = React.useState();
-  const [redirect, setRedirect] = React.useState("");
 
   //проверка валидности полей
   React.useEffect(() => {
@@ -73,8 +71,12 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
           <li
             onClick={() => setActiveForm("register")}
             href="#"
-            style={{ fontSize: "25px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "25px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
             className="reg-form-action-type-link"
           >
             Регистрация
@@ -82,8 +84,12 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
           <li
             onClick={() => setActiveForm("login")}
             href="#"
-            style={{ fontSize: "25px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "25px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
             className="reg-form-action-type-link reg-form-action-type-link__active"
           >
             Вход
@@ -147,8 +153,12 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
           <li
             onClick={() => setActiveForm("register")}
             href="#"
-            style={{ fontSize: "16px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "16px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
             className="reg-form-action-type-link"
           >
             Регистрация
@@ -156,8 +166,12 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
           <li
             onClick={() => setActiveForm("login")}
             href="#"
-            style={{ fontSize: "16px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "16px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
             className="reg-form-action-type-link reg-form-action-type-link__active"
           >
             Вход

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Requests from "../../../http/axios-requests";
 import "./CardProduct.css";
 import photoItem from "../../../img/SearchPage/photoItem.png";
@@ -30,42 +30,12 @@ const CardProduct = () => {
         </div>
 
         <div className="blocks_card_social_img">
-          <img
-            alt="picture1"
-            src={socialCar}
-            alt=" "
-            className="img_socialCar"
-          />
-          <img
-            alt="picture1"
-            src={socialGold}
-            alt=" "
-            className="img_socialGold"
-          />
-          <img
-            alt="picture1"
-            src={socialPaper}
-            alt=" "
-            className="img_socialPaper"
-          />
-          <img
-            alt="picture1"
-            src={socialVector}
-            alt=" "
-            className="img_socialVector"
-          />
-          <img
-            alt="picture1"
-            src={socialFire}
-            alt=" "
-            className="img_socialFire"
-          />
-          <img
-            alt="picture1"
-            src={socialDollar}
-            alt=" "
-            className="img_socialDollar"
-          />
+          <img alt="picture1" src={socialCar} className="img_socialCar" />
+          <img alt="picture1" src={socialGold} className="img_socialGold" />
+          <img alt="picture1" src={socialPaper} className="img_socialPaper" />
+          <img alt="picture1" src={socialVector} className="img_socialVector" />
+          <img alt="picture1" src={socialFire} className="img_socialFire" />
+          <img alt="picture1" src={socialDollar} className="img_socialDollar" />
         </div>
 
         <div className="blocks_card_text">

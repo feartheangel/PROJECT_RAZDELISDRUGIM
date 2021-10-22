@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/main-page.css";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Header,
   Footer,
@@ -20,8 +19,6 @@ import {
 import LazyLoad from "react-lazyload";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
   React.useEffect(() => {
     if (window.location.href.includes("?referral=")) {
       localStorage.setItem("ref", window.location.href.split("?referral=")[1]);

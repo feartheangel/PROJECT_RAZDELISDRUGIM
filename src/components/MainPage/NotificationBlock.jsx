@@ -35,13 +35,6 @@ const NotificationBlock = ({
                 на:
               </p>
             )}
-            <img
-              alt="picture1"
-              className="delete_notification_stroke"
-              onClick={(e) => deleteNotifyHandler(e)}
-              src={Shape}
-              style={{ width: "10px", height: "10px" }}
-            />
           </div>
           <p className="dropdown_notify_item_p">{notification.name_item}</p>
           {notification.type_note === "MESSAGE" && (

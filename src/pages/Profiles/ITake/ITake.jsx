@@ -1,6 +1,6 @@
 import React from "react";
-import { ItemCardProfile, ItemDeleteSubmit } from "../../../components/index";
-import { useSelector, useDispatch } from "react-redux";
+import { ItemDeleteSubmit } from "../../../components/index";
+import { useSelector } from "react-redux";
 import "../MyItems/MyItems.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
@@ -220,17 +220,11 @@ const ITake = ({ itemData }) => {
               Бронирования {reservations && reservations.length}
             </p>
             <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              style={{ display: "none" }}
+              style={{ opacity: "0.4", pointerEvents: "none", display: "none" }}
             >
               Мои сообщения <span> - </span>
             </p>
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: "none", textDecoration: "none" }
-                  : { textDecoration: "none" }
-              }
               style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
@@ -238,8 +232,7 @@ const ITake = ({ itemData }) => {
               <p>Избранное</p>
             </Link>
             <Link
-              style={{ textDecoration: "none" }}
-              style={{ display: "none" }}
+              style={{ textDecoration: "none", display: "none" }}
               to="/private-profile"
             >
               <p> Мой профиль</p>

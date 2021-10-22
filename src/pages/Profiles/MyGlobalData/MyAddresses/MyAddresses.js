@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MyAddresses.css";
 import { AddressFields } from "../../../../components/index";
 import { useSelector, useDispatch } from "react-redux";
