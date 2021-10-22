@@ -210,6 +210,7 @@ const Footer = () => {
                     : "viber://pa/info?uri=razdelisdrugim"
                 }
                 target="_blank"
+                rel="noreferrer"
               >
                 <img
                   alt="picture1"

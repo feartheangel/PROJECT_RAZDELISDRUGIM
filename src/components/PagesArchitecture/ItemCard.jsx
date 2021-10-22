@@ -1,6 +1,6 @@
 import React from "react";
 import Requests from "../../http/axios-requests";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import car from "../../img/MainPage/car.webp";
 import cardMoney from "../../img/MainPage/card-money.webp";
 import cardVerify from "../../img/MainPage/card-verify.webp";
@@ -21,7 +21,6 @@ import { rootAddress } from "../../http/axios-requests";
 import Loading from "../../img/loading.gif";
 
 const ItemCard = ({ item }) => {
-  const dispatch = useDispatch();
   const { favorites, isLoggedIn, subjects } = useSelector(
     ({ userData }) => userData
   );
@@ -72,6 +71,7 @@ const ItemCard = ({ item }) => {
           style={{ textDecoration: "none" }}
           href={`/item-card?id=${item.id}`}
           target="_blank"
+          rel="noreferrer"
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
@@ -229,8 +229,7 @@ const ItemCard = ({ item }) => {
                 style={{ justifyContent: "flex-start", marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img loading="lazy" src={freePrice} />
-                <img alt="picture1" src={freePrice} />
+                <img alt="picture1" src={freePrice} loading="lazy" />
                 <p className="recent-time-p">Бесплатно</p>
               </div>
             )}
@@ -280,7 +279,7 @@ const ItemCard = ({ item }) => {
           style={{ textDecoration: "none" }}
           href={`/item-card?id=${item.id}`}
           target="_blank"
-          className=""
+          rel="noreferrer"
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
@@ -292,6 +291,7 @@ const ItemCard = ({ item }) => {
                   : Loading
               }
               className="block-image"
+              alt="picture1"
             />
             <div className="recent-marks">
               {item.delivery.includes("Привезу и заберу сам") ||
@@ -480,7 +480,7 @@ const ItemCard = ({ item }) => {
           style={{ textDecoration: "none" }}
           href={`/item-card?id=${item.id}`}
           target="_blank"
-          className=""
+          rel="noreferrer"
         >
           <div style={{ cursor: "pointer" }} className="recent-block">
             <img
@@ -492,6 +492,7 @@ const ItemCard = ({ item }) => {
                   : Loading
               }
               className="block-image"
+              alt="picture1"
             />
             <div className="recent-marks">
               {item.delivery.includes("Привезу и заберу сам") ||

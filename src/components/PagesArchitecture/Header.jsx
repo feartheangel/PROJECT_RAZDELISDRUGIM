@@ -305,12 +305,7 @@ const Header = () => {
       <div className="header__inner">
         <div className="header-left-content">
           <a href="/">
-            <img
-              alt="picture1"
-              src={Logo}
-              alt="Global Sharing Platform"
-              className="logo"
-            />
+            <img src={Logo} alt="Global Sharing Platform" className="logo" />
           </a>
           <div className="selector_header_items">
             <div className="location-selector">
