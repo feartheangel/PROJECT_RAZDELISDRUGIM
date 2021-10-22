@@ -28,6 +28,8 @@ const BookingITake = ({
   type,
   setOutgoingReservations,
   setIncomingReservations,
+  countShowedTablesCouples,
+  key,
 }) => {
   const deleteReservetionHandler = () => {
     if (window.confirm("Вы уверены?")) {
@@ -62,7 +64,14 @@ const BookingITake = ({
   };
 
   return (
-    <div className="content__booking_right_body">
+    <div
+      style={
+        key >= 0 && key <= countShowedTablesCouples * 3 - 1
+          ? { display: "none" }
+          : {}
+      }
+      className="content__booking_right_body"
+    >
       <div className="content__booking_right_body_allblock">
         {/* header block */}
         <div className="body_allblock_header">

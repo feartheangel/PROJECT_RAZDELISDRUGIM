@@ -15,6 +15,8 @@ const BookingPage = ({ itemData }) => {
   const [activeForm2, setActiveForm2] = React.useState("ITake");
   const [activeForm3, setActiveForm3] = React.useState("all");
   const [countShowedTables, setCountShowedTables] = React.useState(0);
+  const [countShowedTablesCouples, setCountShowedTablesCouples] =
+    React.useState(1);
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
@@ -46,6 +48,7 @@ const BookingPage = ({ itemData }) => {
           outgoingReservations &&
             outgoingReservations.filter((item) => item).length
         );
+        setCountShowedTablesCouples(1);
       } else if (activeForm3 === "waiting") {
         setCountShowedTables(
           outgoingReservations &&
@@ -53,6 +56,7 @@ const BookingPage = ({ itemData }) => {
               (item) => item.reservation_status === null
             ).length
         );
+        setCountShowedTablesCouples(1);
       } else if (activeForm3 === "success") {
         setCountShowedTables(
           outgoingReservations &&
@@ -60,6 +64,7 @@ const BookingPage = ({ itemData }) => {
               (item) => item.reservation_status === true
             ).length
         );
+        setCountShowedTablesCouples(1);
       } else if (activeForm3 === "rejected") {
         setCountShowedTables(
           outgoingReservations &&
@@ -67,6 +72,7 @@ const BookingPage = ({ itemData }) => {
               (item) => item.reservation_status === false
             ).length
         );
+        setCountShowedTablesCouples(1);
       }
     } else if (activeForm2 === "MyItems") {
       if (activeForm3 === "all") {
@@ -74,6 +80,7 @@ const BookingPage = ({ itemData }) => {
           incomingReservations &&
             incomingReservations.filter((item) => item).length
         );
+        setCountShowedTablesCouples(1);
       } else if (activeForm3 === "waiting") {
         setCountShowedTables(
           incomingReservations &&
@@ -81,6 +88,7 @@ const BookingPage = ({ itemData }) => {
               (item) => item.reservation_status === null
             ).length
         );
+        setCountShowedTablesCouples(1);
       } else if (activeForm3 === "success") {
         setCountShowedTables(
           incomingReservations &&
@@ -88,6 +96,7 @@ const BookingPage = ({ itemData }) => {
               (item) => item.reservation_status === true
             ).length
         );
+        setCountShowedTablesCouples(1);
       } else if (activeForm3 === "rejected") {
         setCountShowedTables(
           incomingReservations &&
@@ -95,6 +104,7 @@ const BookingPage = ({ itemData }) => {
               (item) => item.reservation_status === false
             ).length
         );
+        setCountShowedTablesCouples(1);
       }
     }
 
@@ -245,6 +255,7 @@ const BookingPage = ({ itemData }) => {
                             item={item}
                             key={index}
                             type={1}
+                            countShowedTablesCouples={countShowedTablesCouples}
                             setOutgoingReservations={setOutgoingReservations}
                           />
                         ))
@@ -257,6 +268,9 @@ const BookingPage = ({ itemData }) => {
                               item={item}
                               key={index}
                               type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
                               setOutgoingReservations={setOutgoingReservations}
                             />
                           ))
@@ -269,6 +283,9 @@ const BookingPage = ({ itemData }) => {
                               item={item}
                               key={index}
                               type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
                               setOutgoingReservations={setOutgoingReservations}
                             />
                           ))
@@ -281,6 +298,9 @@ const BookingPage = ({ itemData }) => {
                               item={item}
                               key={index}
                               type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
                               setOutgoingReservations={setOutgoingReservations}
                             />
                           ))
@@ -293,6 +313,7 @@ const BookingPage = ({ itemData }) => {
                             item={item}
                             key={index}
                             type={1}
+                            countShowedTablesCouples={countShowedTablesCouples}
                             setIncomingReservations={setIncomingReservations}
                           />
                         ))
@@ -305,6 +326,9 @@ const BookingPage = ({ itemData }) => {
                               item={item}
                               key={index}
                               type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
                               setIncomingReservations={setIncomingReservations}
                             />
                           ))
@@ -317,6 +341,9 @@ const BookingPage = ({ itemData }) => {
                               item={item}
                               key={index}
                               type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
                               setIncomingReservations={setIncomingReservations}
                             />
                           ))
@@ -329,6 +356,9 @@ const BookingPage = ({ itemData }) => {
                               item={item}
                               key={index}
                               type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
                               setIncomingReservations={setOutgoingReservations}
                             />
                           ))
@@ -346,7 +376,17 @@ const BookingPage = ({ itemData }) => {
               </div>
               {/* body down container */}
               <div className="container_profile_content__booking_down">
-                <p className="container_profile_content__booking_down-p">
+                <p
+                  style={
+                    countShowedTables - countShowedTablesCouples * 3 <= 0
+                      ? { display: "none" }
+                      : {}
+                  }
+                  onClick={() =>
+                    setCountShowedTablesCouples((prev) => prev + 1)
+                  }
+                  className="container_profile_content__booking_down-p"
+                >
                   Показать больше
                 </p>
               </div>
