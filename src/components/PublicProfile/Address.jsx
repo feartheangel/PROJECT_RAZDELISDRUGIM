@@ -1,7 +1,6 @@
 import React from "react";
 import "../../css/ComponentAddress.css";
 import PhotoLocation from "..//../img/ProfilePage/location.png";
-import map from "../../img//ProfilePage/map.png";
 
 const Address = ({ addresses }) => {
   return (

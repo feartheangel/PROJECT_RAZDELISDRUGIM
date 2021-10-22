@@ -93,7 +93,7 @@ const Catalog = () => {
                             className={
                               activeForm === chapter[1][0]
                                 ? "left_category_global_div_active"
-                                : "left_category_global_div"
+                                : "left_category_global_div1"
                             }
                           >
                             {chapter[0]}
@@ -117,12 +117,7 @@ const Catalog = () => {
             id="globaldata_mobile"
           >
             <p className="container_down_left-p">Каталог</p>
-            <img
-              alt="picture1"
-              src={Vector2}
-              alt="vector"
-              className="vector2_img"
-            />
+            <img src={Vector2} alt="vector" className="vector2_img" />
           </div>
 
           <div className="Catalog_wrapper_container_down" id="catalog_mobile">

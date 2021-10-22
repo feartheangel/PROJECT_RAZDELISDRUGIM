@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./CardThings.css";
-import { Link, NavLink, Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Header, Footer, ItemCard } from "../../components/index";
 import {
   setSearchCategory,
@@ -43,7 +43,6 @@ import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.webp";
 import EditItemImage from "../../img/MainPage/editicon.webp";
 import { rootAddress } from "../../http/axios-requests";
 import Booking from "../../components/PagesArchitecture/Booking";
-import { animateScroll as scroll } from "react-scroll";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -114,12 +113,12 @@ const CardThings = () => {
       .catch(() => setIsFavorite(true));
   };
 
-  const mobileContactHandler = (e) => {
-    if (!isLoggedIn) {
-      e.preventDefault();
-      alert("Доступно только авторизованным пользователям.");
-    }
-  };
+  // const mobileContactHandler = (e) => {
+  //   if (!isLoggedIn) {
+  //     e.preventDefault();
+  //     alert("Доступно только авторизованным пользователям.");
+  //   }
+  // };
 
   const goToChatHandler = () => {
     Requests.createNewChatRoom(

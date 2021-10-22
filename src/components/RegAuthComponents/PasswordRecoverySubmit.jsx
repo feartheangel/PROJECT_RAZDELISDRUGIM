@@ -103,8 +103,8 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                   <li
                     href="#"
                     className="reg-form-action-type-link"
-                    style={{ fontSize: "25px" }}
                     style={{
+                      fontSize: "25px",
                       width: "50%",
                       justifyContent: "center",
                       display: "flex",
@@ -116,8 +116,8 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                 <li
                   href="#"
                   className="reg-form-action-type-link reg-form-action-type-link__active"
-                  style={{ fontSize: "25px" }}
                   style={{
+                    fontSize: "25px",
                     width: "50%",
                     justifyContent: "center",
                     display: "flex",
@@ -146,10 +146,10 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                       passwordHandler(e);
                     }}
                   />
-                  <a
+                  <span
                     onClick={() => setShowPass(!showPass)}
                     class="password-control"
-                  ></a>
+                  ></span>
                   {passwordDirty && passwordError && (
                     <label className="reg-form-text-label-l__alert-moved">
                       {passwordError}
@@ -172,10 +172,10 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                       passwordSubmitHandler(e);
                     }}
                   />
-                  <a
+                  <span
                     onClick={() => setShowSubmitPass(!showSubmitPass)}
                     class="password-control"
-                  ></a>
+                  ></span>
                   {passwordSubmitDirty && passwordSubmitError && (
                     <label className="reg-form-text-label-l__alert-moved">
                       {passwordSubmitError}
@@ -218,8 +218,8 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                   <li
                     href="#"
                     className="reg-form-action-type-link"
-                    style={{ fontSize: "16px" }}
                     style={{
+                      fontSize: "16px",
                       width: "50%",
                       justifyContent: "center",
                       display: "flex",
@@ -231,8 +231,8 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                 <li
                   href="#"
                   className="reg-form-action-type-link reg-form-action-type-link__active"
-                  style={{ fontSize: "16px" }}
                   style={{
+                    fontSize: "16px",
                     width: "50%",
                     justifyContent: "center",
                     display: "flex",
@@ -261,10 +261,10 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                       passwordHandler(e);
                     }}
                   />
-                  <a
+                  <span
                     onClick={() => setShowPass(!showPass)}
                     class="password-control"
-                  ></a>
+                  ></span>
                   {passwordDirty && passwordError && (
                     <label className="reg-form-text-label-l__alert-moved">
                       {passwordError}
@@ -287,10 +287,10 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
                       passwordSubmitHandler(e);
                     }}
                   />
-                  <a
+                  <span
                     onClick={() => setShowSubmitPass(!showSubmitPass)}
                     class="password-control"
-                  ></a>
+                  ></span>
                   {passwordSubmitDirty && passwordSubmitError && (
                     <label className="reg-form-text-label-l__alert-moved">
                       {passwordSubmitError}

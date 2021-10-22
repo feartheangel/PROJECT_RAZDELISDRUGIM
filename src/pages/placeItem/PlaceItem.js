@@ -21,7 +21,7 @@ const PlaceItem = () => {
   //конвертация байтов в размер
   function bytesToSize(bytes) {
     var sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-    if (bytes == 0) return "0 Byte";
+    if (bytes === 0) return "0 Byte";
     var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
     return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
   }
@@ -118,18 +118,6 @@ const PlaceItem = () => {
     if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setSummaServiceSbor(e.target.value);
     }
-  };
-
-  // СОСТОЯНИЯ ЧЕКБОКСОВ
-
-  //ПУНКТ  БЕСПЛАТНО
-  const giveFreeHandler = () => {
-    setGiveFree(!giveFree);
-  };
-
-  // ПУНКТ  ПРЕДЛОЖИТЬ ЦЕНУ
-  const yourCostHandler = () => {
-    setYourCost(!yourCost);
   };
 
   // КНОПКА ДОПОЛНТИЛЬНЫЕ ПАРАМЕТРЫ
@@ -435,9 +423,6 @@ const PlaceItem = () => {
 
   // КАТЕГОРИИ - опции
   const [viborCategory, setViborCategory] = useState("");
-
-  //открытие блока с первью картинок
-  const [photoField, setPhotoField] = React.useState(false);
 
   //НАИМЕНОВАНИЕ ВЕЩИ
   const [nameItem, setNameItem] = useState("");
@@ -2452,7 +2437,7 @@ const PlaceItem = () => {
               sitekey="6Lf5el4cAAAAAB-XdWip6AY2UiMzEekLzdUJN3ur"
               onChange={() => setCaptchaPassed(true)}
             />
-            ,{/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
+            {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
             <div className="button_load">
               <input
                 disabled={requestActive}

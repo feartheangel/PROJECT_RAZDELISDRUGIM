@@ -331,23 +331,21 @@ const Chat = () => {
               Мои обьявления <span> {subjects.length} </span>
             </p>
             <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              style={{ display: "none" }}
+              style={{ opacity: "0.4", pointerEvents: "none", display: "none" }}
             >
               Бронирования
             </p>
             <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              style={{ display: "none" }}
+              style={{ opacity: "0.4", pointerEvents: "none", display: "none" }}
             >
               Мои сообщения
             </p>
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: "none", textDecoration: "none" }
-                  : { textDecoration: "none" }
-              }
+              // style={
+              //   subjects.length === 0
+              //     ? { pointerEvents: "none", textDecoration: "none" }
+              //     : { textDecoration: "none" }
+              // }
               style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
@@ -355,8 +353,7 @@ const Chat = () => {
               <p>Избранное</p>
             </Link>
             <Link
-              style={{ textDecoration: "none" }}
-              style={{ display: "none" }}
+              style={{ textDecoration: "none", display: "none" }}
               to="/private-profile"
             >
               <p> Мой профиль</p>

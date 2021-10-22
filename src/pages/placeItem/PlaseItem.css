@@ -780,6 +780,15 @@ select {
   .input_photo {
     margin-bottom: 10px;
   }
+  .add-item-photo{
+    max-width: 130px;
+    width: 100%;
+    max-height: 69px;
+    height: 100%;
+  }
+  .add-item-photo-wrapper{
+    width: 20%;
+  }
   /* СТОИМОСТЬ ВЕЩИ В АРЕНДУ */
   .item-add-cost-choice-wrapper {
     flex-wrap: wrap;
@@ -789,6 +798,9 @@ select {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
+  }
+  .add-item-input-number__secondary{
+    margin-right: 10px;
   }
   .add-item-input-number {
     max-width: 120px;
@@ -807,7 +819,7 @@ select {
     height: 45px;
     margin-bottom: 15px;
     margin-right: 0;
-    font-size: 16px;
+    font-size: 14px;
   }
   .add-item-cost-or {
     font-size: 14px;
@@ -890,6 +902,9 @@ select {
   .add-item-input-text__address__house {
     width: 108px;
     margin-right: 10px;
+  }
+  .add-item-cost-or__secondary{
+    margin: 0 10px;
   }
 
   /* ДОПОЛНИТЕЛЬНЫЙ ПАРАМЕТРЫ РАЗДЕЛ */

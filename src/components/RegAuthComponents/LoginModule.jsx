@@ -123,8 +123,12 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <li
             onClick={() => setActiveForm("register")}
             href="#"
-            style={{ fontSize: "25px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "25px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
             className="reg-form-action-type-link"
           >
             Регистрация{successLogin}
@@ -132,8 +136,12 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <li
             href="#"
             className="reg-form-action-type-link reg-form-action-type-link__active"
-            style={{ fontSize: "25px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "25px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
           >
             Вход
           </li>
@@ -143,24 +151,13 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
         </div>
         <div className="reg-form-socials">
           <img
-            alt="picture1"
             style={{ display: "none" }}
             onClick={vkAuth}
             src={vkLogo}
             alt="VK"
           />
-          <img
-            alt="picture1"
-            onClick={facebookAuth}
-            src={facebookLogo}
-            alt="Facebook"
-          />
-          <img
-            alt="picture1"
-            onClick={googleAuth}
-            src={googleLogo}
-            alt="Google"
-          />
+          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+          <img onClick={googleAuth} src={googleLogo} alt="Google" />
         </div>
         <div className="log-form-text-label-p__lower">
           <p>или</p>
@@ -198,10 +195,10 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
               value={password}
               onChange={(e) => passwordHandler(e)}
             />
-            <a
+            <span
               onClick={() => setShowPass(!showPass)}
               class="password-control"
-            ></a>
+            ></span>
             {passwordDirty && passwordError && (
               <label className="reg-form-text-label-l__alert">
                 {passwordError}
@@ -241,8 +238,12 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <li
             onClick={() => setActiveForm("register")}
             href="#"
-            style={{ fontSize: "16px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "16px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
             className="reg-form-action-type-link"
           >
             Регистрация{successLogin}
@@ -250,26 +251,20 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <li
             href="#"
             className="reg-form-action-type-link reg-form-action-type-link__active"
-            style={{ fontSize: "16px" }}
-            style={{ width: "50%", justifyContent: "center", display: "flex" }}
+            style={{
+              fontSize: "16px",
+              width: "50%",
+              justifyContent: "center",
+              display: "flex",
+            }}
           >
             Вход
           </li>
         </ul>
         <div className="reg-form-socials">
-          <img alt="picture1" onClick={vkAuth} src={vkLogo} alt="VK" />
-          <img
-            alt="picture1"
-            onClick={facebookAuth}
-            src={facebookLogo}
-            alt="Facebook"
-          />
-          <img
-            alt="picture1"
-            onClick={googleAuth}
-            src={googleLogo}
-            alt="Google"
-          />
+          <img onClick={vkAuth} src={vkLogo} alt="VK" />
+          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+          <img onClick={googleAuth} src={googleLogo} alt="Google" />
         </div>
         <div className="reg-form-input-area">
           <form>
@@ -304,10 +299,10 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
               value={password}
               onChange={(e) => passwordHandler(e)}
             />
-            <a
+            <span
               onClick={() => setShowPass(!showPass)}
               class="password-control"
-            ></a>
+            ></span>
             {passwordDirty && passwordError && (
               <label className="reg-form-text-label-l__alert">
                 {passwordError}
@@ -364,19 +359,9 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
           <p>Войти через соцсети</p>
         </div>
         <div className="reg-form-socials">
-          <img alt="picture1" onClick={vkAuth} src={vkLogo} alt="VK" />
-          <img
-            alt="picture1"
-            onClick={facebookAuth}
-            src={facebookLogo}
-            alt="Facebook"
-          />
-          <img
-            alt="picture1"
-            onClick={googleAuth}
-            src={googleLogo}
-            alt="Google"
-          />
+          <img onClick={vkAuth} src={vkLogo} alt="VK" />
+          <img onClick={facebookAuth} src={facebookLogo} alt="Facebook" />
+          <img onClick={googleAuth} src={googleLogo} alt="Google" />
         </div>
         <div className="log-form-text-label-p__lower">
           <p>или</p>
@@ -414,10 +399,10 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
               value={password}
               onChange={(e) => passwordHandler(e)}
             />
-            <a
+            <span
               onClick={() => setShowPass(!showPass)}
               class="password-control"
-            ></a>
+            ></span>
             {passwordDirty && passwordError && (
               <label className="reg-form-text-label-l__alert">
                 {passwordError}

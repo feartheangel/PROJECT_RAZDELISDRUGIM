@@ -30,7 +30,7 @@ import {
   Chat,
   BookingPage,
 } from "./pages/index";
-import { Booking, PasswordRecoverySubmit, Testfile } from "./components/index";
+import { PasswordRecoverySubmit } from "./components/index";
 import "./css/main-page.css";
 import React from "react";
 import Requests from "./http/axios-requests";

@@ -61,12 +61,11 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, userData, subjects, reload } = useSelector(
+  const { isLoggedIn, userData, subjects } = useSelector(
     ({ userData }) => userData
   );
   const { items, isLoaded, news } = useSelector(({ items }) => items);
   const {
-    searchItems,
     words,
     category,
     min_price,
@@ -208,7 +207,6 @@ const Header = () => {
           command: "list_notifications",
         })
       );
-      console.log("opened");
     };
 
     chatSocket.current.onmessage = function (e) {
@@ -221,8 +219,6 @@ const Header = () => {
       if (data.notification_list) {
         setNotifications(data.notification_list.reverse());
       }
-
-      console.log(data);
     };
 
     chatSocket.current.onclose = function (e) {

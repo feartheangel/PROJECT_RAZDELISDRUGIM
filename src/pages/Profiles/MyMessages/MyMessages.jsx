@@ -123,35 +123,18 @@ const MyMessages = () => {
             >
               Я сдаю <span> {subjects.length} </span>
             </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              style={{ display: "none" }}
-            >
+            <p style={{ display: "none" }}>
               Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
             </p>
-            <p
-              style={{ opacity: "0.4", pointerEvents: "none" }}
-              style={{ display: "none" }}
-            >
-              Мои сообщения
-            </p>
+            <p style={{ display: "none" }}>Мои сообщения</p>
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: "none", textDecoration: "none" }
-                  : { textDecoration: "none" }
-              }
               style={{ display: "none" }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >
               <p>Избранное</p>
             </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              style={{ display: "none" }}
-              to="/private-profile"
-            >
+            <Link style={{ display: "none" }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>
           </div>

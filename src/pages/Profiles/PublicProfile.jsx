@@ -8,7 +8,6 @@ import Address from "../../components/PublicProfile/Address.jsx";
 import AboutMe from "../../components/PublicProfile/AboutMe.jsx";
 import Vector6 from "../../img/CardThings/RightContent/Vector6.png";
 import Vector7 from "../../img/CardThings/RightContent/Vector7.png";
-import Star1 from "../../img/CardThings/RightContent/Star 4.png";
 import Star2 from "../../img/CardThings/RightContent/Star 2.png";
 import Telegram from "../../img/CardThings/RightContent/Component 36.png";
 import Viber from "../../img/CardThings/RightContent/Component 37.png";
@@ -228,6 +227,7 @@ const PublicProfile = () => {
                               profileData && profileData.telegram_account
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -240,6 +240,7 @@ const PublicProfile = () => {
                         {profileData && profileData.viber_account && (
                           <a
                             target="_blank"
+                            rel="noreferrer"
                             href={`viber://chat?number=+${
                               profileData && profileData.viber_account
                             }`}
@@ -258,6 +259,7 @@ const PublicProfile = () => {
                               profileData && profileData.whatsapp_account
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -278,6 +280,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -298,6 +301,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -318,6 +322,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -338,6 +343,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -358,6 +364,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -401,7 +408,6 @@ const PublicProfile = () => {
               <div className="container_down_header">
                 <div className="down_header_text1">
                   <p
-                    className="down_header_text1-p1"
                     className={
                       activeForm2 === "arends"
                         ? "down_header_text1-p1_active"
@@ -538,7 +544,6 @@ const PublicProfile = () => {
                     <div className="up_global_star">
                       <div className="block_down_star">
                         <div
-                          style={{ display: "none" }}
                           className="conditions_row"
                           style={{ marginBottom: "5px" }}
                         >
@@ -591,6 +596,7 @@ const PublicProfile = () => {
                               profileData && profileData.telegram_account
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -603,6 +609,7 @@ const PublicProfile = () => {
                         {profileData && profileData.viber_account && (
                           <a
                             target="_blank"
+                            rel="noreferrer"
                             href={`viber://chat?number=+${
                               profileData && profileData.viber_account
                             }`}
@@ -621,6 +628,7 @@ const PublicProfile = () => {
                               profileData && profileData.whatsapp_account
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -641,6 +649,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -661,6 +670,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -681,6 +691,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -701,6 +712,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -721,6 +733,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -833,7 +846,6 @@ const PublicProfile = () => {
               <div className="container_down_header">
                 <div className="down_header_text1">
                   <p
-                    className="down_header_text1-p1"
                     className={
                       activeForm2 === "arends"
                         ? "down_header_text1-p1_active"
@@ -964,7 +976,6 @@ const PublicProfile = () => {
                     <div className="up_global_star">
                       <div className="block_down_star">
                         <div
-                          style={{ display: "none" }}
                           className="conditions_row"
                           style={{ marginBottom: "5px" }}
                         >
@@ -1017,6 +1028,7 @@ const PublicProfile = () => {
                               profileData && profileData.telegram_account
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -1029,6 +1041,7 @@ const PublicProfile = () => {
                         {profileData && profileData.viber_account && (
                           <a
                             target="_blank"
+                            rel="noreferrer"
                             href={`viber://chat?number=+${
                               profileData && profileData.viber_account
                             }`}
@@ -1047,6 +1060,7 @@ const PublicProfile = () => {
                               profileData && profileData.whatsapp_account
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -1067,6 +1081,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -1087,6 +1102,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -1107,6 +1123,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -1127,6 +1144,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -1147,6 +1165,7 @@ const PublicProfile = () => {
                                   }`
                             }`}
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <img
                               alt="picture1"
@@ -1259,7 +1278,6 @@ const PublicProfile = () => {
               <div className="container_down_header">
                 <div className="down_header_text1">
                   <p
-                    className="down_header_text1-p1"
                     className={
                       activeForm2 === "arends"
                         ? "down_header_text1-p1_active"

@@ -281,7 +281,7 @@ const Footer = () => {
           </div>
           <div className="foooter-right_item">
             <div className="location-selector" id="location-selector2">
-              <img alt="picture1" src={mark} className="location-img" />
+              <img alt="picture1" src={mark} className="location-img1" />
               <p className="location-p">Минск</p>
             </div>
             <div className="footer-localization-wrapper">

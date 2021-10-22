@@ -28,7 +28,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   let code = "";
   //регулярные выражения для проверки телефона и почты
   const contactEmailRegExp =
-    /^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
+    /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
   const contactNumberRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
 
   //состояния для контроля, записи, валидации полей и формы
@@ -227,22 +227,19 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
       </ul>
       <div className="reg-form-socials">
         <img
-          alt="picture1"
-          style={localStorage.getItem("ref") ? { display: "none" } : {}}
+          // style={localStorage.getItem("ref") ? { display: "none" } : {}}
           onClick={vkAuth}
           src={vkLogo}
           alt="VK"
           style={{ display: "none" }}
         />
         <img
-          alt="picture1"
           style={localStorage.getItem("ref") ? { display: "none" } : {}}
           onClick={facebookAuth}
           src={facebookLogo}
           alt="Facebook"
         />
         <img
-          alt="picture1"
           style={localStorage.getItem("ref") ? { display: "none" } : {}}
           onClick={googleAuth}
           src={googleLogo}
@@ -292,10 +289,10 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
             value={password}
             onChange={(e) => passwordHandler(e)}
           />
-          <a
+          <span
             onClick={() => setShowPass(!showPass)}
             class="password-control"
-          ></a>
+          ></span>
           {passwordDirty && passwordError && (
             <label className="reg-form-text-label-l__alert-moved">
               {passwordError}
@@ -319,10 +316,10 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
               passwordSubmitHandler(e);
             }}
           />
-          <a
+          <span
             onClick={() => setShowSubmitPass(!showSubmitPass)}
             class="password-control"
-          ></a>
+          ></span>
           {passwordSubmitDirty && passwordSubmitError && (
             <label className="reg-form-text-label-l__alert-moved">
               {passwordSubmitError}

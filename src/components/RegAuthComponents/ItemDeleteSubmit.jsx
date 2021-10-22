@@ -85,7 +85,6 @@ const ItemDeleteSubmit = ({
                   boxShadow: "3px 3px 22px rgba(219, 13, 13, 0.24)",
                 }}
                 type="button"
-                value="Нет"
                 className="reg-form-contact-input__delete"
                 value="Да"
                 onClick={yesHandler}
