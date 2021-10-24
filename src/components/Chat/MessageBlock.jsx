@@ -16,7 +16,7 @@ const MessageBlock = ({
       JSON.stringify({
         command: "update_reserve_status",
         reserve_id: item.reserve_id,
-        bool_status: true,
+        bool_status: "SUBMITTED",
       })
     );
     console.log(item.reserve_id);
@@ -34,7 +34,7 @@ const MessageBlock = ({
       JSON.stringify({
         command: "update_reserve_status",
         reserve_id: item.reserve_id,
-        bool_status: false,
+        bool_status: "DENIED",
       })
     );
 
@@ -176,34 +176,35 @@ const MessageBlock = ({
               {`Сообщение от рентера: ${item.reserve_text_sender}`}
             </p>
           )}
-          {item.reservation_status === null && item.owner_id === userData.id && (
-            <div className="reservation_request_submit_choice">
-              <input
-                onClick={handleReservationAbort}
-                type="button"
-                value="Отклонить"
-                className="reservation_request_choice_no"
-              />
-              <input
-                onClick={handleReservationSubmit}
-                type="button"
-                value="Подтвердить"
-                className="reservation_request_choice_yes"
-              />
-            </div>
-          )}
-
-          {item.reservation_status === null &&
+          {item.reservation_status === "WAITING" &&
+            item.owner_id === userData.id && (
+              <div className="reservation_request_submit_choice">
+                <input
+                  onClick={handleReservationAbort}
+                  type="button"
+                  value="Отклонить"
+                  className="reservation_request_choice_no"
+                />
+                <input
+                  onClick={handleReservationSubmit}
+                  type="button"
+                  value="Подтвердить"
+                  className="reservation_request_choice_yes"
+                />
+              </div>
+            )}
+          {item.reservation_status === "WAITING" &&
             item.owner_id !== userData.id && (
               <p style={{ color: "orange" }}>Ожидает </p>
             )}
-
-          {item.reservation_status === true && (
+          {item.reservation_status === "SUBMITTED" && (
             <p style={{ color: "green" }}> Подтверждено</p>
           )}
-
-          {item.reservation_status === false && (
-            <p style={{ color: "red" }}>Отказано</p>
+          {item.reservation_status === "DENIED" && (
+            <p style={{ color: "red" }}>Отклонено</p>
+          )}{" "}
+          {item.reservation_status === "CANCELED" && (
+            <p style={{ color: "gray" }}>Отменено</p>
           )}
         </div>
       )}

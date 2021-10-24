@@ -29,7 +29,7 @@ const BookingITake = ({
   showOnMapHandler,
 }) => {
   const handleReservationSubmit = () => {
-    Requests.updateReservationStatus(item.id, true).then(() => {
+    Requests.updateReservationStatus(item.id, "SUBMITTED").then(() => {
       Requests.getIncomingReservations().then((res) => {
         setIncomingReservations(res.data.reverse());
       });
@@ -37,13 +37,20 @@ const BookingITake = ({
   };
 
   const handleReservationAbort = () => {
-    Requests.updateReservationStatus(item.id, false).then(() => {
+    Requests.updateReservationStatus(item.id, "DENIED").then(() => {
       Requests.getIncomingReservations().then((res) => {
         setIncomingReservations(res.data.reverse());
       });
     });
   };
 
+  const handleReservationCancel = () => {
+    Requests.updateReservationStatus(item.id, "CANCELED").then(() => {
+      Requests.getIncomingReservations().then((res) => {
+        setIncomingReservations(res.data.reverse());
+      });
+    });
+  };
   const mapButtonRef = React.useRef(null);
 
   return (
@@ -217,19 +224,25 @@ const BookingITake = ({
             </div>
             {/* center blocks */}
             <div className="body_allblock_header_right_center_block1">
-              {item.reservation_status === true && (
+              {item.reservation_status === "SUBMITTED" && (
                 <p className="body_allblock_header_right_center_block1-p">
                   Подтверждено
                 </p>
               )}
-              {item.reservation_status === false && (
+              {item.reservation_status === "DENIED" && (
                 <p className="body_allblock_header_right_center_block1-p2">
                   Отклонено
                 </p>
               )}
-              {item.reservation_status === null && (
+              {item.reservation_status === "WAITING" && (
                 <p className="body_allblock_header_right_center_block1-p3">
                   В ожидании
+                </p>
+              )}
+
+              {item.reservation_status === "CANCELED" && (
+                <p className="body_allblock_header_right_center_block1-p4">
+                  Отменено
                 </p>
               )}
             </div>
@@ -303,7 +316,10 @@ const BookingITake = ({
                               .join("") === "12"
                           ? "декабря"
                           : ""
-                      }${
+                      }, ${item.reservation_start_time
+                        .split("")
+                        .splice(0, 4)
+                        .join("")}${
                         item.reserve_rent === "HOUR"
                           ? `, ${item.reservation_start_time
                               .split("")
@@ -383,7 +399,10 @@ const BookingITake = ({
                               .join("") === "12"
                           ? "декабря"
                           : ""
-                      }${
+                      }, ${item.reservation_end_time
+                        .split("")
+                        .splice(0, 4)
+                        .join("")}${
                         item.reserve_rent === "HOUR"
                           ? `, ${item.reservation_end_time
                               .split("")
@@ -417,6 +436,18 @@ const BookingITake = ({
               </div>
             </div>
             <div className="body_allblock_header_right_center_block2">
+              {item.reserve_price_rent !== 0 && (
+                <div className="center_block_rowstyle_2">
+                  <p className="center_block_rowstyle-p2-1">
+                    Стоимость аренды за весь период
+                  </p>
+                  <p className="center_block_rowstyle-p2-2">
+                    {item.reserve_price_rent *
+                      Number(item.reservation_time.split("")[0])}{" "}
+                    BYN
+                  </p>
+                </div>
+              )}
               {item.reserve_pledge_price !== 0 && (
                 <div className="center_block_rowstyle_2">
                   <p className="center_block_rowstyle-p2-1">Залог</p>
@@ -478,7 +509,7 @@ const BookingITake = ({
         </div>
         {/* footer block */}
         <div className="body_allblock_footer">
-          {type === 2 && item.reservation_status === null && (
+          {type === 2 && item.reservation_status === "WAITING" && (
             <div className="center_block_rowstyle_3">
               <p
                 className="body_allblock_header_left_text-p"
@@ -489,19 +520,29 @@ const BookingITake = ({
               </p>
             </div>
           )}
-          {type === 2 &&
-            (item.reservation_status === null ||
-              item.reservation_status === true) && (
-              <div className="center_block_rowstyle_3">
-                <p
-                  className="body_allblock_header_left_text-p"
-                  style={{ cursor: "pointer" }}
-                  onClick={handleReservationAbort}
-                >
-                  Отклонить бронирование
-                </p>
-              </div>
-            )}
+          {type === 2 && item.reservation_status === "WAITING" && (
+            <div className="center_block_rowstyle_3">
+              <p
+                className="body_allblock_header_left_text-p"
+                style={{ cursor: "pointer" }}
+                onClick={handleReservationAbort}
+              >
+                Отклонить бронирование
+              </p>
+            </div>
+          )}
+
+          {type === 2 && item.reservation_status === "SUBMITTED" && (
+            <div className="center_block_rowstyle_3">
+              <p
+                className="body_allblock_header_left_text-p"
+                style={{ cursor: "pointer" }}
+                onClick={handleReservationCancel}
+              >
+                Отклонить бронирование
+              </p>
+            </div>
+          )}
 
           {false && (
             <div className="center_block_rowstyle_3">

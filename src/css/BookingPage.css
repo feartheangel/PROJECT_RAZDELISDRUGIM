@@ -227,13 +227,21 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
-  color: #ffa62b;
+  color: #ff2b2b;
 }
+
 .body_allblock_header_right_center_block1-p3 {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
-  color: #1a535c;
+  color: #ffa62b;
+}
+
+.body_allblock_header_right_center_block1-p4 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #86837f;
 }
 .body_allblock_header_right_center_block2 {
   padding: 15px 0;
@@ -312,4 +320,15 @@
 .content__booking_empty__p {
   font-size: 18px;
   color: rgba(28, 46, 69, 0.6);
+}
+
+.map_booking_wrapper {
+  display: flex;
+}
+
+.map_booking_shape_img {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  cursor: pointer;
 }

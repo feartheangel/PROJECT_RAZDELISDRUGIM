@@ -211,8 +211,16 @@ const CardThings = () => {
 
   function ScrollHandler() {
     setBooking(true);
-    div.current.scrollIntoView();
-    div2.current.scrollIntoView();
+    div.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "end",
+    });
+    div2.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "end",
+    });
   }
 
   React.useEffect(() => {
