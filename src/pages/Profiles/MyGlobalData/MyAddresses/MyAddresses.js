@@ -112,16 +112,16 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               alert("Адрес успешно добавлен в профиль!");
             })
             .catch((e) => {
-              alert(
-                "Не удалось подтвердить адрес, проверьте правильность ввода данных в поля."
-              );
+              alert(Object.values(e.response.data));
               dispatch(setQueryDone());
             });
         }
       })
       .catch((e) => {
         dispatch(setQueryDone());
-        alert("Ошибка сохранения адреса!");
+        alert(
+          "Не удалось определить координаты адреса. Проверьте правильность заполнения полей!"
+        );
       });
   };
 

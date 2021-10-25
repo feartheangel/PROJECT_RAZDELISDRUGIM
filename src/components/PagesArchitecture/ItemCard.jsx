@@ -206,6 +206,8 @@ const ItemCard = ({ item }) => {
                     ? "штука"
                     : item && item.rent === "1кв.м."
                     ? "1кв.м."
+                    : item && item.rent === "1чел."
+                    ? "1 чел."
                     : ""}
                 </p>
               </div>
@@ -408,6 +410,8 @@ const ItemCard = ({ item }) => {
                     ? "штука"
                     : item && item.rent === "1кв.м."
                     ? "1кв.м."
+                    : item && item.rent === "1чел."
+                    ? "1 чел."
                     : ""}
                 </p>
               </div>
@@ -607,6 +611,8 @@ const ItemCard = ({ item }) => {
                     ? "штуку"
                     : item && item.rent === "1кв.м."
                     ? "1кв.м."
+                    : item && item.rent === "1чел."
+                    ? "1 чел."
                     : ""}
                 </p>
               </div>

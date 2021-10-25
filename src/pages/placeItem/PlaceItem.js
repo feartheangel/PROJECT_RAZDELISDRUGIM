@@ -40,6 +40,14 @@ const PlaceItem = () => {
     forceUpdate();
   };
 
+  function getBase64(file, callback) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => callback(reader.result));
+
+    reader.readAsDataURL(file);
+  }
+
   //обработчик добавления фотографий
   const photoHandler = (e) => {
     if (files.length + e.target.files.length > 5) {
@@ -54,10 +62,12 @@ const PlaceItem = () => {
       }
       files.push(file);
       resultList.push(URL.createObjectURL(file));
+      getBase64(file, function (base64Data) {
+        console.log("Base64 of file is", base64Data); // Here you can have your code which uses Base64 for its operation, // file to Base64 by oneshubh
+      });
     });
     setLoadedPhotos(resultList);
     forceUpdate();
-    console.log(loadedPhotos);
   };
 
   //обрабочтик цены аренды
@@ -287,16 +297,16 @@ const PlaceItem = () => {
               alert("Адрес успешно добавлен в профиль!");
             })
             .catch((e) => {
-              alert(
-                "Не удалось подтвердить адрес, проверьте правильность ввода данных в поля."
-              );
+              alert(Object.values(e.response.data));
               dispatch(setQueryDone());
             });
         }
       })
       .catch((e) => {
         dispatch(setQueryDone());
-        alert("Ошибка сохранения адреса!");
+        alert(
+          "Не удалось определить координаты адреса. Проверьте правильность заполнения полей!"
+        );
       });
   };
 
@@ -866,6 +876,7 @@ const PlaceItem = () => {
                   <option value="MONTH">Месяц</option>
                   <option value="PIECE">1 шт.</option>
                   <option value="SQUARE">1кв.м.</option>
+                  <option value="PERSON">1 чел.</option>
                 </select>
               </div>
               <span className="add-item-cost-or">или</span>
@@ -941,6 +952,7 @@ const PlaceItem = () => {
                   <option value="MONTH">Месяц</option>
                   <option value="PIECE">1 шт.</option>
                   <option value="SQUARE">1кв.м.</option>
+                  <option value="PERSON">1 чел.</option>
                 </select>
               </div>
 
@@ -1018,6 +1030,7 @@ const PlaceItem = () => {
                     <option value="MONTH">Месяц</option>
                     <option value="PIECE">1 шт.</option>
                     <option value="SQUARE">1кв.м.</option>
+                    <option value="PERSON">1 чел.</option>
                   </select>
                 </div>
               </div>

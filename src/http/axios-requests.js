@@ -1184,6 +1184,7 @@ class Requests {
     count_date_object,
     reserve_rent,
     reserve_price_rent,
+    reserve_offer_price_rent,
     reserve_self_delivery_price,
     reserve_servicefee_price,
     reserve_pledge_price,
@@ -1214,6 +1215,7 @@ class Requests {
         count_date_object: count_date_object,
         reserve_rent: reserve_rent ? reserve_rent : 0.0,
         reserve_price_rent: reserve_price_rent ? reserve_price_rent : 0.0,
+        reserve_offer_price_rent: reserve_offer_price_rent,
         reserve_self_delivery_price: reserve_self_delivery_price
           ? reserve_self_delivery_price
           : 0.0,

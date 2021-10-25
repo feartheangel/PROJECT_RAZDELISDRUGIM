@@ -725,7 +725,7 @@ select {
 /* МЕДИА ЗАПРОСЫ  */
 @media only screen and (max-width: 480px) {
   #take_Away_komp {
-    display: none !;
+    display: none;
   }
   #take_Away_adaptive {
     display: flex !important;
@@ -780,13 +780,13 @@ select {
   .input_photo {
     margin-bottom: 10px;
   }
-  .add-item-photo{
+  .add-item-photo {
     max-width: 130px;
     width: 100%;
     max-height: 69px;
     height: 100%;
   }
-  .add-item-photo-wrapper{
+  .add-item-photo-wrapper {
     width: 20%;
   }
   /* СТОИМОСТЬ ВЕЩИ В АРЕНДУ */
@@ -799,7 +799,7 @@ select {
     font-weight: normal;
     font-size: 16px;
   }
-  .add-item-input-number__secondary{
+  .add-item-input-number__secondary {
     margin-right: 10px;
   }
   .add-item-input-number {
@@ -903,7 +903,7 @@ select {
     width: 108px;
     margin-right: 10px;
   }
-  .add-item-cost-or__secondary{
+  .add-item-cost-or__secondary {
     margin: 0 10px;
   }
 

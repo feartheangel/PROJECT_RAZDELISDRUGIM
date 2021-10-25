@@ -211,16 +211,18 @@ const CardThings = () => {
 
   function ScrollHandler() {
     setBooking(true);
-    div.current.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "end",
-    });
-    div2.current.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "end",
-    });
+    setTimeout(() => {
+      div.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "end",
+      });
+      div2.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "end",
+      });
+    }, 200);
   }
 
   React.useEffect(() => {
@@ -803,6 +805,8 @@ const CardThings = () => {
                                 ? "штуку"
                                 : itemData && itemData.rent === "1кв.м."
                                 ? "1кв.м."
+                                : itemData && itemData.rent === "1чел."
+                                ? "1 чел."
                                 : ""}
                             </p>
                           </div>
@@ -1587,6 +1591,8 @@ const CardThings = () => {
                                 ? "штуку"
                                 : itemData && itemData.rent === "1кв.м."
                                 ? "1кв.м."
+                                : itemData && itemData.rent === "1чел."
+                                ? "1 чел."
                                 : ""}
                             </p>
                           </div>

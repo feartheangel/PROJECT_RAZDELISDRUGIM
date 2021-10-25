@@ -21,6 +21,9 @@ import People from "../../img/CardThings/Booking/body.png";
 registerLocale("ru", ru);
 
 const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
   const dispatch = useDispatch();
   const { isLoggedIn, addresses, requestActive, userData } = useSelector(
     ({ userData }) => userData
@@ -49,6 +52,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const [coords, setCoords] = React.useState();
   const [addressAdded, setAddressAdded] = React.useState(false);
   const [radioBooking, setRadioBooking] = React.useState();
+  const [offeringPrice, setOfferingPrice] = React.useState();
 
   const [renterBookingName, setRenterBookingName] = React.useState(
     userData.first_name
@@ -57,8 +61,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     userData.phone
   );
   const [renterBookingSms, setRenterBookingSms] = React.useState();
-
-  const [delivery_Сhoice, setDelivery_Сhoice] = React.useState();
 
   // для дней мин время
   var dateminbooking = new Date().toJSON().slice(0, 10);
@@ -76,6 +78,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       } else {
         setRadioBooking("2");
       }
+      forceUpdate();
     },
     [itemData]
   );
@@ -110,13 +113,17 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   // расчёт суммы бронирования если день/час аренды
   const resultSummaArends = Math.round(
     itemData.rent === "День"
-      ? resultdate * itemData.price_rent
+      ? resultdate *
+          (!itemData.offer_price_rent ? itemData.price_rent : offeringPrice)
       : itemData.rent === "Час"
-      ? resulthours * itemData.price_rent
+      ? resulthours *
+        (!itemData.offer_price_rent ? itemData.price_rent : offeringPrice)
       : itemData.rent === "Неделя"
-      ? resultweek * itemData.price_rent
+      ? resultweek *
+        (!itemData.offer_price_rent ? itemData.price_rent : offeringPrice)
       : itemData.rent === "Месяц"
-      ? resultmonths * itemData.price_rent
+      ? resultmonths *
+        (!itemData.offer_price_rent ? itemData.price_rent : offeringPrice)
       : null
   );
 
@@ -257,16 +264,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
               alert("Адрес успешно добавлен в профиль!");
             })
             .catch((e) => {
-              alert(
-                "Не удалось подтвердить адрес, проверьте правильность ввода данных в поля."
-              );
+              alert(Object.values(e.response.data));
               dispatch(setQueryDone());
             });
         }
       })
       .catch((e) => {
         dispatch(setQueryDone());
-        alert("Ошибка сохранения адреса!");
+        alert(
+          "Не удалось определить координаты адреса. Проверьте правильность заполнения полей!"
+        );
       });
   };
 
@@ -329,7 +336,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
           : itemData.rent === "Месяц"
           ? "MONTH"
           : "",
-      reserve_price_rent: itemData.price_rent,
+      reserve_price_rent:
+        itemData.price_rent === 0 ? null : itemData.price_rent,
+      reserve_offer_price_rent: itemData.offer_price_rent
+        ? Number(offeringPrice)
+        : null,
       reserve_self_delivery_price: itemData.self_delivery_price,
       reserve_servicefee_price: itemData.servicefee
         ? itemData.servicefee_price
@@ -766,6 +777,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   </p>
                 </div>
                 {/* СПОСОБЫ ДОСТАВКИ  */}
+
                 <div className="booking_center_up_block_right">
                   {itemData.delivery.includes("Самовывоз") && (
                     <div className="up_block_right_input_block">
@@ -845,6 +857,30 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   )}
                 </div>
               </div>
+
+              {/* предложить цену */}
+              {itemData.offer_price_rent && (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div className="booking_center_down_block2">
+                    <p className="booking_center_down_block2-p">
+                      Ваша цена за {itemData.rent.toLowerCase()}{" "}
+                      <span className="red_star">*</span>
+                    </p>
+                    <input
+                      type="number"
+                      className="add-item-select-input"
+                      onChange={(e) => setOfferingPrice(e.target.value)}
+                      value={offeringPrice}
+                    />
+                  </div>
+                  <p
+                    style={{ marginLeft: "10px" }}
+                    className="information_all_down_left_alldate"
+                  >
+                    BYN
+                  </p>
+                </div>
+              )}
 
               {/* адрес вещи */}
 
@@ -1174,10 +1210,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   Номер телефона <span className="red_star">*</span>
                 </p>
                 <input
-                  type="number"
+                  type="text"
                   className="add-item-select-input"
                   onChange={(e) => renterBookingNumberHandler(e)}
-                  defaultValue={Number(userData.phone)}
+                  defaultValue={userData.phone}
                 />
               </div>
               <div className="booking_center_down_block3">
@@ -1264,7 +1300,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 {" "}
                 (
                 <span className="content_booking_down_block1-p">
-                  {itemData.price_rent} BYN{" "}
+                  {itemData.offer_price_rent
+                    ? offeringPrice
+                    : itemData.price_rent}{" "}
+                  BYN{" "}
                   <span
                     className="content_booking_down_block1-p"
                     style={{ margin: "0 2px" }}
@@ -1710,10 +1749,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   </p>
                 </div>
                 {/* СПОСОБЫ ДОСТАВКИ  */}
-                <div
-                  className="booking_center_up_block_right"
-                  onChange={(e) => radioBookingHandler(e)}
-                >
+                <div className="booking_center_up_block_right">
                   {itemData.delivery.includes("Самовывоз") && (
                     <div className="up_block_right_input_block">
                       <input
@@ -1721,7 +1757,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         name="delivery"
                         className="input_setting"
                         value="1"
-                        onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                        defaultChecked={radioBooking === "1"}
+                        onChange={(e) => setRadioBooking(e.target.value)}
                       />
                       <label
                         for="radio-1"
@@ -1740,7 +1777,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="delivery"
                           className="input_setting"
                           value="2"
-                          onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          defaultChecked={radioBooking === "2"}
+                          onChange={(e) => setRadioBooking(e.target.value)}
                         />
                         <label
                           for="radio-2"
@@ -1763,7 +1801,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           name="delivery"
                           className="input_setting"
                           value="3"
-                          onChange={(e) => setDelivery_Сhoice(e.target.value)}
+                          defaultChecked={radioBooking === "3"}
+                          onChange={(e) => setRadioBooking(e.target.value)}
                         />
                         <label
                           for="radio-3"
@@ -1787,6 +1826,21 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   )}
                 </div>
               </div>
+
+              {itemData.offer_price_rent && (
+                <div className="booking_center_down_block2">
+                  <p className="booking_center_down_block2-p">
+                    Ваша цена за {itemData.rent.toLowerCase()}{" "}
+                    <span className="red_star">*</span>
+                  </p>
+                  <input
+                    type="number"
+                    className="add-item-select-input"
+                    onChange={(e) => setOfferingPrice(e.target.value)}
+                    value={offeringPrice}
+                  />
+                </div>
+              )}
 
               {/* адрес вещи */}
 
@@ -2102,10 +2156,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   Номер телефона <span className="red_star">*</span>
                 </p>
                 <input
-                  type="number"
+                  type="text"
                   className="add-item-select-input"
                   onChange={(e) => renterBookingNumberHandler(e)}
-                  defaultValue={Number(userData.phone)}
+                  defaultValue={userData.phone}
                 />
               </div>
               <div className="booking_center_down_block3">
