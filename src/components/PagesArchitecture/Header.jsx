@@ -584,7 +584,9 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <BaseModal modalActive={modalActive} setModalActive={setModalActive} />
+      {modalActive && (
+        <BaseModal modalActive={modalActive} setModalActive={setModalActive} />
+      )}
     </header>
   );
 };

@@ -68,20 +68,33 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const time = new Date().toLocaleString();
   const [startDate, setStartDate] = React.useState();
 
+  const radioButtonFirst = React.useRef(null);
+
   // автоматический начальный выбор способа доставки
-  React.useEffect(
-    (radioBooking) => {
-      if (itemData.delivery.includes("Самовывоз")) {
-        setRadioBooking("1");
-      } else if (itemData.delivery.includes("Доставка курьером")) {
-        setRadioBooking("3");
-      } else {
-        setRadioBooking("2");
-      }
-      forceUpdate();
-    },
-    [itemData]
-  );
+  React.useEffect(() => {
+    if (itemData.delivery.includes("Самовывоз")) {
+      setRadioBooking("1");
+      var linkPC = document.getElementById("radio1PC");
+      linkPC.click();
+
+      var linkM = document.getElementById("radio1M");
+      linkM.click();
+    } else if (itemData.delivery.includes("Доставка курьером")) {
+      setRadioBooking("3");
+      var linkPC = document.getElementById("radio3PC");
+      linkPC.click();
+
+      var linkM = document.getElementById("radio3M");
+      linkM.click();
+    } else {
+      setRadioBooking("2");
+      var linkPC = document.getElementById("radio2PC");
+      linkPC.click();
+
+      var linkM = document.getElementById("radio2M");
+      linkM.click();
+    }
+  }, [itemData]);
 
   // увеличение начальной даты букинга в зависимости от полудня
   React.useEffect(() => {
@@ -789,11 +802,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         value="1"
                         defaultChecked={radioBooking === "1" ? true : false}
                         onChange={(e) => setRadioBooking(e.target.value)}
-                        id="radio_booking1"
+                        id="radio1PC"
                       />
                       <label
                         className="up_block_right_input_block-text"
-                        htmlFor="radio_booking1"
+                        htmlFor="radio1PC"
                       >
                         Cамовывоз
                       </label>
@@ -809,11 +822,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           value="2"
                           defaultChecked={radioBooking === "2" ? true : false}
                           onChange={(e) => setRadioBooking(e.target.value)}
-                          id="radio_booking2"
+                          id="radio2PC"
                         />
                         <label
                           className="up_block_right_input_block-text"
-                          htmlFor="radio_booking2"
+                          htmlFor="radio2PC"
                         >
                           Привезет и заберет владелец
                         </label>
@@ -832,13 +845,13 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           className="input_setting"
                           value="3"
                           defaultChecked={radioBooking === "3" ? true : false}
-                          id="radio_booking3"
+                          id="radio3PC"
                           onChange={(e) => setRadioBooking(e.target.value)}
                         />
                         <label
                           for="radio-3"
                           className="up_block_right_input_block-text"
-                          htmlFor="radio_booking3"
+                          htmlFor="radio3PC"
                         >
                           Отправить
                         </label>
@@ -1754,15 +1767,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   {itemData.delivery.includes("Самовывоз") && (
                     <div className="up_block_right_input_block">
                       <input
+                        id="radio1M"
                         type="radio"
-                        name="delivery"
+                        name="radioM"
                         className="input_setting"
                         value="1"
                         defaultChecked={radioBooking === "1"}
                         onChange={(e) => setRadioBooking(e.target.value)}
                       />
                       <label
-                        for="radio-1"
+                        htmlFor="radio1M"
                         className="up_block_right_input_block-text"
                       >
                         Cамовывоз
@@ -1774,15 +1788,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_right_input_block2">
                       <div className="up_block_right_input_block2-2">
                         <input
+                          id="radio2M"
                           type="radio"
-                          name="delivery"
+                          name="radioM"
                           className="input_setting"
                           value="2"
                           defaultChecked={radioBooking === "2"}
                           onChange={(e) => setRadioBooking(e.target.value)}
                         />
                         <label
-                          for="radio-2"
+                          htmlFor="radio2M"
                           className="up_block_right_input_block-text"
                         >
                           Привезет и заберет владелец
@@ -1798,15 +1813,16 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_right_input_block3">
                       <div className="up_block_right_input_block3-3">
                         <input
+                          id="radio3M"
                           type="radio"
-                          name="delivery"
+                          name="radioM"
                           className="input_setting"
                           value="3"
                           defaultChecked={radioBooking === "3"}
                           onChange={(e) => setRadioBooking(e.target.value)}
                         />
                         <label
-                          for="radio-3"
+                          htmlFor="radio3M"
                           className="up_block_right_input_block-text"
                         >
                           Отправить

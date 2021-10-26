@@ -349,7 +349,12 @@
      margin-right: 0;
      align-items: center;
      justify-content: space-between;
+     overflow-x: auto;
   }
+  .content__booking_left::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
   .content__booking_right{
     width: -webkit-fill-available;
     margin: 15px 10px;
@@ -388,9 +393,11 @@
     box-sizing: border-box;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 30px;
+    margin-right: 10px;
   }
   .container_profile_optional_left_active{
     color: #FFFFFF;
+    width: max-content;
   }
   .container_profile_optional_left_div_active{
     background: #4CC9F0;
@@ -398,6 +405,7 @@
     box-sizing: border-box;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
     border-radius: 30px;
+    margin-right: 10px;
   }
   .booking_card_image{
     max-width: 155px;
@@ -496,14 +504,56 @@
   .center_block_rowstyle_4{
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 45%;
     align-items: center;
+    padding: 5px;
   }
   .bookingpage_header_img{
     margin-right: 15px;
   }
   .container_profile_content__booking_down{
     display: none;
+  }
+  .container_booking_optional-p{
+    width: max-content;
+  }
+  .content__booking_empty{
+    min-height: 250px;
+    height: 100%;
+  }
+  .content__booking_empty__p{
+    font-size: 16px;
+  }
+  .body_allblock_header_left_text-p-red{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #FF6B6B;
+  }
+  .body_allblock_header_left_text-p-green{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #4ECD78;
+  }
+  .body_allblock_header_left_text-p-disabledbooking{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px; 
+    text-align: center;
+    color: #DC8C5F;
+    padding: 15px 0;
+    margin-left: 5px;
+
+  }
+  .center_block_rowstyle_4_4{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 
 
