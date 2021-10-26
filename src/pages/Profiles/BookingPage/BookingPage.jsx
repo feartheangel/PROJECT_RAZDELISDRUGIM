@@ -648,7 +648,13 @@ const BookingPage = () => {
                             Подтверждено
                           </p>
                         </div>
-                        <div style={{ display: "none" }}>
+                        <div
+                          className={
+                            activeForm3 === "rejected"
+                              ? "container_profile_optional_left_div_active"
+                              : "container_profile_optional_left_div"
+                          }
+                        >
                           <p
                             className={
                               activeForm3 === "rejected"
@@ -661,7 +667,13 @@ const BookingPage = () => {
                           </p>
                         </div>
 
-                        <div style={{ display: "none" }}>
+                        <div
+                          className={
+                            activeForm3 === "canceled"
+                              ? "container_profile_optional_left_div_active"
+                              : "container_profile_optional_left_div"
+                          }
+                        >
                           <p
                             className={
                               activeForm3 === "canceled"
