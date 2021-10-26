@@ -72,7 +72,7 @@ const CatalogComponent = ({ chapterId }) => {
             {redirect}в аренду
           </p>
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             src={`${rootAddress}${[].concat
               .apply(Object.entries(chapters))
               .map((chapter, index) => {
@@ -144,7 +144,7 @@ const CatalogComponent = ({ chapterId }) => {
             {redirect}в аренду
           </p>
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             src={`${rootAddress}${[].concat
               .apply(Object.entries(chapters))
               .map((chapter, index) => {

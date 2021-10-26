@@ -97,7 +97,7 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
               id="regform_pk"
             >
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => setModalActiveEmail(false)}
                 style={{
                   marginTop: "25px",
@@ -190,7 +190,7 @@ const EmailSubmittionModule = ({ modalActiveEmail, setModalActiveEmail }) => {
             >
               <div className="div_for_krestik">
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={() => setModalActiveEmail(false)}
                   className="img_krestik"
                   src={Shape}

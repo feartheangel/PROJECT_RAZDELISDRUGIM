@@ -46,7 +46,7 @@ const Partners = () => {
                       target="_blank"
                     >
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>
@@ -79,7 +79,7 @@ const Partners = () => {
                       target="_blank"
                     >
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>
@@ -110,7 +110,7 @@ const Partners = () => {
                       target="_blank"
                     >
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>
@@ -141,7 +141,7 @@ const Partners = () => {
                       target="_blank"
                     >
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         src={`https://razdelisdrugim.by${item.image_partner}`}
                       />
                     </a>

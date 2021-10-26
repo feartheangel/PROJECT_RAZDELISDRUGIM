@@ -305,12 +305,12 @@ const Header = () => {
           </a>
           <div className="selector_header_items">
             <div className="location-selector">
-              <img alt="picture1" src={Local2} className="location-img" />
+              <img alt="razdelisdrugim" src={Local2} className="location-img" />
               <p className="location-p">{currentLocation && currentLocation}</p>
             </div>
             <div className="laguage-selector-wrapper">
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 src={Planet2}
                 className="language-planet-img"
               />
@@ -334,14 +334,14 @@ const Header = () => {
               <div className="header-right-content-logged-div">
                 <Link to="/favorites" style={{ display: "flex" }}>
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     className="header-right-content-logged-img"
                     src={Like_vector}
                     id="favorites"
                   />
                 </Link>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="header-right-content-logged-img"
                   src={Bell2}
                   id="notifications"
@@ -361,13 +361,13 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                     id="logged-img_last_item"
                   />
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     className="header-right-content-logged-img"
                     src={MenuStroke}
                     id="menuStroke"
@@ -398,7 +398,7 @@ const Header = () => {
             id="header-lower-table-left2"
           >
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => setBurgerActive(!burgerActive)}
               src={Burger}
               className="burger-button"
@@ -431,14 +431,14 @@ const Header = () => {
               <div className="header-right-content-logged-div">
                 <Link to="/favorites">
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     className="header-right-content-logged-img"
                     src={Favorites}
                   />
                 </Link>
                 <div style={{ position: "relative" }}>
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     className="header-right-content-logged-img"
                     src={Notifications}
                     onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
@@ -468,7 +468,7 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     style={{
                       width: "30px",
                       height: "30px",
@@ -477,7 +477,7 @@ const Header = () => {
                     className="header-right-content-logged-img"
                     src={`https://razdelisdrugim.by${userData.image_profile}`}
                   />
-                  <img alt="picture1" src={MenuStroke} />
+                  <img alt="razdelisdrugim" src={MenuStroke} />
                 </div>
               </div>
               {profilePopUpActive && (
@@ -502,7 +502,7 @@ const Header = () => {
       <div className="header-lower-table">
         <div className="header-lower-table-left">
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setBurgerActive(!burgerActive)}
             src={Burger}
             className="burger-button"
@@ -527,7 +527,7 @@ const Header = () => {
                             <p onClick={() => openChapterHandler(chapter[1])}>
                               {chapter[0]}
                               <span>
-                                <img alt="picture1" src={vector2} />
+                                <img alt="razdelisdrugim" src={vector2} />
                               </span>
                             </p>
                             {isLoaded &&

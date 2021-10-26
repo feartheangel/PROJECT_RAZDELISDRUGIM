@@ -79,7 +79,7 @@ const AbilitiesBlock = () => {
                 {redirect}
                 <p className="main-abilities-card-title">Делитесь с другими</p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil1}
                   className="abilities-card-img"
                 />
@@ -95,7 +95,7 @@ const AbilitiesBlock = () => {
                   Арендуйте что хотите
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil2}
                   className="abilities-card-img"
                 />
@@ -110,7 +110,7 @@ const AbilitiesBlock = () => {
                   Расширяйте свой бизнес
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil3}
                   className="abilities-card-img"
                 />
@@ -126,7 +126,7 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Экономьте время</p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil4}
                   className="abilities-card-img"
                 />
@@ -139,7 +139,7 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Будьте спокойны</p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil5}
                   className="abilities-card-img"
                 />
@@ -175,7 +175,7 @@ const AbilitiesBlock = () => {
                 {redirect}
                 <p className="main-abilities-card-title">Делитесь с другими</p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil1}
                   className="abilities-card-img"
                 />
@@ -191,7 +191,7 @@ const AbilitiesBlock = () => {
                   Арендуйте что хотите
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil2}
                   className="abilities-card-img"
                 />
@@ -206,7 +206,7 @@ const AbilitiesBlock = () => {
                   Расширяйте свой бизнес
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil3}
                   className="abilities-card-img"
                 />
@@ -222,7 +222,7 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Экономьте время</p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil4}
                   className="abilities-card-img"
                 />
@@ -235,7 +235,7 @@ const AbilitiesBlock = () => {
               <div className="abilities-card">
                 <p className="main-abilities-card-title">Будьте спокойны</p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil5}
                   className="abilities-card-img"
                 />
@@ -278,7 +278,7 @@ const AbilitiesBlock = () => {
               <div className="abilities-card" id="abilities_upper">
                 <p className="main-abilities-card-title">Делитесь с другими</p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={abil1}
                   className="abilities-card-img"
                 />

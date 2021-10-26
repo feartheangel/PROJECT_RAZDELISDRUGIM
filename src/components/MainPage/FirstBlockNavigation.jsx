@@ -57,7 +57,7 @@ const FirstBlockNavigation = () => {
             Платформа, где делятся вещами<br></br> друг с другом в аренду, и не
             только...
           </p>
-          <img alt="picture1" src={FirstImage} className="FirstImage2" />
+          <img alt="razdelisdrugim" src={FirstImage} className="FirstImage2" />
           <div
             style={{ justifyContent: "flex-start" }}
             className="main_page_first_block_left_bottons"
@@ -80,7 +80,7 @@ const FirstBlockNavigation = () => {
           </div>
           {redirect}
         </div>
-        <img alt="picture1" src={FirstImage} className="FirstImage1" />
+        <img alt="razdelisdrugim" src={FirstImage} className="FirstImage1" />
       </div>
     </section>
   );

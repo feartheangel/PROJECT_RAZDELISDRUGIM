@@ -136,7 +136,7 @@ const AddressFields = ({
           }`}
         </p>
         <img
-          alt="picture1"
+          alt="razdelisdrugim"
           onClick={() => setShowAddressFields(!showAddressFields)}
           src={Vector1}
         />
@@ -162,7 +162,7 @@ const AddressFields = ({
             }`}
           </p>
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setShowAddressFields(!showAddressFields)}
             src={Vector1}
           />
@@ -190,7 +190,7 @@ const AddressFields = ({
             }`}
           </p>
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setShowAddressFields(!showAddressFields)}
             src={Vector1}
           />

@@ -407,7 +407,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         `${rootAddress}${itemData.image_1}?random=` +
                           Math.random()
                       }
-                      alt="picture1"
+                      alt="razdelisdrugim"
                     />
                   )}
                 </div>
@@ -425,7 +425,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.offer_price_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={HandShake}
                           className="yourCost_handShake"
                         />
@@ -441,7 +441,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.free_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={freePrice}
                           className="yourCost_handShake"
                         />
@@ -515,7 +515,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         className="booking_calendar"
                         src={Calendar}
                       />
@@ -770,7 +770,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <div className="card_content_booking_center_up">
               <div className="booking_center_up_block_first">
                 <div className="booking_center_up_block_left">
-                  <img alt="picture1" src={Car} className="img_car_booking" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={Car}
+                    className="img_car_booking"
+                  />
                   <p className="booking_center_up_block_left-p">
                     {" "}
                     Вид доставки
@@ -886,7 +890,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
               <div className="booking_center_up_block_second">
                 <div className="up_block_second_block_up">
-                  <img alt="picture1" src={metka} className="booking_metka" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={metka}
+                    className="booking_metka"
+                  />
                   <p className="up_block_second_block_up-p">
                     Адрес местонахождения вещи
                   </p>
@@ -913,7 +921,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_second_block_down">
                       <div className="up_block_second_block_up">
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={metka}
                           className="booking_metka"
                         />
@@ -1191,7 +1199,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </div>
             <div className="card_content_booking_center_down">
               <div className="booking_center_down_block1">
-                <img alt="picture1" src={People} className="booking_body" />
+                <img
+                  alt="razdelisdrugim"
+                  src={People}
+                  className="booking_body"
+                />
                 <p className="booking_center_down_block1-p">Ваши данные</p>
               </div>
               <div className="booking_center_down_block2">
@@ -1406,7 +1418,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 <div className="header_info_item_photo">
                   {itemData && itemData.image_1 && (
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       className={
                         selectedImage === itemData.image_1
                           ? "card_thing_image_booking"
@@ -1437,7 +1449,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.offer_price_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={HandShake}
                           className="yourCost_handShake"
                         />
@@ -1453,7 +1465,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.free_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={freePrice}
                           className="yourCost_handShake"
                         />
@@ -1527,7 +1539,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         className="booking_calendar"
                         src={Calendar}
                       />
@@ -1742,7 +1754,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <div className="card_content_booking_center_up">
               <div className="booking_center_up_block_first">
                 <div className="booking_center_up_block_left">
-                  <img alt="picture1" src={Car} className="img_car_booking" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={Car}
+                    className="img_car_booking"
+                  />
                   <p className="booking_center_up_block_left-p">
                     {" "}
                     Вид доставки
@@ -1846,7 +1862,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
               <div className="booking_center_up_block_second">
                 <div className="up_block_second_block_up">
-                  <img alt="picture1" src={metka} className="booking_metka" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={metka}
+                    className="booking_metka"
+                  />
                   <p className="up_block_second_block_up-p">
                     Адрес местонахождения
                   </p>
@@ -1872,7 +1892,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
                 <div className="up_block_second_block_down">
                   <div className="up_block_second_block_up">
-                    <img alt="picture1" src={metka} className="booking_metka" />
+                    <img
+                      alt="razdelisdrugim"
+                      src={metka}
+                      className="booking_metka"
+                    />
                     <p className="up_block_second_block_up-p">Адрес доставки</p>
                   </div>
                   <div>
@@ -2137,7 +2161,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </div>
             <div className="card_content_booking_center_down">
               <div className="booking_center_down_block1">
-                <img alt="picture1" src={People} className="booking_body" />
+                <img
+                  alt="razdelisdrugim"
+                  src={People}
+                  className="booking_body"
+                />
                 <p className="booking_center_down_block1-p">Ваши данные</p>
               </div>
               <div className="booking_center_down_block2">
