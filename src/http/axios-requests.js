@@ -116,6 +116,11 @@ class Requests {
     description,
     rent,
     price_rent,
+    image_1,
+    image_2,
+    image_3,
+    image_4,
+    image_5,
     key_words,
     year_release,
     mileage,
@@ -148,7 +153,6 @@ class Requests {
     franchise_price,
     article,
     inventory_number,
-    formData,
     coords,
     prepare_time_choice,
     items_address
@@ -165,6 +169,11 @@ class Requests {
         description: description ? description : "",
         rent: rent,
         price_rent: price_rent,
+        image_1: image_1 ? image_1 : null,
+        image_2: image_2 ? image_2 : null,
+        image_3: image_3 ? image_3 : null,
+        image_4: image_4 ? image_4 : null,
+        image_5: image_5 ? image_5 : null,
         key_words: key_words ? key_words : "",
         year_release: year_release ? year_release : null,
         mileage: mileage ? mileage : "",
@@ -206,19 +215,7 @@ class Requests {
         items_address: items_address,
       },
       url: `${rootAddress}/api/items/create/`,
-    }).then((response) => {
-      return axios({
-        method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("key")}`,
-        },
-        data: formData,
-        url: `${rootAddress}/api/items/update/${response.data.id}/`,
-      }).then((response) => {
-        return response;
-      });
-    });
+    }).then((response) => response);
   }
 
   static getCords(area, locality, street, house, room, index) {
@@ -1214,8 +1211,10 @@ class Requests {
         reservation_time: reservation_time,
         count_date_object: count_date_object,
         reserve_rent: reserve_rent ? reserve_rent : 0.0,
-        reserve_price_rent: reserve_price_rent ? reserve_price_rent : 0.0,
-        reserve_offer_price_rent: reserve_offer_price_rent,
+        reserve_price_rent: reserve_price_rent ? reserve_price_rent : null,
+        reserve_offer_price_rent: reserve_offer_price_rent
+          ? reserve_offer_price_rent
+          : null,
         reserve_self_delivery_price: reserve_self_delivery_price
           ? reserve_self_delivery_price
           : 0.0,

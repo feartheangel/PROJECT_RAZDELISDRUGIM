@@ -442,7 +442,9 @@ const BookingITake = ({
                     Стоимость аренды за весь период
                   </p>
                   <p className="center_block_rowstyle-p2-2">
-                    {item.reserve_price_rent *
+                    {(item.reserve_offer_price_rent
+                      ? item.reserve_offer_price_rent
+                      : item.reserve_price_rent) *
                       Number(item.reservation_time.split("")[0])}{" "}
                     BYN
                   </p>

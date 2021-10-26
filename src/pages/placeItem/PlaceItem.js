@@ -16,6 +16,7 @@ import Vector2 from "../../img/CardThings/LeftContent/Vector2.png";
 let files = [];
 let resultList = [];
 let parsedFiles = [];
+let sendPhotosArray = [];
 
 const PlaceItem = () => {
   //конвертация байтов в размер
@@ -62,8 +63,9 @@ const PlaceItem = () => {
       }
       files.push(file);
       resultList.push(URL.createObjectURL(file));
+
       getBase64(file, function (base64Data) {
-        console.log("Base64 of file is", base64Data); // Here you can have your code which uses Base64 for its operation, // file to Base64 by oneshubh
+        sendPhotosArray.push(base64Data); // Here you can have your code which uses Base64 for its operation, // file to Base64 by oneshubh
       });
     });
     setLoadedPhotos(resultList);
@@ -359,12 +361,6 @@ const PlaceItem = () => {
     }
 
     dispatch(setQueryStarted());
-    const formData = new FormData();
-    files[0] && formData.append("image_1", files[0]);
-    files[1] && formData.append("image_2", files[1]);
-    files[2] && formData.append("image_3", files[2]);
-    files[3] && formData.append("image_4", files[3]);
-    files[4] && formData.append("image_5", files[4]);
 
     Requests.createItem(
       Number(viborCategory),
@@ -372,6 +368,11 @@ const PlaceItem = () => {
       String(description ? capitalizeFirstLetter(description) : ""),
       String(timeArends),
       Number(costArends),
+      sendPhotosArray[0] ? sendPhotosArray[0] : null,
+      sendPhotosArray[1] ? sendPhotosArray[1] : null,
+      sendPhotosArray[2] ? sendPhotosArray[2] : null,
+      sendPhotosArray[3] ? sendPhotosArray[3] : null,
+      sendPhotosArray[4] ? sendPhotosArray[4] : null,
       String(yourKeyWord),
       Number(yearCreate),
       String(mileAge),
@@ -404,7 +405,6 @@ const PlaceItem = () => {
       Number(franchiseSumma),
       String(artikul),
       String(inventoryNumber),
-      formData,
       coords[0],
       String(prepareType),
       String(coords[1])

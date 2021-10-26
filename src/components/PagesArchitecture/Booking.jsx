@@ -336,8 +336,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
           : itemData.rent === "Месяц"
           ? "MONTH"
           : "",
-      reserve_price_rent:
-        itemData.price_rent === 0 ? null : itemData.price_rent,
+      reserve_price_rent: itemData.offer_price_rent
+        ? null
+        : itemData.price_rent,
       reserve_offer_price_rent: itemData.offer_price_rent
         ? Number(offeringPrice)
         : null,
