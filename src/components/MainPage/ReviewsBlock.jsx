@@ -7,7 +7,7 @@ const ReviewsBlock = () => {
       <p className="reviews-main-title">Отзывы о нас</p>
       <div className="reviews-blocks">
         <div className="reviews-block">
-          <img alt="picture1" src={Review} className="review-img" />
+          <img alt="razdelisdrugim" src={Review} className="review-img" />
           <p className="review-name">Андрей Васильевич</p>
           <p className="review-date">20.06.2021</p>
           <p className="review-text">
@@ -16,7 +16,7 @@ const ReviewsBlock = () => {
           </p>
         </div>
         <div className="reviews-block">
-          <img alt="picture1" src={Review} className="review-img" />
+          <img alt="razdelisdrugim" src={Review} className="review-img" />
           <p className="review-name">Андрей Васильевич</p>
           <p className="review-date">20.06.2021</p>
           <p className="review-text">
@@ -25,7 +25,7 @@ const ReviewsBlock = () => {
           </p>
         </div>
         <div className="reviews-block">
-          <img alt="picture1" src={Review} className="review-img" />
+          <img alt="razdelisdrugim" src={Review} className="review-img" />
           <p className="review-name">Андрей Васильевич</p>
           <p className="review-date">20.06.2021</p>
           <p className="review-text">
@@ -34,7 +34,7 @@ const ReviewsBlock = () => {
           </p>
         </div>
         <div className="reviews-block">
-          <img alt="picture1" src={Review} className="review-img" />
+          <img alt="razdelisdrugim" src={Review} className="review-img" />
           <p className="review-name">Андрей Васильевич</p>
           <p className="review-date">20.06.2021</p>
           <p className="review-text">

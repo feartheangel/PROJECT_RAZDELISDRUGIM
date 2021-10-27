@@ -17,6 +17,7 @@ import Vk from "../../img/CardThings/RightContent/Component 42.png";
 import Google from "../../img/ProfilePage/google.png";
 import Facebook from "../../img/ProfilePage/facebook2.png";
 import Ok from "../../img/ProfilePage/ok.png";
+import { rootAddress } from "../../http/axios-requests";
 
 const PublicProfile = () => {
   //расчет времени на платформе
@@ -110,8 +111,8 @@ const PublicProfile = () => {
                 <div className="up_global_margin">
                   <div className="block_down_owner_photo">
                     <img
-                      alt="picture1"
-                      src={`https://razdelisdrugim.by${
+                      alt="razdelisdrugim"
+                      src={`${rootAddress}${
                         profileData && profileData.image_profile
                       }`}
                       style={{
@@ -131,11 +132,31 @@ const PublicProfile = () => {
                         style={{ display: "none" }}
                         className="conditions_row"
                       >
-                        <img alt="picture1" src={Star2} className="img_star" />
-                        <img alt="picture1" src={Star2} className="img_star" />
-                        <img alt="picture1" src={Star2} className="img_star" />
-                        <img alt="picture1" src={Star2} className="img_star" />
-                        <img alt="picture1" src={Star2} className="img_star" />
+                        <img
+                          alt="razdelisdrugim"
+                          src={Star2}
+                          className="img_star"
+                        />
+                        <img
+                          alt="razdelisdrugim"
+                          src={Star2}
+                          className="img_star"
+                        />
+                        <img
+                          alt="razdelisdrugim"
+                          src={Star2}
+                          className="img_star"
+                        />
+                        <img
+                          alt="razdelisdrugim"
+                          src={Star2}
+                          className="img_star"
+                        />
+                        <img
+                          alt="razdelisdrugim"
+                          src={Star2}
+                          className="img_star"
+                        />
                       </div>
                       <div className="block2_reviews_stars">
                         <p className="block2_reviews_text">Пока нет оценок</p>
@@ -153,7 +174,7 @@ const PublicProfile = () => {
                             Телефон подтвержден
                           </p>
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Vector7}
                             className="img_vector"
                           />
@@ -164,7 +185,7 @@ const PublicProfile = () => {
                             Телефон не подтвержден
                           </p>
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Vector6}
                             className="img_vector"
                           />
@@ -177,7 +198,7 @@ const PublicProfile = () => {
                             Почта подтверждена
                           </p>
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Vector7}
                             className="img_vector"
                           />
@@ -188,7 +209,7 @@ const PublicProfile = () => {
                             Почта не подтверждена
                           </p>
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Vector6}
                             className="img_vector"
                           />
@@ -230,7 +251,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Telegram}
                               className="img_social"
@@ -246,7 +267,7 @@ const PublicProfile = () => {
                             }`}
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Viber}
                               className="img_social"
@@ -262,7 +283,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Whatsapp}
                               className="img_social"
@@ -283,7 +304,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Google}
                               className="img_social"
@@ -304,7 +325,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Facebook}
                               className="img_social"
@@ -315,17 +336,21 @@ const PublicProfile = () => {
                           <a
                             href={`${
                               profileData &&
-                              profileData.link_instagram.includes("https")
+                              profileData.link_instagram.includes(
+                                "https://instagram.com"
+                              )
                                 ? profileData.link_instagram
-                                : `https://${
-                                    profileData && profileData.link_instagram
-                                  }`
+                                : profileData.link_instagram.includes(
+                                    "instagram.com"
+                                  )
+                                ? `https://${profileData.link_instagram}`
+                                : `https://instagram.com/${profileData.link_instagram}`
                             }`}
                             target="_blank"
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Instagram}
                               className="img_social"
@@ -346,7 +371,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Vk}
                               className="img_social"
@@ -367,7 +392,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{
                                 height: "30px",
                                 width: "30px",
@@ -510,7 +535,7 @@ const PublicProfile = () => {
                     style={{ width: "auto" }}
                   >
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       src={`https://razdelisdrugim.by${
                         profileData && profileData.image_profile
                       }`}
@@ -548,27 +573,27 @@ const PublicProfile = () => {
                           style={{ marginBottom: "5px" }}
                         >
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
@@ -599,7 +624,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Telegram}
                               className="img_social"
@@ -615,7 +640,7 @@ const PublicProfile = () => {
                             }`}
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Viber}
                               className="img_social"
@@ -631,7 +656,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Whatsapp}
                               className="img_social"
@@ -652,7 +677,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Google}
                               className="img_social"
@@ -673,7 +698,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Facebook}
                               className="img_social"
@@ -684,17 +709,21 @@ const PublicProfile = () => {
                           <a
                             href={`${
                               profileData &&
-                              profileData.link_instagram.includes("https")
+                              profileData.link_instagram.includes(
+                                "https://instagram.com"
+                              )
                                 ? profileData.link_instagram
-                                : `https://${
-                                    profileData && profileData.link_instagram
-                                  }`
+                                : profileData.link_instagram.includes(
+                                    "instagram.com"
+                                  )
+                                ? `https://${profileData.link_instagram}`
+                                : `https://instagram.com/${profileData.link_instagram}`
                             }`}
                             target="_blank"
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Instagram}
                               className="img_social"
@@ -715,7 +744,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Vk}
                               className="img_social"
@@ -736,7 +765,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Ok}
                               className="img_social"
                             />
@@ -756,7 +785,7 @@ const PublicProfile = () => {
                               Телефон подтвержден
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector7}
                               className="img_vector"
                             />
@@ -767,7 +796,7 @@ const PublicProfile = () => {
                               Телефон не подтвержден
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector6}
                               className="img_vector"
                             />
@@ -780,7 +809,7 @@ const PublicProfile = () => {
                               Почта подтверждена
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector7}
                               className="img_vector"
                             />
@@ -791,7 +820,7 @@ const PublicProfile = () => {
                               Почта не подтверждена
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector6}
                               className="img_vector"
                             />
@@ -942,7 +971,7 @@ const PublicProfile = () => {
                     style={{ width: "auto" }}
                   >
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       src={`https://razdelisdrugim.by${
                         profileData && profileData.image_profile
                       }`}
@@ -980,27 +1009,27 @@ const PublicProfile = () => {
                           style={{ marginBottom: "5px" }}
                         >
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
                           <img
-                            alt="picture1"
+                            alt="razdelisdrugim"
                             src={Star2}
                             className="img_star"
                           />
@@ -1031,7 +1060,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Telegram}
                               className="img_social"
@@ -1047,7 +1076,7 @@ const PublicProfile = () => {
                             }`}
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Viber}
                               className="img_social"
@@ -1063,7 +1092,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Whatsapp}
                               className="img_social"
@@ -1084,7 +1113,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Google}
                               className="img_social"
@@ -1105,7 +1134,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Facebook}
                               className="img_social"
@@ -1116,17 +1145,21 @@ const PublicProfile = () => {
                           <a
                             href={`${
                               profileData &&
-                              profileData.link_instagram.includes("https")
+                              profileData.link_instagram.includes(
+                                "https://instagram.com"
+                              )
                                 ? profileData.link_instagram
-                                : `https://${
-                                    profileData && profileData.link_instagram
-                                  }`
+                                : profileData.link_instagram.includes(
+                                    "instagram.com"
+                                  )
+                                ? `https://${profileData.link_instagram}`
+                                : `https://instagram.com/${profileData.link_instagram}`
                             }`}
                             target="_blank"
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Instagram}
                               className="img_social"
@@ -1147,7 +1180,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               style={{ cursor: "pointer" }}
                               src={Vk}
                               className="img_social"
@@ -1168,7 +1201,7 @@ const PublicProfile = () => {
                             rel="noreferrer"
                           >
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Ok}
                               className="img_social"
                             />
@@ -1188,7 +1221,7 @@ const PublicProfile = () => {
                               Телефон подтвержден
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector7}
                               className="img_vector"
                             />
@@ -1199,7 +1232,7 @@ const PublicProfile = () => {
                               Телефон не подтвержден
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector6}
                               className="img_vector"
                             />
@@ -1212,7 +1245,7 @@ const PublicProfile = () => {
                               Почта подтверждена
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector7}
                               className="img_vector"
                             />
@@ -1223,7 +1256,7 @@ const PublicProfile = () => {
                               Почта не подтверждена
                             </p>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               src={Vector6}
                               className="img_vector"
                             />

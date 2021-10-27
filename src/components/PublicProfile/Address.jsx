@@ -10,7 +10,7 @@ const Address = ({ addresses }) => {
           return (
             <div className="Component_Address_row2">
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 src={PhotoLocation}
                 className="Address_row_img"
               />

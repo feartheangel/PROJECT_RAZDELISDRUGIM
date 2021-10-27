@@ -82,7 +82,7 @@ const ItemCard = ({ item }) => {
                   ? `${rootAddress}${item.image_1}?random=` + Math.random()
                   : Loading
               }
-              alt="picture1"
+              alt="razdelisdrugim"
               className="block-image"
             />
             <div className="recent-marks">
@@ -90,7 +90,7 @@ const ItemCard = ({ item }) => {
               item.delivery.includes("Доствка курьером") ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={car}
                   title="Доставка возможна"
                   className="card-mark"
@@ -98,7 +98,7 @@ const ItemCard = ({ item }) => {
               ) : (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={carDisabled}
                   title="Доставка не предусмотрена"
                   className="card-mark"
@@ -107,7 +107,7 @@ const ItemCard = ({ item }) => {
               {item.pledge ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={moneyTime}
                   title="Предусмотрен залог"
                   className="card-mark"
@@ -115,7 +115,7 @@ const ItemCard = ({ item }) => {
               ) : (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={moneyTimeDisabled}
                   title="Залога нет"
                   className="card-mark"
@@ -124,7 +124,7 @@ const ItemCard = ({ item }) => {
               {item.contract ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={Union}
                   title="Составляется договор"
                   className="card-mark"
@@ -132,7 +132,7 @@ const ItemCard = ({ item }) => {
               ) : (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={UnionDisabled}
                   title="Без лишних бумаг"
                   className="card-mark"
@@ -141,7 +141,7 @@ const ItemCard = ({ item }) => {
               {item.insurance ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardVerify}
                   title="Предусмотрена страховка"
                   className="card-mark"
@@ -149,7 +149,7 @@ const ItemCard = ({ item }) => {
               ) : (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardVerifyDisabled}
                   title="Без страховки"
                   className="card-mark"
@@ -157,7 +157,7 @@ const ItemCard = ({ item }) => {
               )}
               <img
                 loading="lazy"
-                alt="picture1"
+                alt="razdelisdrugim"
                 src={cardFireDisabled}
                 title="Акций не предусмотрено"
                 className="card-mark"
@@ -165,7 +165,7 @@ const ItemCard = ({ item }) => {
               {item.servicefee ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardMoney}
                   title="Предусмотрен сервисный сбор"
                   className="card-mark"
@@ -173,7 +173,7 @@ const ItemCard = ({ item }) => {
               ) : (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardMoneyDisabled}
                   title="Сервисного сбора нет"
                   className="card-mark"
@@ -219,7 +219,7 @@ const ItemCard = ({ item }) => {
               >
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
@@ -231,7 +231,7 @@ const ItemCard = ({ item }) => {
                 style={{ justifyContent: "flex-start", marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img alt="picture1" src={freePrice} loading="lazy" />
+                <img alt="razdelisdrugim" src={freePrice} loading="lazy" />
                 <p className="recent-time-p">Бесплатно</p>
               </div>
             )}
@@ -243,7 +243,7 @@ const ItemCard = ({ item }) => {
             {favorites && !isFavorite && isLoggedIn && !isOwn && (
               <img
                 loading="lazy"
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={(e) => addFavoriteHandler(e)}
                 className="itemcard_favorite_img"
                 src={FavoritesDisabled}
@@ -253,7 +253,7 @@ const ItemCard = ({ item }) => {
             {favorites && isFavorite && isLoggedIn && !isOwn && (
               <img
                 loading="lazy"
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={(e) => deleteFavoriteHandler(e)}
                 className="itemcard_favorite_img"
                 src={Favorites}
@@ -263,7 +263,7 @@ const ItemCard = ({ item }) => {
             {isOwn && (
               <img
                 loading="lazy"
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={(e) =>
                   (window.location.href = `/edit-item?id=${item.id}`)
                 }
@@ -293,14 +293,14 @@ const ItemCard = ({ item }) => {
                   : Loading
               }
               className="block-image"
-              alt="picture1"
+              alt="razdelisdrugim"
             />
             <div className="recent-marks">
               {item.delivery.includes("Привезу и заберу сам") ||
               item.delivery.includes("Доствка курьером") ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={car}
                   title="Доставка возможна"
                   className="card-mark"
@@ -308,7 +308,7 @@ const ItemCard = ({ item }) => {
               ) : (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={carDisabled}
                   title="Доставка не предусмотрена"
                   className="card-mark"
@@ -317,7 +317,7 @@ const ItemCard = ({ item }) => {
               {item.pledge ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={moneyTime}
                   title="Предусмотрен залог"
                   className="card-mark"
@@ -325,7 +325,7 @@ const ItemCard = ({ item }) => {
               ) : (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={moneyTimeDisabled}
                   title="Залога нет"
                   className="card-mark"
@@ -334,14 +334,14 @@ const ItemCard = ({ item }) => {
               {item.contract ? (
                 <img
                   loading="lazy"
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={Union}
                   title="Составляется договор"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={UnionDisabled}
                   title="Без лишних бумаг"
                   className="card-mark"
@@ -349,35 +349,35 @@ const ItemCard = ({ item }) => {
               )}
               {item.insurance ? (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardVerify}
                   title="Предусмотрена страховка"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardVerifyDisabled}
                   title="Без страховки"
                   className="card-mark"
                 />
               )}
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 src={cardFireDisabled}
                 title="Акций не предусмотрено"
                 className="card-mark"
               />
               {item.servicefee ? (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardMoney}
                   title="Предусмотрен сервисный сбор"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardMoneyDisabled}
                   title="Сервисного сбора нет"
                   className="card-mark"
@@ -422,7 +422,7 @@ const ItemCard = ({ item }) => {
                 className="recent-time-cost-wrapper"
               >
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
@@ -434,7 +434,7 @@ const ItemCard = ({ item }) => {
                 style={{ justifyContent: "flex-start", marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img alt="picture1" src={freePrice} />
+                <img alt="razdelisdrugim" src={freePrice} />
                 <p className="recent-time-p">Бесплатно</p>
               </div>
             )}
@@ -447,7 +447,7 @@ const ItemCard = ({ item }) => {
             <div className="div_favorites">
               {favorites && !isFavorite && isLoggedIn && !isOwn && (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={(e) => addFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={FavoritesDisabled}
@@ -456,7 +456,7 @@ const ItemCard = ({ item }) => {
 
               {favorites && isFavorite && isLoggedIn && !isOwn && (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={(e) => deleteFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={Favorites}
@@ -465,7 +465,7 @@ const ItemCard = ({ item }) => {
 
               {isOwn && (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={(e) =>
                     (window.location.href = `/edit-item?id=${item.id}`)
                   }
@@ -496,20 +496,20 @@ const ItemCard = ({ item }) => {
                   : Loading
               }
               className="block-image"
-              alt="picture1"
+              alt="razdelisdrugim"
             />
             <div className="recent-marks">
               {item.delivery.includes("Привезу и заберу сам") ||
               item.delivery.includes("Доствка курьером") ? (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={car}
                   title="Доставка возможна"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={carDisabled}
                   title="Доставка не предусмотрена"
                   className="card-mark"
@@ -517,14 +517,14 @@ const ItemCard = ({ item }) => {
               )}
               {item.pledge ? (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={moneyTime}
                   title="Предусмотрен залог"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={moneyTimeDisabled}
                   title="Залога нет"
                   className="card-mark"
@@ -532,14 +532,14 @@ const ItemCard = ({ item }) => {
               )}
               {item.contract ? (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={Union}
                   title="Составляется договор"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={UnionDisabled}
                   title="Без лишних бумаг"
                   className="card-mark"
@@ -547,35 +547,35 @@ const ItemCard = ({ item }) => {
               )}
               {item.insurance ? (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardVerify}
                   title="Предусмотрена страховка"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardVerifyDisabled}
                   title="Без страховки"
                   className="card-mark"
                 />
               )}
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 src={cardFireDisabled}
                 title="Акций не предусмотрено"
                 className="card-mark"
               />
               {item.servicefee ? (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardMoney}
                   title="Предусмотрен сервисный сбор"
                   className="card-mark"
                 />
               ) : (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   src={cardMoneyDisabled}
                   title="Сервисного сбора нет"
                   className="card-mark"
@@ -623,7 +623,7 @@ const ItemCard = ({ item }) => {
                 className="recent-time-cost-wrapper"
               >
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
@@ -635,7 +635,7 @@ const ItemCard = ({ item }) => {
                 style={{ justifyContent: "flex-start", marginTop: "10px" }}
                 className="recent-time-cost-wrapper"
               >
-                <img alt="picture1" src={freePrice} />
+                <img alt="razdelisdrugim" src={freePrice} />
                 <p className="recent-time-p">Бесплатно</p>
               </div>
             )}
@@ -648,7 +648,7 @@ const ItemCard = ({ item }) => {
             <div className="div_favorites">
               {favorites && !isFavorite && isLoggedIn && !isOwn && (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={(e) => addFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={FavoritesDisabled}
@@ -657,7 +657,7 @@ const ItemCard = ({ item }) => {
 
               {favorites && isFavorite && isLoggedIn && !isOwn && (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={(e) => deleteFavoriteHandler(e)}
                   className="itemcard_favorite_img"
                   src={Favorites}
@@ -666,7 +666,7 @@ const ItemCard = ({ item }) => {
 
               {isOwn && (
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={(e) =>
                     (window.location.href = `/edit-item?id=${item.id}`)
                   }

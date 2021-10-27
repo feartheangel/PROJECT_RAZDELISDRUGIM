@@ -24,11 +24,19 @@ const AboutBlock = () => {
           <div>
             <div className="about-middle-part">
               <div className="about-middle-left">
-                <img alt="picture1" src={jacket} className="about-jacket" />
+                <img
+                  alt="razdelisdrugim"
+                  src={jacket}
+                  className="about-jacket"
+                />
               </div>
               <div className="about-middle-right">
                 <p className="about-main-p">
-                  <img alt="picture1" src={jacket} className="about-jacket2" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={jacket}
+                    className="about-jacket2"
+                  />
                   Все началось с моего смокинга. Это такая часть гардероба,
                   которая в шкафу обычного современного человека если 
                   и присутствует, то используется крайне редко, может быть
@@ -83,11 +91,19 @@ const AboutBlock = () => {
           <div>
             <div className="about-middle-part">
               <div className="about-middle-left">
-                <img alt="picture1" src={jacket} className="about-jacket" />
+                <img
+                  alt="razdelisdrugim"
+                  src={jacket}
+                  className="about-jacket"
+                />
               </div>
               <div className="about-middle-right">
                 <p className="about-main-p">
-                  <img alt="picture1" src={jacket} className="about-jacket2" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={jacket}
+                    className="about-jacket2"
+                  />
                   Все началось с моего смокинга. Это такая часть гардероба,
                   которая в шкафу обычного современного человека если 
                   и присутствует, то используется крайне редко, может быть

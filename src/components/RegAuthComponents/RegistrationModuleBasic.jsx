@@ -197,7 +197,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
     <div className="reg-form">
       <div className="div_for_krestik">
         <img
-          alt="picture1"
+          alt="razdelisdrugim"
           onClick={() => setModalActive(false)}
           src={Shape}
           className="img_krestik"

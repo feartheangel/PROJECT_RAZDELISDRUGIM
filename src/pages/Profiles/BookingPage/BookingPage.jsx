@@ -80,8 +80,8 @@ const BookingPage = () => {
         console.log(countShowedTablesCouples);
       } else if (activeForm3 === "canceled") {
         setCountShowedTables(
-          incomingReservations &&
-            incomingReservations.filter(
+          outgoingReservations &&
+            outgoingReservations.filter(
               (item) => item.reservation_status === "CANCELED"
             ).length
         );
@@ -881,25 +881,24 @@ const BookingPage = () => {
                         </p>
                       </div>
                     )}
+                    <p
+                      style={
+                        countShowedTables - countShowedTablesCouples * 3 <= 0
+                          ? { display: "none" }
+                          : {}
+                      }
+                      onClick={() =>
+                        setCountShowedTablesCouples((prev) => prev + 1)
+                      }
+                      className="container_profile_content__booking_down-p"
+                    >
+                      Показать больше
+                    </p>
                   </div>
                 </div>
               </div>
               {/* body down container */}
-              <div className="container_profile_content__booking_down">
-                <p
-                  style={
-                    countShowedTables - countShowedTablesCouples * 3 <= 0
-                      ? { display: "none" }
-                      : {}
-                  }
-                  onClick={() =>
-                    setCountShowedTablesCouples((prev) => prev + 1)
-                  }
-                  className="container_profile_content__booking_down-p"
-                >
-                  Показать больше
-                </p>
-              </div>
+              <div className="container_profile_content__booking_down"></div>
             </div>
           </div>
         </div>

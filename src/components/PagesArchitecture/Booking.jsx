@@ -68,8 +68,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const time = new Date().toLocaleString();
   const [startDate, setStartDate] = React.useState();
 
-  const radioButtonFirst = React.useRef(null);
-
   // автоматический начальный выбор способа доставки
   React.useEffect(() => {
     if (itemData.delivery.includes("Самовывоз")) {
@@ -421,7 +419,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         `${rootAddress}${itemData.image_1}?random=` +
                           Math.random()
                       }
-                      alt="picture1"
+                      alt="razdelisdrugim"
                     />
                   )}
                 </div>
@@ -439,7 +437,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.offer_price_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={HandShake}
                           className="yourCost_handShake"
                         />
@@ -455,7 +453,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.free_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={freePrice}
                           className="yourCost_handShake"
                         />
@@ -529,7 +527,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         className="booking_calendar"
                         src={Calendar}
                       />
@@ -784,7 +782,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <div className="card_content_booking_center_up">
               <div className="booking_center_up_block_first">
                 <div className="booking_center_up_block_left">
-                  <img alt="picture1" src={Car} className="img_car_booking" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={Car}
+                    className="img_car_booking"
+                  />
                   <p className="booking_center_up_block_left-p">
                     {" "}
                     Вид доставки
@@ -900,7 +902,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
               <div className="booking_center_up_block_second">
                 <div className="up_block_second_block_up">
-                  <img alt="picture1" src={metka} className="booking_metka" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={metka}
+                    className="booking_metka"
+                  />
                   <p className="up_block_second_block_up-p">
                     Адрес местонахождения вещи
                   </p>
@@ -927,7 +933,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     <div className="up_block_second_block_down">
                       <div className="up_block_second_block_up">
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={metka}
                           className="booking_metka"
                         />
@@ -1205,7 +1211,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </div>
             <div className="card_content_booking_center_down">
               <div className="booking_center_down_block1">
-                <img alt="picture1" src={People} className="booking_body" />
+                <img
+                  alt="razdelisdrugim"
+                  src={People}
+                  className="booking_body"
+                />
                 <p className="booking_center_down_block1-p">Ваши данные</p>
               </div>
               <div className="booking_center_down_block2">
@@ -1243,154 +1253,172 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
           </div>
 
           {/* нижний блок  */}
-          <div className="card_content_booking_down">
-            <div className="content_booking_down_block1">
-              <p
-                className="content_booking_down_block1-p"
-                style={{ marginRight: "5px" }}
-              >
-                Итоговая стоимость:{" "}
-              </p>
-              <p className="content_booking_down_block1-p">
-                {" "}
-                {startDate === undefined ? (
-                  "-- BYN"
-                ) : startDate <= time ? (
-                  <span style={{ color: "red" }}>
-                    {" "}
-                    Ошибка! (Стартовое время ввода либо меньше настоящего
-                    времени либо равное времени завершения аренды...){" "}
-                  </span>
-                ) : resulthours <= 0 && itemData.rent === "Час" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : resulthours !== 0 && itemData.rent === "Час" ? (
-                  totalAmount + "  BYN"
-                ) : (resultdate <= 0 || resultdate > 30) &&
-                  itemData.rent === "День" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : (resultdate !== 0 || resultdate <= 30) &&
-                  itemData.rent === "День" ? (
-                  totalAmount + "  BYN"
-                ) : (resultweek <= 0 || resultweek > 4) &&
-                  itemData.rent === "Неделя" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : (resultweek !== 0 || resultweek <= 4) &&
-                  itemData.rent === "Неделя" ? (
-                  totalAmount + "  BYN"
-                ) : (resultmonths <= 0 || resultmonths > 12) &&
-                  itemData.rent === "Месяц" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : (resultmonths !== 0 || resultmonths <= 12) &&
-                  itemData.rent === "Месяц" ? (
-                  totalAmount + "  BYN"
-                ) : isNaN(totalAmount) ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды!</span>
-                ) : (
-                  totalAmount + "  BYN"
-                )}{" "}
-              </p>
-            </div>
-
-            <div className="content_booking_down_block1">
-              <p className="content_booking_down_block1-p">
-                {isNaN(resultSummaArends)
-                  ? "--"
-                  : resultSummaArends <= 0
-                  ? "--"
-                  : resultSummaArends}{" "}
-                BYN{" "}
-              </p>
-              <p
-                className="content_booking_down_block1-p"
-                style={{ marginLeft: "5px" }}
-              >
-                {" "}
-                аренда{" "}
-              </p>
-              <p
-                className="content_booking_down_block1-p"
-                style={{ margin: "0 5px" }}
-              >
-                {" "}
-                (
-                <span className="content_booking_down_block1-p">
-                  {itemData.offer_price_rent
-                    ? offeringPrice
-                    : itemData.price_rent}{" "}
-                  BYN{" "}
-                  <span
+          {(timechecked && !itemData.offer_price_rent) ||
+            (timechecked && offeringPrice && (
+              <div className="card_content_booking_down">
+                <div className="content_booking_down_block1">
+                  <p
                     className="content_booking_down_block1-p"
-                    style={{ margin: "0 2px" }}
+                    style={{ marginRight: "5px" }}
+                  >
+                    Итоговая стоимость:{" "}
+                  </p>
+                  <p className="content_booking_down_block1-p">
+                    {" "}
+                    {startDate === undefined ? (
+                      "-- BYN"
+                    ) : startDate <= time ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка! (Стартовое время ввода либо меньше настоящего
+                        времени либо равное времени завершения аренды...){" "}
+                      </span>
+                    ) : resulthours <= 0 && itemData.rent === "Час" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : resulthours !== 0 && itemData.rent === "Час" ? (
+                      totalAmount + "  BYN"
+                    ) : (resultdate <= 0 || resultdate > 30) &&
+                      itemData.rent === "День" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : (resultdate !== 0 || resultdate <= 30) &&
+                      itemData.rent === "День" ? (
+                      totalAmount + "  BYN"
+                    ) : (resultweek <= 0 || resultweek > 4) &&
+                      itemData.rent === "Неделя" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : (resultweek !== 0 || resultweek <= 4) &&
+                      itemData.rent === "Неделя" ? (
+                      totalAmount + "  BYN"
+                    ) : (resultmonths <= 0 || resultmonths > 12) &&
+                      itemData.rent === "Месяц" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : (resultmonths !== 0 || resultmonths <= 12) &&
+                      itemData.rent === "Месяц" ? (
+                      totalAmount + "  BYN"
+                    ) : isNaN(totalAmount) ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!
+                      </span>
+                    ) : (
+                      totalAmount + "  BYN"
+                    )}{" "}
+                  </p>
+                </div>
+
+                <div className="content_booking_down_block1">
+                  <p className="content_booking_down_block1-p">
+                    {isNaN(resultSummaArends)
+                      ? "--"
+                      : resultSummaArends <= 0
+                      ? "--"
+                      : resultSummaArends}{" "}
+                    BYN{" "}
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ marginLeft: "5px" }}
                   >
                     {" "}
-                    x{" "}
-                  </span>
-                  {itemData.rent === "День"
-                    ? isNaN(resultdate)
-                      ? 0 + " сут"
-                      : resultdate + " сут"
-                    : ""}
-                  {itemData.rent === "Час"
-                    ? isNaN(Number.resulthours)
-                      ? resulthours + " час"
-                      : 0 + " час"
-                    : ""}
-                  {itemData.rent === "Неделя"
-                    ? isNaN(resultweek)
-                      ? 0 + " нед"
-                      : resultweek + " нед"
-                    : ""}
-                  {itemData.rent === "Месяц"
-                    ? isNaN(resultmonths)
-                      ? 0 + " мес"
-                      : resultmonths + " мес"
-                    : ""}
-                </span>
-                )
-              </p>
-            </div>
+                    аренда{" "}
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ margin: "0 5px" }}
+                  >
+                    {" "}
+                    (
+                    <span className="content_booking_down_block1-p">
+                      {itemData.offer_price_rent
+                        ? offeringPrice
+                        : itemData.price_rent}{" "}
+                      BYN{" "}
+                      <span
+                        className="content_booking_down_block1-p"
+                        style={{ margin: "0 2px" }}
+                      >
+                        {" "}
+                        x{" "}
+                      </span>
+                      {itemData.rent === "День"
+                        ? isNaN(resultdate)
+                          ? 0 + " сут"
+                          : resultdate + " сут"
+                        : ""}
+                      {itemData.rent === "Час"
+                        ? isNaN(Number.resulthours)
+                          ? resulthours + " час"
+                          : 0 + " час"
+                        : ""}
+                      {itemData.rent === "Неделя"
+                        ? isNaN(resultweek)
+                          ? 0 + " нед"
+                          : resultweek + " нед"
+                        : ""}
+                      {itemData.rent === "Месяц"
+                        ? isNaN(resultmonths)
+                          ? 0 + " мес"
+                          : resultmonths + " мес"
+                        : ""}
+                    </span>
+                    )
+                  </p>
+                </div>
 
-            {radioBooking === "2" && (
-              <div className="content_booking_down_block1">
-                <p className="content_booking_down_block1-p">
-                  {itemData.self_delivery_price === undefined
-                    ? 0
-                    : itemData.self_delivery_price === null
-                    ? 0
-                    : radioBooking === "2"
-                    ? itemData.self_delivery_price
-                    : 0}{" "}
-                  BYN
-                </p>
-                <p
-                  className="content_booking_down_block1-p"
-                  style={{ margin: "0 5px" }}
-                >
-                  доставка
-                </p>
-              </div>
-            )}
+                {radioBooking === "2" && (
+                  <div className="content_booking_down_block1">
+                    <p className="content_booking_down_block1-p">
+                      {itemData.self_delivery_price === undefined
+                        ? 0
+                        : itemData.self_delivery_price === null
+                        ? 0
+                        : radioBooking === "2"
+                        ? itemData.self_delivery_price
+                        : 0}{" "}
+                      BYN
+                    </p>
+                    <p
+                      className="content_booking_down_block1-p"
+                      style={{ margin: "0 5px" }}
+                    >
+                      доставка
+                    </p>
+                  </div>
+                )}
 
-            {itemData.pledge_price > 0 && (
-              <div className="content_booking_down_block2">
-                <p className="content_booking_down_block1-p">
-                  {" "}
-                  {itemData.pledge_price === undefined
-                    ? 0
-                    : itemData.pledge_price === null
-                    ? 0
-                    : itemData.pledge_price}{" "}
-                  BYN{" "}
-                </p>
-                <p
-                  className="content_booking_down_block1-p"
-                  style={{ margin: "0 5px" }}
-                >
-                  возвратный залог
-                </p>
+                {itemData.pledge_price > 0 && (
+                  <div className="content_booking_down_block2">
+                    <p className="content_booking_down_block1-p">
+                      {" "}
+                      {itemData.pledge_price === undefined
+                        ? 0
+                        : itemData.pledge_price === null
+                        ? 0
+                        : itemData.pledge_price}{" "}
+                      BYN{" "}
+                    </p>
+                    <p
+                      className="content_booking_down_block1-p"
+                      style={{ margin: "0 5px" }}
+                    >
+                      возвратный залог
+                    </p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            ))}
         </div>
         {/* кнопка бронированиия */}
         <div className="card_content_booking_btn">
@@ -1420,7 +1448,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 <div className="header_info_item_photo">
                   {itemData && itemData.image_1 && (
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       className={
                         selectedImage === itemData.image_1
                           ? "card_thing_image_booking"
@@ -1451,7 +1479,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.offer_price_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={HandShake}
                           className="yourCost_handShake"
                         />
@@ -1467,7 +1495,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     {itemData && itemData.free_rent && (
                       <div style={{ display: "flex" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           src={freePrice}
                           className="yourCost_handShake"
                         />
@@ -1541,7 +1569,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                   <div className="information_all_down_left">
                     <div className="information_all_down_left_date">
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         className="booking_calendar"
                         src={Calendar}
                       />
@@ -1756,7 +1784,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             <div className="card_content_booking_center_up">
               <div className="booking_center_up_block_first">
                 <div className="booking_center_up_block_left">
-                  <img alt="picture1" src={Car} className="img_car_booking" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={Car}
+                    className="img_car_booking"
+                  />
                   <p className="booking_center_up_block_left-p">
                     {" "}
                     Вид доставки
@@ -1863,7 +1895,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
               <div className="booking_center_up_block_second">
                 <div className="up_block_second_block_up">
-                  <img alt="picture1" src={metka} className="booking_metka" />
+                  <img
+                    alt="razdelisdrugim"
+                    src={metka}
+                    className="booking_metka"
+                  />
                   <p className="up_block_second_block_up-p">
                     Адрес местонахождения
                   </p>
@@ -1889,7 +1925,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
 
                 <div className="up_block_second_block_down">
                   <div className="up_block_second_block_up">
-                    <img alt="picture1" src={metka} className="booking_metka" />
+                    <img
+                      alt="razdelisdrugim"
+                      src={metka}
+                      className="booking_metka"
+                    />
                     <p className="up_block_second_block_up-p">Адрес доставки</p>
                   </div>
                   <div>
@@ -2154,7 +2194,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
             </div>
             <div className="card_content_booking_center_down">
               <div className="booking_center_down_block1">
-                <img alt="picture1" src={People} className="booking_body" />
+                <img
+                  alt="razdelisdrugim"
+                  src={People}
+                  className="booking_body"
+                />
                 <p className="booking_center_down_block1-p">Ваши данные</p>
               </div>
               <div className="booking_center_down_block2">
@@ -2192,155 +2236,182 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
           </div>
 
           {/* нижний блок  */}
-          <div className="card_content_booking_down">
-            <div className="content_booking_down_block1">
-              <p
-                className="content_booking_down_block1-p"
-                style={{ marginRight: "5px" }}
-              >
-                Итоговая стоимость:{" "}
-              </p>
-              <p className="content_booking_down_block1-p">
-                {" "}
-                {startDate === undefined ? (
-                  "-- BYN"
-                ) : startDate <= time ? (
-                  <span style={{ color: "red" }}>
-                    {" "}
-                    Ошибка! (Стартовое время ввода либо меньше настоящего
-                    времени либо равное времени завершения аренды...){" "}
-                  </span>
-                ) : resulthours <= 0 && itemData.rent === "Час" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : resulthours !== 0 && itemData.rent === "Час" ? (
-                  totalAmount + "  BYN"
-                ) : (resultdate <= 0 || resultdate > 30) &&
-                  itemData.rent === "День" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : (resultdate !== 0 || resultdate <= 30) &&
-                  itemData.rent === "День" ? (
-                  totalAmount + "  BYN"
-                ) : (resultweek <= 0 || resultweek > 4) &&
-                  itemData.rent === "Неделя" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : (resultweek !== 0 || resultweek <= 4) &&
-                  itemData.rent === "Неделя" ? (
-                  totalAmount + "  BYN"
-                ) : (resultmonths <= 0 || resultmonths > 12) &&
-                  itemData.rent === "Месяц" ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                ) : (resultmonths !== 0 || resultmonths <= 12) &&
-                  itemData.rent === "Месяц" ? (
-                  totalAmount + "  BYN"
-                ) : isNaN(totalAmount) ? (
-                  <span style={{ color: "red" }}> Ошибка срока аренды!</span>
-                ) : (
-                  totalAmount + "  BYN"
-                )}{" "}
-              </p>
-            </div>
-
-            <div className="content_booking_down_block1">
-              <p className="content_booking_down_block1-p">
-                {isNaN(resultSummaArends)
-                  ? "--"
-                  : resultSummaArends <= 0
-                  ? "--"
-                  : resultSummaArends}{" "}
-                BYN{" "}
-              </p>
-              <p
-                className="content_booking_down_block1-p"
-                style={{ marginLeft: "5px" }}
-              >
-                {" "}
-                аренда{" "}
-              </p>
-              <p
-                className="content_booking_down_block1-p"
-                style={{ margin: "0 5px" }}
-              >
-                {" "}
-                (
-                <span className="content_booking_down_block1-p">
-                  {itemData.price_rent} BYN{" "}
-                  <span
+          {(timechecked && !itemData.offer_price_rent) ||
+            (timechecked && offeringPrice && (
+              <div className="card_content_booking_down">
+                <div className="content_booking_down_block1">
+                  <p
                     className="content_booking_down_block1-p"
-                    style={{ margin: "0 2px" }}
+                    style={{ marginRight: "5px" }}
+                  >
+                    Итоговая стоимость:{" "}
+                  </p>
+                  <p className="content_booking_down_block1-p">
+                    {" "}
+                    {startDate === undefined ? (
+                      "-- BYN"
+                    ) : startDate <= time ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка! (Стартовое время ввода либо меньше настоящего
+                        времени либо равное времени завершения аренды...){" "}
+                      </span>
+                    ) : resulthours <= 0 && itemData.rent === "Час" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : resulthours !== 0 && itemData.rent === "Час" ? (
+                      totalAmount + "  BYN"
+                    ) : (resultdate <= 0 || resultdate > 30) &&
+                      itemData.rent === "День" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : (resultdate !== 0 || resultdate <= 30) &&
+                      itemData.rent === "День" ? (
+                      totalAmount + "  BYN"
+                    ) : (resultweek <= 0 || resultweek > 4) &&
+                      itemData.rent === "Неделя" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : (resultweek !== 0 || resultweek <= 4) &&
+                      itemData.rent === "Неделя" ? (
+                      totalAmount + "  BYN"
+                    ) : (resultmonths <= 0 || resultmonths > 12) &&
+                      itemData.rent === "Месяц" ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!{" "}
+                      </span>
+                    ) : (resultmonths !== 0 || resultmonths <= 12) &&
+                      itemData.rent === "Месяц" ? (
+                      totalAmount + "  BYN"
+                    ) : isNaN(totalAmount) ? (
+                      <span style={{ color: "red" }}>
+                        {" "}
+                        Ошибка срока аренды!
+                      </span>
+                    ) : (
+                      totalAmount + "  BYN"
+                    )}{" "}
+                  </p>
+                </div>
+
+                <div className="content_booking_down_block1">
+                  <p className="content_booking_down_block1-p">
+                    {isNaN(resultSummaArends)
+                      ? "--"
+                      : resultSummaArends <= 0
+                      ? "--"
+                      : resultSummaArends}{" "}
+                    BYN{" "}
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ marginLeft: "5px" }}
                   >
                     {" "}
-                    x{" "}
-                  </span>
-                  {itemData.rent === "День"
-                    ? isNaN(resultdate)
-                      ? 0 + " сут"
-                      : resultdate + " сут"
-                    : ""}
-                  {itemData.rent === "Час"
-                    ? isNaN(resulthours)
-                      ? 0 + " час"
-                      : resulthours + " час"
-                    : ""}
-                  {itemData.rent === "Неделя"
-                    ? isNaN(resultweek)
-                      ? 0 + " нед"
-                      : resultweek + " нед"
-                    : ""}
-                  {itemData.rent === "Месяц"
-                    ? isNaN(resultmonths)
-                      ? 0 + " мес"
-                      : resultmonths + " мес"
-                    : ""}
-                </span>
-                )
-              </p>
-            </div>
+                    аренда{" "}
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ margin: "0 5px" }}
+                  >
+                    {" "}
+                    (
+                    <span className="content_booking_down_block1-p">
+                      {itemData.offer_price_rent
+                        ? offeringPrice
+                        : itemData.price_rent}{" "}
+                      BYN{" "}
+                      <span
+                        className="content_booking_down_block1-p"
+                        style={{ margin: "0 2px" }}
+                      >
+                        {" "}
+                        x{" "}
+                      </span>
+                      {itemData.rent === "День"
+                        ? isNaN(resultdate)
+                          ? 0 + " сут"
+                          : resultdate + " сут"
+                        : ""}
+                      {itemData.rent === "Час"
+                        ? isNaN(resulthours)
+                          ? 0 + " час"
+                          : resulthours + " час"
+                        : ""}
+                      {itemData.rent === "Неделя"
+                        ? isNaN(resultweek)
+                          ? 0 + " нед"
+                          : resultweek + " нед"
+                        : ""}
+                      {itemData.rent === "Месяц"
+                        ? isNaN(resultmonths)
+                          ? 0 + " мес"
+                          : resultmonths + " мес"
+                        : ""}
+                    </span>
+                    )
+                  </p>
+                </div>
 
-            {radioBooking === "2" && (
-              <div className="content_booking_down_block1">
-                <p className="content_booking_down_block1-p">
-                  {itemData.self_delivery_price === undefined
-                    ? 0
-                    : itemData.self_delivery_price === null
-                    ? 0
-                    : radioBooking === "2"
-                    ? itemData.self_delivery_price
-                    : 0}{" "}
-                  BYN
-                </p>
-                <p
-                  className="content_booking_down_block1-p"
-                  style={{ margin: "0 5px" }}
-                >
-                  доставка
-                </p>
-              </div>
-            )}
+                {radioBooking === "2" && (
+                  <div className="content_booking_down_block1">
+                    <p className="content_booking_down_block1-p">
+                      {itemData.self_delivery_price === undefined
+                        ? 0
+                        : itemData.self_delivery_price === null
+                        ? 0
+                        : radioBooking === "2"
+                        ? itemData.self_delivery_price
+                        : 0}{" "}
+                      BYN
+                    </p>
+                    <p
+                      className="content_booking_down_block1-p"
+                      style={{ margin: "0 5px" }}
+                    >
+                      доставка
+                    </p>
+                  </div>
+                )}
 
-            {itemData.pledge_price > 0 && (
-              <div className="content_booking_down_block2">
-                <p className="content_booking_down_block1-p">
-                  {" "}
-                  {itemData.pledge_price === undefined
-                    ? 0
-                    : itemData.pledge_price === null
-                    ? 0
-                    : itemData.pledge_price}{" "}
-                  BYN{" "}
-                </p>
-                <p
-                  className="content_booking_down_block1-p"
-                  style={{ margin: "0 5px" }}
-                >
-                  возвратный залог
-                </p>
+                {itemData.pledge_price > 0 && (
+                  <div className="content_booking_down_block2">
+                    <p className="content_booking_down_block1-p">
+                      {" "}
+                      {itemData.pledge_price === undefined
+                        ? 0
+                        : itemData.pledge_price === null
+                        ? 0
+                        : itemData.pledge_price}{" "}
+                      BYN{" "}
+                    </p>
+                    <p
+                      className="content_booking_down_block1-p"
+                      style={{ margin: "0 5px" }}
+                    >
+                      возвратный залог
+                    </p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            ))}
         </div>
         {/* кнопка бронированиия */}
         <div className="card_content_booking_btn">
-          <button className="booking_btn">Запросить бронирование</button>
+          <input
+            style={{ cursor: "pointer" }}
+            onClick={handleBooking}
+            type="button"
+            value="Запросить бронирование"
+            className="booking_btn"
+          />
         </div>
       </div>
     </div>

@@ -238,7 +238,7 @@ const Chat = () => {
                     <div className="chat_header_left_side_vertical">
                       <Link to="/messages" style={{ textDecoration: "none" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           className="chat_header_stroke_image"
                           src={VectorLeft}
                         />
@@ -248,7 +248,7 @@ const Chat = () => {
                         style={{ textDecoration: "none" }}
                       >
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           className="chat_header_avatar_image"
                           src={`${rootAddress}${companionPhoto}`}
                         />
@@ -309,7 +309,7 @@ const Chat = () => {
                     disabled={cooldownTimer !== 0}
                   />
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     src={Vector_button}
                     className="button_chat"
                     onClick={keyDownHandlerButton}
@@ -370,7 +370,7 @@ const Chat = () => {
                     <div className="chat_header_left_side_vertical">
                       <Link to="/messages" style={{ textDecoration: "none" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           className="chat_header_stroke_image"
                           src={VectorLeft}
                         />
@@ -380,7 +380,7 @@ const Chat = () => {
                         style={{ textDecoration: "none" }}
                       >
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           className="chat_header_avatar_image"
                           src={`${rootAddress}${companionPhoto}`}
                         />
@@ -434,7 +434,7 @@ const Chat = () => {
                     }
                   />
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     src={Vector_button}
                     className="button_chat"
                     onClick={keyDownHandlerButton}
@@ -522,7 +522,7 @@ const Chat = () => {
                     <div className="chat_header_left_side_vertical">
                       <Link to="/messages" style={{ textDecoration: "none" }}>
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           className="chat_header_stroke_image"
                           src={VectorLeft}
                         />
@@ -532,7 +532,7 @@ const Chat = () => {
                         style={{ textDecoration: "none" }}
                       >
                         <img
-                          alt="picture1"
+                          alt="razdelisdrugim"
                           className="chat_header_avatar_image"
                           src={`${rootAddress}${companionPhoto}`}
                         />
@@ -586,7 +586,7 @@ const Chat = () => {
                     disabled={cooldownTimer !== 0}
                   />
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     src={Vector_button}
                     className="button_chat"
                     onClick={keyDownHandlerButton}

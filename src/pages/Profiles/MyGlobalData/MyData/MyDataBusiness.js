@@ -283,7 +283,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               <label className="profile-photo-wrapper" for="photo_input">
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   style={{
                     marginRight: "30px",
                     borderRadius: "100%",
@@ -300,11 +300,11 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             {/*ОТЗЫВЫ ОЦЕНКИ*/}
             <div style={{ display: "none" }} className="content_block2_reviews">
               <div className="block2_reviews_stars">
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
               </div>
               <div className="block2_reviews_stars">
                 <p className="block2_reviews_text">Пока нет оценок</p>
@@ -323,7 +323,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Телефон не подтвержден"}
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
                 />
@@ -336,7 +336,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Почта не подтверждена"}
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
                 />
@@ -680,7 +680,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               {" "}
               Социальные сети и месседжеры{" "}
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
                 src={Vector2}
                 className="img_vector2"
@@ -688,7 +688,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </p>
             <span>
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("tg")}
                 className={
                   activeSocial === "tg"
@@ -698,7 +698,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.telegram_account ? Telegram : TelegramNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("viber")}
                 className={
                   activeSocial === "viber"
@@ -708,7 +708,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.viber_account ? Viber : ViberNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("wa")}
                 className={
                   activeSocial === "wa"
@@ -718,7 +718,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("google")}
                 className={
                   activeSocial === "google"
@@ -728,7 +728,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.google_account ? Google : GoogleNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("fb")}
                 className={
                   activeSocial === "fb"
@@ -738,7 +738,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.link_facebook ? Facebook : FacebookNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("vk")}
                 className={
                   activeSocial === "vk"
@@ -748,7 +748,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.vk_account ? Vk : VkNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("inst")}
                 className={
                   activeSocial === "inst"
@@ -758,7 +758,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.link_instagram ? Instagram : InstagramNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("ok")}
                 className={
                   activeSocial === "ok"
@@ -832,7 +832,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               <label className="profile-photo-wrapper" for="photo_input">
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="profile-photo"
                   src={`${rootAddress}${userData.image_profile}`}
                 />
@@ -852,11 +852,11 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 className="content_block2_reviews"
               >
                 <div className="block2_reviews_stars">
-                  <img alt="picture1" src={Star5} />
-                  <img alt="picture1" src={Star5} />
-                  <img alt="picture1" src={Star5} />
-                  <img alt="picture1" src={Star5} />
-                  <img alt="picture1" src={Star5} />
+                  <img alt="razdelisdrugim" src={Star5} />
+                  <img alt="razdelisdrugim" src={Star5} />
+                  <img alt="razdelisdrugim" src={Star5} />
+                  <img alt="razdelisdrugim" src={Star5} />
+                  <img alt="razdelisdrugim" src={Star5} />
                 </div>
                 <div className="block2_reviews_stars">
                   <p className="block2_reviews_text">Пока нет оценок</p>
@@ -895,7 +895,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Телефон не подтвержден"}
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
                 />
@@ -908,7 +908,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Почта не подтверждена"}
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
                 />
@@ -953,7 +953,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 Социальные сети и месседжеры
               </p>
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
                 src={Vector2}
                 className="img_vector2"
@@ -961,7 +961,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             </div>
             <div className="social_icons">
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("tg")}
                 className={
                   activeSocial === "tg"
@@ -971,7 +971,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.telegram_account ? Telegram : TelegramNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("viber")}
                 className={
                   activeSocial === "viber"
@@ -981,7 +981,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.viber_account ? Viber : ViberNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("wa")}
                 className={
                   activeSocial === "wa"
@@ -991,7 +991,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("google")}
                 className={
                   activeSocial === "google"
@@ -1001,7 +1001,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.google_account ? Google : GoogleNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("fb")}
                 className={
                   activeSocial === "fb"
@@ -1011,7 +1011,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.link_facebook ? Facebook : FacebookNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("vk")}
                 className={
                   activeSocial === "vk"
@@ -1021,7 +1021,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.vk_account ? Vk : VkNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("inst")}
                 className={
                   activeSocial === "inst"
@@ -1031,7 +1031,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 src={userData.link_instagram ? Instagram : InstagramNone}
               />
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => socialClickHandler("ok")}
                 className={
                   activeSocial === "ok"
@@ -1266,7 +1266,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 {" "}
                 О себе:{" "}
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
                   src={Vector2}
                   className="img_vector2"
@@ -1423,7 +1423,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             />
             <label className="profile-photo-wrapper" for="photo_input">
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 className="profile-photo"
                 src={`https://razdelisdrugim.by${userData.image_profile}`}
               />
@@ -1438,11 +1438,11 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
             {/*ОТЗЫВЫ ОЦЕНКИ*/}
             <div className="content_block2_reviews">
               <div style={{ display: "none" }} className="block2_reviews_stars">
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
-                <img alt="picture1" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
+                <img alt="razdelisdrugim" src={Star5} />
               </div>
               <div className="block2_reviews_stars">
                 <p className="block2_reviews_text">Пока нет оценок</p>
@@ -1483,7 +1483,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Телефон не подтвержден"}
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="my-data-submitted-img"
                   src={userData.phone_verify ? Vector : VectorDisabled}
                 />
@@ -1496,7 +1496,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     : "Почта не подтверждена"}
                 </p>
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="my-data-submitted-img"
                   src={userData.email_verify ? Vector : VectorDisabled}
                 />
@@ -1528,7 +1528,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               Социальные сети и месседжеры
             </p>
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               title="Введите тут свои позывные в мессенджерах и ссылки на страницы в соц. сетях – мы позволим арендатору увидеть их, чтобы связаться с вами наиболее удобным для него образом. Сначала нужно заполинть и сохранить профиль"
               src={Vector2}
               className="img_vector2"
@@ -1536,7 +1536,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
           </div>
           <div className="social_icons">
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("tg")}
               className={
                 activeSocial === "tg"
@@ -1546,7 +1546,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               src={userData.telegram_account ? Telegram : TelegramNone}
             />
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("viber")}
               className={
                 activeSocial === "viber"
@@ -1556,7 +1556,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               src={userData.viber_account ? Viber : ViberNone}
             />
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("wa")}
               className={
                 activeSocial === "wa"
@@ -1566,7 +1566,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               src={userData.whatsapp_account ? WhatsApp : WhatsAppNone}
             />
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("google")}
               className={
                 activeSocial === "google"
@@ -1576,7 +1576,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               src={userData.google_account ? Google : GoogleNone}
             />
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("fb")}
               className={
                 activeSocial === "fb"
@@ -1586,7 +1586,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               src={userData.link_facebook ? Facebook : FacebookNone}
             />
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("vk")}
               className={
                 activeSocial === "vk"
@@ -1596,7 +1596,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               src={userData.vk_account ? Vk : VkNone}
             />
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("inst")}
               className={
                 activeSocial === "inst"
@@ -1606,7 +1606,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
               src={userData.link_instagram ? Instagram : InstagramNone}
             />
             <img
-              alt="picture1"
+              alt="razdelisdrugim"
               onClick={() => socialClickHandler("ok")}
               className={
                 activeSocial === "ok"
@@ -1840,7 +1840,7 @@ const MyDataBusiness = ({ setModalActiveNumber, setModalActiveEmail }) => {
                 {" "}
                 О себе:{" "}
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   title="Укажите тут как можно больше информации о себе, чтобы другой пользователь смог составить свое мнение о вас"
                   src={Vector2}
                   className="img_vector2"

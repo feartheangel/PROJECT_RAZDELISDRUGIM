@@ -112,7 +112,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       <div className="log-form" id="regform_pk">
         <div className="div_for_krestik">
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
@@ -227,7 +227,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       <div className="log-form" id="regform_mobile">
         <div className="div_for_krestik">
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
@@ -331,7 +331,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
       <div className="log-form" id="regform_ipad">
         <div className="div_for_krestik">
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"

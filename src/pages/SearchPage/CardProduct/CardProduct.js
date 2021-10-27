@@ -26,16 +26,36 @@ const CardProduct = () => {
     <div className="blocks_card_content">
       <div className="blocks_card_content_inner">
         <div className="blocks_card_content_photo">
-          <img alt="picture1" src={photoItem} />
+          <img alt="razdelisdrugim" src={photoItem} />
         </div>
 
         <div className="blocks_card_social_img">
-          <img alt="picture1" src={socialCar} className="img_socialCar" />
-          <img alt="picture1" src={socialGold} className="img_socialGold" />
-          <img alt="picture1" src={socialPaper} className="img_socialPaper" />
-          <img alt="picture1" src={socialVector} className="img_socialVector" />
-          <img alt="picture1" src={socialFire} className="img_socialFire" />
-          <img alt="picture1" src={socialDollar} className="img_socialDollar" />
+          <img alt="razdelisdrugim" src={socialCar} className="img_socialCar" />
+          <img
+            alt="razdelisdrugim"
+            src={socialGold}
+            className="img_socialGold"
+          />
+          <img
+            alt="razdelisdrugim"
+            src={socialPaper}
+            className="img_socialPaper"
+          />
+          <img
+            alt="razdelisdrugim"
+            src={socialVector}
+            className="img_socialVector"
+          />
+          <img
+            alt="razdelisdrugim"
+            src={socialFire}
+            className="img_socialFire"
+          />
+          <img
+            alt="razdelisdrugim"
+            src={socialDollar}
+            className="img_socialDollar"
+          />
         </div>
 
         <div className="blocks_card_text">
@@ -52,9 +72,9 @@ const CardProduct = () => {
         </div>
 
         <div className="blocks_card_freeTime">
-          <img alt="picture1" src={clock} className="img_clock_block" />
+          <img alt="razdelisdrugim" src={clock} className="img_clock_block" />
           <p>Скоро освободится</p>
-          <img alt="picture1" src={love} className="img_love_block" />
+          <img alt="razdelisdrugim" src={love} className="img_love_block" />
         </div>
       </div>
     </div>

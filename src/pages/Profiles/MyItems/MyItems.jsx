@@ -173,9 +173,6 @@ const MyItems = () => {
           </div>
           <div className="container_profile" style={{ marginRight: "0" }}>
             <div className="container_profile_content__myItems">
-              <div
-                style={{ width: "100%", height: "-webkit-fill-available" }}
-              ></div>
               {subjects &&
                 subjects.map((subject, index) => (
                   <ItemCardProfile

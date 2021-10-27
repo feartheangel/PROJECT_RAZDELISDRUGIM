@@ -12,6 +12,7 @@ import Planet from "../../img/MainPage/Planet.webp";
 import VK from "../../img/MainPage/VK.webp";
 import mark from "../../img/MainPage/Mark.webp";
 import viber from "../../img/MainPage/viber-logo.jpeg";
+import Tg from "../../img/MainPage/tg.png";
 
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -200,9 +201,22 @@ const Footer = () => {
 
           <div className="footer-fifth-col">
             <div className="footer-socials">
-              <img alt="picture1" src={Instagram} className="footer-social" />
-              <img alt="picture1" src={Facebook} className="footer-social" />
-              <img alt="picture1" src={VK} className="footer-social" />
+              <img
+                alt="razdelisdrugim"
+                src={Instagram}
+                className="footer-social"
+              />
+              <img
+                alt="razdelisdrugim"
+                src={Facebook}
+                className="footer-social"
+              />
+              <img alt="razdelisdrugim" src={VK} className="footer-social" />
+            </div>
+            <div style={{ display: "flex" }}>
+              <p className="footer-fifth-p" style={{ marginRight: "10px" }}>
+                Наши боты:
+              </p>
               <a
                 href={
                   window.screen.width > 1024
@@ -213,27 +227,55 @@ const Footer = () => {
                 rel="noreferrer"
               >
                 <img
-                  alt="picture1"
-                  style={{ width: "25px", height: "25px" }}
+                  alt="razdelisdrugim"
+                  style={{ width: "25px", height: "25px", marginRight: "15px" }}
                   src={viber}
+                  className="footer-social"
+                />
+              </a>
+              <a
+                href={`https://t.me/razdelisdrugim_bot`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  alt="razdelisdrugim"
+                  style={{ width: "25px", height: "25px" }}
+                  src={Tg}
                   className="footer-social"
                 />
               </a>
             </div>
             <p className="footer-fifth-p">Все сделки защищены</p>
             <div className="footer-payments">
-              <img alt="picture1" src={ApplePay} className="footer-payment" />
-              <img alt="picture1" src={Visa} className="footer-payment" />
-              <img alt="picture1" src={Mastercard} className="footer-payment" />
-              <img alt="picture1" src={Yandex} className="footer-payment" />
-              <img alt="picture1" src={Webmoney} className="footer-payment" />
+              <img
+                alt="razdelisdrugim"
+                src={ApplePay}
+                className="footer-payment"
+              />
+              <img alt="razdelisdrugim" src={Visa} className="footer-payment" />
+              <img
+                alt="razdelisdrugim"
+                src={Mastercard}
+                className="footer-payment"
+              />
+              <img
+                alt="razdelisdrugim"
+                src={Yandex}
+                className="footer-payment"
+              />
+              <img
+                alt="razdelisdrugim"
+                src={Webmoney}
+                className="footer-payment"
+              />
             </div>
           </div>
         </div>
       </section>
       <div className="footer-lower-part" id="footer-lower1">
         <div className="footer-img-logo-wrapper">
-          <img alt="picture1" src={Logo2} className="footer-img-logo" />
+          <img alt="razdelisdrugim" src={Logo2} className="footer-img-logo" />
         </div>
         <div className="footer-lower-labels">
           <Link
@@ -250,7 +292,11 @@ const Footer = () => {
           </Link>
         </div>
         <div className="footer-localization-wrapper">
-          <img alt="picture1" src={Planet} className="footer-planet-img" />
+          <img
+            alt="razdelisdrugim"
+            src={Planet}
+            className="footer-planet-img"
+          />
           <p className="footer-localization-p">RU</p>
         </div>
       </div>
@@ -274,18 +320,22 @@ const Footer = () => {
           <div className="footer-img-logo-wrapper">
             <img
               width="200px"
-              alt="picture1"
+              alt="razdelisdrugim"
               src={Logo2}
               className="footer-img-logo"
             />
           </div>
           <div className="foooter-right_item">
             <div className="location-selector" id="location-selector2">
-              <img alt="picture1" src={mark} className="location-img1" />
+              <img alt="razdelisdrugim" src={mark} className="location-img1" />
               <p className="location-p">Минск</p>
             </div>
             <div className="footer-localization-wrapper">
-              <img alt="picture1" src={Planet} className="footer-planet-img" />
+              <img
+                alt="razdelisdrugim"
+                src={Planet}
+                className="footer-planet-img"
+              />
               <p className="footer-localization-p">RU</p>
             </div>
           </div>

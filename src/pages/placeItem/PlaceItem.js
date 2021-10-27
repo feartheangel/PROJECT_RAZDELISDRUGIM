@@ -711,7 +711,7 @@ const PlaceItem = () => {
                 Название вещи/услуги{" "}
                 <span className="add-item-span-zvezda">*</span>{" "}
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   title="Назовите свое имущество так, чтобы пользователям было легко ее найти"
                   src={Vector2}
                   className="img_vector2"
@@ -731,7 +731,7 @@ const PlaceItem = () => {
               <label className="add-item-input-label">
                 Выберите раздел <span className="add-item-span-zvezda">*</span>{" "}
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   title="Укажите раздел и категорию имущества, чтобы пользователям было легче найти его в нашем каталоге"
                   src={Vector2}
                   className="img_vector2"
@@ -821,7 +821,7 @@ const PlaceItem = () => {
                               &times;
                             </div>
                             <img
-                              alt="picture1"
+                              alt="razdelisdrugim"
                               className="add-item-photo"
                               key={index}
                               src={photo}
@@ -1080,7 +1080,7 @@ const PlaceItem = () => {
               <label className="add-item-input-label">
                 Адрес местонахождения{" "}
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   title="Введите и выберите адрес местоположения имущества, чтобы пользователям было легче найти его на карте или рядом с собой"
                   src={Vector2}
                   className="img_vector2"
@@ -1546,7 +1546,7 @@ const PlaceItem = () => {
                   <label className="add-item-input-label">
                     Ключевые слова{" "}
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title="Введите ключевые слова, опираясь на которые, мы в том числе, сможем осуществлять поиск"
                       src={Vector2}
                       className="img_vector2"
@@ -1597,7 +1597,7 @@ const PlaceItem = () => {
                   <label className="add-item-input-label">
                     Артикул{" "}
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title="Поле не обязательное, но, возможно, оно поможет отличить одну вещь от другой"
                       src={Vector2}
                       className="img_vector2"
@@ -1618,7 +1618,7 @@ const PlaceItem = () => {
                   <label className="add-item-input-label">
                     Инвентарный номер{" "}
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title="Поле не обязательное, но, возможно, оно поможет отличить одну вещь от другой"
                       src={Vector2}
                       className="img_vector2"
@@ -1666,7 +1666,7 @@ const PlaceItem = () => {
                   <label className="add-item-input-label">
                     Пробег{" "}
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title="Укажите тут пробег, износ, возраст, что может указать на уровень антикварности вашего имущества"
                       src={Vector2}
                       className="img_vector2"
@@ -1687,7 +1687,7 @@ const PlaceItem = () => {
                   <label className="add-item-input-label">
                     Стоимость вещи (если оценивается){" "}
                     <img
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title="Укажите тут, во что вы оцениваете имущество. Это может быть использовано для определения суммы залога"
                       src={Vector2}
                       className="img_vector2"
@@ -1710,7 +1710,7 @@ const PlaceItem = () => {
                     <label className="add-item-input-label">
                       Время получения <br id="br_gl" /> (не позднее){" "}
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         title="Укажите, с какого времени вам было бы удобно предоставить имущество в пользование"
                         src={Vector2}
                         className="img_vector2"
@@ -1756,7 +1756,7 @@ const PlaceItem = () => {
                     <label className="add-item-input-label">
                       Время возврата <br id="br_gl" /> (не позднее){" "}
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         title="Укажите, до какого времени вам хотелось бы получить имущество назад"
                         src={Vector2}
                         className="img_vector2"
@@ -1803,7 +1803,7 @@ const PlaceItem = () => {
                     <label className="add-item-input-label">
                       Время подготовки вещи{" "}
                       <img
-                        alt="picture1"
+                        alt="razdelisdrugim"
                         title="Если между возвратом имущества и выдачей его новому арендатору вам потребуется время на подготовку – то укажите его тут"
                         src={Vector2}
                         className="img_vector2"
@@ -1850,7 +1850,7 @@ const PlaceItem = () => {
                 <label className="add-item-input-label">
                   Вид доставки{" "}
                   <img
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     title="Выберите тут возможны для вас способ получения имущества, либо возможные варианты для доставки или отправки"
                     src={Vector2}
                     className="img_vector2"

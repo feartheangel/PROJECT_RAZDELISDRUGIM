@@ -54,7 +54,6 @@ const BookingITake = ({
       });
     });
   };
-  const mapButtonRef = React.useRef(null);
 
   return (
     <div
@@ -74,7 +73,7 @@ const BookingITake = ({
               >
                 <img
                   src={`${rootAddress}${item.item_id.image_1}`}
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   className="booking_card_image"
                 />
               </Link>
@@ -83,7 +82,7 @@ const BookingITake = ({
               <img
                 className="header_left_text_icon"
                 src={SearchVector}
-                alt="picture1"
+                alt="razdelisdrugim"
                 width="23px"
                 height="20px"
               />
@@ -118,7 +117,7 @@ const BookingITake = ({
                     width="20px"
                     height="13px"
                     src={Car}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     title={
                       item.delivery_choice === "2"
                         ? `Привезет и заберет сам, ${
@@ -138,7 +137,7 @@ const BookingITake = ({
                     width="20px"
                     height="13px"
                     src={carDisabled}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                   />
                 )}
                 {item.reserve_pledge_price !== 0 && (
@@ -147,7 +146,7 @@ const BookingITake = ({
                     width="18px"
                     height="16px"
                     src={Moneytime}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     title={`Залог: ${item.reserve_pledge_price} BYN`}
                   />
                 )}
@@ -157,7 +156,7 @@ const BookingITake = ({
                     width="18px"
                     height="16px"
                     src={moneyTimeDisabled}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                   />
                 )}
                 {item.reserve_contract && (
@@ -166,7 +165,7 @@ const BookingITake = ({
                     width="14px"
                     height="16px"
                     src={Union}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     title="Договор обязателен"
                   />
                 )}
@@ -176,7 +175,7 @@ const BookingITake = ({
                     width="14px"
                     height="16px"
                     src={UnionDisabled}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                   />
                 )}
                 {item.reserve_insurance_price !== 0 && (
@@ -185,7 +184,7 @@ const BookingITake = ({
                     width="16px"
                     height="18px"
                     src={CardVerify}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     title={`Страхование: ${item.reserve_insurance_price} BYN`}
                   />
                 )}
@@ -195,7 +194,7 @@ const BookingITake = ({
                     width="16px"
                     height="18px"
                     src={cardVerifyDisabled}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                   />
                 )}
                 {item.reserve_servicefee_price !== 0 && (
@@ -204,7 +203,7 @@ const BookingITake = ({
                     width="17px"
                     height="17px"
                     src={SettingIcon}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     title={`Сервисный сбор: ${item.reserve_servicefee_price} BYN`}
                   />
                 )}
@@ -214,14 +213,14 @@ const BookingITake = ({
                     width="17px"
                     height="17px"
                     src={cardMoneyDisabled}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                   />
                 )}
                 <img
                   width="14px"
                   height="18px"
                   src={cardFireDisabled}
-                  alt="picture1"
+                  alt="razdelisdrugim"
                 />
               </div>
             </div>
@@ -445,25 +444,29 @@ const BookingITake = ({
                     className="center_block_rowstyle-p2-2"
                     style={{ fontSize: "18px" }}
                   >
-                    70 BYN /
+                    {item.reserve_offer_price_rent > 0
+                      ? item.reserve_offer_price_rent
+                      : item.reserve_price_rent}{" "}
+                    BYN /
                   </p>
                   <p
                     className="center_block_rowstyle-p2-1"
                     style={{ marginLeft: "5px", fontSize: "18px" }}
                   >
-                    1 час
+                    {item.item_id.rent}
                   </p>
                 </div>
               )}
-              {item.reserve_price_rent !== 0 && (
+              {(item.reserve_price_rent !== 0 ||
+                item.reserve_offer_price_rent !== 0) && (
                 <div className="center_block_rowstyle_2">
                   <p className="center_block_rowstyle-p2-1">
                     Стоимость аренды за весь период
                   </p>
                   <p className="center_block_rowstyle-p2-2">
-                    {(item.reserve_offer_price_rent
-                      ? item.reserve_offer_price_rent
-                      : item.reserve_price_rent) *
+                    {(item.reserve_price_rent
+                      ? item.reserve_price_rent
+                      : item.reserve_offer_price_rent) *
                       Number(item.reservation_time.split("")[0])}{" "}
                     BYN
                   </p>
@@ -553,14 +556,14 @@ const BookingITake = ({
             </div>
           )}
 
-          {type === 2 && item.reservation_status === "SUBMITTED" && (
+          {item.reservation_status === "SUBMITTED" && (
             <div className="center_block_rowstyle_3">
               <p
                 className="body_allblock_header_left_text-p"
                 style={{ cursor: "pointer" }}
                 onClick={handleReservationCancel}
               >
-                Отклонить бронирование
+                Отменить бронирование
               </p>
             </div>
           )}
@@ -625,6 +628,11 @@ const BookingITake = ({
       {/* MOBILE */}
       <div
         className="content__booking_right_body_allblock"
+        style={
+          !(index <= countShowedTablesCouples * 3 - 1)
+            ? { display: "none" }
+            : {}
+        }
         id="globaldata_mobile"
       >
         {/* header block */}
@@ -638,7 +646,7 @@ const BookingITake = ({
                 >
                   <img
                     src={`${rootAddress}${item.item_id.image_1}`}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                     className="booking_card_image"
                   />
                 </Link>
@@ -647,7 +655,7 @@ const BookingITake = ({
                 <img
                   className="header_left_text_icon"
                   src={SearchVector}
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   width="23px"
                   height="20px"
                 />
@@ -682,7 +690,7 @@ const BookingITake = ({
                       width="20px"
                       height="13px"
                       src={Car}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title={
                         item.delivery_choice === "2"
                           ? `Привезет и заберет сам, ${
@@ -702,7 +710,7 @@ const BookingITake = ({
                       width="20px"
                       height="13px"
                       src={carDisabled}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                     />
                   )}
                   {item.reserve_pledge_price !== 0 && (
@@ -711,7 +719,7 @@ const BookingITake = ({
                       width="18px"
                       height="16px"
                       src={Moneytime}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title={`Залог: ${item.reserve_pledge_price} BYN`}
                     />
                   )}
@@ -721,7 +729,7 @@ const BookingITake = ({
                       width="18px"
                       height="16px"
                       src={moneyTimeDisabled}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                     />
                   )}
                   {item.reserve_contract && (
@@ -730,7 +738,7 @@ const BookingITake = ({
                       width="14px"
                       height="16px"
                       src={Union}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title="Договор обязателен"
                     />
                   )}
@@ -740,7 +748,7 @@ const BookingITake = ({
                       width="14px"
                       height="16px"
                       src={UnionDisabled}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                     />
                   )}
                   {item.reserve_insurance_price !== 0 && (
@@ -749,7 +757,7 @@ const BookingITake = ({
                       width="16px"
                       height="18px"
                       src={CardVerify}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title={`Страхование: ${item.reserve_insurance_price} BYN`}
                     />
                   )}
@@ -759,7 +767,7 @@ const BookingITake = ({
                       width="16px"
                       height="18px"
                       src={cardVerifyDisabled}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                     />
                   )}
                   {item.reserve_servicefee_price !== 0 && (
@@ -768,7 +776,7 @@ const BookingITake = ({
                       width="17px"
                       height="17px"
                       src={SettingIcon}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                       title={`Сервисный сбор: ${item.reserve_servicefee_price} BYN`}
                     />
                   )}
@@ -778,14 +786,14 @@ const BookingITake = ({
                       width="17px"
                       height="17px"
                       src={cardMoneyDisabled}
-                      alt="picture1"
+                      alt="razdelisdrugim"
                     />
                   )}
                   <img
                     width="14px"
                     height="18px"
                     src={cardFireDisabled}
-                    alt="picture1"
+                    alt="razdelisdrugim"
                   />
                 </div>
               </div>
@@ -1036,23 +1044,29 @@ const BookingITake = ({
                   className="center_block_rowstyle-p2-2"
                   style={{ fontSize: "16px" }}
                 >
-                  70 BYN /
+                  {item.reserve_offer_price_rent > 0
+                    ? item.reserve_offer_price_rent
+                    : item.reserve_price_rent}{" "}
+                  BYN /
                 </p>
                 <p
                   className="center_block_rowstyle-p2-1"
                   style={{ marginLeft: "5px", fontSize: "16px" }}
                 >
-                  1 час
+                  {item.item_id.rent}
                 </p>
               </div>
             )}
-            {item.reserve_price_rent !== 0 && (
+            {(item.reserve_price_rent !== 0 ||
+              item.reserve_offer_price_rent !== 0) && (
               <div className="center_block_rowstyle_2">
                 <p className="center_block_rowstyle-p2-1">
                   Стоимость аренды за весь период
                 </p>
                 <p className="center_block_rowstyle-p2-2">
-                  {item.reserve_price_rent *
+                  {(item.reserve_price_rent
+                    ? item.reserve_price_rent
+                    : item.reserve_offer_price_rent) *
                     Number(item.reservation_time.split("")[0])}{" "}
                   BYN
                 </p>
@@ -1125,7 +1139,7 @@ const BookingITake = ({
               }}
             >
               <div className="center_block_rowstyle_4">
-                <img src={nosuccess} alt="picture1" />
+                <img src={nosuccess} alt="razdelisdrugim" />
                 <p
                   className="body_allblock_header_left_text-p-red"
                   style={{ cursor: "pointer" }}
@@ -1135,7 +1149,7 @@ const BookingITake = ({
                 </p>
               </div>
               <div className="center_block_rowstyle_4">
-                <img src={successbooking} alt="picture1" />
+                <img src={successbooking} alt="razdelisdrugim" />
                 <p
                   className="body_allblock_header_left_text-p-green"
                   style={{ cursor: "pointer" }}
@@ -1148,9 +1162,9 @@ const BookingITake = ({
           )}
 
           {/* отменить бронирование ( когда уже подтверждено ) */}
-          {type === 2 && item.reservation_status === "SUBMITTED" && (
+          {item.reservation_status === "SUBMITTED" && (
             <div className="center_block_rowstyle_4_4">
-              <img src={disabledbooking} alt="picture1" />
+              <img src={disabledbooking} alt="razdelisdrugim" />
               <p
                 className="body_allblock_header_left_text-p-disabledbooking"
                 style={{ cursor: "pointer" }}
@@ -1161,8 +1175,8 @@ const BookingITake = ({
             </div>
           )}
 
-          {/* Если отклонено  */}
-          {false && (
+          {/* Все статусы кроме подтверждено  */}
+          {type === 1 && item.reservation_status !== "SUBMITTED" && (
             <div className="center_block_rowstyle_4_4">
               <img
                 width="15px"

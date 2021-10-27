@@ -60,7 +60,7 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
       <div className="reg-form-email-verification" id="regform_pk">
         <div className="div_for_krestik">
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
@@ -142,7 +142,7 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
       <div className="reg-form-email-verification" id="regform_mobile">
         <div className="div_for_krestik">
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
@@ -225,7 +225,7 @@ const PasswordRecoveryEntry = ({ setModalActive, setActiveForm }) => {
       <div className="reg-form-email-verification" id="regform_ipad">
         <div className="div_for_krestik">
           <img
-            alt="picture1"
+            alt="razdelisdrugim"
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"

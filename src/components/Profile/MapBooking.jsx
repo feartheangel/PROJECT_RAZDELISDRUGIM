@@ -38,7 +38,11 @@ const MapBooking = ({ setModalActiveMap, modalActiveMap, coords }) => {
       <div className="map_booking_wrapper">
         <div onClick={(e) => e.stopPropagation()}>
           <YMaps>
-            <Map state={mapData} width={900} height={500}>
+            <Map
+              state={mapData}
+              width={window.screen.width > 480 ? 900 : 300}
+              height={window.screen.width > 480 ? 500 : 150}
+            >
               <Placemark geometry={coords ? coords : [53.91, 27.55]} />
             </Map>
           </YMaps>

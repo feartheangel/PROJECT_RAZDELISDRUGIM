@@ -87,7 +87,7 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
               style={{ height: "400px" }}
             >
               <img
-                alt="picture1"
+                alt="razdelisdrugim"
                 onClick={() => setModalActive(false)}
                 style={{
                   marginTop: "25px",
@@ -206,7 +206,7 @@ const PasswordRecoverySubmit = ({ setModalActive }) => {
             <div className="reg-form-email-verification">
               <div className="div_for_krestik">
                 <img
-                  alt="picture1"
+                  alt="razdelisdrugim"
                   onClick={() => setModalActive(false)}
                   src={Shape}
                   className="img_krestik"
