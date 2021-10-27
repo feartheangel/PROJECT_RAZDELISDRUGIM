@@ -175,7 +175,10 @@
 
 .list_span_right {
   text-align: right;
-  width: 400px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /* АДАПТИВ */

@@ -532,7 +532,7 @@ const BookingITake = ({
           </div>
         </div>
         {/* footer block */}
-        <div className="body_allblock_footer">
+        <div className="body_allblock_footer" style={{ display: "none" }}>
           {type === 2 && item.reservation_status === "WAITING" && (
             <div className="center_block_rowstyle_3">
               <p
@@ -620,6 +620,117 @@ const BookingITake = ({
               >
                 Оставить отзыв
               </p>
+            </div>
+          )}
+        </div>
+        {/* footer */}
+        <div className="body_allblock_footer">
+          {/* подтвердить / отклонить */}
+          {type === 2 && item.reservation_status === "WAITING" && (
+            <div
+              style={{
+                flexDirection: "row",
+                display: "flex",
+                justifyContent: "space-evenly",
+                width: "100%",
+              }}
+            >
+              <div className="center_block_rowstyle_4">
+                <img src={nosuccess} alt="razdelisdrugim" />
+                <p
+                  className="body_allblock_header_left_text-p-red"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleReservationAbort}
+                >
+                  Отклонить бронирование
+                </p>
+              </div>
+              <div className="center_block_rowstyle_4">
+                <img src={successbooking} alt="razdelisdrugim" />
+                <p
+                  className="body_allblock_header_left_text-p-green"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleReservationSubmit}
+                >
+                  Подтвердить бронирование
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* отменить бронирование ( когда уже подтверждено ) */}
+          {item.reservation_status === "SUBMITTED" && (
+            <div className="center_block_rowstyle_4_4">
+              <img src={disabledbooking} alt="razdelisdrugim" />
+              <p
+                className="body_allblock_header_left_text-p-disabledbooking"
+                style={{ cursor: "pointer" }}
+                onClick={handleReservationCancel}
+              >
+                Отменить бронирование
+              </p>
+            </div>
+          )}
+
+          {/* Все статусы кроме подтверждено  */}
+          {type === 1 && item.reservation_status !== "SUBMITTED" && (
+            <div className="center_block_rowstyle_4_4">
+              <img
+                width="15px"
+                height="20px"
+                src={Retakevector}
+                alt="pictute1"
+                style={{ cursor: "pointer" }}
+              />
+              <p
+                className="body_allblock_header_left_text-p-p1"
+                style={{ cursor: "pointer" }}
+              >
+                Повторить бронирование
+              </p>
+            </div>
+          )}
+
+          {/* если завершено */}
+
+          {false && (
+            <div
+              style={{
+                flexDirection: "row",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="center_block_rowstyle_4">
+                <img
+                  width="15px"
+                  height="20px"
+                  src={Retakevector}
+                  alt="pictute1"
+                  style={{ cursor: "pointer" }}
+                />
+                <p
+                  className="body_allblock_header_left_text-p-p1"
+                  style={{ cursor: "pointer" }}
+                >
+                  Повторить бронирование
+                </p>
+              </div>
+              <div className="center_block_rowstyle_4">
+                <img
+                  width="17px"
+                  height="15px"
+                  src={Textonpage}
+                  alt="pictute1"
+                  style={{ cursor: "pointer" }}
+                />
+                <p
+                  className="body_allblock_header_left_text-p-p1"
+                  style={{ cursor: "pointer" }}
+                >
+                  Оставить отзыв
+                </p>
+              </div>
             </div>
           )}
         </div>

@@ -295,6 +295,12 @@
   line-height: 16px;
   color: #091d20;
 }
+.span_color{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: rgba(28, 46, 69, 0.6);
+}
 
 /* footer */
 .body_allblock_footer {
@@ -303,6 +309,7 @@
   padding-top: 15px;
   border-top: 1px solid #f0f3f5;
   align-items: center;
+  justify-content: center;
 }
 
 .booking_card_image {
@@ -331,6 +338,85 @@
   height: 20px;
   margin-left: 20px;
   cursor: pointer;
+}
+
+/* footer */
+.body_allblock_header_left_text-p-p{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #4CC9F0;
+  margin-left: 5px;
+}
+.center_block_rowstyle-p1-4{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #091D20;
+}
+.body_allblock_header_left_text-p-p1{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 5px;
+  color: #4CC9F0;
+  align-items: center;
+  margin-left: 5px;
+}
+.center_block_rowstyle_4{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
+.bookingpage_header_img{
+  margin-right: 15px;
+}
+.container_profile_content__booking_down{
+  display: none;
+}
+.container_booking_optional-p{
+  width: max-content;
+}
+.content__booking_empty{
+  min-height: 250px;
+  height: 100%;
+}
+.content__booking_empty__p{
+  font-size: 16px;
+}
+.body_allblock_header_left_text-p-red{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #FF6B6B;
+  margin-left: 5px;
+}
+.body_allblock_header_left_text-p-green{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #4ECD78;
+  margin-left: 5px;
+}
+.body_allblock_header_left_text-p-disabledbooking{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px; 
+  text-align: center;
+  color: #DC8C5F;
+  padding: 15px 0;
+  margin-left: 5px;
+
+}
+.center_block_rowstyle_4_4{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -554,6 +640,15 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+  .container_profile_content__booking_down-p{
+    text-align: center;
+  }
+  .span_color{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: rgba(28, 46, 69, 0.6);
   }
 
 

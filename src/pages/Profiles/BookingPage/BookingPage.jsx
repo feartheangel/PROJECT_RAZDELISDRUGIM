@@ -218,7 +218,7 @@ const BookingPage = () => {
                         }
                         onClick={() => setActiveForm3("waiting")}
                       >
-                        В ожидании
+                        В ожидании <span className="span_color">2</span>
                       </p>
                     </div>
                     <div>
@@ -627,7 +627,7 @@ const BookingPage = () => {
                             }
                             onClick={() => setActiveForm3("waiting")}
                           >
-                            В ожидании
+                            В ожидании <span className="span_color">2</span>
                           </p>
                         </div>
                         <div

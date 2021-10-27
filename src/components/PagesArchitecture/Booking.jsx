@@ -1658,10 +1658,10 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               locale="ru"
                               timeFormat="HH:mm"
                               dateFormat="Pp"
-                              timeIntervals={15}
+                              timeIntervals={60}
                               minDate={new Date()}
                               timeInputLabel="Time:"
-                              // filterTime={filterPassedTime}
+                              filterTime={filterPassedTime3}
                             />
                           </label>
 
@@ -1923,273 +1923,295 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                 </p> */}
                 </div>
 
-                <div className="up_block_second_block_down">
-                  <div className="up_block_second_block_up">
-                    <img
-                      alt="razdelisdrugim"
-                      src={metka}
-                      className="booking_metka"
-                    />
-                    <p className="up_block_second_block_up-p">Адрес доставки</p>
-                  </div>
-                  <div>
-                    <div className="add-item-input-wrapper">
-                      <select
-                        className="add-item-select-input"
-                        onChange={(e) => setCoords(e.target.value.split(",,"))}
-                      >
-                        <option>Не выбран</option>
-                        {isLoaded &&
-                          addressesFormatted.map((item, index) => (
-                            <option
-                              selected={
-                                addressAdded &&
-                                index + 1 === addressesFormatted.length
-                              }
-                              value={`${item[1]},,${item[0]}`}
-                              key={index}
-                            >
-                              {item[0]}
-                            </option>
-                          ))}
-                      </select>
-                    </div>
-                    {addresses.length < maxAddressesCount && (
-                      <div
-                        style={{ marginBottom: "20px" }}
-                        id="dop_parametr_wrapper"
-                      >
-                        <input
-                          id="dop_parametr"
-                          className="add-item-input-checkbox__3"
-                          type="checkbox"
+                {(itemData.delivery.includes("Привезу и заберу сам") ||
+                  itemData.delivery.includes("Доставка курьером")) &&
+                  (radioBooking === "2" || radioBooking === "3") && (
+                    <div className="up_block_second_block_down">
+                      <div className="up_block_second_block_up">
+                        <img
+                          alt="razdelisdrugim"
+                          src={metka}
+                          className="booking_metka"
                         />
-                        <label
-                          onClick={() =>
-                            setShowAddressAddTable(!showAddressAddTable)
-                          }
-                          htmlFor="dop_parametr"
-                        >
-                          + Добавить другой адрес
-                        </label>
+                        <p className="up_block_second_block_up-p">
+                          Адрес доставки
+                        </p>
                       </div>
-                    )}
-
-                    {showAddressAddTable && (
-                      <div className="take-away-secondary-wrapper-column">
-                        <div className="take-away-secondary-wrapper">
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Область{" "}
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: Минская"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={area}
-                              onChange={(e) => setArea(e.target.value)}
-                            />
-                          </div>
-
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Населенный пункт{" "}
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: Минск"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={locality}
-                              onChange={(e) => setLocality(e.target.value)}
-                            />
-                          </div>
-
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Район
-                            </label>
-                            <input
-                              placeholder="Например: Советский"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={district}
-                              onChange={(e) => setDistrict(e.target.value)}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="take-away-secondary-wrapper">
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Улица/Проспект/Переулок{" "}
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
-                              type="text"
-                              className="add-item-input-text__address__street"
-                              value={street}
-                              onChange={(e) => setStreet(e.target.value)}
-                            />
-                          </div>
-
-                          <div className="add-item-input-wrapper">
-                            <label className="add-item-input-label">
-                              Индекс
-                              <span className="add-item-span-zvezda">*</span>
-                            </label>
-                            <input
-                              placeholder="Например: 225417"
-                              type="text"
-                              className="add-item-input-text__address"
-                              value={index}
-                              onChange={(e) => setIndex(e.target.value)}
-                            />
-                          </div>
-                        </div>
-
-                        {/* МОБИЛЬНАЯ ВЕРСИЯ ( дом квартира и тд ) */}
-
-                        <div
-                          className="take-away-secondary-wrapper"
-                          id="globaldata_mobile"
-                        >
-                          <div
-                            className="take-away-secondary-wrapper"
-                            id="take-away-secondary-wrapper"
+                      <div>
+                        <div className="add-item-input-wrapper">
+                          <select
+                            className="add-item-select-input"
+                            onChange={(e) =>
+                              setCoords(e.target.value.split(",,"))
+                            }
                           >
-                            <div
-                              className="take-away-secondary-wrapper"
-                              id="take-away-secondary-wrapper"
+                            <option>Не выбран</option>
+                            {isLoaded &&
+                              addressesFormatted.map((item, index) => (
+                                <option
+                                  selected={
+                                    addressAdded &&
+                                    index + 1 === addressesFormatted.length
+                                  }
+                                  value={`${item[1]},,${item[0]}`}
+                                  key={index}
+                                >
+                                  {item[0]}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+                        {addresses.length < maxAddressesCount && (
+                          <div
+                            style={{ marginBottom: "20px" }}
+                            id="dop_parametr_wrapper"
+                          >
+                            <input
+                              id="dop_parametr"
+                              className="add-item-input-checkbox__3"
+                              type="checkbox"
+                            />
+                            <label
+                              onClick={() =>
+                                setShowAddressAddTable(!showAddressAddTable)
+                              }
+                              htmlFor="dop_parametr"
                             >
-                              <div
-                                className="add-item-input-wrapper"
-                                id="add_item_gl_margin"
-                              >
+                              + Добавить другой адрес
+                            </label>
+                          </div>
+                        )}
+
+                        {showAddressAddTable && (
+                          <div className="take-away-secondary-wrapper-column">
+                            <div className="take-away-secondary-wrapper">
+                              <div className="add-item-input-wrapper">
                                 <label className="add-item-input-label">
-                                  Дом{" "}
+                                  Область{" "}
                                   <span className="add-item-span-zvezda">
                                     *
                                   </span>
                                 </label>
                                 <input
-                                  disabled={room || office || building}
+                                  placeholder="Например: Минская"
                                   type="text"
-                                  className="add-item-input-text__address__house"
-                                  value={house}
-                                  onChange={(e) => setHouse(e.target.value)}
-                                />
-                              </div>
-                              <div
-                                className="add-item-input-wrapper"
-                                id="add_item_gl_margin"
-                              >
-                                <label className="add-item-input-label">
-                                  Корпус
-                                </label>
-                                <input
-                                  disabled={room || office || building}
-                                  type="text"
-                                  className="add-item-input-text__address__house"
-                                  value={body}
-                                  onChange={(e) => setBody(e.target.value)}
+                                  className="add-item-input-text__address"
+                                  value={area}
+                                  onChange={(e) => setArea(e.target.value)}
                                 />
                               </div>
 
                               <div className="add-item-input-wrapper">
                                 <label className="add-item-input-label">
-                                  Квартира
+                                  Населенный пункт{" "}
+                                  <span className="add-item-span-zvezda">
+                                    *
+                                  </span>
                                 </label>
                                 <input
-                                  disabled={room || office || building}
+                                  placeholder="Например: Минск"
                                   type="text"
-                                  className="add-item-input-text__address__house"
-                                  value={flat}
-                                  onChange={(e) => setFlat(e.target.value)}
+                                  className="add-item-input-text__address"
+                                  value={locality}
+                                  onChange={(e) => setLocality(e.target.value)}
+                                />
+                              </div>
+
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Район
+                                </label>
+                                <input
+                                  placeholder="Например: Советский"
+                                  type="text"
+                                  className="add-item-input-text__address"
+                                  value={district}
+                                  onChange={(e) => setDistrict(e.target.value)}
                                 />
                               </div>
                             </div>
 
+                            <div className="take-away-secondary-wrapper">
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Улица/Проспект/Переулок{" "}
+                                  <span className="add-item-span-zvezda">
+                                    *
+                                  </span>
+                                </label>
+                                <input
+                                  placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
+                                  type="text"
+                                  className="add-item-input-text__address__street"
+                                  value={street}
+                                  onChange={(e) => setStreet(e.target.value)}
+                                />
+                              </div>
+
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Индекс
+                                  <span className="add-item-span-zvezda">
+                                    *
+                                  </span>
+                                </label>
+                                <input
+                                  placeholder="Например: 225417"
+                                  type="text"
+                                  className="add-item-input-text__address"
+                                  value={index}
+                                  onChange={(e) => setIndex(e.target.value)}
+                                />
+                              </div>
+                            </div>
+
+                            {/* МОБИЛЬНАЯ ВЕРСИЯ ( дом квартира и тд ) */}
+
                             <div
                               className="take-away-secondary-wrapper"
-                              id="take-away-secondary-wrapper"
+                              id="globaldata_mobile"
                             >
                               <div
                                 className="take-away-secondary-wrapper"
                                 id="take-away-secondary-wrapper"
                               >
                                 <div
-                                  className="add-item-input-wrapper"
-                                  id="add_item_gl_margin"
+                                  className="take-away-secondary-wrapper"
+                                  id="take-away-secondary-wrapper"
                                 >
-                                  <label className="add-item-input-label">
-                                    Помещение{" "}
-                                    <span className="add-item-span-zvezda">
-                                      *
-                                    </span>
-                                  </label>
-                                  <input
-                                    disabled={house || body || flat}
-                                    type="text"
-                                    className="add-item-input-text__address__house"
-                                    value={room}
-                                    onChange={(e) => setRoom(e.target.value)}
-                                  />
-                                </div>
-                                <div
-                                  className="add-item-input-wrapper"
-                                  id="add_item_gl_margin"
-                                >
-                                  <label className="add-item-input-label">
-                                    Офис
-                                  </label>
-                                  <input
-                                    disabled={house || body || flat}
-                                    type="text"
-                                    className="add-item-input-text__address__house"
-                                    value={office}
-                                    onChange={(e) => setOffice(e.target.value)}
-                                  />
+                                  <div
+                                    className="add-item-input-wrapper"
+                                    id="add_item_gl_margin"
+                                  >
+                                    <label className="add-item-input-label">
+                                      Дом{" "}
+                                      <span className="add-item-span-zvezda">
+                                        *
+                                      </span>
+                                    </label>
+                                    <input
+                                      disabled={room || office || building}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={house}
+                                      onChange={(e) => setHouse(e.target.value)}
+                                    />
+                                  </div>
+                                  <div
+                                    className="add-item-input-wrapper"
+                                    id="add_item_gl_margin"
+                                  >
+                                    <label className="add-item-input-label">
+                                      Корпус
+                                    </label>
+                                    <input
+                                      disabled={room || office || building}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={body}
+                                      onChange={(e) => setBody(e.target.value)}
+                                    />
+                                  </div>
+
+                                  <div className="add-item-input-wrapper">
+                                    <label className="add-item-input-label">
+                                      Квартира
+                                    </label>
+                                    <input
+                                      disabled={room || office || building}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={flat}
+                                      onChange={(e) => setFlat(e.target.value)}
+                                    />
+                                  </div>
                                 </div>
 
-                                <div className="add-item-input-wrapper">
-                                  <label className="add-item-input-label">
-                                    Строение
-                                  </label>
-                                  <input
-                                    disabled={house || body || flat}
-                                    type="text"
-                                    className="add-item-input-text__address__house"
-                                    value={building}
-                                    onChange={(e) =>
-                                      setBuilding(e.target.value)
-                                    }
-                                  />
+                                <div
+                                  className="take-away-secondary-wrapper"
+                                  id="take-away-secondary-wrapper"
+                                >
+                                  <div
+                                    className="take-away-secondary-wrapper"
+                                    id="take-away-secondary-wrapper"
+                                  >
+                                    <div
+                                      className="add-item-input-wrapper"
+                                      id="add_item_gl_margin"
+                                    >
+                                      <label className="add-item-input-label">
+                                        Помещение{" "}
+                                        <span className="add-item-span-zvezda">
+                                          *
+                                        </span>
+                                      </label>
+                                      <input
+                                        disabled={house || body || flat}
+                                        type="text"
+                                        className="add-item-input-text__address__house"
+                                        value={room}
+                                        onChange={(e) =>
+                                          setRoom(e.target.value)
+                                        }
+                                      />
+                                    </div>
+                                    <div
+                                      className="add-item-input-wrapper"
+                                      id="add_item_gl_margin"
+                                    >
+                                      <label className="add-item-input-label">
+                                        Офис
+                                      </label>
+                                      <input
+                                        disabled={house || body || flat}
+                                        type="text"
+                                        className="add-item-input-text__address__house"
+                                        value={office}
+                                        onChange={(e) =>
+                                          setOffice(e.target.value)
+                                        }
+                                      />
+                                    </div>
+
+                                    <div className="add-item-input-wrapper">
+                                      <label className="add-item-input-label">
+                                        Строение
+                                      </label>
+                                      <input
+                                        disabled={house || body || flat}
+                                        type="text"
+                                        className="add-item-input-text__address__house"
+                                        value={building}
+                                        onChange={(e) =>
+                                          setBuilding(e.target.value)
+                                        }
+                                      />
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
+                            <input
+                              disabled={requestActive}
+                              id="save_address"
+                              className={
+                                requestActive
+                                  ? "add-item-save-new-address-button disabled"
+                                  : "add-item-save-new-address-button"
+                              }
+                              type="button"
+                              value={
+                                requestActive
+                                  ? "ОТПРАВКА..."
+                                  : "Сохранить адрес"
+                              }
+                              onClick={saveNewAddress}
+                            />
                           </div>
-                        </div>
-                        <input
-                          disabled={requestActive}
-                          id="save_address"
-                          className={
-                            requestActive
-                              ? "add-item-save-new-address-button disabled"
-                              : "add-item-save-new-address-button"
-                          }
-                          type="button"
-                          value={
-                            requestActive ? "ОТПРАВКА..." : "Сохранить адрес"
-                          }
-                          onClick={saveNewAddress}
-                        />
+                        )}
                       </div>
-                    )}
-                  </div>
-                </div>
+                    </div>
+                  )}
               </div>
             </div>
             <div className="card_content_booking_center_down">

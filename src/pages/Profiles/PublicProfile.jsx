@@ -193,7 +193,12 @@ const PublicProfile = () => {
                       )}
 
                       {profileData && profileData.email_verify ? (
-                        <div className="telephone_row1">
+                        <div
+                          className="telephone_row1"
+                          style={{
+                            justifyContent: "space-between",
+                          }}
+                        >
                           <p className="block_down_telephone-p2">
                             Почта подтверждена
                           </p>
