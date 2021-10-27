@@ -10,15 +10,10 @@ import {
 import { Redirect } from "react-router-dom";
 import Requests from "../../http/axios-requests";
 import "./PlaseItem.css";
-import { rootAddress } from "../../http/axios-requests";
-// import Logo from "../../img/MainPage/Logo.png";
-// import mark from "../../img/MainPage/Mark.png";
-// import LanguagePlanet from "../../img/MainPage/Language-planet.png";
-// import {Link} from "react-router-dom";
-// import Burger from "../../img/MainPage/Burger.png";
 let files = [];
 let resultList = [];
 let parsedFiles = [];
+let sendPhotosArray = [];
 
 const EditItem = () => {
   //конвертация байтов в размер
@@ -38,12 +33,19 @@ const EditItem = () => {
   //обработчик удаления фотографии
   const removePhotoHandler = (index) => {
     files.splice(index, 1);
+    sendPhotosArray.splice(index, 1);
     loadedPhotos.splice(index, 1);
     setLoadedPhotos(loadedPhotos);
     forceUpdate();
-    console.log(files);
-    console.log(loadedPhotos);
   };
+
+  function getBase64(file, callback) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => callback(reader.result));
+
+    reader.readAsDataURL(file);
+  }
 
   //обработчик добавления фотографий
   const photoHandler = (e) => {
@@ -59,6 +61,10 @@ const EditItem = () => {
       }
       files.push(file);
       resultList.push(URL.createObjectURL(file));
+
+      getBase64(file, function (base64Data) {
+        sendPhotosArray.push(base64Data); // Here you can have your code which uses Base64 for its operation, // file to Base64 by oneshubh
+      });
     });
     setLoadedPhotos(resultList);
     forceUpdate();
@@ -309,13 +315,6 @@ const EditItem = () => {
 
   //обработчик отправки формы
   const sendHandler = () => {
-    const formData = new FormData();
-    files[0] && formData.append("image_1", files[0]);
-    files[1] && formData.append("image_2", files[1]);
-    files[2] && formData.append("image_3", files[2]);
-    files[3] && formData.append("image_4", files[3]);
-    files[4] && formData.append("image_5", files[4]);
-
     if (!userData.phone_verify) {
       alert("У вас не подтвержден телефон. Это можно сделать в профиле!");
       return;
@@ -369,6 +368,11 @@ const EditItem = () => {
       String(description ? capitalizeFirstLetter(description) : ""),
       String(timeArends),
       Number(costArends),
+      sendPhotosArray[0] ? sendPhotosArray[0] : null,
+      sendPhotosArray[1] ? sendPhotosArray[1] : null,
+      sendPhotosArray[2] ? sendPhotosArray[2] : null,
+      sendPhotosArray[3] ? sendPhotosArray[3] : null,
+      sendPhotosArray[4] ? sendPhotosArray[4] : null,
       String(yourKeyWord),
       Number(yearCreate),
       String(mileAge),
@@ -401,7 +405,6 @@ const EditItem = () => {
       Number(franchiseSumma),
       String(artikul),
       String(inventoryNumber),
-      formData,
       coords[0].includes(")")
         ? coords[0].split("(")[1].split(")")[0].split(" ").reverse().join(" ")
         : coords[0],
@@ -574,88 +577,73 @@ const EditItem = () => {
         );
         currentSubject[0] &&
           currentSubject[0].image_1 &&
-          fetch(`${rootAddress}${currentSubject[0].image_1}`)
-            .then((response) => {
-              return response.blob();
-            })
-            .then(
-              (blobFile) =>
-                new File([blobFile], "image_1.png", { type: "image/png" })
-            )
-            .then((file) => {
-              files.push(file);
-              resultList.push(URL.createObjectURL(file));
-              setLoadedPhotos(resultList);
-              forceUpdate();
-            });
+          setTimeout(() => {
+            sendPhotosArray.push(
+              `data:image/png;base64,${currentSubject[0].image_1}`
+            );
+            resultList.push(
+              `data:image/png;base64,${currentSubject[0].image_1}`
+            );
+            files.push(`data:image/png;base64,${currentSubject[0].image_1}`);
+            setLoadedPhotos(resultList);
+            forceUpdate();
+          }, 50);
 
         currentSubject[0] &&
           currentSubject[0].image_2 &&
-          fetch(`${rootAddress}${currentSubject[0].image_2}`)
-            .then((response) => {
-              return response.blob();
-            })
-            .then(
-              (blobFile) =>
-                new File([blobFile], "image_2.png", { type: "image/png" })
-            )
-            .then((file) => {
-              files.push(file);
-              resultList.push(URL.createObjectURL(file));
-              setLoadedPhotos(resultList);
-              forceUpdate();
-            });
+          setTimeout(() => {
+            sendPhotosArray.push(
+              `data:image/png;base64,${currentSubject[0].image_2}`
+            );
+            resultList.push(
+              `data:image/png;base64,${currentSubject[0].image_2}`
+            );
+            files.push(`data:image/png;base64,${currentSubject[0].image_2}`);
+            setLoadedPhotos(resultList);
+            forceUpdate();
+          }, 50);
 
         currentSubject[0] &&
           currentSubject[0].image_3 &&
-          fetch(`${rootAddress}${currentSubject[0].image_3}`)
-            .then((response) => {
-              return response.blob();
-            })
-            .then(
-              (blobFile) =>
-                new File([blobFile], "image_3.png", { type: "image/png" })
-            )
-            .then((file) => {
-              files.push(file);
-              resultList.push(URL.createObjectURL(file));
-              setLoadedPhotos(resultList);
-              forceUpdate();
-            });
+          setTimeout(() => {
+            sendPhotosArray.push(
+              `data:image/png;base64,${currentSubject[0].image_3}`
+            );
+            resultList.push(
+              `data:image/png;base64,${currentSubject[0].image_3}`
+            );
+            files.push(`data:image/png;base64,${currentSubject[0].image_3}`);
+            setLoadedPhotos(resultList);
+            forceUpdate();
+          }, 50);
 
         currentSubject[0] &&
           currentSubject[0].image_4 &&
-          fetch(`${rootAddress}${currentSubject[0].image_4}`)
-            .then((response) => {
-              return response.blob();
-            })
-            .then(
-              (blobFile) =>
-                new File([blobFile], "image_4.png", { type: "image/png" })
-            )
-            .then((file) => {
-              files.push(file);
-              resultList.push(URL.createObjectURL(file));
-              setLoadedPhotos(resultList);
-              forceUpdate();
-            });
+          setTimeout(() => {
+            sendPhotosArray.push(
+              `data:image/png;base64,${currentSubject[0].image_4}`
+            );
+            resultList.push(
+              `data:image/png;base64,${currentSubject[0].image_4}`
+            );
+            files.push(`data:image/png;base64,${currentSubject[0].image_4}`);
+            setLoadedPhotos(resultList);
+            forceUpdate();
+          }, 50);
 
         currentSubject[0] &&
           currentSubject[0].image_5 &&
-          fetch(`${rootAddress}${currentSubject[0].image_5}`)
-            .then((response) => {
-              return response.blob();
-            })
-            .then(
-              (blobFile) =>
-                new File([blobFile], "image_5.png", { type: "image/png" })
-            )
-            .then((file) => {
-              files.push(file);
-              resultList.push(URL.createObjectURL(file));
-              setLoadedPhotos(resultList);
-              forceUpdate();
-            });
+          setTimeout(() => {
+            sendPhotosArray.push(
+              `data:image/png;base64,${currentSubject[0].image_5}`
+            );
+            resultList.push(
+              `data:image/png;base64,${currentSubject[0].image_5}`
+            );
+            files.push(`data:image/png;base64,${currentSubject[0].image_5}`);
+            setLoadedPhotos(resultList);
+            forceUpdate();
+          }, 50);
 
         forceUpdate();
       }, 0);
@@ -1054,9 +1042,6 @@ const EditItem = () => {
                               key={index}
                               src={photo}
                             />
-                            <div className="add-photo-info">
-                              <span>{bytesToSize(files[index].size)}</span>
-                            </div>
                           </div>
                         ))
                       : ""}

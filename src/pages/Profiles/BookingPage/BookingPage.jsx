@@ -21,13 +21,13 @@ const BookingPage = () => {
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
-      setOutgoingReservations(res.data.reverse());
+      setOutgoingReservations(res.data);
     });
   }, []);
 
   React.useEffect(() => {
     Requests.getIncomingReservations().then((res) => {
-      setIncomingReservations(res.data.reverse());
+      setIncomingReservations(res.data);
     });
   }, []);
 
@@ -483,24 +483,23 @@ const BookingPage = () => {
                       </div>
                     )}
                   </div>
+                  <p
+                    style={
+                      countShowedTables - countShowedTablesCouples * 3 <= 0
+                        ? { display: "none" }
+                        : {}
+                    }
+                    onClick={() =>
+                      setCountShowedTablesCouples((prev) => prev + 1)
+                    }
+                    className="container_profile_content__booking_down-p"
+                  >
+                    Показать больше
+                  </p>
                 </div>
               </div>
               {/* body down container */}
-              <div className="container_profile_content__booking_down">
-                <p
-                  style={
-                    countShowedTables - countShowedTablesCouples * 3 <= 0
-                      ? { display: "none" }
-                      : {}
-                  }
-                  onClick={() =>
-                    setCountShowedTablesCouples((prev) => prev + 1)
-                  }
-                  className="container_profile_content__booking_down-p"
-                >
-                  Показать больше
-                </p>
-              </div>
+              <div className="container_profile_content__booking_down"></div>
             </div>
           </div>
         </div>

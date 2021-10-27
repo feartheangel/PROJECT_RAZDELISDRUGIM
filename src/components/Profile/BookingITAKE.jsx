@@ -34,7 +34,11 @@ const BookingITake = ({
   const handleReservationSubmit = () => {
     Requests.updateReservationStatus(item.id, "SUBMITTED").then(() => {
       Requests.getIncomingReservations().then((res) => {
-        setIncomingReservations(res.data.reverse());
+        setIncomingReservations(res.data);
+      });
+
+      Requests.getOutgoingReservations().then((res) => {
+        setOutgoingReservations(res.data);
       });
     });
   };
@@ -42,16 +46,24 @@ const BookingITake = ({
   const handleReservationAbort = () => {
     Requests.updateReservationStatus(item.id, "DENIED").then(() => {
       Requests.getIncomingReservations().then((res) => {
-        setIncomingReservations(res.data.reverse());
+        setIncomingReservations(res.data);
       });
+    });
+
+    Requests.getOutgoingReservations().then((res) => {
+      setOutgoingReservations(res.data);
     });
   };
 
   const handleReservationCancel = () => {
     Requests.updateReservationStatus(item.id, "CANCELED").then(() => {
       Requests.getIncomingReservations().then((res) => {
-        setIncomingReservations(res.data.reverse());
+        setIncomingReservations(res.data);
       });
+    });
+
+    Requests.getOutgoingReservations().then((res) => {
+      setOutgoingReservations(res.data);
     });
   };
 
@@ -466,8 +478,7 @@ const BookingITake = ({
                   <p className="center_block_rowstyle-p2-2">
                     {(item.reserve_price_rent
                       ? item.reserve_price_rent
-                      : item.reserve_offer_price_rent) *
-                      Number(item.reservation_time.split("")[0])}{" "}
+                      : item.reserve_offer_price_rent) * item.count_date_object}
                     BYN
                   </p>
                 </div>
@@ -531,98 +542,6 @@ const BookingITake = ({
             </div>
           </div>
         </div>
-        {/* footer block */}
-        <div className="body_allblock_footer" style={{ display: "none" }}>
-          {type === 2 && item.reservation_status === "WAITING" && (
-            <div className="center_block_rowstyle_3">
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-                onClick={handleReservationSubmit}
-              >
-                Подтвердить бронирование
-              </p>
-            </div>
-          )}
-          {type === 2 && item.reservation_status === "WAITING" && (
-            <div className="center_block_rowstyle_3">
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-                onClick={handleReservationAbort}
-              >
-                Отклонить бронирование
-              </p>
-            </div>
-          )}
-
-          {item.reservation_status === "SUBMITTED" && (
-            <div className="center_block_rowstyle_3">
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-                onClick={handleReservationCancel}
-              >
-                Отменить бронирование
-              </p>
-            </div>
-          )}
-
-          {false && (
-            <div className="center_block_rowstyle_3">
-              <img
-                width="15px"
-                height="20px"
-                src={Retakevector}
-                alt="pictute1"
-                style={{ cursor: "pointer" }}
-              />
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-              >
-                Повторить бронирование
-              </p>
-            </div>
-          )}
-          <div className="center_block_rowstyle_3">
-            <img
-              width="17px"
-              height="15px"
-              src={Sms}
-              alt="pictute1"
-              style={{ cursor: "pointer" }}
-            />
-            <Link
-              to={`/chat?id=${item.chat_id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-              >
-                Написать {type === 1 ? "владельцу" : "арендатору"}
-              </p>
-            </Link>
-          </div>
-          {false && (
-            <div className="center_block_rowstyle_3">
-              <img
-                width="17px"
-                height="15px"
-                src={Textonpage}
-                alt="pictute1"
-                style={{ cursor: "pointer" }}
-              />
-              <p
-                className="body_allblock_header_left_text-p"
-                style={{ cursor: "pointer" }}
-              >
-                Оставить отзыв
-              </p>
-            </div>
-          )}
-        </div>
         {/* footer */}
         <div className="body_allblock_footer">
           {/* подтвердить / отклонить */}
@@ -635,15 +554,25 @@ const BookingITake = ({
                 width: "100%",
               }}
             >
-              <div className="center_block_rowstyle_4">
-                <img src={nosuccess} alt="razdelisdrugim" />
-                <p
-                  className="body_allblock_header_left_text-p-red"
+              <div className="center_block_rowstyle_3">
+                <img
+                  width="17px"
+                  height="15px"
+                  src={Sms}
+                  alt="pictute1"
                   style={{ cursor: "pointer" }}
-                  onClick={handleReservationAbort}
+                />
+                <Link
+                  to={`/chat?id=${item.chat_id}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  Отклонить бронирование
-                </p>
+                  <p
+                    className="body_allblock_header_left_text-p"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Написать {type === 1 ? "владельцу" : "арендатору"}
+                  </p>
+                </Link>
               </div>
               <div className="center_block_rowstyle_4">
                 <img src={successbooking} alt="razdelisdrugim" />
@@ -655,53 +584,67 @@ const BookingITake = ({
                   Подтвердить бронирование
                 </p>
               </div>
+              <div className="center_block_rowstyle_4">
+                <img src={nosuccess} alt="razdelisdrugim" />
+                <p
+                  className="body_allblock_header_left_text-p-red"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleReservationAbort}
+                >
+                  Отклонить бронирование
+                </p>
+              </div>
             </div>
           )}
 
           {/* отменить бронирование ( когда уже подтверждено ) */}
           {item.reservation_status === "SUBMITTED" && (
-            <div className="center_block_rowstyle_4_4">
-              <img src={disabledbooking} alt="razdelisdrugim" />
-              <p
-                className="body_allblock_header_left_text-p-disabledbooking"
-                style={{ cursor: "pointer" }}
-                onClick={handleReservationCancel}
-              >
-                Отменить бронирование
-              </p>
-            </div>
-          )}
-
-          {/* Все статусы кроме подтверждено  */}
-          {type === 1 && item.reservation_status !== "SUBMITTED" && (
-            <div className="center_block_rowstyle_4_4">
-              <img
-                width="15px"
-                height="20px"
-                src={Retakevector}
-                alt="pictute1"
-                style={{ cursor: "pointer" }}
-              />
-              <p
-                className="body_allblock_header_left_text-p-p1"
-                style={{ cursor: "pointer" }}
-              >
-                Повторить бронирование
-              </p>
-            </div>
-          )}
-
-          {/* если завершено */}
-
-          {false && (
             <div
               style={{
                 flexDirection: "row",
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "space-evenly",
+                width: "100%",
               }}
             >
-              <div className="center_block_rowstyle_4">
+              <div className="center_block_rowstyle_3">
+                <img
+                  width="17px"
+                  height="15px"
+                  src={Sms}
+                  alt="pictute1"
+                  style={{ cursor: "pointer" }}
+                />
+                <Link
+                  to={`/chat?id=${item.chat_id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p
+                    className="body_allblock_header_left_text-p"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Написать {type === 1 ? "владельцу" : "арендатору"}
+                  </p>
+                </Link>
+              </div>
+              <div className="center_block_rowstyle_4_4">
+                <img src={disabledbooking} alt="razdelisdrugim" />
+                <p
+                  className="body_allblock_header_left_text-p-disabledbooking"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleReservationCancel}
+                >
+                  Отменить бронирование
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Все статусы кроме подтверждено и ожидания  */}
+          {type === 1 &&
+            item.reservation_status !== "SUBMITTED" &&
+            item.reservation_status !== "WAITING" && (
+              <div className="center_block_rowstyle_4_4">
                 <img
                   width="15px"
                   height="20px"
@@ -709,30 +652,109 @@ const BookingITake = ({
                   alt="pictute1"
                   style={{ cursor: "pointer" }}
                 />
+                <Link
+                  to={`/item-card?id=${item.item_id.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p
+                    className="body_allblock_header_left_text-p-p1"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Повторить бронирование
+                  </p>
+                </Link>
+              </div>
+            )}
+
+          {item.reservation_status === "WAITING" && type === 1 && (
+            <div className="center_block_rowstyle_3">
+              <img
+                width="17px"
+                height="15px"
+                src={Sms}
+                alt="pictute1"
+                style={{ cursor: "pointer" }}
+              />
+              <Link
+                to={`/chat?id=${item.chat_id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <p
-                  className="body_allblock_header_left_text-p-p1"
+                  className="body_allblock_header_left_text-p"
                   style={{ cursor: "pointer" }}
                 >
-                  Повторить бронирование
+                  Написать {type === 1 ? "владельцу" : "арендатору"}
                 </p>
-              </div>
-              <div className="center_block_rowstyle_4">
-                <img
-                  width="17px"
-                  height="15px"
-                  src={Textonpage}
-                  alt="pictute1"
-                  style={{ cursor: "pointer" }}
-                />
-                <p
-                  className="body_allblock_header_left_text-p-p1"
-                  style={{ cursor: "pointer" }}
-                >
-                  Оставить отзыв
-                </p>
-              </div>
+              </Link>
             </div>
           )}
+
+          {item.reservation_status === "DENIED" && type === 2 && (
+            <div className="center_block_rowstyle_3">
+              <img
+                width="17px"
+                height="15px"
+                src={Sms}
+                alt="pictute1"
+                style={{ cursor: "pointer" }}
+              />
+              <Link
+                to={`/chat?id=${item.chat_id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <p
+                  className="body_allblock_header_left_text-p"
+                  style={{ cursor: "pointer" }}
+                >
+                  Написать {type === 1 ? "владельцу" : "арендатору"}
+                </p>
+              </Link>
+            </div>
+          )}
+
+          {item.reservation_status === "CANCELED" && type === 2 && (
+            <div className="center_block_rowstyle_3">
+              <img
+                width="17px"
+                height="15px"
+                src={Sms}
+                alt="pictute1"
+                style={{ cursor: "pointer" }}
+              />
+              <Link
+                to={`/chat?id=${item.chat_id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <p
+                  className="body_allblock_header_left_text-p"
+                  style={{ cursor: "pointer" }}
+                >
+                  Написать {type === 1 ? "владельцу" : "арендатору"}
+                </p>
+              </Link>
+            </div>
+          )}
+
+          {/* если завершено */}
+
+          {/* 
+          {false && (
+            <div className="center_block_rowstyle_4">
+              <img
+                width="17px"
+                height="15px"
+                src={Textonpage}
+                alt="pictute1"
+                style={{ cursor: "pointer" }}
+              />
+              <p
+                className="body_allblock_header_left_text-p-p1"
+                style={{ cursor: "pointer" }}
+              >
+                Оставить отзыв
+              </p>
+            </div>
+          )} */}
         </div>
       </div>
 
@@ -1177,8 +1199,7 @@ const BookingITake = ({
                 <p className="center_block_rowstyle-p2-2">
                   {(item.reserve_price_rent
                     ? item.reserve_price_rent
-                    : item.reserve_offer_price_rent) *
-                    Number(item.reservation_time.split("")[0])}{" "}
+                    : item.reserve_offer_price_rent) * item.count_date_object}
                   BYN
                 </p>
               </div>
@@ -1287,35 +1308,10 @@ const BookingITake = ({
           )}
 
           {/* Все статусы кроме подтверждено  */}
-          {type === 1 && item.reservation_status !== "SUBMITTED" && (
-            <div className="center_block_rowstyle_4_4">
-              <img
-                width="15px"
-                height="20px"
-                src={Retakevector}
-                alt="pictute1"
-                style={{ cursor: "pointer" }}
-              />
-              <p
-                className="body_allblock_header_left_text-p-p1"
-                style={{ cursor: "pointer" }}
-              >
-                Повторить бронирование
-              </p>
-            </div>
-          )}
-
-          {/* если завершено */}
-
-          {false && (
-            <div
-              style={{
-                flexDirection: "row",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <div className="center_block_rowstyle_4">
+          {type === 1 &&
+            item.reservation_status !== "SUBMITTED" &&
+            item.reservation_status !== "WAITING" && (
+              <div className="center_block_rowstyle_4_4">
                 <img
                   width="15px"
                   height="20px"
@@ -1323,30 +1319,19 @@ const BookingITake = ({
                   alt="pictute1"
                   style={{ cursor: "pointer" }}
                 />
-                <p
-                  className="body_allblock_header_left_text-p-p1"
-                  style={{ cursor: "pointer" }}
+                <Link
+                  to={`/item-card?id=${item.item_id.id}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  Повторить бронирование
-                </p>
+                  <p
+                    className="body_allblock_header_left_text-p-p1"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Повторить бронирование
+                  </p>
+                </Link>
               </div>
-              <div className="center_block_rowstyle_4">
-                <img
-                  width="17px"
-                  height="15px"
-                  src={Textonpage}
-                  alt="pictute1"
-                  style={{ cursor: "pointer" }}
-                />
-                <p
-                  className="body_allblock_header_left_text-p-p1"
-                  style={{ cursor: "pointer" }}
-                >
-                  Оставить отзыв
-                </p>
-              </div>
-            </div>
-          )}
+            )}
         </div>
       </div>
     </div>

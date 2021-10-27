@@ -94,11 +94,7 @@ const ItemCardProfile = ({
             alt="razdelisdrugim"
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={
-              imageLoaded
-                ? `${rootAddress}${image_1}?random=` + Math.random()
-                : Loading
-            }
+            src={imageLoaded ? `data:image/png;base64,${image_1}` : Loading}
             onLoad={() => setImageLoaded(true)}
             className="block-image"
           />
@@ -201,7 +197,7 @@ const ItemCardProfile = ({
               className="recent-block-title-p"
             >
               {title.length > 35
-                ? `${title.split("").splice(0, 35).join("")}...`
+                ? `${title.split("").splice(0, 39).join("")}...`
                 : title}
             </p>
           </div>
@@ -343,7 +339,7 @@ const ItemCardProfile = ({
             alt="razdelisdrugim"
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={`${rootAddress}${image_1}?random=` + Math.random()}
+            src={imageLoaded ? `data:image/png;base64,${image_1}` : Loading}
             className="block-image"
           />
           <div className="recent-marks">
@@ -439,7 +435,7 @@ const ItemCardProfile = ({
               className="recent-block-title-name"
             >
               {title.length > 35
-                ? `${title.split("").splice(0, 35).join("")}...`
+                ? `${title.split("").splice(0, 39).join("")}...`
                 : title}
             </p>
           </div>
@@ -577,11 +573,7 @@ const ItemCardProfile = ({
             alt="razdelisdrugim"
             style={{ cursor: "pointer" }}
             onClick={() => setRedirect(<Redirect to={`/item-card?id=${id}`} />)}
-            src={
-              imageLoaded
-                ? `${rootAddress}${image_1}?random=` + Math.random()
-                : Loading
-            }
+            src={imageLoaded ? `data:image/png;base64,${image_1}` : Loading}
             onLoad={() => setImageLoaded(true)}
             className="block-image"
           />
