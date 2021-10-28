@@ -79,17 +79,17 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       linkM.click();
     } else if (itemData.delivery.includes("Доставка курьером")) {
       setRadioBooking("3");
-      var linkPC = document.getElementById("radio3PC");
+      linkPC = document.getElementById("radio3PC");
       linkPC.click();
 
-      var linkM = document.getElementById("radio3M");
+      linkM = document.getElementById("radio3M");
       linkM.click();
     } else {
       setRadioBooking("2");
-      var linkPC = document.getElementById("radio2PC");
+      linkPC = document.getElementById("radio2PC");
       linkPC.click();
 
-      var linkM = document.getElementById("radio2M");
+      linkM = document.getElementById("radio2M");
       linkM.click();
     }
   }, [itemData]);
