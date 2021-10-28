@@ -78,9 +78,7 @@ const ItemCard = ({ item }) => {
               onLoad={() => setImageLoaded(true)}
               loading="lazy"
               src={
-                imageLoaded
-                  ? `${rootAddress}${item.image_1}?random=` + Math.random()
-                  : Loading
+                imageLoaded ? `data:image/png;base64,${item.image_1}` : Loading
               }
               alt="razdelisdrugim"
               className="block-image"
@@ -288,9 +286,7 @@ const ItemCard = ({ item }) => {
               onLoad={() => setImageLoaded(true)}
               loading="lazy"
               src={
-                imageLoaded
-                  ? `${rootAddress}${item.image_1}?random=` + Math.random()
-                  : Loading
+                imageLoaded ? `data:image/png;base64,${item.image_1}` : Loading
               }
               className="block-image"
               alt="razdelisdrugim"
@@ -491,9 +487,7 @@ const ItemCard = ({ item }) => {
               onLoad={() => setImageLoaded(true)}
               loading="lazy"
               src={
-                imageLoaded
-                  ? `${rootAddress}${item.image_1}?random=` + Math.random()
-                  : Loading
+                imageLoaded ? `data:image/png;base64,${item.image_1}` : Loading
               }
               className="block-image"
               alt="razdelisdrugim"

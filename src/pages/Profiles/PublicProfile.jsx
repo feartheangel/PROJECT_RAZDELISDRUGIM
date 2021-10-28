@@ -112,7 +112,7 @@ const PublicProfile = () => {
                   <div className="block_down_owner_photo">
                     <img
                       alt="razdelisdrugim"
-                      src={`${rootAddress}${
+                      src={`data:image/png;base64,${
                         profileData && profileData.image_profile
                       }`}
                       style={{
@@ -977,7 +977,7 @@ const PublicProfile = () => {
                   >
                     <img
                       alt="razdelisdrugim"
-                      src={`https://razdelisdrugim.by${
+                      src={`data:image/png;base64,${
                         profileData && profileData.image_profile
                       }`}
                       style={{

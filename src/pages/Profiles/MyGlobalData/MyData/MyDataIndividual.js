@@ -225,6 +225,22 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
   const [sendCountEmail, setSendCountEmail] = React.useState(0);
   const [sendCountNumber, setSendCountNumber] = React.useState(0);
 
+  const emailHandler = (e) => {
+    if (e.target.value.includes(" ")) {
+      return;
+    }
+
+    setEmail(e.target.value);
+  };
+
+  const numberHandler = (e) => {
+    if (e.target.value.includes(" ")) {
+      return;
+    }
+
+    setNumber(e.target.value);
+  };
+
   return (
     <div>
       {/* ШАПКА С ПРОФИЛЕМ*/}
@@ -277,7 +293,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                     cursor: "pointer",
                   }}
                   className="profile-photo"
-                  src={`${rootAddress}${userData.image_profile}`}
+                  src={`data:image/png;base64,${userData.image_profile}`}
                 />
                 <div className="profile-photo-overlay">Изменить</div>
               </label>
@@ -424,7 +440,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   userData &&
                   userData.phone_verify
                 }
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => emailHandler(e)}
                 value={email}
                 className="setting_left_input"
                 type="text"
@@ -474,7 +490,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   userData &&
                   userData.phone_verify
                 }
-                onChange={(e) => setNumber(e.target.value)}
+                onChange={(e) => numberHandler(e)}
                 value={number}
                 className="setting_left_input"
                 type="text"
@@ -1052,7 +1068,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   userData &&
                   userData.email_verify
                 }
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => emailHandler(e)}
                 value={email}
                 className="setting_left_input"
                 type="text"
@@ -1102,7 +1118,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   userData &&
                   userData.phone_verify
                 }
-                onChange={(e) => setNumber(e.target.value)}
+                onChange={(e) => numberHandler(e)}
                 value={number}
                 className="setting_left_input"
                 type="text"
@@ -1304,7 +1320,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               <img
                 alt="razdelisdrugim"
                 className="profile-photo"
-                src={`${rootAddress}${userData.image_profile}`}
+                src={`data:image/png;base64,${userData.image_profile}`}
               />
               <div className="profile-photo-overlay">Изменить</div>
             </label>
@@ -1569,7 +1585,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   userData &&
                   userData.email_verify
                 }
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => emailHandler(e)}
                 value={email}
                 className="setting_left_input"
                 type="text"
@@ -1619,7 +1635,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
                   userData &&
                   userData.phone_verify
                 }
-                onChange={(e) => setNumber(e.target.value)}
+                onChange={(e) => numberHandler(e)}
                 value={number}
                 className="setting_left_input"
                 type="text"

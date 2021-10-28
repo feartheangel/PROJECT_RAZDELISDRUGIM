@@ -342,8 +342,7 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${itemData.image_1}?random=` +
-                              Math.random()
+                            `data:image/png;base64,${itemData.image_1}`
                           }
                         />
                       )}
@@ -360,8 +359,7 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${itemData.image_2}?random=` +
-                              Math.random()
+                            `data:image/png;base64,${itemData.image_2}`
                           }
                         />
                       )}
@@ -378,8 +376,7 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${itemData.image_3}?random=` +
-                              Math.random()
+                            `data:image/png;base64,${itemData.image_3}`
                           }
                         />
                       )}
@@ -396,8 +393,7 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${itemData.image_4}?random=` +
-                              Math.random()
+                            `data:image/png;base64,${itemData.image_4}`
                           }
                         />
                       )}
@@ -414,8 +410,7 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${itemData.image_5}?random=` +
-                              Math.random()
+                            `data:image/png;base64,${itemData.image_5}`
                           }
                         />
                       )}
@@ -430,9 +425,9 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${
+                            `data:image/png;base64,${
                               selectedImage && selectedImage
-                            }?random=` + Math.random()
+                            }`
                           }
                         />
                       )}
@@ -1066,7 +1061,7 @@ const CardThings = () => {
                             width: "70px",
                             height: "70px",
                           }}
-                          src={`${rootAddress}${
+                          src={`data:image/png;base64,${
                             itemData && itemData.profile.image_profile
                           }`}
                         />
@@ -1481,8 +1476,7 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `${rootAddress}${itemData.image_1}?random=` +
-                                Math.random()
+                              `data:image/png;base64,${itemData.image_1}`
                             }
                           />
                         )}
@@ -1499,8 +1493,7 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `${rootAddress}${itemData.image_2}?random=` +
-                                Math.random()
+                              `data:image/png;base64,${itemData.image_2}`
                             }
                           />
                         )}
@@ -1517,8 +1510,7 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `${rootAddress}${itemData.image_3}?random=` +
-                                Math.random()
+                              `data:image/png;base64,${itemData.image_3}`
                             }
                           />
                         )}
@@ -1535,8 +1527,7 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `${rootAddress}${itemData.image_4}?random=` +
-                                Math.random()
+                              `data:image/png;base64,${itemData.image_4}`
                             }
                           />
                         )}
@@ -1553,8 +1544,7 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `${rootAddress}${itemData.image_5}?random=` +
-                                Math.random()
+                              `data:image/png;base64,${itemData.image_5}`
                             }
                           />
                         )}
@@ -1569,9 +1559,9 @@ const CardThings = () => {
                             }
                             src={
                               itemData &&
-                              `${rootAddress}${
+                              `data:image/png;base64,${
                                 selectedImage && selectedImage
-                              }?random=` + Math.random()
+                              }`
                             }
                           />
                         )}
@@ -2197,7 +2187,7 @@ const CardThings = () => {
                             width: "70px",
                             height: "70px",
                           }}
-                          src={`${rootAddress}${
+                          src={`data:image/png;base64,${
                             itemData && itemData.profile.image_profile
                           }`}
                         />
@@ -2603,7 +2593,10 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_1)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_1}`}
+                          src={
+                            itemData &&
+                            `data:image/png;base64,${itemData.image_1}`
+                          }
                         />
                       )}
                       {itemData && itemData.image_2 && (
@@ -2617,7 +2610,10 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_2)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_2}`}
+                          src={
+                            itemData &&
+                            `data:image/png;base64,${itemData.image_2}`
+                          }
                         />
                       )}
                       {itemData && itemData.image_3 && (
@@ -2631,7 +2627,10 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_3)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_3}`}
+                          src={
+                            itemData &&
+                            `data:image/png;base64,${itemData.image_3}`
+                          }
                         />
                       )}
                       {itemData && itemData.image_4 && (
@@ -2645,7 +2644,10 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_4)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_4}`}
+                          src={
+                            itemData &&
+                            `data:image/png;base64,${itemData.image_4}`
+                          }
                         />
                       )}
                       {itemData && itemData.image_5 && (
@@ -2659,7 +2661,10 @@ const CardThings = () => {
                           onClick={() =>
                             setSelectedImage(itemData && itemData.image_5)
                           }
-                          src={itemData && `${rootAddress}${itemData.image_5}`}
+                          src={
+                            itemData &&
+                            `data:image/png;base64,${itemData.image_5}`
+                          }
                         />
                       )}
                     </div>
@@ -2673,7 +2678,9 @@ const CardThings = () => {
                           }
                           src={
                             itemData &&
-                            `${rootAddress}${selectedImage && selectedImage}`
+                            `data:image/png;base64,${
+                              selectedImage && selectedImage
+                            }`
                           }
                         />
                       )}
@@ -3272,7 +3279,7 @@ const CardThings = () => {
                             width: "70px",
                             height: "70px",
                           }}
-                          src={`${rootAddress}${
+                          src={`data:image/png;base64,${
                             itemData && itemData.profile.image_profile
                           }`}
                         />

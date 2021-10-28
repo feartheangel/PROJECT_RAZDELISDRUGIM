@@ -19,17 +19,17 @@ const BookingPage = () => {
     React.useState(0);
   const [coords, setCoords] = React.useState();
 
+  const [reloadReservations, toggleReloadReservations] = React.useState(false);
+
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
       setOutgoingReservations(res.data);
     });
-  }, []);
 
-  React.useEffect(() => {
     Requests.getIncomingReservations().then((res) => {
       setIncomingReservations(res.data);
     });
-  }, []);
+  }, [reloadReservations]);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -218,7 +218,18 @@ const BookingPage = () => {
                         }
                         onClick={() => setActiveForm3("waiting")}
                       >
-                        В ожидании <span className="span_color">2</span>
+                        В ожидании{" "}
+                        {activeForm2 === "ITake"
+                          ? outgoingReservations &&
+                            outgoingReservations.filter(
+                              (item) => item.reservation_status === "WAITING"
+                            ).length
+                          : activeForm2 === "MyItems"
+                          ? incomingReservations &&
+                            incomingReservations.filter(
+                              (item) => item.reservation_status === "WAITING"
+                            ).length
+                          : ""}
                       </p>
                     </div>
                     <div>
@@ -297,11 +308,13 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            reloadReservations={reloadReservations}
+                            reloadReservations={reloadReservations}
+                            toggleReloadReservations={toggleReloadReservations}
                             item={item}
                             key={index}
                             type={1}
                             countShowedTablesCouples={countShowedTablesCouples}
-                            setOutgoingReservations={setOutgoingReservations}
                             index={index}
                             showOnMapHandler={showOnMapHandler}
                           />
@@ -314,13 +327,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -333,13 +349,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -352,13 +371,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -371,13 +393,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -388,11 +413,12 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            reloadReservations={reloadReservations}
+                            toggleReloadReservations={toggleReloadReservations}
                             item={item}
                             key={index}
                             type={2}
                             countShowedTablesCouples={countShowedTablesCouples}
-                            setIncomingReservations={setIncomingReservations}
                             index={index}
                             showOnMapHandler={showOnMapHandler}
                           />
@@ -405,13 +431,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -424,13 +453,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -443,13 +475,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -462,13 +497,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -583,7 +621,18 @@ const BookingPage = () => {
                         }
                         onClick={() => setActiveForm3("waiting")}
                       >
-                        В ожидании <span className="span_color">2</span>
+                        В ожидании{" "}
+                        {activeForm2 === "ITake"
+                          ? outgoingReservations &&
+                            outgoingReservations.filter(
+                              (item) => item.reservation_status === "WAITING"
+                            ).length
+                          : activeForm2 === "MyItems"
+                          ? incomingReservations &&
+                            incomingReservations.filter(
+                              (item) => item.reservation_status === "WAITING"
+                            ).length
+                          : ""}
                       </p>
                     </div>
                     <div>
@@ -662,11 +711,12 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            reloadReservations={reloadReservations}
+                            toggleReloadReservations={toggleReloadReservations}
                             item={item}
                             key={index}
                             type={1}
                             countShowedTablesCouples={countShowedTablesCouples}
-                            setOutgoingReservations={setOutgoingReservations}
                             index={index}
                             showOnMapHandler={showOnMapHandler}
                           />
@@ -679,13 +729,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -698,13 +751,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -717,13 +773,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -736,13 +795,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -753,11 +815,12 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            reloadReservations={reloadReservations}
+                            toggleReloadReservations={toggleReloadReservations}
                             item={item}
                             key={index}
                             type={2}
                             countShowedTablesCouples={countShowedTablesCouples}
-                            setIncomingReservations={setIncomingReservations}
                             index={index}
                             showOnMapHandler={showOnMapHandler}
                           />
@@ -770,13 +833,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -789,13 +855,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -808,13 +877,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -827,13 +899,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -991,7 +1066,20 @@ const BookingPage = () => {
                             }
                             onClick={() => setActiveForm3("waiting")}
                           >
-                            В ожидании <span className="span_color">2</span>
+                            В ожидании{" "}
+                            {activeForm2 === "ITake"
+                              ? outgoingReservations &&
+                                outgoingReservations.filter(
+                                  (item) =>
+                                    item.reservation_status === "WAITING"
+                                ).length
+                              : activeForm2 === "MyItems"
+                              ? incomingReservations &&
+                                incomingReservations.filter(
+                                  (item) =>
+                                    item.reservation_status === "WAITING"
+                                ).length
+                              : ""}
                           </p>
                         </div>
                         <div
@@ -1060,11 +1148,12 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            reloadReservations={reloadReservations}
+                            toggleReloadReservations={toggleReloadReservations}
                             item={item}
                             key={index}
                             type={1}
                             countShowedTablesCouples={countShowedTablesCouples}
-                            setOutgoingReservations={setOutgoingReservations}
                             index={index}
                             showOnMapHandler={showOnMapHandler}
                           />
@@ -1077,13 +1166,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -1096,13 +1188,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -1115,13 +1210,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -1134,13 +1232,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={1}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setOutgoingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -1151,11 +1252,12 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            reloadReservations={reloadReservations}
+                            toggleReloadReservations={toggleReloadReservations}
                             item={item}
                             key={index}
                             type={2}
                             countShowedTablesCouples={countShowedTablesCouples}
-                            setIncomingReservations={setIncomingReservations}
                             index={index}
                             showOnMapHandler={showOnMapHandler}
                           />
@@ -1168,13 +1270,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -1187,13 +1292,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -1206,13 +1314,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setOutgoingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />
@@ -1225,13 +1336,16 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
                               item={item}
                               key={index}
                               type={2}
                               countShowedTablesCouples={
                                 countShowedTablesCouples
                               }
-                              setIncomingReservations={setIncomingReservations}
                               index={index}
                               showOnMapHandler={showOnMapHandler}
                             />

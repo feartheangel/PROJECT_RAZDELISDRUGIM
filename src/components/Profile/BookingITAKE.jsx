@@ -7,7 +7,6 @@ import CardVerify from "../../img/BookingPage/card-verify.webp";
 import Moneytime from "../../img/BookingPage/money-time.webp";
 import Retakevector from "../../img/BookingPage/retakevector.png";
 import Sms from "../../img/BookingPage/sms.png";
-import Textonpage from "../../img/BookingPage/textonpage.png";
 import nosuccess from "../../img/BookingPage/nobooking.png";
 import disabledbooking from "../../img/BookingPage/disabledicon.png";
 import successbooking from "../../img/BookingPage/successbooking.png";
@@ -25,45 +24,27 @@ import Requests from "../../http/axios-requests";
 const BookingITake = ({
   item,
   type,
-  setOutgoingReservations,
-  setIncomingReservations,
+  toggleReloadReservations,
+  reloadReservations,
   countShowedTablesCouples,
   index,
   showOnMapHandler,
 }) => {
   const handleReservationSubmit = () => {
     Requests.updateReservationStatus(item.id, "SUBMITTED").then(() => {
-      Requests.getIncomingReservations().then((res) => {
-        setIncomingReservations(res.data);
-      });
-
-      Requests.getOutgoingReservations().then((res) => {
-        setOutgoingReservations(res.data);
-      });
+      toggleReloadReservations(!reloadReservations);
     });
   };
 
   const handleReservationAbort = () => {
     Requests.updateReservationStatus(item.id, "DENIED").then(() => {
-      Requests.getIncomingReservations().then((res) => {
-        setIncomingReservations(res.data);
-      });
-    });
-
-    Requests.getOutgoingReservations().then((res) => {
-      setOutgoingReservations(res.data);
+      toggleReloadReservations(!reloadReservations);
     });
   };
 
   const handleReservationCancel = () => {
     Requests.updateReservationStatus(item.id, "CANCELED").then(() => {
-      Requests.getIncomingReservations().then((res) => {
-        setIncomingReservations(res.data);
-      });
-    });
-
-    Requests.getOutgoingReservations().then((res) => {
-      setOutgoingReservations(res.data);
+      toggleReloadReservations(!reloadReservations);
     });
   };
 
@@ -84,7 +65,7 @@ const BookingITake = ({
                 style={{ textDecoration: "none" }}
               >
                 <img
-                  src={`${rootAddress}${item.item_id.image_1}`}
+                  src={`data:image/png;base64,${item.item_id.image_1}`}
                   alt="razdelisdrugim"
                   className="booking_card_image"
                 />
@@ -667,25 +648,44 @@ const BookingITake = ({
             )}
 
           {item.reservation_status === "WAITING" && type === 1 && (
-            <div className="center_block_rowstyle_3">
-              <img
-                width="17px"
-                height="15px"
-                src={Sms}
-                alt="pictute1"
-                style={{ cursor: "pointer" }}
-              />
-              <Link
-                to={`/chat?id=${item.chat_id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <p
-                  className="body_allblock_header_left_text-p"
+            <div
+              style={{
+                flexDirection: "row",
+                display: "flex",
+                justifyContent: "space-evenly",
+                width: "100%",
+              }}
+            >
+              <div className="center_block_rowstyle_3">
+                <img
+                  width="17px"
+                  height="15px"
+                  src={Sms}
+                  alt="pictute1"
                   style={{ cursor: "pointer" }}
+                />
+                <Link
+                  to={`/chat?id=${item.chat_id}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  Написать {type === 1 ? "владельцу" : "арендатору"}
+                  <p
+                    className="body_allblock_header_left_text-p"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Написать {type === 1 ? "владельцу" : "арендатору"}
+                  </p>
+                </Link>
+              </div>
+              <div className="center_block_rowstyle_4_4">
+                <img src={disabledbooking} alt="razdelisdrugim" />
+                <p
+                  className="body_allblock_header_left_text-p-disabledbooking"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleReservationCancel}
+                >
+                  Отменить бронирование
                 </p>
-              </Link>
+              </div>
             </div>
           )}
 
@@ -772,7 +772,7 @@ const BookingITake = ({
                 style={{ textDecoration: "none" }}
               >
                 <img
-                  src={`${rootAddress}${item.item_id.image_1}`}
+                  src={`data:image/png;base64,${item.item_id.image_1}`}
                   alt="razdelisdrugim"
                   className="booking_card_image"
                 />
@@ -1466,7 +1466,7 @@ const BookingITake = ({
                   style={{ textDecoration: "none" }}
                 >
                   <img
-                    src={`${rootAddress}${item.item_id.image_1}`}
+                    src={`data:image/png;base64,${item.item_id.image_1}`}
                     alt="razdelisdrugim"
                     className="booking_card_image"
                   />
@@ -1983,6 +1983,20 @@ const BookingITake = ({
 
           {/* отменить бронирование ( когда уже подтверждено ) */}
           {item.reservation_status === "SUBMITTED" && (
+            <div className="center_block_rowstyle_4_4">
+              <img src={disabledbooking} alt="razdelisdrugim" />
+              <p
+                className="body_allblock_header_left_text-p-disabledbooking"
+                style={{ cursor: "pointer" }}
+                onClick={handleReservationCancel}
+              >
+                Отменить бронирование
+              </p>
+            </div>
+          )}
+
+          {/* отменить бронирование ( когда  ожидает ) */}
+          {item.reservation_status === "WAITING" && (
             <div className="center_block_rowstyle_4_4">
               <img src={disabledbooking} alt="razdelisdrugim" />
               <p

@@ -416,9 +416,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         setSelectedImage(itemData && itemData.image_1)
                       }
                       src={
-                        itemData &&
-                        `${rootAddress}${itemData.image_1}?random=` +
-                          Math.random()
+                        itemData && `data:image/png;base64,${itemData.image_1}`
                       }
                       alt="razdelisdrugim"
                     />
@@ -1485,9 +1483,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         setSelectedImage(itemData && itemData.image_1)
                       }
                       src={
-                        itemData &&
-                        `${rootAddress}${itemData.image_1}?random=` +
-                          Math.random()
+                        itemData && `data:image/png;base64,${itemData.image_1}`
                       }
                     />
                   )}

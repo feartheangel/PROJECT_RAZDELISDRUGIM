@@ -219,6 +219,8 @@ const Header = () => {
       if (data.notification_list) {
         setNotifications(data.notification_list.reverse());
       }
+
+      console.log(data);
     };
 
     chatSocket.current.onclose = function (e) {
@@ -363,7 +365,7 @@ const Header = () => {
                   <img
                     alt="razdelisdrugim"
                     className="header-right-content-logged-img"
-                    src={`https://razdelisdrugim.by${userData.image_profile}`}
+                    src={`data:image/png;base64,${userData.image_profile}`}
                     id="logged-img_last_item"
                   />
                   <img
@@ -475,7 +477,7 @@ const Header = () => {
                       borderRadius: "100%",
                     }}
                     className="header-right-content-logged-img"
-                    src={`https://razdelisdrugim.by${userData.image_profile}`}
+                    src={`data:image/png;base64,${userData.image_profile}`}
                   />
                   <img alt="razdelisdrugim" src={MenuStroke} />
                 </div>

@@ -884,6 +884,9 @@ class Requests {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: localStorage.getItem("key")
+          ? `Bearer ${localStorage.getItem("key")}`
+          : "",
       },
       url: `${rootAddress}/api/items/${id}/`,
     }).then((response) => {
@@ -896,6 +899,9 @@ class Requests {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: localStorage.getItem("key")
+          ? `Bearer ${localStorage.getItem("key")}`
+          : "",
       },
       url: `${rootAddress}/api/jwt/profile/${id}/`,
     }).then((response) => {
