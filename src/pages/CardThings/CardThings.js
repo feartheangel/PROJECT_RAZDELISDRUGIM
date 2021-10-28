@@ -121,6 +121,13 @@ const CardThings = () => {
   // };
 
   const goToChatHandler = () => {
+    if (!isLoggedIn) {
+      alert("Доступно только авторизованным пользователям.");
+      return;
+    } else if (!userData.email_verify || !userData.phone_verify) {
+      alert("Чтобы перейти в чат, нужно подтвердить номер телефона и почту.");
+      return;
+    }
     Requests.createNewChatRoom(
       userData && userData.id,
       itemData && itemData.profile.id,
@@ -210,6 +217,22 @@ const CardThings = () => {
   const div2 = useRef(null);
 
   function ScrollHandler() {
+    if (!isLoggedIn) {
+      alert("Доступно только авторизованным пользователям.");
+      return;
+    } else if (
+      itemData.rent === "1чел." ||
+      itemData.rent === "1шт." ||
+      itemData.rent === "1кв.м."
+    ) {
+      alert("Бронирование для данного типа услуг или вещей пока недоступно.");
+      return;
+    } else if (!userData.email_verify || !userData.phone_verify) {
+      alert(
+        "Чтобы перейти к бронированию, нужно подтвердить номер телефона и почту."
+      );
+      return;
+    }
     setBooking(true);
     setTimeout(() => {
       div.current.scrollIntoView({
@@ -2083,30 +2106,33 @@ const CardThings = () => {
                     </div>
 
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
-                    <div
-                      style={{
-                        width: "100%",
-                        position: " fixed",
-                        bottom: "0",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <div className="block_up_contactOwner">
-                        <button
-                          onClick={ScrollHandler}
-                          style={
-                            isOwn ? { display: "none" } : { cursor: "pointer" }
-                          }
-                          href="#booking_page"
-                          // scrollTop="500px"
-                          type="button"
-                          value="Забронировать"
-                          className="contactOwner_btn"
-                        >
-                          Забронировать
-                        </button>
-                        {/* <input
+                    {!booking && (
+                      <div
+                        style={{
+                          width: "100%",
+                          position: " fixed",
+                          bottom: "0",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <div className="block_up_contactOwner">
+                          <button
+                            onClick={ScrollHandler}
+                            style={
+                              isOwn
+                                ? { display: "none" }
+                                : { cursor: "pointer" }
+                            }
+                            href="#booking_page"
+                            // scrollTop="500px"
+                            type="button"
+                            value="Забронировать"
+                            className="contactOwner_btn"
+                          >
+                            Забронировать
+                          </button>
+                          {/* <input
                           style={
                             isOwn ? { display: "none" } : { cursor: "pointer" }
                           }
@@ -2117,36 +2143,37 @@ const CardThings = () => {
                           className="contactOwner_btn"
                         /> */}
 
-                        {favorites && !isFavorite && !isOwn && (
-                          <img
-                            alt="razdelisdrugim"
-                            onClick={(e) => addFavoriteHandler(e)}
-                            className="img_contactOwner"
-                            src={FavoritesDisabled}
-                          />
-                        )}
+                          {favorites && !isFavorite && !isOwn && (
+                            <img
+                              alt="razdelisdrugim"
+                              onClick={(e) => addFavoriteHandler(e)}
+                              className="img_contactOwner"
+                              src={FavoritesDisabled}
+                            />
+                          )}
 
-                        {favorites && isFavorite && !isOwn && (
-                          <img
-                            alt="razdelisdrugim"
-                            onClick={(e) => deleteFavoriteHandler(e)}
-                            className="img_contactOwner"
-                            src={Favorites}
-                          />
-                        )}
+                          {favorites && isFavorite && !isOwn && (
+                            <img
+                              alt="razdelisdrugim"
+                              onClick={(e) => deleteFavoriteHandler(e)}
+                              className="img_contactOwner"
+                              src={Favorites}
+                            />
+                          )}
 
-                        {isOwn && (
-                          <img
-                            alt="razdelisdrugim"
-                            onClick={(e) =>
-                              (window.location.href = `/edit-item?id=${itemData.id}`)
-                            }
-                            className="img_contactOwner"
-                            src={EditItemImage}
-                          />
-                        )}
+                          {isOwn && (
+                            <img
+                              alt="razdelisdrugim"
+                              onClick={(e) =>
+                                (window.location.href = `/edit-item?id=${itemData.id}`)
+                              }
+                              className="img_contactOwner"
+                              src={EditItemImage}
+                            />
+                          )}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* НИЗ ПРАВОЙ СТОРОНЫ*/}

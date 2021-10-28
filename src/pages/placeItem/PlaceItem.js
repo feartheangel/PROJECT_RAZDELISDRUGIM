@@ -37,6 +37,7 @@ const PlaceItem = () => {
   const removePhotoHandler = (index) => {
     files.splice(index, 1);
     loadedPhotos.splice(index, 1);
+    sendPhotosArray.splice(index, 1);
     setLoadedPhotos(loadedPhotos);
     forceUpdate();
   };
