@@ -76,7 +76,7 @@
   .privateProfile {
     justify-content: flex-start;
     align-items: flex-start;
-    min-height: 100%;
+    min-height: max-content;
     min-width: 100%;
     width: 100%;
     height: auto;
@@ -148,6 +148,6 @@
     margin: 20px 0 0 0;
   }
   .conteiner_shapka p {
-    font-size: 22px;
+    font-size: 18px;
   }
 }

@@ -275,6 +275,7 @@
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
   .SearchPage {
     min-width: auto;
+    min-height: max-content;
   }
   .SearchPage_container {
     width: 100%;

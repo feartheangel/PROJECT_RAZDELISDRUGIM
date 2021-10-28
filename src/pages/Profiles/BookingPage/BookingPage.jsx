@@ -510,6 +510,371 @@ const BookingPage = () => {
         />
       </div>
 
+      {/* IPAD */}
+      <div className="privateProfile" id="globaldata_ipad">
+        <div className="privateProfile_container">
+          {/* header */}
+          <div className="conteiner_shapka">
+            <Link style={{ textDecoration: "none" }} to="/i-rent-out">
+              <p>
+                Мои обьявления <span> {subjects.length} </span>
+              </p>
+            </Link>
+
+            <p
+              className={
+                activeForm === "myProfile" && "conteiner_shapka_myProfile"
+              }
+              onClick={() => setActiveForm("myProfile")}
+            >
+              Бронирования
+            </p>
+
+            <Link
+              style={{ textDecoration: "none" }}
+              className="conteiner_shapka_myProfile"
+              to="/messages"
+            >
+              <p>Мои сообщения</p>
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              className="conteiner_shapka_myProfile"
+              to="/favorites"
+            >
+              <p
+                className={
+                  activeForm === "favorites" &&
+                  "privateProfile_container_favorites"
+                }
+              >
+                Избранное
+              </p>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to="/private-profile">
+              <p> Мой профиль</p>
+            </Link>
+          </div>
+          {/* body */}
+          <div className="container_profile" style={{ marginRight: "0" }}>
+            <div className="container_profile_content__booking">
+              <div className="container_profile_content__booking_up">
+                {/* left size */}
+                <div className="content__booking_left">
+                  <div className="container_profile_optional_left">
+                    <div>
+                      <p
+                        className={
+                          activeForm3 === "all"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("all")}
+                      >
+                        Все
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={
+                          activeForm3 === "waiting"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("waiting")}
+                      >
+                        В ожидании <span className="span_color">2</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={
+                          activeForm3 === "success"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("success")}
+                      >
+                        Подтверждено
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={
+                          activeForm3 === "rejected"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("rejected")}
+                      >
+                        Отклонено
+                      </p>
+                    </div>
+
+                    <div>
+                      <p
+                        className={
+                          activeForm3 === "canceled"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("canceled")}
+                      >
+                        Отменено
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* right size */}
+                <div className="content__booking_right">
+                  <header>
+                    <div className="content__booking_right_header">
+                      <p
+                        onClick={() => setActiveForm2("MyItems")}
+                        className={
+                          activeForm2 === "MyItems"
+                            ? "content__booking_right_header_active"
+                            : "content__booking_right_header_left"
+                        }
+                      >
+                        {" "}
+                        Я сдаю
+                      </p>
+                      <p
+                        onClick={() => setActiveForm2("ITake")}
+                        className={
+                          activeForm2 === "ITake"
+                            ? "content__booking_right_header_active"
+                            : "content__booking_right_header_right"
+                        }
+                      >
+                        {" "}
+                        Я беру
+                      </p>
+                    </div>
+                  </header>
+                  {/* body right size */}
+                  <div>
+                    {/* компонент  */}
+
+                    {activeForm2 === "ITake" && activeForm3 === "all"
+                      ? outgoingReservations &&
+                        outgoingReservations.map((item, index) => (
+                          <BookingITake
+                            item={item}
+                            key={index}
+                            type={1}
+                            countShowedTablesCouples={countShowedTablesCouples}
+                            setOutgoingReservations={setOutgoingReservations}
+                            index={index}
+                            showOnMapHandler={showOnMapHandler}
+                          />
+                        ))
+                      : activeForm2 === "ITake" && activeForm3 === "waiting"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter(
+                            (item) => item.reservation_status === "WAITING"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setOutgoingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "success"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter(
+                            (item) => item.reservation_status === "SUBMITTED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setOutgoingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "rejected"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter(
+                            (item) => item.reservation_status === "DENIED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setOutgoingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "canceled"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter(
+                            (item) => item.reservation_status === "CANCELED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setOutgoingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : ""}
+
+                    {activeForm2 === "MyItems" && activeForm3 === "all"
+                      ? incomingReservations &&
+                        incomingReservations.map((item, index) => (
+                          <BookingITake
+                            item={item}
+                            key={index}
+                            type={2}
+                            countShowedTablesCouples={countShowedTablesCouples}
+                            setIncomingReservations={setIncomingReservations}
+                            index={index}
+                            showOnMapHandler={showOnMapHandler}
+                          />
+                        ))
+                      : activeForm2 === "MyItems" && activeForm3 === "waiting"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "WAITING"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setIncomingReservations={setIncomingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "MyItems" && activeForm3 === "success"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "SUBMITTED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setIncomingReservations={setIncomingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "MyItems" && activeForm3 === "rejected"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "DENIED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setIncomingReservations={setOutgoingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "MyItems" && activeForm3 === "canceled"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "CANCELED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              setIncomingReservations={setIncomingReservations}
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : ""}
+
+                    {countShowedTables === 0 && (
+                      <div className="content__booking_empty">
+                        <p className="content__booking_empty__p">
+                          Нет бронирований в этой категории
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                  <p
+                    style={
+                      countShowedTables - countShowedTablesCouples * 3 <= 0
+                        ? { display: "flex" }
+                        : {}
+                    }
+                    onClick={() =>
+                      setCountShowedTablesCouples((prev) => prev + 1)
+                    }
+                    className="container_profile_content__booking_down-p"
+                  >
+                    Показать больше
+                  </p>
+                </div>
+              </div>
+              {/* body down container */}
+              <div className="container_profile_content__booking_down"></div>
+            </div>
+          </div>
+        </div>
+        <MapBooking
+          modalActiveMap={modalActiveMap}
+          setModalActiveMap={setModalActiveMap}
+          coords={coords}
+        />
+      </div>
+
       {/* MOBILE  */}
 
       <div className="privateProfile" id="globaldata_mobile">

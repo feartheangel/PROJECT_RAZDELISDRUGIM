@@ -187,6 +187,7 @@
   height: 15px;
   background: rgba(76, 201, 240, 0.14);
   border-radius: 139px;
+  margin-right: 5px;
 }
 .button_chat {
   max-width: 40px;
@@ -314,4 +315,8 @@
     align-self: flex-start;
     width: 100%;
   }
+  .chat_header_wrapper{
+    height: max-content;
+  }
+
 }

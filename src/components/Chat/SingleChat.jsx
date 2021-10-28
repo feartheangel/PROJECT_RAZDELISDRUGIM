@@ -97,14 +97,7 @@ const SingleChat = ({ item, chatSocket }) => {
             </p>
           </div>
           <div className="single_chat_left_block_second_row">
-            <div
-              style={
-                item.last_message === "Вам поступило новое бронирование"
-                  ? { backgroundColor: "rgba(76, 201, 240, 0.14)" }
-                  : {}
-              }
-              className="single_chat_message_text_wrapper"
-            >
+            <div className="single_chat_message_text_wrapper">
               {item.avatar_last_user_message && (
                 <img
                   alt="razdelisdrugim"
@@ -112,34 +105,43 @@ const SingleChat = ({ item, chatSocket }) => {
                   src={`${rootAddress}${item.avatar_last_user_message}`}
                 />
               )}
-              <p className="single_chat_message_text">
+              <p
+                className="single_chat_message_text"
+                style={
+                  item.last_message === "Вам поступило новое бронирование"
+                    ? { backgroundColor: "rgba(76, 201, 240, 0.14)" }
+                    : {}
+                }
+              >
                 {item.last_message === null
                   ? "Пока нет сообщений"
                   : item.last_message}
               </p>
             </div>
-            {item.is_last_message === false && (
+            <div className="single_chat_message_block_right">
+              {item.is_last_message === false && (
+                <img
+                  alt="razdelisdrugim"
+                  className="single_chat_unread_image"
+                  title="Не прочитано собеседником"
+                  src={Dot}
+                />
+              )}
+              {item.not_read_messages !== 0 && (
+                <div className="single_chat_count_not_read_messages_circle">
+                  <p className="single_chat_count_not_read_messages">
+                    {item.not_read_messages}
+                  </p>
+                </div>
+              )}
               <img
                 alt="razdelisdrugim"
-                className="single_chat_unread_image"
-                title="Не прочитано собеседником"
-                src={Dot}
+                className="single_chat_actions_image"
+                title="Удалить чат"
+                src={Shape}
+                onClick={(e) => deleteChatHandler(e)}
               />
-            )}
-            {item.not_read_messages !== 0 && (
-              <div className="single_chat_count_not_read_messages_circle">
-                <p className="single_chat_count_not_read_messages">
-                  {item.not_read_messages}
-                </p>
-              </div>
-            )}
-            <img
-              alt="razdelisdrugim"
-              className="single_chat_actions_image"
-              title="Удалить чат"
-              src={Shape}
-              onClick={(e) => deleteChatHandler(e)}
-            />
+            </div>
           </div>
         </div>
       </div>

@@ -15,6 +15,11 @@
 .messanger_wrapper {
   display: flex;
 }
+.single_chat_message_block_right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .messanger_left_optional_p {
   font-family: "Raleway";
@@ -39,7 +44,7 @@
 
 .single_chat_wrapper {
   width: 100%;
-  height: 110px;
+  height: auto;
   display: flex;
   border-bottom: 1px solid rgba(18, 57, 64, 0.14);
   margin-top: 15px;
@@ -98,13 +103,13 @@
 }
 
 .single_chat_message_text_wrapper {
-  width: 646px;
+  max-width: 646px;
   height: 41px;
-  background: #f7fff7;
   border-radius: 5px;
   display: flex;
   padding: 0 10px;
   align-items: center;
+  overflow-y: hidden;
 }
 
 .single_chat_message_text {
@@ -114,6 +119,7 @@
   font-size: 18px;
   line-height: 21px;
   color: #091d20;
+  padding: 10px 5px;
 }
 
 .single_chat_sender_image {
@@ -127,7 +133,7 @@
 .single_chat_unread_image {
   width: 7px;
   height: 7px;
-  margin-left: -80px;
+  margin-right: 15px;
 }
 
 .single_chat_actions_image {
@@ -155,19 +161,20 @@
     background-color: rgba(99, 212, 248, 0.1);
   }
   .messanger_left_optional_p {
-    margin-bottom: 15px;
+    margin: 0;
     margin-left: 15px;
     font-size: 18px;
   }
   .container_profile_content__messages {
     border-radius: 0;
     margin-top: 0;
-    padding: 15px;
+    padding: 15px 5px;
     width: -webkit-fill-available;
+
   }
   .single_chat_item_image {
-    width: 60px;
-    height: 60px;
+    max-width: 60px;
+    max-height: 60px;
     margin-right: 10px;
   }
 
@@ -182,7 +189,9 @@
 
   .single_chat_message_text_wrapper {
     width: 85%;
-    height: auto;
+    height: 80px;
+    overflow-x: hidden;
+    align-items: flex-start;
   }
   .single_chat_actions_image2 {
     display: none;
@@ -191,10 +200,18 @@
     font-size: 12px;
   }
   .single_chat_message_text {
-    height: auto;
-    max-width: 150px;
-    width: 100%;
+    height: 65px;
+    max-width: 140px;
   }
+  .single_chat_sender_image{
+    margin-top: 10px;
+  }
+  .single_chat_right_side{
+    width: -webkit-fill-available;
+  }
+
+
+
 }
 
 /* IPAD */
@@ -211,16 +228,29 @@
     height: 70px;
   }
   .single_chat_message_text_wrapper {
-    width: -webkit-fill-available;
-    height: auto;
+    width: max-content;
   }
 
   .single_chat_message_text {
-    height: auto;
     max-width: 250px;
     width: 100%;
+    height: inherit;
+    overflow-y: hidden;
   }
   .single_chat_actions_image2 {
     display: none;
   }
+  .messanger_left_optional_p{
+    width: max-content;
+    font-size: 18px;
+    margin-right: 20px;
+  }
+
+
+
+
+
+
+
+
 }
