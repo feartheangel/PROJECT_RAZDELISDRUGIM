@@ -644,6 +644,7 @@
   }
   .container_profile_content__booking_down-p {
     text-align: center;
+    margin: 20px 0;
   }
   .span_color {
     font-weight: 500;
@@ -678,6 +679,9 @@
   }
   .container_profile_content__booking_down-p{
     margin: 25px 0;
+  }
+  .content__booking_left{
+    margin-right: 20px;
   }
 
 

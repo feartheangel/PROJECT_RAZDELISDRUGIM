@@ -427,6 +427,9 @@
     min-height: 450px;
     margin: 10px;
   }
+  .shapka_top{
+    display: flex;
+  }
   .all_content_blocks_up {
     display: flex;
     flex-direction: row;

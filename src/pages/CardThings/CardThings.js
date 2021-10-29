@@ -947,7 +947,7 @@ const CardThings = () => {
                     </div>
 
                     {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ  - NEW BOOKING !!!*/}
-                    <div style={{ width: "310px", height: "180px" }}>
+                    <div style={{ width: "310px", height: "auto" }}>
                       <div className="block_up_contactOwner">
                         <button
                           onClick={ScrollHandler}
@@ -3208,18 +3208,35 @@ const CardThings = () => {
                       <span className="block_up_free-p">Свободно</span>
                     </div>
 
-                    {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ*/}
-                    <div>
+                    {/* КНОПКА СВЯЗАТЬСЯ С ВЛАДЕЛЬЦЕМ  - NEW BOOKING !!!*/}
+
+                    <div style={{ width: "310px", height: "auto" }}>
                       <div className="block_up_contactOwner">
-                        <input
-                          onClick={showContactHandler}
+                        <button
+                          onClick={ScrollHandler}
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
+                          href="#booking_page"
+                          // scrollTop="500px"
                           type="button"
-                          value="Связаться с владельцем"
-                          style={{ cursor: "pointer" }}
+                          value="Забронировать"
+                          className="contactOwner_btn"
+                        >
+                          Забронировать
+                        </button>
+                        <input
+                          style={
+                            isOwn ? { display: "none" } : { cursor: "pointer" }
+                          }
+                          onClick={goToChatHandler}
+                          href="#booking_page"
+                          type="button"
+                          value="Перейти в чат"
                           className="contactOwner_btn"
                         />
 
-                        {favorites && !isFavorite && (
+                        {favorites && !isFavorite && !isOwn && (
                           <img
                             alt="razdelisdrugim"
                             onClick={(e) => addFavoriteHandler(e)}
@@ -3228,7 +3245,7 @@ const CardThings = () => {
                           />
                         )}
 
-                        {favorites && isFavorite && (
+                        {favorites && isFavorite && !isOwn && (
                           <img
                             alt="razdelisdrugim"
                             onClick={(e) => deleteFavoriteHandler(e)}
@@ -3236,9 +3253,23 @@ const CardThings = () => {
                             src={Favorites}
                           />
                         )}
+
+                        {isOwn && (
+                          <img
+                            alt="razdelisdrugim"
+                            onClick={(e) =>
+                              (window.location.href = `/edit-item?id=${itemData.id}`)
+                            }
+                            className="img_contactOwner"
+                            src={EditItemImage}
+                          />
+                        )}
                       </div>
                       {contactVisible && (
-                        <div className={"item_share_link"}>
+                        <div
+                          style={{ marginBottom: "70px" }}
+                          className={"item_share_link"}
+                        >
                           <label
                             onClick={window.navigator.clipboard.writeText(
                               `${window.location.href}`
@@ -3578,6 +3609,19 @@ const CardThings = () => {
                     )}
                   </div>
                 </div>
+              </div>
+              {/* блок бронирование */}
+
+              <div ref={div}>
+                {" "}
+                {booking && (
+                  <Booking
+                    component={"span"}
+                    itemData={itemData}
+                    selectedImage={selectedImage}
+                    setSelectedImage={setSelectedImage}
+                  />
+                )}
               </div>
             </div>
 

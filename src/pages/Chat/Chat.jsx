@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./Chat.css";
 import { Link } from "react-router-dom";
-import { Header } from "../../components/index";
+import { Header, Footer } from "../../components/index";
 import VectorLeft from "../../img/Chat/vector-back.png";
 import Vector_button from "../../img/Chat/knopka.PNG";
 import { MessageBlock } from "../../components/index";
@@ -450,13 +450,9 @@ const Chat = () => {
       <div className="privateProfile" id="globaldata_ipad">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <Link
-              to="/i-rent-out"
-              style={{ textDecoration: "none" }}
-              className="conteiner_shapka_myProfile"
-            >
+            <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
               <p>
-                Я сдаю <span> {subjects.length} </span>
+                Мои обьявления <span> {subjects.length} </span>
               </p>
             </Link>
             <Link
@@ -464,22 +460,17 @@ const Chat = () => {
                 textDecoration: "none",
               }}
               className="conteiner_shapka_myProfile"
-              to="/i-take"
+              to="/booking"
             >
-              <p>
-                Я беру <span> 3 </span>
-              </p>
+              <p>Бронирования</p>
             </Link>
             <Link to="/messages" style={{ textDecoration: "none" }}>
               <p className="conteiner_shapka_myProfile">Мои сообщения</p>
             </Link>
-
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: "none", textDecoration: "none" }
-                  : { textDecoration: "none" }
-              }
+              style={{
+                textDecoration: "none",
+              }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >
@@ -597,6 +588,7 @@ const Chat = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

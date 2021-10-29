@@ -243,39 +243,24 @@ const MyItems = () => {
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
             <p className="conteiner_shapka_myProfile">
-              Я сдаю <span> {subjects.length} </span>
+              Мои объявления <span> {subjects.length} </span>
             </p>
+            <Link style={{ textDecoration: "none" }} to="/booking">
+              <p>Бронирования</p>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to="/messages">
+              <p>Мои сообщения</p>
+            </Link>
             <Link
               style={{
                 textDecoration: "none",
               }}
               className="conteiner_shapka_myProfile"
-              to="/i-take"
-            >
-              <p>
-                Я беру <span> {iTakeSubjects && iTakeSubjects.length} </span>
-              </p>
-            </Link>
-            <Link to="/messages" style={{ textDecoration: "none" }}>
-              <p>Мои сообщения</p>
-            </Link>
-            <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: "none", textDecoration: "none" }
-                  : { textDecoration: "none" }
-              }
-              // style={{ display: "none" }}
-              className="conteiner_shapka_myProfile"
               to="/favorites"
             >
               <p>Избранное</p>
             </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              // style={{ display: "none" }}
-              to="/private-profile"
-            >
+            <Link style={{ textDecoration: "none" }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>
           </div>

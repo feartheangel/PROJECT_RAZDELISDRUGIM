@@ -94,9 +94,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     }
   }, [itemData]);
 
-  // увеличение начальной даты букинга в зависимости от полудня
+  // увеличение начальной даты букинга в зависимости от 15h
   React.useEffect(() => {
-    if (new Date().getTime() > 12) {
+    if (new Date().getTime() > 15) {
       let date = new Date().setDate(new Date().getDate() + 1);
       let convertedDate = new Date(date);
       setStartDate(convertedDate);
@@ -393,6 +393,1072 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   return (
     <div>
       <div className="card_content_booking" id="card_thing_pc">
+        {/* header */}
+        <div className="content_booking_shapka_up">
+          <p className="content_booking_shapka_up_p">Оформление бронирования</p>
+        </div>
+        {/* content */}
+        <div className="card_content_booking_all">
+          {/* up block content */}
+          <div className="card_content_booking_up">
+            <div className="content_booking_up_header">
+              {/* left block */}
+              <div className="booking_up_header_info_item">
+                <div className="header_info_item_photo">
+                  {itemData && itemData.image_1 && (
+                    <img
+                      className={
+                        selectedImage === itemData.image_1
+                          ? "card_thing_image_booking"
+                          : "card_thing_image_booking"
+                      }
+                      onClick={() =>
+                        setSelectedImage(itemData && itemData.image_1)
+                      }
+                      src={
+                        itemData && `data:image/png;base64,${itemData.image_1}`
+                      }
+                      alt="razdelisdrugim"
+                    />
+                  )}
+                </div>
+
+                <div className="header_info_item_name">
+                  {/*название вещи */}
+                  <p className="header_info_item_name_p1">
+                    {itemData && itemData.name_item}{" "}
+                    {!serviceIds.includes(
+                      itemData && itemData.category_id.id
+                    ) && "в аренду"}
+                  </p>
+                  {/* стоимость арнеды */}
+                  <div className="header_info_item_name_yourCost">
+                    {itemData && itemData.offer_price_rent && (
+                      <div style={{ display: "flex" }}>
+                        <img
+                          alt="razdelisdrugim"
+                          src={HandShake}
+                          className="yourCost_handShake"
+                        />
+                        <p className="block_up_yourCost-p1">
+                          {serviceIds.includes(
+                            itemData && itemData.category_id.id
+                          )
+                            ? "Договорная"
+                            : "Предложить свою цену"}
+                        </p>
+                      </div>
+                    )}
+                    {itemData && itemData.free_rent && (
+                      <div style={{ display: "flex" }}>
+                        <img
+                          alt="razdelisdrugim"
+                          src={freePrice}
+                          className="yourCost_handShake"
+                        />
+                        <p className="block_up_yourCost-p1">Бесплатно</p>
+                      </div>
+                    )}
+                    {itemData &&
+                      !itemData.offer_price_rent &&
+                      !itemData.free_rent && (
+                        <div style={{ display: "flex" }}>
+                          <p
+                            style={{ marginRight: "10px" }}
+                            className="block_up_yourCost-p1"
+                          >
+                            <span style={{ fontWeight: "500" }}>
+                              {itemData && itemData.price_rent}
+                            </span>{" "}
+                            BYN
+                          </p>
+                          <p
+                            style={{ marginRight: "10px" }}
+                            className="block_up_yourCost-p1"
+                          >
+                            за
+                          </p>
+                          <p
+                            style={{ fontWeight: "500" }}
+                            className="block_up_yourCost-p1"
+                          >
+                            {itemData && itemData.rent === "Час"
+                              ? "час"
+                              : itemData && itemData.rent === "День"
+                              ? "день"
+                              : itemData && itemData.rent === "Неделя"
+                              ? "неделю"
+                              : itemData && itemData.rent === "Месяц"
+                              ? "месяц"
+                              : itemData && itemData.rent === "1шт."
+                              ? "штуку"
+                              : itemData && itemData.rent === "1кв.м."
+                              ? "1кв.м."
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                  </div>
+                </div>
+              </div>
+              {/* right block header content */}
+              <div className="booking_up_header_info_user">
+                <p className="booking_up_header_info_user_p"> Владелец </p>
+                <div className="booking_up_header_info_user_name">
+                  <p className="header_info_user_name-p1">
+                    {itemData && itemData.profile.company_name
+                      ? itemData && itemData.profile.company_name
+                      : itemData && itemData.profile.first_name}
+                  </p>
+                  <p className="header_info_user_name-p2">
+                    {itemData && itemData.profile.company_name
+                      ? "Компания"
+                      : "Частное лицо"}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* дата аренды */}
+            <div className="content_booking_up_information">
+              <div className="content_booking_up_information_all">
+                <p className="information_all_up"> Даты аренды </p>
+                <div className="information_all_down">
+                  <div className="information_all_down_left">
+                    <div className="information_all_down_left_date">
+                      <img
+                        alt="razdelisdrugim"
+                        className="booking_calendar"
+                        src={Calendar}
+                      />
+                      {itemData && itemData.rent === "nonegl" && (
+                        <div className="form-group">
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_input"
+                          >
+                            <input
+                              id="booking_date_input"
+                              type="date"
+                              min={dateminbooking}
+                              className="booking_input_date"
+                              onChange={(e) => setStartDate(e.target.value)}
+                            />
+                          </label>
+
+                          <span className="information_all_down_left_date-p">
+                            {" "}
+                            -{" "}
+                          </span>
+
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_end_input"
+                          >
+                            <input
+                              id="booking_date_end_input"
+                              type="date"
+                              min={dateminbooking}
+                              disabled={startDate === undefined}
+                              className="booking_input_date"
+                            />
+                          </label>
+                        </div>
+                      )}
+                      {((itemData && itemData.rent === "День") ||
+                        (itemData && itemData.rent === "Неделя") ||
+                        (itemData && itemData.rent === "Месяц")) && (
+                        <div className="form-group" style={{ display: "flex" }}>
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_input_time"
+                          >
+                            <DatePicker
+                              id="booking_date_input_time"
+                              className="booking_input_date"
+                              selected={startDate}
+                              onChange={(date) => setStartDate(date)}
+                              locale="ru"
+                              dateFormat="P"
+                              minDate={new Date()}
+                            />
+                          </label>
+
+                          <div
+                            style={{
+                              display: "flex",
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                              className="information_all_down_left_alldate"
+                            >
+                              {" "}
+                              на{" "}
+                            </span>
+                          </div>
+
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_end_input_time"
+                          >
+                            <input
+                              type="number"
+                              id="booking_date_end_input_time"
+                              onChange={(e) => inputTimeCheked(e)}
+                              value={timechecked}
+                              disabled={startDate === undefined}
+                              className="booking_input_date_end"
+                              required
+                              min="1"
+                              max="365"
+                              placeholder="1"
+                            />
+                            <span className="information_all_down_left_alldate">
+                              {" "}
+                              {itemData && itemData.rent === "Час"
+                                ? "час"
+                                : itemData && itemData.rent === "День"
+                                ? "сут"
+                                : itemData && itemData.rent === "Неделя"
+                                ? "нед"
+                                : itemData && itemData.rent === "Месяц"
+                                ? "мес"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штук"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
+                                : ""}
+                            </span>
+                          </label>
+                        </div>
+                      )}
+
+                      {itemData && itemData.rent === "Час" && (
+                        <div className="form-group" style={{ display: "flex" }}>
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_input_time"
+                          >
+                            <DatePicker
+                              id="booking_date_input_time"
+                              className="booking_input_date"
+                              selected={startDate}
+                              onChange={(date) => setStartDate(date)}
+                              showTimeSelect
+                              locale="ru"
+                              timeFormat="HH:mm"
+                              dateFormat="Pp"
+                              timeIntervals={60}
+                              minDate={new Date()}
+                              timeInputLabel="Time:"
+                              filterTime={filterPassedTime3}
+                            />
+                          </label>
+
+                          <div
+                            style={{
+                              display: "flex",
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                              className="information_all_down_left_alldate"
+                            >
+                              {" "}
+                              на{" "}
+                            </span>
+                          </div>
+
+                          <label
+                            className="information_all_down_left_date-p"
+                            htmlFor="booking_date_end_input_time"
+                          >
+                            <input
+                              type="number"
+                              id="booking_date_end_input_time"
+                              onChange={(e) => inputTimeCheked(e)}
+                              value={timechecked}
+                              disabled={startDate === undefined}
+                              className="booking_input_date_end"
+                              required
+                              min="1"
+                              max="365"
+                              placeholder="1"
+                            />
+                            <span className="information_all_down_left_alldate">
+                              {" "}
+                              {itemData && itemData.rent === "Час"
+                                ? "час"
+                                : itemData && itemData.rent === "День"
+                                ? "сут"
+                                : itemData && itemData.rent === "Неделя"
+                                ? "нед"
+                                : itemData && itemData.rent === "Месяц"
+                                ? "мес"
+                                : itemData && itemData.rent === "1шт."
+                                ? "штук"
+                                : itemData && itemData.rent === "1кв.м."
+                                ? "1кв.м."
+                                : ""}
+                            </span>
+                          </label>
+                        </div>
+                      )}
+                    </div>
+
+                    <p className="information_all_down_left_alldate">
+                      {itemData && itemData.rent === "День" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultdate} сутки(-ок)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Час" && (
+                        <p className="information_all_down_left_alldate">
+                          {resulthours} час(-ов)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Неделя" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultweek} Неделя(-ли)
+                        </p>
+                      )}
+                      {itemData && itemData.rent === "Месяц" && (
+                        <p className="information_all_down_left_alldate">
+                          {resultmonths} Месяц(-ев)
+                        </p>
+                      )}
+                    </p>
+                  </div>
+                  <div className="information_all_down_right">
+                    {/* Время получения и возврата*/}
+                    {!serviceIds.includes(
+                      itemData && itemData.category_id.id
+                    ) && (
+                      <div className="conditions_return">
+                        <div className="conditions_return_block1">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p1">
+                              Время получения
+                            </p>
+                          </div>
+                          <p className="conditions_timeItem-p1">
+                            не ранее{" "}
+                            <p className="timeItem-p1-input">
+                              {itemData && itemData.receive_time}
+                            </p>
+                          </p>
+                        </div>
+
+                        <div className="conditions_return_block2">
+                          <div className="conditions_row">
+                            <p className="conditions_return_row-p1">
+                              Время возврата
+                            </p>
+                          </div>
+                          <p className="conditions_timeItem-p1">
+                            не позднее{" "}
+                            <p className="timeItem-p1-input">
+                              {itemData && itemData.return_time}
+                            </p>
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* центральные блоки */}
+          <div className="card_content_booking_center">
+            <div className="card_content_booking_center_up">
+              <div className="booking_center_up_block_first">
+                <div className="booking_center_up_block_left">
+                  <img
+                    alt="razdelisdrugim"
+                    src={Car}
+                    className="img_car_booking"
+                  />
+                  <p className="booking_center_up_block_left-p">
+                    {" "}
+                    Вид доставки
+                  </p>
+                </div>
+                {/* СПОСОБЫ ДОСТАВКИ  */}
+
+                <div className="booking_center_up_block_right">
+                  {itemData.delivery.includes("Самовывоз") && (
+                    <div className="up_block_right_input_block">
+                      <input
+                        type="radio"
+                        name="radio"
+                        className="input_setting"
+                        value="1"
+                        defaultChecked={radioBooking === "1" ? true : false}
+                        onChange={(e) => setRadioBooking(e.target.value)}
+                        id="radio1PC"
+                      />
+                      <label
+                        className="up_block_right_input_block-text"
+                        htmlFor="radio1PC"
+                      >
+                        Cамовывоз
+                      </label>
+                    </div>
+                  )}
+                  {itemData.delivery.includes("Привезу и заберу сам") && (
+                    <div className="up_block_right_input_block2">
+                      <div className="up_block_right_input_block2-2">
+                        <input
+                          type="radio"
+                          name="radio"
+                          className="input_setting"
+                          value="2"
+                          defaultChecked={radioBooking === "2" ? true : false}
+                          onChange={(e) => setRadioBooking(e.target.value)}
+                          id="radio2PC"
+                        />
+                        <label
+                          className="up_block_right_input_block-text"
+                          htmlFor="radio2PC"
+                        >
+                          Привезет и заберет владелец
+                        </label>
+                      </div>
+                      <p className="up_block_right_input_block3_text">
+                        — за {itemData.self_delivery_price} BYN
+                      </p>
+                    </div>
+                  )}
+                  {itemData.delivery.includes("Доставка курьером") && (
+                    <div className="up_block_right_input_block3">
+                      <div className="up_block_right_input_block3-3">
+                        <input
+                          type="radio"
+                          name="radio"
+                          className="input_setting"
+                          value="3"
+                          defaultChecked={radioBooking === "3" ? true : false}
+                          id="radio3PC"
+                          onChange={(e) => setRadioBooking(e.target.value)}
+                        />
+                        <label
+                          for="radio-3"
+                          className="up_block_right_input_block-text"
+                          htmlFor="radio3PC"
+                        >
+                          Отправить
+                        </label>
+                      </div>
+                      <label
+                        htmlFor="radio_booking3"
+                        className="up_block_right_input_block3_text"
+                      >
+                        — {itemData.will_send_choice}:
+                        {itemData.send_payer === "RENTER"
+                          ? " за счёт рентера"
+                          : itemData.send_payer === "OWNER"
+                          ? " за счёт владельца"
+                          : ""}
+                      </label>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* предложить цену */}
+              {itemData.offer_price_rent && (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div className="booking_center_down_block2">
+                    <p className="booking_center_down_block2-p">
+                      Ваша цена за {itemData.rent.toLowerCase()}{" "}
+                      <span className="red_star">*</span>
+                    </p>
+                    <input
+                      type="number"
+                      className="add-item-select-input"
+                      onChange={(e) => setOfferingPrice(e.target.value)}
+                      value={offeringPrice}
+                    />
+                  </div>
+                  <p
+                    style={{ marginLeft: "10px" }}
+                    className="information_all_down_left_alldate"
+                  >
+                    BYN
+                  </p>
+                </div>
+              )}
+
+              {/* адрес вещи */}
+
+              <div className="booking_center_up_block_second">
+                <div className="up_block_second_block_up">
+                  <img
+                    alt="razdelisdrugim"
+                    src={metka}
+                    className="booking_metka"
+                  />
+                  <p className="up_block_second_block_up-p">
+                    Адрес местонахождения вещи
+                  </p>
+                </div>
+                <div className="up_block_second_block_center">
+                  {isLoggedIn ? (
+                    <p className="up_block_second_block_center_address">
+                      {itemData && itemData.items_address.split(",")[0]},
+                      {itemData && itemData.items_address.split(",")[1]}
+                    </p>
+                  ) : (
+                    <p
+                      style={{ color: "#4CC9F0" }}
+                      className="up_block_second_block_center_address"
+                    >
+                      Адрес доступен после регистрации
+                    </p>
+                  )}
+                </div>
+
+                {(itemData.delivery.includes("Привезу и заберу сам") ||
+                  itemData.delivery.includes("Доставка курьером")) &&
+                  (radioBooking === "2" || radioBooking === "3") && (
+                    <div className="up_block_second_block_down">
+                      <div className="up_block_second_block_up">
+                        <img
+                          alt="razdelisdrugim"
+                          src={metka}
+                          className="booking_metka"
+                        />
+                        <p className="up_block_second_block_up-p">
+                          Адрес доставки
+                        </p>
+                      </div>
+                      <div>
+                        <div className="add-item-input-wrapper">
+                          <select
+                            className="add-item-select-input"
+                            onChange={(e) =>
+                              setCoords(e.target.value.split(",,"))
+                            }
+                          >
+                            <option>Не выбран</option>
+                            {isLoaded &&
+                              addressesFormatted.map((item, index) => (
+                                <option
+                                  selected={
+                                    addressAdded &&
+                                    index + 1 === addressesFormatted.length
+                                  }
+                                  value={`${item[1]},,${item[0]}`}
+                                  key={index}
+                                >
+                                  {item[0]}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+                        {addresses.length < maxAddressesCount && (
+                          <div
+                            style={{ marginBottom: "20px" }}
+                            id="dop_parametr_wrapper"
+                          >
+                            <input
+                              id="dop_parametr"
+                              className="add-item-input-checkbox__3"
+                              type="checkbox"
+                            />
+                            <label
+                              onClick={() =>
+                                setShowAddressAddTable(!showAddressAddTable)
+                              }
+                              htmlFor="dop_parametr"
+                            >
+                              + Добавить другой адрес
+                            </label>
+                          </div>
+                        )}
+
+                        {showAddressAddTable && (
+                          <div className="take-away-secondary-wrapper-column">
+                            <div className="take-away-secondary-wrapper">
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Область{" "}
+                                  <span className="add-item-span-zvezda">
+                                    *
+                                  </span>
+                                </label>
+                                <input
+                                  placeholder="Например: Минская"
+                                  type="text"
+                                  className="add-item-input-text__address"
+                                  value={area}
+                                  onChange={(e) => setArea(e.target.value)}
+                                />
+                              </div>
+
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Населенный пункт{" "}
+                                  <span className="add-item-span-zvezda">
+                                    *
+                                  </span>
+                                </label>
+                                <input
+                                  placeholder="Например: Минск"
+                                  type="text"
+                                  className="add-item-input-text__address"
+                                  value={locality}
+                                  onChange={(e) => setLocality(e.target.value)}
+                                />
+                              </div>
+
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Район
+                                </label>
+                                <input
+                                  placeholder="Например: Советский"
+                                  type="text"
+                                  className="add-item-input-text__address"
+                                  value={district}
+                                  onChange={(e) => setDistrict(e.target.value)}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="take-away-secondary-wrapper">
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Улица/Проспект/Переулок{" "}
+                                  <span className="add-item-span-zvezda">
+                                    *
+                                  </span>
+                                </label>
+                                <input
+                                  placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
+                                  type="text"
+                                  className="add-item-input-text__address__street"
+                                  value={street}
+                                  onChange={(e) => setStreet(e.target.value)}
+                                />
+                              </div>
+
+                              <div className="add-item-input-wrapper">
+                                <label className="add-item-input-label">
+                                  Индекс
+                                  <span className="add-item-span-zvezda">
+                                    *
+                                  </span>
+                                </label>
+                                <input
+                                  placeholder="Например: 225417"
+                                  type="text"
+                                  className="add-item-input-text__address"
+                                  value={index}
+                                  onChange={(e) => setIndex(e.target.value)}
+                                />
+                              </div>
+                            </div>
+                            {/* дом строение */}
+                            <div
+                              className="take-away-secondary-wrapper"
+                              id="take_Away_komp"
+                            >
+                              <div
+                                className="take-away-secondary-wrapper"
+                                id="take-away-secondary-wrapper"
+                              >
+                                <div className="add-item-input-wrapper">
+                                  <label className="add-item-input-label">
+                                    Дом{" "}
+                                    <span className="add-item-span-zvezda">
+                                      *
+                                    </span>
+                                  </label>
+                                  <input
+                                    disabled={room || office || building}
+                                    type="text"
+                                    className="add-item-input-text__address__house"
+                                    value={house}
+                                    onChange={(e) => setHouse(e.target.value)}
+                                  />
+                                </div>
+
+                                <div
+                                  className="take-away-secondary-wrapper"
+                                  id="take-away-secondary-wrapper"
+                                >
+                                  <div className="add-item-input-wrapper">
+                                    <label className="add-item-input-label">
+                                      Корпус
+                                    </label>
+                                    <input
+                                      disabled={room || office || building}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={body}
+                                      onChange={(e) => setBody(e.target.value)}
+                                    />
+                                  </div>
+
+                                  <div className="add-item-input-wrapper">
+                                    <label className="add-item-input-label">
+                                      Квартира
+                                    </label>
+                                    <input
+                                      disabled={room || office || building}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={flat}
+                                      onChange={(e) => setFlat(e.target.value)}
+                                    />
+                                  </div>
+                                </div>
+                                <span
+                                  style={{ marginRight: "30px" }}
+                                  className="add-item-cost-or__secondary"
+                                >
+                                  или
+                                </span>
+                                <div
+                                  className="take-away-secondary-wrapper"
+                                  id="take-away-secondary-wrapper"
+                                >
+                                  <div className="add-item-input-wrapper">
+                                    <label className="add-item-input-label">
+                                      Помещение{" "}
+                                      <span className="add-item-span-zvezda">
+                                        *
+                                      </span>
+                                    </label>
+                                    <input
+                                      disabled={house || body || flat}
+                                      type="text"
+                                      className="add-item-input-text__address__house"
+                                      value={room}
+                                      onChange={(e) => setRoom(e.target.value)}
+                                    />
+                                  </div>
+
+                                  <div
+                                    className="take-away-secondary-wrapper"
+                                    id="take-away-secondary-wrapper"
+                                  >
+                                    <div className="add-item-input-wrapper">
+                                      <label className="add-item-input-label">
+                                        Офис
+                                      </label>
+                                      <input
+                                        disabled={house || body || flat}
+                                        type="text"
+                                        className="add-item-input-text__address__house"
+                                        value={office}
+                                        onChange={(e) =>
+                                          setOffice(e.target.value)
+                                        }
+                                      />
+                                    </div>
+
+                                    <div className="add-item-input-wrapper">
+                                      <label className="add-item-input-label">
+                                        Строение
+                                      </label>
+                                      <input
+                                        disabled={house || body || flat}
+                                        type="text"
+                                        className="add-item-input-text__address__house"
+                                        value={building}
+                                        onChange={(e) =>
+                                          setBuilding(e.target.value)
+                                        }
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <input
+                              disabled={requestActive}
+                              id="save_address"
+                              className={
+                                requestActive
+                                  ? "add-item-save-new-address-button disabled"
+                                  : "add-item-save-new-address-button"
+                              }
+                              type="button"
+                              value={
+                                requestActive
+                                  ? "ОТПРАВКА..."
+                                  : "Сохранить адрес"
+                              }
+                              onClick={saveNewAddress}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+              </div>
+            </div>
+            <div className="card_content_booking_center_down">
+              <div className="booking_center_down_block1">
+                <img
+                  alt="razdelisdrugim"
+                  src={People}
+                  className="booking_body"
+                />
+                <p className="booking_center_down_block1-p">Ваши данные</p>
+              </div>
+              <div className="booking_center_down_block2">
+                <p className="booking_center_down_block2-p">
+                  Имя <span className="red_star">*</span>
+                </p>
+                <input
+                  type="text"
+                  className="add-item-select-input"
+                  onChange={(e) => renterBookingNameHandler(e)}
+                  defaultValue={userData.first_name}
+                />
+              </div>
+              <div className="booking_center_down_block2">
+                <p className="booking_center_down_block2-p">
+                  Номер телефона <span className="red_star">*</span>
+                </p>
+                <input
+                  type="text"
+                  className="add-item-select-input"
+                  onChange={(e) => renterBookingNumberHandler(e)}
+                  defaultValue={userData.phone}
+                />
+              </div>
+              <div className="booking_center_down_block3">
+                <p className="booking_center_down_block2-p">
+                  Сообщение владельцу
+                </p>
+                <textarea
+                  className="booking_center_down_block2-textarea"
+                  onChange={(e) => renterBookingSmsHandler(e)}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* нижний блок  */}
+          {((startDate && timechecked) || (timechecked && offeringPrice)) && (
+            <div className="card_content_booking_down">
+              <div className="content_booking_down_block1">
+                <p
+                  className="content_booking_down_block1-p"
+                  style={{ marginRight: "5px" }}
+                >
+                  Итоговая стоимость:{" "}
+                </p>
+                <p className="content_booking_down_block1-p">
+                  {" "}
+                  {startDate === undefined ? (
+                    "-- BYN"
+                  ) : startDate <= time ? (
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка! (Стартовое время ввода либо меньше настоящего
+                      времени либо равное времени завершения аренды...){" "}
+                    </span>
+                  ) : resulthours <= 0 && itemData.rent === "Час" ? (
+                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                  ) : resulthours !== 0 && itemData.rent === "Час" ? (
+                    totalAmount + "  BYN"
+                  ) : (resultdate <= 0 || resultdate > 30) &&
+                    itemData.rent === "День" ? (
+                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                  ) : (resultdate !== 0 || resultdate <= 30) &&
+                    itemData.rent === "День" ? (
+                    totalAmount + "  BYN"
+                  ) : (resultweek <= 0 || resultweek > 4) &&
+                    itemData.rent === "Неделя" ? (
+                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                  ) : (resultweek !== 0 || resultweek <= 4) &&
+                    itemData.rent === "Неделя" ? (
+                    totalAmount + "  BYN"
+                  ) : (resultmonths <= 0 || resultmonths > 12) &&
+                    itemData.rent === "Месяц" ? (
+                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                  ) : (resultmonths !== 0 || resultmonths <= 12) &&
+                    itemData.rent === "Месяц" ? (
+                    totalAmount + "  BYN"
+                  ) : isNaN(totalAmount) ? (
+                    <span style={{ color: "red" }}> Ошибка срока аренды!</span>
+                  ) : (
+                    totalAmount + "  BYN"
+                  )}{" "}
+                </p>
+              </div>
+
+              <div className="content_booking_down_block1">
+                <p className="content_booking_down_block1-p">
+                  {isNaN(resultSummaArends)
+                    ? "--"
+                    : resultSummaArends <= 0
+                    ? "--"
+                    : resultSummaArends}{" "}
+                  BYN{" "}
+                </p>
+                <p
+                  className="content_booking_down_block1-p"
+                  style={{ marginLeft: "5px" }}
+                >
+                  {" "}
+                  аренда{" "}
+                </p>
+                <p
+                  className="content_booking_down_block1-p"
+                  style={{ margin: "0 5px" }}
+                >
+                  {" "}
+                  (
+                  <span className="content_booking_down_block1-p">
+                    {itemData.offer_price_rent
+                      ? offeringPrice
+                      : itemData.price_rent}{" "}
+                    BYN{" "}
+                    <span
+                      className="content_booking_down_block1-p"
+                      style={{ margin: "0 2px" }}
+                    >
+                      {" "}
+                      x{" "}
+                    </span>
+                    {itemData.rent === "День"
+                      ? isNaN(resultdate)
+                        ? 0 + " сут"
+                        : resultdate + " сут"
+                      : ""}
+                    {itemData.rent === "Час"
+                      ? isNaN(Number.resulthours)
+                        ? resulthours + " час"
+                        : 0 + " час"
+                      : ""}
+                    {itemData.rent === "Неделя"
+                      ? isNaN(resultweek)
+                        ? 0 + " нед"
+                        : resultweek + " нед"
+                      : ""}
+                    {itemData.rent === "Месяц"
+                      ? isNaN(resultmonths)
+                        ? 0 + " мес"
+                        : resultmonths + " мес"
+                      : ""}
+                  </span>
+                  )
+                </p>
+              </div>
+
+              {radioBooking === "2" && (
+                <div className="content_booking_down_block1">
+                  <p className="content_booking_down_block1-p">
+                    {itemData.self_delivery_price === undefined
+                      ? 0
+                      : itemData.self_delivery_price === null
+                      ? 0
+                      : radioBooking === "2"
+                      ? itemData.self_delivery_price
+                      : 0}{" "}
+                    BYN
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ margin: "0 5px" }}
+                  >
+                    доставка
+                  </p>
+                </div>
+              )}
+
+              {itemData.insurance_price > 0 && (
+                <div className="content_booking_down_block1">
+                  <p className="content_booking_down_block1-p">
+                    {itemData.insurance_price} BYN
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ margin: "0 5px" }}
+                  >
+                    страхование
+                  </p>
+                </div>
+              )}
+
+              {itemData.franchise_price > 0 && (
+                <div className="content_booking_down_block1">
+                  <p className="content_booking_down_block1-p">
+                    {itemData.franchise_price} BYN
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ margin: "0 5px" }}
+                  >
+                    франшиза
+                  </p>
+                </div>
+              )}
+
+              {itemData.servicefee_price > 0 && (
+                <div className="content_booking_down_block1">
+                  <p className="content_booking_down_block1-p">
+                    {itemData.servicefee_price} BYN
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ margin: "0 5px" }}
+                  >
+                    сервисный сбор
+                  </p>
+                </div>
+              )}
+
+              {itemData.pledge_price > 0 && (
+                <div className="content_booking_down_block2">
+                  <p className="content_booking_down_block1-p">
+                    {" "}
+                    {itemData.pledge_price === undefined
+                      ? 0
+                      : itemData.pledge_price === null
+                      ? 0
+                      : itemData.pledge_price}{" "}
+                    BYN{" "}
+                  </p>
+                  <p
+                    className="content_booking_down_block1-p"
+                    style={{ margin: "0 5px" }}
+                  >
+                    возвратный залог
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+        {/* кнопка бронированиия */}
+        <div className="card_content_booking_btn">
+          <input
+            style={{ cursor: "pointer" }}
+            onClick={handleBooking}
+            type="button"
+            value="Запросить бронирование"
+            className="booking_btn"
+          />
+        </div>
+      </div>
+
+      {/* IPAD */}
+      <div className="card_content_booking" id="card_thing_ipad">
         {/* header */}
         <div className="content_booking_shapka_up">
           <p className="content_booking_shapka_up_p">Оформление бронирования</p>

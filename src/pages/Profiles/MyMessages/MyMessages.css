@@ -188,7 +188,7 @@
   }
 
   .single_chat_message_text_wrapper {
-    width: 85%;
+    width: 100%;
     height: 80px;
     overflow-x: hidden;
     align-items: flex-start;
@@ -201,7 +201,8 @@
   }
   .single_chat_message_text {
     height: 65px;
-    max-width: 140px;
+    max-width: 175px;
+    width: auto;
   }
   .single_chat_sender_image{
     margin-top: 10px;
@@ -232,10 +233,11 @@
   }
 
   .single_chat_message_text {
-    max-width: 250px;
+    max-width: 350px;
     width: 100%;
     height: inherit;
     overflow-y: hidden;
+    padding: 0 10px;
   }
   .single_chat_actions_image2 {
     display: none;

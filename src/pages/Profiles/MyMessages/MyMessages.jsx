@@ -167,29 +167,27 @@ const MyMessages = () => {
       <div className="privateProfile" id="globaldata_ipad">
         <div className="privateProfile_container">
           <div className="conteiner_shapka">
-            <p className="conteiner_shapka_myProfile">
-              Мои объявления <span> {subjects.length} </span>
-            </p>
+            <Link to="/i-rent-out" style={{ textDecoration: "none" }}>
+              <p>
+                Мои объявления <span> {subjects.length} </span>
+              </p>
+            </Link>
             <Link style={{ textDecoration: "none" }} to="/booking">
               <p>Бронирования</p>
             </Link>
-            <p>Мои сообщения</p>
+            <Link to="/messages" style={{ textDecoration: "none" }}>
+              <p className="conteiner_shapka_myProfile">Мои сообщения</p>
+            </Link>
             <Link
-              style={
-                subjects.length === 0
-                  ? { pointerEvents: "none", textDecoration: "none" }
-                  : { textDecoration: "none" }
-              }
+              style={{
+                textDecoration: "none",
+              }}
               className="conteiner_shapka_myProfile"
               to="/favorites"
             >
               <p>Избранное</p>
             </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              // style={{ display: "none" }}
-              to="/private-profile"
-            >
+            <Link style={{ textDecoration: "none" }} to="/private-profile">
               <p> Мой профиль</p>
             </Link>
           </div>

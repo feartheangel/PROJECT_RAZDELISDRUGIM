@@ -981,6 +981,16 @@ select {
     left: 0;
     margin-left: 20px;
   }
+  .take-away-secondary-wrapper{
+    flex-wrap: wrap;
+  }
+  .form_radio_btn input[type="radio"]:checked + label {
+    background: rgba(76, 201, 240, 0.44);
+    border: 3px solid #4cc9f0;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    border-radius: 5px;
+}
 
   /* опции из ДОБАВИТЬ ДРУГОЙ АДРЕС */
   .add-item-input-text__address {
