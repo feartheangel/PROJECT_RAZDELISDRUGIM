@@ -31,3 +31,4 @@ export { default as MessageBlock } from "./Chat/MessageBlock";
 export { default as NotifyPopUp } from "./MainPage/Notifications";
 export { default as NotificationBlock } from "./MainPage/NotificationBlock";
 export { default as MapBooking } from "./Profile/MapBooking";
+export { default as StatusUpdateSubmit } from "./Booking/StatusUpdateSubmit";

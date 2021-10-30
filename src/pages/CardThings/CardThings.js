@@ -215,6 +215,7 @@ const CardThings = () => {
 
   const div = useRef(null);
   const div2 = useRef(null);
+  const div3 = useRef(null);
 
   function ScrollHandler() {
     if (!isLoggedIn) {
@@ -241,6 +242,11 @@ const CardThings = () => {
         inline: "end",
       });
       div2.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "end",
+      });
+      div3.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "end",
@@ -3612,7 +3618,7 @@ const CardThings = () => {
               </div>
               {/* блок бронирование */}
 
-              <div ref={div}>
+              <div ref={div3}>
                 {" "}
                 {booking && (
                   <Booking

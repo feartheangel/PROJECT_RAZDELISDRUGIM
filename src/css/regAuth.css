@@ -33,7 +33,6 @@
 .reg-content {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100%;
 }
 
@@ -253,7 +252,6 @@
   padding-bottom: 6px;
   font-size: 25px;
 }
-
 
 .log-form-text-label-p__upper {
   display: flex;
@@ -485,7 +483,6 @@
   display: flex;
   justify-content: center;
   font-size: 24px;
-  margin-top: 36px;
   font-weight: 500;
 }
 
@@ -535,10 +532,10 @@
 #regform_mobile {
   display: none;
 }
-#regform_ipad{
+#regform_ipad {
   display: none;
 }
-#globaldata_ipad{
+#globaldata_ipad {
   display: none;
 }
 
@@ -568,7 +565,7 @@
     transform: none;
     padding: 0;
   }
-  .password-control{
+  .password-control {
     bottom: 28px;
   }
 
@@ -592,16 +589,16 @@
     overflow-x: hidden;
     width: 100%;
   }
-  .reg-form-submit-button{
+  .reg-form-submit-button {
     margin-top: 15px;
     margin-bottom: 20px;
     max-width: 345px;
     width: -webkit-fill-available;
   }
-  .log-form-text-label-l__recover{
+  .log-form-text-label-l__recover {
     margin-top: 0;
   }
-  .log-form-text-label-p-email__upper{
+  .log-form-text-label-p-email__upper {
     margin-top: 0;
   }
   .log-form {
@@ -621,55 +618,55 @@
     margin: 0;
     transform: none;
     border-radius: 0;
-    padding-bottom: 0;
+    padding: 0 !important;
   }
   .log-form-text-label-p-email__upper {
     font-size: 15px;
     padding: 0 5px;
     margin-top: 30px;
   }
-  .reg-form-text-label-p{
-    margin:0;
+  .reg-form-text-label-p {
+    margin: 0;
   }
-  .reg-form-checkbox-button + label::before{
+  .reg-form-checkbox-button + label::before {
     border-radius: 100%;
   }
-  .log-form-text-label-l{
+  .log-form-text-label-l {
     margin-top: 20px;
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
-    color: #091D20;
+    color: #091d20;
   }
-  .reg-form-text-label-l__moved{
+  .reg-form-text-label-l__moved {
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
-    color: #091D20;
+    color: #091d20;
   }
-  .reg-form-radio-button + label{
+  .reg-form-radio-button + label {
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
   }
-  .reg-form-radio-button:checked + label::before{
+  .reg-form-radio-button:checked + label::before {
     border-radius: 100%;
   }
-  .reg-form-radio-button + label::before{
+  .reg-form-radio-button + label::before {
     border-radius: 100%;
   }
-  .reg-form-annotation{
+  .reg-form-annotation {
     margin-top: 10px;
   }
-  .reg-form-contact-input{
+  .reg-form-contact-input {
     margin-top: 5px;
     height: 30px;
   }
-  .reg-form-text-label-l{
+  .reg-form-text-label-l {
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
-    color: #091D20;
+    color: #091d20;
     margin-top: 15px;
   }
   .reg-form-input-area {
@@ -705,7 +702,7 @@
   .reg-form-action-type-list {
     margin: 5px 15px;
   }
-  .reg-form-reg-type-choice{
+  .reg-form-reg-type-choice {
     margin-top: 15px;
     justify-content: space-evenly;
     width: -webkit-fill-available;
@@ -726,14 +723,13 @@
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
 @media only screen and (max-width: 1024px) and (min-width: 481px) {
-
-  #regform_ipad{
+  #regform_ipad {
     display: none;
   }
-  #globaldata_ipad{
+  #globaldata_ipad {
     display: flex;
   }
-  #profile_ipad{
+  #profile_ipad {
     display: flex;
   }
 

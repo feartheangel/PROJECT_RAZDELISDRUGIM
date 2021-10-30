@@ -1,18 +1,15 @@
 import React from "react";
 
-import { useSelector, useDispatch } from "react-redux";
 import Requests from "../../http/axios-requests";
-import { reloadData } from "../../redux/actions/userData";
 import Shape from "../../img/Shape.png";
 
-const ItemDeleteSubmit = ({
-  deleteId,
+const StatusUpdateSubmit = ({
+  reserveId,
+  reserveUpdateBool,
   setModalActiveSubmit,
   modalActiveSubmit,
+  toggleReloadReservations,
 }) => {
-  const dispatch = useDispatch();
-  const { reload } = useSelector(({ userData }) => userData);
-
   //обработчики кнопок
 
   const noHandler = () => {
@@ -20,16 +17,10 @@ const ItemDeleteSubmit = ({
   };
 
   const yesHandler = () => {
-    Requests.deleteSubject(deleteId)
-      .then(() => {
-        dispatch(reloadData(!reload));
-        setModalActiveSubmit(false);
-      })
-      .catch(() => {
-        dispatch(reloadData(!reload));
-
-        setModalActiveSubmit(false);
-      });
+    Requests.updateReservationStatus(reserveId, reserveUpdateBool).then(() => {
+      toggleReloadReservations();
+      setModalActiveSubmit(false);
+    });
   };
 
   return (
@@ -47,20 +38,20 @@ const ItemDeleteSubmit = ({
               display: "flex",
               width: "100%",
               borderRadius: "10px",
+              padding: "35px",
             }}
             className="reg-form-email-verification"
           >
-            <div className="div_for_krestik">
-              <img
-                alt="razdelisdrugim"
-                onClick={() => setModalActiveSubmit(false)}
-                src={Shape}
-                className="img_krestik"
-                style={{ marginRight: "15px" }}
-              />
-            </div>
             <div className="log-form-text-label-p-email__upper">
-              <p>Вы уверены, что хотите удалить эту вещь?</p>
+              <p>
+                {reserveUpdateBool === "DENIED"
+                  ? "Вы уверены, что хотите отклонить бронирование?"
+                  : reserveUpdateBool === "SUBMITTED"
+                  ? "Вы уверены, что хотите подтвердить бронирование?"
+                  : reserveUpdateBool === "CANCELED"
+                  ? "Вы уверены, что хотите отменить бронирование?"
+                  : ""}
+              </p>
             </div>
             <div
               style={{
@@ -96,4 +87,4 @@ const ItemDeleteSubmit = ({
   );
 };
 
-export default ItemDeleteSubmit;
+export default StatusUpdateSubmit;

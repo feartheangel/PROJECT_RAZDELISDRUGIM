@@ -18,34 +18,33 @@ import UnionDisabled from "../../img/MainPage/Union-disabled.webp";
 import moneyTimeDisabled from "../../img/MainPage/money-time-disabled.webp";
 
 import { Link } from "react-router-dom";
-import { rootAddress } from "../../http/axios-requests";
-import Requests from "../../http/axios-requests";
 
 const BookingITake = ({
   item,
   type,
-  toggleReloadReservations,
-  reloadReservations,
+  setReserveUpdateBool,
+  setReserveId,
+  setModalActiveSubmit,
   countShowedTablesCouples,
   index,
   showOnMapHandler,
 }) => {
-  const handleReservationSubmit = () => {
-    Requests.updateReservationStatus(item.id, "SUBMITTED").then(() => {
-      toggleReloadReservations(!reloadReservations);
-    });
+  const handleReservationAbort = () => {
+    setReserveId(item.id);
+    setReserveUpdateBool("DENIED");
+    setModalActiveSubmit(true);
   };
 
-  const handleReservationAbort = () => {
-    Requests.updateReservationStatus(item.id, "DENIED").then(() => {
-      toggleReloadReservations(!reloadReservations);
-    });
+  const handleReservationSubmit = () => {
+    setReserveId(item.id);
+    setReserveUpdateBool("SUBMITTED");
+    setModalActiveSubmit(true);
   };
 
   const handleReservationCancel = () => {
-    Requests.updateReservationStatus(item.id, "CANCELED").then(() => {
-      toggleReloadReservations(!reloadReservations);
-    });
+    setReserveId(item.id);
+    setReserveUpdateBool("CANCELED");
+    setModalActiveSubmit(true);
   };
 
   return (

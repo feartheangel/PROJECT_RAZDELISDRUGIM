@@ -87,7 +87,7 @@ const NotificationBlock = ({
                     {notification.reservation_status === "SUBMITTED"
                       ? "Подтверждено"
                       : notification.reservation_status === "DENIED"
-                      ? "Отказано"
+                      ? "Отклонено"
                       : notification.reservation_status === "CANCELED"
                       ? "Отменено"
                       : ""}

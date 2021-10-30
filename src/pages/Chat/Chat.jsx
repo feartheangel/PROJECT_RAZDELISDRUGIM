@@ -588,7 +588,6 @@ const Chat = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

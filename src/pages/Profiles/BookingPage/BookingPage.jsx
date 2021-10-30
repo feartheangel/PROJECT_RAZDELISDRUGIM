@@ -3,7 +3,12 @@ import { useSelector } from "react-redux";
 import "../MyItems/MyItems.css";
 import "../../../css/BookingPage.css";
 import { Link } from "react-router-dom";
-import { Header, Footer, MapBooking } from "../../../components/index";
+import {
+  Header,
+  Footer,
+  MapBooking,
+  StatusUpdateSubmit,
+} from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 import BookingITake from "../../../components/Profile/BookingITAKE";
 
@@ -20,6 +25,8 @@ const BookingPage = () => {
   const [coords, setCoords] = React.useState();
 
   const [reloadReservations, toggleReloadReservations] = React.useState(false);
+
+  const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
@@ -137,6 +144,8 @@ const BookingPage = () => {
   }, [activeForm2, activeForm3]);
 
   const [modalActiveMap, setModalActiveMap] = React.useState(false);
+  const [reserveId, setReserveId] = React.useState();
+  const [reserveUpdateBool, setReserveUpdateBool] = React.useState();
 
   const showOnMapHandler = (coords) => {
     setModalActiveMap(true);
@@ -308,7 +317,9 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
-                            reloadReservations={reloadReservations}
+                            setReserveId={setReserveId}
+                            setModalActiveSubmit={setModalActiveSubmit}
+                            setReserveUpdateBool={setReserveUpdateBool}
                             reloadReservations={reloadReservations}
                             toggleReloadReservations={toggleReloadReservations}
                             item={item}
@@ -327,6 +338,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -349,6 +363,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -371,6 +388,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -393,6 +413,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -413,6 +436,9 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReserveId={setReserveId}
+                            setModalActiveSubmit={setModalActiveSubmit}
+                            setReserveUpdateBool={setReserveUpdateBool}
                             reloadReservations={reloadReservations}
                             toggleReloadReservations={toggleReloadReservations}
                             item={item}
@@ -431,6 +457,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -453,6 +482,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -475,6 +507,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -497,6 +532,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -711,6 +749,9 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReserveId={setReserveId}
+                            setModalActiveSubmit={setModalActiveSubmit}
+                            setReserveUpdateBool={setReserveUpdateBool}
                             reloadReservations={reloadReservations}
                             toggleReloadReservations={toggleReloadReservations}
                             item={item}
@@ -729,6 +770,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -751,6 +795,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -773,6 +820,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -795,6 +845,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -815,6 +868,9 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReserveId={setReserveId}
+                            setModalActiveSubmit={setModalActiveSubmit}
+                            setReserveUpdateBool={setReserveUpdateBool}
                             reloadReservations={reloadReservations}
                             toggleReloadReservations={toggleReloadReservations}
                             item={item}
@@ -833,6 +889,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -855,6 +914,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -877,6 +939,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -899,6 +964,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1148,6 +1216,9 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReserveId={setReserveId}
+                            setModalActiveSubmit={setModalActiveSubmit}
+                            setReserveUpdateBool={setReserveUpdateBool}
                             reloadReservations={reloadReservations}
                             toggleReloadReservations={toggleReloadReservations}
                             item={item}
@@ -1166,6 +1237,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1188,6 +1262,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1210,6 +1287,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1232,6 +1312,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1252,6 +1335,9 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReserveId={setReserveId}
+                            setModalActiveSubmit={setModalActiveSubmit}
+                            setReserveUpdateBool={setReserveUpdateBool}
                             reloadReservations={reloadReservations}
                             toggleReloadReservations={toggleReloadReservations}
                             item={item}
@@ -1270,6 +1356,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1292,6 +1381,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1314,6 +1406,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1336,6 +1431,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
                               reloadReservations={reloadReservations}
                               toggleReloadReservations={
                                 toggleReloadReservations
@@ -1386,6 +1484,13 @@ const BookingPage = () => {
           coords={coords}
         />
       </div>
+      <StatusUpdateSubmit
+        modalActiveSubmit={modalActiveSubmit}
+        setModalActiveSubmit={setModalActiveSubmit}
+        reserveId={reserveId}
+        reserveUpdateBool={reserveUpdateBool}
+        toggleReloadReservations={toggleReloadReservations}
+      />
       <Footer />
     </div>
   );

@@ -1336,14 +1336,11 @@
   .up_block_right_input_block2 {
     margin: 15px 0;
   }
-  .item_share_link input{
+  .item_share_link input {
     margin-right: 0;
     width: 100%;
     padding-left: 5px;
   }
-
-
-
 }
 
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
