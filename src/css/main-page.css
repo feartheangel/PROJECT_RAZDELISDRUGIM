@@ -1463,6 +1463,8 @@ button {
 /* МЕДИА ЗАПРОСЫ  */
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
+
+
   #swiper_comp_partners {
     display: none;
   }
@@ -3185,6 +3187,8 @@ button {
   }
 }
 
+/* IPAD */
+
 @media only screen and (width: 768px) {
   #swiper_mobile_768 {
     display: flex;
@@ -3194,14 +3198,7 @@ button {
   }
 }
 
-@media only screen and (width: 1024px) {
-  #swiper_mobile_1024 {
-    display: flex;
-  }
-  #swiper_comp {
-    display: none;
-  }
-}
+
 
 /* ipad 1024 only */
 @media only screen and (width: 1024px) {
@@ -3213,6 +3210,9 @@ button {
   }
 
   #global_ipad_1024 {
+    display: flex;
+  }
+  #swiper_mobile_1024 {
     display: flex;
   }
 }

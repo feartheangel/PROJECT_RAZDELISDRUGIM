@@ -285,8 +285,7 @@ const Header = () => {
     const onClick = (e) => {
       if (burgerRef.current && burgerButtonRef.current) {
         burgerButtonRef.current.contains(e.target) ||
-          burgerRef.current.contains(e.target) ||
-          setBurgerActive(false);
+          burgerRef.current.contains(e.target);
       }
     };
     document.addEventListener("click", onClick);
