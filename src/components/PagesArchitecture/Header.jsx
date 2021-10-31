@@ -362,13 +362,13 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
-                    alt="razdelisdrugim"
+                    alt="logo"
                     className="header-right-content-logged-img"
                     src={`data:image/png;base64,${userData.image_profile}`}
                     id="logged-img_last_item"
                   />
                   <img
-                    alt="razdelisdrugim"
+                    alt="logo"
                     className="header-right-content-logged-img"
                     src={MenuStroke}
                     id="menuStroke"
@@ -469,7 +469,7 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
-                    alt="razdelisdrugim"
+                    alt="logo"
                     style={{
                       width: "30px",
                       height: "30px",
@@ -478,7 +478,7 @@ const Header = () => {
                     className="header-right-content-logged-img"
                     src={`data:image/png;base64,${userData.image_profile}`}
                   />
-                  <img alt="razdelisdrugim" src={MenuStroke} />
+                  <img alt="logo" src={MenuStroke} />
                 </div>
               </div>
               {profilePopUpActive && (
