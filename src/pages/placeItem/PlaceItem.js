@@ -225,15 +225,6 @@ const PlaceItem = () => {
     } else if (!locality) {
       alert("Не указан населенный пункт!");
       return;
-    } else if (!street) {
-      alert("Не указана улица!");
-      return;
-    } else if (!index) {
-      alert("Не указан индекс!");
-      return;
-    } else if (!house && !room) {
-      alert("Не указан номер дома либо помещения!");
-      return;
     }
 
     Requests.refresh(localStorage.getItem("refresh")).then((res) => {
@@ -692,9 +683,7 @@ const PlaceItem = () => {
   isLoaded &&
     addresses.map((item, index) => {
       addressesFormatted.push([
-        `${item.city}, ${item.street}, ${
-          item.house ? item.house : item.apartment ? item.apartment : ""
-        }`,
+        `${item.city}${item.street ? ` ,${item.street}` : ""}`,
         item.coordinates,
       ]);
     });
@@ -889,7 +878,7 @@ const PlaceItem = () => {
                   disabled={giveFree}
                 />
                 <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                  {serviceIds && serviceIds.includes(viborCategory)
+                  {serviceIds && serviceIds.includes(Number(viborCategory))
                     ? "Договорная"
                     : "Предлагать цену"}
                 </span>
@@ -973,7 +962,7 @@ const PlaceItem = () => {
                     disabled={giveFree}
                   />
                   <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                    {serviceIds && serviceIds.includes(viborCategory)
+                    {serviceIds && serviceIds.includes(Number(viborCategory))
                       ? "Договорная"
                       : "Предлагать цену"}
                   </span>
@@ -1045,7 +1034,7 @@ const PlaceItem = () => {
                     disabled={giveFree}
                   />
                   <span title="Укажите этот пункт, если хотите, чтобы арендаторы сами предлагали свою цену за пользование вашим имуществом">
-                    {serviceIds && serviceIds.includes(viborCategory)
+                    {serviceIds && serviceIds.includes(Number(viborCategory))
                       ? "Договорная"
                       : "Предлагать цену"}
                   </span>
@@ -1168,7 +1157,6 @@ const PlaceItem = () => {
                   <div className="add-item-input-wrapper">
                     <label className="add-item-input-label">
                       Улица/Проспект/Переулок{" "}
-                      <span className="add-item-span-zvezda">*</span>
                     </label>
                     <input
                       placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -1180,9 +1168,7 @@ const PlaceItem = () => {
                   </div>
 
                   <div className="add-item-input-wrapper">
-                    <label className="add-item-input-label">
-                      Индекс<span className="add-item-span-zvezda">*</span>
-                    </label>
+                    <label className="add-item-input-label">Индекс</label>
                     <input
                       placeholder="Например: 225417"
                       type="text"
@@ -1203,9 +1189,7 @@ const PlaceItem = () => {
                     id="take-away-secondary-wrapper"
                   >
                     <div className="add-item-input-wrapper">
-                      <label className="add-item-input-label">
-                        Дом <span className="add-item-span-zvezda">*</span>
-                      </label>
+                      <label className="add-item-input-label">Дом</label>
                       <input
                         disabled={room || office || building}
                         type="text"
@@ -1254,7 +1238,6 @@ const PlaceItem = () => {
                       <div className="add-item-input-wrapper">
                         <label className="add-item-input-label">
                           Помещение{" "}
-                          <span className="add-item-span-zvezda">*</span>
                         </label>
                         <input
                           disabled={house || body || flat}
@@ -1310,9 +1293,7 @@ const PlaceItem = () => {
                       className="add-item-input-wrapper"
                       id="add_item_gl_margin"
                     >
-                      <label className="add-item-input-label">
-                        Дом <span className="add-item-span-zvezda">*</span>
-                      </label>
+                      <label className="add-item-input-label">Дом</label>
                       <input
                         disabled={room || office || building}
                         type="text"
@@ -1363,7 +1344,6 @@ const PlaceItem = () => {
                       >
                         <label className="add-item-input-label">
                           Помещение{" "}
-                          <span className="add-item-span-zvezda">*</span>
                         </label>
                         <input
                           disabled={house || body || flat}
@@ -1419,9 +1399,7 @@ const PlaceItem = () => {
                         className="add-item-input-wrapper"
                         id="add_item_gl_margin"
                       >
-                        <label className="add-item-input-label">
-                          Дом <span className="add-item-span-zvezda">*</span>
-                        </label>
+                        <label className="add-item-input-label">Дом</label>
                         <input
                           disabled={room || office || building}
                           type="text"
@@ -1474,7 +1452,6 @@ const PlaceItem = () => {
                       >
                         <label className="add-item-input-label">
                           Помещение{" "}
-                          <span className="add-item-span-zvezda">*</span>
                         </label>
                         <input
                           disabled={house || body || flat}

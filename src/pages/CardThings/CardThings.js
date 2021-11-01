@@ -41,7 +41,6 @@ import copy from "../../img/MainPage/copy.webp";
 import Favorites from "../../img/MainPage/Favorites.webp";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.webp";
 import EditItemImage from "../../img/MainPage/editicon.webp";
-import { rootAddress } from "../../http/axios-requests";
 import Booking from "../../components/PagesArchitecture/Booking";
 
 const CardThings = () => {
@@ -164,12 +163,9 @@ const CardThings = () => {
           setItemData(response.data);
           setSelectedImage(response.data.image_1);
         } else {
-          window.location.href = "/";
         }
       })
-      .catch(() => {
-        window.location.href = "/";
-      });
+      .catch(() => {});
 
     return () => {
       isMounted = false;
@@ -687,47 +683,55 @@ const CardThings = () => {
                     )}
 
                     <div className="information_list">
-                      {itemData && itemData.structure && (
-                        <div className="list_span">
-                          <span className="list_span_left">
-                            Состав/комплектность
-                          </span>
-                          <span className="list_span_right">
-                            {itemData && itemData.structure}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.structure !== "null" &&
+                        itemData.structure && (
+                          <div className="list_span">
+                            <span className="list_span_left">
+                              Состав/комплектность
+                            </span>
+                            <span className="list_span_right">
+                              {itemData && itemData.structure}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.appointment && (
-                        <div className="list_span">
-                          <span className="list_span_left">Назначение</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.appointment}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.appointment !== "null" &&
+                        itemData.appointment && (
+                          <div className="list_span">
+                            <span className="list_span_left">Назначение</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.appointment}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.article && (
-                        <div className="list_span">
-                          <span className="list_span_left">Артикул</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.article}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.article !== "null" &&
+                        itemData.article && (
+                          <div className="list_span">
+                            <span className="list_span_left">Артикул</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.article}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.inventory_number && (
-                        <div className="list_span">
-                          <span className="list_span_left">
-                            Инвентарный номер
-                          </span>
-                          <span className="list_span_right">
-                            {itemData && itemData.inventory_number}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.inventory_number !== "null" &&
+                        itemData.inventory_number && (
+                          <div className="list_span">
+                            <span className="list_span_left">
+                              Инвентарный номер
+                            </span>
+                            <span className="list_span_right">
+                              {itemData && itemData.inventory_number}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.color && (
+                      {itemData && itemData.color !== "null" && itemData.color && (
                         <div className="list_span">
                           <span className="list_span_left">Цвет</span>
                           <span className="list_span_right">
@@ -736,23 +740,27 @@ const CardThings = () => {
                         </div>
                       )}
 
-                      {itemData && itemData.year_release && (
-                        <div className="list_span">
-                          <span className="list_span_left">Год выпуска</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.year_release}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.year_release !== "null" &&
+                        itemData.year_release && (
+                          <div className="list_span">
+                            <span className="list_span_left">Год выпуска</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.year_release}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.mileage && (
-                        <div className="list_span">
-                          <span className="list_span_left">Пробег</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.mileage}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.mileage !== "null" &&
+                        itemData.mileage && (
+                          <div className="list_span">
+                            <span className="list_span_left">Пробег</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.mileage}
+                            </span>
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -855,8 +863,10 @@ const CardThings = () => {
                       </div>
                       {isLoggedIn ? (
                         <p className="block_up_address-p">
-                          {itemData && itemData.items_address.split(",")[0]},
-                          {itemData && itemData.items_address.split(",")[1]}
+                          {itemData && itemData.items_address.split(",")[0]}
+                          {itemData && itemData.items_address.split(",")[1]
+                            ? ` ,${itemData.items_address.split(",")[1]}`
+                            : ""}
                         </p>
                       ) : (
                         <p
@@ -1664,8 +1674,10 @@ const CardThings = () => {
                       </div>
                       {isLoggedIn ? (
                         <p className="block_up_address-p">
-                          {itemData && itemData.items_address.split(",")[0]},{" "}
-                          {itemData && itemData.items_address.split(",")[1]}
+                          {itemData && itemData.items_address.split(",")[0]}
+                          {itemData && itemData.items_address.split(",")[1]
+                            ? ` ,${itemData.items_address.split(",")[1]}`
+                            : ""}
                         </p>
                       ) : (
                         <p
@@ -1994,7 +2006,7 @@ const CardThings = () => {
                         )}
 
                         <div className="information_list">
-                          {itemData && itemData.structure && (
+                          {itemData && itemData.structure !== "null" && (
                             <div className="list_span">
                               <span className="list_span_left">
                                 Состав/комплектность
@@ -2005,63 +2017,77 @@ const CardThings = () => {
                             </div>
                           )}
 
-                          {itemData && itemData.appointment && (
-                            <div className="list_span">
-                              <span className="list_span_left">Назначение</span>
-                              <span className="list_span_right">
-                                {itemData && itemData.appointment}
-                              </span>
-                            </div>
-                          )}
+                          {itemData &&
+                            itemData.appointment !== "null" &&
+                            itemData.appointment && (
+                              <div className="list_span">
+                                <span className="list_span_left">
+                                  Назначение
+                                </span>
+                                <span className="list_span_right">
+                                  {itemData && itemData.appointment}
+                                </span>
+                              </div>
+                            )}
 
-                          {itemData && itemData.article && (
-                            <div className="list_span">
-                              <span className="list_span_left">Артикул</span>
-                              <span className="list_span_right">
-                                {itemData && itemData.article}
-                              </span>
-                            </div>
-                          )}
+                          {itemData &&
+                            itemData.article !== "null" &&
+                            itemData.article && (
+                              <div className="list_span">
+                                <span className="list_span_left">Артикул</span>
+                                <span className="list_span_right">
+                                  {itemData && itemData.article}
+                                </span>
+                              </div>
+                            )}
 
-                          {itemData && itemData.inventory_number && (
-                            <div className="list_span">
-                              <span className="list_span_left">
-                                Инвентарный номер
-                              </span>
-                              <span className="list_span_right">
-                                {itemData && itemData.inventory_number}
-                              </span>
-                            </div>
-                          )}
+                          {itemData &&
+                            itemData.inventory_number !== "null" &&
+                            itemData.inventory_number && (
+                              <div className="list_span">
+                                <span className="list_span_left">
+                                  Инвентарный номер
+                                </span>
+                                <span className="list_span_right">
+                                  {itemData && itemData.inventory_number}
+                                </span>
+                              </div>
+                            )}
 
-                          {itemData && itemData.color && (
-                            <div className="list_span">
-                              <span className="list_span_left">Цвет</span>
-                              <span className="list_span_right">
-                                {itemData && itemData.color}
-                              </span>
-                            </div>
-                          )}
+                          {itemData &&
+                            itemData.color !== "null" &&
+                            itemData.color && (
+                              <div className="list_span">
+                                <span className="list_span_left">Цвет</span>
+                                <span className="list_span_right">
+                                  {itemData && itemData.color}
+                                </span>
+                              </div>
+                            )}
 
-                          {itemData && itemData.year_release && (
-                            <div className="list_span">
-                              <span className="list_span_left">
-                                Год выпуска
-                              </span>
-                              <span className="list_span_right">
-                                {itemData && itemData.year_release}
-                              </span>
-                            </div>
-                          )}
+                          {itemData &&
+                            itemData.year_release !== "null" &&
+                            itemData.year_release && (
+                              <div className="list_span">
+                                <span className="list_span_left">
+                                  Год выпуска
+                                </span>
+                                <span className="list_span_right">
+                                  {itemData && itemData.year_release}
+                                </span>
+                              </div>
+                            )}
 
-                          {itemData && itemData.mileage && (
-                            <div className="list_span">
-                              <span className="list_span_left">Пробег</span>
-                              <span className="list_span_right">
-                                {itemData && itemData.mileage}
-                              </span>
-                            </div>
-                          )}
+                          {itemData &&
+                            itemData.mileage !== "null" &&
+                            itemData.mileage && (
+                              <div className="list_span">
+                                <span className="list_span_left">Пробег</span>
+                                <span className="list_span_right">
+                                  {itemData && itemData.mileage}
+                                </span>
+                              </div>
+                            )}
                         </div>
                       </div>
                     )}
@@ -2925,7 +2951,7 @@ const CardThings = () => {
                           Дополнительная информация
                         </p>
                       )}
-                    {itemData && itemData.description && (
+                    {itemData && itemData.description !== "null" && (
                       <div className="information_description">
                         <p
                           style={{ fontWeight: "600" }}
@@ -2940,47 +2966,55 @@ const CardThings = () => {
                     )}
 
                     <div className="information_list">
-                      {itemData && itemData.structure && (
-                        <div className="list_span">
-                          <span className="list_span_left">
-                            Состав/комплектность
-                          </span>
-                          <span className="list_span_right">
-                            {itemData && itemData.structure}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.structure !== "null" &&
+                        itemData.structure && (
+                          <div className="list_span">
+                            <span className="list_span_left">
+                              Состав/комплектность
+                            </span>
+                            <span className="list_span_right">
+                              {itemData && itemData.structure}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.appointment && (
-                        <div className="list_span">
-                          <span className="list_span_left">Назначение</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.appointment}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.appointment !== "null" &&
+                        itemData.appointment && (
+                          <div className="list_span">
+                            <span className="list_span_left">Назначение</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.appointment}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.article && (
-                        <div className="list_span">
-                          <span className="list_span_left">Артикул</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.article}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.article !== "null" &&
+                        itemData.article && (
+                          <div className="list_span">
+                            <span className="list_span_left">Артикул</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.article}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.inventory_number && (
-                        <div className="list_span">
-                          <span className="list_span_left">
-                            Инвентарный номер
-                          </span>
-                          <span className="list_span_right">
-                            {itemData && itemData.inventory_number}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.inventory_number !== "null" &&
+                        itemData.inventory_number && (
+                          <div className="list_span">
+                            <span className="list_span_left">
+                              Инвентарный номер
+                            </span>
+                            <span className="list_span_right">
+                              {itemData && itemData.inventory_number}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.color && (
+                      {itemData && itemData.color !== "null" && itemData.color && (
                         <div className="list_span">
                           <span className="list_span_left">Цвет</span>
                           <span className="list_span_right">
@@ -2989,23 +3023,27 @@ const CardThings = () => {
                         </div>
                       )}
 
-                      {itemData && itemData.year_release && (
-                        <div className="list_span">
-                          <span className="list_span_left">Год выпуска</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.year_release}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.year_release !== "null" &&
+                        itemData.year_release && (
+                          <div className="list_span">
+                            <span className="list_span_left">Год выпуска</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.year_release}
+                            </span>
+                          </div>
+                        )}
 
-                      {itemData && itemData.mileage && (
-                        <div className="list_span">
-                          <span className="list_span_left">Пробег</span>
-                          <span className="list_span_right">
-                            {itemData && itemData.mileage}
-                          </span>
-                        </div>
-                      )}
+                      {itemData &&
+                        itemData.mileage !== "null" &&
+                        itemData.mileage && (
+                          <div className="list_span">
+                            <span className="list_span_left">Пробег</span>
+                            <span className="list_span_right">
+                              {itemData && itemData.mileage}
+                            </span>
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -3102,8 +3140,10 @@ const CardThings = () => {
                       </div>
                       {isLoggedIn ? (
                         <p className="block_up_address-p">
-                          {itemData && itemData.items_address.split(",")[0]},{" "}
-                          {itemData && itemData.items_address.split(",")[1]}
+                          {itemData && itemData.items_address.split(",")[0]}
+                          {itemData && itemData.items_address.split(",")[1]
+                            ? ` ,${itemData.items_address.split(",")[1]}`
+                            : ""}
                         </p>
                       ) : (
                         <p

@@ -38,10 +38,13 @@ const ItemCardProfile = ({
   offer_price_rent,
   is_hidden,
   id,
+  category_id,
 }) => {
   const dispatch = useDispatch();
   const { reload } = useSelector(({ userData }) => userData);
   const [redirect, setRedirect] = React.useState();
+
+  const { serviceIds } = useSelector((settings) => settings);
 
   const removeSubjectHandler = () => {
     setDeleteId(id);
@@ -241,7 +244,9 @@ const ItemCardProfile = ({
                 style={{ fontSize: "16px", marginLeft: "5px" }}
                 className="recent-time-p"
               >
-                Предложить свою цену
+                {serviceIds.includes(category_id.id)
+                  ? "Договорная"
+                  : "Предложить цену"}
               </p>
             </div>
           )}
@@ -475,7 +480,11 @@ const ItemCardProfile = ({
                 style={{ width: "20px", height: "20px" }}
                 src={yourCost}
               />
-              <p className="recent-time-p">Предложить свою цену</p>
+              <p className="recent-time-p">
+                {serviceIds.includes(category_id.id)
+                  ? "Договорная"
+                  : "Преложить цену"}
+              </p>
             </div>
           )}
           {free_rent && (

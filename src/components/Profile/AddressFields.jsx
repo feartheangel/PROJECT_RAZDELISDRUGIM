@@ -45,15 +45,6 @@ const AddressFields = ({
     } else if (!locality) {
       alert("Не указан населенный пункт!");
       return;
-    } else if (!street) {
-      alert("Не указана улица!");
-      return;
-    } else if (!index) {
-      alert("Не указан индекс!");
-      return;
-    } else if (!house && !building) {
-      alert("Не указан номер дома либо помещения!");
-      return;
     }
 
     dispatch(setQueryStarted());
@@ -131,9 +122,9 @@ const AddressFields = ({
           onClick={() => setShowAddressFields(!showAddressFields)}
           className="addresses_left_address1_text"
         >
-          {`${sentLocality}, ${sentStreet_}, ${
-            sentHouse ? sentHouse : sentSpaceRoom
-          }`}
+          {`${sentLocality}${sentStreet_ ? ` ,${sentStreet_}` : ""}${
+            sentHouse ? ` ,${sentHouse}` : ""
+          }${sentSpaceRoom ? ` ,${sentSpaceRoom}` : ""}`}
         </p>
         <img
           alt="razdelisdrugim"
@@ -260,7 +251,6 @@ const AddressFields = ({
           <div className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Улица/Проспект/Переулок{" "}
-              <span className="add-item-span-zvezda">*</span>
             </label>
             <input
               placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -272,9 +262,7 @@ const AddressFields = ({
           </div>
 
           <div className="add-item-input-wrapper">
-            <label className="add-item-input-label">
-              Индекс<span className="add-item-span-zvezda">*</span>
-            </label>
+            <label className="add-item-input-label">Индекс</label>
             <input
               placeholder="Например: 225417"
               type="text"
@@ -286,9 +274,7 @@ const AddressFields = ({
 
           <div className="take-away-secondary-wrapper">
             <div className="add-item-input-wrapper">
-              <label className="add-item-input-label">
-                Дом <span className="add-item-span-zvezda">*</span>
-              </label>
+              <label className="add-item-input-label">Дом</label>
               <input
                 disabled={room || office || building}
                 type="text"
@@ -322,9 +308,7 @@ const AddressFields = ({
           </div>
           <div className="take-away-secondary-wrapper">
             <div className="add-item-input-wrapper">
-              <label className="add-item-input-label">
-                Строение <span className="add-item-span-zvezda">*</span>
-              </label>
+              <label className="add-item-input-label">Строение</label>
               <input
                 disabled={house || body || flat}
                 type="text"
@@ -423,7 +407,6 @@ const AddressFields = ({
           <div className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Улица/Проспект/Переулок{" "}
-              <span className="add-item-span-zvezda">*</span>
             </label>
             <input
               placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -435,9 +418,7 @@ const AddressFields = ({
           </div>
 
           <div className="add-item-input-wrapper">
-            <label className="add-item-input-label">
-              Индекс<span className="add-item-span-zvezda">*</span>
-            </label>
+            <label className="add-item-input-label">Индекс</label>
             <input
               placeholder="Например: 225417"
               type="text"
@@ -449,9 +430,7 @@ const AddressFields = ({
 
           <div className="take-away-secondary-wrapper">
             <div className="add-item-input-wrapper">
-              <label className="add-item-input-label">
-                Дом <span className="add-item-span-zvezda">*</span>
-              </label>
+              <label className="add-item-input-label">Дом</label>
               <input
                 disabled={room || office || building}
                 type="text"
@@ -485,9 +464,7 @@ const AddressFields = ({
           </div>
           <div className="take-away-secondary-wrapper">
             <div className="add-item-input-wrapper">
-              <label className="add-item-input-label">
-                Строение <span className="add-item-span-zvezda">*</span>
-              </label>
+              <label className="add-item-input-label">Строение</label>
               <input
                 disabled={house || body || flat}
                 type="text"
@@ -589,7 +566,6 @@ const AddressFields = ({
           <div style={{ width: "100%" }} className="add-item-input-wrapper">
             <label className="add-item-input-label">
               Улица/Проспект/Переулок{" "}
-              <span className="add-item-span-zvezda">*</span>
             </label>
             <input
               placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -601,9 +577,7 @@ const AddressFields = ({
           </div>
 
           <div style={{ width: "100%" }} className="add-item-input-wrapper">
-            <label className="add-item-input-label">
-              Индекс<span className="add-item-span-zvezda">*</span>
-            </label>
+            <label className="add-item-input-label">Индекс</label>
             <input
               placeholder="Например: 225417"
               type="text"
@@ -618,9 +592,7 @@ const AddressFields = ({
             id="take-away-secondary-wrapper"
           >
             <div className="add-item-input-wrapper" id="add_item_gl_margin">
-              <label className="add-item-input-label">
-                Дом <span className="add-item-span-zvezda">*</span>
-              </label>
+              <label className="add-item-input-label">Дом</label>
               <input
                 disabled={room || office || building}
                 type="text"
@@ -657,9 +629,7 @@ const AddressFields = ({
             id="take-away-secondary-wrapper"
           >
             <div className="add-item-input-wrapper" id="add_item_gl_margin">
-              <label className="add-item-input-label">
-                Помещение <span className="add-item-span-zvezda">*</span>
-              </label>
+              <label className="add-item-input-label">Помещение</label>
               <input
                 disabled={house || body || flat}
                 type="text"

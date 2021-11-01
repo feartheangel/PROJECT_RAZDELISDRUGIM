@@ -94,6 +94,15 @@ const BookingPage = () => {
         );
         setCountShowedTablesCouples(1);
         console.log(countShowedTablesCouples);
+      } else if (activeForm3 === "completed") {
+        setCountShowedTables(
+          outgoingReservations &&
+            outgoingReservations.filter(
+              (item) => item.reservation_status === "COMPLETED"
+            ).length
+        );
+        setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
       }
     } else if (activeForm2 === "MyItems") {
       if (activeForm3 === "all") {
@@ -135,6 +144,15 @@ const BookingPage = () => {
           incomingReservations &&
             incomingReservations.filter(
               (item) => item.reservation_status === "CANCELED"
+            ).length
+        );
+        setCountShowedTablesCouples(1);
+        console.log(countShowedTablesCouples);
+      } else if (activeForm3 === "completed") {
+        setCountShowedTables(
+          outgoingReservations &&
+            outgoingReservations.filter(
+              (item) => item.reservation_status === "COMPLETED"
             ).length
         );
         setCountShowedTablesCouples(1);
@@ -276,6 +294,18 @@ const BookingPage = () => {
                         onClick={() => setActiveForm3("canceled")}
                       >
                         Отменено
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={
+                          activeForm3 === "completed"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("completed")}
+                      >
+                        Завершено
                       </p>
                     </div>
                   </div>
@@ -430,6 +460,31 @@ const BookingPage = () => {
                               showOnMapHandler={showOnMapHandler}
                             />
                           ))
+                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter(
+                            (item) => item.reservation_status === "COMPLETED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
+                              item={item}
+                              key={index}
+                              type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
                       : ""}
 
                     {activeForm2 === "MyItems" && activeForm3 === "all"
@@ -529,6 +584,31 @@ const BookingPage = () => {
                         incomingReservations
                           .filter(
                             (item) => item.reservation_status === "CANCELED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "COMPLETED"
                           )
                           .map((item, index) => (
                             <BookingITake
@@ -710,6 +790,18 @@ const BookingPage = () => {
                         Отменено
                       </p>
                     </div>
+                    <div>
+                      <p
+                        className={
+                          activeForm3 === "completed"
+                            ? "container_profile_optional_left_active"
+                            : "container_booking_optional-p"
+                        }
+                        onClick={() => setActiveForm3("completed")}
+                      >
+                        Завершено
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -862,6 +954,31 @@ const BookingPage = () => {
                               showOnMapHandler={showOnMapHandler}
                             />
                           ))
+                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      ? outgoingReservations &&
+                        outgoingReservations
+                          .filter(
+                            (item) => item.reservation_status === "COMPLETED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
+                              item={item}
+                              key={index}
+                              type={1}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
                       : ""}
 
                     {activeForm2 === "MyItems" && activeForm3 === "all"
@@ -961,6 +1078,81 @@ const BookingPage = () => {
                         incomingReservations
                           .filter(
                             (item) => item.reservation_status === "CANCELED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "COMPLETED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "COMPLETED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "COMPLETED"
                           )
                           .map((item, index) => (
                             <BookingITake
@@ -1203,6 +1395,18 @@ const BookingPage = () => {
                             onClick={() => setActiveForm3("canceled")}
                           >
                             Отменено
+                          </p>
+                        </div>
+                        <div>
+                          <p
+                            className={
+                              activeForm3 === "completed"
+                                ? "container_profile_optional_left_active"
+                                : "container_booking_optional-p"
+                            }
+                            onClick={() => setActiveForm3("completed")}
+                          >
+                            Завершено
                           </p>
                         </div>
                       </div>

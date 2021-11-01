@@ -41,15 +41,6 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
     } else if (!locality) {
       alert("Не указан населенный пункт!");
       return;
-    } else if (!street) {
-      alert("Не указана улица!");
-      return;
-    } else if (!index) {
-      alert("Не указан индекс!");
-      return;
-    } else if (!house && !room) {
-      alert("Не указан номер дома либо помещения!");
-      return;
     }
 
     dispatch(setQueryStarted());
@@ -217,7 +208,6 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
                   Улица/Проспект/Переулок{" "}
-                  <span className="add-item-span-zvezda">*</span>
                 </label>
                 <input
                   placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -229,9 +219,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               </div>
 
               <div className="add-item-input-wrapper">
-                <label className="add-item-input-label">
-                  Индекс<span className="add-item-span-zvezda">*</span>
-                </label>
+                <label className="add-item-input-label">Индекс</label>
                 <input
                   placeholder="Например: 225417"
                   type="text"
@@ -246,9 +234,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
           <div className="take-away-secondary-wrapper" id="globaldata_pk">
             <div className="take-away-secondary-wrapper">
               <div className="add-item-input-wrapper">
-                <label className="add-item-input-label">
-                  Дом <span className="add-item-span-zvezda">*</span>
-                </label>
+                <label className="add-item-input-label">Дом</label>
                 <input
                   disabled={room || office || building}
                   type="text"
@@ -289,9 +275,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               </span>
               <div className="take-away-secondary-wrapper">
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">
-                    Помещение <span className="add-item-span-zvezda">*</span>
-                  </label>
+                  <label className="add-item-input-label">Помещение</label>
                   <input
                     disabled={house || body || flat}
                     type="text"
@@ -389,7 +373,6 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
                 <div className="add-item-input-wrapper">
                   <label className="add-item-input-label">
                     Улица/Проспект/Переулок{" "}
-                    <span className="add-item-span-zvezda">*</span>
                   </label>
                   <input
                     placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -401,9 +384,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
                 </div>
 
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">
-                    Индекс<span className="add-item-span-zvezda">*</span>
-                  </label>
+                  <label className="add-item-input-label">Индекс</label>
                   <input
                     placeholder="Например: 225417"
                     type="text"
@@ -419,9 +400,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               style={{ flexWrap: "wrap" }}
             >
               <div className="add-item-input-wrapper">
-                <label className="add-item-input-label">
-                  Дом <span className="add-item-span-zvezda">*</span>
-                </label>
+                <label className="add-item-input-label">Дом</label>
                 <input
                   disabled={room || office || building}
                   type="text"
@@ -462,9 +441,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               </span>
               <div className="take-away-secondary-wrapper">
                 <div className="add-item-input-wrapper">
-                  <label className="add-item-input-label">
-                    Помещение <span className="add-item-span-zvezda">*</span>
-                  </label>
+                  <label className="add-item-input-label">Помещение</label>
                   <input
                     disabled={house || body || flat}
                     type="text"
@@ -551,7 +528,6 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               <div className="add-item-input-wrapper">
                 <label className="add-item-input-label">
                   Улица/Проспект/Переулок{" "}
-                  <span className="add-item-span-zvezda">*</span>
                 </label>
                 <input
                   placeholder="Например: улица Сурганова/проспект Независмости/переулок Освобождения"
@@ -563,9 +539,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
               </div>
 
               <div className="add-item-input-wrapper">
-                <label className="add-item-input-label">
-                  Индекс<span className="add-item-span-zvezda">*</span>
-                </label>
+                <label className="add-item-input-label">Индекс</label>
                 <input
                   placeholder="Например: 225417"
                   type="text"
@@ -587,9 +561,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
                 id="take-away-secondary-wrapper"
               >
                 <div className="add-item-input-wrapper" id="add_item_gl_margin">
-                  <label className="add-item-input-label">
-                    Дом <span className="add-item-span-zvezda">*</span>
-                  </label>
+                  <label className="add-item-input-label">Дом</label>
                   <input
                     disabled={room || office || building}
                     type="text"
@@ -633,9 +605,7 @@ const MyAddresses = ({ setDeleteId, setModalActiveSubmit }) => {
                     className="add-item-input-wrapper"
                     id="add_item_gl_margin"
                   >
-                    <label className="add-item-input-label">
-                      Помещение <span className="add-item-span-zvezda">*</span>
-                    </label>
+                    <label className="add-item-input-label">Помещение</label>
                     <input
                       disabled={house || body || flat}
                       type="text"

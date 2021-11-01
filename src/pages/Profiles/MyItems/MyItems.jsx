@@ -129,6 +129,7 @@ const MyItems = () => {
                     items_address={subject.items_address}
                     is_hidden={subject.is_hidden}
                     id={subject.id}
+                    category_id={subject.category_id}
                   />
                 ))}
               {subjects && subjects.length === 0 && (
@@ -226,6 +227,7 @@ const MyItems = () => {
                     items_address={subject.items_address}
                     is_hidden={subject.is_hidden}
                     id={subject.id}
+                    category_id={subject.category_id}
                   />
                 ))}
               {subjects && subjects.length === 0 && (
@@ -320,6 +322,7 @@ const MyItems = () => {
                     items_address={subject.items_address}
                     is_hidden={subject.is_hidden}
                     id={subject.id}
+                    category_id={subject.category_id}
                   />
                 ))}
               {subjects && subjects.length === 0 && (

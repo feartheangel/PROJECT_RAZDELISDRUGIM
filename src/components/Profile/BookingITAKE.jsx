@@ -239,6 +239,12 @@ const BookingITake = ({
                   Отменено
                 </p>
               )}
+
+              {item.reservation_status === "COMPLETED" && (
+                <p className="body_allblock_header_right_center_block1-p4">
+                  Завершено
+                </p>
+              )}
             </div>
             <div className="body_allblock_header_right_center_block2">
               <div className="center_block_rowstyle">
@@ -946,6 +952,11 @@ const BookingITake = ({
                   Отменено
                 </p>
               )}
+              {item.reservation_status === "COMPLETED" && (
+                <p className="body_allblock_header_right_center_block1-p4">
+                  Завершено
+                </p>
+              )}
             </div>
             <div className="body_allblock_header_right_center_block2">
               <div className="center_block_rowstyle">
@@ -1638,6 +1649,12 @@ const BookingITake = ({
                 {item.reservation_status === "CANCELED" && (
                   <p className="body_allblock_header_right_center_block1-p4">
                     Отменено
+                  </p>
+                )}
+
+                {item.reservation_status === "COMPLETED" && (
+                  <p className="body_allblock_header_right_center_block1-p4">
+                    Завершено
                   </p>
                 )}
               </div>

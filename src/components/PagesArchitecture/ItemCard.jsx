@@ -25,6 +25,8 @@ const ItemCard = ({ item }) => {
     ({ userData }) => userData
   );
 
+  const { serviceIds } = useSelector((settings) => settings);
+
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [isOwn, setIsOwn] = React.useState(false);
   const [imageLoaded, setImageLoaded] = React.useState(false);
@@ -221,7 +223,11 @@ const ItemCard = ({ item }) => {
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
-                <p className="recent-time-p">Предложить свою цену</p>
+                <p className="recent-time-p">
+                  {serviceIds.includes(item.category_id.id)
+                    ? "Договорная"
+                    : "Предложить цену"}
+                </p>
               </div>
             )}
             {item.free_rent && (
@@ -422,7 +428,11 @@ const ItemCard = ({ item }) => {
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
-                <p className="recent-time-p">Предложить свою цену</p>
+                <p className="recent-time-p">
+                  {serviceIds.includes(item.category_id.id)
+                    ? "Договорная"
+                    : "Предложить цену"}
+                </p>
               </div>
             )}
             {item.free_rent && (

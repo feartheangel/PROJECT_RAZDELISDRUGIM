@@ -1,7 +1,6 @@
 import React from "react";
 
 import Requests from "../../http/axios-requests";
-import Shape from "../../img/Shape.png";
 
 const StatusUpdateSubmit = ({
   reserveId,
@@ -17,10 +16,15 @@ const StatusUpdateSubmit = ({
   };
 
   const yesHandler = () => {
-    Requests.updateReservationStatus(reserveId, reserveUpdateBool).then(() => {
-      toggleReloadReservations();
-      setModalActiveSubmit(false);
-    });
+    Requests.updateReservationStatus(reserveId, reserveUpdateBool)
+      .then(() => {
+        toggleReloadReservations();
+        setModalActiveSubmit(false);
+      })
+      .catch((err) => {
+        setModalActiveSubmit(false);
+        alert(err.response.data);
+      });
   };
 
   return (
