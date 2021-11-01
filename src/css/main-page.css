@@ -1427,6 +1427,9 @@ button {
 #global_1024 {
   display: none;
 }
+#header_mobile{
+  display: none;
+}
 #global_ipad_1024 {
   display: none;
 }
@@ -1464,6 +1467,12 @@ button {
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
 
+  #header_pk{
+    display: none;
+  }
+  #header_mobile{
+    display: flex;
+  }
 
   #swiper_comp_partners {
     display: none;
@@ -1476,9 +1485,19 @@ button {
   }
 
   .notifications_counter_wrapper {
-    bottom: 605px;
-    left: 310px;
     cursor: pointer;
+  }
+  .notifications_counter_wrapper{
+    position: absolute;
+    bottom: 13px;
+    left: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #ffffff;
+  }
+  .header-right-content-logged-img2{
+    position: relative;
+    margin-right: 15px;
   }
 
   /* ОБЩИЙ ГЛОБАЛЬНЫЙ БЛОК */
@@ -2579,6 +2598,18 @@ button {
   }
   .dropdown_notify_main_p {
     font-size: 14px;
+  }
+  .red_vector{
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    transform: rotate(0);
+  }
+  .red_vector_active{
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    transform: rotate(180deg);
   }
 }
 

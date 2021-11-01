@@ -4,6 +4,7 @@ import abil2 from "../../img/MainPage/abil2.webp";
 import abil3 from "../../img/MainPage/abil3.webp";
 import abil4 from "../../img/MainPage/abil4.webp";
 import abil5 from "../../img/MainPage/abil5.webp";
+import Redvector from "../../img/MainPage/bluevector1.png";
 
 import { useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
@@ -64,9 +65,14 @@ const AbilitiesBlock = () => {
         >
           Возможности с платформой #разделисдругим
           {window.screen.width < 480 ? (
-            <span style={{ fontSize: "18px", marginLeft: "5px" }}>
-              {" "}
-              &#5167;
+            <span>
+              <img
+                width="18px"
+                height="18px "
+                src={Redvector}
+                alt="vector"
+                className={showContent ? "red_vector_active" : "red_vector"}
+              />
             </span>
           ) : (
             ""

@@ -934,7 +934,7 @@ const CardThings = () => {
                                 ? "почтой"
                                 : ""
                             }`}
-                            : за счет{" "}
+                            за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
                               : "рентера"}
@@ -1794,7 +1794,7 @@ const CardThings = () => {
                                 ? "почтой"
                                 : ""
                             }`}
-                            : за счет{" "}
+                            за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
                               : "рентера"}
@@ -3181,7 +3181,7 @@ const CardThings = () => {
                                 ? "почтой"
                                 : ""
                             }`}
-                            : за счет{" "}
+                            за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
                               : "рентера"}
