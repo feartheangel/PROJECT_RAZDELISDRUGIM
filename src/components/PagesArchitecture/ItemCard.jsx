@@ -25,7 +25,7 @@ const ItemCard = ({ item }) => {
     ({ userData }) => userData
   );
 
-  const { serviceIds } = useSelector((settings) => settings);
+  const { serviceIds } = useSelector(({ settings }) => settings);
 
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [isOwn, setIsOwn] = React.useState(false);
@@ -214,7 +214,7 @@ const ItemCard = ({ item }) => {
             )}
             {item.offer_price_rent && (
               <div
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "10px", justifyContent: "flex-start" }}
                 className="recent-time-cost-wrapper"
               >
                 <img
@@ -224,9 +224,9 @@ const ItemCard = ({ item }) => {
                   src={yourCost}
                 />
                 <p className="recent-time-p">
-                  {serviceIds.includes(item.category_id.id)
+                  {serviceIds && serviceIds.includes(item.category_id.id)
                     ? "Договорная"
-                    : "Предложить цену"}
+                    : "Предложить свою цену"}
                 </p>
               </div>
             )}
@@ -428,10 +428,13 @@ const ItemCard = ({ item }) => {
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
-                <p className="recent-time-p">
-                  {serviceIds.includes(item.category_id.id)
+                <p
+                  style={{ justifyContent: "flex-start" }}
+                  className="recent-time-p"
+                >
+                  {serviceIds && serviceIds.includes(item.category_id.id)
                     ? "Договорная"
-                    : "Предложить цену"}
+                    : "Предложить свою цену"}
                 </p>
               </div>
             )}
@@ -631,7 +634,14 @@ const ItemCard = ({ item }) => {
                   style={{ width: "20px", height: "20px" }}
                   src={yourCost}
                 />
-                <p className="recent-time-p">Предложить свою цену</p>
+                <p
+                  style={{ justifyContent: "flex-start" }}
+                  className="recent-time-p"
+                >
+                  {serviceIds && serviceIds.includes(item.category_id.id)
+                    ? "Договорная"
+                    : "Предложить свою цену"}
+                </p>
               </div>
             )}
             {item.free_rent && (

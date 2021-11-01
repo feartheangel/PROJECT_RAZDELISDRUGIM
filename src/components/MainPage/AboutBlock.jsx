@@ -1,5 +1,6 @@
 import React from "react";
 import jacket from "../../img/MainPage/jacket.webp";
+import Redvector from "../../img/MainPage/bluevector1.png";
 
 const AboutBlock = () => {
   const [showContent, setShowContent] = React.useState();
@@ -12,9 +13,14 @@ const AboutBlock = () => {
         >
           О нашем сервисе{"  "}
           {window.screen.width < 480 ? (
-            <span style={{ fontSize: "18px", marginLeft: "5px" }}>
-              {" "}
-              &#5167;
+            <span>
+              <img
+                width="18px"
+                height="18px "
+                src={Redvector}
+                alt="vector"
+                className={showContent ? "red_vector_active" : "red_vector"}
+              />
             </span>
           ) : (
             ""

@@ -198,7 +198,7 @@ const Header = () => {
 
   React.useEffect(() => {
     chatSocket.current = new WebSocket(
-      `wss://razdelisdrugim.by:444/ws/?token=${localStorage.getItem("key")}`
+      `wss://razdelisdrugim.by/ws/?token=${localStorage.getItem("key")}`
     );
 
     chatSocket.current.onopen = function () {
@@ -285,8 +285,7 @@ const Header = () => {
     const onClick = (e) => {
       if (burgerRef.current && burgerButtonRef.current) {
         burgerButtonRef.current.contains(e.target) ||
-          burgerRef.current.contains(e.target) ||
-          setBurgerActive(false);
+          burgerRef.current.contains(e.target);
       }
     };
     document.addEventListener("click", onClick);
@@ -333,7 +332,7 @@ const Header = () => {
               className="header-right-content-logged-div-wrapper"
               id="logged-div-wrapper2"
             >
-              <div className="header-right-content-logged-div">
+              <div className="header-right-content-logged-div" id="header_pk">
                 <Link to="/favorites" style={{ display: "flex" }}>
                   <img
                     alt="razdelisdrugim"
@@ -363,19 +362,69 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
-                    alt="razdelisdrugim"
+                    alt="logo"
                     className="header-right-content-logged-img"
                     src={`data:image/png;base64,${userData.image_profile}`}
                     id="logged-img_last_item"
                   />
                   <img
-                    alt="razdelisdrugim"
+                    alt="logo"
                     className="header-right-content-logged-img"
                     src={MenuStroke}
                     id="menuStroke"
                   />
                 </div>
               </div>
+              {/* mobile block */}
+              <div
+                className="header-right-content-logged-div"
+                id="header_mobile"
+              >
+                <Link to="/favorites" style={{ display: "flex" }}>
+                  <img
+                    alt="razdelisdrugim"
+                    className="header-right-content-logged-img"
+                    src={Like_vector}
+                    id="favorites"
+                  />
+                </Link>
+                <div
+                  style={{ display: "flex" }}
+                  className="header-right-content-logged-img2"
+                >
+                  <img
+                    alt="razdelisdrugim"
+                    src={Bell2}
+                    id="notifications"
+                    onClick={() => setNotifyPopUpActive(!notifyPopUpActive)}
+                    style={{ cursor: "pointer" }}
+                  />
+                  {notifications && notifications.length !== 0 && (
+                    <p className="notifications_counter_wrapper">
+                      {notifications.length >= 9 ? "9+" : notifications.length}
+                    </p>
+                  )}
+                </div>
+
+                <div
+                  onClick={() => setProfilePopUpActive(!profilePopUpActive)}
+                  className="user-avatar-group"
+                >
+                  <img
+                    alt="logo"
+                    className="header-right-content-logged-img"
+                    src={`data:image/png;base64,${userData.image_profile}`}
+                    id="logged-img_last_item"
+                  />
+                  <img
+                    alt="logo"
+                    className="header-right-content-logged-img"
+                    src={MenuStroke}
+                    id="menuStroke"
+                  />
+                </div>
+              </div>
+
               {profilePopUpActive && (
                 <ProfilePopUp
                   setProfilePopUpActive={setProfilePopUpActive}
@@ -470,7 +519,7 @@ const Header = () => {
                   className="user-avatar-group"
                 >
                   <img
-                    alt="razdelisdrugim"
+                    alt="logo"
                     style={{
                       width: "30px",
                       height: "30px",
@@ -479,7 +528,7 @@ const Header = () => {
                     className="header-right-content-logged-img"
                     src={`data:image/png;base64,${userData.image_profile}`}
                   />
-                  <img alt="razdelisdrugim" src={MenuStroke} />
+                  <img alt="logo" src={MenuStroke} />
                 </div>
               </div>
               {profilePopUpActive && (

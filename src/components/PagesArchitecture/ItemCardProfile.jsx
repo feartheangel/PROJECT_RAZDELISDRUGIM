@@ -44,7 +44,7 @@ const ItemCardProfile = ({
   const { reload } = useSelector(({ userData }) => userData);
   const [redirect, setRedirect] = React.useState();
 
-  const { serviceIds } = useSelector((settings) => settings);
+  const { serviceIds } = useSelector(({ settings }) => settings);
 
   const removeSubjectHandler = () => {
     setDeleteId(id);
@@ -232,7 +232,7 @@ const ItemCardProfile = ({
           {redirect}
           {offer_price_rent && (
             <div
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "10px", justifyContent: "flex-start" }}
               className="recent-time-cost-wrapper"
             >
               <img
@@ -244,9 +244,9 @@ const ItemCardProfile = ({
                 style={{ fontSize: "16px", marginLeft: "5px" }}
                 className="recent-time-p"
               >
-                {serviceIds.includes(category_id.id)
+                {serviceIds && serviceIds.includes(category_id.id)
                   ? "Договорная"
-                  : "Предложить цену"}
+                  : "Предложить свою цену"}
               </p>
             </div>
           )}
@@ -472,7 +472,7 @@ const ItemCardProfile = ({
           {redirect}
           {offer_price_rent && (
             <div
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "10px", justifyContent: "flex-start" }}
               className="recent-time-cost-wrapper"
             >
               <img
@@ -481,9 +481,9 @@ const ItemCardProfile = ({
                 src={yourCost}
               />
               <p className="recent-time-p">
-                {serviceIds.includes(category_id.id)
+                {serviceIds && serviceIds.includes(category_id.id)
                   ? "Договорная"
-                  : "Преложить цену"}
+                  : "Предложить свою цену"}
               </p>
             </div>
           )}
@@ -716,10 +716,18 @@ const ItemCardProfile = ({
             >
               <img
                 alt="razdelisdrugim"
-                style={{ width: "20px", height: "20px" }}
+                style={{
+                  width: "20px",
+                  height: "20px",
+                  justifyContent: "flex-start",
+                }}
                 src={yourCost}
               />
-              <p className="recent-time-p">Предложить свою цену</p>
+              <p className="recent-time-p">
+                {serviceIds && serviceIds.includes(category_id.id)
+                  ? "Договорная"
+                  : "Предложить свою цену"}
+              </p>
             </div>
           )}
           {free_rent && (

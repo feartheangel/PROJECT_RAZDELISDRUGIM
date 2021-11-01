@@ -2012,18 +2012,6 @@ const BookingITake = ({
           )}
 
           {/* отменить бронирование ( когда  ожидает ) */}
-          {item.reservation_status === "WAITING" && (
-            <div className="center_block_rowstyle_4_4">
-              <img src={disabledbooking} alt="razdelisdrugim" />
-              <p
-                className="body_allblock_header_left_text-p-disabledbooking"
-                style={{ cursor: "pointer" }}
-                onClick={handleReservationCancel}
-              >
-                Отменить бронирование
-              </p>
-            </div>
-          )}
 
           {/* Все статусы кроме подтверждено  */}
           {type === 1 &&

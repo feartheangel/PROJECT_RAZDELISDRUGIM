@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const rootAddress = "https://razdelisdrugim.by:444";
+export const rootAddress = "https://razdelisdrugim.by";
 
 //регулярные выражения для проверки телефона и почты
 const contactEmailRegExp =

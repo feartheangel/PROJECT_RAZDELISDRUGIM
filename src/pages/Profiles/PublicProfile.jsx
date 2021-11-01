@@ -17,7 +17,6 @@ import Vk from "../../img/CardThings/RightContent/Component 42.png";
 import Google from "../../img/ProfilePage/google.png";
 import Facebook from "../../img/ProfilePage/facebook2.png";
 import Ok from "../../img/ProfilePage/ok.png";
-import { rootAddress } from "../../http/axios-requests";
 
 const PublicProfile = () => {
   //расчет времени на платформе
@@ -415,13 +414,6 @@ const PublicProfile = () => {
               </div>
               {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
               <div className="container_up_footer">
-                <input
-                  value="Отправить сообщение"
-                  type="button"
-                  style={{ border: "none", opacity: "0.5" }}
-                  className="footer_btn1"
-                />
-
                 <input
                   value="Оставить отзыв"
                   type="button"
@@ -858,13 +850,6 @@ const PublicProfile = () => {
               </div>
               {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
               <div className="container_up_footer">
-                <input
-                  value="Отправить сообщение"
-                  type="button"
-                  style={{ border: "none" }}
-                  className="footer_btn1"
-                />
-
                 <input
                   value="Оставить отзыв"
                   type="button"

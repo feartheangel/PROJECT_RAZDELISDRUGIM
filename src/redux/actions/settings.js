@@ -20,7 +20,7 @@ export const setMaxAddressesCount = (num) => ({
 
 export const setServiceIds = (arr) => ({
   type: "SET_SERVICE_IDS",
-  payload: arr.map(Number),
+  payload: arr,
 });
 
 export const setEmailSettings = (string) => ({

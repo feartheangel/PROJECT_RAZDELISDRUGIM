@@ -285,7 +285,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               />
               <label className="profile-photo-wrapper" for="photo_input">
                 <img
-                  alt="razdelisdrugim"
+                  alt="Logo"
                   style={{
                     marginRight: "30px",
                     borderRadius: "100%",
@@ -791,7 +791,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
             />
             <label className="profile-photo-wrapper" for="photo_input">
               <img
-                alt="razdelisdrugim"
+                alt="Logo"
                 className="profile-photo"
                 src={`${rootAddress}${userData.image_profile}`}
               />
@@ -1318,7 +1318,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
             />
             <label className="profile-photo-wrapper" for="photo_input">
               <img
-                alt="razdelisdrugim"
+                alt="Logo"
                 className="profile-photo"
                 src={`data:image/png;base64,${userData.image_profile}`}
               />

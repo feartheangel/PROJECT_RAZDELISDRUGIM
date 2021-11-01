@@ -1271,25 +1271,38 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       Ошибка! (Стартовое время ввода либо меньше настоящего
                       времени либо равное времени завершения аренды...){" "}
                     </span>
-                  ) : resulthours <= 0 && itemData.rent === "Час" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                  ) : (resulthours <= 0 || resulthours > 999) &&
+                    itemData.rent === "Час" ? (
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
                   ) : resulthours !== 0 && itemData.rent === "Час" ? (
                     totalAmount + "  BYN"
-                  ) : (resultdate <= 0 || resultdate > 30) &&
+                  ) : (resultdate <= 0 || resultdate > 365) &&
                     itemData.rent === "День" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                  ) : (resultdate !== 0 || resultdate <= 30) &&
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
+                  ) : (resultdate !== 0 || resultdate <= 365) &&
                     itemData.rent === "День" ? (
                     totalAmount + "  BYN"
-                  ) : (resultweek <= 0 || resultweek > 4) &&
+                  ) : (resultweek <= 0 || resultweek > 52) &&
                     itemData.rent === "Неделя" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                  ) : (resultweek !== 0 || resultweek <= 4) &&
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
+                  ) : (resultweek !== 0 || resultweek <= 52) &&
                     itemData.rent === "Неделя" ? (
                     totalAmount + "  BYN"
                   ) : (resultmonths <= 0 || resultmonths > 12) &&
                     itemData.rent === "Месяц" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
                   ) : (resultmonths !== 0 || resultmonths <= 12) &&
                     itemData.rent === "Месяц" ? (
                     totalAmount + "  BYN"
@@ -2337,25 +2350,38 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       Ошибка! (Стартовое время ввода либо меньше настоящего
                       времени либо равное времени завершения аренды...){" "}
                     </span>
-                  ) : resulthours <= 0 && itemData.rent === "Час" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                  ) : (resulthours <= 0 || resulthours > 999) &&
+                    itemData.rent === "Час" ? (
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
                   ) : resulthours !== 0 && itemData.rent === "Час" ? (
                     totalAmount + "  BYN"
-                  ) : (resultdate <= 0 || resultdate > 30) &&
+                  ) : (resultdate <= 0 || resultdate > 365) &&
                     itemData.rent === "День" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                  ) : (resultdate !== 0 || resultdate <= 30) &&
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
+                  ) : (resultdate !== 0 || resultdate <= 365) &&
                     itemData.rent === "День" ? (
                     totalAmount + "  BYN"
-                  ) : (resultweek <= 0 || resultweek > 4) &&
+                  ) : (resultweek <= 0 || resultweek > 52) &&
                     itemData.rent === "Неделя" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                  ) : (resultweek !== 0 || resultweek <= 4) &&
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
+                  ) : (resultweek !== 0 || resultweek <= 52) &&
                     itemData.rent === "Неделя" ? (
                     totalAmount + "  BYN"
                   ) : (resultmonths <= 0 || resultmonths > 12) &&
                     itemData.rent === "Месяц" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
                   ) : (resultmonths !== 0 || resultmonths <= 12) &&
                     itemData.rent === "Месяц" ? (
                     totalAmount + "  BYN"
@@ -3366,25 +3392,38 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       Ошибка! (Стартовое время ввода либо меньше настоящего
                       времени либо равное времени завершения аренды...){" "}
                     </span>
-                  ) : resulthours <= 0 && itemData.rent === "Час" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                  ) : (resulthours <= 0 || resulthours > 999) &&
+                    itemData.rent === "Час" ? (
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
                   ) : resulthours !== 0 && itemData.rent === "Час" ? (
                     totalAmount + "  BYN"
-                  ) : (resultdate <= 0 || resultdate > 30) &&
+                  ) : (resultdate <= 0 || resultdate > 365) &&
                     itemData.rent === "День" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                  ) : (resultdate !== 0 || resultdate <= 30) &&
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
+                  ) : (resultdate !== 0 || resultdate <= 365) &&
                     itemData.rent === "День" ? (
                     totalAmount + "  BYN"
-                  ) : (resultweek <= 0 || resultweek > 4) &&
+                  ) : (resultweek <= 0 || resultweek > 52) &&
                     itemData.rent === "Неделя" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
-                  ) : (resultweek !== 0 || resultweek <= 4) &&
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
+                  ) : (resultweek !== 0 || resultweek <= 52) &&
                     itemData.rent === "Неделя" ? (
                     totalAmount + "  BYN"
                   ) : (resultmonths <= 0 || resultmonths > 12) &&
                     itemData.rent === "Месяц" ? (
-                    <span style={{ color: "red" }}> Ошибка срока аренды! </span>
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      Ошибка длительности аренды!{" "}
+                    </span>
                   ) : (resultmonths !== 0 || resultmonths <= 12) &&
                     itemData.rent === "Месяц" ? (
                     totalAmount + "  BYN"

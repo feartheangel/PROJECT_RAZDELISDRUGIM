@@ -112,13 +112,6 @@ const CardThings = () => {
       .catch(() => setIsFavorite(true));
   };
 
-  // const mobileContactHandler = (e) => {
-  //   if (!isLoggedIn) {
-  //     e.preventDefault();
-  //     alert("Доступно только авторизованным пользователям.");
-  //   }
-  // };
-
   const goToChatHandler = () => {
     if (!isLoggedIn) {
       alert("Доступно только авторизованным пользователям.");
@@ -163,9 +156,12 @@ const CardThings = () => {
           setItemData(response.data);
           setSelectedImage(response.data.image_1);
         } else {
+          /*           window.location.href = "/"; */
         }
       })
-      .catch(() => {});
+      .catch(() => {
+        /*         window.location.href = "/"; */
+      });
 
     return () => {
       isMounted = false;
@@ -944,7 +940,7 @@ const CardThings = () => {
                                 ? "почтой"
                                 : ""
                             }`}
-                            : за счет{" "}
+                            за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
                               : "рентера"}
@@ -1806,7 +1802,7 @@ const CardThings = () => {
                                 ? "почтой"
                                 : ""
                             }`}
-                            : за счет{" "}
+                            за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
                               : "рентера"}
@@ -3221,7 +3217,7 @@ const CardThings = () => {
                                 ? "почтой"
                                 : ""
                             }`}
-                            : за счет{" "}
+                            за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
                               : "рентера"}
