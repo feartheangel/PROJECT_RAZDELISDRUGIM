@@ -1214,10 +1214,9 @@ class Requests {
         reservation_time: reservation_time,
         count_date_object: count_date_object,
         reserve_rent: reserve_rent ? reserve_rent : 0.0,
-        reserve_price_rent: reserve_price_rent ? reserve_price_rent : null,
-        reserve_offer_price_rent: reserve_offer_price_rent
-          ? reserve_offer_price_rent
-          : null,
+        reserve_price_rent: reserve_price_rent,
+        reserve_offer_price_rent: reserve_offer_price_rent,
+
         reserve_self_delivery_price: reserve_self_delivery_price
           ? reserve_self_delivery_price
           : 0.0,

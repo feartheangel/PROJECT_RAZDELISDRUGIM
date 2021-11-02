@@ -861,7 +861,7 @@ const CardThings = () => {
                         <p className="block_up_address-p">
                           {itemData && itemData.items_address.split(",")[0]}
                           {itemData && itemData.items_address.split(",")[1]
-                            ? ` ,${itemData.items_address.split(",")[1]}`
+                            ? `, ${itemData.items_address.split(",")[1]}`
                             : ""}
                         </p>
                       ) : (

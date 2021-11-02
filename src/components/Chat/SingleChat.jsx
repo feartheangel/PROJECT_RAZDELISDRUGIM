@@ -25,7 +25,7 @@ const SingleChat = ({ item, chatSocket }) => {
         <img
           alt="razdelisdrugim"
           className="single_chat_item_image"
-          src={`https://razdelisdrugim.by:444${item.get_item_photo}`}
+          src={`${rootAddress}${item.get_item_photo}`}
         />
         <div className="single_chat_right_side">
           <div className="single_chat_left_block_first_row">

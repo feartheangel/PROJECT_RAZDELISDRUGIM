@@ -27,6 +27,43 @@ const Header = () => {
 
   const [modalActive, setModalActive] = React.useState(false);
   const [currentLocation, setCurrentLocation] = React.useState(false);
+  const [successLogin, setSuccessLogin] = React.useState(false);
+
+  let code = "";
+
+  React.useEffect(() => {
+    //проверка на строку авторизации через соц. сети
+    if (window.location.href.split("?code=")[1]) {
+      if (window.location.href.includes("vk")) {
+        code = window.location.href.split("?code=")[1].split("state")[0];
+        Requests.vkAuth(code).then((res) => {
+          localStorage.setItem("key", res.data.access_token);
+          localStorage.setItem("social", "vk");
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      } else if (window.location.href.includes("facebook")) {
+        code = window.location.href.split("?code=")[1];
+        Requests.facebookAuth(code).then((res) => {
+          localStorage.setItem("key", res.data.access_token);
+          localStorage.setItem("social", "facebook");
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      } else {
+        code = window.location.href.split("?code=")[1].split("&scope=")[0];
+        Requests.googleAuth(code).then((res) => {
+          localStorage.setItem("key", res.data.access_token);
+          localStorage.setItem("social", "google");
+          dispatch(loginAction());
+          setModalActive(false);
+          setSuccessLogin(<Redirect to="/" />);
+        });
+      }
+    }
+  }, [window.location.href]);
 
   React.useEffect(() => {
     if (localStorage.getItem("key")) {
@@ -285,7 +322,8 @@ const Header = () => {
     const onClick = (e) => {
       if (burgerRef.current && burgerButtonRef.current) {
         burgerButtonRef.current.contains(e.target) ||
-          burgerRef.current.contains(e.target);
+          burgerRef.current.contains(e.target) ||
+          setBurgerActive(false);
       }
     };
     document.addEventListener("click", onClick);
