@@ -1377,8 +1377,8 @@ const SearchPage = () => {
                         <YMaps>
                           <Map
                             state={mapData}
-                            width={850}
-                            height={500}
+                            width={window.screen.width > 1024 ? 1150 : "100%"}
+                            height={window.screen.width > 767 ? 500 : 300}
                             modules={["package.full"]}
                           >
                             <Clusterer
@@ -1534,8 +1534,8 @@ const SearchPage = () => {
                           <YMaps>
                             <Map
                               state={mapData}
-                              width={"auto"}
-                              height={500}
+                              width={window.screen.width > 1024 ? 1150 : "100%"}
+                              height={window.screen.width > 767 ? 500 : 300}
                               modules={["package.full"]}
                             >
                               <Clusterer
