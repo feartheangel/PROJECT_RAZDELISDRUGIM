@@ -55,7 +55,7 @@ const MessageBlock = ({
       }
     >
       <img
-        alt="razdelisdrugim"
+        alt="logo"
         src={`https://razdelisdrugim.by:444/${item.avatar}`}
         className="chat_message_block_avatar"
       />

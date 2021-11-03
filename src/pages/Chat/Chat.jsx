@@ -248,7 +248,7 @@ const Chat = () => {
                         style={{ textDecoration: "none" }}
                       >
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           className="chat_header_avatar_image"
                           src={`${rootAddress}${companionPhoto}`}
                         />
@@ -380,7 +380,7 @@ const Chat = () => {
                         style={{ textDecoration: "none" }}
                       >
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           className="chat_header_avatar_image"
                           src={`${rootAddress}${companionPhoto}`}
                         />
@@ -523,7 +523,7 @@ const Chat = () => {
                         style={{ textDecoration: "none" }}
                       >
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           className="chat_header_avatar_image"
                           src={`${rootAddress}${companionPhoto}`}
                         />

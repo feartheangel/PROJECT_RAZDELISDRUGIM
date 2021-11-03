@@ -310,13 +310,30 @@
   .chat_message_block_content_part {
     flex: 1 0 auto;
     width: min-content;
+    min-width: 265px;
+  }
+  .reservation_request_image{
+    width: 200px;
+    height: 160px;
   }
   .chat_message_block_wrapper.own {
-    align-self: flex-start;
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
     width: 100%;
+  }
+  .chat_message_block_time_p{
+    display: flex;
+    order: 1;
+  }
+  .chat_message_block_name_p{
+    order: 0;
   }
   .chat_header_wrapper{
     height: max-content;
+  }
+  .chat_message_block_content_part__reservation{
+    max-width: 235px;
   }
 
 }
