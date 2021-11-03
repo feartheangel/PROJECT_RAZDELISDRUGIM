@@ -1061,7 +1061,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -2187,7 +2187,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -3310,7 +3310,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
