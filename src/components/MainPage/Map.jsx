@@ -124,7 +124,7 @@ const MapBlock = () => {
           <Map
             state={mapData}
             width={window.screen.width > 1024 ? 1150 : "100%"}
-            height={window.screen.width > 767 ? 500 : 200}
+            height={window.screen.width > 767 ? 500 : 250}
             modules={["package.full"]}
           >
             <Clusterer
