@@ -1308,6 +1308,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                     totalAmount + "  BYN"
                   ) : isNaN(totalAmount) ? (
                     <span style={{ color: "red" }}> Ошибка срока аренды!</span>
+                  ) : !isNaN(totalAmount) ? (
+                    <span style={{ color: "red" }}> Ошибка срока аренды!</span>
                   ) : (
                     totalAmount + "  BYN"
                   )}{" "}
