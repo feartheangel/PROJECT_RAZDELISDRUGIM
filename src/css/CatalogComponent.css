@@ -127,12 +127,38 @@
         padding: 15px 15px 0 15px;
     }
 
+}
 
+/* mobile landscape */
+@media only screen and (max-width: 767px) and (min-width:481px) {
+    .CatalogComponent_shapka{
+        width: 100%;
+    }
+    .CatalogComponent_informations{
+        width: 100%;
+    }
+
+    .CatalogComponent_shapka_img{
+        width: 100%;
+    }
+    .CatalogComponent_list_left{
+        margin-right: 0;
+        width: 48%;
+        font-size: 16px;
+    }
+    .CatalogComponent_list_right{
+        margin-right: 0;
+        width: 48%;
+        font-size: 16px;
+    }
+    .CatalogComponent_shapka_p{
+        font-size: 21px;
+      }
 }
 
 
 /* АДАПТИВ ПЛАНШЕТЫ до 1024 */
-@media only screen and (max-width: 1024px) and (min-width:481px) {
+@media only screen and (max-width: 1024px) and (min-width:768px) {
 
     .CatalogComponent_shapka{
         width: 100%;

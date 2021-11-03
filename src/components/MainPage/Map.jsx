@@ -115,16 +115,16 @@ const MapBlock = () => {
         style={
           window.screen.width > 1024
             ? { width: 1150 }
-            : window.screen.width < 1024 && window.screen.width > 480
-            ? { width: 1150 }
+            : window.screen.width <= 1024
+            ? { width: "100%" }
             : { width: "100%" }
         }
       >
         <YMaps>
           <Map
             state={mapData}
-            width={window.screen.width > 1024 ? 1150 : "auto"}
-            height={window.screen.width > 480 ? 500 : 300}
+            width={window.screen.width > 1024 ? 1150 : "100%"}
+            height={window.screen.width > 767 ? 500 : 300}
             modules={["package.full"]}
           >
             <Clusterer
