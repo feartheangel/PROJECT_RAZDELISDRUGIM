@@ -291,6 +291,7 @@ const SearchPage = () => {
     userCoordinates,
     distance
   ) => {
+    setCurrentPage(1);
     Requests.search(
       words,
       category,
@@ -1377,7 +1378,7 @@ const SearchPage = () => {
                         <YMaps>
                           <Map
                             state={mapData}
-                            width={window.screen.width > 1024 ? 1150 : "100%"}
+                            width={window.screen.width > 1024 ? 847 : "100%"}
                             height={window.screen.width > 767 ? 500 : 300}
                             modules={["package.full"]}
                           >
@@ -1527,15 +1528,18 @@ const SearchPage = () => {
                         <div
                           style={{
                             marginBottom: "30px",
-                            marginLeft: "15px",
-                            width: "100%",
+                            width: "-webkit-fill-available",
                           }}
                         >
                           <YMaps>
                             <Map
                               state={mapData}
-                              width={window.screen.width > 1024 ? 1150 : "100%"}
-                              height={window.screen.width > 767 ? 500 : 300}
+                              width={
+                                window.screen.width > 1024
+                                  ? 847
+                                  : "-webkit-fill-available"
+                              }
+                              height={window.screen.width > 767 ? 500 : 250}
                               modules={["package.full"]}
                             >
                               <Clusterer

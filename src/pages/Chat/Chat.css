@@ -310,13 +310,71 @@
   .chat_message_block_content_part {
     flex: 1 0 auto;
     width: min-content;
+    min-width: 225px;
+    max-width: 265px;
+    width: 100%;
+  }
+  .reservation_request_image{
+    width: 200px;
+    height: 160px;
   }
   .chat_message_block_wrapper.own {
-    align-self: flex-start;
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
     width: 100%;
+  }
+  .chat_message_block_time_p{
+    display: flex;
+    order: 1;
+  }
+  .chat_message_block_name_p{
+    order: 0;
   }
   .chat_header_wrapper{
     height: max-content;
   }
+  .chat_message_block_content_part__reservation{
+    max-width: 235px;
+  }
 
 }
+
+/* MOBILE LANDSCAPE */
+@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+  .container_profile_content__chat {
+    padding: 15px;
+    width: -webkit-fill-available;
+    margin: 0 0 15px 0;
+    border-radius: 0;
+  }
+  .chat_message_block_content_part {
+    flex: 1 0 auto;
+    width: min-content;
+    min-width: 265px;
+  }
+  .reservation_request_image{
+    width: 200px;
+    height: 160px;
+  }
+  .chat_message_block_wrapper.own {
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
+    width: 100%;
+  }
+  .chat_message_block_time_p{
+    display: flex;
+    order: 1;
+  }
+  .chat_message_block_name_p{
+    order: 0;
+  }
+  .chat_header_wrapper{
+    height: max-content;
+  }
+  .chat_message_block_content_part__reservation{
+    max-width: 235px;
+  }
+}
+

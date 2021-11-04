@@ -11,7 +11,7 @@ import Yandex from "../../img/MainPage/Method=Yandex.webp";
 import Planet from "../../img/MainPage/Planet.webp";
 import VK from "../../img/MainPage/VK.webp";
 import mark from "../../img/MainPage/Mark.webp";
-import viber from "../../img/MainPage/viber-logo.jpeg";
+import viber from "../../img/MainPage/viber-logo.webp";
 import Tg from "../../img/MainPage/tg.png";
 
 import { useSelector } from "react-redux";

@@ -303,7 +303,7 @@ button {
 }
 
 .search-button {
-  background: url(../img/MainPage/Search.png) no-repeat center center;
+  background: url(../img/MainPage/Search.webp) no-repeat center center;
   background-size: 40%;
   padding: 7.59785px;
   width: 45px;
@@ -491,7 +491,7 @@ button {
 }
 
 .map-button {
-  background: url(../img/MainPage/Search.png) no-repeat 45px center;
+  background: url(../img/MainPage/Search.webp) no-repeat 45px center;
   background-size: 9%;
   width: 191px;
   height: 45px;
@@ -958,7 +958,7 @@ button {
 .writting-about-us-img {
   margin-left: 50px;
   margin-right: 50px;
-  background: url(../img/MainPage/Press-back.png) no-repeat;
+  background: url(../img/MainPage/Press-back.webp) no-repeat;
   padding-right: 20px;
   padding-bottom: 20px;
   border: 3px solid transparent;
@@ -1973,7 +1973,7 @@ button {
     line-height: 16px;
     color: #091d20;
     padding-left: 10px;
-    background: url(../img/MainPage/Search.png) no-repeat 10px center;
+    background: url(../img/MainPage/Search.webp) no-repeat 10px center;
     background-size: 9%;
     background-color: #4cc9f0;
     box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
@@ -2620,7 +2620,7 @@ button {
   #swiper_mobile_800 {
     display: flex;
   }
-  #swiper_mobile_768{
+  #swiper_mobile_768 {
     display: flex;
   }
 
@@ -3032,15 +3032,15 @@ button {
     min-width: 160px;
     max-width: 235px;
   }
-  .main_page_fris_block_left_main_p{
+  .main_page_fris_block_left_main_p {
     font-size: 34px;
   }
-  .main_page_fris_block_left_second_p{
+  .main_page_fris_block_left_second_p {
     width: fit-content;
     height: auto;
     font-size: 20px;
   }
-  .recent-p{
+  .recent-p {
     font-size: 28px;
   }
 
@@ -3125,7 +3125,7 @@ button {
     height: auto;
     font-size: 15px;
   }
-  .about-lower-p{
+  .about-lower-p {
     font-size: 18px;
     margin-top: 15px;
     margin-bottom: 25px;
@@ -3152,7 +3152,7 @@ button {
     font-size: 28px;
     margin-bottom: 15px;
   }
-  .news-reviews-text{
+  .news-reviews-text {
     font-size: 16px;
   }
 
@@ -3162,12 +3162,11 @@ button {
     padding: 0 20px;
     margin-bottom: 30px;
   }
-  .Main_page li{
+  .Main_page li {
     margin-bottom: 15px;
   }
-  .main-li{
+  .main-li {
     font-size: 16px;
-
   }
   .categories_wrapper {
     width: 100%;

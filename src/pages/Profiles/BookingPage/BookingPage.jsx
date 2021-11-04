@@ -1397,7 +1397,13 @@ const BookingPage = () => {
                             Отменено
                           </p>
                         </div>
-                        <div>
+                        <div
+                          className={
+                            activeForm3 === "completed"
+                              ? "container_profile_optional_left_div_active"
+                              : "container_profile_optional_left_div"
+                          }
+                        >
                           <p
                             className={
                               activeForm3 === "completed"

@@ -317,12 +317,18 @@ const Header = () => {
 
   const burgerRef = useRef(null);
   const burgerButtonRef = useRef(null);
+  const burgermobile = useRef(null);
 
   React.useEffect(() => {
     const onClick = (e) => {
-      if (burgerRef.current && burgerButtonRef.current) {
+      if (
+        burgerRef.current &&
+        burgerButtonRef.current &&
+        burgermobile.current
+      ) {
         burgerButtonRef.current.contains(e.target) ||
           burgerRef.current.contains(e.target) ||
+          burgermobile.current.contains(e.target) ||
           setBurgerActive(false);
       }
     };
@@ -492,6 +498,7 @@ const Header = () => {
               src={Burger}
               className="burger-button"
               id="header-lower-table-left2"
+              ref={burgermobile}
             />
             <p className="header-lower-table-p">Каталог</p>
           </div>

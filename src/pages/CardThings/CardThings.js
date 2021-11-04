@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions/search";
 import { useSelector, useDispatch } from "react-redux";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
+import SearchVector from "../../img/BookingPage/searchvector.png";
 import Vector1 from "../../img/SearchPage/Vector1.png";
 import Vector2 from "../../img/CardThings/LeftContent/Vector2.png";
 import Vector3 from "../../img/CardThings/LeftContent/Vector3.png";
@@ -32,7 +33,7 @@ import Whatsapp from "../../img/CardThings/RightContent/Component 38.png";
 import Instagram from "../../img/CardThings/RightContent/Component 39.png";
 import Vk from "../../img/CardThings/RightContent/Component 42.png";
 import Views from "../../img/CardThings/LeftContent/views.png";
-import freePrice from "../../img/MainPage/freePrice.png";
+import freePrice from "../../img/MainPage/freePrice.webp";
 import Requests from "../../http/axios-requests";
 import Google from "../../img/ProfilePage/google.png";
 import Facebook from "../../img/ProfilePage/facebook2.png";
@@ -42,6 +43,7 @@ import Favorites from "../../img/MainPage/Favorites.webp";
 import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.webp";
 import EditItemImage from "../../img/MainPage/editicon.webp";
 import Booking from "../../components/PagesArchitecture/Booking";
+import { MapBooking } from "../../components/index";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -156,11 +158,11 @@ const CardThings = () => {
           setItemData(response.data);
           setSelectedImage(response.data.image_1);
         } else {
-          /*           window.location.href = "/"; */
+          window.location.href = "/";
         }
       })
       .catch(() => {
-        /*         window.location.href = "/"; */
+        window.location.href = "/";
       });
 
     return () => {
@@ -204,6 +206,7 @@ const CardThings = () => {
   const [isOwn, setIsOwn] = React.useState(false);
   // бронирование
   const [booking, setBooking] = React.useState(false);
+  const [modalActiveMap, setModalActiveMap] = React.useState(false);
 
   const div = useRef(null);
   const div2 = useRef(null);
@@ -1014,27 +1017,25 @@ const CardThings = () => {
                           />
                         )}
                       </div>
-                      {contactVisible && (
-                        <div
-                          style={{ marginBottom: "70px" }}
-                          className={"item_share_link"}
+                      <div
+                        style={{ justifyContent: "flex-start" }}
+                        className="body_allblock_header_left_text"
+                      >
+                        <img
+                          className="header_left_text_icon"
+                          src={SearchVector}
+                          alt="razdelisdrugim"
+                          width="23px"
+                          height="20px"
+                        />
+                        <p
+                          onClick={() => setModalActiveMap(!modalActiveMap)}
+                          className="body_allblock_header_left_text-p"
+                          style={{ cursor: "pointer" }}
                         >
-                          <label
-                            onClick={window.navigator.clipboard.writeText(
-                              `${window.location.href}`
-                            )}
-                            style={{ cursor: "pointer", marginRight: "30px" }}
-                            className="item-card-profile-button__optional"
-                          >
-                            Мобильный номер:
-                          </label>
-                          <input
-                            style={{ width: "200px" }}
-                            type="text"
-                            value={itemData && itemData.profile.phone}
-                          />
-                        </div>
-                      )}
+                          Показать на карте
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -1056,7 +1057,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -1710,6 +1711,25 @@ const CardThings = () => {
                           </div>
                         </div>
                       )}
+                      <div
+                        style={{ justifyContent: "flex-start" }}
+                        className="body_allblock_header_left_text"
+                      >
+                        <img
+                          className="header_left_text_icon"
+                          src={SearchVector}
+                          alt="razdelisdrugim"
+                          width="23px"
+                          height="20px"
+                        />
+                        <p
+                          onClick={() => setModalActiveMap(!modalActiveMap)}
+                          className="body_allblock_header_left_text-p"
+                          style={{ cursor: "pointer", fontSize: "16px" }}
+                        >
+                          Показать на карте
+                        </p>
+                      </div>
                       <div className="card_views_wrapper">
                         <img
                           alt="razdelisdrugim"
@@ -1991,19 +2011,22 @@ const CardThings = () => {
                         )}
 
                         <div className="information_list">
-                          {itemData && itemData.structure !== "null" && (
-                            <div className="list_span">
-                              <span className="list_span_left">
-                                Состав/комплектность
-                              </span>
-                              <span className="list_span_right">
-                                {itemData && itemData.structure}
-                              </span>
-                            </div>
-                          )}
+                          {itemData &&
+                            itemData.structure !== "null" &&
+                            itemData.structure && (
+                              <div className="list_span">
+                                <span className="list_span_left">
+                                  Состав/комплектность
+                                </span>
+                                <span className="list_span_right">
+                                  {itemData && itemData.structure}
+                                </span>
+                              </div>
+                            )}
 
                           {itemData &&
                             itemData.appointment !== "null" &&
+                            itemData.appointment &&
                             itemData.appointment && (
                               <div className="list_span">
                                 <span className="list_span_left">
@@ -2185,7 +2208,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -2735,6 +2758,25 @@ const CardThings = () => {
                       </label>
                     </div>
                   )}
+                  <div
+                    style={{ justifyContent: "flex-start" }}
+                    className="body_allblock_header_left_text"
+                  >
+                    <img
+                      className="header_left_text_icon"
+                      src={SearchVector}
+                      alt="razdelisdrugim"
+                      width="23px"
+                      height="20px"
+                    />
+                    <p
+                      onClick={() => setModalActiveMap(!modalActiveMap)}
+                      className="body_allblock_header_left_text-p"
+                      style={{ cursor: "pointer", fontSize: "16px" }}
+                    >
+                      Показать на карте
+                    </p>
+                  </div>
 
                   {/* БЛОК УСЛОВИЯ И ПОДПУНКТЫ */}
 
@@ -3311,7 +3353,7 @@ const CardThings = () => {
                     >
                       <div className="block_down_owner_photo">
                         <img
-                          alt="razdelisdrugim"
+                          alt="logo"
                           style={{
                             borderRadius: "100%",
                             width: "70px",
@@ -3658,6 +3700,18 @@ const CardThings = () => {
           </div>
         </div>
       </div>
+      <MapBooking
+        modalActiveMap={modalActiveMap}
+        setModalActiveMap={setModalActiveMap}
+        coords={
+          itemData &&
+          itemData.items_coordinates
+            .split("(")[1]
+            .split(")")[0]
+            .split(" ")
+            .reverse()
+        }
+      />
 
       <Footer />
     </div>

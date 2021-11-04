@@ -369,7 +369,7 @@
   /* сама карточка */
   .recent-block {
     margin: 10px 10px 10px;
-    width: auto;
+    width: 100%;
     max-height: 300px;
     min-height: 300px;
   }

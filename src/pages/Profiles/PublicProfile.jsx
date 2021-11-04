@@ -110,7 +110,7 @@ const PublicProfile = () => {
                 <div className="up_global_margin">
                   <div className="block_down_owner_photo">
                     <img
-                      alt="razdelisdrugim"
+                      alt="logo"
                       src={`data:image/png;base64,${
                         profileData && profileData.image_profile
                       }`}
@@ -532,7 +532,7 @@ const PublicProfile = () => {
                     style={{ width: "auto" }}
                   >
                     <img
-                      alt="razdelisdrugim"
+                      alt="logo"
                       src={`https://razdelisdrugim.by${
                         profileData && profileData.image_profile
                       }`}
@@ -961,7 +961,7 @@ const PublicProfile = () => {
                     style={{ width: "auto" }}
                   >
                     <img
-                      alt="razdelisdrugim"
+                      alt="logo"
                       src={`data:image/png;base64,${
                         profileData && profileData.image_profile
                       }`}
