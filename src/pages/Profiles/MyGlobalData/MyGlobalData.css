@@ -166,9 +166,79 @@ textarea {
   }
 }
 
+/* MOBILE LANDSCAPE */
+@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+  #globaldata_mobile {
+    display: flex;
+  }
+  #globaldata_pk {
+    display: none;
+  }
+
+  .recent-block-wrapper{
+    justify-content: center;
+  }
+  .container_profile {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+  }
+
+  /* БЛОК С ОПЦИЯМИ (ГОРИЗОНТАЛЬНЫЙ СКРОЛ) */
+  .container_profile_optional {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding-top: 0;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: normal;
+    margin: 0 15px;
+  }
+  .container_profile_optional::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .optional_scroll1 {
+    min-width: 120px;
+  }
+  .optional_scroll2 {
+    min-width: 117px;
+  }
+  .optional_scroll3 {
+    min-width: 154px;
+  }
+  .optional_scroll4 {
+    min-width: 92px;
+  }
+  .optional_scroll1,
+  .optional_scroll2,
+  .optional_scroll3,
+  .optional_scroll4 {
+    margin-right: 10px;
+  }
+
+  .container_profile_optional p {
+    margin-right: 0;
+    padding-top: 0px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  .container_profile_content {
+    width: 100%;
+    box-shadow: none;
+    padding: 1px;
+    margin-top: 0;
+    margin: 10px 15px 25px 15px;
+  }
+}
+
 /*  АДАПТИВ ДЛЯ ЭКРАНОВ до 1024 px  */
 
-@media only screen and (max-width: 1024px) and (min-width: 481px) {
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
   #globaldata_pk {
     display: none;
   }

@@ -1,5 +1,9 @@
 .container_profile_content__chat {
   width: 934px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -78,6 +82,10 @@
 .chat_messages_left_block {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -117,6 +125,10 @@
 }
 
 .chat_message_block_wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   max-width: 460px;
   margin-top: 15px;
@@ -309,6 +321,10 @@
   }
   .chat_message_block_content_part {
     flex: 1 0 auto;
+    -webkit-flex: 1 0 auto;         
+    -ms-flex: 1 0 auto;                          
+    -webkit-box-flex: 1 0 auto;    
+    -moz-box-flex: 1 0 auto;      
     width: min-content;
     min-width: 225px;
     max-width: 265px;
@@ -327,9 +343,17 @@
   .chat_message_block_time_p{
     display: flex;
     order: 1;
+    -webkit-box-ordinal-group: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-ordinal-group: 1;      /* OLD - Firefox 19- */
+    -ms-flex-order: 1;              /* TWEENER - IE 10 */
+    -webkit-order: 1;               /* NEW - Chrome */
   }
   .chat_message_block_name_p{
     order: 0;
+    -webkit-box-ordinal-group: 0;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-ordinal-group: 0;      /* OLD - Firefox 19- */
+    -ms-flex-order: 0;              /* TWEENER - IE 10 */
+    -webkit-order: 0;               /* NEW - Chrome */
   }
   .chat_header_wrapper{
     height: max-content;
@@ -338,6 +362,15 @@
     max-width: 235px;
   }
 
+}
+
+
+
+/* MOBILE LANDSCAPE */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .chat_message_block_content_part__reservation{
+    max-width: 250px;
+  }
 }
 
 /* MOBILE LANDSCAPE */
@@ -349,6 +382,10 @@
     border-radius: 0;
   }
   .chat_message_block_content_part {
+    -webkit-box-flex: 1 0 auto;
+    -moz-box-flex: 1 0 auto;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
     flex: 1 0 auto;
     width: min-content;
     min-width: 265px;
@@ -366,9 +403,17 @@
   .chat_message_block_time_p{
     display: flex;
     order: 1;
+    -webkit-box-ordinal-group: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-ordinal-group: 1;      /* OLD - Firefox 19- */
+    -ms-flex-order: 1;              /* TWEENER - IE 10 */
+    -webkit-order: 1;               /* NEW - Chrome */
   }
   .chat_message_block_name_p{
     order: 0;
+    -webkit-box-ordinal-group: 0;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-ordinal-group: 0;      /* OLD - Firefox 19- */
+    -ms-flex-order: 0;              /* TWEENER - IE 10 */
+    -webkit-order: 0;               /* NEW - Chrome */
   }
   .chat_header_wrapper{
     height: max-content;

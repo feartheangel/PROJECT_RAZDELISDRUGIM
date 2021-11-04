@@ -272,7 +272,7 @@ const Chat = () => {
                       <p className="chat_header_last_seen_p">
                         {companionLastSeen === "None"
                           ? "Был в сети недавно"
-                          : `Был в сети недвано`}
+                          : `Был в сети недавно`}
                       </p>
                     </div>
                   </div>
@@ -397,7 +397,7 @@ const Chat = () => {
                       <p className="chat_header_last_seen_p">
                         {companionLastSeen === "None"
                           ? "Был в сети недавно"
-                          : `Был в сети недвано`}
+                          : `Был в сети недавно`}
                       </p>
                     </div>
                   </div>
@@ -540,7 +540,7 @@ const Chat = () => {
                       <p className="chat_header_last_seen_p">
                         {companionLastSeen === "None"
                           ? "Был в сети недавно"
-                          : `Был в сети недвано`}
+                          : `Был в сети недавно`}
                       </p>
                     </div>
                   </div>
