@@ -2149,16 +2149,6 @@ const CardThings = () => {
                           >
                             Забронировать
                           </button>
-                          {/* <input
-                          style={
-                            isOwn ? { display: "none" } : { cursor: "pointer" }
-                          }
-                          onClick={goToChatHandler}
-                          href="#booking_page"
-                          type="button"
-                          value="Перейти в чат"
-                          className="contactOwner_btn"
-                        /> */}
 
                           {favorites && !isFavorite && !isOwn && (
                             <img
@@ -2505,6 +2495,18 @@ const CardThings = () => {
                         </div>
                       </div>
                     )}
+                  </div>
+                  <div className="down_block2_button">
+                    <input
+                      style={
+                        isOwn ? { display: "none" } : { cursor: "pointer" }
+                      }
+                      onClick={goToChatHandler}
+                      href="#booking_page"
+                      type="button"
+                      value="Перейти в чат"
+                      className="contactOwner_btn2"
+                    />
                   </div>
                 </div>
               </div>

@@ -21,7 +21,7 @@ const BookingPage = () => {
   const [activeForm3, setActiveForm3] = React.useState("all");
   const [countShowedTables, setCountShowedTables] = React.useState(0);
   const [countShowedTablesCouples, setCountShowedTablesCouples] =
-    React.useState(0);
+    React.useState(1);
   const [coords, setCoords] = React.useState();
 
   const [reloadReservations, toggleReloadReservations] = React.useState(false);
@@ -53,11 +53,10 @@ const BookingPage = () => {
     if (activeForm2 === "ITake") {
       if (activeForm3 === "all") {
         setCountShowedTables(
-          outgoingReservations &&
-            outgoingReservations.filter((item) => item).length
+          outgoingReservations && outgoingReservations.length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
+        console.log(countShowedTables);
       } else if (activeForm3 === "waiting") {
         setCountShowedTables(
           outgoingReservations &&
@@ -66,7 +65,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "success") {
         setCountShowedTables(
           outgoingReservations &&
@@ -75,7 +73,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "rejected") {
         setCountShowedTables(
           outgoingReservations &&
@@ -84,7 +81,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "canceled") {
         setCountShowedTables(
           outgoingReservations &&
@@ -93,7 +89,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "completed") {
         setCountShowedTables(
           outgoingReservations &&
@@ -102,7 +97,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       }
     } else if (activeForm2 === "MyItems") {
       if (activeForm3 === "all") {
@@ -111,7 +105,6 @@ const BookingPage = () => {
             incomingReservations.filter((item) => item).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "waiting") {
         setCountShowedTables(
           incomingReservations &&
@@ -120,7 +113,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "success") {
         setCountShowedTables(
           incomingReservations &&
@@ -129,7 +121,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "rejected") {
         setCountShowedTables(
           incomingReservations &&
@@ -138,7 +129,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "canceled") {
         setCountShowedTables(
           incomingReservations &&
@@ -147,7 +137,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       } else if (activeForm3 === "completed") {
         setCountShowedTables(
           outgoingReservations &&
@@ -156,7 +145,6 @@ const BookingPage = () => {
             ).length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTablesCouples);
       }
     }
   }, [activeForm2, activeForm3]);

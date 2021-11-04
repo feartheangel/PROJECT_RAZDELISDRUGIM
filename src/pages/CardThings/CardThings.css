@@ -1008,6 +1008,28 @@
     flex-direction: column;
     max-width: 100%;
   }
+  .down_block2_button{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 10px 0;
+  }
+  .contactOwner_btn2 {
+    width: 100%;
+    height: 45px;
+    background: #4cc9f0;
+    box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    border-color: #4cc9f0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin: 0 15px;
+}
 
   .CardThings_Wrapper_container {
     max-width: 100%;
