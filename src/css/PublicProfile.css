@@ -182,7 +182,7 @@
 }
 
 /* MOBILE LANDSCAPE */
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+@media only screen and (min-width: 481px) and (max-width: 767px) {
   .PublicProfile_Wrapper {
     padding: 0;
     width: 100%;

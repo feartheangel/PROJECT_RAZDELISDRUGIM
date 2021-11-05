@@ -366,7 +366,7 @@
 
 
 
-/* MOBILE LANDSCAPE */
+/* IPAD */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .chat_message_block_content_part__reservation{
     max-width: 250px;
@@ -374,7 +374,7 @@
 }
 
 /* MOBILE LANDSCAPE */
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+@media only screen and (min-width: 481px) and (max-width: 767px) {
   .container_profile_content__chat {
     padding: 15px;
     width: -webkit-fill-available;
