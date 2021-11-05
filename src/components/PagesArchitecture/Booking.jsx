@@ -74,22 +74,30 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       setRadioBooking("1");
       var linkPC = document.getElementById("radio1PC");
       linkPC.click();
+      var linkPCipad = document.getElementById("radio1PC-ipad");
+      linkPCipad.click();
 
       var linkM = document.getElementById("radio1M");
       linkM.click();
     } else if (itemData.delivery.includes("Доставка курьером")) {
       setRadioBooking("3");
-      linkPC = document.getElementById("radio3PC");
+      var linkPC = document.getElementById("radio3PC");
       linkPC.click();
 
-      linkM = document.getElementById("radio3M");
+      var linkPCipad = document.getElementById("radio3PC-ipad");
+      linkPCipad.click();
+
+      var linkM = document.getElementById("radio3M");
       linkM.click();
     } else {
       setRadioBooking("2");
-      linkPC = document.getElementById("radio2PC");
+      var linkPC = document.getElementById("radio2PC");
       linkPC.click();
 
-      linkM = document.getElementById("radio2M");
+      var linkPCipad = document.getElementById("radio2PC-ipad");
+      linkPCipad.click();
+
+      var linkM = document.getElementById("radio2M");
       linkM.click();
     }
   }, [itemData]);
@@ -1884,11 +1892,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                         value="1"
                         defaultChecked={radioBooking === "1" ? true : false}
                         onChange={(e) => setRadioBooking(e.target.value)}
-                        id="radio1PC"
+                        id="radio1PC-ipad"
                       />
                       <label
                         className="up_block_right_input_block-text"
-                        htmlFor="radio1PC"
+                        htmlFor="radio1PC-ipad"
                       >
                         Cамовывоз
                       </label>
@@ -1904,11 +1912,11 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           value="2"
                           defaultChecked={radioBooking === "2" ? true : false}
                           onChange={(e) => setRadioBooking(e.target.value)}
-                          id="radio2PC"
+                          id="radio2PC-ipad"
                         />
                         <label
                           className="up_block_right_input_block-text"
-                          htmlFor="radio2PC"
+                          htmlFor="radio2PC-ipad"
                         >
                           Привезет и заберет владелец
                         </label>
@@ -1927,19 +1935,19 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                           className="input_setting"
                           value="3"
                           defaultChecked={radioBooking === "3" ? true : false}
-                          id="radio3PC"
+                          id="radio3PC-ipad"
                           onChange={(e) => setRadioBooking(e.target.value)}
                         />
                         <label
                           for="radio-3"
                           className="up_block_right_input_block-text"
-                          htmlFor="radio3PC"
+                          htmlFor="radio3PC-ipad"
                         >
                           Отправить
                         </label>
                       </div>
                       <label
-                        htmlFor="radio_booking3"
+                        htmlFor="radio_booking3-ipad"
                         className="up_block_right_input_block3_text"
                       >
                         — {itemData.will_send_choice}:
@@ -2739,6 +2747,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                               className="booking_input_date_end"
                               required
                               min="1"
+                              max="365"
+                              placeholder="1"
                             />
                             <span className="information_all_down_left_alldate">
                               {" "}

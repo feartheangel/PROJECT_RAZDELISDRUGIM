@@ -2792,13 +2792,13 @@ button {
     width: auto;
   }
   .add-subject {
-    max-width: 228px;
+    max-width: 190px;
     min-width: 175px;
     width: -webkit-fill-available;
     margin-top: 5px;
   }
   .add-subject2 {
-    max-width: 228px;
+    max-width: 190px;
     min-width: 180px;
     margin-top: 5px;
   }

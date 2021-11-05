@@ -793,7 +793,7 @@ const MyDataIndividual = ({ setModalActiveNumber, setModalActiveEmail }) => {
               <img
                 alt="Logo"
                 className="profile-photo"
-                src={`${rootAddress}${userData.image_profile}`}
+                src={`data:image/png;base64,${userData.image_profile}`}
               />
               <div className="profile-photo-overlay">Изменить</div>
             </label>
