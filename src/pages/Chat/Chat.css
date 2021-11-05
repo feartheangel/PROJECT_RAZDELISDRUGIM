@@ -1,14 +1,27 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+
 .container_profile_content__chat {
   width: 934px;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+          box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 30px;
   background: #ffffff;
   margin: 20px 0;
@@ -24,28 +37,43 @@
 }
 
 .chat_hearder_left_side {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .chat_header_left_side_vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .chat_header_avatar_image {
   width: 44px;
   height: 44px;
-  filter: drop-shadow(6.61481px 6.61481px 48.5086px rgba(99, 212, 248, 0.24));
+  -webkit-filter: drop-shadow(6.61481px 6.61481px 48.5086px rgba(99, 212, 248, 0.24));
+          filter: drop-shadow(6.61481px 6.61481px 48.5086px rgba(99, 212, 248, 0.24));
   border-radius: 100%;
   margin-right: 10px;
 }
 
 .chat_header_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 90px;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid rgba(76, 201, 240, 0.77);
 }
@@ -73,21 +101,26 @@
 }
 
 .chat_messages_part_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 445px;
   width: 100%;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .chat_messages_left_block {
   width: 100%;
   height: 100%;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   overflow-y: scroll;
   overflow-x: hidden;
   padding-right: 10px;
@@ -95,9 +128,15 @@
 
 .chat_lower_table_wrapper {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 15px;
 }
 
@@ -106,9 +145,12 @@
   height: 45px;
   border: 0.5px solid rgba(9, 29, 32, 0.4);
   background: #ffffff;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 6.5861px;
   padding: 0 10px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
   font-family: Raleway;
   font-style: normal;
@@ -119,15 +161,16 @@
 }
 
 .chat_lower_table_input:focus {
-  box-shadow: 0px 0px 28.9789px rgba(99, 212, 248, 0.24);
+  -webkit-box-shadow: 0px 0px 28.9789px rgba(99, 212, 248, 0.24);
+          box-shadow: 0px 0px 28.9789px rgba(99, 212, 248, 0.24);
   border: 0.5px solid #4cc9f0;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
 .chat_message_block_wrapper {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   max-width: 460px;
@@ -138,13 +181,15 @@
   width: 44px;
   height: 44px;
   border-radius: 100%;
-  box-shadow: 6.61481px 6.61481px 48.5086px rgba(99, 212, 248, 0.24);
+  -webkit-box-shadow: 6.61481px 6.61481px 48.5086px rgba(99, 212, 248, 0.24);
+          box-shadow: 6.61481px 6.61481px 48.5086px rgba(99, 212, 248, 0.24);
   margin-right: 10px;
 }
 
 .chat_message_block_content_part {
   border: 1px solid rgba(76, 201, 240, 0.14);
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 5px;
   background: #f7faff;
   padding: 5px;
@@ -152,8 +197,12 @@
 }
 
 .chat_message_block_first_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   margin-bottom: 10px;
 }
 
@@ -187,13 +236,20 @@
 }
 
 .chat_message_block_wrapper.own {
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .single_chat_count_not_read_messages_circle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 5px;
   width: 15px;
   height: 15px;
@@ -216,15 +272,24 @@
 
 .chat_message_block_content_part__reservation {
   border: 1px solid rgba(76, 201, 240, 0.14);
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 5px;
   background: #f7faff;
   padding: 5px;
   min-width: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-self: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .reservation_request_title {
@@ -244,21 +309,26 @@
 }
 
 .reservation_request_delivery {
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   margin-bottom: 10px;
 }
 
 .reservation_request_dates_wrapper {
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   margin-bottom: 10px;
 }
 
 .reservation_request_time_rent {
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   margin-bottom: 10px;
 }
 
 .reservation_request_submit_choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 10px;
 }
@@ -294,7 +364,8 @@
   line-height: 16px;
   color: rgba(9, 29, 32, 0.4);
   justify-self: flex-end;
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .chat_cooldown_timer {
@@ -318,29 +389,56 @@
     width: -webkit-fill-available;
     margin: 0 0 15px 0;
     border-radius: 0;
+    min-height: 400px;
+  }
+  .chat_messages_part_wrapper{
+    min-height: 290px;
+    height: 365px;
   }
   .chat_message_block_content_part {
-    flex: 1 0 auto;
+    /* flex: 1 0 auto;
     -webkit-flex: 1 0 auto;         
     -ms-flex: 1 0 auto;                          
     -webkit-box-flex: 1 0 auto;    
-    -moz-box-flex: 1 0 auto;      
+    -moz-box-flex: 1 0 auto;       */
+    width: -webkit-min-content;
+    width: -moz-min-content;
     width: min-content;
     min-width: 225px;
     max-width: 265px;
     width: 100%;
+  }
+  .chat_message_block_wrapper {
+    margin-right: 0;
+    margin-left: 5px;
+    position: relative;
+  }
+  .chat_messages_left_block > :first-child{
+    margin-top: auto;
+  }
+  .chat_message_block_avatar{
+    margin-right: 5px;
+    margin-left: 5px;
   }
   .reservation_request_image{
     width: 200px;
     height: 160px;
   }
   .chat_message_block_wrapper.own {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
-    align-self: flex-end;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
     width: 100%;
   }
   .chat_message_block_time_p{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     order: 1;
     -webkit-box-ordinal-group: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -356,17 +454,20 @@
     -webkit-order: 0;               /* NEW - Chrome */
   }
   .chat_header_wrapper{
+    height: -webkit-max-content;
+    height: -moz-max-content;
     height: max-content;
   }
   .chat_message_block_content_part__reservation{
-    max-width: 235px;
+    max-width: 200px;
+    position: relative;
   }
 
 }
 
 
 
-/* MOBILE LANDSCAPE */
+/* IPAD */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .chat_message_block_content_part__reservation{
     max-width: 250px;
@@ -374,7 +475,7 @@
 }
 
 /* MOBILE LANDSCAPE */
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+@media only screen and (min-width: 481px) and (max-width: 767px) {
   .container_profile_content__chat {
     padding: 15px;
     width: -webkit-fill-available;
@@ -383,10 +484,10 @@
   }
   .chat_message_block_content_part {
     -webkit-box-flex: 1 0 auto;
-    -moz-box-flex: 1 0 auto;
-    -webkit-flex: 1 0 auto;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
+    width: -webkit-min-content;
+    width: -moz-min-content;
     width: min-content;
     min-width: 265px;
   }
@@ -395,12 +496,20 @@
     height: 160px;
   }
   .chat_message_block_wrapper.own {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
-    align-self: flex-end;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
     width: 100%;
   }
   .chat_message_block_time_p{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     order: 1;
     -webkit-box-ordinal-group: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -416,10 +525,11 @@
     -webkit-order: 0;               /* NEW - Chrome */
   }
   .chat_header_wrapper{
+    height: -webkit-max-content;
+    height: -moz-max-content;
     height: max-content;
   }
   .chat_message_block_content_part__reservation{
     max-width: 235px;
   }
 }
-

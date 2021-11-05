@@ -3,10 +3,12 @@ import { useSelector } from "react-redux";
 import "./MyMessages.css";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../../../components/index";
-import { SingleChat } from "../../../components/index";
+import { SingleChat, ChatDeleteSubmit } from "../../../components/index";
 
 const MyMessages = () => {
   const { subjects, iTakeSubjects } = useSelector(({ userData }) => userData);
+  const [deleteChatId, setDeleteChatId] = React.useState();
+  const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
 
   React.useEffect(() => {
     document.title = "Шерсенджер: #разделисдругим";
@@ -106,7 +108,12 @@ const MyMessages = () => {
               <div className="container_profile_content__messages">
                 {usersChats &&
                   usersChats.map((item) => (
-                    <SingleChat item={item} с chatSocket={chatSocket} />
+                    <SingleChat
+                      item={item}
+                      setDeleteChatId={setDeleteChatId}
+                      setModalActiveSubmit={setModalActiveSubmit}
+                      chatSocket={chatSocket}
+                    />
                   ))}
               </div>
             </div>
@@ -155,7 +162,12 @@ const MyMessages = () => {
               <div className="container_profile_content__messages">
                 {usersChats &&
                   usersChats.map((item) => (
-                    <SingleChat item={item} chatSocket={chatSocket} />
+                    <SingleChat
+                      setDeleteChatId={setDeleteChatId}
+                      setModalActiveSubmit={setModalActiveSubmit}
+                      item={item}
+                      chatSocket={chatSocket}
+                    />
                   ))}
               </div>
             </div>
@@ -208,14 +220,24 @@ const MyMessages = () => {
               <div className="container_profile_content__messages">
                 {usersChats &&
                   usersChats.map((item) => (
-                    <SingleChat item={item} chatSocket={chatSocket} />
+                    <SingleChat
+                      setDeleteChatId={setDeleteChatId}
+                      setModalActiveSubmit={setModalActiveSubmit}
+                      item={item}
+                      chatSocket={chatSocket}
+                    />
                   ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-
+      <ChatDeleteSubmit
+        deleteChatId={deleteChatId}
+        modalActiveSubmit={modalActiveSubmit}
+        setModalActiveSubmit={setModalActiveSubmit}
+        chatSocket={chatSocket}
+      />
       <Footer />
     </div>
   );

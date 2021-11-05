@@ -10,6 +10,8 @@ import {
 import { Redirect } from "react-router-dom";
 import Requests from "../../http/axios-requests";
 import "./PlaseItem.css";
+import ProgressBar from "@ramonak/react-progress-bar";
+
 let files = [];
 let resultList = [];
 let parsedFiles = [];
@@ -401,7 +403,8 @@ const EditItem = () => {
         : coords[0],
       String(prepareType),
       String(coords[1]),
-      Number(id)
+      Number(id),
+      progressHandler
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
@@ -415,6 +418,10 @@ const EditItem = () => {
         dispatch(setQueryDone());
         alert(Object.values(err.response.data));
       });
+  };
+
+  const progressHandler = (percent) => {
+    setLoadingProgress(percent);
   };
 
   const { items, isLoaded } = useSelector(({ items }) => items);
@@ -772,6 +779,7 @@ const EditItem = () => {
 
   const [addressAdded, setAddressAdded] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
+  const [loadingProgress, setLoadingProgress] = React.useState(0);
 
   //проврека на верификацию почты и телефона
   /*   React.useEffect(() => {
@@ -2302,6 +2310,21 @@ const EditItem = () => {
                 }
               />{" "}
             </div>
+            {requestActive && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "20px",
+                }}
+              >
+                <ProgressBar
+                  bgColor={"#4cc9f0"}
+                  width={"250px"}
+                  completed={loadingProgress}
+                />
+              </div>
+            )}
           </form>
         </div>
       </div>

@@ -56,7 +56,6 @@ const BookingPage = () => {
           outgoingReservations && outgoingReservations.length
         );
         setCountShowedTablesCouples(1);
-        console.log(countShowedTables);
       } else if (activeForm3 === "waiting") {
         setCountShowedTables(
           outgoingReservations &&
@@ -619,7 +618,7 @@ const BookingPage = () => {
                           ))
                       : ""}
 
-                    {countShowedTables === 0 && (
+                    {(countShowedTables === 0 || !countShowedTables) && (
                       <div className="content__booking_empty">
                         <p className="content__booking_empty__p">
                           Нет бронирований в этой категории
@@ -629,7 +628,8 @@ const BookingPage = () => {
                   </div>
                   <p
                     style={
-                      countShowedTables - countShowedTablesCouples * 3 <= 0
+                      countShowedTables - countShowedTablesCouples * 3 <= 0 ||
+                      !countShowedTables
                         ? { display: "none" }
                         : {}
                     }
@@ -1163,7 +1163,7 @@ const BookingPage = () => {
                           ))
                       : ""}
 
-                    {countShowedTables === 0 && (
+                    {(countShowedTables === 0 || !countShowedTables) && (
                       <div className="content__booking_empty">
                         <p className="content__booking_empty__p">
                           Нет бронирований в этой категории
@@ -1173,7 +1173,8 @@ const BookingPage = () => {
                   </div>
                   <p
                     style={
-                      countShowedTables - countShowedTablesCouples * 3 <= 0
+                      countShowedTables - countShowedTablesCouples * 3 <= 0 ||
+                      !countShowedTables
                         ? { display: "flex" }
                         : {}
                     }
@@ -1648,7 +1649,7 @@ const BookingPage = () => {
                           ))
                       : ""}
 
-                    {countShowedTables === 0 && (
+                    {(countShowedTables === 0 || !countShowedTables) && (
                       <div className="content__booking_empty">
                         <p className="content__booking_empty__p">
                           Нет бронирований в этой категории
@@ -1657,7 +1658,8 @@ const BookingPage = () => {
                     )}
                     <p
                       style={
-                        countShowedTables - countShowedTablesCouples * 3 <= 0
+                        countShowedTables - countShowedTablesCouples * 3 <= 0 ||
+                        !countShowedTables
                           ? { display: "none" }
                           : {}
                       }
@@ -1688,6 +1690,7 @@ const BookingPage = () => {
         reserveId={reserveId}
         reserveUpdateBool={reserveUpdateBool}
         toggleReloadReservations={toggleReloadReservations}
+        reloadReservations={reloadReservations}
       />
       <Footer />
     </div>

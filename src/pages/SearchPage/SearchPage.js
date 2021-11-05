@@ -78,7 +78,7 @@ const SearchPage = () => {
         <div style=display:flex;flex-direction:column;align-items:center class="recent-block-wrapper">
         <a style=display:flex;flex-direction:column;align-items:center target="_blank">
           <div style=display:flex;flex-direction:column;align-items:center className="recent-block">
-           <img alt="razdelisdrugim"  style=width:108px src=${`${rootAddress}${marks[index][1]}`}  class="block-image" />
+           <img alt="razdelisdrugim"  style=width:108px src=${`data:image/png;base64,${marks[index][1]}`}  class="block-image" />
               ${
                 !marks[index][6] && !marks[index][7]
                   ? `<div style=justify-content:flex-start;margin-top:7px class="recent-time-cost-wrapper">
@@ -231,7 +231,6 @@ const SearchPage = () => {
   }, []);
 
   const scrollHandler = (e) => {
-    console.log("scroll");
     if (
       e.target.documentElement.scrollHeight -
         (e.target.documentElement.scrollTop + window.innerHeight) <

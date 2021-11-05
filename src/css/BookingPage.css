@@ -658,7 +658,7 @@
 }
 
 /* MOBILE LANDSCAPE */
-@media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+@media only screen and (min-width: 481px) and (max-width: 767px)  {
   .container_profile_optional_left {
     flex-direction: row;
     justify-content: flex-start;

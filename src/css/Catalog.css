@@ -127,6 +127,8 @@
     flex-direction: row;
     align-items: center;
     margin: 10px 5px 0 15px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
   }
   .container_down_left-p{
@@ -170,6 +172,8 @@
   .left_category_global_div_p{
     border-bottom: 0px solid rgba(76, 201, 240, 0.21);
     font-size: 16px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
   }
    

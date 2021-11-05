@@ -25,7 +25,6 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   ];
   let number = "";
   let email = "";
-  let code = "";
   //регулярные выражения для проверки телефона и почты
   const contactEmailRegExp =
     /^((([0-9A-Za-z]{1}[-0-9A-z.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$/;
@@ -53,7 +52,6 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
   const [regType, setRegType] = React.useState("1");
   const [agree, setAgree] = React.useState(false);
   const [formValid, setFormValid] = React.useState(false);
-  const [successLogin, setSuccessLogin] = React.useState(false);
   const [captchaPassed, setCaptchaPassed] = React.useState(false);
   const [redirect, setRedirect] = React.useState();
 

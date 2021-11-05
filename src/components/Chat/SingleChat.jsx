@@ -4,19 +4,11 @@ import { rootAddress } from "../../http/axios-requests";
 import { Link } from "react-router-dom";
 import Shape from "../../img/Shape.png";
 
-const SingleChat = ({ item, chatSocket }) => {
-  const [showActionsMenu, setShowActionsMenu] = React.useState(false);
-
+const SingleChat = ({ item, setDeleteChatId, setModalActiveSubmit }) => {
   const deleteChatHandler = (e) => {
     e.preventDefault();
-    if (window.confirm("Вы уверены?")) {
-      chatSocket.current.send(
-        JSON.stringify({
-          command: "delete_chat",
-          chat_id: item.id,
-        })
-      );
-    }
+    setDeleteChatId(item.id);
+    setModalActiveSubmit(true);
   };
 
   return (

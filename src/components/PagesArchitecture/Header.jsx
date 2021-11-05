@@ -559,6 +559,7 @@ const Header = () => {
                     </div>
                   )}
                 </div>
+                {successLogin}
                 <div
                   onClick={() => setProfilePopUpActive(!profilePopUpActive)}
                   className="user-avatar-group"

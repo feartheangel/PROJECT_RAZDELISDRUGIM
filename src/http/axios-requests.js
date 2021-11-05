@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 export const rootAddress = "https://razdelisdrugim.by";
 
@@ -155,7 +156,8 @@ class Requests {
     inventory_number,
     coords,
     prepare_time_choice,
-    items_address
+    items_address,
+    progressHandler
   ) {
     return axios({
       method: "POST",
@@ -215,6 +217,12 @@ class Requests {
         items_address: items_address,
       },
       url: `${rootAddress}/api/items/create/`,
+      onUploadProgress: function (progressEvent) {
+        let percentCompleted = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        progressHandler(percentCompleted);
+      },
     }).then((response) => response);
   }
 
@@ -594,7 +602,8 @@ class Requests {
     coords,
     prepare_time_choice,
     items_address,
-    id
+    id,
+    progressHandler
   ) {
     return axios({
       method: "POST",
@@ -654,6 +663,12 @@ class Requests {
         items_address: items_address,
       },
       url: `${rootAddress}/api/items/update/${id}/`,
+      onUploadProgress: function (progressEvent) {
+        let percentCompleted = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        progressHandler(percentCompleted);
+      },
     }).then((response) => response);
   }
 

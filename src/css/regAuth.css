@@ -613,12 +613,13 @@
     margin-bottom: 0;
   }
   .reg-form-email-verification {
-    height: 100%;
+    height: auto;
     width: 100%;
     margin: 0;
     transform: none;
     border-radius: 0;
-    padding: 0 !important;
+    padding: 10px 0 !important;
+    align-self: center;
   }
   .log-form-text-label-p-email__upper {
     font-size: 15px;
@@ -671,7 +672,7 @@
   }
   .reg-form-input-area {
     padding: 0 10px;
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
   .div_for_krestik {
     display: flex;

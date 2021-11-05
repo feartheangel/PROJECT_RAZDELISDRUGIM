@@ -1,14 +1,10 @@
 import React from "react";
 
-import Requests from "../../http/axios-requests";
-
-const StatusUpdateSubmit = ({
-  reserveId,
-  reserveUpdateBool,
+const ChatDeleteSubmit = ({
+  deleteChatId,
   setModalActiveSubmit,
   modalActiveSubmit,
-  toggleReloadReservations,
-  reloadReservations,
+  chatSocket,
 }) => {
   //обработчики кнопок
 
@@ -17,16 +13,13 @@ const StatusUpdateSubmit = ({
   };
 
   const yesHandler = () => {
-    Requests.updateReservationStatus(reserveId, reserveUpdateBool)
-      .then(() => {
-        toggleReloadReservations(!reloadReservations);
-        setModalActiveSubmit(false);
+    chatSocket.current.send(
+      JSON.stringify({
+        command: "delete_chat",
+        chat_id: deleteChatId,
       })
-      .catch((err) => {
-        toggleReloadReservations(!reloadReservations);
-        setModalActiveSubmit(false);
-        alert(err.response.data);
-      });
+    );
+    setModalActiveSubmit(false);
   };
 
   return (
@@ -49,15 +42,7 @@ const StatusUpdateSubmit = ({
             className="reg-form-email-verification"
           >
             <div className="log-form-text-label-p-email__upper">
-              <p>
-                {reserveUpdateBool === "DENIED"
-                  ? "Вы уверены, что хотите отклонить бронирование?"
-                  : reserveUpdateBool === "SUBMITTED"
-                  ? "Вы уверены, что хотите подтвердить бронирование?"
-                  : reserveUpdateBool === "CANCELED"
-                  ? "Вы уверены, что хотите отменить бронирование?"
-                  : ""}
-              </p>
+              <p> Вы уверены, что хотите удалить чат?</p>
             </div>
             <div
               style={{
@@ -93,4 +78,4 @@ const StatusUpdateSubmit = ({
   );
 };
 
-export default StatusUpdateSubmit;
+export default ChatDeleteSubmit;

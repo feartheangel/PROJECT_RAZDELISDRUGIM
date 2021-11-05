@@ -12,6 +12,7 @@ import { Redirect } from "react-router-dom";
 import Requests from "../../http/axios-requests";
 import "./PlaseItem.css";
 import Vector2 from "../../img/CardThings/LeftContent/Vector2.png";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 let files = [];
 let resultList = [];
@@ -399,7 +400,8 @@ const PlaceItem = () => {
       String(inventoryNumber),
       coords[0],
       String(prepareType),
-      String(coords[1])
+      String(coords[1]),
+      progressHandler
     )
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
@@ -414,6 +416,10 @@ const PlaceItem = () => {
         dispatch(setQueryDone());
         alert(Object.values(err.response.data));
       });
+  };
+
+  const progressHandler = (percent) => {
+    setLoadingProgress(percent);
   };
 
   //СОСТОЯНИЯ ДЛЯ ХРАНЕНИЯ ДАННЫХ ИЗ ПОЛЕЙ
@@ -548,6 +554,8 @@ const PlaceItem = () => {
   const [addressAdded, setAddressAdded] = React.useState(false);
   const [captchaPassed, setCaptchaPassed] = React.useState(false);
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
+
+  const [loadingProgress, setLoadingProgress] = React.useState(0);
 
   React.useEffect(() => {
     if (!localStorage.getItem("key")) {
@@ -2428,6 +2436,7 @@ const PlaceItem = () => {
               sitekey="6Lf5el4cAAAAAB-XdWip6AY2UiMzEekLzdUJN3ur"
               onChange={() => setCaptchaPassed(true)}
             />
+
             {/*  КНОПКИ ОТПРАВИТЬ / ОЧИСТИТЬ  */}
             <div className="button_load">
               <input
@@ -2441,6 +2450,21 @@ const PlaceItem = () => {
                 }
               />{" "}
             </div>
+            {requestActive && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "20px",
+                }}
+              >
+                <ProgressBar
+                  bgColor={"#4cc9f0"}
+                  width={"250px"}
+                  completed={loadingProgress}
+                />
+              </div>
+            )}
           </form>
         </div>
       </div>
