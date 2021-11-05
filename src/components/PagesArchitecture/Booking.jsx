@@ -74,8 +74,6 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       setRadioBooking("1");
       var linkPC = document.getElementById("radio1PC");
       linkPC.click();
-      var linkPCipad = document.getElementById("radio1PC-ipad");
-      linkPCipad.click();
 
       var linkM = document.getElementById("radio1M");
       linkM.click();
@@ -84,18 +82,12 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       var linkPC = document.getElementById("radio3PC");
       linkPC.click();
 
-      var linkPCipad = document.getElementById("radio3PC-ipad");
-      linkPCipad.click();
-
       var linkM = document.getElementById("radio3M");
       linkM.click();
     } else {
       setRadioBooking("2");
       var linkPC = document.getElementById("radio2PC");
       linkPC.click();
-
-      var linkPCipad = document.getElementById("radio2PC-ipad");
-      linkPCipad.click();
 
       var linkM = document.getElementById("radio2M");
       linkM.click();
