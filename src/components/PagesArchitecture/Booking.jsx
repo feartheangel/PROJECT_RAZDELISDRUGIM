@@ -308,6 +308,9 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     } else if (!renterBookingNumber) {
       alert("Не указано номер телефона арендатора!");
       return;
+    } else if (itemData.offer_price_rent && !offeringPrice) {
+      alert("Не указана ваша цена за услугу!");
+      return;
     }
 
     Requests.createBooking({
