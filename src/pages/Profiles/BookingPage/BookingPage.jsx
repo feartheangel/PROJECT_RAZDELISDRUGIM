@@ -50,6 +50,14 @@ const BookingPage = () => {
   }, []);
 
   React.useEffect(() => {
+    if (window.location.href.includes("?page=iTake")) {
+      setActiveForm2("ITake");
+    } else if (window.location.href.includes("?page=iGive")) {
+      setActiveForm2("MyItems");
+    }
+  }, []);
+
+  React.useEffect(() => {
     if (activeForm2 === "ITake") {
       if (activeForm3 === "all") {
         setCountShowedTables(
@@ -591,7 +599,7 @@ const BookingPage = () => {
                               showOnMapHandler={showOnMapHandler}
                             />
                           ))
-                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      : activeForm2 === "MyItems" && activeForm3 === "completed"
                       ? incomingReservations &&
                         incomingReservations
                           .filter(
@@ -1086,57 +1094,7 @@ const BookingPage = () => {
                               showOnMapHandler={showOnMapHandler}
                             />
                           ))
-                      : activeForm2 === "ITake" && activeForm3 === "completed"
-                      ? incomingReservations &&
-                        incomingReservations
-                          .filter(
-                            (item) => item.reservation_status === "COMPLETED"
-                          )
-                          .map((item, index) => (
-                            <BookingITake
-                              setReserveId={setReserveId}
-                              setModalActiveSubmit={setModalActiveSubmit}
-                              setReserveUpdateBool={setReserveUpdateBool}
-                              reloadReservations={reloadReservations}
-                              toggleReloadReservations={
-                                toggleReloadReservations
-                              }
-                              item={item}
-                              key={index}
-                              type={2}
-                              countShowedTablesCouples={
-                                countShowedTablesCouples
-                              }
-                              index={index}
-                              showOnMapHandler={showOnMapHandler}
-                            />
-                          ))
-                      : activeForm2 === "ITake" && activeForm3 === "completed"
-                      ? incomingReservations &&
-                        incomingReservations
-                          .filter(
-                            (item) => item.reservation_status === "COMPLETED"
-                          )
-                          .map((item, index) => (
-                            <BookingITake
-                              setReserveId={setReserveId}
-                              setModalActiveSubmit={setModalActiveSubmit}
-                              setReserveUpdateBool={setReserveUpdateBool}
-                              reloadReservations={reloadReservations}
-                              toggleReloadReservations={
-                                toggleReloadReservations
-                              }
-                              item={item}
-                              key={index}
-                              type={2}
-                              countShowedTablesCouples={
-                                countShowedTablesCouples
-                              }
-                              index={index}
-                              showOnMapHandler={showOnMapHandler}
-                            />
-                          ))
-                      : activeForm2 === "ITake" && activeForm3 === "completed"
+                      : activeForm2 === "MyItems" && activeForm3 === "completed"
                       ? incomingReservations &&
                         incomingReservations
                           .filter(
@@ -1627,6 +1585,31 @@ const BookingPage = () => {
                         incomingReservations
                           .filter(
                             (item) => item.reservation_status === "CANCELED"
+                          )
+                          .map((item, index) => (
+                            <BookingITake
+                              setReserveId={setReserveId}
+                              setModalActiveSubmit={setModalActiveSubmit}
+                              setReserveUpdateBool={setReserveUpdateBool}
+                              reloadReservations={reloadReservations}
+                              toggleReloadReservations={
+                                toggleReloadReservations
+                              }
+                              item={item}
+                              key={index}
+                              type={2}
+                              countShowedTablesCouples={
+                                countShowedTablesCouples
+                              }
+                              index={index}
+                              showOnMapHandler={showOnMapHandler}
+                            />
+                          ))
+                      : activeForm2 === "MyItems" && activeForm3 === "completed"
+                      ? incomingReservations &&
+                        incomingReservations
+                          .filter(
+                            (item) => item.reservation_status === "COMPLETED"
                           )
                           .map((item, index) => (
                             <BookingITake

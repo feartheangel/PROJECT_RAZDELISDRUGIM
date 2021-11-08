@@ -1989,7 +1989,7 @@ const PlaceItem = () => {
                             name="radio_choice"
                             value="RENTER"
                           />
-                          <label for="radio-2">За счёт Рентера</label>
+                          <label for="radio-2">За счёт арендатора</label>
                         </span>
                       </div>
                     )}
