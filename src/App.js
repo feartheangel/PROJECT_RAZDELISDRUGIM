@@ -73,7 +73,9 @@ function App() {
     });
 
     Requests.getSiteSettings().then((res) => {
-      dispatch(setmaxItemsToPlaceFree(res.data[0].free_placement_items_count));
+      dispatch(
+        setmaxItemsToPlaceFreeLegal(res.data[0].free_placement_items_count)
+      );
       dispatch(
         setmaxItemsToPlaceFreeLegal(
           res.data[0].free_placement_items_count_legal
@@ -81,6 +83,7 @@ function App() {
       );
       dispatch(setLanguage(res.data[0].language));
       dispatch(setMaxAddressesCount(res.data[0].address_count_max));
+
       dispatch(setServiceIds(res.data[0].service_ids.split(",").map(Number)));
       dispatch(setEmailSettings(res.data[0].email));
       dispatch(setEmailSupport(res.data[0].email_support));

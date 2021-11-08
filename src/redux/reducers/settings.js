@@ -19,7 +19,7 @@ const search = (state = initialState, action) => {
     case "SET_MAX_ITEMS_TO_PLACE_FREE_LEGAL":
       return {
         ...state,
-        maxItemsToPlaceFree: action.payload,
+        maxItemsToPlaceFreeLegal: action.payload,
       };
 
     case "SET_LANGUAGE":
