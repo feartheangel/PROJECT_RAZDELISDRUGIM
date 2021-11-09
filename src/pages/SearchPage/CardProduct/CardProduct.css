@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* КОНТЕНТ В САМОЙ КАРТОЧКЕ */
 .blocks_card_content{
     height: 426px;
@@ -7,20 +14,35 @@
     padding: 20px 20px 24px 20px;
     background: #FFFFFF;
 
-    box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
+    -webkit-box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
+
+            box-shadow: 3px 3px 52px rgba(76, 201, 240, 0.14);
     border-radius: 5px;
 }
 
 
 .blocks_card_content_photo{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .blocks_card_social_img {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin: 15px 0 10px;
 }
 .img_socialCar{
@@ -55,10 +77,19 @@
     color: #000000;
 }
 .blocks_card_time{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     margin: 10px 0;
 }
 .blocks_card_time_cost{
@@ -73,9 +104,16 @@
     margin-bottom: 10px;
 }
 .blocks_card_freeTime{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .img_clock_block{
     width: 18px;
@@ -87,5 +125,4 @@
     height: 17px;
     margin-left: 16px;
 }
-
 

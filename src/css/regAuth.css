@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 * {
   padding: 0;
   margin: 0;
@@ -12,11 +19,17 @@
   height: 100%;
   background-color: rgba(9, 29, 32, 0.4);
   opacity: 0;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
   pointer-events: none;
   z-index: 11;
-  justify-content: center;
-  align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .reg-auth-wrapper.active {
@@ -31,31 +44,51 @@
 }
 
 .reg-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
 }
 
 .reg-form-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .reg-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 540px;
   height: auto;
   background: #ffffff;
   border-radius: 30px;
-  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
   padding-bottom: 20px;
   padding: 30px 20px;
 }
 
 .log-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 540px;
   height: auto;
   left: 450px;
@@ -63,12 +96,18 @@
   background: #ffffff;
   border-radius: 30px;
   margin-top: 0;
-  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .reg-form-action-type-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   margin-top: 25px;
 }
 
@@ -85,56 +124,88 @@
 }
 
 .reg-form-socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .reg-form-socials img {
   width: 42px;
   height: 42px;
   margin: 30px 30px 0px 30px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 
 .reg-form-socials img:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .reg-form-text-label-p {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 21px;
   margin-top: 20px;
   font-weight: 400;
 }
 
 .reg-form-input-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 20px;
 }
 
 .reg-form-input-area form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .reg-form-text-label-l {
   font-size: 20px;
   font-weight: 400;
   margin-top: 20px;
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .reg-form-text-label-l__moved {
   font-size: 20px;
   font-weight: 400;
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .reg-form-text-label-l__invisible {
@@ -146,7 +217,8 @@
   margin-top: 5px;
   font-size: 12px;
   color: #f2c94c;
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .reg-form-text-label-l__alert-moved {
@@ -156,7 +228,8 @@
   margin-top: 5px;
   font-size: 12px;
   color: #f2c94c;
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .reg-form-contact-input {
@@ -170,6 +243,8 @@
   height: 35px;
   border: 1px solid #bdbdbd;
   border-radius: 2px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 
@@ -177,10 +252,12 @@
   width: 214px;
   height: 38px;
   background: #4cc9f0;
-  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+          box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
   border: none;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0px 0 0 0;
   font-style: normal;
   font-weight: 600;
@@ -201,11 +278,13 @@
   width: 265px;
   height: 43px;
   padding: 10px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin-top: 20px;
   font-size: 20px;
   background: #4cc9f0;
-  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+          box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
   border: 0;
 }
@@ -215,9 +294,15 @@
 }
 
 .reg-form-annotation-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .reg-form-annotation {
@@ -228,6 +313,8 @@
   color: #828282;
   text-align: center;
   font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -254,16 +341,24 @@
 }
 
 .log-form-text-label-p__upper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 18px;
   margin-top: 36px;
   font-weight: 400;
 }
 
 .log-form-text-label-p__lower {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 22px;
   margin-top: 36px;
   font-weight: 500;
@@ -273,10 +368,13 @@
   font-size: 20px;
   font-weight: 400;
   margin-top: 20px;
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .log-form-text-label-l__recover {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 17px;
   margin-top: 36px;
@@ -285,7 +383,8 @@
 }
 
 .log-form-text-label-l__recover {
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .log-form-text-label-l__recover label:hover {
@@ -298,8 +397,11 @@
 }
 
 .reg-form-reg-type-choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   margin-top: 20px;
   font-size: 20px;
 }
@@ -315,17 +417,27 @@
 }
 
 .reg-form-radio-button + label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  align-items: center;
-  user-select: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .reg-form-radio-button + label::before {
   content: "";
   display: inline-block;
   width: 1em;
   height: 1em;
-  flex-shrink: 0;
-  flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   border: 1px solid #adb5bd;
   border-radius: 0.25em;
   margin-right: 0.5em;
@@ -364,17 +476,27 @@
 }
 
 .reg-form-checkbox-button + label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  align-items: center;
-  user-select: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .reg-form-checkbox-button + label::before {
   content: "";
   display: inline-block;
   width: 1.6em;
   height: 1.6em;
-  flex-shrink: 0;
-  flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   border: 1px solid #adb5bd;
   border-radius: 0.45em;
   margin-right: 1.5em;
@@ -407,8 +529,13 @@
 }
 
 .reg-form__third {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 540px;
   height: 1375px;
   left: 450px;
@@ -424,7 +551,8 @@
   height: 43px;
   padding: 10px;
   border: 1px solid #828282;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background: transparent;
   margin-top: 20px;
   font-size: 20px;
@@ -445,23 +573,36 @@
 }
 
 .reg-form-socials__third {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .reg-form-socials__third img {
   margin: 30px 30px 0px 30px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 
 .reg-form-socials__third img:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .reg-form-email-verification {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 540px;
   height: auto;
   left: 450px;
@@ -469,19 +610,30 @@
   background: #ffffff;
   border-radius: 30px;
   margin-top: 30px;
-  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
   padding-bottom: 40px;
 }
 
 .reg-form-wrapper-email-verification {
   margin-top: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: space-between;
+          flex-direction: space-between;
 }
 
 .log-form-text-label-p-email__upper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 24px;
   font-weight: 500;
 }
@@ -497,7 +649,9 @@
 }
 
 .password-control {
-  flex: none;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
   position: relative;
   z-index: 7;
   bottom: 32px;
@@ -508,7 +662,9 @@
 }
 
 .password-control__profile {
-  flex: none;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
   position: absolute;
   z-index: 7;
   bottom: 15px;
@@ -549,6 +705,8 @@
 /* МЕДИА ЗАПРОСЫ */
 @media (max-width: 480px) {
   #regform_mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: -webkit-fill-available;
   }
@@ -562,7 +720,9 @@
     margin: 0;
     border-radius: 0;
     padding-bottom: 0;
-    transform: none;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
     padding: 0;
   }
   .password-control {
@@ -580,11 +740,17 @@
   }
   .reg-auth-wrapper {
     height: 100%;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .reg-form-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     height: 100%;
     overflow-x: hidden;
     width: 100%;
@@ -607,7 +773,9 @@
     margin: 0;
     border-radius: 0;
     /* border-radius: 0px 0px 15px 15px; */
-    transform: none;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
   }
   .reg-form-input-area form {
     margin-bottom: 0;
@@ -616,10 +784,14 @@
     height: auto;
     width: 100%;
     margin: 0;
-    transform: none;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
     border-radius: 0;
     padding: 10px 0 !important;
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
   }
   .log-form-text-label-p-email__upper {
     font-size: 15px;
@@ -675,8 +847,12 @@
     margin-bottom: 30px;
   }
   .div_for_krestik {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     width: 100%;
   }
   .img_krestik {
@@ -705,7 +881,9 @@
   }
   .reg-form-reg-type-choice {
     margin-top: 15px;
-    justify-content: space-evenly;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
     width: -webkit-fill-available;
   }
   .reg-form-text-label-l__radio {
@@ -728,9 +906,13 @@
     display: none;
   }
   #globaldata_ipad {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
   #profile_ipad {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 

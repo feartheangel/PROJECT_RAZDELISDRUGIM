@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* глобально для всех спанов звезд*/
 .Red_star {
   color: red;
@@ -6,9 +13,15 @@
 
 /* ГЛАВНАЯ СТРАНИЦА*/
 .privateProfile {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   min-height: 100%;
   min-width: 1409px;
   width: 100%;
@@ -21,9 +34,16 @@
 
 /*КОНТЕЙНЕР С КОНТЕНТОМ*/
 .privateProfile_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   color: #091d20;
   border-radius: 30px;
   padding: 0 160px;
@@ -32,10 +52,19 @@
 /*КОНТЕЙНЕР С ШАПКОЙ */
 
 .conteiner_shapka {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: auto;
   margin: 20px 0;
@@ -53,6 +82,8 @@
 
 .conteiner_shapka p {
   font-size: 24px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 
@@ -64,6 +95,8 @@
 .conteiner_shapka_myProfile {
   cursor: pointer;
   color: #4cc9f0;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 .conteiner_shapka_myProfile:hover {
@@ -74,8 +107,14 @@
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
   .privateProfile {
-    justify-content: flex-start;
-    align-items: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    min-height: -webkit-max-content;
+    min-height: -moz-max-content;
     min-height: max-content;
     min-width: 100%;
     width: 100%;
@@ -95,7 +134,9 @@
     margin: 0 0 0 0;
     padding: 0 15px;
     /* display: flex; */
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .conteiner_shapka p {
     font-size: 20px;
@@ -119,8 +160,14 @@
 /* MOBILE LANDSCAPE */
 @media only screen and (min-width: 481px) and (max-width: 767px)  {
   .privateProfile {
-    justify-content: flex-start;
-    align-items: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    min-height: -webkit-max-content;
+    min-height: -moz-max-content;
     min-height: max-content;
     min-width: 100%;
     width: 100%;
@@ -139,8 +186,12 @@
     /* display: none; */
     margin: 0 0 0 0;
     padding: 0 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .conteiner_shapka p {
     font-size: 20px;
@@ -165,8 +216,12 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
   .div_favorites {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     width: 100%;
     height: 100%;
   }
@@ -179,14 +234,20 @@
   .privateProfile {
     min-width: auto;
     width: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     min-height: 100%;
     height: auto;
   }
   .privateProfile_container {
     padding: 0 20px;
     width: -webkit-fill-available;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
   .conteiner_shapka {
