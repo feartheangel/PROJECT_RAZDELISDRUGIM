@@ -614,6 +614,7 @@
       -ms-transform: scale(0.9);
           transform: scale(0.9);
   padding-bottom: 40px;
+  align-self: center;
 }
 
 .reg-form-wrapper-email-verification {

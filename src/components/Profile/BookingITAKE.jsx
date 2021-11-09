@@ -16,6 +16,11 @@ import cardMoneyDisabled from "../../img/MainPage/card-money-disabled.webp";
 import cardVerifyDisabled from "../../img/MainPage/card-verify-disabled.webp";
 import UnionDisabled from "../../img/MainPage/Union-disabled.webp";
 import moneyTimeDisabled from "../../img/MainPage/money-time-disabled.webp";
+import telephone from "../../img/BookingPage/telephone.png";
+import gmailImg from "../../img/BookingPage/gmailimg.png";
+import tgImg from "../../img/BookingPage/tgimg.png";
+import viberImg from "../../img/BookingPage/viberimg.png";
+import miniMobile from "../../img/BookingPage/minimobile.png";
 
 import { Link } from "react-router-dom";
 
@@ -29,6 +34,11 @@ const BookingITake = ({
   index,
   showOnMapHandler,
 }) => {
+  const [contacts, setContacts] = React.useState(false);
+
+  const typeContactsHandler = () => {
+    setContacts(!contacts);
+  };
   const handleReservationAbort = () => {
     setReserveId(item.id);
     setReserveUpdateBool("DENIED");
@@ -94,6 +104,75 @@ const BookingITake = ({
                 Показать на карте
               </p>
             </div>
+            <div
+              className="body_allblock_header_right_center_block2"
+              style={{ border: "0" }}
+            >
+              <div className="center_block_rowstyle">
+                {type === 1 && (
+                  <p className="center_block_rowstyle-p1-1">Владелец</p>
+                )}
+                {type === 2 && (
+                  <p className="center_block_rowstyle-p1-1">Арендатор</p>
+                )}
+                <Link
+                  to={`/public-profile?id=${
+                    type === 1 ? item.owner_id : item.renter_id
+                  }`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p className="center_block_rowstyle-p1-2">
+                    {type === 1 ? item.owner_name : item.renter_name}
+                  </p>
+                </Link>
+              </div>
+            </div>
+            <div className="body_allblock_header_left_buttons">
+              <button className="header_left_buttons1">Написать</button>
+            </div>
+            <div className="body_allblock_header_left_buttons">
+              <button
+                className="header_left_buttons2"
+                onClick={typeContactsHandler}
+              >
+                Контакты
+              </button>
+            </div>
+            {item.reservation_status === "SUBMITTED" && contacts === true && (
+              <div className="body_allblock_header_left_contacts">
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={telephone}
+                    alt="vectors"
+                  />
+                  <p>+375 29 182 64 08</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={gmailImg}
+                    alt="vectors"
+                  />
+                  <p>example@gmail.com</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img width="30px" height="30px" src={tgImg} alt="vectors" />
+                  <p>@example</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={viberImg}
+                    alt="vectors"
+                  />
+                  <p>+375 29 667 77 88</p>
+                </div>
+              </div>
+            )}
           </div>
           {/* right */}
           <div className="body_allblock_header_right">
@@ -415,26 +494,6 @@ const BookingITake = ({
               </div>
             </div>
 
-            <div className="body_allblock_header_right_center_block2">
-              <div className="center_block_rowstyle">
-                {type === 1 && (
-                  <p className="center_block_rowstyle-p1-1">Владелец</p>
-                )}
-                {type === 2 && (
-                  <p className="center_block_rowstyle-p1-1">Арендатор</p>
-                )}
-                <Link
-                  to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
-                  }`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p className="center_block_rowstyle-p1-2">
-                    {type === 1 ? item.owner_name : item.renter_name}
-                  </p>
-                </Link>
-              </div>
-            </div>
             <div className="body_allblock_header_right_center_block2">
               {true && (
                 <div className="center_block_rowstyle_2">
@@ -807,6 +866,75 @@ const BookingITake = ({
                 Показать на карте
               </p>
             </div>
+            <div
+              className="body_allblock_header_right_center_block2"
+              style={{ border: "0" }}
+            >
+              <div className="center_block_rowstyle">
+                {type === 1 && (
+                  <p className="center_block_rowstyle-p1-1">Владелец</p>
+                )}
+                {type === 2 && (
+                  <p className="center_block_rowstyle-p1-1">Арендатор</p>
+                )}
+                <Link
+                  to={`/public-profile?id=${
+                    type === 1 ? item.owner_id : item.renter_id
+                  }`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p className="center_block_rowstyle-p1-2">
+                    {type === 1 ? item.owner_name : item.renter_name}
+                  </p>
+                </Link>
+              </div>
+            </div>
+            <div className="body_allblock_header_left_buttons">
+              <button className="header_left_buttons1">Написать</button>
+            </div>
+            <div className="body_allblock_header_left_buttons">
+              <button
+                className="header_left_buttons2"
+                onClick={typeContactsHandler}
+              >
+                Контакты
+              </button>
+            </div>
+            {item.reservation_status === "SUBMITTED" && contacts === true && (
+              <div className="body_allblock_header_left_contacts">
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={telephone}
+                    alt="vectors"
+                  />
+                  <p>+375 29 182 64 08</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={gmailImg}
+                    alt="vectors"
+                  />
+                  <p>example@gmail.com</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img width="30px" height="30px" src={tgImg} alt="vectors" />
+                  <p>@example</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={viberImg}
+                    alt="vectors"
+                  />
+                  <p>+375 29 667 77 88</p>
+                </div>
+              </div>
+            )}
           </div>
           {/* right */}
           <div className="body_allblock_header_right">
@@ -1832,8 +1960,11 @@ const BookingITake = ({
             </div>
           </div>
 
-          <div className="body_allblock_header_right_center_block2_row">
-            <div className="center_block_rowstyle">
+          <div className="body_allblock_header_right_center_block5">
+            <div
+              className="center_block_rowstyle"
+              style={{ marginBottom: "10px" }}
+            >
               {type === 1 && (
                 <p className="center_block_rowstyle-p1-1">Владелец</p>
               )}
@@ -1851,7 +1982,27 @@ const BookingITake = ({
                 </p>
               </Link>
             </div>
-            <div className="center_block_rowstyle">
+            <div
+              className="body_allblock_header_right_center_block2_row"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="center_block_rowstyle_3">
+                <img
+                  width="19px"
+                  height="20px"
+                  src={miniMobile}
+                  alt="pictute1"
+                  style={{ cursor: "pointer" }}
+                />
+
+                <p
+                  className="body_allblock_header_left_text-p-p"
+                  style={{ cursor: "pointer" }}
+                  onClick={typeContactsHandler}
+                >
+                  Показать контакты
+                </p>
+              </div>
               <div className="center_block_rowstyle_3">
                 <img
                   width="17px"
@@ -1873,6 +2024,41 @@ const BookingITake = ({
                 </Link>
               </div>
             </div>
+            {item.reservation_status === "SUBMITTED" && contacts === true && (
+              <div className="body_allblock_header_left_contacts">
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={telephone}
+                    alt="vectors"
+                  />
+                  <p>+375 29 182 64 08</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={gmailImg}
+                    alt="vectors"
+                  />
+                  <p>example@gmail.com</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img width="30px" height="30px" src={tgImg} alt="vectors" />
+                  <p>@example</p>
+                </div>
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={viberImg}
+                    alt="vectors"
+                  />
+                  <p>+375 29 667 77 88</p>
+                </div>
+              </div>
+            )}
           </div>
           <div className="body_allblock_header_right_center_block2">
             {true && (
