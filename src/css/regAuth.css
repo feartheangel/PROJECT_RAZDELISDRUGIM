@@ -609,11 +609,10 @@
   top: 155px;
   background: #ffffff;
   border-radius: 30px;
-  margin-top: 30px;
   -webkit-transform: scale(0.9);
       -ms-transform: scale(0.9);
           transform: scale(0.9);
-  padding-bottom: 40px;
+  padding: 20px;
   align-self: center;
 }
 
