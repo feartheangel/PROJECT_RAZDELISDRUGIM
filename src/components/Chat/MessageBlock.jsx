@@ -173,7 +173,7 @@ const MessageBlock = ({
           </p>
           {item.reserve_text_sender && (
             <p className="reservation_request_delivery">
-              {`Сообщение от рентера: ${item.reserve_text_sender}`}
+              {`Сообщение от арендатора: ${item.reserve_text_sender}`}
             </p>
           )}
           {item.reservation_status === "WAITING" &&

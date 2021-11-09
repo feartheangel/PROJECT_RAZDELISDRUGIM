@@ -39,7 +39,7 @@ const PrivateProfile = () => {
       <div className="privateProfile">
         <div className="privateProfile_container">
           <div className="conteiner_shapka" id="globaldata_pk">
-            <Link style={{ textDecoration: "none" }} to="/">
+            <Link style={{ textDecoration: "none" }} to="/i-rent-out">
               <p>
                 Мои обьявления <span> {subjects.length} </span>
               </p>
@@ -137,7 +137,7 @@ const PrivateProfile = () => {
           {/* ДЛЯ ПЛАНШЕТОВ */}
 
           <div className="conteiner_shapka" id="globaldata_ipad">
-            <Link style={{ textDecoration: "none" }} to="/">
+            <Link style={{ textDecoration: "none" }} to="/i-rent-out">
               <p>
                 Мои обьявления <span> {subjects.length} </span>
               </p>

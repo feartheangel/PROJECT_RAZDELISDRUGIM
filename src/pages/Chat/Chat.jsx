@@ -149,11 +149,21 @@ const Chat = () => {
   const chatBlockMobile = React.useRef();
   const chatBlockTablet = React.useRef();
 
+  const chatMessageInputRef = React.useRef(null);
+  const chatMessageInputRefMobile = React.useRef(null);
+  const chatMessageInputRefTablet = React.useRef(null);
+
   React.useEffect(() => {
     if (cooldownTimer > 0) {
       setTimeout(() => {
         setCooldownTimer(cooldownTimer - 1);
       }, 1000);
+    }
+
+    if (cooldownTimer === 0) {
+      chatMessageInputRef.current.focus();
+      chatMessageInputRefMobile.current.focus();
+      chatMessageInputRefTablet.current.focus();
     }
   }, [cooldownTimer]);
 
@@ -297,6 +307,7 @@ const Chat = () => {
                 </div>
                 <div className="chat_lower_table_wrapper">
                   <input
+                    ref={chatMessageInputRef}
                     value={chatPhrase}
                     onChange={(e) => setChatPhrase(e.target.value)}
                     className="chat_lower_table_input"
@@ -306,6 +317,7 @@ const Chat = () => {
                         ? "Ваше сообщение..."
                         : `Подождите: 00:0${cooldownTimer}`
                     }
+                    autoFocus
                     disabled={cooldownTimer !== 0}
                   />
                   <img
@@ -422,6 +434,7 @@ const Chat = () => {
                 </div>
                 <div className="chat_lower_table_wrapper">
                   <input
+                    ref={chatMessageInputRefMobile}
                     value={chatPhrase}
                     onChange={(e) => setChatPhrase(e.target.value)}
                     className="chat_lower_table_input"
@@ -432,6 +445,7 @@ const Chat = () => {
                         ? "Ваше сообщение..."
                         : `Подождите: 00:0${cooldownTimer}`
                     }
+                    autoFocus
                   />
                   <img
                     alt="razdelisdrugim"
@@ -565,6 +579,7 @@ const Chat = () => {
                 </div>
                 <div className="chat_lower_table_wrapper">
                   <input
+                    ref={chatMessageInputRefTablet}
                     value={chatPhrase}
                     onChange={(e) => setChatPhrase(e.target.value)}
                     className="chat_lower_table_input"
@@ -574,6 +589,7 @@ const Chat = () => {
                         ? "Ваше сообщение..."
                         : `Подождите: 00:0${cooldownTimer}`
                     }
+                    autoFocus
                     disabled={cooldownTimer !== 0}
                   />
                   <img

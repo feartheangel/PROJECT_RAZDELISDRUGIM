@@ -153,15 +153,15 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
   const radioBookingHandler = (e) => {
     setRadioBooking(e.target.value);
   };
-  // имя рентера
+  // имя арендатора
   const renterBookingNameHandler = (e) => {
     setRenterBookingName(e.target.value);
   };
-  // номер рентера
+  // номер арендатора
   const renterBookingNumberHandler = (e) => {
     setRenterBookingNumber(e.target.value);
   };
-  // сообщение рентера
+  // сообщение арендатора
   const renterBookingSmsHandler = (e) => {
     setRenterBookingSms(e.target.value);
   };
@@ -868,7 +868,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       >
                         — {itemData.will_send_choice}:
                         {itemData.send_payer === "RENTER"
-                          ? " за счёт рентера"
+                          ? " за счёт арендатора"
                           : itemData.send_payer === "OWNER"
                           ? " за счёт владельца"
                           : ""}
@@ -1963,7 +1963,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       >
                         — {itemData.will_send_choice}:
                         {itemData.send_payer === "RENTER"
-                          ? " за счёт рентера"
+                          ? " за счёт арендатора"
                           : itemData.send_payer === "OWNER"
                           ? " за счёт владельца"
                           : ""}
@@ -3018,7 +3018,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                       >
                         — {itemData.will_send_choice}:
                         {itemData.send_payer === "RENTER"
-                          ? " за счёт рентера"
+                          ? " за счёт арендатора"
                           : itemData.send_payer === "OWNER"
                           ? " за счёт владельца"
                           : ""}

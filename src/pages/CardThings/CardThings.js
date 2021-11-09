@@ -158,11 +158,11 @@ const CardThings = () => {
           setItemData(response.data);
           setSelectedImage(response.data.image_1);
         } else {
-          window.location.href = "/";
+          window.location.href = "/404";
         }
       })
       .catch(() => {
-        window.location.href = "/";
+        window.location.href = "/404";
       });
 
     return () => {
@@ -946,7 +946,7 @@ const CardThings = () => {
                             за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
-                              : "рентера"}
+                              : "арендатора"}
                           </p>
                         )}
                     </div>
@@ -1290,16 +1290,19 @@ const CardThings = () => {
                             <a
                               rel="noreferrer"
                               href={`${
-                                itemData &&
+                                itemData.profile &&
                                 itemData.profile.link_instagram.includes(
-                                  "https://instagram.com"
+                                  "https://www.instagram.com"
                                 )
                                   ? itemData.profile.link_instagram
                                   : itemData.profile.link_instagram.includes(
                                       "instagram.com"
+                                    ) &&
+                                    !itemData.profile.link_instagram.includes(
+                                      "https://"
                                     )
-                                  ? `https://${itemData.profile.link_instagram}`
-                                  : `https://instagram.com/${itemData.profile.link_instagram}`
+                                  ? `https://${itemData.profile.link_instagram}/`
+                                  : `https://www.instagram.com/${itemData.profile.link_instagram}/`
                               }`}
                               target="_blank"
                             >
@@ -1814,7 +1817,7 @@ const CardThings = () => {
                             за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
-                              : "рентера"}
+                              : "арендатора"}
                           </p>
                         )}
                     </div>
@@ -2436,9 +2439,12 @@ const CardThings = () => {
                                   ? itemData.profile.link_instagram
                                   : itemData.profile.link_instagram.includes(
                                       "instagram.com"
+                                    ) &&
+                                    !itemData.profile.link_instagram.includes(
+                                      "https://"
                                     )
-                                  ? `https://${itemData.profile.link_instagram}`
-                                  : `https://instagram.com/${itemData.profile.link_instagram}`
+                                  ? `https://${itemData.profile.link_instagram}/`
+                                  : `https://instagram.com/${itemData.profile.link_instagram}/`
                               }`}
                               target="_blank"
                               rel="noreferrer"
@@ -3240,7 +3246,7 @@ const CardThings = () => {
                             за счет{" "}
                             {itemData && itemData.send_payer === "OWNER"
                               ? "владельца"
-                              : "рентера"}
+                              : "арендатора"}
                           </p>
                         )}
                     </div>
@@ -3588,16 +3594,19 @@ const CardThings = () => {
                             <a
                               rel="noreferrer"
                               href={`${
-                                itemData &&
+                                itemData.profile &&
                                 itemData.profile.link_instagram.includes(
-                                  "https://instagram.com"
+                                  "https://www.instagram.com"
                                 )
                                   ? itemData.profile.link_instagram
                                   : itemData.profile.link_instagram.includes(
                                       "instagram.com"
+                                    ) &&
+                                    !itemData.profile.link_instagram.includes(
+                                      "https://"
                                     )
-                                  ? `https://${itemData.profile.link_instagram}`
-                                  : `https://instagram.com/${itemData.profile.link_instagram}`
+                                  ? `https://${itemData.profile.link_instagram}/`
+                                  : `https://www.instagram.com/${itemData.profile.link_instagram}/`
                               }`}
                               target="_blank"
                             >

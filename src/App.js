@@ -29,6 +29,7 @@ import {
   MyMessages,
   Chat,
   BookingPage,
+  ErrorPage,
 } from "./pages/index";
 import { PasswordRecoverySubmit } from "./components/index";
 import "./css/main-page.css";
@@ -164,6 +165,7 @@ function App() {
         <Route path="/users-agreement" component={UsersAgreement} exact />
         <Route path="/chat" component={Chat} exact />
         <Route path="/booking" component={BookingPage} exact />
+        <Route path="/404" component={ErrorPage} exact />
       </div>
     </div>
   );

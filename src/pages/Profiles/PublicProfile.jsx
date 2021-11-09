@@ -45,11 +45,13 @@ const PublicProfile = () => {
   const { isLoggedIn } = useSelector(({ userData }) => userData);
 
   React.useEffect(() => {
-    Requests.getPublicProfile(window.location.href.split("?id=")[1]).then(
-      (response) => {
+    Requests.getPublicProfile(window.location.href.split("?id=")[1])
+      .then((response) => {
         setProfileData(response.data);
-      }
-    );
+      })
+      .catch(() => {
+        window.location.href = "/404";
+      });
 
     Requests.getPublicProfileItems(window.location.href.split("?id=")[1]).then(
       (response) => {
@@ -341,14 +343,17 @@ const PublicProfile = () => {
                             href={`${
                               profileData &&
                               profileData.link_instagram.includes(
-                                "https://instagram.com"
+                                "https://www.instagram.com"
                               )
                                 ? profileData.link_instagram
                                 : profileData.link_instagram.includes(
                                     "instagram.com"
+                                  ) &&
+                                  !profileData.link_instagram.includes(
+                                    "https://"
                                   )
-                                ? `https://${profileData.link_instagram}`
-                                : `https://instagram.com/${profileData.link_instagram}`
+                                ? `https://${profileData.link_instagram}/`
+                                : `https://www.instagram.com/${profileData.link_instagram}/`
                             }`}
                             target="_blank"
                             rel="noreferrer"
@@ -704,14 +709,17 @@ const PublicProfile = () => {
                             href={`${
                               profileData &&
                               profileData.link_instagram.includes(
-                                "https://instagram.com"
+                                "https://www.instagram.com"
                               )
                                 ? profileData.link_instagram
                                 : profileData.link_instagram.includes(
                                     "instagram.com"
+                                  ) &&
+                                  !profileData.link_instagram.includes(
+                                    "https://"
                                   )
-                                ? `https://${profileData.link_instagram}`
-                                : `https://instagram.com/${profileData.link_instagram}`
+                                ? `https://${profileData.link_instagram}/`
+                                : `https://www.instagram.com/${profileData.link_instagram}/`
                             }`}
                             target="_blank"
                             rel="noreferrer"
@@ -1133,14 +1141,17 @@ const PublicProfile = () => {
                             href={`${
                               profileData &&
                               profileData.link_instagram.includes(
-                                "https://instagram.com"
+                                "https://www.instagram.com"
                               )
                                 ? profileData.link_instagram
                                 : profileData.link_instagram.includes(
                                     "instagram.com"
+                                  ) &&
+                                  !profileData.link_instagram.includes(
+                                    "https://"
                                   )
-                                ? `https://${profileData.link_instagram}`
-                                : `https://instagram.com/${profileData.link_instagram}`
+                                ? `https://${profileData.link_instagram}/`
+                                : `https://www.instagram.com/${profileData.link_instagram}/`
                             }`}
                             target="_blank"
                             rel="noreferrer"
