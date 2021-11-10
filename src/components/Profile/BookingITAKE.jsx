@@ -1754,7 +1754,7 @@ const BookingITake = ({
           {/* если завершено */}
 
           {item.reservation_status === "COMPLETED" && (
-            <div className="center_block_rowstyle_4">
+            <div onClick={handleReviewSend} className="center_block_rowstyle_4">
               <img
                 width="17px"
                 height="15px"
@@ -2548,7 +2548,7 @@ const BookingITake = ({
             )}
 
           {item.reservation_status === "COMPLETED" && (
-            <div className="center_block_rowstyle_4">
+            <div onClick={handleReviewSend} className="center_block_rowstyle_4">
               <img
                 width="17px"
                 height="15px"
