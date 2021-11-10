@@ -201,22 +201,21 @@ const Footer = () => {
 
           <div className="footer-fifth-col">
             <div className="footer-socials">
-              <img
-                alt="razdelisdrugim"
-                src={Instagram}
-                className="footer-social"
-              />
-              <img
-                alt="razdelisdrugim"
-                src={Facebook}
-                className="footer-social"
-              />
-              <img alt="razdelisdrugim" src={VK} className="footer-social" />
-            </div>
-            <div style={{ display: "flex" }}>
-              <p className="footer-fifth-p" style={{ marginRight: "10px" }}>
-                Наши боты:
-              </p>
+              <a
+                href="https://www.instagram.com/razdelisdrugim/"
+                target="_blank"
+              >
+                <img src={Instagram} alt="" className="footer-social" />
+              </a>
+              <a
+                href="https://www.facebook.com/razdelisdrugim-101466122292430/"
+                target="_blank"
+              >
+                <img src={Facebook} alt="" className="footer-social" />
+              </a>
+              <a href="https://vk.com/razdelisdrugim" target="_blank">
+                <img src={VK} alt="" className="footer-social" />
+              </a>
               <a
                 href={
                   window.screen.width > 1024

@@ -8,6 +8,7 @@ import {
   Footer,
   MapBooking,
   StatusUpdateSubmit,
+  SendReviewModal,
 } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 import BookingITake from "../../../components/Profile/BookingITAKE";
@@ -27,6 +28,8 @@ const BookingPage = () => {
   const [reloadReservations, toggleReloadReservations] = React.useState(false);
 
   const [modalActiveSubmit, setModalActiveSubmit] = React.useState(false);
+  const [modalActiveSendReview, setModalActiveSendReview] =
+    React.useState(false);
 
   React.useEffect(() => {
     Requests.getOutgoingReservations().then((res) => {
@@ -159,6 +162,10 @@ const BookingPage = () => {
   const [modalActiveMap, setModalActiveMap] = React.useState(false);
   const [reserveId, setReserveId] = React.useState();
   const [reserveUpdateBool, setReserveUpdateBool] = React.useState();
+
+  const [reviewPersonId, setReviewPersonId] = React.useState();
+  const [reviewItemId, setReviewItemId] = React.useState();
+  const [reviewType, setReviewType] = React.useState();
 
   const showOnMapHandler = (coords) => {
     setModalActiveMap(true);
@@ -342,6 +349,10 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewType={setReviewType}
+                            setReviewItemId={setReviewItemId}
+                            setReviewPersonId={setReviewPersonId}
+                            setModalActiveSendReview={setModalActiveSendReview}
                             setReserveId={setReserveId}
                             setModalActiveSubmit={setModalActiveSubmit}
                             setReserveUpdateBool={setReserveUpdateBool}
@@ -363,6 +374,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -388,6 +405,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -413,6 +436,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -438,6 +467,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -463,6 +498,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -486,6 +527,10 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewType={setReviewType}
+                            setReviewItemId={setReviewItemId}
+                            setReviewPersonId={setReviewPersonId}
+                            setModalActiveSendReview={setModalActiveSendReview}
                             setReserveId={setReserveId}
                             setModalActiveSubmit={setModalActiveSubmit}
                             setReserveUpdateBool={setReserveUpdateBool}
@@ -507,6 +552,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -532,6 +583,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -557,6 +614,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -582,6 +645,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -607,6 +676,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -837,6 +912,10 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewType={setReviewType}
+                            setReviewItemId={setReviewItemId}
+                            setReviewPersonId={setReviewPersonId}
+                            setModalActiveSendReview={setModalActiveSendReview}
                             setReserveId={setReserveId}
                             setModalActiveSubmit={setModalActiveSubmit}
                             setReserveUpdateBool={setReserveUpdateBool}
@@ -858,6 +937,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -883,6 +968,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -908,6 +999,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -933,6 +1030,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -958,6 +1061,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -981,6 +1090,10 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewType={setReviewType}
+                            setReviewItemId={setReviewItemId}
+                            setReviewPersonId={setReviewPersonId}
+                            setModalActiveSendReview={setModalActiveSendReview}
                             setReserveId={setReserveId}
                             setModalActiveSubmit={setModalActiveSubmit}
                             setReserveUpdateBool={setReserveUpdateBool}
@@ -1002,6 +1115,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1027,6 +1146,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1052,6 +1177,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1077,6 +1208,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1102,6 +1239,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1373,6 +1516,10 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewType={setReviewType}
+                            setReviewItemId={setReviewItemId}
+                            setReviewPersonId={setReviewPersonId}
+                            setModalActiveSendReview={setModalActiveSendReview}
                             setReserveId={setReserveId}
                             setModalActiveSubmit={setModalActiveSubmit}
                             setReserveUpdateBool={setReserveUpdateBool}
@@ -1394,6 +1541,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1419,6 +1572,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1444,6 +1603,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1469,6 +1634,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1492,6 +1663,10 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewType={setReviewType}
+                            setReviewItemId={setReviewItemId}
+                            setReviewPersonId={setReviewPersonId}
+                            setModalActiveSendReview={setModalActiveSendReview}
                             setReserveId={setReserveId}
                             setModalActiveSubmit={setModalActiveSubmit}
                             setReserveUpdateBool={setReserveUpdateBool}
@@ -1513,6 +1688,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1538,6 +1719,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1563,6 +1750,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1588,6 +1781,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1613,6 +1812,12 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewType={setReviewType}
+                              setReviewItemId={setReviewItemId}
+                              setReviewPersonId={setReviewPersonId}
+                              setModalActiveSendReview={
+                                setModalActiveSendReview
+                              }
                               setReserveId={setReserveId}
                               setModalActiveSubmit={setModalActiveSubmit}
                               setReserveUpdateBool={setReserveUpdateBool}
@@ -1674,6 +1879,13 @@ const BookingPage = () => {
         reserveUpdateBool={reserveUpdateBool}
         toggleReloadReservations={toggleReloadReservations}
         reloadReservations={reloadReservations}
+      />
+      <SendReviewModal
+        modalActiveSendReview={modalActiveSendReview}
+        setModalActiveSendReview={setModalActiveSendReview}
+        reviewItemId={reviewItemId}
+        reviewPersonId={reviewPersonId}
+        reviewType={reviewType}
       />
       <Footer />
     </div>

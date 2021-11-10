@@ -16,6 +16,17 @@ import cardMoneyDisabled from "../../img/MainPage/card-money-disabled.webp";
 import cardVerifyDisabled from "../../img/MainPage/card-verify-disabled.webp";
 import UnionDisabled from "../../img/MainPage/Union-disabled.webp";
 import moneyTimeDisabled from "../../img/MainPage/money-time-disabled.webp";
+import telephone from "../../img/BookingPage/telephone.png";
+import gmailImg from "../../img/BookingPage/gmailimg.png";
+import tgImg from "../../img/BookingPage/tgimg.png";
+import viberImg from "../../img/BookingPage/viberimg.png";
+import miniMobile from "../../img/BookingPage/minimobile.png";
+import WhatsAppLogo from "../../img/CardThings/RightContent/Component 38.png";
+import InstagramLogo from "../../img/CardThings/RightContent/Component 39.png";
+import VkLogo from "../../img/CardThings/RightContent/Component 42.png";
+import OkLogo from "../../img/ProfilePage/ok.png";
+import FbLogo from "../../img/ProfilePage/facebook2.png";
+import Review from "../../img/BookingPage/textonpage.png";
 
 import { Link } from "react-router-dom";
 
@@ -28,7 +39,16 @@ const BookingITake = ({
   countShowedTablesCouples,
   index,
   showOnMapHandler,
+  setReviewItemId,
+  setReviewPersonId,
+  setModalActiveSendReview,
+  setReviewType,
 }) => {
+  const [contacts, setContacts] = React.useState(false);
+
+  const typeContactsHandler = () => {
+    setContacts(!contacts);
+  };
   const handleReservationAbort = () => {
     setReserveId(item.id);
     setReserveUpdateBool("DENIED");
@@ -45,6 +65,17 @@ const BookingITake = ({
     setReserveId(item.id);
     setReserveUpdateBool("CANCELED");
     setModalActiveSubmit(true);
+  };
+
+  const handleReviewSend = () => {
+    if (type === 1) {
+      setReviewPersonId(item.owner_contact.id);
+    } else if (type === 2) {
+      setReviewPersonId(item.renter_contact.id);
+    }
+    setReviewItemId(item.item_id.id);
+    setReviewType(type);
+    setModalActiveSendReview(true);
   };
 
   return (
@@ -94,6 +125,206 @@ const BookingITake = ({
                 Показать на карте
               </p>
             </div>
+            <div
+              className="body_allblock_header_right_center_block2"
+              style={{ border: "0" }}
+            >
+              <div className="center_block_rowstyle">
+                {type === 1 && (
+                  <p className="center_block_rowstyle-p1-1">Владелец</p>
+                )}
+                {type === 2 && (
+                  <p className="center_block_rowstyle-p1-1">Арендатор</p>
+                )}
+                <Link
+                  to={`/public-profile?id=${
+                    type === 1 ? item.owner_id : item.renter_id
+                  }`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p className="center_block_rowstyle-p1-2">
+                    {type === 1 ? item.owner_name : item.renter_name}
+                  </p>
+                </Link>
+              </div>
+            </div>
+            <Link
+              to={`/chat?id=${item.chat_id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="body_allblock_header_left_buttons">
+                <button className="header_left_buttons1">Написать</button>
+              </div>
+            </Link>
+            {item.reservation_status === "SUBMITTED" && (
+              <div className="body_allblock_header_left_buttons">
+                <button
+                  className="header_left_buttons2"
+                  onClick={typeContactsHandler}
+                >
+                  Контакты
+                </button>
+              </div>
+            )}
+            {item.reservation_status === "SUBMITTED" && contacts === true && (
+              <div className="body_allblock_header_left_contacts">
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={telephone}
+                    alt="vectors"
+                  />
+                  <p>
+                    {" "}
+                    {type === 1
+                      ? item.owner_contact.phone
+                      : type === 2
+                      ? item.renter_contact.phone
+                      : ""}
+                  </p>
+                </div>
+                {((type === 1 && item.owner_contact.google_account) ||
+                  (type === 2 && item.renter_contact.google_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={gmailImg}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.google_account
+                        : type === 2
+                        ? item.renter_contact.google_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.telegram_account) ||
+                  (type === 2 && item.renter_contact.telegram_account)) && (
+                  <div className="left_contacts_row">
+                    <img width="30px" height="30px" src={tgImg} alt="vectors" />
+                    <p>
+                      {type === 1
+                        ? `@${item.owner_contact.telegram_account}`
+                        : type === 2
+                        ? `@${item.renter_contact.telegram_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.viber_account) ||
+                  (type === 2 && item.renter_contact.viber_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={viberImg}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? `+${item.owner_contact.viber_account}`
+                        : type === 2
+                        ? `+${item.renter_contact.viber_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.whatsapp_account) ||
+                  (type === 2 && item.renter_contact.whatsapp_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={WhatsAppLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? `+${item.owner_contact.whatsapp_account}`
+                        : type === 2
+                        ? `+${item.renter_contact.whatsapp_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.link_instagram) ||
+                  (type === 2 && item.renter_contact.link_instagram)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={InstagramLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.link_instagram
+                        : type === 2
+                        ? item.renter_contact.link_instagram
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.ok_account) ||
+                  (type === 2 && item.renter_contact.ok_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={OkLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.ok_account
+                        : type === 2
+                        ? item.renter_contact.ok_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.vk_account) ||
+                  (type === 2 && item.renter_contact.vk_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={VkLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.vk_account
+                        : type === 2
+                        ? item.renter_contact.vk_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.link_facebook) ||
+                  (type === 2 && item.renter_contact.link_facebook)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={FbLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.link_facebook
+                        : type === 2
+                        ? item.renter_contact.link_facebook
+                        : ""}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           {/* right */}
           <div className="body_allblock_header_right">
@@ -416,26 +647,6 @@ const BookingITake = ({
             </div>
 
             <div className="body_allblock_header_right_center_block2">
-              <div className="center_block_rowstyle">
-                {type === 1 && (
-                  <p className="center_block_rowstyle-p1-1">Владелец</p>
-                )}
-                {type === 2 && (
-                  <p className="center_block_rowstyle-p1-1">Арендатор</p>
-                )}
-                <Link
-                  to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
-                  }`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p className="center_block_rowstyle-p1-2">
-                    {type === 1 ? item.owner_name : item.renter_name}
-                  </p>
-                </Link>
-              </div>
-            </div>
-            <div className="body_allblock_header_right_center_block2">
               {true && (
                 <div className="center_block_rowstyle_2">
                   <p
@@ -540,26 +751,6 @@ const BookingITake = ({
                 width: "100%",
               }}
             >
-              <div className="center_block_rowstyle_3">
-                <img
-                  width="17px"
-                  height="15px"
-                  src={Sms}
-                  alt="pictute1"
-                  style={{ cursor: "pointer" }}
-                />
-                <Link
-                  to={`/chat?id=${item.chat_id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p
-                    className="body_allblock_header_left_text-p"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Написать {type === 1 ? "владельцу" : "арендатору"}
-                  </p>
-                </Link>
-              </div>
               <div className="center_block_rowstyle_4">
                 <img src={successbooking} alt="razdelisdrugim" />
                 <p
@@ -593,26 +784,6 @@ const BookingITake = ({
                 width: "100%",
               }}
             >
-              <div className="center_block_rowstyle_3">
-                <img
-                  width="17px"
-                  height="15px"
-                  src={Sms}
-                  alt="pictute1"
-                  style={{ cursor: "pointer" }}
-                />
-                <Link
-                  to={`/chat?id=${item.chat_id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p
-                    className="body_allblock_header_left_text-p"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Написать {type === 1 ? "владельцу" : "арендатору"}
-                  </p>
-                </Link>
-              </div>
               <div className="center_block_rowstyle_4_4">
                 <img src={disabledbooking} alt="razdelisdrugim" />
                 <p
@@ -661,26 +832,6 @@ const BookingITake = ({
                 width: "100%",
               }}
             >
-              <div className="center_block_rowstyle_3">
-                <img
-                  width="17px"
-                  height="15px"
-                  src={Sms}
-                  alt="pictute1"
-                  style={{ cursor: "pointer" }}
-                />
-                <Link
-                  to={`/chat?id=${item.chat_id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p
-                    className="body_allblock_header_left_text-p"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Написать {type === 1 ? "владельцу" : "арендатору"}
-                  </p>
-                </Link>
-              </div>
               <div className="center_block_rowstyle_4_4">
                 <img src={disabledbooking} alt="razdelisdrugim" />
                 <p
@@ -742,13 +893,20 @@ const BookingITake = ({
 
           {/* если завершено */}
 
-          {/* 
-          {false && (
-            <div className="center_block_rowstyle_4">
+          {item.reservation_status === "COMPLETED" && (
+            <div
+              style={
+                type === 1
+                  ? { marginLeft: "20px", cursor: "pointer" }
+                  : { cursor: "pointer" }
+              }
+              onClick={handleReviewSend}
+              className="center_block_rowstyle_4"
+            >
               <img
                 width="17px"
                 height="15px"
-                src={Textonpage}
+                src={Review}
                 alt="pictute1"
                 style={{ cursor: "pointer" }}
               />
@@ -759,7 +917,7 @@ const BookingITake = ({
                 Оставить отзыв
               </p>
             </div>
-          )} */}
+          )}
         </div>
       </div>
 
@@ -807,6 +965,206 @@ const BookingITake = ({
                 Показать на карте
               </p>
             </div>
+            <div
+              className="body_allblock_header_right_center_block2"
+              style={{ border: "0" }}
+            >
+              <div className="center_block_rowstyle">
+                {type === 1 && (
+                  <p className="center_block_rowstyle-p1-1">Владелец</p>
+                )}
+                {type === 2 && (
+                  <p className="center_block_rowstyle-p1-1">Арендатор</p>
+                )}
+                <Link
+                  to={`/public-profile?id=${
+                    type === 1 ? item.owner_id : item.renter_id
+                  }`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p className="center_block_rowstyle-p1-2">
+                    {type === 1 ? item.owner_name : item.renter_name}
+                  </p>
+                </Link>
+              </div>
+            </div>
+            <Link
+              to={`/chat?id=${item.chat_id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="body_allblock_header_left_buttons">
+                <button className="header_left_buttons1">Написать</button>
+              </div>
+            </Link>
+            {item.reservation_status === "SUBMITTED" && (
+              <div className="body_allblock_header_left_buttons">
+                <button
+                  className="header_left_buttons2"
+                  onClick={typeContactsHandler}
+                >
+                  Контакты
+                </button>
+              </div>
+            )}
+            {item.reservation_status === "SUBMITTED" && contacts === true && (
+              <div className="body_allblock_header_left_contacts">
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={telephone}
+                    alt="vectors"
+                  />
+                  <p>
+                    {" "}
+                    {type === 1
+                      ? item.owner_contact.phone
+                      : type === 2
+                      ? item.renter_contact.phone
+                      : ""}
+                  </p>
+                </div>
+                {((type === 1 && item.owner_contact.google_account) ||
+                  (type === 2 && item.renter_contact.google_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={gmailImg}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.google_account
+                        : type === 2
+                        ? item.renter_contact.google_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.telegram_account) ||
+                  (type === 2 && item.renter_contact.telegram_account)) && (
+                  <div className="left_contacts_row">
+                    <img width="30px" height="30px" src={tgImg} alt="vectors" />
+                    <p>
+                      {type === 1
+                        ? `@${item.owner_contact.telegram_account}`
+                        : type === 2
+                        ? `@${item.renter_contact.telegram_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.viber_account) ||
+                  (type === 2 && item.renter_contact.viber_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={viberImg}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? `+${item.owner_contact.viber_account}`
+                        : type === 2
+                        ? `+${item.renter_contact.viber_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.whatsapp_account) ||
+                  (type === 2 && item.renter_contact.whatsapp_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={WhatsAppLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? `+${item.owner_contact.whatsapp_account}`
+                        : type === 2
+                        ? `+${item.renter_contact.whatsapp_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.link_instagram) ||
+                  (type === 2 && item.renter_contact.link_instagram)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={InstagramLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.link_instagram
+                        : type === 2
+                        ? item.renter_contact.link_instagram
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.ok_account) ||
+                  (type === 2 && item.renter_contact.ok_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={OkLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.ok_account
+                        : type === 2
+                        ? item.renter_contact.ok_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.vk_account) ||
+                  (type === 2 && item.renter_contact.vk_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={VkLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.vk_account
+                        : type === 2
+                        ? item.renter_contact.vk_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.link_facebook) ||
+                  (type === 2 && item.renter_contact.link_facebook)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={FbLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.link_facebook
+                        : type === 2
+                        ? item.renter_contact.link_facebook
+                        : ""}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           {/* right */}
           <div className="body_allblock_header_right">
@@ -1252,26 +1610,6 @@ const BookingITake = ({
                 width: "100%",
               }}
             >
-              <div className="center_block_rowstyle_3">
-                <img
-                  width="17px"
-                  height="15px"
-                  src={Sms}
-                  alt="pictute1"
-                  style={{ cursor: "pointer" }}
-                />
-                <Link
-                  to={`/chat?id=${item.chat_id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p
-                    className="body_allblock_header_left_text-p"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Написать {type === 1 ? "владельцу" : "арендатору"}
-                  </p>
-                </Link>
-              </div>
               <div className="center_block_rowstyle_4">
                 <img src={successbooking} alt="razdelisdrugim" />
                 <p
@@ -1305,26 +1643,6 @@ const BookingITake = ({
                 width: "100%",
               }}
             >
-              <div className="center_block_rowstyle_3">
-                <img
-                  width="17px"
-                  height="15px"
-                  src={Sms}
-                  alt="pictute1"
-                  style={{ cursor: "pointer" }}
-                />
-                <Link
-                  to={`/chat?id=${item.chat_id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p
-                    className="body_allblock_header_left_text-p"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Написать {type === 1 ? "владельцу" : "арендатору"}
-                  </p>
-                </Link>
-              </div>
               <div className="center_block_rowstyle_4_4">
                 <img src={disabledbooking} alt="razdelisdrugim" />
                 <p
@@ -1435,15 +1753,18 @@ const BookingITake = ({
 
           {/* если завершено */}
 
-          {/* 
-          {false && (
+          {item.reservation_status === "COMPLETED" && (
             <div className="center_block_rowstyle_4">
               <img
                 width="17px"
                 height="15px"
-                src={Textonpage}
+                src={Review}
                 alt="pictute1"
-                style={{ cursor: "pointer" }}
+                style={
+                  type === 1
+                    ? { marginLeft: "20px", cursor: "pointer" }
+                    : { cursor: "pointer" }
+                }
               />
               <p
                 className="body_allblock_header_left_text-p-p1"
@@ -1452,7 +1773,7 @@ const BookingITake = ({
                 Оставить отзыв
               </p>
             </div>
-          )} */}
+          )}
         </div>
       </div>
 
@@ -1832,8 +2153,11 @@ const BookingITake = ({
             </div>
           </div>
 
-          <div className="body_allblock_header_right_center_block2_row">
-            <div className="center_block_rowstyle">
+          <div className="body_allblock_header_right_center_block5">
+            <div
+              className="center_block_rowstyle"
+              style={{ marginBottom: "10px" }}
+            >
               {type === 1 && (
                 <p className="center_block_rowstyle-p1-1">Владелец</p>
               )}
@@ -1851,7 +2175,29 @@ const BookingITake = ({
                 </p>
               </Link>
             </div>
-            <div className="center_block_rowstyle">
+            <div
+              className="body_allblock_header_right_center_block2_row"
+              style={{ cursor: "pointer" }}
+            >
+              {item.reservation_status === "SUBMITTED" && (
+                <div className="center_block_rowstyle_3">
+                  <img
+                    width="19px"
+                    height="20px"
+                    src={miniMobile}
+                    alt="pictute1"
+                    style={{ cursor: "pointer" }}
+                  />
+
+                  <p
+                    className="body_allblock_header_left_text-p-p"
+                    style={{ cursor: "pointer" }}
+                    onClick={typeContactsHandler}
+                  >
+                    Показать контакты
+                  </p>
+                </div>
+              )}
               <div className="center_block_rowstyle_3">
                 <img
                   width="17px"
@@ -1873,6 +2219,165 @@ const BookingITake = ({
                 </Link>
               </div>
             </div>
+            {item.reservation_status === "SUBMITTED" && contacts === true && (
+              <div className="body_allblock_header_left_contacts">
+                <div className="left_contacts_row">
+                  <img
+                    width="30px"
+                    height="30px"
+                    src={telephone}
+                    alt="vectors"
+                  />
+                  <p>
+                    {" "}
+                    {type === 1
+                      ? item.owner_contact.phone
+                      : type === 2
+                      ? item.renter_contact.phone
+                      : ""}
+                  </p>
+                </div>
+                {((type === 1 && item.owner_contact.google_account) ||
+                  (type === 2 && item.renter_contact.google_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={gmailImg}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.google_account
+                        : type === 2
+                        ? item.renter_contact.google_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.telegram_account) ||
+                  (type === 2 && item.renter_contact.telegram_account)) && (
+                  <div className="left_contacts_row">
+                    <img width="30px" height="30px" src={tgImg} alt="vectors" />
+                    <p>
+                      {type === 1
+                        ? `@${item.owner_contact.telegram_account}`
+                        : type === 2
+                        ? `@${item.renter_contact.telegram_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.viber_account) ||
+                  (type === 2 && item.renter_contact.viber_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={viberImg}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? `+${item.owner_contact.viber_account}`
+                        : type === 2
+                        ? `+${item.renter_contact.viber_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.whatsapp_account) ||
+                  (type === 2 && item.renter_contact.whatsapp_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={WhatsAppLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? `+${item.owner_contact.whatsapp_account}`
+                        : type === 2
+                        ? `+${item.renter_contact.whatsapp_account}`
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.link_instagram) ||
+                  (type === 2 && item.renter_contact.link_instagram)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={InstagramLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.link_instagram
+                        : type === 2
+                        ? item.renter_contact.link_instagram
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.ok_account) ||
+                  (type === 2 && item.renter_contact.ok_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={OkLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.ok_account
+                        : type === 2
+                        ? item.renter_contact.ok_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.vk_account) ||
+                  (type === 2 && item.renter_contact.vk_account)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={VkLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.vk_account
+                        : type === 2
+                        ? item.renter_contact.vk_account
+                        : ""}
+                    </p>
+                  </div>
+                )}
+                {((type === 1 && item.owner_contact.link_facebook) ||
+                  (type === 2 && item.renter_contact.link_facebook)) && (
+                  <div className="left_contacts_row">
+                    <img
+                      width="30px"
+                      height="30px"
+                      src={FbLogo}
+                      alt="vectors"
+                    />
+                    <p>
+                      {type === 1
+                        ? item.owner_contact.link_facebook
+                        : type === 2
+                        ? item.renter_contact.link_facebook
+                        : ""}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           <div className="body_allblock_header_right_center_block2">
             {true && (
@@ -1964,7 +2469,10 @@ const BookingITake = ({
           </div>
         </div>
         {/* footer block */}
-        <div className="body_allblock_footer">
+        <div
+          style={{ flexDirection: "column" }}
+          className="body_allblock_footer"
+        >
           {/* подтвердить / отклонить */}
           {type === 2 && item.reservation_status === "WAITING" && (
             <div
@@ -2038,6 +2546,24 @@ const BookingITake = ({
                 </Link>
               </div>
             )}
+
+          {item.reservation_status === "COMPLETED" && (
+            <div className="center_block_rowstyle_4">
+              <img
+                width="17px"
+                height="15px"
+                src={Review}
+                alt="pictute1"
+                style={{ cursor: "pointer" }}
+              />
+              <p
+                className="body_allblock_header_left_text-p-p1"
+                style={{ cursor: "pointer" }}
+              >
+                Оставить отзыв
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

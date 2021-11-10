@@ -1314,6 +1314,43 @@ class Requests {
       return response;
     });
   }
+
+  static sendProfileReview(content, reviews_profile, mark) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      data: {
+        content: content,
+        reviews_profile: reviews_profile,
+        mark: mark,
+      },
+
+      url: `${rootAddress}/api/jwt/review/create/ `,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static sendItemReview(content, item) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      data: {
+        content: content,
+        item: item,
+      },
+
+      url: `${rootAddress}/api/items/review/create/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

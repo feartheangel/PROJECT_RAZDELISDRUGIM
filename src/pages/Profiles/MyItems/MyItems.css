@@ -1,15 +1,29 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 .item-card-profile-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .item-card-profile-button__edit {
   width: 214px;
   height: 38px;
   background: #4cc9f0;
-  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+          box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 5px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 10px 0 0 0;
   font-style: normal;
   font-weight: 500;
@@ -31,8 +45,13 @@
 }
 
 .item-card-profile-button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-top: 20px;
   cursor: pointer;
 }
@@ -44,10 +63,19 @@
 
 .favorites_empty {
   height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 /* таблица для Я СДАЮ */
@@ -79,6 +107,8 @@ th {
 }
 
 .reservation_submit_choice_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -92,6 +122,8 @@ th {
   background-size: 60%;
   margin-right: 10px;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
   border-radius: 5%;
 }
@@ -104,29 +136,44 @@ th {
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
   border-radius: 5%;
 }
 
 .reservation_submit_choice_yes:hover {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .reservation_submit_choice_no:hover {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 /* АДАПТИВНЫЙ ДИЗАЙН */
 
 @media only screen and (max-width: 480px) {
   .container_profile_content__myItems {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     width: auto;
     margin: 0;
     padding: 0;
-    box-shadow: none;
-    justify-content: space-between;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 15px;
     margin-bottom: 10px;
     margin: 15px 15px 10px;
@@ -161,14 +208,22 @@ th {
 /* MOBILE LANDSCAPE */
 @media only screen and (min-width: 481px) and (max-width: 767px)  {
   .container_profile_content__myItems {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     width: auto;
     margin: 0;
     padding: 0;
-    box-shadow: none;
-    justify-content: space-around;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     margin-top: 15px;
     margin-bottom: 10px;
     margin: 15px 15px 10px;

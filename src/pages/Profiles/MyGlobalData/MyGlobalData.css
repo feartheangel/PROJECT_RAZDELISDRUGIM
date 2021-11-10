@@ -1,15 +1,34 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* КОНТЕЙНЕР ПРОФИЛЯ */
 .container_profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   color: #091d20;
 }
 
 /*Настройка левой строны*/
 .container_profile_optional {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin-right: 20px;
   height: 100%;
   font-size: 20px;
@@ -19,9 +38,13 @@
 }
 
 .container_profile_optional p {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   text-align: left;
   margin: 20px 0;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -34,9 +57,15 @@
 /*  КОНТЕЙНЕР С ФОНОМ ДЛЯ КОНТЕНТА СПРАВА */
 .container_profile_content {
   width: 936px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+          box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 30px;
   background: #ffffff;
   margin: 20px 0;
@@ -45,11 +74,19 @@
 
 .container_profile_content__myItems {
   width: 1125px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+          box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
   border-radius: 30px;
   background: #ffffff;
   margin: 20px 0;
@@ -70,6 +107,8 @@ textarea {
 .container_profile_optional_myData {
   cursor: pointer;
   color: #56ccf2;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
   margin-top: 30px;
 }
@@ -82,6 +121,8 @@ textarea {
 .container_profile_optional_myAddresses {
   cursor: pointer;
   color: #56ccf2;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
   margin-top: 30px;
 }
@@ -102,6 +143,8 @@ textarea {
 /* АДАПТИВНЫЙ ДИЗАЙН */
 @media only screen and (max-width: 480px) {
   #globaldata_mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
   #globaldata_pk {
@@ -109,15 +152,25 @@ textarea {
   }
 
   .container_profile {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-right: 15px;
   }
 
   /* БЛОК С ОПЦИЯМИ (ГОРИЗОНТАЛЬНЫЙ СКРОЛ) */
   .container_profile_optional {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     margin: 0;
     padding-top: 0;
     width: 100%;
@@ -159,7 +212,8 @@ textarea {
 
   .container_profile_content {
     width: 100%;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     padding: 1px;
     margin-top: 0;
     margin: 10px 15px 25px 15px;
@@ -169,6 +223,8 @@ textarea {
 /* MOBILE LANDSCAPE */
 @media only screen and (min-width: 481px) and (max-width: 767px)  {
   #globaldata_mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
   #globaldata_pk {
@@ -176,18 +232,30 @@ textarea {
   }
 
   .recent-block-wrapper{
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .container_profile {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-right: 15px;
   }
 
   /* БЛОК С ОПЦИЯМИ (ГОРИЗОНТАЛЬНЫЙ СКРОЛ) */
   .container_profile_optional {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     margin: 0;
     padding-top: 0;
     width: 100%;
@@ -229,7 +297,8 @@ textarea {
 
   .container_profile_content {
     width: 100%;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     padding: 1px;
     margin-top: 0;
     margin: 10px 15px 25px 15px;
@@ -244,11 +313,15 @@ textarea {
   }
 
   #swiper_mobile_800 {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
   }
 
   #globaldata_ipad {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
@@ -259,6 +332,7 @@ textarea {
   .container_profile_content__myItems {
     width: -webkit-fill-available;
     padding: 20px;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
 }

@@ -1,7 +1,21 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 .CatalogComponent{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
 }
 /* ШАПКА КОМПОНЕНТА С ФОТО */
 .CatalogComponent_shapka{
@@ -22,8 +36,13 @@
 
 /* ЦЕНТРАЛЬНЫЙ СПИСОК */
 .CatalogComponent_list{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     color: #000000;
     font-style: normal;
     font-weight: normal;
@@ -68,8 +87,13 @@
         display: none;
       }
       #catalog_gl_mobile{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
       }
 
     .CatalogComponent_shapka_p{
@@ -102,8 +126,13 @@
     }
 
     .CatalogComponent_list{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         margin-bottom: 30px;
         font-weight: 500;
         font-size: 16px;
@@ -115,14 +144,22 @@
         font-size: 18px;
     }
     .CatalogComponent_list_left p{
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
     }
 
     .gl_div_onlyshapka{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         background: #FFFFFF;
-        box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+        -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+                box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
         border-radius: 15px;
         padding: 15px 15px 0 15px;
     }
@@ -186,7 +223,6 @@
 
     
 }
-
 
 
 

@@ -65,18 +65,21 @@ const Header = () => {
     }
   }, [window.location.href]);
 
+  //проверяем наличие авторизации
   React.useEffect(() => {
     if (localStorage.getItem("key")) {
       dispatch(loginAction());
     } else dispatch(logoutAction());
   }, [localStorage.getItem("key")]);
 
+  //подгружаем настрйки блоков из бд
   React.useEffect(() => {
     Requests.fetchMainPageBlocks().then((res) => {
       setCurrentLocation(res.data[0].city.city);
     });
   }, []);
 
+  //основные стейты
   const [redirect, setRedirect] = React.useState();
   const [profilePopUpActive, setProfilePopUpActive] = React.useState(false);
   const [burgerActive, setBurgerActive] = React.useState(false);
@@ -86,6 +89,7 @@ const Header = () => {
   const [notReadNotes, setNotReadNotes] = React.useState();
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
+  //обработчик клика по enter
   const keyDownHandler = React.useCallback((event) => {
     if (
       event.keyCode === 13 &&
@@ -98,7 +102,8 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, userData, subjects } = useSelector(
+  //получаем основные данные из редакса
+  const { isLoggedIn, userData, subjects, reload } = useSelector(
     ({ userData }) => userData
   );
   const { items, isLoaded, news } = useSelector(({ items }) => items);
@@ -121,6 +126,7 @@ const Header = () => {
   const { language, maxItemsToPlaceFree, maxItemsToPlaceFreeLegal } =
     useSelector(({ settings }) => settings);
 
+  //обработчик логаута
   const logout = () => {
     setProfilePopUpActive(false);
     localStorage.removeItem("key");
@@ -131,6 +137,7 @@ const Header = () => {
     setRedirect(<Redirect to="/" />);
   };
 
+  //обработчик клика по кнопке добавления вещи
   const addSubjectHandler = () => {
     if (
       (isLoggedIn &&
@@ -167,6 +174,7 @@ const Header = () => {
     window.location.href = "/place-item";
   };
 
+  //редирект на поиск по категории
   const searchRedirect = () => {
     if (words === [] && window.location.href === "http://localhost:3000/") {
       setRedirect(<Redirect to={`/search`} />);
@@ -191,6 +199,7 @@ const Header = () => {
     setRedirect(<Redirect to={`/search`} />);
   };
 
+  //установка активной категории
   const categorySetHandler = (category_id, category_name) => {
     setBurgerActive(false);
     dispatch(setCategoryId(category_id));
@@ -214,6 +223,7 @@ const Header = () => {
     setRedirect(<Redirect to={`/search`} />);
   };
 
+  //открыть список категорий раздела
   const openChapterHandler = (id) => {
     if (!(openedCategories === id)) {
       setOpenedCategories(id);
@@ -227,6 +237,7 @@ const Header = () => {
   const chatSocket = React.useRef();
   const [notifications, setNotifications] = React.useState();
 
+  //получаем новости из бд
   React.useEffect(() => {
     Requests.fetchNews().then((res) => {
       dispatch(setNews(res.data));
