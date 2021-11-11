@@ -1351,6 +1351,32 @@ class Requests {
       return response;
     });
   }
+
+  static getProfileReviews(id) {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/jwt/reviews/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getItemReviews(id) {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/items/reviews/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

@@ -165,6 +165,10 @@ const CardThings = () => {
         window.location.href = "/404";
       });
 
+    Requests.getItemReviews(
+      window.location.href.split("?id=")[1].split("&")[0]
+    );
+
     return () => {
       isMounted = false;
     };
