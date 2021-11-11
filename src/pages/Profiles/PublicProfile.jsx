@@ -17,6 +17,7 @@ import Vk from "../../img/CardThings/RightContent/Component 42.png";
 import Google from "../../img/ProfilePage/google.png";
 import Facebook from "../../img/ProfilePage/facebook2.png";
 import Ok from "../../img/ProfilePage/ok.png";
+import ReviewsProfile from "../../components/Reviews/ReviewsProfile";
 
 const PublicProfile = () => {
   //расчет времени на платформе
@@ -478,6 +479,22 @@ const PublicProfile = () => {
                 >
                   Адреса
                 </p>
+                <div className="down_header_text1">
+                  <p
+                    style={{ marginLeft: "40px" }}
+                    className={
+                      activeForm2 === "reviews"
+                        ? "down_header_text1-p1_active"
+                        : "down_header_text1-p1"
+                    }
+                    onClick={() => setActiveForm2("reviews")}
+                  >
+                    Отзывы
+                  </p>
+                  <p className="down_header_text1-p2">
+                    {profileItems && profileItems.length}
+                  </p>
+                </div>
               </div>
 
               {/*  КОНТЕЙНЕР С ПОДКЛЮЧАЕМЫМИ КОМПОНЕНТАМИ */}
@@ -498,6 +515,9 @@ const PublicProfile = () => {
                     <AboutMe about={profileData && profileData.about} />
                   )}
                 </div>
+
+                {/* ДЛЯ КОМПОНЕНТА ОТЗЫВЫ */}
+                <div>{activeForm2 === "reviews" && <ReviewsProfile />}</div>
 
                 {/* ДЛЯ КОМПОНЕНТА АДРЕССА */}
                 <div>
@@ -912,6 +932,21 @@ const PublicProfile = () => {
                 >
                   Адреса
                 </p>
+                <div className="down_header_text1">
+                  <p
+                    className={
+                      activeForm2 === "reviews"
+                        ? "down_header_text1-p1_active"
+                        : "down_header_text1-p1"
+                    }
+                    onClick={() => setActiveForm2("reviews")}
+                  >
+                    Отзывы
+                  </p>
+                  <p className="down_header_text1-p2">
+                    {profileItems && profileItems.length}
+                  </p>
+                </div>
               </div>
 
               {/*  КОНТЕЙНЕР С ПОДКЛЮЧАЕМЫМИ КОМПОНЕНТАМИ */}
@@ -936,6 +971,9 @@ const PublicProfile = () => {
                     <AboutMe about={profileData && profileData.about} />
                   )}
                 </div>
+
+                {/* ДЛЯ КОМПОНЕНТА ОТЗЫВЫ */}
+                <div>{activeForm2 === "reviews" && <ReviewsProfile />}</div>
 
                 {/* ДЛЯ КОМПОНЕНТА АДРЕССА */}
                 <div className="public_aboutme_address">
@@ -1352,6 +1390,22 @@ const PublicProfile = () => {
                 >
                   Адреса
                 </p>
+                <div className="down_header_text1">
+                  <p
+                    style={{ marginLeft: "40px" }}
+                    className={
+                      activeForm2 === "reviews"
+                        ? "down_header_text1-p1_active"
+                        : "down_header_text1-p1"
+                    }
+                    onClick={() => setActiveForm2("reviews")}
+                  >
+                    Отзывы
+                  </p>
+                  <p className="down_header_text1-p2">
+                    {profileItems && profileItems.length}
+                  </p>
+                </div>
               </div>
 
               {/*  КОНТЕЙНЕР С ПОДКЛЮЧАЕМЫМИ КОМПОНЕНТАМИ */}
@@ -1376,6 +1430,9 @@ const PublicProfile = () => {
                     <AboutMe about={profileData && profileData.about} />
                   )}
                 </div>
+
+                {/* ДЛЯ КОМПОНЕНТА ОТЗЫВЫ */}
+                <div>{activeForm2 === "reviews" && <ReviewsProfile />}</div>
 
                 {/* ДЛЯ КОМПОНЕНТА АДРЕССА */}
                 <div className="public_aboutme_address">

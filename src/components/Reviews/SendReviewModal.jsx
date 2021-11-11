@@ -4,6 +4,7 @@ import Requests from "../../http/axios-requests";
 import Shape from "../../img/Shape.png";
 import Star from "../../img/Star.png";
 import StarDisabled from "../../img/Star_disabled.png";
+import logoItem from "../../img/ProfilePage/itemslogo.png";
 
 const SendReviewModal = ({
   modalActiveSendReview,
@@ -101,10 +102,53 @@ const SendReviewModal = ({
                     className="reviews_owner_review_textarea"
                   />
                 </div>
+                <div className="reviews_mark_wrapper2">
+                  <p className="reviews_mark_p">Поставьте оценку вещи/услуге</p>
+                  <div className="reviews_stars_wrapper">
+                    <img
+                      onClick={() => setMark(1)}
+                      src={mark >= 1 ? Star : StarDisabled}
+                      alt="star_mark"
+                    />
+                    <img
+                      onClick={() => setMark(2)}
+                      src={mark >= 2 ? Star : StarDisabled}
+                      alt="star_mark"
+                    />
+                    <img
+                      onClick={() => setMark(3)}
+                      src={mark >= 3 ? Star : StarDisabled}
+                      alt="star_mark"
+                    />
+                    <img
+                      onClick={() => setMark(4)}
+                      src={mark >= 4 ? Star : StarDisabled}
+                      alt="star_mark"
+                    />
+                    <img
+                      onClick={() => setMark(5)}
+                      src={mark >= 5 ? Star : StarDisabled}
+                      alt="star_mark"
+                    />
+                  </div>
+                </div>
                 <div className="reviews_item_review_wrapper">
-                  <p className="reviews_item_review_p">
-                    Напишите свой<br></br> отзыв о вещи/услуге
-                  </p>
+                  <div className="reviews_item_review_wrapper_leftside">
+                    <p className="reviews_item_review_p">
+                      Напишите свой<br></br> отзыв о вещи/услуге
+                    </p>
+
+                    <div className="review_logo_block">
+                      <img
+                        className="review_logo_items"
+                        src={logoItem}
+                        alt="logo"
+                      />
+                      <p className="reviews_item_review_p2">
+                        Ноутбук Apple MacBook Air13" M
+                      </p>
+                    </div>
+                  </div>
                   <textarea
                     value={itemReview}
                     onChange={(e) => setItemReview(e.target.value)}

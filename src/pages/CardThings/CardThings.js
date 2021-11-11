@@ -44,6 +44,7 @@ import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.webp";
 import EditItemImage from "../../img/MainPage/editicon.webp";
 import Booking from "../../components/PagesArchitecture/Booking";
 import { MapBooking } from "../../components/index";
+import ReviewsItems from "../../components/Reviews/ReviewsItems";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -1367,6 +1368,9 @@ const CardThings = () => {
                 </div>
               </div>
 
+              {/* ОТЗЫВЫ */}
+              <ReviewsItems />
+
               {/* блок бронирование */}
 
               <div ref={div}>
@@ -2517,6 +2521,9 @@ const CardThings = () => {
                 </div>
               </div>
             </div>
+
+            {/* ОТЗЫВЫ */}
+            <ReviewsItems />
 
             {/* блок бронирование */}
 
@@ -3670,6 +3677,10 @@ const CardThings = () => {
                   </div>
                 </div>
               </div>
+
+              {/* ОТЗЫВЫ */}
+              <ReviewsItems />
+
               {/* блок бронирование */}
 
               <div ref={div3}>
