@@ -34,3 +34,4 @@ export { default as MapBooking } from "./Profile/MapBooking";
 export { default as StatusUpdateSubmit } from "./Booking/StatusUpdateSubmit";
 export { default as ChatDeleteSubmit } from "./Chat/ChatDeleteSubmit";
 export { default as SendReviewModal } from "./Reviews/SendReviewModal";
+export { default as ReviewSent } from "./Reviews/ReviewSent";

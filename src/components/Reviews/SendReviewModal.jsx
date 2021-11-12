@@ -15,6 +15,7 @@ const SendReviewModal = ({
   reviewItemImage,
   reviewItemName,
   reviewPersonName,
+  sentReviewActivateHandler,
 }) => {
   const [personMark, setPersonMark] = React.useState(0);
   const [itemMark, setItemMark] = React.useState(0);
@@ -30,7 +31,6 @@ const SendReviewModal = ({
         .then(() => {
           Requests.sendItemReview(itemReview, reviewItemId, itemMark)
             .then(() => {
-              alert("Отзыв успешно отправлен!");
               setPersonMark(0);
               setItemMark(0);
               setItemReview("");
@@ -38,7 +38,10 @@ const SendReviewModal = ({
               setRenterReview("");
             })
             .catch((e) => alert(e.response.data))
-            .finally(() => setModalActiveSendReview(false));
+            .finally(() => {
+              setModalActiveSendReview(false);
+              sentReviewActivateHandler();
+            });
         })
         .catch((e) => alert(e.response.data));
     } else if (reviewType === 2) {
@@ -52,7 +55,10 @@ const SendReviewModal = ({
           setRenterReview("");
         })
         .catch((e) => alert(e.response.data))
-        .finally(() => setModalActiveSendReview(false));
+        .finally(() => {
+          setModalActiveSendReview(false);
+          sentReviewActivateHandler();
+        });
     }
   };
 

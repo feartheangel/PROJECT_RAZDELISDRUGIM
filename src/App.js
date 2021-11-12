@@ -73,9 +73,7 @@ function App() {
     });
 
     Requests.getSiteSettings().then((res) => {
-      dispatch(
-        setmaxItemsToPlaceFreeLegal(res.data[0].free_placement_items_count)
-      );
+      dispatch(setmaxItemsToPlaceFree(res.data[0].free_placement_items_count));
       dispatch(
         setmaxItemsToPlaceFreeLegal(
           res.data[0].free_placement_items_count_legal

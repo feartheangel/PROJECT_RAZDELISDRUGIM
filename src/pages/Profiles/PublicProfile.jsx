@@ -9,6 +9,7 @@ import AboutMe from "../../components/PublicProfile/AboutMe.jsx";
 import Vector6 from "../../img/CardThings/RightContent/Vector6.png";
 import Vector7 from "../../img/CardThings/RightContent/Vector7.png";
 import Star2 from "../../img/CardThings/RightContent/Star 2.png";
+import StarDisabled from "../../img/ProfilePage/stardisabled.png";
 import Telegram from "../../img/CardThings/RightContent/Component 36.png";
 import Viber from "../../img/CardThings/RightContent/Component 37.png";
 import Whatsapp from "../../img/CardThings/RightContent/Component 38.png";
@@ -42,6 +43,7 @@ const PublicProfile = () => {
   const [profileItems, setProfileItems] = React.useState([]);
   const [profileAddresses, setProfileAddresses] = React.useState([]);
   const [reviews, setReviews] = React.useState();
+  const [averageMark, setAverageMark] = React.useState();
   const formattedAddresses = [];
 
   const { isLoggedIn } = useSelector(({ userData }) => userData);
@@ -72,7 +74,19 @@ const PublicProfile = () => {
     });
 
     Requests.getProfileReviews(window.location.href.split("?id=")[1]).then(
-      (res) => setReviews(res.data)
+      (res) => {
+        setReviews(res.data);
+        setAverageMark(
+          res.headers["average-mark-review"] === "None"
+            ? false
+            : Number(
+                res.headers["average-mark-review"]
+                  .split("")
+                  .splice(14, 3)
+                  .join("")
+              )
+        );
+      }
     );
   }, [window.location.href]);
 
@@ -135,40 +149,68 @@ const PublicProfile = () => {
                 <div className="up_global_alight">
                   <div className="up_global_margin">
                     <div className="block_down_star">
-                      <div
-                        style={{ display: "none" }}
-                        className="conditions_row"
-                      >
-                        <img
-                          alt="razdelisdrugim"
-                          src={Star2}
-                          className="img_star"
-                        />
-                        <img
-                          alt="razdelisdrugim"
-                          src={Star2}
-                          className="img_star"
-                        />
-                        <img
-                          alt="razdelisdrugim"
-                          src={Star2}
-                          className="img_star"
-                        />
-                        <img
-                          alt="razdelisdrugim"
-                          src={Star2}
-                          className="img_star"
-                        />
-                        <img
-                          alt="razdelisdrugim"
-                          src={Star2}
-                          className="img_star"
-                        />
-                      </div>
-                      <div className="block2_reviews_stars">
-                        <p className="block2_reviews_text">Пока нет оценок</p>
-                      </div>
-                      <p className="block_down_star-p">Пока нет отзывов</p>
+                      {averageMark && (
+                        <div className="conditions_row">
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageMark && averageMark >= 1
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageMark && averageMark >= 2
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageMark && averageMark >= 3
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageMark && averageMark >= 4
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageMark && averageMark >= 5
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                        </div>
+                      )}
+                      {!averageMark && (
+                        <div className="block2_reviews_stars">
+                          <p className="block2_reviews_text">Пока нет оценки</p>
+                        </div>
+                      )}
+                      {reviews && reviews.length > 0 && (
+                        <p className="block_down_star-p">
+                          {reviews && reviews.length} отзыва(-ов)
+                        </p>
+                      )}
+                      {reviews && reviews.length <= 0 && (
+                        <p className="block_down_star-p">Пока нет отзывов</p>
+                      )}
                     </div>
                   </div>
 
@@ -424,14 +466,7 @@ const PublicProfile = () => {
                 </div>
               </div>
               {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
-              <div className="container_up_footer">
-                <input
-                  value="Оставить отзыв"
-                  type="button"
-                  style={{ border: "none", opacity: "0.5" }}
-                  className="footer_btn2"
-                />
-              </div>
+
               <p style={{ border: "1px solid rgba(76, 201, 240, 0.77)" }}></p>
             </div>
 
@@ -583,7 +618,7 @@ const PublicProfile = () => {
                           {profileData && profileData.status === 1
                             ? profileData && profileData.first_name
                             : profileData && profileData.company_name}
-                          <p className="header_down">Новичок</p>
+                          {false && <p className="header_down">Новичок</p>}
                         </p>
                         <p className="header_up-p2">
                           {profileData && profileData.status === 1
@@ -595,44 +630,75 @@ const PublicProfile = () => {
 
                     {/*Звездочки и отзывы*/}
                     <div className="up_global_star">
-                      <div className="block_down_star">
-                        <div
-                          className="conditions_row"
-                          style={{ marginBottom: "5px" }}
-                        >
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
+                      <div className="up_global_margin">
+                        <div className="block_down_star">
+                          {averageMark && (
+                            <div className="conditions_row">
+                              <img
+                                alt="razdelisdrugim"
+                                src={
+                                  averageMark && averageMark >= 1
+                                    ? Star2
+                                    : StarDisabled
+                                }
+                                className="img_star"
+                              />
+                              <img
+                                alt="razdelisdrugim"
+                                src={
+                                  averageMark && averageMark >= 2
+                                    ? Star2
+                                    : StarDisabled
+                                }
+                                className="img_star"
+                              />
+                              <img
+                                alt="razdelisdrugim"
+                                src={
+                                  averageMark && averageMark >= 3
+                                    ? Star2
+                                    : StarDisabled
+                                }
+                                className="img_star"
+                              />
+                              <img
+                                alt="razdelisdrugim"
+                                src={
+                                  averageMark && averageMark >= 4
+                                    ? Star2
+                                    : StarDisabled
+                                }
+                                className="img_star"
+                              />
+                              <img
+                                alt="razdelisdrugim"
+                                src={
+                                  averageMark && averageMark >= 5
+                                    ? Star2
+                                    : StarDisabled
+                                }
+                                className="img_star"
+                              />
+                            </div>
+                          )}
+                          {!averageMark && (
+                            <div className="block2_reviews_stars">
+                              <p className="block2_reviews_text">
+                                Пока нет оценки
+                              </p>
+                            </div>
+                          )}
+                          {reviews && reviews.length > 0 && (
+                            <p className="block_down_star-p">
+                              {reviews && reviews.length} отзыва(-ов)
+                            </p>
+                          )}
+                          {reviews && reviews.length <= 0 && (
+                            <p className="block_down_star-p">
+                              Пока нет отзывов
+                            </p>
+                          )}
                         </div>
-                        <div
-                          style={{ marginBottom: "5px" }}
-                          className="block2_reviews_stars"
-                        >
-                          <p className="block2_reviews_text">Пока нет оценок</p>
-                        </div>
-                        <p className="block_down_star-p">Пока нет отзывов</p>
                       </div>
                     </div>
                   </div>
@@ -1023,7 +1089,7 @@ const PublicProfile = () => {
                       }`}
                       style={{
                         width: "80px",
-                        height: "auto",
+                        height: "80px",
                         borderRadius: "100%",
                       }}
                     />
@@ -1037,7 +1103,7 @@ const PublicProfile = () => {
                           {profileData && profileData.status === 1
                             ? profileData && profileData.first_name
                             : profileData && profileData.company_name}
-                          <p className="header_down">Новичок</p>
+                          {false && <p className="header_down">Новичок</p>}
                         </p>
                         <p className="header_up-p2">
                           {profileData && profileData.status === 1
@@ -1050,43 +1116,70 @@ const PublicProfile = () => {
                     {/*Звездочки и отзывы*/}
                     <div className="up_global_star">
                       <div className="block_down_star">
-                        <div
-                          className="conditions_row"
-                          style={{ marginBottom: "5px" }}
-                        >
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                          <img
-                            alt="razdelisdrugim"
-                            src={Star2}
-                            className="img_star"
-                          />
-                        </div>
-                        <div
-                          style={{ marginBottom: "5px" }}
-                          className="block2_reviews_stars"
-                        >
-                          <p className="block2_reviews_text">Пока нет оценок</p>
-                        </div>
-                        <p className="block_down_star-p">Пока нет отзывов</p>
+                        {averageMark && (
+                          <div className="conditions_row">
+                            <img
+                              alt="razdelisdrugim"
+                              src={
+                                averageMark && averageMark >= 1
+                                  ? Star2
+                                  : StarDisabled
+                              }
+                              className="img_star"
+                            />
+                            <img
+                              alt="razdelisdrugim"
+                              src={
+                                averageMark && averageMark >= 2
+                                  ? Star2
+                                  : StarDisabled
+                              }
+                              className="img_star"
+                            />
+                            <img
+                              alt="razdelisdrugim"
+                              src={
+                                averageMark && averageMark >= 3
+                                  ? Star2
+                                  : StarDisabled
+                              }
+                              className="img_star"
+                            />
+                            <img
+                              alt="razdelisdrugim"
+                              src={
+                                averageMark && averageMark >= 4
+                                  ? Star2
+                                  : StarDisabled
+                              }
+                              className="img_star"
+                            />
+                            <img
+                              alt="razdelisdrugim"
+                              src={
+                                averageMark && averageMark >= 5
+                                  ? Star2
+                                  : StarDisabled
+                              }
+                              className="img_star"
+                            />
+                          </div>
+                        )}
+                        {!averageMark && (
+                          <div className="block2_reviews_stars">
+                            <p className="block2_reviews_text">
+                              Пока нет оценки
+                            </p>
+                          </div>
+                        )}
+                        {reviews && reviews.length > 0 && (
+                          <p className="block_down_star-p">
+                            {reviews && reviews.length} отзыва(-ов)
+                          </p>
+                        )}
+                        {reviews && reviews.length <= 0 && (
+                          <p className="block_down_star-p">Пока нет отзывов</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1337,21 +1430,6 @@ const PublicProfile = () => {
                 </div>
               </div>
               {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
-              <div className="container_up_footer">
-                <input
-                  value="Отправить сообщение"
-                  type="button"
-                  style={{ border: "none" }}
-                  className="footer_btn1"
-                />
-
-                <input
-                  value="Оставить отзыв"
-                  type="button"
-                  style={{ border: "none" }}
-                  className="footer_btn2"
-                />
-              </div>
             </div>
 
             {/*  НИЖНЯЯ ЧАСТЬ КОНТЕЙНЕРА  */}

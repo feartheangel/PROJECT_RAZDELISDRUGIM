@@ -172,6 +172,7 @@ const SearchPage = () => {
     ) {
       Requests.search().then((res) => {
         dispatch(setSearchItems(res.data));
+        setCountFilteredItems(res.headers["count-filter-items"]);
       });
     } else {
       Requests.search(
@@ -189,7 +190,7 @@ const SearchPage = () => {
         distance
       ).then((res) => {
         dispatch(setSearchItems(res.data));
-        setCountFilteredItems(res.headers["Count-Filter-Items"]);
+        console.log(res.headers);
       });
     }
   }, []);
@@ -229,7 +230,7 @@ const SearchPage = () => {
         currentPage
       )
         .then((res) => {
-          setCountFilteredItems(res.headers["Count-Filter-Items"]);
+          setCountFilteredItems(res.headers["count-filter-items"]);
           dispatch(setSearchItems([...searchItems, ...res.data]));
           setCurrentPage((prevState) => prevState + 1);
         })
@@ -321,7 +322,7 @@ const SearchPage = () => {
       distance
     ).then((res) => {
       dispatch(setSearchItems(res.data));
-      setCountFilteredItems(res.headers["Count-Filter-Items"]);
+      setCountFilteredItems(res.headers["count-filter-items"]);
     });
   };
 

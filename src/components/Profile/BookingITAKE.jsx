@@ -145,7 +145,7 @@ const BookingITake = ({
                 )}
                 <Link
                   to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
+                    type === 1 ? item.owner_contact.id : item.renter_contact.id
                   }`}
                   style={{ textDecoration: "none" }}
                 >
@@ -985,7 +985,7 @@ const BookingITake = ({
                 )}
                 <Link
                   to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
+                    type === 1 ? item.owner_contact.id : item.renter_contact.id
                   }`}
                   style={{ textDecoration: "none" }}
                 >
@@ -1502,7 +1502,7 @@ const BookingITake = ({
                 )}
                 <Link
                   to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
+                    type === 1 ? item.owner_contact.id : item.renter_contact.id
                   }`}
                   style={{ textDecoration: "none" }}
                 >
@@ -2173,7 +2173,7 @@ const BookingITake = ({
               )}
               <Link
                 to={`/public-profile?id=${
-                  type === 1 ? item.owner_id : item.renter_id
+                  type === 1 ? item.owner_contact.id : item.renter_contact.id
                 }`}
                 style={{ textDecoration: "none" }}
               >

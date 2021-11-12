@@ -9,6 +9,7 @@ import {
   MapBooking,
   StatusUpdateSubmit,
   SendReviewModal,
+  ReviewSent,
 } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 import BookingITake from "../../../components/Profile/BookingITAKE";
@@ -160,6 +161,8 @@ const BookingPage = () => {
   }, [activeForm2, activeForm3]);
 
   const [modalActiveMap, setModalActiveMap] = React.useState(false);
+  const [modalActiveReviewSent, setModalActiveReviewSent] =
+    React.useState(false);
   const [reserveId, setReserveId] = React.useState();
   const [reserveUpdateBool, setReserveUpdateBool] = React.useState();
 
@@ -173,6 +176,13 @@ const BookingPage = () => {
   const showOnMapHandler = (coords) => {
     setModalActiveMap(true);
     setCoords(coords);
+  };
+
+  const sentReviewActivateHandler = () => {
+    setModalActiveReviewSent(true);
+    return setTimeout(() => {
+      setModalActiveReviewSent(false);
+    }, 2000);
   };
 
   return (
@@ -1997,7 +2007,13 @@ const BookingPage = () => {
         reviewItemId={reviewItemId}
         reviewPersonId={reviewPersonId}
         reviewType={reviewType}
+        sentReviewActivateHandler={sentReviewActivateHandler}
       />
+      <ReviewSent
+        modalActiveReviewSent={modalActiveReviewSent}
+        setModalActiveReviewSent={setModalActiveReviewSent}
+      />
+
       <Footer />
     </div>
   );
