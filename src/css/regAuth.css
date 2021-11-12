@@ -856,9 +856,9 @@
     width: 100%;
   }
   .img_krestik {
-    margin-top: 15px;
-    height: 14px;
-    width: 14px;
+    margin-top: 0;
+    height: 16px;
+    width: 16px;
     cursor: pointer;
   }
   .reg-form-action-type-link {

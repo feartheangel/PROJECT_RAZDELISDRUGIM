@@ -6,7 +6,7 @@
   background: #ffffff;
   border-radius: 30px;
   transform: scale(0.9);
-  padding: 20px;
+  padding: 30px;
   align-self: center;
 }
 
@@ -30,10 +30,16 @@
 
 .reviews_mark_wrapper {
   display: flex;
-  margin-top: 35px;
+  margin-top: 25px;
   align-items: center;
 }
-
+.reviews_mark_wrapper2 {
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f3f5;
+}
 .reviews_mark_p {
   font-family: Raleway;
   font-style: normal;
@@ -42,6 +48,21 @@
   line-height: 21px;
   color: #091d20;
   margin-right: 30px;
+}
+.review_logo_items {
+  width: 81px;
+  height: 65px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.reviews_item_review_wrapper_leftside {
+  display: flex;
+  flex-direction: column;
+}
+.reviews_item_review_p2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
 }
 
 .reviews_stars_wrapper {
@@ -55,9 +76,13 @@
 
 .reviews_owner_review_wrapper {
   display: flex;
-  margin-top: 35px;
+  margin-top: 15px;
   align-items: flex-start;
   justify-content: space-between;
+  border-top: 1px solid #f0f3f5;
+  border-bottom: 1px solid #f0f3f5;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .reviews_owner_review_p {
@@ -67,6 +92,7 @@
   font-size: 18px;
   line-height: 21px;
   color: #091d20;
+  margin-right: 30px;
 }
 
 .reviews_owner_review_textarea {
@@ -89,9 +115,11 @@
 
 .reviews_item_review_wrapper {
   display: flex;
-  margin-top: 35px;
+  margin-top: 15px;
   align-items: flex-start;
   justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f3f5;
 }
 
 .reviews_item_review_p {
@@ -122,13 +150,14 @@
 }
 
 .reviews_buttons_wrapper {
-  margin-top: 30px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
 }
 
 .reviews_button_cancel {
-  width: 182px;
+  max-width: 200px;
+  width: 100%;
   height: 45px;
   background: #ffffff;
   border: 2px solid #4cc9f0;
@@ -138,14 +167,184 @@
   box-sizing: border-box;
   margin-right: 10px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .reviews_button_send {
-  width: 182px;
+  max-width: 200px;
+  width: 100%;
   height: 45px;
   background: #4cc9f0;
   border-radius: 3.79893px;
   border: none;
   box-sizing: border-box;
   cursor: pointer;
+  font-size: 15px;
+}
+
+.reviews_owner_review_p_name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+/* МЕДИА ЗАПРОСЫ  */
+
+/* MOBILE */
+
+@media only screen and (max-width: 480px) {
+  .reviews_form {
+    width: 100%;
+    padding: 15px;
+    align-self: flex-start;
+  }
+  .reviews_owner_review_wrapper {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #f0f3f5;
+    padding-top: 15px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f3f5;
+  }
+  .reviews_owner_review_textarea {
+    width: -webkit-fill-available;
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 19px;
+    height: 95px;
+  }
+  .reviews_mark_p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .reviews_stars_wrapper > img {
+    width: 25px;
+    height: 25px;
+  }
+  .reviews_mark_wrapper {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  .reviews_main_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+  }
+  .reviews_owner_review_p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .reviews_buttons_wrapper {
+    margin-top: 15px;
+  }
+  .reviews_button_cancel,
+  .reviews_button_send {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .reviews_item_review_wrapper {
+    flex-direction: column;
+  }
+  .reviews_item_review_textarea {
+    width: -webkit-fill-available;
+    height: 95px;
+    margin-top: 10px;
+  }
+  .review_logo_block {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .review_logo_items {
+    margin: 0;
+    max-width: 51px;
+    width: 100%;
+    max-height: 40px;
+    height: 100%;
+    margin-right: 10px;
+  }
+}
+
+/* MOBILE LANDSCAPE */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .reviews_form {
+    width: 100%;
+    padding: 15px;
+    align-self: flex-start;
+  }
+  .reviews_owner_review_wrapper {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #f0f3f5;
+    padding-top: 15px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f3f5;
+  }
+  .reviews_owner_review_textarea {
+    width: -webkit-fill-available;
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 19px;
+    height: 95px;
+  }
+  .reviews_mark_p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .reviews_stars_wrapper > img {
+    width: 25px;
+    height: 25px;
+  }
+  .reviews_mark_wrapper {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  .reviews_main_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+  }
+  .reviews_owner_review_p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .reviews_buttons_wrapper {
+    margin-top: 15px;
+  }
+  .reviews_button_cancel,
+  .reviews_button_send {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .reviews_item_review_wrapper {
+    flex-direction: column;
+  }
+  .reviews_item_review_textarea {
+    width: -webkit-fill-available;
+    height: 95px;
+    margin-top: 10px;
+  }
+  .review_logo_block {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .review_logo_items {
+    margin: 0;
+    max-width: 51px;
+    width: 100%;
+    max-height: 40px;
+    height: 100%;
+    margin-right: 10px;
+  }
 }

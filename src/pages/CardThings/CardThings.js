@@ -44,6 +44,7 @@ import FavoritesDisabled from "../../img/MainPage/FavoritesDisabled.webp";
 import EditItemImage from "../../img/MainPage/editicon.webp";
 import Booking from "../../components/PagesArchitecture/Booking";
 import { MapBooking } from "../../components/index";
+import ReviewsItems from "../../components/Reviews/ReviewsItems";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -158,16 +159,13 @@ const CardThings = () => {
           setItemData(response.data);
           setSelectedImage(response.data.image_1);
         } else {
-          window.location.href = "/404";
         }
       })
-      .catch(() => {
-        window.location.href = "/404";
-      });
+      .catch(() => {});
 
     Requests.getItemReviews(
       window.location.href.split("?id=")[1].split("&")[0]
-    );
+    ).then((res) => setReviews(res.data));
 
     return () => {
       isMounted = false;
@@ -211,6 +209,9 @@ const CardThings = () => {
   // бронирование
   const [booking, setBooking] = React.useState(false);
   const [modalActiveMap, setModalActiveMap] = React.useState(false);
+
+  //отзывы
+  const [reviews, setReviews] = React.useState();
 
   const div = useRef(null);
   const div2 = useRef(null);
@@ -1371,6 +1372,9 @@ const CardThings = () => {
                 </div>
               </div>
 
+              {/* ОТЗЫВЫ */}
+              <ReviewsItems reviews={reviews} />
+
               {/* блок бронирование */}
 
               <div ref={div}>
@@ -2521,6 +2525,9 @@ const CardThings = () => {
                 </div>
               </div>
             </div>
+
+            {/* ОТЗЫВЫ */}
+            <ReviewsItems reviews={reviews} />
 
             {/* блок бронирование */}
 
@@ -3674,6 +3681,10 @@ const CardThings = () => {
                   </div>
                 </div>
               </div>
+
+              {/* ОТЗЫВЫ */}
+              <ReviewsItems reviews={reviews} />
+
               {/* блок бронирование */}
 
               <div ref={div3}>

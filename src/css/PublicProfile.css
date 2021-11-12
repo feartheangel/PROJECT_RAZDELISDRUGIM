@@ -218,7 +218,7 @@
 
 /* БЛОК ДЛЯ ПОДКЛЮЧАЕМЫХ КОМПОНЕНТОВ */
 .down_content {
-  margin-bottom: 30px;
+  margin-bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

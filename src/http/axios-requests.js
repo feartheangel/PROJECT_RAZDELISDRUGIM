@@ -1334,7 +1334,7 @@ class Requests {
     });
   }
 
-  static sendItemReview(content, item) {
+  static sendItemReview(content, item, mark) {
     return axios({
       method: "POST",
       headers: {
@@ -1344,6 +1344,7 @@ class Requests {
       data: {
         content: content,
         item: item,
+        mark: mark,
       },
 
       url: `${rootAddress}/api/items/review/create/`,
