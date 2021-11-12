@@ -1050,7 +1050,7 @@ const PublicProfile = () => {
                 </div>
 
                 {/* ДЛЯ КОМПОНЕНТА ОТЗЫВЫ */}
-                <div>
+                <div style={{ width: "100%" }}>
                   {activeForm2 === "reviews" && (
                     <ReviewsProfile reviews={reviews} />
                   )}
