@@ -26,7 +26,6 @@ import HandShake from "../../img/CardThings/RightContent/handShake1.png";
 import Address from "../../img/CardThings/RightContent/Vector2.png";
 import Car from "../../img/CardThings/RightContent/Vector3.png";
 import Clock2 from "../../img/CardThings/RightContent/Vector5.png";
-import Star2 from "../../img/CardThings/RightContent/Star 2.png";
 import Telegram from "../../img/CardThings/RightContent/Component 36.png";
 import Viber from "../../img/CardThings/RightContent/Component 37.png";
 import Whatsapp from "../../img/CardThings/RightContent/Component 38.png";
@@ -45,6 +44,8 @@ import EditItemImage from "../../img/MainPage/editicon.webp";
 import Booking from "../../components/PagesArchitecture/Booking";
 import { MapBooking } from "../../components/index";
 import ReviewsItems from "../../components/Reviews/ReviewsItems";
+import Star2 from "../../img/CardThings/RightContent/Star 2.png";
+import StarDisabled from "../../img/ProfilePage/stardisabled.png";
 
 const CardThings = () => {
   const dispatch = useDispatch();
@@ -159,12 +160,25 @@ const CardThings = () => {
           setItemData(response.data);
           setSelectedImage(response.data.image_1);
         } else {
-          window.location.href = "/404";
         }
       })
-      .catch(() => {
-        window.location.href = "/404";
-      });
+      .catch(() => {});
+
+    Requests.getItemReviews(
+      window.location.href.split("?id=")[1].split("&")[0]
+    ).then((res) => {
+      setReviews(res.data);
+      setAverageItemMark(
+        res.headers["average-mark-review"] === "None"
+          ? false
+          : Number(
+              res.headers["average-mark-review"]
+                .split("")
+                .splice(14, 3)
+                .join("")
+            )
+      );
+    });
 
     return () => {
       isMounted = false;
@@ -205,9 +219,15 @@ const CardThings = () => {
   const [shareVisible, setShareVisible] = React.useState();
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [isOwn, setIsOwn] = React.useState(false);
+  const [averageItemMark, setAverageItemMark] = React.useState();
+  const [averagePersonMark, setAveragePersonMark] = React.useState();
+  const [profileReviewsCount, setProfileReviewsCount] = React.useState();
   // бронирование
   const [booking, setBooking] = React.useState(false);
   const [modalActiveMap, setModalActiveMap] = React.useState(false);
+
+  //отзывы
+  const [reviews, setReviews] = React.useState();
 
   const div = useRef(null);
   const div2 = useRef(null);
@@ -269,6 +289,24 @@ const CardThings = () => {
   };
 
   const { serviceIds } = useSelector(({ settings }) => settings);
+
+  React.useEffect(() => {
+    if (itemData) {
+      Requests.getProfileReviews(itemData.profile.id).then((res) => {
+        setAveragePersonMark(
+          res.headers["average-mark-review"] === "None"
+            ? false
+            : Number(
+                res.headers["average-mark-review"]
+                  .split("")
+                  .splice(14, 3)
+                  .join("")
+              )
+        );
+        setProfileReviewsCount(res.data.length);
+      });
+    }
+  }, [itemData]);
 
   return (
     <div className="CardThings">
@@ -778,6 +816,63 @@ const CardThings = () => {
                       </p>
                     </div>
 
+                    <div className="card_thing_rating_wrapper">
+                      {averageItemMark && (
+                        <div className="conditions_row">
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageItemMark && averageItemMark >= 1
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageItemMark && averageItemMark >= 2
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageItemMark && averageItemMark >= 3
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageItemMark && averageItemMark >= 4
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                          <img
+                            alt="razdelisdrugim"
+                            src={
+                              averageItemMark && averageItemMark >= 5
+                                ? Star2
+                                : StarDisabled
+                            }
+                            className="img_star"
+                          />
+                        </div>
+                      )}
+                      {!averageItemMark && (
+                        <div className="block2_reviews_stars">
+                          <p className="block2_reviews_text">Пока нет оценки</p>
+                        </div>
+                      )}
+                    </div>
+
                     {/* стоимость вещи*/}
                     <div className="block_up_yourCost">
                       {itemData && itemData.offer_price_rent && (
@@ -1084,42 +1179,68 @@ const CardThings = () => {
                     </Link>
 
                     {/*Звездочки и отзывы*/}
-                    <div className="block_down_star">
-                      <div
-                        style={{ display: "none" }}
-                        className="conditions_row"
-                      >
+                    {averagePersonMark && (
+                      <div className="conditions_row">
                         <img
                           alt="razdelisdrugim"
-                          src={Star2}
+                          src={
+                            averagePersonMark && averagePersonMark >= 1
+                              ? Star2
+                              : StarDisabled
+                          }
                           className="img_star"
                         />
                         <img
                           alt="razdelisdrugim"
-                          src={Star2}
+                          src={
+                            averagePersonMark && averagePersonMark >= 2
+                              ? Star2
+                              : StarDisabled
+                          }
                           className="img_star"
                         />
                         <img
                           alt="razdelisdrugim"
-                          src={Star2}
+                          src={
+                            averagePersonMark && averagePersonMark >= 3
+                              ? Star2
+                              : StarDisabled
+                          }
                           className="img_star"
                         />
                         <img
                           alt="razdelisdrugim"
-                          src={Star2}
+                          src={
+                            averagePersonMark && averagePersonMark >= 4
+                              ? Star2
+                              : StarDisabled
+                          }
                           className="img_star"
                         />
                         <img
                           alt="razdelisdrugim"
-                          src={Star2}
+                          src={
+                            averagePersonMark && averagePersonMark >= 5
+                              ? Star2
+                              : StarDisabled
+                          }
                           className="img_star"
                         />
                       </div>
+                    )}
+                    {!averagePersonMark && (
                       <div className="block2_reviews_stars">
-                        <p className="block2_reviews_text">Пока нет оценок</p>
+                        <p className="block2_reviews_text">Пока нет оценки</p>
                       </div>
-                      <p className="block_down_star-p">Отзывов пока нет</p>
-                    </div>
+                    )}
+                    {profileReviewsCount > 0 && (
+                      <p className="block_down_star-p">
+                        {profileReviewsCount} отзыва(-ов)
+                      </p>
+                    )}
+                    {profileReviewsCount <= 0 && (
+                      <p className="block_down_star-p">Пока нет отзывов</p>
+                    )}
 
                     {/*телефон и почта*/}
                     <div className="block_down_telephone">
@@ -1369,7 +1490,7 @@ const CardThings = () => {
               </div>
 
               {/* ОТЗЫВЫ */}
-              <ReviewsItems />
+              <ReviewsItems reviews={reviews} />
 
               {/* блок бронирование */}
 
@@ -2523,7 +2644,7 @@ const CardThings = () => {
             </div>
 
             {/* ОТЗЫВЫ */}
-            <ReviewsItems />
+            <ReviewsItems reviews={reviews} />
 
             {/* блок бронирование */}
 
@@ -3679,7 +3800,7 @@ const CardThings = () => {
               </div>
 
               {/* ОТЗЫВЫ */}
-              <ReviewsItems />
+              <ReviewsItems reviews={reviews} />
 
               {/* блок бронирование */}
 

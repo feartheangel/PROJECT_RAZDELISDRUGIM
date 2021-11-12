@@ -9,6 +9,7 @@ import {
   MapBooking,
   StatusUpdateSubmit,
   SendReviewModal,
+  ReviewSent,
 } from "../../../components/index";
 import Requests from "../../../http/axios-requests";
 import BookingITake from "../../../components/Profile/BookingITAKE";
@@ -160,16 +161,28 @@ const BookingPage = () => {
   }, [activeForm2, activeForm3]);
 
   const [modalActiveMap, setModalActiveMap] = React.useState(false);
+  const [modalActiveReviewSent, setModalActiveReviewSent] =
+    React.useState(false);
   const [reserveId, setReserveId] = React.useState();
   const [reserveUpdateBool, setReserveUpdateBool] = React.useState();
 
   const [reviewPersonId, setReviewPersonId] = React.useState();
   const [reviewItemId, setReviewItemId] = React.useState();
   const [reviewType, setReviewType] = React.useState();
+  const [reviewItemName, setReviewItemName] = React.useState();
+  const [reviewItemImage, setReviewItemImage] = React.useState();
+  const [reviewPersonName, setReviewPersonName] = React.useState();
 
   const showOnMapHandler = (coords) => {
     setModalActiveMap(true);
     setCoords(coords);
+  };
+
+  const sentReviewActivateHandler = () => {
+    setModalActiveReviewSent(true);
+    return setTimeout(() => {
+      setModalActiveReviewSent(false);
+    }, 2000);
   };
 
   return (
@@ -349,6 +362,9 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewItemName={setReviewItemName}
+                            setReviewItemImage={setReviewItemImage}
+                            setReviewPersonName={setReviewPersonName}
                             setReviewType={setReviewType}
                             setReviewItemId={setReviewItemId}
                             setReviewPersonId={setReviewPersonId}
@@ -374,6 +390,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -405,6 +424,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -436,6 +458,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -467,6 +492,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -498,6 +526,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -527,6 +558,9 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewItemName={setReviewItemName}
+                            setReviewItemImage={setReviewItemImage}
+                            setReviewPersonName={setReviewPersonName}
                             setReviewType={setReviewType}
                             setReviewItemId={setReviewItemId}
                             setReviewPersonId={setReviewPersonId}
@@ -552,6 +586,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -583,6 +620,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -614,6 +654,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -645,6 +688,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -676,6 +722,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -912,6 +961,9 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewItemName={setReviewItemName}
+                            setReviewItemImage={setReviewItemImage}
+                            setReviewPersonName={setReviewPersonName}
                             setReviewType={setReviewType}
                             setReviewItemId={setReviewItemId}
                             setReviewPersonId={setReviewPersonId}
@@ -937,6 +989,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -968,6 +1023,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -999,6 +1057,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1030,6 +1091,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1061,6 +1125,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1090,6 +1157,9 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewItemName={setReviewItemName}
+                            setReviewItemImage={setReviewItemImage}
+                            setReviewPersonName={setReviewPersonName}
                             setReviewType={setReviewType}
                             setReviewItemId={setReviewItemId}
                             setReviewPersonId={setReviewPersonId}
@@ -1115,6 +1185,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1146,6 +1219,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1177,6 +1253,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1208,6 +1287,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1239,6 +1321,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1516,6 +1601,9 @@ const BookingPage = () => {
                       ? outgoingReservations &&
                         outgoingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewItemName={setReviewItemName}
+                            setReviewItemImage={setReviewItemImage}
+                            setReviewPersonName={setReviewPersonName}
                             setReviewType={setReviewType}
                             setReviewItemId={setReviewItemId}
                             setReviewPersonId={setReviewPersonId}
@@ -1541,6 +1629,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1572,6 +1663,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1603,6 +1697,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1634,6 +1731,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1663,6 +1763,9 @@ const BookingPage = () => {
                       ? incomingReservations &&
                         incomingReservations.map((item, index) => (
                           <BookingITake
+                            setReviewItemName={setReviewItemName}
+                            setReviewItemImage={setReviewItemImage}
+                            setReviewPersonName={setReviewPersonName}
                             setReviewType={setReviewType}
                             setReviewItemId={setReviewItemId}
                             setReviewPersonId={setReviewPersonId}
@@ -1688,6 +1791,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1719,6 +1825,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1750,6 +1859,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1781,6 +1893,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1812,6 +1927,9 @@ const BookingPage = () => {
                           )
                           .map((item, index) => (
                             <BookingITake
+                              setReviewItemName={setReviewItemName}
+                              setReviewItemImage={setReviewItemImage}
+                              setReviewPersonName={setReviewPersonName}
                               setReviewType={setReviewType}
                               setReviewItemId={setReviewItemId}
                               setReviewPersonId={setReviewPersonId}
@@ -1881,12 +1999,21 @@ const BookingPage = () => {
         reloadReservations={reloadReservations}
       />
       <SendReviewModal
+        reviewItemImage={reviewItemImage}
+        reviewItemName={reviewItemName}
+        reviewPersonName={reviewPersonName}
         modalActiveSendReview={modalActiveSendReview}
         setModalActiveSendReview={setModalActiveSendReview}
         reviewItemId={reviewItemId}
         reviewPersonId={reviewPersonId}
         reviewType={reviewType}
+        sentReviewActivateHandler={sentReviewActivateHandler}
       />
+      <ReviewSent
+        modalActiveReviewSent={modalActiveReviewSent}
+        setModalActiveReviewSent={setModalActiveReviewSent}
+      />
+
       <Footer />
     </div>
   );

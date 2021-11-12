@@ -47,6 +47,8 @@ const SearchPage = () => {
     distance,
   } = useSelector(({ search }) => search);
 
+  const { items } = useSelector(({ items }) => items);
+
   const { maxItemsToPlaceFree, maxItemsToPlaceFreeLegal } = useSelector(
     ({ settings }) => settings
   );
@@ -170,6 +172,7 @@ const SearchPage = () => {
     ) {
       Requests.search().then((res) => {
         dispatch(setSearchItems(res.data));
+        setCountFilteredItems(res.headers["count-filter-items"]);
       });
     } else {
       Requests.search(
@@ -187,7 +190,7 @@ const SearchPage = () => {
         distance
       ).then((res) => {
         dispatch(setSearchItems(res.data));
-        setCountFilteredItems(res.headers["Count-Filter-Items"]);
+        console.log(res.headers);
       });
     }
   }, []);
@@ -195,6 +198,19 @@ const SearchPage = () => {
   const [currentPage, setCurrentPage] = React.useState(2);
   const [fetching, setFetching] = React.useState();
   const [countFilteredItems, setCountFilteredItems] = React.useState();
+  const [chapter, setChapter] = React.useState();
+  const [chapterId, setChapterId] = React.useState();
+
+  React.useEffect(() => {
+    if (items.length > 0 && category_id) {
+      let item = items.filter((item) => item.id == category_id);
+      setChapter(item[0].chapter_id.name_chapter);
+      setChapterId(item[0].chapter_id.id);
+    } else {
+      setChapter("");
+      setChapterId("");
+    }
+  }, [category_id]);
 
   React.useEffect(() => {
     if (fetching) {
@@ -214,7 +230,7 @@ const SearchPage = () => {
         currentPage
       )
         .then((res) => {
-          setCountFilteredItems(res.headers["Count-Filter-Items"]);
+          setCountFilteredItems(res.headers["count-filter-items"]);
           dispatch(setSearchItems([...searchItems, ...res.data]));
           setCurrentPage((prevState) => prevState + 1);
         })
@@ -306,7 +322,7 @@ const SearchPage = () => {
       distance
     ).then((res) => {
       dispatch(setSearchItems(res.data));
-      setCountFilteredItems(res.headers["Count-Filter-Items"]);
+      setCountFilteredItems(res.headers["count-filter-items"]);
     });
   };
 
@@ -558,6 +574,16 @@ const SearchPage = () => {
             {redirect}
 
             <div>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/catalog?chapter_id=${chapterId}`}
+              >
+                <p className="SearchPage_container_shapka_hover"> {chapter} </p>
+              </Link>
+              {category && <img alt="razdelisdrugim" src={vector1} />}
+            </div>
+
+            <div>
               <p style={{ color: "black" }}> {category} </p>
             </div>
           </div>
@@ -575,6 +601,19 @@ const SearchPage = () => {
               <div>
                 <Link style={{ textDecoration: "none" }} to="/catalog">
                   <p className="SearchPage_container_shapka_hover"> Каталог </p>
+                </Link>
+                {category && <img alt="razdelisdrugim" src={vector1} />}
+              </div>
+
+              <div>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/catalog?chapter_id=${chapterId}`}
+                >
+                  <p className="SearchPage_container_shapka_hover">
+                    {" "}
+                    {chapter}{" "}
+                  </p>
                 </Link>
                 {category && <img alt="razdelisdrugim" src={vector1} />}
               </div>

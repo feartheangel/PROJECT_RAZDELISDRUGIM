@@ -213,7 +213,7 @@ const Footer = () => {
               >
                 <img src={Facebook} alt="" className="footer-social" />
               </a>
-              <a href="https://vk.com/razdelisdrugim" target="_blank">
+              <a href="https://vk.com/razdelis" target="_blank">
                 <img src={VK} alt="" className="footer-social" />
               </a>
               <a

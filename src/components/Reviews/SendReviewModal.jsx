@@ -12,8 +12,13 @@ const SendReviewModal = ({
   reviewItemId,
   reviewPersonId,
   reviewType,
+  reviewItemImage,
+  reviewItemName,
+  reviewPersonName,
+  sentReviewActivateHandler,
 }) => {
-  const [mark, setMark] = React.useState(0);
+  const [personMark, setPersonMark] = React.useState(0);
+  const [itemMark, setItemMark] = React.useState(0);
   const [itemReview, setItemReview] = React.useState();
   const [ownerReview, setOwnerReview] = React.useState();
   const [renterReview, setRenterReview] = React.useState();
@@ -22,19 +27,38 @@ const SendReviewModal = ({
 
   const sendReviewHandler = () => {
     if (reviewType === 1) {
-      Requests.sendProfileReview(ownerReview, reviewPersonId, mark)
+      Requests.sendProfileReview(ownerReview, reviewPersonId, personMark)
         .then(() => {
-          Requests.sendItemReview(itemReview, reviewItemId)
-            .then(() => alert("Отзыв успешно отправлен!"))
+          Requests.sendItemReview(itemReview, reviewItemId, itemMark)
+            .then(() => {
+              setPersonMark(0);
+              setItemMark(0);
+              setItemReview("");
+              setOwnerReview("");
+              setRenterReview("");
+            })
             .catch((e) => alert(e.response.data))
-            .finally(() => setModalActiveSendReview(false));
+            .finally(() => {
+              setModalActiveSendReview(false);
+              sentReviewActivateHandler();
+            });
         })
         .catch((e) => alert(e.response.data));
     } else if (reviewType === 2) {
-      Requests.sendProfileReview(renterReview, reviewPersonId, mark)
-        .then(() => alert("Отзыв успешно отправлен!"))
+      Requests.sendProfileReview(renterReview, reviewPersonId, personMark)
+        .then(() => {
+          alert("Отзыв успешно отправлен!");
+          setPersonMark(0);
+          setItemMark(0);
+          setItemReview("");
+          setOwnerReview("");
+          setRenterReview("");
+        })
         .catch((e) => alert(e.response.data))
-        .finally(() => setModalActiveSendReview(false));
+        .finally(() => {
+          setModalActiveSendReview(false);
+          sentReviewActivateHandler();
+        });
     }
   };
 
@@ -63,28 +87,28 @@ const SendReviewModal = ({
               <p className="reviews_mark_p">Поставьте оценку</p>
               <div className="reviews_stars_wrapper">
                 <img
-                  onClick={() => setMark(1)}
-                  src={mark >= 1 ? Star : StarDisabled}
+                  onClick={() => setPersonMark(1)}
+                  src={personMark >= 1 ? Star : StarDisabled}
                   alt="star_mark"
                 />
                 <img
-                  onClick={() => setMark(2)}
-                  src={mark >= 2 ? Star : StarDisabled}
+                  onClick={() => setPersonMark(2)}
+                  src={personMark >= 2 ? Star : StarDisabled}
                   alt="star_mark"
                 />
                 <img
-                  onClick={() => setMark(3)}
-                  src={mark >= 3 ? Star : StarDisabled}
+                  onClick={() => setPersonMark(3)}
+                  src={personMark >= 3 ? Star : StarDisabled}
                   alt="star_mark"
                 />
                 <img
-                  onClick={() => setMark(4)}
-                  src={mark >= 4 ? Star : StarDisabled}
+                  onClick={() => setPersonMark(4)}
+                  src={personMark >= 4 ? Star : StarDisabled}
                   alt="star_mark"
                 />
                 <img
-                  onClick={() => setMark(5)}
-                  src={mark >= 5 ? Star : StarDisabled}
+                  onClick={() => setPersonMark(5)}
+                  src={personMark >= 5 ? Star : StarDisabled}
                   alt="star_mark"
                 />
               </div>
@@ -93,7 +117,10 @@ const SendReviewModal = ({
               <div>
                 <div className="reviews_owner_review_wrapper">
                   <p className="reviews_owner_review_p">
-                    Напишите свой<br></br> отзыв о владельце
+                    Напишите свой<br></br> отзыв о владельце<br></br>
+                    <span className="reviews_owner_review_p_name">
+                      {reviewPersonName}
+                    </span>
                   </p>
                   <textarea
                     value={ownerReview}
@@ -106,28 +133,28 @@ const SendReviewModal = ({
                   <p className="reviews_mark_p">Поставьте оценку вещи/услуге</p>
                   <div className="reviews_stars_wrapper">
                     <img
-                      onClick={() => setMark(1)}
-                      src={mark >= 1 ? Star : StarDisabled}
+                      onClick={() => setItemMark(1)}
+                      src={itemMark >= 1 ? Star : StarDisabled}
                       alt="star_mark"
                     />
                     <img
-                      onClick={() => setMark(2)}
-                      src={mark >= 2 ? Star : StarDisabled}
+                      onClick={() => setItemMark(2)}
+                      src={itemMark >= 2 ? Star : StarDisabled}
                       alt="star_mark"
                     />
                     <img
-                      onClick={() => setMark(3)}
-                      src={mark >= 3 ? Star : StarDisabled}
+                      onClick={() => setItemMark(3)}
+                      src={itemMark >= 3 ? Star : StarDisabled}
                       alt="star_mark"
                     />
                     <img
-                      onClick={() => setMark(4)}
-                      src={mark >= 4 ? Star : StarDisabled}
+                      onClick={() => setItemMark(4)}
+                      src={itemMark >= 4 ? Star : StarDisabled}
                       alt="star_mark"
                     />
                     <img
-                      onClick={() => setMark(5)}
-                      src={mark >= 5 ? Star : StarDisabled}
+                      onClick={() => setItemMark(5)}
+                      src={itemMark >= 5 ? Star : StarDisabled}
                       alt="star_mark"
                     />
                   </div>
@@ -141,12 +168,10 @@ const SendReviewModal = ({
                     <div className="review_logo_block">
                       <img
                         className="review_logo_items"
-                        src={logoItem}
+                        src={`data:image/png;base64,${reviewItemImage}`}
                         alt="logo"
                       />
-                      <p className="reviews_item_review_p2">
-                        Ноутбук Apple MacBook Air13" M
-                      </p>
+                      <p className="reviews_item_review_p2">{reviewItemName}</p>
                     </div>
                   </div>
                   <textarea

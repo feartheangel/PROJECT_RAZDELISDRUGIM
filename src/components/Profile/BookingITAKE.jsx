@@ -43,6 +43,9 @@ const BookingITake = ({
   setReviewPersonId,
   setModalActiveSendReview,
   setReviewType,
+  setReviewItemImage,
+  setReviewItemName,
+  setReviewPersonName,
 }) => {
   const [contacts, setContacts] = React.useState(false);
 
@@ -70,9 +73,13 @@ const BookingITake = ({
   const handleReviewSend = () => {
     if (type === 1) {
       setReviewPersonId(item.owner_contact.id);
+      setReviewPersonName(item.owner_contact.first_name);
     } else if (type === 2) {
       setReviewPersonId(item.renter_contact.id);
+      setReviewPersonName(item.renter_contact.first_name);
     }
+    setReviewItemName(item.item_id.name_item);
+    setReviewItemImage(item.item_id.image_1);
     setReviewItemId(item.item_id.id);
     setReviewType(type);
     setModalActiveSendReview(true);
@@ -138,7 +145,7 @@ const BookingITake = ({
                 )}
                 <Link
                   to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
+                    type === 1 ? item.owner_contact.id : item.renter_contact.id
                   }`}
                   style={{ textDecoration: "none" }}
                 >
@@ -978,7 +985,7 @@ const BookingITake = ({
                 )}
                 <Link
                   to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
+                    type === 1 ? item.owner_contact.id : item.renter_contact.id
                   }`}
                   style={{ textDecoration: "none" }}
                 >
@@ -1495,7 +1502,7 @@ const BookingITake = ({
                 )}
                 <Link
                   to={`/public-profile?id=${
-                    type === 1 ? item.owner_id : item.renter_id
+                    type === 1 ? item.owner_contact.id : item.renter_contact.id
                   }`}
                   style={{ textDecoration: "none" }}
                 >
@@ -2166,7 +2173,7 @@ const BookingITake = ({
               )}
               <Link
                 to={`/public-profile?id=${
-                  type === 1 ? item.owner_id : item.renter_id
+                  type === 1 ? item.owner_contact.id : item.renter_contact.id
                 }`}
                 style={{ textDecoration: "none" }}
               >

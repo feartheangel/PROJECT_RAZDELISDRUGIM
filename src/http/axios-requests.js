@@ -1334,7 +1334,7 @@ class Requests {
     });
   }
 
-  static sendItemReview(content, item) {
+  static sendItemReview(content, item, mark) {
     return axios({
       method: "POST",
       headers: {
@@ -1344,9 +1344,36 @@ class Requests {
       data: {
         content: content,
         item: item,
+        mark: mark,
       },
 
       url: `${rootAddress}/api/items/review/create/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getProfileReviews(id) {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/jwt/reviews/${id}/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getItemReviews(id) {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/items/reviews/${id}/`,
     }).then((response) => {
       return response;
     });

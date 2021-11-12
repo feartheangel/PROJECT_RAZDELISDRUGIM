@@ -1,143 +1,143 @@
 /* ОТЗЫВЫ */
-.cardthing_rewieus{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    background: #ffffff;
-    -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
-            box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
-    border-radius: 30px;
-    margin: 20px 0;
-    padding: 30px;
-    width: 1190px;
-    box-sizing: border-box;
-  }
+.cardthing_rewieus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: #ffffff;
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-radius: 30px;
+  margin: 20px 0;
+  padding: 30px;
+  width: 1190px;
+  box-sizing: border-box;
+}
 
-  .cardthing_rewieus_container_head{
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-  }
-  .cardthing_rewieus_container_head-p1{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    margin-right: 5px;
-    color: #000000;
-  }
-  .cardthing_rewieus_container_head-p2{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    color: rgba(28, 46, 69, 0.6);
-  }
+.cardthing_rewieus_container_head {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.cardthing_rewieus_container_head-p1 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  margin-right: 5px;
+  color: #000000;
+}
+.cardthing_rewieus_container_head-p2 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: rgba(28, 46, 69, 0.6);
+}
 
-  /* content */
-  .cardthing_rewieus_container_content{
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      padding: 20px;
-      background: #FFFFFF;
-    border: 1px solid rgba(76, 201, 240, 0.14);
-    box-sizing: border-box;
-    border-radius: 15px;
-    margin-top: 20px;
-  }
-  .rewieus_container_content_info{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-  }
-  .rewieus_container_content_info_firstblock{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-  }
-  .rewieus_container_content_info_firstblock-p1{
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;   
-    color: #123940;
-  }
-  .rewieus_container_content_info_firstblock-p2{
-    font-size: 14px;
-    line-height: 16px;  
-    color: rgba(9, 29, 32, 0.4);
-  }
-  .logo_photo_rewieus_block{
-      width: 44px;
-      height: 44px;
-      margin-right: 20px;
-  }
-  .rewieus_container_content_info_rating{
-      margin-top: 15px;
-      margin-bottom: 10px;
-  }
-  .rewieus_star{
-      width: 22px;
-      height: 22px;
-      margin-right: 5px;
-  }
-  .rewieus_container_content_info_text{
-    font-size: 16px;
-    line-height: 19px;  
-    color: #123940;
-  }
+/* content */
+.cardthing_rewieus_container_content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(76, 201, 240, 0.14);
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+.rewieus_container_content_info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.rewieus_container_content_info_firstblock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.rewieus_container_content_info_firstblock-p1 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #123940;
+}
+.rewieus_container_content_info_firstblock-p2 {
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(9, 29, 32, 0.4);
+}
+.logo_photo_rewieus_block {
+  width: 44px;
+  height: 44px;
+  margin-right: 20px;
+}
+.rewieus_container_content_info_rating {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.rewieus_star {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+}
+.rewieus_container_content_info_text {
+  font-size: 16px;
+  line-height: 19px;
+  color: #123940;
+}
 
-  /* footer */
-  .cardthing_rewieus_container_footer{
-      padding: 20px 0;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-  }
-  .cardthing_rewieus_container_footer_left{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      cursor: pointer;
-  }
-  .cardthing_rewieus_container_footer_right{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
+/* footer */
+.cardthing_rewieus_container_footer {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-.cardthing_rewieus_container_footer_center{
-    display: flex;
-    flex-direction: row;
+.cardthing_rewieus_container_footer_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
 }
-.vector_reviews{
-    width: 8px;
-    height: 14px;
+.cardthing_rewieus_container_footer_right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
 }
-.cardthing_rewieus_container_footer_left-p{
-    font-size: 18px;
-    line-height: 21px;
-    color: #091D20;
-    margin-left: 7px;
-    margin-right: 10px;
+.cardthing_rewieus_container_footer_center {
+  display: flex;
+  flex-direction: row;
 }
-.cardthing_rewieus_container_footer_right-p{
-    font-size: 18px;
-    line-height: 21px;
-    color: #091D20;
-    margin-right: 7px;
-    margin-left: 10px;
+.vector_reviews {
+  width: 8px;
+  height: 14px;
 }
-.cardthing_rewieus_container_footer_center-p{
-    font-size: 18px;
-    line-height: 21px;
-    color: #091D20;
-    margin: 0 10px;
-    cursor: pointer;
+.cardthing_rewieus_container_footer_left-p {
+  font-size: 18px;
+  line-height: 21px;
+  color: #091d20;
+  margin-left: 7px;
+  margin-right: 10px;
+}
+.cardthing_rewieus_container_footer_right-p {
+  font-size: 18px;
+  line-height: 21px;
+  color: #091d20;
+  margin-right: 7px;
+  margin-left: 10px;
+}
+.cardthing_rewieus_container_footer_center-p {
+  font-size: 18px;
+  line-height: 21px;
+  color: #091d20;
+  margin: 0 10px;
+  cursor: pointer;
 }
 
 /* блок ОТЗЫВЫ для ПРОФИЛЯ */
