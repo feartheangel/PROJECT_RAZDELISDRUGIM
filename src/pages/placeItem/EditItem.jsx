@@ -206,7 +206,7 @@ const EditItem = () => {
     setReadySell(!readySell);
   };
 
-  //обработчик суммы залога
+  //обработчик суммы возвратного залога
   const pledgePriceHandler = (e) => {
     console.log(e.target.value);
     if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
@@ -333,7 +333,7 @@ const EditItem = () => {
       alert("Не указана сумма страховки!");
       return;
     } else if (pladge && !pledgePrice) {
-      alert("Не указана сумма залога!");
+      alert("Не указана сумма возвратного залога!");
       return;
     } else if (franchise && !franchiseSumma) {
       alert("Не указана сумма франшизы!");
@@ -909,7 +909,7 @@ const EditItem = () => {
   isLoaded &&
     addresses.map((item, index) => {
       addressesFormatted.push([
-        `${item.city}${item.street ? ` ,${item.street}` : ""}`,
+        `${item.city}${item.street ? `, ${item.street}` : ""}`,
         item.coordinates,
       ]);
     });
@@ -2195,7 +2195,7 @@ const EditItem = () => {
                         className="input-checkbox"
                         checked={pladge}
                       />
-                      <span onClick={pladgeHandler}>Залог</span>
+                      <span onClick={pladgeHandler}>Возвратный залог</span>
                     </div>
                     {pladge && (
                       <span>

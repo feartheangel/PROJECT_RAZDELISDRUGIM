@@ -16,6 +16,7 @@ const SendReviewModal = ({
   reviewItemName,
   reviewPersonName,
   sentReviewActivateHandler,
+  toggleReloadReservations,
 }) => {
   const [personMark, setPersonMark] = React.useState(0);
   const [itemMark, setItemMark] = React.useState(0);
@@ -41,13 +42,13 @@ const SendReviewModal = ({
             .finally(() => {
               setModalActiveSendReview(false);
               sentReviewActivateHandler();
+              toggleReloadReservations();
             });
         })
         .catch((e) => alert(e.response.data));
     } else if (reviewType === 2) {
       Requests.sendProfileReview(renterReview, reviewPersonId, personMark)
         .then(() => {
-          alert("Отзыв успешно отправлен!");
           setPersonMark(0);
           setItemMark(0);
           setItemReview("");
@@ -58,6 +59,7 @@ const SendReviewModal = ({
         .finally(() => {
           setModalActiveSendReview(false);
           sentReviewActivateHandler();
+          toggleReloadReservations();
         });
     }
   };

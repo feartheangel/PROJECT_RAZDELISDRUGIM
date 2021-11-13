@@ -542,7 +542,7 @@ const CardThings = () => {
                       </div>
                     )}
 
-                    {/* Залог*/}
+                    {/* Возвратный залог*/}
                     {itemData && itemData.pledge && (
                       <div className="conditions_pledge">
                         <div className="conditions_row">
@@ -551,7 +551,9 @@ const CardThings = () => {
                             src={CombinedShare}
                             className="img_combinedShare"
                           />
-                          <p className="conditions_pledge_row-p">Залог</p>
+                          <p className="conditions_pledge_row-p">
+                            Возвратный залог
+                          </p>
                           <img
                             alt="razdelisdrugim"
                             title="Владелец желает получить от Арендатора денежный залог, который будет возвращен после возврата имущества в надлежащем виде"
@@ -608,7 +610,7 @@ const CardThings = () => {
                           </p>
                           <img
                             alt="razdelisdrugim"
-                            title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости залога"
+                            title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости возвратного залога"
                             src={Vector2}
                             className="img_vector2"
                           />
@@ -1965,7 +1967,7 @@ const CardThings = () => {
                       </div>
                     )}
 
-                    {/* Залог*/}
+                    {/* Возвратный залог*/}
                     {itemData && itemData.pledge && (
                       <div className="conditions_pledge">
                         <div className="conditions_row">
@@ -1974,7 +1976,9 @@ const CardThings = () => {
                             src={CombinedShare}
                             className="img_combinedShare"
                           />
-                          <p className="conditions_pledge_row-p">Залог</p>
+                          <p className="conditions_pledge_row-p">
+                            Возвратный залог
+                          </p>
                           <img
                             alt="razdelisdrugim"
                             title="Владелец желает получить от Арендатора денежный залог, который будет возвращен после возврата имущества в надлежащем виде"
@@ -2031,7 +2035,7 @@ const CardThings = () => {
                           </p>
                           <img
                             alt="razdelisdrugim"
-                            title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости залога"
+                            title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости возвратного залога"
                             src={Vector2}
                             className="img_vector2"
                           />
@@ -2937,7 +2941,7 @@ const CardThings = () => {
                       </div>
                     )}
 
-                    {/* Залог*/}
+                    {/* Возвратный залог*/}
                     {itemData && itemData.pledge && (
                       <div className="conditions_pledge">
                         <div className="conditions_row">
@@ -2946,7 +2950,9 @@ const CardThings = () => {
                             src={CombinedShare}
                             className="img_combinedShare"
                           />
-                          <p className="conditions_pledge_row-p">Залог</p>
+                          <p className="conditions_pledge_row-p">
+                            Возвратный залог
+                          </p>
                           <img
                             alt="razdelisdrugim"
                             title="Владелец желает получить от Арендатора денежный залог, который будет возвращен после возврата имущества в надлежащем виде"
@@ -3003,7 +3009,7 @@ const CardThings = () => {
                           </p>
                           <img
                             alt="razdelisdrugim"
-                            title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости залога"
+                            title="Владелец желает застраховать имущество. Стоимость страхования будет добавлена к стоимости аренды, а франшиза будет добавлена к стоимости возвратного залога"
                             src={Vector2}
                             className="img_vector2"
                           />

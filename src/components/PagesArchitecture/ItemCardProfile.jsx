@@ -122,14 +122,14 @@ const ItemCardProfile = ({
               <img
                 alt="razdelisdrugim"
                 src={moneyTime}
-                title="Предусмотрен залог"
+                title="Предусмотрен возвратный залог"
                 className="card-mark"
               />
             ) : (
               <img
                 alt="razdelisdrugim"
                 src={moneyTimeDisabled}
-                title="Залога нет"
+                title="Возвратного залога нет"
                 className="card-mark"
               />
             )}
@@ -368,14 +368,14 @@ const ItemCardProfile = ({
               <img
                 alt="razdelisdrugim"
                 src={moneyTime}
-                title="Предусмотрен залог"
+                title="Предусмотрен возвратный залог"
                 className="card-mark"
               />
             ) : (
               <img
                 alt="razdelisdrugim"
                 src={moneyTimeDisabled}
-                title="Залога нет"
+                title="Возвратного залога нет"
                 className="card-mark"
               />
             )}
@@ -607,14 +607,14 @@ const ItemCardProfile = ({
               <img
                 alt="razdelisdrugim"
                 src={moneyTime}
-                title="Предусмотрен залог"
+                title="Предусмотрен возвратный залог"
                 className="card-mark"
               />
             ) : (
               <img
                 alt="razdelisdrugim"
                 src={moneyTimeDisabled}
-                title="Залога нет"
+                title="Возвратного залога нет"
                 className="card-mark"
               />
             )}

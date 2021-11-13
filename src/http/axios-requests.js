@@ -1378,6 +1378,48 @@ class Requests {
       return response;
     });
   }
+
+  static getItemReviewsIds() {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/items/id_reviews/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static getProfilesReviewsIds() {
+    return axios({
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      url: `${rootAddress}/api/jwt/id_reviews/`,
+    }).then((response) => {
+      return response;
+    });
+  }
+
+  static updateDevice(device) {
+    return axios({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("key")}`,
+      },
+      data: {
+        user_device: device,
+      },
+      url: `${rootAddress}/api/jwt/profile/update/`,
+    }).then((response) => {
+      return response;
+    });
+  }
 }
 
 axios.interceptors.response.use(

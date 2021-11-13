@@ -46,6 +46,8 @@ const BookingITake = ({
   setReviewItemImage,
   setReviewItemName,
   setReviewPersonName,
+  profilesReviewsIds,
+  itemsReviewsIds,
 }) => {
   const [contacts, setContacts] = React.useState(false);
 
@@ -377,7 +379,7 @@ const BookingITake = ({
                     height="16px"
                     src={Moneytime}
                     alt="razdelisdrugim"
-                    title={`Залог: ${item.reserve_pledge_price} BYN`}
+                    title={`Возвратный залог: ${item.reserve_pledge_price} BYN`}
                   />
                 )}
                 {item.reserve_pledge_price === 0 && (
@@ -689,7 +691,7 @@ const BookingITake = ({
               )}
               {item.reserve_pledge_price !== 0 && (
                 <div className="center_block_rowstyle_2">
-                  <p className="center_block_rowstyle-p2-1">Залог</p>
+                  <p className="center_block_rowstyle-p2-1">Возвратный залог</p>
                   <p className="center_block_rowstyle-p2-2">
                     {item.reserve_pledge_price} BYN
                   </p>
@@ -1217,7 +1219,7 @@ const BookingITake = ({
                     height="16px"
                     src={Moneytime}
                     alt="razdelisdrugim"
-                    title={`Залог: ${item.reserve_pledge_price} BYN`}
+                    title={`Возвратный залог: ${item.reserve_pledge_price} BYN`}
                   />
                 )}
                 {item.reserve_pledge_price === 0 && (
@@ -1548,7 +1550,7 @@ const BookingITake = ({
               )}
               {item.reserve_pledge_price !== 0 && (
                 <div className="center_block_rowstyle_2">
-                  <p className="center_block_rowstyle-p2-1">Залог</p>
+                  <p className="center_block_rowstyle-p2-1">Возвратный залог</p>
                   <p className="center_block_rowstyle-p2-2">
                     {item.reserve_pledge_price} BYN
                   </p>
@@ -1879,7 +1881,7 @@ const BookingITake = ({
                       height="16px"
                       src={Moneytime}
                       alt="razdelisdrugim"
-                      title={`Залог: ${item.reserve_pledge_price} BYN`}
+                      title={`Возвратный залог: ${item.reserve_pledge_price} BYN`}
                     />
                   )}
                   {item.reserve_pledge_price === 0 && (
@@ -2422,7 +2424,7 @@ const BookingITake = ({
             )}
             {item.reserve_pledge_price !== 0 && (
               <div className="center_block_rowstyle_2">
-                <p className="center_block_rowstyle-p2-1">Залог</p>
+                <p className="center_block_rowstyle-p2-1">Возвратный залог</p>
                 <p className="center_block_rowstyle-p2-2">
                   {item.reserve_pledge_price} BYN
                 </p>

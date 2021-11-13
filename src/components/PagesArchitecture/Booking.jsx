@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
+import { Redirect } from "react-router-dom";
 import ru from "date-fns/locale/ru";
 import {
   setAdresses,
@@ -61,6 +62,8 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
     userData.phone
   );
   const [renterBookingSms, setRenterBookingSms] = React.useState();
+
+  const [redirect, setRedirect] = React.useState();
 
   // для дней мин время
   var dateminbooking = new Date().toJSON().slice(0, 10);
@@ -379,7 +382,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
       reserve_contract: itemData.contract,
       reservation_address_delivery: radioBooking !== "1" ? coords[1] : "",
     })
-      .then(() => alert("Запрос на подтверждение бронирования отправлен!"))
+      .then(() => setRedirect(<Redirect to="/booking" />))
       .catch((e) => alert(e.response.data));
   };
 
@@ -619,6 +622,7 @@ const Booking = ({ itemData, setSelectedImage, selectedImage }) => {
                                 на{" "}
                               </span>
                             </div>
+                            {redirect}
 
                             <label
                               className="information_all_down_left_date-p"

@@ -828,7 +828,7 @@ const SearchPage = () => {
                   />
                   <label style={{ cursor: "pointer" }} htmlFor="pledge">
                     {" "}
-                    Без залога{" "}
+                    Без возвратного залога{" "}
                   </label>
                 </li>
 
@@ -987,7 +987,7 @@ const SearchPage = () => {
                       />
                       <label style={{ cursor: "pointer" }} htmlFor="pledge">
                         {" "}
-                        Без залога{" "}
+                        Без возвратного залога{" "}
                       </label>
                     </li>
 
@@ -1145,7 +1145,7 @@ const SearchPage = () => {
                     />
                     <label style={{ cursor: "pointer" }} htmlFor="pledge">
                       {" "}
-                      Без залога{" "}
+                      Без возвратного залога{" "}
                     </label>
                   </li>
 
@@ -1304,7 +1304,7 @@ const SearchPage = () => {
                     />
                     <label style={{ cursor: "pointer" }} htmlFor="pledge">
                       {" "}
-                      Без залога{" "}
+                      Без возвратного залога{" "}
                     </label>
                   </li>
 

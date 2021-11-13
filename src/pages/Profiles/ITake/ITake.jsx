@@ -115,7 +115,7 @@ const ITake = ({ itemData }) => {
                                 } ${
                                   item.item_id.pledge_price &&
                                   item.item_id.pledge_price > 0
-                                    ? `залог: ${item.item_id.pledge_price} BYN`
+                                    ? `возвратный залог: ${item.item_id.pledge_price} BYN`
                                     : ""
                                 }${item.item_id.insurance_price ? "," : ""} ${
                                   item.item_id.insurance_price
@@ -288,7 +288,7 @@ const ITake = ({ itemData }) => {
                                 } ${
                                   item.item_id.pledge_price &&
                                   item.item_id.pledge_price > 0
-                                    ? `залог: ${item.item_id.pledge_price} BYN`
+                                    ? `возвратный залог: ${item.item_id.pledge_price} BYN`
                                     : ""
                                 }${item.item_id.insurance_price ? "," : ""} ${
                                   item.item_id.insurance_price
@@ -475,7 +475,7 @@ const ITake = ({ itemData }) => {
                                 } ${
                                   item.item_id.pledge_price &&
                                   item.item_id.pledge_price > 0
-                                    ? `залог: ${item.item_id.pledge_price} BYN`
+                                    ? `возвратный залог: ${item.item_id.pledge_price} BYN`
                                     : ""
                                 }${item.item_id.insurance_price ? "," : ""} ${
                                   item.item_id.insurance_price

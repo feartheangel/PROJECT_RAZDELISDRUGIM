@@ -198,7 +198,7 @@ const PlaceItem = () => {
     setReadySell(!readySell);
   };
 
-  //обработчик суммы залога
+  //обработчик суммы возвратного залога
   const pledgePriceHandler = (e) => {
     if (!e.target.value.includes("-") && !e.target.value.includes("--")) {
       setPledgePrice(e.target.value);
@@ -334,7 +334,7 @@ const PlaceItem = () => {
       alert("Не указана сумма страховки!");
       return;
     } else if (pladge && !pledgePrice) {
-      alert("Не указана сумма залога!");
+      alert("Не указана сумма возвратного залога!");
       return;
     } else if (franchise && !franchiseSumma) {
       alert("Не указана сумма франшизы!");
@@ -691,7 +691,7 @@ const PlaceItem = () => {
   isLoaded &&
     addresses.map((item, index) => {
       addressesFormatted.push([
-        `${item.city}${item.street ? ` ,${item.street}` : ""}`,
+        `${item.city}${item.street ? `, ${item.street}` : ""}`,
         item.coordinates,
       ]);
     });
@@ -1674,7 +1674,7 @@ const PlaceItem = () => {
                     Стоимость вещи (если оценивается){" "}
                     <img
                       alt="razdelisdrugim"
-                      title="Укажите тут, во что вы оцениваете имущество. Это может быть использовано для определения суммы залога"
+                      title="Укажите тут, во что вы оцениваете имущество. Это может быть использовано для определения суммы возвратного залога"
                       src={Vector2}
                       className="img_vector2"
                     />
@@ -2089,7 +2089,7 @@ const PlaceItem = () => {
                               checked={franchise}
                             />
                             <span
-                              title="Если страхование будет с франшизой – укажите сумму, чтобы мы смогли ее добавить к стоимости залога"
+                              title="Если страхование будет с франшизой – укажите сумму, чтобы мы смогли ее добавить к стоимости возвратного залога"
                               onClick={franchiseHandler}
                             >
                               Франшиза
@@ -2196,7 +2196,7 @@ const PlaceItem = () => {
                               checked={franchise}
                             />
                             <span
-                              title="Если страхование будет с франшизой – укажите сумму, чтобы мы смогли ее добавить к стоимости залога"
+                              title="Если страхование будет с франшизой – укажите сумму, чтобы мы смогли ее добавить к стоимости возвратного залога"
                               onClick={franchiseHandler}
                             >
                               Франшиза
@@ -2233,7 +2233,7 @@ const PlaceItem = () => {
                         className="input-checkbox"
                         checked={pladge}
                       />
-                      <span onClick={pladgeHandler}>Залог</span>
+                      <span onClick={pladgeHandler}>Возвратный залог</span>
                     </div>
                     {pladge && (
                       <span>

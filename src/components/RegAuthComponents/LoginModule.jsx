@@ -10,6 +10,29 @@ import { loginAction } from "../../redux/actions/userData";
 import Shape from "../../img/Shape.png";
 
 const LoginModule = ({ setModalActive, setActiveForm }) => {
+  var userDeviceArray = [
+    { device: "Android", platform: /Android/ },
+    { device: "iPhone", platform: /iPhone/ },
+    { device: "iPad", platform: /iPad/ },
+    { device: "Symbian", platform: /Symbian/ },
+    { device: "Windows Phone", platform: /Windows Phone/ },
+    { device: "Tablet OS", platform: /Tablet OS/ },
+    { device: "Linux", platform: /Linux/ },
+    { device: "Windows", platform: /Windows NT/ },
+    { device: "Macintosh", platform: /Macintosh/ },
+  ];
+
+  var platform = navigator.userAgent;
+
+  function getPlatform() {
+    for (var i in userDeviceArray) {
+      if (userDeviceArray[i].platform.test(platform)) {
+        return userDeviceArray[i].device;
+      }
+    }
+    return "Неизвестная платформа!" + platform;
+  }
+
   const dispatch = useDispatch();
   let code = "";
   const inputErrors = ["Поле не может быть пустым", "Минимум 8 символов"];
@@ -68,6 +91,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
         localStorage.setItem("refresh", response.data.refresh);
         dispatch(loginAction());
         setModalActive(false);
+        Requests.updateDevice(getPlatform());
         setLogin("");
         setPassword("");
       })

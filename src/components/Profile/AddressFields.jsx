@@ -122,9 +122,9 @@ const AddressFields = ({
           onClick={() => setShowAddressFields(!showAddressFields)}
           className="addresses_left_address1_text"
         >
-          {`${sentLocality}${sentStreet_ ? ` ,${sentStreet_}` : ""}${
-            sentHouse ? ` ,${sentHouse}` : ""
-          }${sentSpaceRoom ? ` ,${sentSpaceRoom}` : ""}`}
+          {`${sentLocality}${sentStreet_ ? `, ${sentStreet_}` : ""}${
+            sentHouse ? `, ${sentHouse}` : ""
+          }${sentSpaceRoom ? `, ${sentSpaceRoom}` : ""}`}
         </p>
         <img
           alt="razdelisdrugim"
