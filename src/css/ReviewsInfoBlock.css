@@ -141,28 +141,62 @@
 }
 
 /* блок ОТЗЫВЫ для ПРОФИЛЯ */
-.cardthing_rewieus2 {
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  margin-top: 20px;
-  width: 1150px;
-  box-sizing: border-box;
+.cardthing_rewieus2{
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    margin-top: 20px;
+    width: 1150px;
+    box-sizing: border-box;
 }
 
-.cardthing_rewieus_container_no_reviews_wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 30px;
+
+/* АДАПТИВ */
+
+/* mobile */
+
+@media only screen and (max-width: 480px) {
+    .cardthing_rewieus{
+        padding: 15px;
+        margin-top: 0;
+        width: -webkit-fill-available;
+    }
+    .cardthing_rewieus_container_content{
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    /* reviews profile */
+    .cardthing_rewieus2{
+        padding: 0 15px 15px 15px;
+        margin-top: 0;
+        width: -webkit-fill-available;
+    }
+    .cardthing_rewieus_container_footer{
+        padding: 15px 0 0 0;
+    }
 }
 
-.cardthing_rewieus_container_no_reviews {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-  margin-right: 5px;
-  color: #000000;
+/* mobile landscape */
+@media only screen and (max-width: 767px) and (min-width:481px) {
+    .cardthing_rewieus{
+        padding: 15px;
+        margin-top: 0;
+        width: -webkit-fill-available;
+    }
+    .cardthing_rewieus_container_content{
+        padding: 10px;
+        margin-top: 15px;
+    }
 }
+
+/* АДАПТИВ ПЛАНШЕТЫ до 1024 */
+    @media only screen and (max-width: 1024px) and (min-width:768px) {
+        .cardthing_rewieus{
+            width: -webkit-fill-available;
+            padding: 20px;
+        }
+        .cardthing_rewieus2{
+            width: 92vw;
+        }
+    }
