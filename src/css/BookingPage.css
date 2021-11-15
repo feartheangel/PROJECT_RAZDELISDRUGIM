@@ -325,6 +325,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 .left_contacts_row > p{
   margin-left: 10px;
@@ -731,6 +732,9 @@
     max-height: 124px;
     height: 100%;
   }
+  .left_contacts_row{
+    margin: 5px 10px;
+  }
   .body_allblock_header_left_photo {
     max-width: 155px;
     width: 100%;
@@ -879,7 +883,8 @@
     width: max-content;
   }
   .content__booking_empty {
-    min-height: 250px;
+    min-height: 0;
+    margin-top: 15px;
     height: 100%;
   }
   .content__booking_empty__p {
@@ -1262,6 +1267,9 @@
   }
   .content__booking_left{
     margin-right: 20px;
+  }
+  .center_block_rowstyle_3{
+    margin-bottom: 15px;
   }
 
 

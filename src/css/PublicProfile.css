@@ -101,7 +101,6 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 30px;
 }
 .up_global_margin:not(:last-child) {
   margin-right: 63px;
@@ -186,7 +185,7 @@
   -ms-flex-direction: row;
   flex-direction: row;
   cursor: pointer;
-  width: 33%;
+  width: 33.333%;
   justify-content: center;
   border-bottom: 2px solid #4cc9f0;
   padding-bottom: 10px;
@@ -783,6 +782,28 @@
     font-size: 14px;
     line-height: 16px;
   }
+  .down_header_text1_active{
+    background: #4CC9F0;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    min-width: auto;
+    border: 0;
+    padding: 8px 10px;
+    border: 1px solid rgba(76, 201, 240, 0.07);
+    box-sizing: border-box;
+    box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    border-radius: 30px;
+    margin-right: 10px;
+  }
+  .down_header_text1-p11_active{
+    color: #ffffff;
+  }
+  
+
   .img_social {
     width: 26px;
     height: 26px;
@@ -843,8 +864,10 @@
     justify-content: space-between;
     font-size: 18px;
     font-weight: 400;
-    margin: 0 15px 5px 15px;
     overflow-x: auto;
+    margin-bottom: 0;
+    margin: 0 15px;
+    width: -webkit-fill-available;
     
     
   }
@@ -863,12 +886,24 @@ width: 100%;
   }
   .down_header_text1 {
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin: 0;
     min-width: auto;
-    margin-right: 15px;
+    padding: 0 15px;
+    border: 0;
+    padding: 8px 10px;
+    background: #FFFFFF;
+    border: 1px solid rgba(76, 201, 240, 0.07);
+    box-sizing: border-box;
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-radius: 30px;
+  }
+  .down_header_text1.disabled{
+    border: 0;
+    margin-right: 10px;
   }
 
   /* 1 - адреса  */
@@ -878,6 +913,7 @@ width: 100%;
     font-size: 14px;
     line-height: 16px;
     margin-bottom: 0;
+    margin-top: 10px;
   }
 
   /* 2 - сдаёт */

@@ -57,6 +57,7 @@
 
   .error_inner_content {
     height: 400px;
+    padding: 0 10px;
   }
 
   .error_inner_yellow_button {

@@ -46,12 +46,27 @@ import { MapBooking } from "../../components/index";
 import ReviewsItems from "../../components/Reviews/ReviewsItems";
 import Star2 from "../../img/CardThings/RightContent/Star 2.png";
 import StarDisabled from "../../img/ProfilePage/stardisabled.png";
+import miniMobile from "../../img/BookingPage/minimobile.png";
+import WhatsAppLogo from "../../img/CardThings/RightContent/Component 38.png";
+import InstagramLogo from "../../img/CardThings/RightContent/Component 39.png";
+import VkLogo from "../../img/CardThings/RightContent/Component 42.png";
+import OkLogo from "../../img/ProfilePage/ok.png";
+import FbLogo from "../../img/ProfilePage/facebook2.png";
+import telephone from "../../img/BookingPage/telephone.png";
+import gmailImg from "../../img/BookingPage/gmailimg.png";
+import tgImg from "../../img/BookingPage/tgimg.png";
+import viberImg from "../../img/BookingPage/viberimg.png";
 
-const CardThings = () => {
+const CardThings = ({ item, type }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, favorites, subjects, userData } = useSelector(
     ({ userData }) => userData
   );
+  const [contacts, setContacts] = React.useState(false);
+
+  const typeContactsHandler = () => {
+    setContacts(!contacts);
+  };
 
   const [redirect, setRedirect] = React.useState();
   //расчет времени на платформе
@@ -1082,8 +1097,8 @@ const CardThings = () => {
                           onClick={goToChatHandler}
                           href="#booking_page"
                           type="button"
-                          value="Перейти в чат"
-                          className="contactOwner_btn"
+                          value="Написать"
+                          className="contactOwner_btn2"
                         />
 
                         {favorites && !isFavorite && !isOwn && (
@@ -1485,6 +1500,187 @@ const CardThings = () => {
                             </a>
                           )}
                         </div>
+                      </div>
+                    )}
+                    {true && (
+                      <div className="center_block_rowstyle_3">
+                        <button
+                          onClick={typeContactsHandler}
+                          className="contactOwner_btn2"
+                        >
+                          {" "}
+                          Контакты{" "}
+                        </button>
+                      </div>
+                    )}
+                    {true && contacts === true && (
+                      <div className="body_allblock_header_left_contacts">
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={telephone}
+                            alt="vectors"
+                          />
+                          <p>
+                            {" "}
+                            {type === 1
+                              ? item.owner_contact.phone
+                              : type === 2
+                              ? item.renter_contact.phone
+                              : ""}
+                          </p>
+                        </div>
+                        {((type === 1 && item.owner_contact.google_account) ||
+                          (type === 2 &&
+                            item.renter_contact.google_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={gmailImg}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.google_account
+                                : type === 2
+                                ? item.renter_contact.google_account
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.telegram_account) ||
+                          (type === 2 &&
+                            item.renter_contact.telegram_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={tgImg}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? `@${item.owner_contact.telegram_account}`
+                                : type === 2
+                                ? `@${item.renter_contact.telegram_account}`
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.viber_account) ||
+                          (type === 2 &&
+                            item.renter_contact.viber_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={viberImg}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? `+${item.owner_contact.viber_account}`
+                                : type === 2
+                                ? `+${item.renter_contact.viber_account}`
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.whatsapp_account) ||
+                          (type === 2 &&
+                            item.renter_contact.whatsapp_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={WhatsAppLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? `+${item.owner_contact.whatsapp_account}`
+                                : type === 2
+                                ? `+${item.renter_contact.whatsapp_account}`
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.link_instagram) ||
+                          (type === 2 &&
+                            item.renter_contact.link_instagram)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={InstagramLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.link_instagram
+                                : type === 2
+                                ? item.renter_contact.link_instagram
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.ok_account) ||
+                          (type === 2 && item.renter_contact.ok_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={OkLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.ok_account
+                                : type === 2
+                                ? item.renter_contact.ok_account
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.vk_account) ||
+                          (type === 2 && item.renter_contact.vk_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={VkLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.vk_account
+                                : type === 2
+                                ? item.renter_contact.vk_account
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.link_facebook) ||
+                          (type === 2 &&
+                            item.renter_contact.link_facebook)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={FbLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.link_facebook
+                                : type === 2
+                                ? item.renter_contact.link_facebook
+                                : ""}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -2281,6 +2477,18 @@ const CardThings = () => {
                           >
                             Забронировать
                           </button>
+                          <input
+                            style={
+                              isOwn
+                                ? { display: "none" }
+                                : { cursor: "pointer" }
+                            }
+                            onClick={goToChatHandler}
+                            href="#booking_page"
+                            type="button"
+                            value="Написать"
+                            className="contactOwner_btn2"
+                          />
 
                           {favorites && !isFavorite && !isOwn && (
                             <img
@@ -2631,18 +2839,184 @@ const CardThings = () => {
                       </div>
                     )}
                   </div>
-                  <div className="down_block2_button">
-                    <input
-                      style={
-                        isOwn ? { display: "none" } : { cursor: "pointer" }
-                      }
-                      onClick={goToChatHandler}
-                      href="#booking_page"
-                      type="button"
-                      value="Перейти в чат"
-                      className="contactOwner_btn2"
-                    />
-                  </div>
+                  {/* CONTACTS MOBILE */}
+                  {true && (
+                    <div className="center_block_rowstyle_3">
+                      <button
+                        onClick={typeContactsHandler}
+                        className="contactOwner_btn3"
+                      >
+                        {" "}
+                        Контакты{" "}
+                      </button>
+                    </div>
+                  )}
+                  {contacts === true && (
+                    <div className="body_allblock_header_left_contacts">
+                      <div className="left_contacts_row">
+                        <img
+                          width="30px"
+                          height="30px"
+                          src={telephone}
+                          alt="vectors"
+                        />
+                        <p>
+                          {" "}
+                          {type === 1
+                            ? item.owner_contact.phone
+                            : type === 2
+                            ? item.renter_contact.phone
+                            : ""}
+                        </p>
+                      </div>
+                      {((type === 1 && item.owner_contact.google_account) ||
+                        (type === 2 && item.renter_contact.google_account)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={gmailImg}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? item.owner_contact.google_account
+                              : type === 2
+                              ? item.renter_contact.google_account
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                      {((type === 1 && item.owner_contact.telegram_account) ||
+                        (type === 2 &&
+                          item.renter_contact.telegram_account)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={tgImg}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? `@${item.owner_contact.telegram_account}`
+                              : type === 2
+                              ? `@${item.renter_contact.telegram_account}`
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                      {((type === 1 && item.owner_contact.viber_account) ||
+                        (type === 2 && item.renter_contact.viber_account)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={viberImg}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? `+${item.owner_contact.viber_account}`
+                              : type === 2
+                              ? `+${item.renter_contact.viber_account}`
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                      {((type === 1 && item.owner_contact.whatsapp_account) ||
+                        (type === 2 &&
+                          item.renter_contact.whatsapp_account)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={WhatsAppLogo}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? `+${item.owner_contact.whatsapp_account}`
+                              : type === 2
+                              ? `+${item.renter_contact.whatsapp_account}`
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                      {((type === 1 && item.owner_contact.link_instagram) ||
+                        (type === 2 && item.renter_contact.link_instagram)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={InstagramLogo}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? item.owner_contact.link_instagram
+                              : type === 2
+                              ? item.renter_contact.link_instagram
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                      {((type === 1 && item.owner_contact.ok_account) ||
+                        (type === 2 && item.renter_contact.ok_account)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={OkLogo}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? item.owner_contact.ok_account
+                              : type === 2
+                              ? item.renter_contact.ok_account
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                      {((type === 1 && item.owner_contact.vk_account) ||
+                        (type === 2 && item.renter_contact.vk_account)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={VkLogo}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? item.owner_contact.vk_account
+                              : type === 2
+                              ? item.renter_contact.vk_account
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                      {((type === 1 && item.owner_contact.link_facebook) ||
+                        (type === 2 && item.renter_contact.link_facebook)) && (
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={FbLogo}
+                            alt="vectors"
+                          />
+                          <p>
+                            {type === 1
+                              ? item.owner_contact.link_facebook
+                              : type === 2
+                              ? item.renter_contact.link_facebook
+                              : ""}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -3423,8 +3797,8 @@ const CardThings = () => {
                           onClick={goToChatHandler}
                           href="#booking_page"
                           type="button"
-                          value="Перейти в чат"
-                          className="contactOwner_btn"
+                          value="Написать"
+                          className="contactOwner_btn2"
                         />
 
                         {favorites && !isFavorite && !isOwn && (
@@ -3799,6 +4173,187 @@ const CardThings = () => {
                             </a>
                           )}
                         </div>
+                      </div>
+                    )}
+                    {true && (
+                      <div className="center_block_rowstyle_3">
+                        <button
+                          onClick={typeContactsHandler}
+                          className="contactOwner_btn2"
+                        >
+                          {" "}
+                          Контакты{" "}
+                        </button>
+                      </div>
+                    )}
+                    {true && contacts === true && (
+                      <div className="body_allblock_header_left_contacts">
+                        <div className="left_contacts_row">
+                          <img
+                            width="30px"
+                            height="30px"
+                            src={telephone}
+                            alt="vectors"
+                          />
+                          <p>
+                            {" "}
+                            {type === 1
+                              ? item.owner_contact.phone
+                              : type === 2
+                              ? item.renter_contact.phone
+                              : ""}
+                          </p>
+                        </div>
+                        {((type === 1 && item.owner_contact.google_account) ||
+                          (type === 2 &&
+                            item.renter_contact.google_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={gmailImg}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.google_account
+                                : type === 2
+                                ? item.renter_contact.google_account
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.telegram_account) ||
+                          (type === 2 &&
+                            item.renter_contact.telegram_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={tgImg}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? `@${item.owner_contact.telegram_account}`
+                                : type === 2
+                                ? `@${item.renter_contact.telegram_account}`
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.viber_account) ||
+                          (type === 2 &&
+                            item.renter_contact.viber_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={viberImg}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? `+${item.owner_contact.viber_account}`
+                                : type === 2
+                                ? `+${item.renter_contact.viber_account}`
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.whatsapp_account) ||
+                          (type === 2 &&
+                            item.renter_contact.whatsapp_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={WhatsAppLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? `+${item.owner_contact.whatsapp_account}`
+                                : type === 2
+                                ? `+${item.renter_contact.whatsapp_account}`
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.link_instagram) ||
+                          (type === 2 &&
+                            item.renter_contact.link_instagram)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={InstagramLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.link_instagram
+                                : type === 2
+                                ? item.renter_contact.link_instagram
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.ok_account) ||
+                          (type === 2 && item.renter_contact.ok_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={OkLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.ok_account
+                                : type === 2
+                                ? item.renter_contact.ok_account
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.vk_account) ||
+                          (type === 2 && item.renter_contact.vk_account)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={VkLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.vk_account
+                                : type === 2
+                                ? item.renter_contact.vk_account
+                                : ""}
+                            </p>
+                          </div>
+                        )}
+                        {((type === 1 && item.owner_contact.link_facebook) ||
+                          (type === 2 &&
+                            item.renter_contact.link_facebook)) && (
+                          <div className="left_contacts_row">
+                            <img
+                              width="30px"
+                              height="30px"
+                              src={FbLogo}
+                              alt="vectors"
+                            />
+                            <p>
+                              {type === 1
+                                ? item.owner_contact.link_facebook
+                                : type === 2
+                                ? item.renter_contact.link_facebook
+                                : ""}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

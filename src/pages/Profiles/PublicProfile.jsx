@@ -470,7 +470,13 @@ const PublicProfile = () => {
                   )}
                 </div>
               </div>
-              {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
+              {/*  блок КНОПКИ  */}
+              {/* <div>
+                <button className="contactOwner_btn4">
+                  {" "}
+                  Отправить сообщение
+                </button>
+              </div> */}
             </div>
           </div>
           <div className="PublicProfile_Wrapper_container">
@@ -605,7 +611,7 @@ const PublicProfile = () => {
                     />
                   </div>
 
-                  <div>
+                  <div style={{ width: "-webkit-fill-available" }}>
                     {/*  СПРАВА ОТ АВАТАРКИ  */}
                     <div className="container_up_header">
                       <div className="header_up">
@@ -942,15 +948,13 @@ const PublicProfile = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
-              <div className="container_up_footer">
-                <input
-                  value="Оставить отзыв"
-                  type="button"
-                  style={{ border: "none" }}
-                  className="footer_btn2"
-                />
+                {/*  блок КНОПКИ  */}
+                {/* <div style={{ width: "100%" }}>
+                  <button className="contactOwner_btn4">
+                    {" "}
+                    Отправить сообщение
+                  </button>
+                </div> */}
               </div>
             </div>
 
@@ -958,60 +962,62 @@ const PublicProfile = () => {
             <div className="container_down">
               {/*  ШАПКА ПЕРЕД КОМПОНЕНТАМИ  */}
               <div className="container_down_header">
-                <div className="down_header_text1">
+                <div
+                  className={
+                    activeForm2 === "arends"
+                      ? "down_header_text1_active"
+                      : "down_header_text1 disabled"
+                  }
+                  onClick={() => setActiveForm2("arends")}
+                >
                   <p
                     className={
                       activeForm2 === "arends"
-                        ? "down_header_text1-p1_active"
+                        ? "down_header_text1-p11_active"
                         : "down_header_text1-p1"
                     }
-                    onClick={() => setActiveForm2("arends")}
                   >
-                    Объявления
+                    Обьявления
                   </p>
                   <p className="down_header_text1-p2">
                     {profileItems && profileItems.length}
                   </p>
                 </div>
-                <div className="down_header_text1">
+                <div
+                  className={
+                    activeForm2 === "about_me"
+                      ? "down_header_text1_active"
+                      : "down_header_text1 disabled"
+                  }
+                  onClick={() => {
+                    setActiveForm2("about_me");
+                  }}
+                >
                   <p
-                    style={profileData && profileData.about ? {} : {}}
                     className={
                       activeForm2 === "about_me"
-                        ? "down_header_text1-p1_active"
-                        : "down_header_text1-p1  "
+                        ? "down_header_text1-p11_active"
+                        : "down_header_text1-p1"
                     }
-                    onClick={() => {
-                      profileData &&
-                        profileData.about &&
-                        setActiveForm2("about_me");
-                    }}
                   >
                     Информация
                   </p>
                 </div>
 
-                <div className="down_header_text1">
-                  <p
-                    className={
-                      activeForm2 === "address"
-                        ? "down_header_text1-p1_active"
-                        : "down_header_text1-p1 "
-                    }
-                    onClick={() => setActiveForm2("address")}
-                  >
-                    Адреса
-                  </p>
-                </div>
-
-                <div className="down_header_text1  ">
+                <div
+                  className={
+                    activeForm2 === "reviews"
+                      ? "down_header_text1_active"
+                      : "down_header_text1 disabled"
+                  }
+                  onClick={() => setActiveForm2("reviews")}
+                >
                   <p
                     className={
                       activeForm2 === "reviews"
-                        ? "down_header_text1-p1_active"
+                        ? "down_header_text1-p11_active"
                         : "down_header_text1-p1"
                     }
-                    onClick={() => setActiveForm2("reviews")}
                   >
                     Отзывы
                   </p>
@@ -1426,59 +1432,62 @@ const PublicProfile = () => {
                   </div>
                 </div>
               </div>
-              {/*  ПОСЛЕ  АВАТАРКИ РАЗДЕЛ  */}
             </div>
 
             {/*  НИЖНЯЯ ЧАСТЬ КОНТЕЙНЕРА  */}
             <div className="container_down">
               {/*  ШАПКА ПЕРЕД КОМПОНЕНТАМИ  */}
               <div className="container_down_header">
-                <div className="down_header_text1">
+                <div
+                  className={
+                    activeForm2 === "arends"
+                      ? "down_header_text1"
+                      : "down_header_text1 disabled"
+                  }
+                  onClick={() => setActiveForm2("arends")}
+                >
                   <p
                     className={
                       activeForm2 === "arends"
                         ? "down_header_text1-p1_active"
                         : "down_header_text1-p1"
                     }
-                    onClick={() => setActiveForm2("arends")}
                   >
-                    Объявления
+                    Обьявления
                   </p>
                   <p className="down_header_text1-p2">
                     {profileItems && profileItems.length}
                   </p>
                 </div>
-                <p
-                  style={
-                    profileData && profileData.about
-                      ? {}
-                      : { opacity: "0.4", pointerEvents: "none" }
-                  }
+                <div
                   className={
                     activeForm2 === "about_me"
-                      ? "down_header_text1-p1_active"
-                      : "down_header_text1-p1"
+                      ? "down_header_text1"
+                      : "down_header_text1 disabled"
                   }
                   onClick={() => {
-                    profileData &&
-                      profileData.about &&
-                      setActiveForm2("about_me");
+                    setActiveForm2("about_me");
                   }}
                 >
-                  Информация
-                </p>
-                <p
+                  <p
+                    className={
+                      activeForm2 === "about_me"
+                        ? "down_header_text1-p1_active"
+                        : "down_header_text1-p1"
+                    }
+                  >
+                    Информация
+                  </p>
+                </div>
+
+                <div
                   className={
-                    activeForm2 === "address"
-                      ? "down_header_text1-p1_active"
-                      : "down_header_text1-p1"
+                    activeForm2 === "reviews"
+                      ? "down_header_text1"
+                      : "down_header_text1 disabled"
                   }
-                  style={{ marginLeft: "40px" }}
-                  onClick={() => setActiveForm2("address")}
+                  onClick={() => setActiveForm2("reviews")}
                 >
-                  Адреса
-                </p>
-                <div className="down_header_text1">
                   <p
                     style={{ marginLeft: "40px" }}
                     className={
@@ -1486,7 +1495,6 @@ const PublicProfile = () => {
                         ? "down_header_text1-p1_active"
                         : "down_header_text1-p1"
                     }
-                    onClick={() => setActiveForm2("reviews")}
                   >
                     Отзывы
                   </p>

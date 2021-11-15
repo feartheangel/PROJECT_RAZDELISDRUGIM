@@ -566,9 +566,10 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: fit-content;
 }
 .contactOwner_btn {
-  width: 264px;
+  width: 165px;
   height: 45px;
   background: #4cc9f0;
   -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
@@ -579,6 +580,22 @@
   font-size: 16px;
   border: none;
   padding: 0 20px;
+  cursor: pointer;
+}
+.contactOwner_btn4 {
+  width: 240px;
+  height: 45px;
+  background: #4cc9f0;
+  -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+  border-color: #4cc9f0;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /*     НИЖНИЙ БЛОК ПРАВОЙ СТОРОНЫ               */
@@ -673,7 +690,7 @@
 
 /* НА САЙТЕ и ВРЕМЯ ОТВЕТА*/
 .block_down_online {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .block_down_online-p1_1 {
   margin-left: 40px;
@@ -682,6 +699,57 @@
 .block_down_online-p2_2 {
   margin-left: 23px;
   color: #4cc9f0;
+}
+.contactOwner_btn2 {
+  width: 165px;
+  height: 45px;
+  background: #FFFFFF;
+  border: 3px solid #4CC9F0;
+  box-sizing: border-box;
+  -webkit-box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+  box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+  border-color: #4cc9f0;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.contactOwner_btn3 {
+  width: 210px;
+  height: 45px;
+  background: #FFFFFF;
+  border: 3px solid #4CC9F0;
+  box-sizing: border-box;
+  -webkit-box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+  box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+  border-color: #4cc9f0;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.block_down_social{
+  margin-bottom: 15px;
 }
 
 /* Социальные сети */
@@ -1433,10 +1501,12 @@
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    border: none;
-    margin: 0 15px;
   }
 
+  .block_up_contactOwner{
+    width: -webkit-fill-available;
+    justify-content: center;
+  }
   .CardThings_Wrapper_container {
     max-width: 100%;
   }
@@ -1645,6 +1715,7 @@
 
   .img_contactOwner {
     background-color: white;
+    border: 3px solid #4cc9f0;
   }
 
   .contactOwner_btn {
@@ -1652,7 +1723,8 @@
   }
 
   .contactOwner_btn {
-    width: 264px;
+    max-width: 135px;
+    width: 100%;
     height: 45px;
     background: #4cc9f0;
     -webkit-box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
@@ -1672,6 +1744,74 @@
     -ms-flex-pack: center;
     justify-content: center;
     border: none;
+  }
+  .contactOwner_btn2 {
+    max-width: 135px;
+    width: 100%;
+    height: 45px;
+    background: #FFFFFF;
+    border: 3px solid #4CC9F0;
+    box-sizing: border-box;
+    -webkit-box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    border-color: #4cc9f0;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .contactOwner_btn3 {
+    width: 100%;
+    margin: 10px 15px 5px 15px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 3px solid #4CC9F0;
+    box-sizing: border-box;
+    -webkit-box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    box-shadow: 3px 3px 22px rgb(99 212 248 / 24%);
+    border-color: #4cc9f0;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .contactOwner_btn4 {
+    width: -webkit-fill-available;
+    height: 45px;
+    background: #4cc9f0;
+    -webkit-box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    box-shadow: 3px 3px 22px rgba(99, 212, 248, 0.24);
+    border-color: #4cc9f0;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 15px 0 ;
+    font-weight: 500;
+font-size: 16px;
+line-height: 19px;
   }
 
   .background_blocks {
@@ -1836,6 +1976,10 @@
     margin: 20px;
     width: -webkit-fill-available;
   }
+  .contactOwner_btn {
+    width: 100%;
+    min-width: 160px;
+  }
   .card_content_left {
     padding: 0;
     width: -webkit-fill-available;
@@ -1869,5 +2013,8 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+  .body_allblock_header_left_contacts{
+    margin-bottom: 20px;
   }
 }

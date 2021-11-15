@@ -167,6 +167,7 @@ const RegistrationModuleBasic = ({ setActiveForm, setModalActive }) => {
           className="img_krestik"
           style={{
             marginRight: "15px",
+            marginTop: "10px",
             justifyContent: "center",
             display: "flex",
           }}

@@ -1624,6 +1624,8 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          width: 1140px;
+          box-sizing: border-box;
 }
 
 .main_page_fris_block_left_main_p {
@@ -1650,7 +1652,7 @@ button {
 }
 
 .main_page_fris_block_left {
-  margin-right: 253px;
+  margin-right: 0;
 }
 .selector_header_items {
   display: -webkit-box;

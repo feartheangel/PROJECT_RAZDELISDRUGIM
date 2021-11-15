@@ -221,7 +221,7 @@ const LoginModule = ({ setModalActive, setActiveForm }) => {
             onClick={() => setModalActive(false)}
             src={Shape}
             className="img_krestik"
-            style={{ marginRight: "15px" }}
+            style={{ marginRight: "15px", marginTop: "10px" }}
           />
         </div>
         <ul className="reg-form-action-type-list">
